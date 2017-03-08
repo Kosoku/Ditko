@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "0795E6311E704785004A5CB2"
+               BlueprintIdentifier = "073542791E704D8F00177905"
                BuildableName = "Ditko.framework"
-               BlueprintName = "Ditko-iOS"
+               BlueprintName = "Ditko-macOS"
                ReferencedContainer = "container:Ditko.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -45,9 +45,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "0795E6311E704785004A5CB2"
+            BlueprintIdentifier = "073542791E704D8F00177905"
             BuildableName = "Ditko.framework"
-            BlueprintName = "Ditko-iOS"
+            BlueprintName = "Ditko-macOS"
             ReferencedContainer = "container:Ditko.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -63,9 +63,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "0795E6311E704785004A5CB2"
+            BlueprintIdentifier = "073542791E704D8F00177905"
             BuildableName = "Ditko.framework"
-            BlueprintName = "Ditko-iOS"
+            BlueprintName = "Ditko-macOS"
             ReferencedContainer = "container:Ditko.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
