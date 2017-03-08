@@ -1,5 +1,5 @@
 //
-//  Ditko.h
+//  KDIGradientView.h
 //  Ditko
 //
 //  Created by William Towe on 3/8/17.
@@ -21,16 +21,57 @@
 #import <AppKit/AppKit.h>
 #endif
 
-//! Project version number for Ditko.
-FOUNDATION_EXPORT double DitkoVersionNumber;
+NS_ASSUME_NONNULL_BEGIN
 
-//! Project version string for Ditko.
-FOUNDATION_EXPORT const unsigned char DitkoVersionString[];
+/**
+ KDIGradientView is a UIView/NSView subclass that manages a CAGradientLayer and provides convenience methods to access the layer's properties.
+ */
+#if (TARGET_OS_IPHONE)
+@interface KDIGradientView : UIView
+#else
+@interface KDIGradientView : NSView
+#endif
 
-// In this header, you should import all the public headers of your framework using statements like #import <Ditko/PublicHeader.h>
+/**
+ Set and get the colors of the underlying CAGradientLayer.
+ 
+ The array should contain either UIColor or NSColor instances.
+ */
+#if (TARGET_OS_IPHONE)
+@property (copy,nonatomic,nullable) NSArray<UIColor *> *colors;
+#else
+@property (copy,nonatomic,nullable) NSArray<NSColor *> *colors;
+#endif
 
-#import <Ditko/KDIColorMacros.h>
+/**
+ Set and get the locations of the underlying CAGradientLayer.
+ 
+ The gradient stops are specified as values between 0 and 1. The values must be monotonically increasing. If nil, the stops are spread uniformly across the range. Defaults to nil.
+ */
+@property (copy,nonatomic,nullable) NSArray<NSNumber *> *locations;
 
-#import <Ditko/KDIFunctions.h>
+/**
+ The start point of the underlying CAGradientLayer.
+ 
+ The point is defined in unit coordinate space.
+ */
+#if (TARGET_OS_IPHONE)
+@property (assign,nonatomic) CGPoint startPoint;
+#else
+@property (assign,nonatomic) NSPoint startPoint;
+#endif
 
-#import <Ditko/KDIGradientView.h>
+/**
+ The end point of the underlying CAGradientLayer.
+ 
+ The point is defined in the unit coordinate space.
+ */
+#if (TARGET_OS_IPHONE)
+@property (assign,nonatomic) CGPoint endPoint;
+#else
+@property (assign,nonatomic) NSPoint endPoint;
+#endif
+
+@end
+
+NS_ASSUME_NONNULL_END

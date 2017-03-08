@@ -19,19 +19,12 @@
 
 @implementation ViewController
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-
-    [self.view setWantsLayer:YES];
-    [self.view.layer setBackgroundColor:KDIColorRandomRGB().CGColor];
+- (void)loadView {
+    KDIGradientView *view = [[KDIGradientView alloc] initWithFrame:NSZeroRect];
+    
+    [view setColors:@[KDIColorRandomRGB(),KDIColorRandomRGB()]];
+    
+    [self setView:view];
 }
-
-
-- (void)setRepresentedObject:(id)representedObject {
-    [super setRepresentedObject:representedObject];
-
-    // Update the view, if already loaded.
-}
-
 
 @end

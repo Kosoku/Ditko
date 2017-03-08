@@ -23,17 +23,12 @@
 
 @implementation ViewController
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
+- (void)loadView {
+    KDIGradientView *view = [[KDIGradientView alloc] initWithFrame:CGRectZero];
     
-    [self.view setBackgroundColor:KDIColorRandomRGB()];
+    [view setColors:@[KDIColorRandomRGB(),KDIColorRandomRGB()]];
+    
+    [self setView:view];
 }
-
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
 
 @end
