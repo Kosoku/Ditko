@@ -24,11 +24,27 @@
 @implementation ViewController
 
 - (void)loadView {
-    KDIGradientView *view = [[KDIGradientView alloc] initWithFrame:CGRectZero];
+    KDIView *view = [[KDIView alloc] initWithFrame:CGRectZero];
     
-    [view setColors:@[KDIColorRandomRGB(),KDIColorRandomRGB()]];
+    [view setBackgroundColor:KDIColorRandomRGB()];
+    [view setBorderColor:KDIColorRandomRGB()];
+    [view setBorderWidth:4.0];
+    [view setBorderOptions:KDIViewBorderOptionsAll];
+    [view setBorderEdgeInsets:UIEdgeInsetsMake(8.0, 8.0, 8.0, 8.0)];
     
     [self setView:view];
+}
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    
+    KDIGradientView *gradientView = [[KDIGradientView alloc] initWithFrame:CGRectZero];
+    
+    [gradientView setColors:@[KDIColorRandomRGB(),KDIColorRandomRGB()]];
+    [gradientView setTranslatesAutoresizingMaskIntoConstraints:NO];
+    
+    [self.view addSubview:gradientView];
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-margin-[view]-margin-|" options:0 metrics:@{@"margin": @16.0} views:@{@"view": gradientView}]];
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-margin-[view]-margin-|" options:0 metrics:@{@"margin": @16.0} views:@{@"view": gradientView}]];
 }
 
 @end

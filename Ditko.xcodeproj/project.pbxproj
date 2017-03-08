@@ -43,6 +43,12 @@
 		071B62DE1E70861F00B7B85A /* Ditko.h in Headers */ = {isa = PBXBuildFile; fileRef = 0795E6351E704785004A5CB2 /* Ditko.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		071B62DF1E70864300B7B85A /* KDIGradientView.h in Headers */ = {isa = PBXBuildFile; fileRef = 071B626C1E70635D00B7B85A /* KDIGradientView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		071B62E01E70864900B7B85A /* KDIGradientView.m in Sources */ = {isa = PBXBuildFile; fileRef = 071B626D1E70635D00B7B85A /* KDIGradientView.m */; };
+		072628111E70BCCF00511F80 /* KDIView.h in Headers */ = {isa = PBXBuildFile; fileRef = 0726280F1E70BCCF00511F80 /* KDIView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		072628121E70BCCF00511F80 /* KDIView.h in Headers */ = {isa = PBXBuildFile; fileRef = 0726280F1E70BCCF00511F80 /* KDIView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		072628131E70BCCF00511F80 /* KDIView.h in Headers */ = {isa = PBXBuildFile; fileRef = 0726280F1E70BCCF00511F80 /* KDIView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		072628141E70BCCF00511F80 /* KDIView.m in Sources */ = {isa = PBXBuildFile; fileRef = 072628101E70BCCF00511F80 /* KDIView.m */; };
+		072628151E70BCCF00511F80 /* KDIView.m in Sources */ = {isa = PBXBuildFile; fileRef = 072628101E70BCCF00511F80 /* KDIView.m */; };
+		072628161E70BCCF00511F80 /* KDIView.m in Sources */ = {isa = PBXBuildFile; fileRef = 072628101E70BCCF00511F80 /* KDIView.m */; };
 		073542861E70503C00177905 /* NSColor+KDIExtensions.h in Headers */ = {isa = PBXBuildFile; fileRef = 073542841E70503C00177905 /* NSColor+KDIExtensions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		073542901E70515400177905 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0735428F1E70515400177905 /* AppDelegate.m */; };
 		073542931E70515400177905 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 073542921E70515400177905 /* main.m */; };
@@ -168,6 +174,8 @@
 		071B62D31E70849500B7B85A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		071B62D51E70849500B7B85A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		071B62DB1E7084BF00B7B85A /* Stanley.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Stanley.framework; path = "Vendor/Stanley/build/Debug-appletvos/Stanley.framework"; sourceTree = "<group>"; };
+		0726280F1E70BCCF00511F80 /* KDIView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KDIView.h; sourceTree = "<group>"; };
+		072628101E70BCCF00511F80 /* KDIView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KDIView.m; sourceTree = "<group>"; };
 		0735427A1E704D8F00177905 /* Ditko.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Ditko.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		073542821E704DD600177905 /* Ditko-macOS-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Ditko-macOS-Info.plist"; sourceTree = "<group>"; };
 		073542831E704E0400177905 /* Ditko-Info.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Ditko-Info.h"; sourceTree = "<group>"; };
@@ -280,6 +288,8 @@
 		071B626B1E70633700B7B85A /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				0726280F1E70BCCF00511F80 /* KDIView.h */,
+				072628101E70BCCF00511F80 /* KDIView.m */,
 				071B626C1E70635D00B7B85A /* KDIGradientView.h */,
 				071B626D1E70635D00B7B85A /* KDIGradientView.m */,
 			);
@@ -491,6 +501,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				071B62DF1E70864300B7B85A /* KDIGradientView.h in Headers */,
+				072628131E70BCCF00511F80 /* KDIView.h in Headers */,
 				071B62DE1E70861F00B7B85A /* Ditko.h in Headers */,
 				071B62BE1E70845600B7B85A /* KDIColorMacros.h in Headers */,
 				071B62BF1E70845D00B7B85A /* UIColor+KDIExtensions.h in Headers */,
@@ -501,6 +512,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				072628121E70BCCF00511F80 /* KDIView.h in Headers */,
 				071B62641E705D3500B7B85A /* KDIFunctions.h in Headers */,
 				071B626F1E70635D00B7B85A /* KDIGradientView.h in Headers */,
 				073542A51E7053F100177905 /* Ditko.h in Headers */,
@@ -513,6 +525,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				072628111E70BCCF00511F80 /* KDIView.h in Headers */,
 				071B62631E705D3500B7B85A /* KDIFunctions.h in Headers */,
 				071B626E1E70635D00B7B85A /* KDIGradientView.h in Headers */,
 				0795E6371E704785004A5CB2 /* Ditko.h in Headers */,
@@ -859,6 +872,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				072628161E70BCCF00511F80 /* KDIView.m in Sources */,
 				071B62C01E70846200B7B85A /* NSColor-UIColor+KDIExtensions.m in Sources */,
 				071B62E01E70864900B7B85A /* KDIGradientView.m in Sources */,
 			);
@@ -881,6 +895,7 @@
 				071B62711E70635D00B7B85A /* KDIGradientView.m in Sources */,
 				071B62661E705D3500B7B85A /* KDIFunctions.m in Sources */,
 				073542AA1E7057A000177905 /* NSColor-UIColor+KDIExtensions.m in Sources */,
+				072628151E70BCCF00511F80 /* KDIView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -901,6 +916,7 @@
 				071B62701E70635D00B7B85A /* KDIGradientView.m in Sources */,
 				071B62651E705D3500B7B85A /* KDIFunctions.m in Sources */,
 				0795E6421E70491E004A5CB2 /* NSColor-UIColor+KDIExtensions.m in Sources */,
+				072628141E70BCCF00511F80 /* KDIView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1449,6 +1465,7 @@
 				071B627E1E707E6F00B7B85A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		071B62A31E707FCB00B7B85A /* Build configuration list for PBXNativeTarget "DitkoDemo-watchOS Extension" */ = {
 			isa = XCConfigurationList;
@@ -1457,6 +1474,7 @@
 				071B62A51E707FCB00B7B85A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		071B62A71E707FCB00B7B85A /* Build configuration list for PBXNativeTarget "DitkoDemo-watchOS" */ = {
 			isa = XCConfigurationList;
@@ -1465,6 +1483,7 @@
 				071B62A91E707FCB00B7B85A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		071B62BA1E70835C00B7B85A /* Build configuration list for PBXNativeTarget "Ditko-tvOS" */ = {
 			isa = XCConfigurationList;
@@ -1473,6 +1492,7 @@
 				071B62BC1E70835C00B7B85A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		071B62D61E70849500B7B85A /* Build configuration list for PBXNativeTarget "DitkoDemo-tvOS" */ = {
 			isa = XCConfigurationList;
@@ -1481,6 +1501,7 @@
 				071B62D81E70849500B7B85A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		073542811E704D8F00177905 /* Build configuration list for PBXNativeTarget "Ditko-macOS" */ = {
 			isa = XCConfigurationList;
