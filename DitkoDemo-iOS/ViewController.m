@@ -26,7 +26,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self.view setBackgroundColor:[UIColor KDI_colorRandomRGB]];
+    [self.view setBackgroundColor:KDIColorRandomRGB()];
 }
 
 

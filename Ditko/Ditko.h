@@ -29,10 +29,6 @@ FOUNDATION_EXPORT const unsigned char DitkoVersionString[];
 
 // In this header, you should import all the public headers of your framework using statements like #import <Ditko/PublicHeader.h>
 
-#import <Ditko/KDIFunctions.h>
+#import <Ditko/KDIColorMacros.h>
 
-#if (TARGET_OS_IPHONE)
-#import <Ditko/UIColor+KDIExtensions.h>
-#else
-#import <Ditko/NSColor+KDIExtensions.h>
-#endif
+#import <Ditko/KDIFunctions.h>

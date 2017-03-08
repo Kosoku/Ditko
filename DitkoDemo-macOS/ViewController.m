@@ -23,7 +23,7 @@
     [super viewDidLoad];
 
     [self.view setWantsLayer:YES];
-    [self.view.layer setBackgroundColor:[NSColor KDI_colorRandomRGB].CGColor];
+    [self.view.layer setBackgroundColor:KDIColorRandomRGB().CGColor];
 }
 
 

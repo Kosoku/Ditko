@@ -11,6 +11,8 @@
 		071B62641E705D3500B7B85A /* KDIFunctions.h in Headers */ = {isa = PBXBuildFile; fileRef = 071B62611E705D3500B7B85A /* KDIFunctions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		071B62651E705D3500B7B85A /* KDIFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = 071B62621E705D3500B7B85A /* KDIFunctions.m */; };
 		071B62661E705D3500B7B85A /* KDIFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = 071B62621E705D3500B7B85A /* KDIFunctions.m */; };
+		071B62691E705EA300B7B85A /* KDIColorMacros.h in Headers */ = {isa = PBXBuildFile; fileRef = 071B62681E705EA300B7B85A /* KDIColorMacros.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		071B626A1E705EA400B7B85A /* KDIColorMacros.h in Headers */ = {isa = PBXBuildFile; fileRef = 071B62681E705EA300B7B85A /* KDIColorMacros.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		073542861E70503C00177905 /* NSColor+KDIExtensions.h in Headers */ = {isa = PBXBuildFile; fileRef = 073542841E70503C00177905 /* NSColor+KDIExtensions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		073542901E70515400177905 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0735428F1E70515400177905 /* AppDelegate.m */; };
 		073542931E70515400177905 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 073542921E70515400177905 /* main.m */; };
@@ -54,6 +56,7 @@
 /* Begin PBXFileReference section */
 		071B62611E705D3500B7B85A /* KDIFunctions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KDIFunctions.h; sourceTree = "<group>"; };
 		071B62621E705D3500B7B85A /* KDIFunctions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KDIFunctions.m; sourceTree = "<group>"; };
+		071B62681E705EA300B7B85A /* KDIColorMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KDIColorMacros.h; sourceTree = "<group>"; };
 		0735427A1E704D8F00177905 /* Ditko.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Ditko.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		073542821E704DD600177905 /* Ditko-macOS-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Ditko-macOS-Info.plist"; sourceTree = "<group>"; };
 		073542831E704E0400177905 /* Ditko-Info.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Ditko-Info.h"; sourceTree = "<group>"; };
@@ -123,6 +126,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		071B62671E705E8D00B7B85A /* Headers */ = {
+			isa = PBXGroup;
+			children = (
+				071B62681E705EA300B7B85A /* KDIColorMacros.h */,
+			);
+			name = Headers;
+			sourceTree = "<group>";
+		};
 		0735428D1E70515400177905 /* DitkoDemo-macOS */ = {
 			isa = PBXGroup;
 			children = (
@@ -210,6 +221,7 @@
 		0795E63E1E704893004A5CB2 /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				071B62671E705E8D00B7B85A /* Headers */,
 				073542AC1E705CAB00177905 /* Functions */,
 				073542AB1E705CA400177905 /* Categories */,
 			);
@@ -259,6 +271,7 @@
 			files = (
 				071B62641E705D3500B7B85A /* KDIFunctions.h in Headers */,
 				073542A51E7053F100177905 /* Ditko.h in Headers */,
+				071B626A1E705EA400B7B85A /* KDIColorMacros.h in Headers */,
 				073542861E70503C00177905 /* NSColor+KDIExtensions.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -269,6 +282,7 @@
 			files = (
 				071B62631E705D3500B7B85A /* KDIFunctions.h in Headers */,
 				0795E6371E704785004A5CB2 /* Ditko.h in Headers */,
+				071B62691E705EA300B7B85A /* KDIColorMacros.h in Headers */,
 				0795E6411E70491E004A5CB2 /* UIColor+KDIExtensions.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
