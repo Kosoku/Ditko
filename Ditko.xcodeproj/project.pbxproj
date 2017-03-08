@@ -8,12 +8,16 @@
 
 /* Begin PBXBuildFile section */
 		078C70711E6F8B1A00F04786 /* Ditko.h in Headers */ = {isa = PBXBuildFile; fileRef = 078C706F1E6F8B1A00F04786 /* Ditko.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		078C707E1E6F92FF00F04786 /* UIColor+KDIExtensions.h in Headers */ = {isa = PBXBuildFile; fileRef = 078C707C1E6F92FF00F04786 /* UIColor+KDIExtensions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		078C707F1E6F92FF00F04786 /* UIColor+KDIExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 078C707D1E6F92FF00F04786 /* UIColor+KDIExtensions.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		078C706C1E6F8B1A00F04786 /* Ditko.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Ditko.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		078C706F1E6F8B1A00F04786 /* Ditko.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Ditko.h; sourceTree = "<group>"; };
-		078C70701E6F8B1A00F04786 /* Ditko-iOS-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Ditko-iOS-Info.plist"; sourceTree = "<group>"; };
+		078C706F1E6F8B1A00F04786 /* Ditko.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Ditko.h; path = ../Ditko/Ditko.h; sourceTree = "<group>"; };
+		078C70701E6F8B1A00F04786 /* Ditko-iOS-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Ditko-iOS-Info.plist"; path = "../Ditko/Ditko-iOS-Info.plist"; sourceTree = "<group>"; };
+		078C707C1E6F92FF00F04786 /* UIColor+KDIExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIColor+KDIExtensions.h"; path = "Ditko/iOS/UIColor+KDIExtensions.h"; sourceTree = SOURCE_ROOT; };
+		078C707D1E6F92FF00F04786 /* UIColor+KDIExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIColor+KDIExtensions.m"; path = "Ditko/iOS/UIColor+KDIExtensions.m"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,9 +51,35 @@
 			isa = PBXGroup;
 			children = (
 				078C706F1E6F8B1A00F04786 /* Ditko.h */,
-				078C70701E6F8B1A00F04786 /* Ditko-iOS-Info.plist */,
+				078C70761E6F925600F04786 /* Source */,
+				078C70751E6F924E00F04786 /* Supporting Files */,
 			);
 			path = "Ditko-iOS";
+			sourceTree = "<group>";
+		};
+		078C70751E6F924E00F04786 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				078C70701E6F8B1A00F04786 /* Ditko-iOS-Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		078C70761E6F925600F04786 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				078C70771E6F928600F04786 /* Categories */,
+			);
+			name = Source;
+			sourceTree = "<group>";
+		};
+		078C70771E6F928600F04786 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				078C707C1E6F92FF00F04786 /* UIColor+KDIExtensions.h */,
+				078C707D1E6F92FF00F04786 /* UIColor+KDIExtensions.m */,
+			);
+			name = Categories;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -60,6 +90,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				078C70711E6F8B1A00F04786 /* Ditko.h in Headers */,
+				078C707E1E6F92FF00F04786 /* UIColor+KDIExtensions.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -132,6 +163,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				078C707F1E6F92FF00F04786 /* UIColor+KDIExtensions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -196,13 +228,13 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				INFOPLIST_FILE = "$(SRCROOT)/Ditko-iOS/Ditko-iOS-Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Ditko/$(TARGET_NAME)-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.kosoku.Ditko-iOS";
+				PRODUCT_BUNDLE_IDENTIFIER = com.kosoku.ditko;
 				PRODUCT_NAME = Ditko;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
@@ -252,12 +284,12 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				INFOPLIST_FILE = "$(SRCROOT)/Ditko-iOS/Ditko-iOS-Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Ditko/$(TARGET_NAME)-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.kosoku.Ditko-iOS";
+				PRODUCT_BUNDLE_IDENTIFIER = com.kosoku.ditko;
 				PRODUCT_NAME = Ditko;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
