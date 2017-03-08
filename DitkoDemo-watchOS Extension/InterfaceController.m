@@ -1,6 +1,6 @@
 //
-//  Ditko.h
-//  Ditko
+//  InterfaceController.m
+//  DitkoDemo-watchOS Extension
 //
 //  Created by William Towe on 3/8/17.
 //  Copyright © 2017 Kosoku Interactive, LLC. All rights reserved.
@@ -13,26 +13,34 @@
 //
 //  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-#import <TargetConditionals.h>
+#import "InterfaceController.h"
 
-#if (TARGET_OS_IPHONE)
-#import <UIKit/UIKit.h>
-#else
-#import <AppKit/AppKit.h>
-#endif
+#import <Ditko/Ditko.h>
 
-//! Project version number for Ditko.
-FOUNDATION_EXPORT double DitkoVersionNumber;
+@interface InterfaceController()
+@property (weak,nonatomic) IBOutlet WKInterfaceLabel *label;
+@end
 
-//! Project version string for Ditko.
-FOUNDATION_EXPORT const unsigned char DitkoVersionString[];
 
-// In this header, you should import all the public headers of your framework using statements like #import <Ditko/PublicHeader.h>
+@implementation InterfaceController
 
-#import <Ditko/KDIColorMacros.h>
+- (void)awakeWithContext:(id)context {
+    [super awakeWithContext:context];
 
-#if (!TARGET_OS_WATCH && !TARGET_OS_TV)
-#import <Ditko/KDIFunctions.h>
+    [self.label setTextColor:KDIColorRandomRGB()];
+}
 
-#import <Ditko/KDIGradientView.h>
-#endif
+- (void)willActivate {
+    // This method is called when watch view controller is about to be visible to user
+    [super willActivate];
+}
+
+- (void)didDeactivate {
+    // This method is called when watch view controller is no longer visible
+    [super didDeactivate];
+}
+
+@end
+
+
+
