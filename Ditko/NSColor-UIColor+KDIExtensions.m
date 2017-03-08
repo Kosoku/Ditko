@@ -1,5 +1,5 @@
 //
-//  UIColor+KDIExtensions.m
+//  NSColor-UIColor+KDIExtensions.m
 //  Ditko
 //
 //  Created by William Towe on 3/7/17.
@@ -13,38 +13,72 @@
 //
 //  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
+#import <TargetConditionals.h>
+
+#if (TARGET_OS_IPHONE)
 #import "UIColor+KDIExtensions.h"
+#else
+#import "NSColor+KDIExtensions.h"
+#endif
 
 #import <Stanley/KSTValueMacros.h>
 
+#if (TARGET_OS_IPHONE)
 @implementation UIColor (KDIExtensions)
+#else
+@implementation NSColor (KDIExtensions)
+#endif
 
+#if (TARGET_OS_IPHONE)
 + (UIColor *)KDI_colorRandomRGB; {
+#else
++ (NSColor *)KDI_colorRandomRGB; {
+#endif
     u_int32_t max = 255;
     u_int32_t red = arc4random_uniform(max);
     u_int32_t green = arc4random_uniform(max);
     u_int32_t blue = arc4random_uniform(max);
-    
+
+#if (TARGET_OS_IPHONE)
     return [UIColor colorWithRed:red/255.0 green:green/255.0 blue:blue/255.0 alpha:1.0];
+#else
+    return [NSColor colorWithCalibratedRed:red/255.0 green:green/255.0 blue:blue/255.0 alpha:1.0];
+#endif
 }
+#if (TARGET_OS_IPHONE)
 + (UIColor *)KDI_colorRandomRGBA; {
+#else
++ (NSColor *)KDI_colorRandomRGBA; {
+#endif
     u_int32_t max = 255;
     u_int32_t red = arc4random_uniform(max);
     u_int32_t green = arc4random_uniform(max);
     u_int32_t blue = arc4random_uniform(max);
     u_int32_t alpha = arc4random_uniform(max);
     
+#if (TARGET_OS_IPHONE)
     return [UIColor colorWithRed:red/255.0 green:green/255.0 blue:blue/255.0 alpha:alpha/255.0];
+#else
+    return [NSColor colorWithCalibratedRed:red/255.0 green:green/255.0 blue:blue/255.0 alpha:alpha/255.0];
+#endif
 }
 
+#if (TARGET_OS_IPHONE)
 + (UIColor *)KDI_colorWithHexadecimalString:(NSString *)hexadecimalString; {
+#else
++ (NSColor *)KDI_colorWithHexadecimalString:(NSString *)hexadecimalString; {
+#endif
     if (hexadecimalString.length == 0) {
         return nil;
     }
     
     hexadecimalString = [hexadecimalString stringByReplacingOccurrencesOfString:@"#" withString:@""];
     
+#if (TARGET_OS_IPHONE)
     UIColor *retval = nil;
+#else
+    NSColor *retval = nil;
+#endif
     NSScanner *scanner = [NSScanner scannerWithString:hexadecimalString];
     
     uint32_t hexadecimalColor;
@@ -55,15 +89,25 @@
     uint8_t red = (uint8_t)(hexadecimalColor >> 16);
     uint8_t green = (uint8_t)(hexadecimalColor >> 8);
     uint8_t blue = (uint8_t)hexadecimalColor;
-    
+
+#if (TARGET_OS_IPHONE)
     retval = [UIColor colorWithRed:(CGFloat)red/0xff green:(CGFloat)green/0xff blue:(CGFloat)blue/0xff alpha:1.0];
+#else
+    retval = [NSColor colorWithCalibratedRed:(CGFloat)red/0xff green:(CGFloat)green/0xff blue:(CGFloat)blue/0xff alpha:1.0];
+#endif
     
     return retval;
 }
 
+#if (TARGET_OS_IPHONE)
 + (UIColor *)KDI_colorByAdjustingBrightnessOfColor:(UIColor *)color delta:(CGFloat)delta; {
+#else
++ (NSColor *)KDI_colorByAdjustingBrightnessOfColor:(NSColor *)color delta:(CGFloat)delta; {
+#endif
+    
     CGFloat hue, saturation, brightness, alpha;
     
+#if (TARGET_OS_IPHONE)
     if ([color getHue:&hue saturation:&saturation brightness:&brightness alpha:&alpha]) {
         brightness += delta - 1.0;
         brightness = KSTBoundedValue(brightness, 0.0, 1.0);
@@ -81,9 +125,21 @@
     }
     
     return nil;
+#else
+    [color getHue:&hue saturation:&saturation brightness:&brightness alpha:&alpha];
+    
+    brightness += delta - 1.0;
+    brightness = KSTBoundedValue(brightness, 0.0, 1.0);
+    
+    return [NSColor colorWithCalibratedHue:hue saturation:saturation brightness:brightness alpha:alpha];
+#endif
 }
 
+#if (TARGET_OS_IPHONE)
 - (UIColor *)KDI_colorByAdjustingBrightnessBy:(CGFloat)delta; {
+#else
+- (NSColor *)KDI_colorByAdjustingBrightnessBy:(CGFloat)delta; {
+#endif
     return [self.class KDI_colorByAdjustingBrightnessOfColor:self delta:delta];
 }
 

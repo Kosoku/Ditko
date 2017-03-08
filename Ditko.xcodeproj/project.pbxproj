@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		073542861E70503C00177905 /* NSColor+KDIExtensions.h in Headers */ = {isa = PBXBuildFile; fileRef = 073542841E70503C00177905 /* NSColor+KDIExtensions.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		073542871E70503C00177905 /* NSColor+KDIExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 073542851E70503C00177905 /* NSColor+KDIExtensions.m */; };
 		073542901E70515400177905 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0735428F1E70515400177905 /* AppDelegate.m */; };
 		073542931E70515400177905 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 073542921E70515400177905 /* main.m */; };
 		073542961E70515400177905 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 073542951E70515400177905 /* ViewController.m */; };
@@ -17,9 +16,10 @@
 		073542A21E7051AA00177905 /* Ditko.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0735427A1E704D8F00177905 /* Ditko.framework */; };
 		073542A41E7051BA00177905 /* Stanley.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 073542A31E7051BA00177905 /* Stanley.framework */; };
 		073542A51E7053F100177905 /* Ditko.h in Headers */ = {isa = PBXBuildFile; fileRef = 0795E6351E704785004A5CB2 /* Ditko.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		073542AA1E7057A000177905 /* NSColor-UIColor+KDIExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0795E6401E70491E004A5CB2 /* NSColor-UIColor+KDIExtensions.m */; };
 		0795E6371E704785004A5CB2 /* Ditko.h in Headers */ = {isa = PBXBuildFile; fileRef = 0795E6351E704785004A5CB2 /* Ditko.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0795E6411E70491E004A5CB2 /* UIColor+KDIExtensions.h in Headers */ = {isa = PBXBuildFile; fileRef = 0795E63F1E70491E004A5CB2 /* UIColor+KDIExtensions.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		0795E6421E70491E004A5CB2 /* UIColor+KDIExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0795E6401E70491E004A5CB2 /* UIColor+KDIExtensions.m */; };
+		0795E6421E70491E004A5CB2 /* NSColor-UIColor+KDIExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0795E6401E70491E004A5CB2 /* NSColor-UIColor+KDIExtensions.m */; };
 		0795E64B1E704A56004A5CB2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0795E64A1E704A56004A5CB2 /* main.m */; };
 		0795E64E1E704A56004A5CB2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0795E64D1E704A56004A5CB2 /* AppDelegate.m */; };
 		0795E6511E704A56004A5CB2 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0795E6501E704A56004A5CB2 /* ViewController.m */; };
@@ -52,7 +52,6 @@
 		073542821E704DD600177905 /* Ditko-macOS-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Ditko-macOS-Info.plist"; sourceTree = "<group>"; };
 		073542831E704E0400177905 /* Ditko-Info.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Ditko-Info.h"; sourceTree = "<group>"; };
 		073542841E70503C00177905 /* NSColor+KDIExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSColor+KDIExtensions.h"; path = "macOS/NSColor+KDIExtensions.h"; sourceTree = "<group>"; };
-		073542851E70503C00177905 /* NSColor+KDIExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSColor+KDIExtensions.m"; path = "macOS/NSColor+KDIExtensions.m"; sourceTree = "<group>"; };
 		0735428C1E70515300177905 /* DitkoDemo-macOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "DitkoDemo-macOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0735428E1E70515400177905 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		0735428F1E70515400177905 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -68,7 +67,7 @@
 		0795E6351E704785004A5CB2 /* Ditko.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Ditko.h; sourceTree = "<group>"; };
 		0795E6361E704785004A5CB2 /* Ditko-iOS-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Ditko-iOS-Info.plist"; sourceTree = "<group>"; };
 		0795E63F1E70491E004A5CB2 /* UIColor+KDIExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIColor+KDIExtensions.h"; path = "iOS/UIColor+KDIExtensions.h"; sourceTree = "<group>"; };
-		0795E6401E70491E004A5CB2 /* UIColor+KDIExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIColor+KDIExtensions.m"; path = "iOS/UIColor+KDIExtensions.m"; sourceTree = "<group>"; };
+		0795E6401E70491E004A5CB2 /* NSColor-UIColor+KDIExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSColor-UIColor+KDIExtensions.m"; sourceTree = "<group>"; };
 		0795E6471E704A56004A5CB2 /* DitkoDemo-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "DitkoDemo-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0795E64A1E704A56004A5CB2 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		0795E64C1E704A56004A5CB2 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -187,9 +186,8 @@
 			isa = PBXGroup;
 			children = (
 				0795E63F1E70491E004A5CB2 /* UIColor+KDIExtensions.h */,
-				0795E6401E70491E004A5CB2 /* UIColor+KDIExtensions.m */,
 				073542841E70503C00177905 /* NSColor+KDIExtensions.h */,
-				073542851E70503C00177905 /* NSColor+KDIExtensions.m */,
+				0795E6401E70491E004A5CB2 /* NSColor-UIColor+KDIExtensions.m */,
 			);
 			name = Source;
 			sourceTree = "<group>";
@@ -414,7 +412,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				073542871E70503C00177905 /* NSColor+KDIExtensions.m in Sources */,
+				073542AA1E7057A000177905 /* NSColor-UIColor+KDIExtensions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -432,7 +430,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0795E6421E70491E004A5CB2 /* UIColor+KDIExtensions.m in Sources */,
+				0795E6421E70491E004A5CB2 /* NSColor-UIColor+KDIExtensions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -499,6 +497,7 @@
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				FRAMEWORK_VERSION = A;
+				HEADER_SEARCH_PATHS = "$(SRCROOT)/Vendor/Stanley";
 				INFOPLIST_FILE = "$(SRCROOT)/Ditko/Ditko-macOS-Info.plist";
 				INFOPLIST_PREFIX_HEADER = "$(SRCROOT)/Ditko/Ditko-Info.h";
 				INFOPLIST_PREPROCESS = YES;
@@ -522,6 +521,7 @@
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				FRAMEWORK_VERSION = A;
+				HEADER_SEARCH_PATHS = "$(SRCROOT)/Vendor/Stanley";
 				INFOPLIST_FILE = "$(SRCROOT)/Ditko/Ditko-macOS-Info.plist";
 				INFOPLIST_PREFIX_HEADER = "$(SRCROOT)/Ditko/Ditko-Info.h";
 				INFOPLIST_PREPROCESS = YES;
@@ -677,6 +677,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				HEADER_SEARCH_PATHS = "$(SRCROOT)/Vendor/Stanley";
 				INFOPLIST_FILE = "$(SRCROOT)/Ditko/Ditko-iOS-Info.plist";
 				INFOPLIST_PREFIX_HEADER = "$(SRCROOT)/Ditko/Ditko-Info.h";
 				INFOPLIST_PREPROCESS = YES;
@@ -697,6 +698,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				HEADER_SEARCH_PATHS = "$(SRCROOT)/Vendor/Stanley";
 				INFOPLIST_FILE = "$(SRCROOT)/Ditko/Ditko-iOS-Info.plist";
 				INFOPLIST_PREFIX_HEADER = "$(SRCROOT)/Ditko/Ditko-Info.h";
 				INFOPLIST_PREPROCESS = YES;
