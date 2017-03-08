@@ -1,5 +1,5 @@
 //
-//  Ditko.h
+//  KDIFunctions.h
 //  Ditko
 //
 //  Created by William Towe on 3/8/17.
@@ -21,18 +21,26 @@
 #import <AppKit/AppKit.h>
 #endif
 
-//! Project version number for Ditko.
-FOUNDATION_EXPORT double DitkoVersionNumber;
+NS_ASSUME_NONNULL_BEGIN
 
-//! Project version string for Ditko.
-FOUNDATION_EXPORT const unsigned char DitkoVersionString[];
-
-// In this header, you should import all the public headers of your framework using statements like #import <Ditko/PublicHeader.h>
-
-#import <Ditko/KDIFunctions.h>
-
+/**
+ Returns a new size after multiplying the width and height by the main screen scale.
+ 
+ @param size The size to adjust
+ @return The new size
+ */
+extern CGSize KDICGSizeAdjustedForMainScreenScale(CGSize size);
+/**
+ Returns a new size after multiplying the width and height by the screen scale.
+ 
+ @param size The size to adjust
+ @param screen The screen to adjust for, passing nil will use [UIScreen mainScreen] or [NSScreen mainScreen]
+ @return The new size
+ */
 #if (TARGET_OS_IPHONE)
-#import <Ditko/UIColor+KDIExtensions.h>
+extern CGSize KDICGSizeAdjustedForScreenScale(CGSize size, UIScreen * _Nullable screen);
 #else
-#import <Ditko/NSColor+KDIExtensions.h>
+extern CGSize KDICGSizeAdjustedForScreenScale(CGSize size, NSScreen * _Nullable screen);
 #endif
+
+NS_ASSUME_NONNULL_END

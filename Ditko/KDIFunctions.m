@@ -1,5 +1,5 @@
 //
-//  Ditko.h
+//  KDIFunctions.m
 //  Ditko
 //
 //  Created by William Towe on 3/8/17.
@@ -13,26 +13,25 @@
 //
 //  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-#import <TargetConditionals.h>
+#import "KDIFunctions.h"
 
+CGSize KDICGSizeAdjustedForMainScreenScale(CGSize size) {
+    return KDICGSizeAdjustedForScreenScale(size, nil);
+}
 #if (TARGET_OS_IPHONE)
-#import <UIKit/UIKit.h>
+CGSize KDICGSizeAdjustedForScreenScale(CGSize size, UIScreen * _Nullable screen) {
+    if (screen == nil) {
+        screen = [UIScreen mainScreen];
+    }
+    
+    return CGSizeMake(size.width * screen.scale, size.height * screen.scale);
+}
 #else
-#import <AppKit/AppKit.h>
-#endif
-
-//! Project version number for Ditko.
-FOUNDATION_EXPORT double DitkoVersionNumber;
-
-//! Project version string for Ditko.
-FOUNDATION_EXPORT const unsigned char DitkoVersionString[];
-
-// In this header, you should import all the public headers of your framework using statements like #import <Ditko/PublicHeader.h>
-
-#import <Ditko/KDIFunctions.h>
-
-#if (TARGET_OS_IPHONE)
-#import <Ditko/UIColor+KDIExtensions.h>
-#else
-#import <Ditko/NSColor+KDIExtensions.h>
+CGSize KDICGSizeAdjustedForScreenScale(CGSize size, NSScreen * _Nullable screen) {
+    if (screen == nil) {
+        screen = [NSScreen mainScreen];
+    }
+    
+    return CGSizeMake(size.width * screen.backingScaleFactor, size.height * screen.backingScaleFactor);
+}
 #endif
