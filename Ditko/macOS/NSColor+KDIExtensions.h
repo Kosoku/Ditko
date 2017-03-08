@@ -17,9 +17,6 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-/**
- Category on NSColor adding various convenience methods.
- */
 @interface NSColor (KDIExtensions)
 
 /**
@@ -36,15 +33,15 @@ NS_ASSUME_NONNULL_BEGIN
 + (NSColor *)KDI_colorRandomRGBA;
 
 /**
- Creates and returns an UIColor by parsing _hexadecimalString_. See http://www.karelia.com/cocoa_legacy/Foundation_Categories/NSColor__Instantiat.m for implementation reference.
+ Creates and returns an UIColor by parsing *hexadecimalString*. See http://www.karelia.com/cocoa_legacy/Foundation_Categories/NSColor__Instantiat.m for implementation reference.
  
  @param hexadecimalString The string to parse
- @return The UIColor created from _hexadecimalString_
+ @return The UIColor created from *hexadecimalString*
  */
 + (nullable NSColor *)KDI_colorWithHexadecimalString:(nullable NSString *)hexadecimalString;
 
 /**
- Creates and returns a new color by adjusting the brightness of color by delta. Clamps the new brightness between 0.0 and 1.0.
+ Creates and returns a new color by adjusting the brightness of color by *delta*. Clamps the new brightness between 0.0 and 1.0.
  
  @param color The color to adjust
  @param delta The amount to adjust the brightness
