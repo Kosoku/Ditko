@@ -17,10 +17,10 @@
 
 @implementation NSWindow (KDIExtensions)
 
-+ (NSWindow *)BB_windowForPresenting; {
-    return [[NSApplication sharedApplication].keyWindow ?: [NSApplication sharedApplication].mainWindow BB_windowForPresenting];
++ (NSWindow *)KDI_windowForPresenting; {
+    return [[NSApplication sharedApplication].keyWindow ?: [NSApplication sharedApplication].mainWindow KDI_windowForPresenting];
 }
-- (NSWindow *)BB_windowForPresenting; {
+- (NSWindow *)KDI_windowForPresenting; {
     NSWindow *retval = self;
     
     while (retval.attachedSheet) {

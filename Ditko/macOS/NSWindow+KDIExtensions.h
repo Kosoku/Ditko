@@ -20,17 +20,17 @@ NS_ASSUME_NONNULL_BEGIN
 @interface NSWindow (KDIExtensions)
 
 /**
- Calls `[[NSApplication sharedApplication].keyWindow BB_windowForPresenting]`.
+ Calls `[[NSApplication sharedApplication].keyWindow KDI_windowForPresenting]`.
  
  @return The window
  */
-+ (NSWindow *)BB_windowForPresenting;
++ (NSWindow *)KDI_windowForPresenting;
 /**
  Returns the window that should be used for modal presentation.
  
  @return The window
  */
-- (NSWindow *)BB_windowForPresenting;
+- (NSWindow *)KDI_windowForPresenting;
 
 @end
 
