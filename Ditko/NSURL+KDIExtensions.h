@@ -16,6 +16,8 @@
 #import <Foundation/Foundation.h>
 #import "KDIDefines.h"
 
+NS_ASSUME_NONNULL_BEGIN
+
 @interface NSURL (KDIExtensions)
 
 /**
@@ -26,3 +28,5 @@
 @property (readonly,nonatomic,nullable) KDIImage *KDI_effectiveIcon;
 
 @end
+
+NS_ASSUME_NONNULL_END
