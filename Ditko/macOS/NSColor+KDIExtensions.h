@@ -49,7 +49,7 @@ NS_ASSUME_NONNULL_BEGIN
  */
 + (nullable NSColor *)KDI_colorByAdjustingBrightnessOfColor:(nullable NSColor *)color delta:(CGFloat)delta;
 /**
- Calls `[self.class BB_colorByAdjustingBrightnessOfColor:self delta:delta]`.
+ Calls `[self.class KDI_colorByAdjustingBrightnessOfColor:self delta:delta]`.
  
  @param delta The amount to adjust the brightness
  @return The new color

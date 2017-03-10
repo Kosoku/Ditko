@@ -15,6 +15,8 @@
 
 #import <UIKit/UIKit.h>
 
+NS_ASSUME_NONNULL_BEGIN
+
 @interface UIDevice (KDIExtensions)
 
 /**
@@ -27,3 +29,5 @@
 @property (class,readonly,nonatomic) NSString *KDI_hardwareModelName;
 
 @end
+
+NS_ASSUME_NONNULL_END
