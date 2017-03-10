@@ -38,6 +38,7 @@ FOUNDATION_EXPORT const unsigned char DitkoVersionString[];
 #import <Ditko/UIBarButtonItem+KDIExtensions.h>
 #import <Ditko/UIDevice+KDIExtensions.h>
 #import <Ditko/UINavigationController+KDIExtensions.h>
+#import <Ditko/UIView+KDIExtensions.h>
 #endif
 
 #if (TARGET_OS_IOS || TARGET_OS_TV || TARGET_OS_OSX)
