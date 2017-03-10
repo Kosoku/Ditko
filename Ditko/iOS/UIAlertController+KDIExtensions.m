@@ -15,6 +15,7 @@
 
 #import "UIAlertController+KDIExtensions.h"
 #import "NSBundle+KDIPrivateExtensions.h"
+#import "UIViewController+KDIExtensions.h"
 
 #import <Stanley/NSError+KSTExtensions.h>
 
@@ -26,7 +27,7 @@ NSInteger const KDIUIAlertControllerCancelButtonIndex = -1;
     [self KDI_presentAlertControllerWithError:error completion:nil];
 }
 + (void)KDI_presentAlertControllerWithError:(nullable NSError *)error completion:(nullable KDIUIAlertControllerCompletionBlock)completion; {
-    [self KDI_presentAlertControllerWithTitle:[error KDI_alertTitle] message:[error KDI_alertMessage] cancelButtonTitle:nil otherButtonTitles:nil completion:completion];
+    [self KDI_presentAlertControllerWithTitle:error.KST_alertTitle message:error.KST_alertMessage cancelButtonTitle:nil otherButtonTitles:nil completion:completion];
 }
 + (void)KDI_presentAlertControllerWithTitle:(nullable NSString *)title message:(nullable NSString *)message cancelButtonTitle:(nullable NSString *)cancelButtonTitle otherButtonTitles:(nullable NSArray *)otherButtonTitles completion:(nullable KDIUIAlertControllerCompletionBlock)completion; {
     UIAlertController *alertController = [self KDI_alertControllerWithTitle:title message:message cancelButtonTitle:cancelButtonTitle otherButtonTitles:otherButtonTitles completion:completion];
@@ -39,15 +40,15 @@ NSInteger const KDIUIAlertControllerCancelButtonIndex = -1;
 }
 + (UIAlertController *)KDI_alertControllerWithError:(nullable NSError *)error completion:(nullable KDIUIAlertControllerCompletionBlock)completion
 {
-    return [self KDI_alertControllerWithTitle:[error KDI_alertTitle] message:[error KDI_alertMessage] cancelButtonTitle:nil otherButtonTitles:nil completion:completion];
+    return [self KDI_alertControllerWithTitle:error.KST_alertTitle message:error.KST_alertMessage cancelButtonTitle:nil otherButtonTitles:nil completion:completion];
 }
 + (UIAlertController *)KDI_alertControllerWithTitle:(nullable NSString *)title message:(nullable NSString *)message cancelButtonTitle:(nullable NSString *)cancelButtonTitle otherButtonTitles:(nullable NSArray *)otherButtonTitles completion:(nullable KDIUIAlertControllerCompletionBlock)completion; {
     if (title.length == 0) {
-        title = [NSError KST_defaultAlertTitle];
+        title = NSError.KST_defaultAlertTitle;
     }
     
     if (message.length == 0) {
-        message = [NSError KST_defaultAlertMessage];
+        message = NSError.KST_defaultAlertMessage;
     }
     
     if (cancelButtonTitle.length == 0) {

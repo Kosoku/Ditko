@@ -38,7 +38,7 @@ FOUNDATION_EXPORT NSInteger const KDIUIAlertControllerCancelButtonIndex;
  */
 + (void)KDI_presentAlertControllerWithError:(nullable NSError *)error;
 /**
- Calls `[self KDI_presentAlertControllerWithTitle:message:cancelButtonTitle:otherButtonTitles:completion:]`, passing [error KDI_alertTitle], [error KDI_alertMessage], nil, nil, and completion respectively.
+ Calls `[self KDI_presentAlertControllerWithTitle:message:cancelButtonTitle:otherButtonTitles:completion:]`, passing [error KST_alertTitle], [error KDI_alertMessage], nil, nil, and completion respectively.
  
  @param error The error from which to create and present the alert controller
  @param completion The completion block to invoke after the alert controller is dismissed
@@ -63,7 +63,7 @@ FOUNDATION_EXPORT NSInteger const KDIUIAlertControllerCancelButtonIndex;
  */
 + (UIAlertController *)KDI_alertControllerWithError:(nullable NSError *)error;
 /**
- Calls `[self KDI_alertControllerWithTitle:message:cancelButtonTitle:otherButtonTitles:completion:]`, passing [error KDI_alertTitle], [error KDI_alertMessage], nil, nil, and completion respectively.
+ Calls `[self KDI_alertControllerWithTitle:message:cancelButtonTitle:otherButtonTitles:completion:]`, passing [error KST_alertTitle], [error KDI_alertMessage], nil, nil, and completion respectively.
  
  @param error The error from which to create the alert controller
  @param completion The completion block to invoke after the alert controller is dismissed
