@@ -67,6 +67,8 @@
 		0794A7F11E73509100603C99 /* UIView+KDIExtensions.h in Headers */ = {isa = PBXBuildFile; fileRef = 0794A7EE1E73509100603C99 /* UIView+KDIExtensions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0794A7F21E73509100603C99 /* UIView+KDIExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0794A7EF1E73509100603C99 /* UIView+KDIExtensions.m */; };
 		0794A7F31E73509100603C99 /* UIView+KDIExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0794A7EF1E73509100603C99 /* UIView+KDIExtensions.m */; };
+		0794A7F61E7351B500603C99 /* NSView+KDIExtensions.h in Headers */ = {isa = PBXBuildFile; fileRef = 0794A7F41E7351B500603C99 /* NSView+KDIExtensions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0794A7F71E7351B500603C99 /* NSView+KDIExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0794A7F51E7351B500603C99 /* NSView+KDIExtensions.m */; };
 		0795E6371E704785004A5CB2 /* Ditko.h in Headers */ = {isa = PBXBuildFile; fileRef = 0795E6351E704785004A5CB2 /* Ditko.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0795E6411E70491E004A5CB2 /* UIColor+KDIExtensions.h in Headers */ = {isa = PBXBuildFile; fileRef = 0795E63F1E70491E004A5CB2 /* UIColor+KDIExtensions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0795E6421E70491E004A5CB2 /* NSColor-UIColor+KDIExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0795E6401E70491E004A5CB2 /* NSColor-UIColor+KDIExtensions.m */; };
@@ -227,6 +229,8 @@
 		0794A7E91E734D5300603C99 /* UINavigationController+KDIExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UINavigationController+KDIExtensions.m"; path = "iOS/UINavigationController+KDIExtensions.m"; sourceTree = "<group>"; };
 		0794A7EE1E73509100603C99 /* UIView+KDIExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIView+KDIExtensions.h"; path = "iOS/UIView+KDIExtensions.h"; sourceTree = "<group>"; };
 		0794A7EF1E73509100603C99 /* UIView+KDIExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIView+KDIExtensions.m"; path = "iOS/UIView+KDIExtensions.m"; sourceTree = "<group>"; };
+		0794A7F41E7351B500603C99 /* NSView+KDIExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSView+KDIExtensions.h"; path = "macOS/NSView+KDIExtensions.h"; sourceTree = "<group>"; };
+		0794A7F51E7351B500603C99 /* NSView+KDIExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSView+KDIExtensions.m"; path = "macOS/NSView+KDIExtensions.m"; sourceTree = "<group>"; };
 		0795E6321E704785004A5CB2 /* Ditko.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Ditko.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0795E6351E704785004A5CB2 /* Ditko.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Ditko.h; sourceTree = "<group>"; };
 		0795E6361E704785004A5CB2 /* Ditko-iOS-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Ditko-iOS-Info.plist"; sourceTree = "<group>"; };
@@ -425,6 +429,8 @@
 				0794A7E91E734D5300603C99 /* UINavigationController+KDIExtensions.m */,
 				0794A7EE1E73509100603C99 /* UIView+KDIExtensions.h */,
 				0794A7EF1E73509100603C99 /* UIView+KDIExtensions.m */,
+				0794A7F41E7351B500603C99 /* NSView+KDIExtensions.h */,
+				0794A7F51E7351B500603C99 /* NSView+KDIExtensions.m */,
 			);
 			name = Categories;
 			sourceTree = "<group>";
@@ -582,6 +588,7 @@
 				071B626F1E70635D00B7B85A /* KDIGradientView.h in Headers */,
 				073542A51E7053F100177905 /* Ditko.h in Headers */,
 				071B626A1E705EA400B7B85A /* KDIColorMacros.h in Headers */,
+				0794A7F61E7351B500603C99 /* NSView+KDIExtensions.h in Headers */,
 				073542861E70503C00177905 /* NSColor+KDIExtensions.h in Headers */,
 				07E8EB351E733F34001639A2 /* NSURL+KDIExtensions.h in Headers */,
 			);
@@ -976,6 +983,7 @@
 				07E8EB391E733F34001639A2 /* NSURL+KDIExtensions.m in Sources */,
 				071B62661E705D3500B7B85A /* KDIFunctions.m in Sources */,
 				073542AA1E7057A000177905 /* NSColor-UIColor+KDIExtensions.m in Sources */,
+				0794A7F71E7351B500603C99 /* NSView+KDIExtensions.m in Sources */,
 				072628151E70BCCF00511F80 /* KDIView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
