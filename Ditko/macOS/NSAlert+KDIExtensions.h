@@ -1,8 +1,8 @@
 //
-//  Ditko.h
+//  NSAlert+KDIExtensions.h
 //  Ditko
 //
-//  Created by William Towe on 3/8/17.
+//  Created by William Towe on 3/10/17.
 //  Copyright © 2017 Kosoku Interactive, LLC. All rights reserved.
 //
 //  Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
@@ -13,47 +13,20 @@
 //
 //  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-#import <TargetConditionals.h>
-
-#if (TARGET_OS_IPHONE)
-#import <UIKit/UIKit.h>
-#else
 #import <AppKit/AppKit.h>
-#endif
 
-//! Project version number for Ditko.
-FOUNDATION_EXPORT double DitkoVersionNumber;
+NS_ASSUME_NONNULL_BEGIN
 
-//! Project version string for Ditko.
-FOUNDATION_EXPORT const unsigned char DitkoVersionString[];
+@interface NSAlert (KDIExtensions)
 
-// In this header, you should import all the public headers of your framework using statements like #import <Ditko/PublicHeader.h>
+/**
+ Create and return a NSAlert instance from the provided error. This will check the specific user info keys defined in NSError+BBFoundationExtensions.h for title and message.
+ 
+ @param error The error from which to create a NSAlert instance
+ @return The NSAlert instance
+ */
++ (NSAlert *)KDI_alertWithError:(NSError *)error;
 
-#import <Ditko/KDIColorMacros.h>
+@end
 
-#import <Ditko/KDIFunctions.h>
-
-#import <Ditko/NSURL+KDIExtensions.h>
-#if (TARGET_OS_IOS || TARGET_OS_TV || TARGET_OS_WATCH)
-#import <Ditko/UIBezierPath+KDIExtensions.h>
-#endif
-#if (TARGET_OS_IOS || TARGET_OS_TV)
-#import <Ditko/UIBarButtonItem+KDIExtensions.h>
-#import <Ditko/UIDevice+KDIExtensions.h>
-#import <Ditko/UINavigationController+KDIExtensions.h>
-#import <Ditko/UIView+KDIExtensions.h>
-#import <Ditko/UIViewController+KDIExtensions.h>
-#import <Ditko/UIAlertController+KDIExtensions.h>
-#endif
-#if (TARGET_OS_OSX)
-#import <Ditko/NSView+KDIExtensions.h>
-#import <Ditko/NSViewController+KDIExtensions.h>
-#import <Ditko/NSWindow+KDIExtensions.h>
-#import <Ditko/NSBezierPath+KDIExtensions.h>
-#import <Ditko/NSAlert+KDIExtensions.h>
-#endif
-
-#if (TARGET_OS_IOS || TARGET_OS_TV || TARGET_OS_OSX)
-#import <Ditko/KDIView.h>
-#import <Ditko/KDIGradientView.h>
-#endif
+NS_ASSUME_NONNULL_END
