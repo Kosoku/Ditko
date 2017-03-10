@@ -22,27 +22,27 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  Set and get the minimum X member of the receiver's frame.
  */
-@property (assign,nonatomic) CGFloat BB_frameMinimumX;
+@property (assign,nonatomic) CGFloat KDI_frameMinimumX;
 /**
  Set and get the maximum X member of the receiver's frame.
  */
-@property (assign,nonatomic) CGFloat BB_frameMaximumX;
+@property (assign,nonatomic) CGFloat KDI_frameMaximumX;
 /**
  Set and get the minimum Y member of the receiver's frame.
  */
-@property (assign,nonatomic) CGFloat BB_frameMinimumY;
+@property (assign,nonatomic) CGFloat KDI_frameMinimumY;
 /**
  Set and get the maximum Y member of the receiver's frame.
  */
-@property (assign,nonatomic) CGFloat BB_frameMaximumY;
+@property (assign,nonatomic) CGFloat KDI_frameMaximumY;
 /**
  Set and get the width member of the receiver's frame.
  */
-@property (assign,nonatomic) CGFloat BB_frameWidth;
+@property (assign,nonatomic) CGFloat KDI_frameWidth;
 /**
  Set and get the height member of the receiver's frame.
  */
-@property (assign,nonatomic) CGFloat BB_frameHeight;
+@property (assign,nonatomic) CGFloat KDI_frameHeight;
 
 /**
  Creates and returns an NSArray containing all the receiver's subviews recursively.
@@ -51,15 +51,15 @@ NS_ASSUME_NONNULL_BEGIN
  
  @return The array of recursive subviews
  */
-- (NSArray<__kindof UIView *> *)BB_recursiveSubviews;
+- (NSArray<__kindof UIView *> *)KDI_recursiveSubviews;
 
 /**
- Calls `[self BB_snapshotImageFromRect:afterScreenUpdates:]`, passing self.bounds and afterScreenUpdates respectively.
+ Calls `[self KDI_snapshotImageFromRect:afterScreenUpdates:]`, passing self.bounds and afterScreenUpdates respectively.
  
  @param afterScreenUpdates Whether the snapshot should contain recent changes
  @return The snapshot image
  */
-- (nullable UIImage *)BB_snapshotImageAfterScreenUpdates:(BOOL)afterScreenUpdates;
+- (nullable UIImage *)KDI_snapshotImageAfterScreenUpdates:(BOOL)afterScreenUpdates;
 /**
  Creates and returns a snapshot image of the receiver using `drawViewHierarchyInRect:afterScreenUpdates`.
  
@@ -67,7 +67,7 @@ NS_ASSUME_NONNULL_BEGIN
  @param afterScreenUpdates Whether the snapshot should contain recent changes
  @return The snapshot image
  */
-- (nullable UIImage *)BB_snapshotImageFromRect:(CGRect)rect afterScreenUpdates:(BOOL)afterScreenUpdates;
+- (nullable UIImage *)KDI_snapshotImageFromRect:(CGRect)rect afterScreenUpdates:(BOOL)afterScreenUpdates;
 
 @end
 

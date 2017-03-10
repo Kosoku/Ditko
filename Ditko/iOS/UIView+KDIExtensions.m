@@ -17,64 +17,64 @@
 
 @implementation UIView (KDIExtensions)
 
-@dynamic BB_frameMinimumX;
-- (CGFloat)BB_frameMinimumX {
+@dynamic KDI_frameMinimumX;
+- (CGFloat)KDI_frameMinimumX {
     return CGRectGetMinX(self.frame);
 }
-- (void)setBB_frameMinimumX:(CGFloat)frameMinimumX {
+- (void)setKDI_frameMinimumX:(CGFloat)frameMinimumX {
     [self setFrame:CGRectMake(frameMinimumX, CGRectGetMinY(self.frame), CGRectGetWidth(self.frame), CGRectGetHeight(self.frame))];
 }
-@dynamic BB_frameMaximumX;
-- (CGFloat)BB_frameMaximumX {
+@dynamic KDI_frameMaximumX;
+- (CGFloat)KDI_frameMaximumX {
     return CGRectGetMaxX(self.frame);
 }
-- (void)setBB_frameMaximumX:(CGFloat)frameMaximumX {
+- (void)setKDI_frameMaximumX:(CGFloat)frameMaximumX {
     [self setFrame:CGRectMake(frameMaximumX - CGRectGetWidth(self.frame), CGRectGetMinY(self.frame), CGRectGetWidth(self.frame), CGRectGetHeight(self.frame))];
 }
-@dynamic BB_frameMinimumY;
-- (CGFloat)BB_frameMinimumY {
+@dynamic KDI_frameMinimumY;
+- (CGFloat)KDI_frameMinimumY {
     return CGRectGetMinY(self.frame);
 }
-- (void)setBB_frameMinimumY:(CGFloat)frameMinimumY {
+- (void)setKDI_frameMinimumY:(CGFloat)frameMinimumY {
     [self setFrame:CGRectMake(CGRectGetMinX(self.frame), frameMinimumY, CGRectGetWidth(self.frame), CGRectGetHeight(self.frame))];
 }
-@dynamic BB_frameMaximumY;
-- (CGFloat)BB_frameMaximumY {
+@dynamic KDI_frameMaximumY;
+- (CGFloat)KDI_frameMaximumY {
     return CGRectGetMaxY(self.frame);
 }
-- (void)setBB_frameMaximumY:(CGFloat)frameMaximumY {
+- (void)setKDI_frameMaximumY:(CGFloat)frameMaximumY {
     [self setFrame:CGRectMake(CGRectGetMinX(self.frame), frameMaximumY - CGRectGetHeight(self.frame), CGRectGetWidth(self.frame), CGRectGetHeight(self.frame))];
 }
-@dynamic BB_frameWidth;
-- (CGFloat)BB_frameWidth {
+@dynamic KDI_frameWidth;
+- (CGFloat)KDI_frameWidth {
     return CGRectGetWidth(self.frame);
 }
-- (void)setBB_frameWidth:(CGFloat)BB_frameWidth {
-    [self setFrame:CGRectMake(CGRectGetMinX(self.frame), CGRectGetMinY(self.frame), BB_frameWidth, CGRectGetHeight(self.frame))];
+- (void)setKDI_frameWidth:(CGFloat)KDI_frameWidth {
+    [self setFrame:CGRectMake(CGRectGetMinX(self.frame), CGRectGetMinY(self.frame), KDI_frameWidth, CGRectGetHeight(self.frame))];
 }
-@dynamic BB_frameHeight;
-- (CGFloat)BB_frameHeight {
+@dynamic KDI_frameHeight;
+- (CGFloat)KDI_frameHeight {
     return CGRectGetHeight(self.frame);
 }
-- (void)setBB_frameHeight:(CGFloat)BB_frameHeight {
-    [self setFrame:CGRectMake(CGRectGetMinX(self.frame), CGRectGetMinY(self.frame), CGRectGetWidth(self.frame), BB_frameHeight)];
+- (void)setKDI_frameHeight:(CGFloat)KDI_frameHeight {
+    [self setFrame:CGRectMake(CGRectGetMinX(self.frame), CGRectGetMinY(self.frame), CGRectGetWidth(self.frame), KDI_frameHeight)];
 }
 
-- (NSArray *)BB_recursiveSubviews; {
+- (NSArray *)KDI_recursiveSubviews; {
     NSMutableOrderedSet *retval = [[NSMutableOrderedSet alloc] init];
     
     for (UIView *view in self.subviews) {
         [retval addObject:view];
-        [retval addObjectsFromArray:[view BB_recursiveSubviews]];
+        [retval addObjectsFromArray:[view KDI_recursiveSubviews]];
     }
     
     return retval.array;
 }
 
-- (UIImage *)BB_snapshotImageAfterScreenUpdates:(BOOL)afterScreenUpdates; {
-    return [self BB_snapshotImageFromRect:self.bounds afterScreenUpdates:afterScreenUpdates];
+- (UIImage *)KDI_snapshotImageAfterScreenUpdates:(BOOL)afterScreenUpdates; {
+    return [self KDI_snapshotImageFromRect:self.bounds afterScreenUpdates:afterScreenUpdates];
 }
-- (UIImage *)BB_snapshotImageFromRect:(CGRect)rect afterScreenUpdates:(BOOL)afterScreenUpdates; {
+- (UIImage *)KDI_snapshotImageFromRect:(CGRect)rect afterScreenUpdates:(BOOL)afterScreenUpdates; {
     UIGraphicsBeginImageContextWithOptions(rect.size, self.isOpaque, self.contentScaleFactor);
     
     [self drawViewHierarchyInRect:rect afterScreenUpdates:afterScreenUpdates]
