@@ -1,8 +1,8 @@
 //
-//  Ditko.h
+//  NSParagraphStyle+KDIExtensions.h
 //  Ditko
 //
-//  Created by William Towe on 3/8/17.
+//  Created by William Towe on 3/10/17.
 //  Copyright © 2017 Kosoku Interactive, LLC. All rights reserved.
 //
 //  Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
@@ -21,40 +21,30 @@
 #import <AppKit/AppKit.h>
 #endif
 
-//! Project version number for Ditko.
-FOUNDATION_EXPORT double DitkoVersionNumber;
+NS_ASSUME_NONNULL_BEGIN
 
-//! Project version string for Ditko.
-FOUNDATION_EXPORT const unsigned char DitkoVersionString[];
+@interface NSParagraphStyle (KDIExtensions)
 
-// In this header, you should import all the public headers of your framework using statements like #import <Ditko/PublicHeader.h>
+/**
+ Calls `[self KDI_paragraphStyleWithTextAlignment:]`, passing NSTextAlignmentCenter.
+ 
+ @return The paragraph style with center text alignment
+ */
++ (NSParagraphStyle *)KDI_paragraphStyleWithCenterTextAlignment;
+/**
+ Calls `[self KDI_paragraphStyleWithTextAlignment:]`, passing NSTextAlignmentRight.
+ 
+ @return The paragraph style with right text alignment
+ */
++ (NSParagraphStyle *)KDI_paragraphStyleWithRightTextAlignment;
+/**
+ Returns a paragraph style with provided text alignment.
+ 
+ @param textAlignment The desired text alignment of the paragraph style
+ @return The paragraph style
+ */
++ (NSParagraphStyle *)KDI_paragraphStyleWithTextAlignment:(NSTextAlignment)textAlignment;
 
-#import <Ditko/KDIColorMacros.h>
+@end
 
-#import <Ditko/KDIFunctions.h>
-
-#import <Ditko/NSURL+KDIExtensions.h>
-#import <Ditko/NSParagraphStyle+KDIExtensions.h>
-#if (TARGET_OS_IOS || TARGET_OS_TV || TARGET_OS_WATCH)
-#import <Ditko/UIBezierPath+KDIExtensions.h>
-#endif
-#if (TARGET_OS_IOS || TARGET_OS_TV)
-#import <Ditko/UIBarButtonItem+KDIExtensions.h>
-#import <Ditko/UIDevice+KDIExtensions.h>
-#import <Ditko/UINavigationController+KDIExtensions.h>
-#import <Ditko/UIView+KDIExtensions.h>
-#import <Ditko/UIViewController+KDIExtensions.h>
-#import <Ditko/UIAlertController+KDIExtensions.h>
-#endif
-#if (TARGET_OS_OSX)
-#import <Ditko/NSView+KDIExtensions.h>
-#import <Ditko/NSViewController+KDIExtensions.h>
-#import <Ditko/NSWindow+KDIExtensions.h>
-#import <Ditko/NSBezierPath+KDIExtensions.h>
-#import <Ditko/NSAlert+KDIExtensions.h>
-#endif
-
-#if (TARGET_OS_IOS || TARGET_OS_TV || TARGET_OS_OSX)
-#import <Ditko/KDIView.h>
-#import <Ditko/KDIGradientView.h>
-#endif
+NS_ASSUME_NONNULL_END
