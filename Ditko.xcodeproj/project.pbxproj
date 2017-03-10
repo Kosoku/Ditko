@@ -70,6 +70,18 @@
 		0795E6591E704A56004A5CB2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0795E6571E704A56004A5CB2 /* LaunchScreen.storyboard */; };
 		0795E65E1E704ADE004A5CB2 /* Ditko.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0795E6321E704785004A5CB2 /* Ditko.framework */; };
 		0795E6611E704AE3004A5CB2 /* Stanley.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0795E6601E704AE3004A5CB2 /* Stanley.framework */; };
+		07E8EB341E733F34001639A2 /* NSURL+KDIExtensions.h in Headers */ = {isa = PBXBuildFile; fileRef = 07E8EB321E733F34001639A2 /* NSURL+KDIExtensions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		07E8EB351E733F34001639A2 /* NSURL+KDIExtensions.h in Headers */ = {isa = PBXBuildFile; fileRef = 07E8EB321E733F34001639A2 /* NSURL+KDIExtensions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		07E8EB361E733F34001639A2 /* NSURL+KDIExtensions.h in Headers */ = {isa = PBXBuildFile; fileRef = 07E8EB321E733F34001639A2 /* NSURL+KDIExtensions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		07E8EB371E733F34001639A2 /* NSURL+KDIExtensions.h in Headers */ = {isa = PBXBuildFile; fileRef = 07E8EB321E733F34001639A2 /* NSURL+KDIExtensions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		07E8EB381E733F34001639A2 /* NSURL+KDIExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 07E8EB331E733F34001639A2 /* NSURL+KDIExtensions.m */; };
+		07E8EB391E733F34001639A2 /* NSURL+KDIExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 07E8EB331E733F34001639A2 /* NSURL+KDIExtensions.m */; };
+		07E8EB3A1E733F34001639A2 /* NSURL+KDIExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 07E8EB331E733F34001639A2 /* NSURL+KDIExtensions.m */; };
+		07E8EB3B1E733F34001639A2 /* NSURL+KDIExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 07E8EB331E733F34001639A2 /* NSURL+KDIExtensions.m */; };
+		07E8EB3D1E733FE3001639A2 /* KDIDefines.h in Headers */ = {isa = PBXBuildFile; fileRef = 07E8EB3C1E733FE3001639A2 /* KDIDefines.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		07E8EB3E1E733FE3001639A2 /* KDIDefines.h in Headers */ = {isa = PBXBuildFile; fileRef = 07E8EB3C1E733FE3001639A2 /* KDIDefines.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		07E8EB3F1E733FE3001639A2 /* KDIDefines.h in Headers */ = {isa = PBXBuildFile; fileRef = 07E8EB3C1E733FE3001639A2 /* KDIDefines.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		07E8EB401E733FE3001639A2 /* KDIDefines.h in Headers */ = {isa = PBXBuildFile; fileRef = 07E8EB3C1E733FE3001639A2 /* KDIDefines.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -207,6 +219,9 @@
 		0795E6581E704A56004A5CB2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0795E65A1E704A56004A5CB2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0795E6601E704AE3004A5CB2 /* Stanley.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Stanley.framework; path = "../../Library/Developer/Xcode/DerivedData/Ditko-bqbmowdlvnipfjchljeblievobjg/Build/Products/Debug-iphonesimulator/Stanley.framework"; sourceTree = "<group>"; };
+		07E8EB321E733F34001639A2 /* NSURL+KDIExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURL+KDIExtensions.h"; sourceTree = "<group>"; };
+		07E8EB331E733F34001639A2 /* NSURL+KDIExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURL+KDIExtensions.m"; sourceTree = "<group>"; };
+		07E8EB3C1E733FE3001639A2 /* KDIDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KDIDefines.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -280,6 +295,7 @@
 		071B62671E705E8D00B7B85A /* Headers */ = {
 			isa = PBXGroup;
 			children = (
+				07E8EB3C1E733FE3001639A2 /* KDIDefines.h */,
 				071B62681E705EA300B7B85A /* KDIColorMacros.h */,
 			);
 			name = Headers;
@@ -371,6 +387,8 @@
 				0795E63F1E70491E004A5CB2 /* UIColor+KDIExtensions.h */,
 				073542841E70503C00177905 /* NSColor+KDIExtensions.h */,
 				0795E6401E70491E004A5CB2 /* NSColor-UIColor+KDIExtensions.m */,
+				07E8EB321E733F34001639A2 /* NSURL+KDIExtensions.h */,
+				07E8EB331E733F34001639A2 /* NSURL+KDIExtensions.m */,
 			);
 			name = Categories;
 			sourceTree = "<group>";
@@ -490,9 +508,11 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				07E8EB371E733F34001639A2 /* NSURL+KDIExtensions.h in Headers */,
 				071B62821E707F9500B7B85A /* UIColor+KDIExtensions.h in Headers */,
 				071B62811E707F7A00B7B85A /* Ditko.h in Headers */,
 				071B62801E707F7400B7B85A /* KDIColorMacros.h in Headers */,
+				07E8EB401E733FE3001639A2 /* KDIDefines.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -500,8 +520,10 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				07E8EB361E733F34001639A2 /* NSURL+KDIExtensions.h in Headers */,
 				071B62DF1E70864300B7B85A /* KDIGradientView.h in Headers */,
 				072628131E70BCCF00511F80 /* KDIView.h in Headers */,
+				07E8EB3F1E733FE3001639A2 /* KDIDefines.h in Headers */,
 				071B62DE1E70861F00B7B85A /* Ditko.h in Headers */,
 				071B62BE1E70845600B7B85A /* KDIColorMacros.h in Headers */,
 				071B62BF1E70845D00B7B85A /* UIColor+KDIExtensions.h in Headers */,
@@ -512,12 +534,14 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				07E8EB3E1E733FE3001639A2 /* KDIDefines.h in Headers */,
 				072628121E70BCCF00511F80 /* KDIView.h in Headers */,
 				071B62641E705D3500B7B85A /* KDIFunctions.h in Headers */,
 				071B626F1E70635D00B7B85A /* KDIGradientView.h in Headers */,
 				073542A51E7053F100177905 /* Ditko.h in Headers */,
 				071B626A1E705EA400B7B85A /* KDIColorMacros.h in Headers */,
 				073542861E70503C00177905 /* NSColor+KDIExtensions.h in Headers */,
+				07E8EB351E733F34001639A2 /* NSURL+KDIExtensions.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -525,12 +549,14 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				07E8EB3D1E733FE3001639A2 /* KDIDefines.h in Headers */,
 				072628111E70BCCF00511F80 /* KDIView.h in Headers */,
 				071B62631E705D3500B7B85A /* KDIFunctions.h in Headers */,
 				071B626E1E70635D00B7B85A /* KDIGradientView.h in Headers */,
 				0795E6371E704785004A5CB2 /* Ditko.h in Headers */,
 				071B62691E705EA300B7B85A /* KDIColorMacros.h in Headers */,
 				0795E6411E70491E004A5CB2 /* UIColor+KDIExtensions.h in Headers */,
+				07E8EB341E733F34001639A2 /* NSURL+KDIExtensions.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -856,6 +882,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				071B62831E707F9B00B7B85A /* NSColor-UIColor+KDIExtensions.m in Sources */,
+				07E8EB3B1E733F34001639A2 /* NSURL+KDIExtensions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -873,6 +900,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				072628161E70BCCF00511F80 /* KDIView.m in Sources */,
+				07E8EB3A1E733F34001639A2 /* NSURL+KDIExtensions.m in Sources */,
 				071B62C01E70846200B7B85A /* NSColor-UIColor+KDIExtensions.m in Sources */,
 				071B62E01E70864900B7B85A /* KDIGradientView.m in Sources */,
 			);
@@ -893,6 +921,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				071B62711E70635D00B7B85A /* KDIGradientView.m in Sources */,
+				07E8EB391E733F34001639A2 /* NSURL+KDIExtensions.m in Sources */,
 				071B62661E705D3500B7B85A /* KDIFunctions.m in Sources */,
 				073542AA1E7057A000177905 /* NSColor-UIColor+KDIExtensions.m in Sources */,
 				072628151E70BCCF00511F80 /* KDIView.m in Sources */,
@@ -914,6 +943,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				071B62701E70635D00B7B85A /* KDIGradientView.m in Sources */,
+				07E8EB381E733F34001639A2 /* NSURL+KDIExtensions.m in Sources */,
 				071B62651E705D3500B7B85A /* KDIFunctions.m in Sources */,
 				0795E6421E70491E004A5CB2 /* NSColor-UIColor+KDIExtensions.m in Sources */,
 				072628141E70BCCF00511F80 /* KDIView.m in Sources */,
