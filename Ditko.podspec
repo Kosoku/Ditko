@@ -40,7 +40,7 @@ Ditko is an iOS/macOS/tvOS/watchOS framework that extends the `AppKit`, `UIKit`,
   s.ios.exclude_files = 'Ditko/macOS'
   s.osx.exclude_files = 'Ditko/iOS'
   s.tvos.exclude_files = 'Ditko/macOS'
-  s.watchos.exclude_files = 'Ditko/macOS', 'Ditko/iOS/UIBarButtonItem+KDIExtensions.{h,m}', 'Ditko/iOS/UIDevice+KDIExtensions.{h,m}', 'Ditko/iOS/UINavigationController+KDIExtensions.{h,m}', 'Ditko/iOS/UIView+KDIExtensions.{h,m}', 'Ditko/KDIView.{h,m}', 'Ditko/KDIGradientView.{h,m}'
+  s.watchos.exclude_files = 'Ditko/macOS', 'Ditko/iOS/UIBarButtonItem+KDIExtensions.{h,m}', 'Ditko/iOS/UIDevice+KDIExtensions.{h,m}', 'Ditko/iOS/UINavigationController+KDIExtensions.{h,m}', 'Ditko/iOS/UIView+KDIExtensions.{h,m}', 'Ditko/iOS/UIViewController+KDIExtensions.{h,m}', 'Ditko/KDIView.{h,m}', 'Ditko/KDIGradientView.{h,m}'
   
   # s.resource_bundles = {
   #   '${POD_NAME}' => ['${POD_NAME}/Assets/*.png']
