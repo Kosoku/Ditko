@@ -18,8 +18,16 @@
 CGSize KDICGSizeAdjustedForMainScreenScale(CGSize size) {
     return KDICGSizeAdjustedForScreenScale(size, nil);
 }
-#if (TARGET_OS_IPHONE)
-CGSize KDICGSizeAdjustedForScreenScale(CGSize size, UIScreen * _Nullable screen) {
+#if (TARGET_OS_WATCH)
+CGSize KDICGSizeAdjustedForScreenScale(CGSize size, WKInterfaceDevice *screen) {
+    if (screen == nil) {
+        screen = [WKInterfaceDevice currentDevice];
+    }
+    
+    return CGSizeMake(size.width * screen.screenScale, size.height * screen.screenScale);
+}
+#elif (TARGET_OS_IOS || TARGET_OS_TV)
+CGSize KDICGSizeAdjustedForScreenScale(CGSize size, UIScreen *screen) {
     if (screen == nil) {
         screen = [UIScreen mainScreen];
     }
@@ -27,7 +35,7 @@ CGSize KDICGSizeAdjustedForScreenScale(CGSize size, UIScreen * _Nullable screen)
     return CGSizeMake(size.width * screen.scale, size.height * screen.scale);
 }
 #else
-CGSize KDICGSizeAdjustedForScreenScale(CGSize size, NSScreen * _Nullable screen) {
+CGSize KDICGSizeAdjustedForScreenScale(CGSize size, NSScreen *screen) {
     if (screen == nil) {
         screen = [NSScreen mainScreen];
     }

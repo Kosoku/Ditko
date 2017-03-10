@@ -31,13 +31,12 @@ FOUNDATION_EXPORT const unsigned char DitkoVersionString[];
 
 #import <Ditko/KDIColorMacros.h>
 
-#if (TARGET_OS_IOS || TARGET_OS_OSX)
 #import <Ditko/KDIFunctions.h>
-#endif
 
 #import <Ditko/NSURL+KDIExtensions.h>
 #if (TARGET_OS_IOS || TARGET_OS_TV)
 #import <Ditko/UIBarButtonItem+KDIExtensions.h>
+#import <Ditko/UIDevice+KDIExtensions.h>
 #endif
 
 #if (TARGET_OS_IOS || TARGET_OS_TV || TARGET_OS_OSX)

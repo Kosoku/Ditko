@@ -1,8 +1,8 @@
 //
-//  KDIFunctions.h
+//  UIDevice+KDIExtensions.h
 //  Ditko
 //
-//  Created by William Towe on 3/8/17.
+//  Created by William Towe on 3/10/17.
 //  Copyright © 2017 Kosoku Interactive, LLC. All rights reserved.
 //
 //  Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
@@ -13,38 +13,17 @@
 //
 //  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-#import <TargetConditionals.h>
-
-#if (TARGET_OS_WATCH)
-#import <WatchKit/WatchKit.h>
-#elif (TARGET_OS_IOS || TARGET_OS_TV)
 #import <UIKit/UIKit.h>
-#else
-#import <AppKit/AppKit.h>
-#endif
 
-NS_ASSUME_NONNULL_BEGIN
+@interface UIDevice (KDIExtensions)
 
 /**
- Returns a new size after multiplying the width and height by the main screen scale.
- 
- @param size The size to adjust
- @return The new size
+ Returns the hardware machine name for the current device.
  */
-extern CGSize KDICGSizeAdjustedForMainScreenScale(CGSize size);
+@property (class,readonly,nonatomic) NSString *KDI_hardwareMachineName;
 /**
- Returns a new size after multiplying the width and height by the screen scale.
- 
- @param size The size to adjust
- @param screen The screen to adjust for, passing nil will use [UIScreen mainScreen] or [NSScreen mainScreen]
- @return The new size
+ Returns the hardware model name for the current device.
  */
-#if (TARGET_OS_WATCH)
-extern CGSize KDICGSizeAdjustedForScreenScale(CGSize size, WKInterfaceDevice * _Nullable screen);
-#elif (TARGET_OS_IOS || TARGET_OS_TV)
-extern CGSize KDICGSizeAdjustedForScreenScale(CGSize size, UIScreen * _Nullable screen);
-#else
-extern CGSize KDICGSizeAdjustedForScreenScale(CGSize size, NSScreen * _Nullable screen);
-#endif
+@property (class,readonly,nonatomic) NSString *KDI_hardwareModelName;
 
-NS_ASSUME_NONNULL_END
+@end
