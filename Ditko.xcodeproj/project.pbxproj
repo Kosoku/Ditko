@@ -69,6 +69,12 @@
 		0794A7F31E73509100603C99 /* UIView+KDIExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0794A7EF1E73509100603C99 /* UIView+KDIExtensions.m */; };
 		0794A7F61E7351B500603C99 /* NSView+KDIExtensions.h in Headers */ = {isa = PBXBuildFile; fileRef = 0794A7F41E7351B500603C99 /* NSView+KDIExtensions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0794A7F71E7351B500603C99 /* NSView+KDIExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0794A7F51E7351B500603C99 /* NSView+KDIExtensions.m */; };
+		0794A7FA1E73530400603C99 /* UIBezierPath+KDIExtensions.h in Headers */ = {isa = PBXBuildFile; fileRef = 0794A7F81E73530400603C99 /* UIBezierPath+KDIExtensions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0794A7FB1E73530400603C99 /* UIBezierPath+KDIExtensions.h in Headers */ = {isa = PBXBuildFile; fileRef = 0794A7F81E73530400603C99 /* UIBezierPath+KDIExtensions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0794A7FC1E73530400603C99 /* UIBezierPath+KDIExtensions.h in Headers */ = {isa = PBXBuildFile; fileRef = 0794A7F81E73530400603C99 /* UIBezierPath+KDIExtensions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0794A7FD1E73530400603C99 /* UIBezierPath+KDIExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0794A7F91E73530400603C99 /* UIBezierPath+KDIExtensions.m */; };
+		0794A7FE1E73530400603C99 /* UIBezierPath+KDIExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0794A7F91E73530400603C99 /* UIBezierPath+KDIExtensions.m */; };
+		0794A7FF1E73530400603C99 /* UIBezierPath+KDIExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0794A7F91E73530400603C99 /* UIBezierPath+KDIExtensions.m */; };
 		0795E6371E704785004A5CB2 /* Ditko.h in Headers */ = {isa = PBXBuildFile; fileRef = 0795E6351E704785004A5CB2 /* Ditko.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0795E6411E70491E004A5CB2 /* UIColor+KDIExtensions.h in Headers */ = {isa = PBXBuildFile; fileRef = 0795E63F1E70491E004A5CB2 /* UIColor+KDIExtensions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0795E6421E70491E004A5CB2 /* NSColor-UIColor+KDIExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0795E6401E70491E004A5CB2 /* NSColor-UIColor+KDIExtensions.m */; };
@@ -231,6 +237,8 @@
 		0794A7EF1E73509100603C99 /* UIView+KDIExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIView+KDIExtensions.m"; path = "iOS/UIView+KDIExtensions.m"; sourceTree = "<group>"; };
 		0794A7F41E7351B500603C99 /* NSView+KDIExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSView+KDIExtensions.h"; path = "macOS/NSView+KDIExtensions.h"; sourceTree = "<group>"; };
 		0794A7F51E7351B500603C99 /* NSView+KDIExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSView+KDIExtensions.m"; path = "macOS/NSView+KDIExtensions.m"; sourceTree = "<group>"; };
+		0794A7F81E73530400603C99 /* UIBezierPath+KDIExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIBezierPath+KDIExtensions.h"; path = "iOS/UIBezierPath+KDIExtensions.h"; sourceTree = "<group>"; };
+		0794A7F91E73530400603C99 /* UIBezierPath+KDIExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIBezierPath+KDIExtensions.m"; path = "iOS/UIBezierPath+KDIExtensions.m"; sourceTree = "<group>"; };
 		0795E6321E704785004A5CB2 /* Ditko.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Ditko.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0795E6351E704785004A5CB2 /* Ditko.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Ditko.h; sourceTree = "<group>"; };
 		0795E6361E704785004A5CB2 /* Ditko-iOS-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Ditko-iOS-Info.plist"; sourceTree = "<group>"; };
@@ -431,6 +439,8 @@
 				0794A7EF1E73509100603C99 /* UIView+KDIExtensions.m */,
 				0794A7F41E7351B500603C99 /* NSView+KDIExtensions.h */,
 				0794A7F51E7351B500603C99 /* NSView+KDIExtensions.m */,
+				0794A7F81E73530400603C99 /* UIBezierPath+KDIExtensions.h */,
+				0794A7F91E73530400603C99 /* UIBezierPath+KDIExtensions.m */,
 			);
 			name = Categories;
 			sourceTree = "<group>";
@@ -554,6 +564,7 @@
 				071B62821E707F9500B7B85A /* UIColor+KDIExtensions.h in Headers */,
 				071B62811E707F7A00B7B85A /* Ditko.h in Headers */,
 				07E8EB521E734B0E001639A2 /* KDIFunctions.h in Headers */,
+				0794A7FC1E73530400603C99 /* UIBezierPath+KDIExtensions.h in Headers */,
 				071B62801E707F7400B7B85A /* KDIColorMacros.h in Headers */,
 				07E8EB401E733FE3001639A2 /* KDIDefines.h in Headers */,
 			);
@@ -574,6 +585,7 @@
 				071B62DE1E70861F00B7B85A /* Ditko.h in Headers */,
 				071B62BE1E70845600B7B85A /* KDIColorMacros.h in Headers */,
 				07E8EB441E7341C2001639A2 /* UIBarButtonItem+KDIExtensions.h in Headers */,
+				0794A7FB1E73530400603C99 /* UIBezierPath+KDIExtensions.h in Headers */,
 				071B62BF1E70845D00B7B85A /* UIColor+KDIExtensions.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -609,6 +621,7 @@
 				071B62691E705EA300B7B85A /* KDIColorMacros.h in Headers */,
 				07E8EB491E73454D001639A2 /* UIDevice+KDIExtensions.h in Headers */,
 				0795E6411E70491E004A5CB2 /* UIColor+KDIExtensions.h in Headers */,
+				0794A7FA1E73530400603C99 /* UIBezierPath+KDIExtensions.h in Headers */,
 				07E8EB341E733F34001639A2 /* NSURL+KDIExtensions.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -936,6 +949,7 @@
 			files = (
 				071B62831E707F9B00B7B85A /* NSColor-UIColor+KDIExtensions.m in Sources */,
 				07E8EB511E734AED001639A2 /* KDIFunctions.m in Sources */,
+				0794A7FF1E73530400603C99 /* UIBezierPath+KDIExtensions.m in Sources */,
 				07E8EB3B1E733F34001639A2 /* NSURL+KDIExtensions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -953,6 +967,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0794A7FE1E73530400603C99 /* UIBezierPath+KDIExtensions.m in Sources */,
 				072628161E70BCCF00511F80 /* KDIView.m in Sources */,
 				0794A7F31E73509100603C99 /* UIView+KDIExtensions.m in Sources */,
 				07E8EB3A1E733F34001639A2 /* NSURL+KDIExtensions.m in Sources */,
@@ -1002,6 +1017,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0794A7FD1E73530400603C99 /* UIBezierPath+KDIExtensions.m in Sources */,
 				071B62701E70635D00B7B85A /* KDIGradientView.m in Sources */,
 				0794A7F21E73509100603C99 /* UIView+KDIExtensions.m in Sources */,
 				07E8EB381E733F34001639A2 /* NSURL+KDIExtensions.m in Sources */,

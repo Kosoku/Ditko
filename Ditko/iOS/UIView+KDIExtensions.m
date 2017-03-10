@@ -77,7 +77,7 @@
 - (UIImage *)KDI_snapshotImageFromRect:(CGRect)rect afterScreenUpdates:(BOOL)afterScreenUpdates; {
     UIGraphicsBeginImageContextWithOptions(rect.size, self.isOpaque, self.contentScaleFactor);
     
-    [self drawViewHierarchyInRect:rect afterScreenUpdates:afterScreenUpdates]
+    [self drawViewHierarchyInRect:rect afterScreenUpdates:afterScreenUpdates];
     
     UIImage *retval = UIGraphicsGetImageFromCurrentImageContext();
     
