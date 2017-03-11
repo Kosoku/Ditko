@@ -64,4 +64,5 @@ FOUNDATION_EXPORT const unsigned char DitkoVersionString[];
 #import <Ditko/KDITextField.h>
 #import <Ditko/KDITextView.h>
 #import <Ditko/KDIProgressSlider.h>
+#import <Ditko/KDIProgressNavigationBar.h>
 #endif
