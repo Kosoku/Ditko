@@ -41,6 +41,15 @@
     [self.view addSubview:gradientView];
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-margin-[view]-margin-|" options:0 metrics:@{@"margin": @16.0} views:@{@"view": gradientView}]];
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-margin-[view]-margin-|" options:0 metrics:@{@"margin": @16.0} views:@{@"view": gradientView}]];
+    
+    KDIBadgeView *badgeView = [[KDIBadgeView alloc] initWithFrame:NSZeroRect];
+    
+    [badgeView setBadge:@"1234"];
+    [badgeView setTranslatesAutoresizingMaskIntoConstraints:NO];
+    
+    [gradientView addSubview:badgeView];
+    [gradientView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[view]" options:0 metrics:nil views:@{@"view": badgeView}]];
+    [gradientView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-[view]" options:0 metrics:nil views:@{@"view": badgeView}]];
 }
 
 @end

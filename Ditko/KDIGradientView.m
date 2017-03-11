@@ -24,7 +24,7 @@
 @end
 
 @implementation KDIGradientView
-
+#pragma mark *** Subclass Overrides ***
 #if (TARGET_OS_IPHONE)
 - (instancetype)initWithFrame:(CGRect)frame {
 #else
@@ -43,7 +43,7 @@
     return [CAGradientLayer class];
 }
 #endif
-    
+#pragma mark Properties
 @dynamic colors;
 - (NSArray *)colors {
     NSMutableArray *retval = [[NSMutableArray alloc] init];
@@ -121,7 +121,7 @@
     [self.layer setEndPoint:NSPointToCGPoint(endPoint)];
 #endif
 }
-        
+#pragma mark *** Private Methods ***
 - (void)_KDIGradientViewInit {
 #if (TARGET_OS_IPHONE)
     [self setBackgroundColor:[UIColor clearColor]];
@@ -130,7 +130,7 @@
     [self setLayer:[CAGradientLayer layer]];
 #endif
 }
-    
+#pragma mark Properties
 @dynamic layer;
     
 @end

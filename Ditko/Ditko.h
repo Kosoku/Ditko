@@ -57,4 +57,5 @@ FOUNDATION_EXPORT const unsigned char DitkoVersionString[];
 #if (TARGET_OS_IOS || TARGET_OS_TV || TARGET_OS_OSX)
 #import <Ditko/KDIView.h>
 #import <Ditko/KDIGradientView.h>
+#import <Ditko/KDIBadgeView.h>
 #endif

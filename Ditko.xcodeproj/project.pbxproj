@@ -38,8 +38,6 @@
 		071B62CF1E70849500B7B85A /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 071B62CE1E70849500B7B85A /* ViewController.m */; };
 		071B62D21E70849500B7B85A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 071B62D01E70849500B7B85A /* Main.storyboard */; };
 		071B62D41E70849500B7B85A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 071B62D31E70849500B7B85A /* Assets.xcassets */; };
-		071B62DC1E7084BF00B7B85A /* Stanley.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 071B62DB1E7084BF00B7B85A /* Stanley.framework */; };
-		071B62DD1E7084C600B7B85A /* Ditko.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 071B62B51E70835C00B7B85A /* Ditko.framework */; };
 		071B62DE1E70861F00B7B85A /* Ditko.h in Headers */ = {isa = PBXBuildFile; fileRef = 0795E6351E704785004A5CB2 /* Ditko.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		071B62DF1E70864300B7B85A /* KDIGradientView.h in Headers */ = {isa = PBXBuildFile; fileRef = 071B626C1E70635D00B7B85A /* KDIGradientView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		071B62E01E70864900B7B85A /* KDIGradientView.m in Sources */ = {isa = PBXBuildFile; fileRef = 071B626D1E70635D00B7B85A /* KDIGradientView.m */; };
@@ -55,8 +53,6 @@
 		073542961E70515400177905 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 073542951E70515400177905 /* ViewController.m */; };
 		073542981E70515400177905 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 073542971E70515400177905 /* Assets.xcassets */; };
 		0735429B1E70515400177905 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 073542991E70515400177905 /* Main.storyboard */; };
-		073542A21E7051AA00177905 /* Ditko.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0735427A1E704D8F00177905 /* Ditko.framework */; };
-		073542A41E7051BA00177905 /* Stanley.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 073542A31E7051BA00177905 /* Stanley.framework */; };
 		073542A51E7053F100177905 /* Ditko.h in Headers */ = {isa = PBXBuildFile; fileRef = 0795E6351E704785004A5CB2 /* Ditko.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		073542AA1E7057A000177905 /* NSColor-UIColor+KDIExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0795E6401E70491E004A5CB2 /* NSColor-UIColor+KDIExtensions.m */; };
 		0794A7EA1E734D5300603C99 /* UINavigationController+KDIExtensions.h in Headers */ = {isa = PBXBuildFile; fileRef = 0794A7E81E734D5300603C99 /* UINavigationController+KDIExtensions.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -107,6 +103,12 @@
 		0794A8321E735E1200603C99 /* NSParagraphStyle+KDIExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0794A82C1E735E1200603C99 /* NSParagraphStyle+KDIExtensions.m */; };
 		0794A8331E735E1200603C99 /* NSParagraphStyle+KDIExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0794A82C1E735E1200603C99 /* NSParagraphStyle+KDIExtensions.m */; };
 		0794A8341E735E1200603C99 /* NSParagraphStyle+KDIExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0794A82C1E735E1200603C99 /* NSParagraphStyle+KDIExtensions.m */; };
+		0794A8371E73776C00603C99 /* KDIBadgeView.h in Headers */ = {isa = PBXBuildFile; fileRef = 0794A8351E73776C00603C99 /* KDIBadgeView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0794A8381E73776C00603C99 /* KDIBadgeView.h in Headers */ = {isa = PBXBuildFile; fileRef = 0794A8351E73776C00603C99 /* KDIBadgeView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0794A8391E73776C00603C99 /* KDIBadgeView.h in Headers */ = {isa = PBXBuildFile; fileRef = 0794A8351E73776C00603C99 /* KDIBadgeView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0794A83A1E73776C00603C99 /* KDIBadgeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0794A8361E73776C00603C99 /* KDIBadgeView.m */; };
+		0794A83B1E73776C00603C99 /* KDIBadgeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0794A8361E73776C00603C99 /* KDIBadgeView.m */; };
+		0794A83C1E73776C00603C99 /* KDIBadgeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0794A8361E73776C00603C99 /* KDIBadgeView.m */; };
 		0795E6371E704785004A5CB2 /* Ditko.h in Headers */ = {isa = PBXBuildFile; fileRef = 0795E6351E704785004A5CB2 /* Ditko.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0795E6411E70491E004A5CB2 /* UIColor+KDIExtensions.h in Headers */ = {isa = PBXBuildFile; fileRef = 0795E63F1E70491E004A5CB2 /* UIColor+KDIExtensions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0795E6421E70491E004A5CB2 /* NSColor-UIColor+KDIExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0795E6401E70491E004A5CB2 /* NSColor-UIColor+KDIExtensions.m */; };
@@ -116,8 +118,21 @@
 		0795E6541E704A56004A5CB2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0795E6521E704A56004A5CB2 /* Main.storyboard */; };
 		0795E6561E704A56004A5CB2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0795E6551E704A56004A5CB2 /* Assets.xcassets */; };
 		0795E6591E704A56004A5CB2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0795E6571E704A56004A5CB2 /* LaunchScreen.storyboard */; };
-		0795E65E1E704ADE004A5CB2 /* Ditko.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0795E6321E704785004A5CB2 /* Ditko.framework */; };
-		0795E6611E704AE3004A5CB2 /* Stanley.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0795E6601E704AE3004A5CB2 /* Stanley.framework */; };
+		07DB3D5F1E737CA60044FB50 /* Ditko.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0735427A1E704D8F00177905 /* Ditko.framework */; };
+		07DB3D601E737CA60044FB50 /* Ditko.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0735427A1E704D8F00177905 /* Ditko.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		07DB3D621E737CBF0044FB50 /* Stanley.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07DB3D611E737CBF0044FB50 /* Stanley.framework */; };
+		07DB3D631E737CBF0044FB50 /* Stanley.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 07DB3D611E737CBF0044FB50 /* Stanley.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		07DB3D651E737DD20044FB50 /* Stanley.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07DB3D641E737DD20044FB50 /* Stanley.framework */; };
+		07DB3D661E737E7A0044FB50 /* Stanley.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0795E6601E704AE3004A5CB2 /* Stanley.framework */; };
+		07DB3D671E737E7A0044FB50 /* Stanley.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0795E6601E704AE3004A5CB2 /* Stanley.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		07DB3D691E737E800044FB50 /* Ditko.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0795E6321E704785004A5CB2 /* Ditko.framework */; };
+		07DB3D6A1E737E800044FB50 /* Ditko.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0795E6321E704785004A5CB2 /* Ditko.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		07DB3D6B1E737E9B0044FB50 /* Stanley.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0795E6601E704AE3004A5CB2 /* Stanley.framework */; };
+		07DB3D6D1E737EDF0044FB50 /* Stanley.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07DB3D6C1E737EDF0044FB50 /* Stanley.framework */; };
+		07DB3D6E1E737EDF0044FB50 /* Stanley.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 07DB3D6C1E737EDF0044FB50 /* Stanley.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		07DB3D701E737EEE0044FB50 /* Ditko.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 071B62B51E70835C00B7B85A /* Ditko.framework */; };
+		07DB3D711E737EEE0044FB50 /* Ditko.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 071B62B51E70835C00B7B85A /* Ditko.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		07DB3D731E737F110044FB50 /* Stanley.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07DB3D721E737F110044FB50 /* Stanley.framework */; };
 		07E8EB341E733F34001639A2 /* NSURL+KDIExtensions.h in Headers */ = {isa = PBXBuildFile; fileRef = 07E8EB321E733F34001639A2 /* NSURL+KDIExtensions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		07E8EB351E733F34001639A2 /* NSURL+KDIExtensions.h in Headers */ = {isa = PBXBuildFile; fileRef = 07E8EB321E733F34001639A2 /* NSURL+KDIExtensions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		07E8EB361E733F34001639A2 /* NSURL+KDIExtensions.h in Headers */ = {isa = PBXBuildFile; fileRef = 07E8EB321E733F34001639A2 /* NSURL+KDIExtensions.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -212,6 +227,42 @@
 			name = "Embed Watch Content";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		07DB3D5E1E737C870044FB50 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				07DB3D601E737CA60044FB50 /* Ditko.framework in Embed Frameworks */,
+				07DB3D631E737CBF0044FB50 /* Stanley.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		07DB3D681E737E7A0044FB50 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				07DB3D6A1E737E800044FB50 /* Ditko.framework in Embed Frameworks */,
+				07DB3D671E737E7A0044FB50 /* Stanley.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		07DB3D6F1E737EDF0044FB50 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				07DB3D711E737EEE0044FB50 /* Ditko.framework in Embed Frameworks */,
+				07DB3D6E1E737EDF0044FB50 /* Stanley.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
@@ -287,6 +338,8 @@
 		0794A8281E735D1400603C99 /* NSAlert+KDIExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSAlert+KDIExtensions.m"; path = "macOS/NSAlert+KDIExtensions.m"; sourceTree = "<group>"; };
 		0794A82B1E735E1200603C99 /* NSParagraphStyle+KDIExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSParagraphStyle+KDIExtensions.h"; sourceTree = "<group>"; };
 		0794A82C1E735E1200603C99 /* NSParagraphStyle+KDIExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSParagraphStyle+KDIExtensions.m"; sourceTree = "<group>"; };
+		0794A8351E73776C00603C99 /* KDIBadgeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KDIBadgeView.h; sourceTree = "<group>"; };
+		0794A8361E73776C00603C99 /* KDIBadgeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KDIBadgeView.m; sourceTree = "<group>"; };
 		0795E6321E704785004A5CB2 /* Ditko.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Ditko.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0795E6351E704785004A5CB2 /* Ditko.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Ditko.h; sourceTree = "<group>"; };
 		0795E6361E704785004A5CB2 /* Ditko-iOS-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Ditko-iOS-Info.plist"; sourceTree = "<group>"; };
@@ -303,6 +356,10 @@
 		0795E6581E704A56004A5CB2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0795E65A1E704A56004A5CB2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0795E6601E704AE3004A5CB2 /* Stanley.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Stanley.framework; path = "../../Library/Developer/Xcode/DerivedData/Ditko-bqbmowdlvnipfjchljeblievobjg/Build/Products/Debug-iphonesimulator/Stanley.framework"; sourceTree = "<group>"; };
+		07DB3D611E737CBF0044FB50 /* Stanley.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Stanley.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		07DB3D641E737DD20044FB50 /* Stanley.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Stanley.framework; path = "../../Library/Developer/Xcode/DerivedData/Ditko-bqbmowdlvnipfjchljeblievobjg/Build/Products/Debug/Stanley.framework"; sourceTree = "<group>"; };
+		07DB3D6C1E737EDF0044FB50 /* Stanley.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Stanley.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		07DB3D721E737F110044FB50 /* Stanley.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Stanley.framework; path = "../../Library/Developer/Xcode/DerivedData/Ditko-bqbmowdlvnipfjchljeblievobjg/Build/Products/Debug-appletvsimulator/Stanley.framework"; sourceTree = "<group>"; };
 		07E8EB321E733F34001639A2 /* NSURL+KDIExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURL+KDIExtensions.h"; sourceTree = "<group>"; };
 		07E8EB331E733F34001639A2 /* NSURL+KDIExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURL+KDIExtensions.m"; sourceTree = "<group>"; };
 		07E8EB3C1E733FE3001639A2 /* KDIDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KDIDefines.h; sourceTree = "<group>"; };
@@ -333,6 +390,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				07DB3D731E737F110044FB50 /* Stanley.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -340,8 +398,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				071B62DC1E7084BF00B7B85A /* Stanley.framework in Frameworks */,
-				071B62DD1E7084C600B7B85A /* Ditko.framework in Frameworks */,
+				07DB3D701E737EEE0044FB50 /* Ditko.framework in Frameworks */,
+				07DB3D6D1E737EDF0044FB50 /* Stanley.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -349,6 +407,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				07DB3D651E737DD20044FB50 /* Stanley.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -356,8 +415,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				073542A41E7051BA00177905 /* Stanley.framework in Frameworks */,
-				073542A21E7051AA00177905 /* Ditko.framework in Frameworks */,
+				07DB3D5F1E737CA60044FB50 /* Ditko.framework in Frameworks */,
+				07DB3D621E737CBF0044FB50 /* Stanley.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -365,6 +424,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				07DB3D6B1E737E9B0044FB50 /* Stanley.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -372,8 +432,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0795E6611E704AE3004A5CB2 /* Stanley.framework in Frameworks */,
-				0795E65E1E704ADE004A5CB2 /* Ditko.framework in Frameworks */,
+				07DB3D691E737E800044FB50 /* Ditko.framework in Frameworks */,
+				07DB3D661E737E7A0044FB50 /* Stanley.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -396,6 +456,8 @@
 				072628101E70BCCF00511F80 /* KDIView.m */,
 				071B626C1E70635D00B7B85A /* KDIGradientView.h */,
 				071B626D1E70635D00B7B85A /* KDIGradientView.m */,
+				0794A8351E73776C00603C99 /* KDIBadgeView.h */,
+				0794A8361E73776C00603C99 /* KDIBadgeView.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -608,6 +670,10 @@
 		0795E65F1E704AE3004A5CB2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				07DB3D721E737F110044FB50 /* Stanley.framework */,
+				07DB3D6C1E737EDF0044FB50 /* Stanley.framework */,
+				07DB3D641E737DD20044FB50 /* Stanley.framework */,
+				07DB3D611E737CBF0044FB50 /* Stanley.framework */,
 				071B62DB1E7084BF00B7B85A /* Stanley.framework */,
 				071B62AB1E70805C00B7B85A /* Stanley.framework */,
 				073542A31E7051BA00177905 /* Stanley.framework */,
@@ -656,6 +722,7 @@
 				0794A82F1E735E1200603C99 /* NSParagraphStyle+KDIExtensions.h in Headers */,
 				0794A7FB1E73530400603C99 /* UIBezierPath+KDIExtensions.h in Headers */,
 				0794A81C1E73584900603C99 /* NSBundle+KDIPrivateExtensions.h in Headers */,
+				0794A8391E73776C00603C99 /* KDIBadgeView.h in Headers */,
 				071B62BF1E70845D00B7B85A /* UIColor+KDIExtensions.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -674,6 +741,7 @@
 				071B626F1E70635D00B7B85A /* KDIGradientView.h in Headers */,
 				0794A8101E73568500603C99 /* NSWindow+KDIExtensions.h in Headers */,
 				073542A51E7053F100177905 /* Ditko.h in Headers */,
+				0794A8381E73776C00603C99 /* KDIBadgeView.h in Headers */,
 				071B626A1E705EA400B7B85A /* KDIColorMacros.h in Headers */,
 				0794A7F61E7351B500603C99 /* NSView+KDIExtensions.h in Headers */,
 				073542861E70503C00177905 /* NSColor+KDIExtensions.h in Headers */,
@@ -702,6 +770,7 @@
 				0794A82D1E735E1200603C99 /* NSParagraphStyle+KDIExtensions.h in Headers */,
 				0794A7FA1E73530400603C99 /* UIBezierPath+KDIExtensions.h in Headers */,
 				0794A81A1E73584900603C99 /* NSBundle+KDIPrivateExtensions.h in Headers */,
+				0794A8371E73776C00603C99 /* KDIBadgeView.h in Headers */,
 				07E8EB341E733F34001639A2 /* NSURL+KDIExtensions.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -787,6 +856,7 @@
 				071B62C11E70849500B7B85A /* Sources */,
 				071B62C21E70849500B7B85A /* Frameworks */,
 				071B62C31E70849500B7B85A /* Resources */,
+				07DB3D6F1E737EDF0044FB50 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -823,6 +893,7 @@
 				073542881E70515300177905 /* Sources */,
 				073542891E70515300177905 /* Frameworks */,
 				0735428A1E70515300177905 /* Resources */,
+				07DB3D5E1E737C870044FB50 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -860,6 +931,7 @@
 				0795E6441E704A56004A5CB2 /* Frameworks */,
 				0795E6451E704A56004A5CB2 /* Resources */,
 				071B62AA1E707FCB00B7B85A /* Embed Watch Content */,
+				07DB3D681E737E7A0044FB50 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1057,6 +1129,7 @@
 				07E8EB4D1E73454D001639A2 /* UIDevice+KDIExtensions.m in Sources */,
 				07E8EB501E734AEC001639A2 /* KDIFunctions.m in Sources */,
 				071B62C01E70846200B7B85A /* NSColor-UIColor+KDIExtensions.m in Sources */,
+				0794A83C1E73776C00603C99 /* KDIBadgeView.m in Sources */,
 				0794A8091E7354EF00603C99 /* UIViewController+KDIExtensions.m in Sources */,
 				07E8EB461E7341C2001639A2 /* UIBarButtonItem+KDIExtensions.m in Sources */,
 				0794A8331E735E1200603C99 /* NSParagraphStyle+KDIExtensions.m in Sources */,
@@ -1085,6 +1158,7 @@
 				071B62661E705D3500B7B85A /* KDIFunctions.m in Sources */,
 				0794A8031E73541200603C99 /* NSBezierPath+KDIExtensions.m in Sources */,
 				0794A8111E73568500603C99 /* NSWindow+KDIExtensions.m in Sources */,
+				0794A83B1E73776C00603C99 /* KDIBadgeView.m in Sources */,
 				0794A81F1E73584900603C99 /* NSBundle+KDIPrivateExtensions.m in Sources */,
 				0794A80D1E7355B900603C99 /* NSViewController+KDIExtensions.m in Sources */,
 				0794A82A1E735D1400603C99 /* NSAlert+KDIExtensions.m in Sources */,
@@ -1117,6 +1191,7 @@
 				071B62651E705D3500B7B85A /* KDIFunctions.m in Sources */,
 				0795E6421E70491E004A5CB2 /* NSColor-UIColor+KDIExtensions.m in Sources */,
 				072628141E70BCCF00511F80 /* KDIView.m in Sources */,
+				0794A83A1E73776C00603C99 /* KDIBadgeView.m in Sources */,
 				0794A8081E7354EF00603C99 /* UIViewController+KDIExtensions.m in Sources */,
 				07E8EB4C1E73454D001639A2 /* UIDevice+KDIExtensions.m in Sources */,
 				0794A8311E735E1200603C99 /* NSParagraphStyle+KDIExtensions.m in Sources */,

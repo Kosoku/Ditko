@@ -22,20 +22,28 @@
 #import <UIKit/UIKit.h>
 
 #define KDIColor UIColor
+#define KDIFont UIFont
 #define KDIImage UIImage
 #define KDIRect CGRect
 #define KDISize CGSize
+#define KDISizeZero CGSizeZero
 #define KDIPoint CGPoint
 #define KDIEdgeInsets UIEdgeInsets
+
+#define KDIEdgeInsetsMake(top,left,bottom,right) (UIEdgeInsetsMake(top,left,bottom,right))
 #else
 #import <AppKit/AppKit.h>
 
 #define KDIColor NSColor
+#define KDIFont NSFont
 #define KDIImage NSImage
 #define KDIRect NSRect
 #define KDISize NSSize
+#define KDISizeZero NSZeroSize
 #define KDIPoint NSPoint
 #define KDIEdgeInsets NSEdgeInsets
+
+#define KDIEdgeInsetsMake(top,left,bottom,right) (NSEdgeInsetsMake(top,left,bottom,right))
 #endif
 
 #endif

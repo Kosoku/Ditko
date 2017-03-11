@@ -20,7 +20,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface NSAlert (KDIExtensions)
 
 /**
- Create and return a NSAlert instance from the provided error. This will check the specific user info keys defined in NSError+BBFoundationExtensions.h for title and message.
+ Create and return a NSAlert instance from the provided error. This will check the specific user info keys defined in NSError+KSTExtensions.h for title and message.
  
  @param error The error from which to create a NSAlert instance
  @return The NSAlert instance
