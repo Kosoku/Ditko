@@ -54,6 +54,19 @@
     [gradientView addSubview:badgeView];
     [gradientView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[view]" options:0 metrics:nil views:@{@"view": badgeView}]];
     [gradientView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-[view]" options:0 metrics:nil views:@{@"view": badgeView}]];
+    
+    KDIButton *button = [[KDIButton alloc] initWithFrame:CGRectZero];
+    
+    [button setTranslatesAutoresizingMaskIntoConstraints:NO];
+    [button setTitleColor:KDIColorRandomRGB() forState:UIControlStateNormal];
+    [button setTitle:@"Title" forState:UIControlStateNormal];
+    [button setImage:[UIImage imageNamed:@"button_image"] forState:UIControlStateNormal];
+    [button setTitleAlignment:KDIButtonAlignmentLeft|KDIButtonAlignmentCenter];
+    [button setImageAlignment:KDIButtonAlignmentRight|KDIButtonAlignmentCenter];
+    
+    [gradientView addSubview:button];
+    [gradientView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:[subview]-[view]" options:0 metrics:nil views:@{@"view": button, @"subview": badgeView}]];
+    [gradientView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-[view]" options:0 metrics:nil views:@{@"view": button}]];
 }
 
 @end
