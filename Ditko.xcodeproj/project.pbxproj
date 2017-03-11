@@ -137,6 +137,10 @@
 		07DB3D771E7381010044FB50 /* KDILabel.h in Headers */ = {isa = PBXBuildFile; fileRef = 07DB3D741E7381010044FB50 /* KDILabel.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		07DB3D781E7381010044FB50 /* KDILabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 07DB3D751E7381010044FB50 /* KDILabel.m */; };
 		07DB3D791E7381010044FB50 /* KDILabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 07DB3D751E7381010044FB50 /* KDILabel.m */; };
+		07DB3D7C1E7382660044FB50 /* KDITextField.h in Headers */ = {isa = PBXBuildFile; fileRef = 07DB3D7A1E7382660044FB50 /* KDITextField.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		07DB3D7D1E7382660044FB50 /* KDITextField.h in Headers */ = {isa = PBXBuildFile; fileRef = 07DB3D7A1E7382660044FB50 /* KDITextField.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		07DB3D7E1E7382660044FB50 /* KDITextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 07DB3D7B1E7382660044FB50 /* KDITextField.m */; };
+		07DB3D7F1E7382660044FB50 /* KDITextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 07DB3D7B1E7382660044FB50 /* KDITextField.m */; };
 		07E8EB341E733F34001639A2 /* NSURL+KDIExtensions.h in Headers */ = {isa = PBXBuildFile; fileRef = 07E8EB321E733F34001639A2 /* NSURL+KDIExtensions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		07E8EB351E733F34001639A2 /* NSURL+KDIExtensions.h in Headers */ = {isa = PBXBuildFile; fileRef = 07E8EB321E733F34001639A2 /* NSURL+KDIExtensions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		07E8EB361E733F34001639A2 /* NSURL+KDIExtensions.h in Headers */ = {isa = PBXBuildFile; fileRef = 07E8EB321E733F34001639A2 /* NSURL+KDIExtensions.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -366,6 +370,8 @@
 		07DB3D721E737F110044FB50 /* Stanley.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Stanley.framework; path = "../../Library/Developer/Xcode/DerivedData/Ditko-bqbmowdlvnipfjchljeblievobjg/Build/Products/Debug-appletvsimulator/Stanley.framework"; sourceTree = "<group>"; };
 		07DB3D741E7381010044FB50 /* KDILabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KDILabel.h; path = iOS/KDILabel.h; sourceTree = "<group>"; };
 		07DB3D751E7381010044FB50 /* KDILabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KDILabel.m; path = iOS/KDILabel.m; sourceTree = "<group>"; };
+		07DB3D7A1E7382660044FB50 /* KDITextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KDITextField.h; path = iOS/KDITextField.h; sourceTree = "<group>"; };
+		07DB3D7B1E7382660044FB50 /* KDITextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KDITextField.m; path = iOS/KDITextField.m; sourceTree = "<group>"; };
 		07E8EB321E733F34001639A2 /* NSURL+KDIExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURL+KDIExtensions.h"; sourceTree = "<group>"; };
 		07E8EB331E733F34001639A2 /* NSURL+KDIExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURL+KDIExtensions.m"; sourceTree = "<group>"; };
 		07E8EB3C1E733FE3001639A2 /* KDIDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KDIDefines.h; sourceTree = "<group>"; };
@@ -466,6 +472,8 @@
 				0794A8361E73776C00603C99 /* KDIBadgeView.m */,
 				07DB3D741E7381010044FB50 /* KDILabel.h */,
 				07DB3D751E7381010044FB50 /* KDILabel.m */,
+				07DB3D7A1E7382660044FB50 /* KDITextField.h */,
+				07DB3D7B1E7382660044FB50 /* KDITextField.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -727,6 +735,7 @@
 				07E8EB4F1E734729001639A2 /* KDIFunctions.h in Headers */,
 				071B62DE1E70861F00B7B85A /* Ditko.h in Headers */,
 				071B62BE1E70845600B7B85A /* KDIColorMacros.h in Headers */,
+				07DB3D7D1E7382660044FB50 /* KDITextField.h in Headers */,
 				07E8EB441E7341C2001639A2 /* UIBarButtonItem+KDIExtensions.h in Headers */,
 				0794A82F1E735E1200603C99 /* NSParagraphStyle+KDIExtensions.h in Headers */,
 				0794A7FB1E73530400603C99 /* UIBezierPath+KDIExtensions.h in Headers */,
@@ -776,6 +785,7 @@
 				0795E6371E704785004A5CB2 /* Ditko.h in Headers */,
 				071B62691E705EA300B7B85A /* KDIColorMacros.h in Headers */,
 				07E8EB491E73454D001639A2 /* UIDevice+KDIExtensions.h in Headers */,
+				07DB3D7C1E7382660044FB50 /* KDITextField.h in Headers */,
 				0795E6411E70491E004A5CB2 /* UIColor+KDIExtensions.h in Headers */,
 				0794A82D1E735E1200603C99 /* NSParagraphStyle+KDIExtensions.h in Headers */,
 				0794A7FA1E73530400603C99 /* UIBezierPath+KDIExtensions.h in Headers */,
@@ -1142,6 +1152,7 @@
 				0794A83C1E73776C00603C99 /* KDIBadgeView.m in Sources */,
 				0794A8091E7354EF00603C99 /* UIViewController+KDIExtensions.m in Sources */,
 				07E8EB461E7341C2001639A2 /* UIBarButtonItem+KDIExtensions.m in Sources */,
+				07DB3D7F1E7382660044FB50 /* KDITextField.m in Sources */,
 				0794A8331E735E1200603C99 /* NSParagraphStyle+KDIExtensions.m in Sources */,
 				0794A7ED1E734D5300603C99 /* UINavigationController+KDIExtensions.m in Sources */,
 				07DB3D791E7381010044FB50 /* KDILabel.m in Sources */,
@@ -1205,6 +1216,7 @@
 				0794A83A1E73776C00603C99 /* KDIBadgeView.m in Sources */,
 				0794A8081E7354EF00603C99 /* UIViewController+KDIExtensions.m in Sources */,
 				07E8EB4C1E73454D001639A2 /* UIDevice+KDIExtensions.m in Sources */,
+				07DB3D7E1E7382660044FB50 /* KDITextField.m in Sources */,
 				0794A8311E735E1200603C99 /* NSParagraphStyle+KDIExtensions.m in Sources */,
 				0794A7EC1E734D5300603C99 /* UINavigationController+KDIExtensions.m in Sources */,
 				07DB3D781E7381010044FB50 /* KDILabel.m in Sources */,
