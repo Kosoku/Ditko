@@ -146,9 +146,7 @@
 		07DB3D841E7383EC0044FB50 /* KDITextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 07DB3D811E7383EC0044FB50 /* KDITextView.m */; };
 		07DB3D851E7383EC0044FB50 /* KDITextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 07DB3D811E7383EC0044FB50 /* KDITextView.m */; };
 		07DB3D881E73B6600044FB50 /* KDIProgressSlider.h in Headers */ = {isa = PBXBuildFile; fileRef = 07DB3D861E73B6600044FB50 /* KDIProgressSlider.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		07DB3D891E73B6600044FB50 /* KDIProgressSlider.h in Headers */ = {isa = PBXBuildFile; fileRef = 07DB3D861E73B6600044FB50 /* KDIProgressSlider.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		07DB3D8A1E73B6600044FB50 /* KDIProgressSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 07DB3D871E73B6600044FB50 /* KDIProgressSlider.m */; };
-		07DB3D8B1E73B6600044FB50 /* KDIProgressSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 07DB3D871E73B6600044FB50 /* KDIProgressSlider.m */; };
 		07DB3D8E1E73B7BD0044FB50 /* KDIProgressNavigationBar.h in Headers */ = {isa = PBXBuildFile; fileRef = 07DB3D8C1E73B7BD0044FB50 /* KDIProgressNavigationBar.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		07DB3D8F1E73B7BD0044FB50 /* KDIProgressNavigationBar.h in Headers */ = {isa = PBXBuildFile; fileRef = 07DB3D8C1E73B7BD0044FB50 /* KDIProgressNavigationBar.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		07DB3D901E73B7BD0044FB50 /* KDIProgressNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 07DB3D8D1E73B7BD0044FB50 /* KDIProgressNavigationBar.m */; };
@@ -775,7 +773,6 @@
 				0794A82F1E735E1200603C99 /* NSParagraphStyle+KDIExtensions.h in Headers */,
 				0794A7FB1E73530400603C99 /* UIBezierPath+KDIExtensions.h in Headers */,
 				0794A81C1E73584900603C99 /* NSBundle+KDIPrivateExtensions.h in Headers */,
-				07DB3D891E73B6600044FB50 /* KDIProgressSlider.h in Headers */,
 				0794A8391E73776C00603C99 /* KDIBadgeView.h in Headers */,
 				071B62BF1E70845D00B7B85A /* UIColor+KDIExtensions.h in Headers */,
 			);
@@ -1181,7 +1178,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				07DB3D8B1E73B6600044FB50 /* KDIProgressSlider.m in Sources */,
 				0794A7FE1E73530400603C99 /* UIBezierPath+KDIExtensions.m in Sources */,
 				072628161E70BCCF00511F80 /* KDIView.m in Sources */,
 				07DB3D911E73B7BD0044FB50 /* KDIProgressNavigationBar.m in Sources */,
