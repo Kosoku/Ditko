@@ -16,25 +16,19 @@
 #import "KDIView.h"
 
 @interface KDIView ()
-+ (CGFloat)_defaultBorderWidth;
 #if (TARGET_OS_IPHONE)
 @property (strong,nonatomic) UIView *topBorderView, *leftBorderView, *bottomBorderView, *rightBorderView;
-
-+ (UIColor *)_defaultBorderColor;
-#else
-+ (NSColor *)_defaultBorderColor;
 #endif
 
 - (void)_KDIViewInit;
+
++ (CGFloat)_defaultBorderWidth;
++ (KDIColor *)_defaultBorderColor;
 @end
 
 @implementation KDIView
 
-#if (TARGET_OS_IPHONE)
-- (instancetype)initWithFrame:(CGRect)frame {
-#else
-- (instancetype)initWithFrame:(NSRect)frame {
-#endif
+- (instancetype)initWithFrame:(KDIRect)frame {
     if (!(self = [super initWithFrame:frame]))
         return nil;
     
@@ -211,26 +205,18 @@
     [self setNeedsDisplay:YES];
 #endif
 }
-    
-#if (TARGET_OS_IPHONE)
-- (void)setBorderEdgeInsets:(UIEdgeInsets)borderEdgeInsets {
-#else
-    - (void)setBorderEdgeInsets:(NSEdgeInsets)borderEdgeInsets {
-#endif
-        _borderEdgeInsets = borderEdgeInsets;
+
+- (void)setBorderEdgeInsets:(KDIEdgeInsets)borderEdgeInsets {
+    _borderEdgeInsets = borderEdgeInsets;
         
 #if (TARGET_OS_IPHONE)
-        [self setNeedsLayout];
+    [self setNeedsLayout];
 #else
-        [self setNeedsDisplay:YES];
+    [self setNeedsDisplay:YES];
 #endif
-    }
-        
-#if (TARGET_OS_IPHONE)
-- (void)setBorderColor:(UIColor *)borderColor {
-#else
-- (void)setBorderColor:(NSColor *)borderColor {
-#endif
+}
+
+- (void)setBorderColor:(KDIColor *)borderColor {
     _borderColor = borderColor ?: [self.class _defaultBorderColor];
     
 #if (TARGET_OS_IPHONE)
@@ -243,7 +229,7 @@
 #endif
 }
     
-#if (!TARGET_OS_IPHONE)
+#if (TARGET_OS_OSX)
 - (void)setBackgroundColor:(NSColor *)backgroundColor {
     _backgroundColor = backgroundColor;
     
@@ -254,15 +240,9 @@
 + (CGFloat)_defaultBorderWidth; {
     return 1.0;
 }
-#if (TARGET_OS_IPHONE)
-+ (UIColor *)_defaultBorderColor; {
-    return [UIColor blackColor];
++ (KDIColor *)_defaultBorderColor; {
+    return [KDIColor blackColor];
 }
-#else
-+ (NSColor *)_defaultBorderColor; {
-    return [NSColor blackColor];
-}
-#endif
     
 - (void)_KDIViewInit; {
     _borderWidth = [self.class _defaultBorderWidth];

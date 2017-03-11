@@ -23,11 +23,19 @@
 
 #define KDIColor UIColor
 #define KDIImage UIImage
+#define KDIRect CGRect
+#define KDISize CGSize
+#define KDIPoint CGPoint
+#define KDIEdgeInsets UIEdgeInsets
 #else
 #import <AppKit/AppKit.h>
 
 #define KDIColor NSColor
 #define KDIImage NSImage
+#define KDIRect NSRect
+#define KDISize NSSize
+#define KDIPoint NSPoint
+#define KDIEdgeInsets NSEdgeInsets
 #endif
 
 #endif
