@@ -15,6 +15,11 @@
 
 #import "KDIDefines.h"
 
+NS_ASSUME_NONNULL_BEGIN
+
+/**
+ KDIBadgeView is a UIView or NSView subclass that represents a badge value, like those seen in the Mail application.
+ */
 #if (TARGET_OS_IPHONE)
 @interface KDIBadgeView : UIView
 #else
@@ -121,3 +126,5 @@
 #endif
 
 @end
+
+NS_ASSUME_NONNULL_END
