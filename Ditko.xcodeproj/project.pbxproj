@@ -141,6 +141,10 @@
 		07DB3D7D1E7382660044FB50 /* KDITextField.h in Headers */ = {isa = PBXBuildFile; fileRef = 07DB3D7A1E7382660044FB50 /* KDITextField.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		07DB3D7E1E7382660044FB50 /* KDITextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 07DB3D7B1E7382660044FB50 /* KDITextField.m */; };
 		07DB3D7F1E7382660044FB50 /* KDITextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 07DB3D7B1E7382660044FB50 /* KDITextField.m */; };
+		07DB3D821E7383EC0044FB50 /* KDITextView.h in Headers */ = {isa = PBXBuildFile; fileRef = 07DB3D801E7383EC0044FB50 /* KDITextView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		07DB3D831E7383EC0044FB50 /* KDITextView.h in Headers */ = {isa = PBXBuildFile; fileRef = 07DB3D801E7383EC0044FB50 /* KDITextView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		07DB3D841E7383EC0044FB50 /* KDITextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 07DB3D811E7383EC0044FB50 /* KDITextView.m */; };
+		07DB3D851E7383EC0044FB50 /* KDITextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 07DB3D811E7383EC0044FB50 /* KDITextView.m */; };
 		07E8EB341E733F34001639A2 /* NSURL+KDIExtensions.h in Headers */ = {isa = PBXBuildFile; fileRef = 07E8EB321E733F34001639A2 /* NSURL+KDIExtensions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		07E8EB351E733F34001639A2 /* NSURL+KDIExtensions.h in Headers */ = {isa = PBXBuildFile; fileRef = 07E8EB321E733F34001639A2 /* NSURL+KDIExtensions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		07E8EB361E733F34001639A2 /* NSURL+KDIExtensions.h in Headers */ = {isa = PBXBuildFile; fileRef = 07E8EB321E733F34001639A2 /* NSURL+KDIExtensions.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -372,6 +376,8 @@
 		07DB3D751E7381010044FB50 /* KDILabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KDILabel.m; path = iOS/KDILabel.m; sourceTree = "<group>"; };
 		07DB3D7A1E7382660044FB50 /* KDITextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KDITextField.h; path = iOS/KDITextField.h; sourceTree = "<group>"; };
 		07DB3D7B1E7382660044FB50 /* KDITextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KDITextField.m; path = iOS/KDITextField.m; sourceTree = "<group>"; };
+		07DB3D801E7383EC0044FB50 /* KDITextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KDITextView.h; path = iOS/KDITextView.h; sourceTree = "<group>"; };
+		07DB3D811E7383EC0044FB50 /* KDITextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KDITextView.m; path = iOS/KDITextView.m; sourceTree = "<group>"; };
 		07E8EB321E733F34001639A2 /* NSURL+KDIExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURL+KDIExtensions.h"; sourceTree = "<group>"; };
 		07E8EB331E733F34001639A2 /* NSURL+KDIExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURL+KDIExtensions.m"; sourceTree = "<group>"; };
 		07E8EB3C1E733FE3001639A2 /* KDIDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KDIDefines.h; sourceTree = "<group>"; };
@@ -474,6 +480,8 @@
 				07DB3D751E7381010044FB50 /* KDILabel.m */,
 				07DB3D7A1E7382660044FB50 /* KDITextField.h */,
 				07DB3D7B1E7382660044FB50 /* KDITextField.m */,
+				07DB3D801E7383EC0044FB50 /* KDITextView.h */,
+				07DB3D811E7383EC0044FB50 /* KDITextView.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -730,6 +738,7 @@
 				071B62DF1E70864300B7B85A /* KDIGradientView.h in Headers */,
 				072628131E70BCCF00511F80 /* KDIView.h in Headers */,
 				07E8EB3F1E733FE3001639A2 /* KDIDefines.h in Headers */,
+				07DB3D831E7383EC0044FB50 /* KDITextView.h in Headers */,
 				0794A8071E7354EF00603C99 /* UIViewController+KDIExtensions.h in Headers */,
 				0794A7EB1E734D5300603C99 /* UINavigationController+KDIExtensions.h in Headers */,
 				07E8EB4F1E734729001639A2 /* KDIFunctions.h in Headers */,
@@ -780,6 +789,7 @@
 				07E8EB431E7341C2001639A2 /* UIBarButtonItem+KDIExtensions.h in Headers */,
 				071B62631E705D3500B7B85A /* KDIFunctions.h in Headers */,
 				071B626E1E70635D00B7B85A /* KDIGradientView.h in Headers */,
+				07DB3D821E7383EC0044FB50 /* KDITextView.h in Headers */,
 				0794A8061E7354EF00603C99 /* UIViewController+KDIExtensions.h in Headers */,
 				0794A7EA1E734D5300603C99 /* UINavigationController+KDIExtensions.h in Headers */,
 				0795E6371E704785004A5CB2 /* Ditko.h in Headers */,
@@ -1143,6 +1153,7 @@
 			files = (
 				0794A7FE1E73530400603C99 /* UIBezierPath+KDIExtensions.m in Sources */,
 				072628161E70BCCF00511F80 /* KDIView.m in Sources */,
+				07DB3D851E7383EC0044FB50 /* KDITextView.m in Sources */,
 				0794A7F31E73509100603C99 /* UIView+KDIExtensions.m in Sources */,
 				0794A8171E73574A00603C99 /* UIAlertController+KDIExtensions.m in Sources */,
 				07E8EB3A1E733F34001639A2 /* NSURL+KDIExtensions.m in Sources */,
@@ -1207,6 +1218,7 @@
 			files = (
 				0794A7FD1E73530400603C99 /* UIBezierPath+KDIExtensions.m in Sources */,
 				071B62701E70635D00B7B85A /* KDIGradientView.m in Sources */,
+				07DB3D841E7383EC0044FB50 /* KDITextView.m in Sources */,
 				0794A7F21E73509100603C99 /* UIView+KDIExtensions.m in Sources */,
 				0794A8161E73574A00603C99 /* UIAlertController+KDIExtensions.m in Sources */,
 				07E8EB381E733F34001639A2 /* NSURL+KDIExtensions.m in Sources */,

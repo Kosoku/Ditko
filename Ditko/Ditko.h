@@ -62,4 +62,5 @@ FOUNDATION_EXPORT const unsigned char DitkoVersionString[];
 #if (TARGET_OS_IOS || TARGET_OS_TV)
 #import <Ditko/KDILabel.h>
 #import <Ditko/KDITextField.h>
+#import <Ditko/KDITextView.h>
 #endif
