@@ -18,11 +18,19 @@
 #import <Ditko/Ditko.h>
 #import <Loki/Loki.h>
 
-@interface ViewController ()
+static NSArray<NSArray<NSString *> *> *kPickerViewButtonComponentsAndRows;
+
+@interface ViewController () <KDIPickerViewButtonDataSource,KDIPickerViewButtonDelegate>
 
 @end
 
 @implementation ViewController
+
++ (void)initialize {
+    if (self == [ViewController class]) {
+        kPickerViewButtonComponentsAndRows = @[@[@"Dog",@"Cat",@"Fish"],@[@"Red",@"Green",@"Blue"]];
+    }
+}
 
 - (void)loadView {
     KDIView *view = [[KDIView alloc] initWithFrame:CGRectZero];
@@ -72,6 +80,34 @@
     [gradientView addSubview:button];
     [gradientView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:[subview]-[view]" options:0 metrics:nil views:@{@"view": button, @"subview": badgeView}]];
     [gradientView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-[view]" options:0 metrics:nil views:@{@"view": button}]];
+    
+    KDIPickerViewButton *pickerViewButton = [KDIPickerViewButton buttonWithType:UIButtonTypeSystem];
+    
+    [pickerViewButton setTranslatesAutoresizingMaskIntoConstraints:NO];
+    [pickerViewButton setBackgroundColor:[UIColor whiteColor]];
+    [pickerViewButton setContentEdgeInsets:UIEdgeInsetsMake(8, 8, 8, 8)];
+    [pickerViewButton setImageEdgeInsets:UIEdgeInsetsMake(0, 8, 0, 0)];
+    [pickerViewButton setImage:[UIImage imageNamed:@"snake"] forState:UIControlStateNormal];
+    [pickerViewButton setTitleAlignment:KDIButtonAlignmentRight|KDIButtonAlignmentCenter];
+    [pickerViewButton setImageAlignment:KDIButtonAlignmentLeft|KDIButtonAlignmentCenter];
+    [pickerViewButton setStyle:KDIButtonStyleRounded];
+    [pickerViewButton setDataSource:self];
+    [pickerViewButton setDelegate:self];
+    [pickerViewButton setSelectedComponentsJoinString:@", "];
+    
+    [gradientView addSubview:pickerViewButton];
+    [gradientView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:[subview]-[view]" options:0 metrics:nil views:@{@"view": pickerViewButton, @"subview": button}]];
+    [gradientView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-[view]" options:0 metrics:nil views:@{@"view": pickerViewButton}]];
+}
+
+- (NSInteger)numberOfComponentsInPickerViewButton:(KDIPickerViewButton *)pickerViewButton {
+    return kPickerViewButtonComponentsAndRows.count;
+}
+- (NSInteger)pickerViewButton:(KDIPickerViewButton *)pickerViewButton numberOfRowsInComponent:(NSInteger)component {
+    return kPickerViewButtonComponentsAndRows[component].count;
+}
+- (NSString *)pickerViewButton:(KDIPickerViewButton *)pickerViewButton titleForRow:(NSInteger)row forComponent:(NSInteger)component {
+    return kPickerViewButtonComponentsAndRows[component][row];
 }
 
 @end

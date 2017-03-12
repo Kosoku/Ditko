@@ -57,6 +57,12 @@
 		073542AA1E7057A000177905 /* NSColor-UIColor+KDIExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0795E6401E70491E004A5CB2 /* NSColor-UIColor+KDIExtensions.m */; };
 		0767306F1E75C2C100030F0C /* Loki.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0767306E1E75C2C100030F0C /* Loki.framework */; };
 		076730701E75C2C100030F0C /* Loki.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0767306E1E75C2C100030F0C /* Loki.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		076730731E75C6C700030F0C /* KDIPickerViewButton.h in Headers */ = {isa = PBXBuildFile; fileRef = 076730711E75C6C700030F0C /* KDIPickerViewButton.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		076730741E75C6C700030F0C /* KDIPickerViewButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 076730721E75C6C700030F0C /* KDIPickerViewButton.m */; };
+		0767307B1E75DF4900030F0C /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 076730791E75DF4900030F0C /* Localizable.strings */; };
+		0767307C1E75DF4900030F0C /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 076730791E75DF4900030F0C /* Localizable.strings */; };
+		0767307D1E75DF4900030F0C /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 076730791E75DF4900030F0C /* Localizable.strings */; };
+		0767307E1E75DF4900030F0C /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 076730791E75DF4900030F0C /* Localizable.strings */; };
 		0794A7EA1E734D5300603C99 /* UINavigationController+KDIExtensions.h in Headers */ = {isa = PBXBuildFile; fileRef = 0794A7E81E734D5300603C99 /* UINavigationController+KDIExtensions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0794A7EB1E734D5300603C99 /* UINavigationController+KDIExtensions.h in Headers */ = {isa = PBXBuildFile; fileRef = 0794A7E81E734D5300603C99 /* UINavigationController+KDIExtensions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0794A7EC1E734D5300603C99 /* UINavigationController+KDIExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0794A7E91E734D5300603C99 /* UINavigationController+KDIExtensions.m */; };
@@ -340,6 +346,11 @@
 		073542A01E7051A700177905 /* Stanley.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Stanley.framework; path = Vendor/Stanley/build/Debug/Stanley.framework; sourceTree = "<group>"; };
 		073542A31E7051BA00177905 /* Stanley.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Stanley.framework; path = Vendor/Stanley/build/Debug/Stanley.framework; sourceTree = "<group>"; };
 		0767306E1E75C2C100030F0C /* Loki.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Loki.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		076730711E75C6C700030F0C /* KDIPickerViewButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KDIPickerViewButton.h; path = iOS/KDIPickerViewButton.h; sourceTree = "<group>"; };
+		076730721E75C6C700030F0C /* KDIPickerViewButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KDIPickerViewButton.m; path = iOS/KDIPickerViewButton.m; sourceTree = "<group>"; };
+		0767307A1E75DF4900030F0C /* en */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		0767307F1E75DFB100030F0C /* es */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
+		076730801E75DFBA00030F0C /* ja */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
 		0794A7E81E734D5300603C99 /* UINavigationController+KDIExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UINavigationController+KDIExtensions.h"; path = "iOS/UINavigationController+KDIExtensions.h"; sourceTree = "<group>"; };
 		0794A7E91E734D5300603C99 /* UINavigationController+KDIExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UINavigationController+KDIExtensions.m"; path = "iOS/UINavigationController+KDIExtensions.m"; sourceTree = "<group>"; };
 		0794A7EE1E73509100603C99 /* UIView+KDIExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIView+KDIExtensions.h"; path = "iOS/UIView+KDIExtensions.h"; sourceTree = "<group>"; };
@@ -509,6 +520,8 @@
 				07DB3D8D1E73B7BD0044FB50 /* KDIProgressNavigationBar.m */,
 				07DB3D921E73BA470044FB50 /* KDIButton.h */,
 				07DB3D931E73BA470044FB50 /* KDIButton.m */,
+				076730711E75C6C700030F0C /* KDIPickerViewButton.h */,
+				076730721E75C6C700030F0C /* KDIPickerViewButton.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -679,6 +692,7 @@
 				071B62BD1E70842800B7B85A /* Ditko-tvOS-Info.plist */,
 				071B627F1E707EF700B7B85A /* Ditko-watchOS-Info.plist */,
 				073542831E704E0400177905 /* Ditko-Info.h */,
+				076730791E75DF4900030F0C /* Localizable.strings */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -819,6 +833,7 @@
 				07DB3D941E73BA470044FB50 /* KDIButton.h in Headers */,
 				072628111E70BCCF00511F80 /* KDIView.h in Headers */,
 				07E8EB431E7341C2001639A2 /* UIBarButtonItem+KDIExtensions.h in Headers */,
+				076730731E75C6C700030F0C /* KDIPickerViewButton.h in Headers */,
 				071B62631E705D3500B7B85A /* KDIFunctions.h in Headers */,
 				071B626E1E70635D00B7B85A /* KDIGradientView.h in Headers */,
 				07DB3D821E7383EC0044FB50 /* KDITextView.h in Headers */,
@@ -845,6 +860,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 071B627C1E707E6F00B7B85A /* Build configuration list for PBXNativeTarget "Ditko-watchOS" */;
 			buildPhases = (
+				076730781E75DED000030F0C /* genstrings */,
 				071B62721E707E6F00B7B85A /* Sources */,
 				071B62731E707E6F00B7B85A /* Frameworks */,
 				071B62741E707E6F00B7B85A /* Headers */,
@@ -898,6 +914,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 071B62BA1E70835C00B7B85A /* Build configuration list for PBXNativeTarget "Ditko-tvOS" */;
 			buildPhases = (
+				076730771E75DEBC00030F0C /* genstrings */,
 				071B62B01E70835C00B7B85A /* Sources */,
 				071B62B11E70835C00B7B85A /* Frameworks */,
 				071B62B21E70835C00B7B85A /* Headers */,
@@ -935,6 +952,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 073542811E704D8F00177905 /* Build configuration list for PBXNativeTarget "Ditko-macOS" */;
 			buildPhases = (
+				076730761E75DEAB00030F0C /* genstrings */,
 				073542751E704D8F00177905 /* Sources */,
 				073542761E704D8F00177905 /* Frameworks */,
 				073542771E704D8F00177905 /* Headers */,
@@ -972,6 +990,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0795E63A1E704785004A5CB2 /* Build configuration list for PBXNativeTarget "Ditko-iOS" */;
 			buildPhases = (
+				076730751E75DE9300030F0C /* genstrings */,
 				0795E62D1E704785004A5CB2 /* Sources */,
 				0795E62E1E704785004A5CB2 /* Frameworks */,
 				0795E62F1E704785004A5CB2 /* Headers */,
@@ -1062,6 +1081,8 @@
 			knownRegions = (
 				en,
 				Base,
+				es,
+				ja,
 			);
 			mainGroup = 0795E6281E704784004A5CB2;
 			productRefGroup = 0795E6331E704785004A5CB2 /* Products */;
@@ -1086,6 +1107,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0767307E1E75DF4900030F0C /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1110,6 +1132,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0767307D1E75DF4900030F0C /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1126,6 +1149,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0767307C1E75DF4900030F0C /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1142,6 +1166,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0767307B1E75DF4900030F0C /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1156,6 +1181,65 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		076730751E75DE9300030F0C /* genstrings */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = genstrings;
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = scripts/./genstrings.sh;
+		};
+		076730761E75DEAB00030F0C /* genstrings */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = genstrings;
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = scripts/./genstrings.sh;
+		};
+		076730771E75DEBC00030F0C /* genstrings */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = genstrings;
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = scripts/./genstrings.sh;
+		};
+		076730781E75DED000030F0C /* genstrings */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = genstrings;
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = scripts/./genstrings.sh;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		071B62721E707E6F00B7B85A /* Sources */ = {
@@ -1272,6 +1356,7 @@
 				07DB3D781E7381010044FB50 /* KDILabel.m in Sources */,
 				0794A81E1E73584900603C99 /* NSBundle+KDIPrivateExtensions.m in Sources */,
 				07E8EB451E7341C2001639A2 /* UIBarButtonItem+KDIExtensions.m in Sources */,
+				076730741E75C6C700030F0C /* KDIPickerViewButton.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1343,6 +1428,16 @@
 				0735429A1E70515400177905 /* Base */,
 			);
 			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		076730791E75DF4900030F0C /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0767307A1E75DF4900030F0C /* en */,
+				0767307F1E75DFB100030F0C /* es */,
+				076730801E75DFBA00030F0C /* ja */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 		0795E6521E704A56004A5CB2 /* Main.storyboard */ = {
@@ -1654,6 +1749,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -1705,6 +1801,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";

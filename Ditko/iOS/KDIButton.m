@@ -50,7 +50,9 @@ static CGFloat const kTitleBrightnessAdjustment = 0.5;
     [super setAttributedTitle:title forState:state];
     
     if (state == UIControlStateNormal) {
-        if (title.length > 0) {
+        if (title.length > 0 &&
+            [title attribute:NSForegroundColorAttributeName atIndex:0 effectiveRange:NULL] != nil) {
+            
             UIColor *color = [title attribute:NSForegroundColorAttributeName atIndex:0 effectiveRange:NULL];
             NSMutableAttributedString *temp = [title mutableCopy];
             
