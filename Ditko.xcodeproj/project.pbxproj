@@ -55,6 +55,8 @@
 		0735429B1E70515400177905 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 073542991E70515400177905 /* Main.storyboard */; };
 		073542A51E7053F100177905 /* Ditko.h in Headers */ = {isa = PBXBuildFile; fileRef = 0795E6351E704785004A5CB2 /* Ditko.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		073542AA1E7057A000177905 /* NSColor-UIColor+KDIExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0795E6401E70491E004A5CB2 /* NSColor-UIColor+KDIExtensions.m */; };
+		0767306F1E75C2C100030F0C /* Loki.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0767306E1E75C2C100030F0C /* Loki.framework */; };
+		076730701E75C2C100030F0C /* Loki.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0767306E1E75C2C100030F0C /* Loki.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		0794A7EA1E734D5300603C99 /* UINavigationController+KDIExtensions.h in Headers */ = {isa = PBXBuildFile; fileRef = 0794A7E81E734D5300603C99 /* UINavigationController+KDIExtensions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0794A7EB1E734D5300603C99 /* UINavigationController+KDIExtensions.h in Headers */ = {isa = PBXBuildFile; fileRef = 0794A7E81E734D5300603C99 /* UINavigationController+KDIExtensions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0794A7EC1E734D5300603C99 /* UINavigationController+KDIExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0794A7E91E734D5300603C99 /* UINavigationController+KDIExtensions.m */; };
@@ -267,6 +269,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				076730701E75C2C100030F0C /* Loki.framework in Embed Frameworks */,
 				07DB3D6A1E737E800044FB50 /* Ditko.framework in Embed Frameworks */,
 				07DB3D671E737E7A0044FB50 /* Stanley.framework in Embed Frameworks */,
 			);
@@ -336,6 +339,7 @@
 		0735429C1E70515400177905 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		073542A01E7051A700177905 /* Stanley.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Stanley.framework; path = Vendor/Stanley/build/Debug/Stanley.framework; sourceTree = "<group>"; };
 		073542A31E7051BA00177905 /* Stanley.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Stanley.framework; path = Vendor/Stanley/build/Debug/Stanley.framework; sourceTree = "<group>"; };
+		0767306E1E75C2C100030F0C /* Loki.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Loki.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0794A7E81E734D5300603C99 /* UINavigationController+KDIExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UINavigationController+KDIExtensions.h"; path = "iOS/UINavigationController+KDIExtensions.h"; sourceTree = "<group>"; };
 		0794A7E91E734D5300603C99 /* UINavigationController+KDIExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UINavigationController+KDIExtensions.m"; path = "iOS/UINavigationController+KDIExtensions.m"; sourceTree = "<group>"; };
 		0794A7EE1E73509100603C99 /* UIView+KDIExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIView+KDIExtensions.h"; path = "iOS/UIView+KDIExtensions.h"; sourceTree = "<group>"; };
@@ -466,6 +470,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0767306F1E75C2C100030F0C /* Loki.framework in Frameworks */,
 				07DB3D691E737E800044FB50 /* Ditko.framework in Frameworks */,
 				07DB3D661E737E7A0044FB50 /* Stanley.framework in Frameworks */,
 			);
@@ -716,6 +721,7 @@
 		0795E65F1E704AE3004A5CB2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0767306E1E75C2C100030F0C /* Loki.framework */,
 				07DB3D721E737F110044FB50 /* Stanley.framework */,
 				07DB3D6C1E737EDF0044FB50 /* Stanley.framework */,
 				07DB3D641E737DD20044FB50 /* Stanley.framework */,

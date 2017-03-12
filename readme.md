@@ -6,3 +6,5 @@
 [![License](http://img.shields.io/cocoapods/l/Ditko.svg)](https://github.com/Kosoku/Ditko/blob/master/license.txt)
 
 Ditko is an iOS/macOS/tvOS/watchOS framework that extends the `AppKit`, `UIKit`, and `WatchKit` frameworks.
+
+Icons by [Glyphish](http://www.glyphish.com/).

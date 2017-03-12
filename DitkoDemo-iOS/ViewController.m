@@ -16,6 +16,7 @@
 #import "ViewController.h"
 
 #import <Ditko/Ditko.h>
+#import <Loki/Loki.h>
 
 @interface ViewController ()
 
@@ -58,11 +59,15 @@
     KDIButton *button = [[KDIButton alloc] initWithFrame:CGRectZero];
     
     [button setTranslatesAutoresizingMaskIntoConstraints:NO];
+    [button setBackgroundColor:KDIColorRandomRGB()];
+    [button setContentEdgeInsets:UIEdgeInsetsMake(8, 8, 8, 8)];
+    [button setImageEdgeInsets:UIEdgeInsetsMake(0, 8, 0, 0)];
     [button setTitleColor:KDIColorRandomRGB() forState:UIControlStateNormal];
     [button setTitle:@"Title" forState:UIControlStateNormal];
-    [button setImage:[UIImage imageNamed:@"button_image"] forState:UIControlStateNormal];
+    [button setImage:[[UIImage imageNamed:@"globe"] KLO_imageByRenderingWithColor:KDIColorRandomRGB()] forState:UIControlStateNormal];
     [button setTitleAlignment:KDIButtonAlignmentLeft|KDIButtonAlignmentCenter];
     [button setImageAlignment:KDIButtonAlignmentRight|KDIButtonAlignmentCenter];
+    [button setStyle:KDIButtonStyleRounded];
     
     [gradientView addSubview:button];
     [gradientView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:[subview]-[view]" options:0 metrics:nil views:@{@"view": button, @"subview": badgeView}]];
