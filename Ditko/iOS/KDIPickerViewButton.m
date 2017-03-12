@@ -95,6 +95,8 @@
     _dataSource = dataSource;
     
     if (_dataSource != nil) {
+        NSParameterAssert([_dataSource respondsToSelector:@selector(pickerViewButton:titleForRow:forComponent:)] || [_dataSource respondsToSelector:@selector(pickerViewButton:attributedTitleForRow:forComponent:)]);
+        
         [self reloadData];
     }
 }
