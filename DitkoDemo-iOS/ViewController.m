@@ -21,7 +21,7 @@
 static NSArray<NSArray<NSString *> *> *kPickerViewButtonComponentsAndRows;
 
 @interface ViewController () <KDIPickerViewButtonDataSource,KDIPickerViewButtonDelegate>
-
+@property (copy,nonatomic) NSArray<UIResponder *> *firstResponderControls;
 @end
 
 @implementation ViewController
@@ -30,6 +30,10 @@ static NSArray<NSArray<NSString *> *> *kPickerViewButtonComponentsAndRows;
     if (self == [ViewController class]) {
         kPickerViewButtonComponentsAndRows = @[@[@"Dog",@"Cat",@"Fish"],@[@"Red",@"Green",@"Blue"]];
     }
+}
+
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (void)loadView {
@@ -113,6 +117,11 @@ static NSArray<NSArray<NSString *> *> *kPickerViewButtonComponentsAndRows;
     [gradientView addSubview:datePickerButton];
     [gradientView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[view]" options:0 metrics:nil views:@{@"view": datePickerButton}]];
     [gradientView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[subview]-[view]" options:0 metrics:nil views:@{@"view": datePickerButton, @"subview": button}]];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(_nextPreviousNotification:) name:KDINextPreviousInputAccessoryViewNotificationNext object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(_nextPreviousNotification:) name:KDINextPreviousInputAccessoryViewNotificationPrevious object:nil];
+    
+    [self setFirstResponderControls:@[pickerViewButton,datePickerButton]];
 }
 
 - (NSInteger)numberOfComponentsInPickerViewButton:(KDIPickerViewButton *)pickerViewButton {
@@ -123,6 +132,32 @@ static NSArray<NSArray<NSString *> *> *kPickerViewButtonComponentsAndRows;
 }
 - (NSString *)pickerViewButton:(KDIPickerViewButton *)pickerViewButton titleForRow:(NSInteger)row forComponent:(NSInteger)component {
     return kPickerViewButtonComponentsAndRows[component][row];
+}
+
+- (void)_nextPreviousNotification:(NSNotification *)note {
+    KDINextPreviousInputAccessoryView *inputAccessoryView = note.object;
+    
+    if (![self.firstResponderControls containsObject:inputAccessoryView.responder]) {
+        return;
+    }
+    
+    NSInteger index = [self.firstResponderControls indexOfObject:inputAccessoryView.responder];
+    
+    if ([note.name isEqualToString:KDINextPreviousInputAccessoryViewNotificationNext]) {
+        index++;
+    }
+    else {
+        index--;
+    }
+    
+    if (index < 0) {
+        index = self.firstResponderControls.count - 1;
+    }
+    else if (index == self.firstResponderControls.count) {
+        index = 0;
+    }
+    
+    [self.firstResponderControls[index] becomeFirstResponder];
 }
 
 @end

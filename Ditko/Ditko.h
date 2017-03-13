@@ -70,4 +70,5 @@ FOUNDATION_EXPORT const unsigned char DitkoVersionString[];
 #import <Ditko/KDIProgressSlider.h>
 #import <Ditko/KDIPickerViewButton.h>
 #import <Ditko/KDIDatePickerButton.h>
+#import <Ditko/KDINextPreviousInputAccessoryView.h>
 #endif
