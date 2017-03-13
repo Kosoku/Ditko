@@ -63,6 +63,8 @@
 		0767307C1E75DF4900030F0C /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 076730791E75DF4900030F0C /* Localizable.strings */; };
 		0767307D1E75DF4900030F0C /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 076730791E75DF4900030F0C /* Localizable.strings */; };
 		0767307E1E75DF4900030F0C /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 076730791E75DF4900030F0C /* Localizable.strings */; };
+		076730831E75F6FE00030F0C /* KDIDatePickerButton.h in Headers */ = {isa = PBXBuildFile; fileRef = 076730811E75F6FE00030F0C /* KDIDatePickerButton.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		076730841E75F6FE00030F0C /* KDIDatePickerButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 076730821E75F6FE00030F0C /* KDIDatePickerButton.m */; };
 		0794A7EA1E734D5300603C99 /* UINavigationController+KDIExtensions.h in Headers */ = {isa = PBXBuildFile; fileRef = 0794A7E81E734D5300603C99 /* UINavigationController+KDIExtensions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0794A7EB1E734D5300603C99 /* UINavigationController+KDIExtensions.h in Headers */ = {isa = PBXBuildFile; fileRef = 0794A7E81E734D5300603C99 /* UINavigationController+KDIExtensions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0794A7EC1E734D5300603C99 /* UINavigationController+KDIExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0794A7E91E734D5300603C99 /* UINavigationController+KDIExtensions.m */; };
@@ -351,6 +353,8 @@
 		0767307A1E75DF4900030F0C /* en */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		0767307F1E75DFB100030F0C /* es */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
 		076730801E75DFBA00030F0C /* ja */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
+		076730811E75F6FE00030F0C /* KDIDatePickerButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KDIDatePickerButton.h; path = iOS/KDIDatePickerButton.h; sourceTree = "<group>"; };
+		076730821E75F6FE00030F0C /* KDIDatePickerButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KDIDatePickerButton.m; path = iOS/KDIDatePickerButton.m; sourceTree = "<group>"; };
 		0794A7E81E734D5300603C99 /* UINavigationController+KDIExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UINavigationController+KDIExtensions.h"; path = "iOS/UINavigationController+KDIExtensions.h"; sourceTree = "<group>"; };
 		0794A7E91E734D5300603C99 /* UINavigationController+KDIExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UINavigationController+KDIExtensions.m"; path = "iOS/UINavigationController+KDIExtensions.m"; sourceTree = "<group>"; };
 		0794A7EE1E73509100603C99 /* UIView+KDIExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIView+KDIExtensions.h"; path = "iOS/UIView+KDIExtensions.h"; sourceTree = "<group>"; };
@@ -522,6 +526,8 @@
 				07DB3D931E73BA470044FB50 /* KDIButton.m */,
 				076730711E75C6C700030F0C /* KDIPickerViewButton.h */,
 				076730721E75C6C700030F0C /* KDIPickerViewButton.m */,
+				076730811E75F6FE00030F0C /* KDIDatePickerButton.h */,
+				076730821E75F6FE00030F0C /* KDIDatePickerButton.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -838,6 +844,7 @@
 				071B626E1E70635D00B7B85A /* KDIGradientView.h in Headers */,
 				07DB3D821E7383EC0044FB50 /* KDITextView.h in Headers */,
 				0794A8061E7354EF00603C99 /* UIViewController+KDIExtensions.h in Headers */,
+				076730831E75F6FE00030F0C /* KDIDatePickerButton.h in Headers */,
 				0794A7EA1E734D5300603C99 /* UINavigationController+KDIExtensions.h in Headers */,
 				0795E6371E704785004A5CB2 /* Ditko.h in Headers */,
 				071B62691E705EA300B7B85A /* KDIColorMacros.h in Headers */,
@@ -1337,6 +1344,7 @@
 			files = (
 				07DB3D8A1E73B6600044FB50 /* KDIProgressSlider.m in Sources */,
 				0794A7FD1E73530400603C99 /* UIBezierPath+KDIExtensions.m in Sources */,
+				076730841E75F6FE00030F0C /* KDIDatePickerButton.m in Sources */,
 				071B62701E70635D00B7B85A /* KDIGradientView.m in Sources */,
 				07DB3D901E73B7BD0044FB50 /* KDIProgressNavigationBar.m in Sources */,
 				07DB3D841E7383EC0044FB50 /* KDITextView.m in Sources */,

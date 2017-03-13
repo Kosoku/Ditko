@@ -86,7 +86,7 @@ static NSArray<NSArray<NSString *> *> *kPickerViewButtonComponentsAndRows;
     [pickerViewButton setTranslatesAutoresizingMaskIntoConstraints:NO];
     [pickerViewButton setBackgroundColor:[UIColor whiteColor]];
     [pickerViewButton setContentEdgeInsets:UIEdgeInsetsMake(8, 8, 8, 8)];
-    [pickerViewButton setImageEdgeInsets:UIEdgeInsetsMake(0, 8, 0, 0)];
+    [pickerViewButton setTitleEdgeInsets:UIEdgeInsetsMake(0, 8, 0, 0)];
     [pickerViewButton setImage:[UIImage imageNamed:@"snake"] forState:UIControlStateNormal];
     [pickerViewButton setTitleAlignment:KDIButtonAlignmentRight|KDIButtonAlignmentCenter];
     [pickerViewButton setImageAlignment:KDIButtonAlignmentLeft|KDIButtonAlignmentCenter];
@@ -98,6 +98,21 @@ static NSArray<NSArray<NSString *> *> *kPickerViewButtonComponentsAndRows;
     [gradientView addSubview:pickerViewButton];
     [gradientView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:[subview]-[view]" options:0 metrics:nil views:@{@"view": pickerViewButton, @"subview": button}]];
     [gradientView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-[view]" options:0 metrics:nil views:@{@"view": pickerViewButton}]];
+    
+    KDIDatePickerButton *datePickerButton = [KDIDatePickerButton buttonWithType:UIButtonTypeSystem];
+    
+    [datePickerButton setTranslatesAutoresizingMaskIntoConstraints:NO];
+    [datePickerButton setBackgroundColor:[UIColor whiteColor]];
+    [datePickerButton setContentEdgeInsets:UIEdgeInsetsMake(8, 8, 8, 8)];
+    [datePickerButton setTitleEdgeInsets:UIEdgeInsetsMake(0, 8, 0, 0)];
+    [datePickerButton setImage:[UIImage imageNamed:@"ticket"] forState:UIControlStateNormal];
+    [datePickerButton setTitleAlignment:KDIButtonAlignmentRight|KDIButtonAlignmentCenter];
+    [datePickerButton setImageAlignment:KDIButtonAlignmentLeft|KDIButtonAlignmentCenter];
+    [datePickerButton setStyle:KDIButtonStyleRounded];
+    
+    [gradientView addSubview:datePickerButton];
+    [gradientView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[view]" options:0 metrics:nil views:@{@"view": datePickerButton}]];
+    [gradientView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[subview]-[view]" options:0 metrics:nil views:@{@"view": datePickerButton, @"subview": button}]];
 }
 
 - (NSInteger)numberOfComponentsInPickerViewButton:(KDIPickerViewButton *)pickerViewButton {
