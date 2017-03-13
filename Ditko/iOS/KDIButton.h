@@ -67,7 +67,7 @@ typedef NS_ENUM(NSUInteger, KDIButtonAlignment) {
 /**
  Set and get the style of the button.
  
- @see BBButtonStyle
+ @see KDIButtonStyle
  */
 @property (assign,nonatomic) KDIButtonStyle style;
 /**

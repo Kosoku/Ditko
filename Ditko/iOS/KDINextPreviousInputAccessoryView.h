@@ -17,10 +17,22 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+/**
+ Notification posted when the next item is tapped. The object of the notification is the instance of KDINextPreviousInputAccessoryView that posted the notification.
+ */
 FOUNDATION_EXPORT NSString *const KDINextPreviousInputAccessoryViewNotificationNext;
+/**
+ Notification posted when the previous item is tapped. The object of the notification is the instance of KDINextPreviousInputAccessoryView that posted the notification.
+ */
 FOUNDATION_EXPORT NSString *const KDINextPreviousInputAccessoryViewNotificationPrevious;
+/**
+ Notification posted when the done item is tapped. The object of the notification is the instance of KDINextPreviousInputAccessoryView that posted the notification.
+ */
 FOUNDATION_EXPORT NSString *const KDINextPreviousInputAccessoryViewNotificationDone;
 
+/**
+ KDINextPreviousInputAccessoryView is a UIView subclass that manages a UIToolbar containing next, previous, and done bar button items. It posts appropriate notifications when any of the items are tapped. It automatically calls resignFirstResponder on its owning responder when the done item is tapped.
+ */
 @interface KDINextPreviousInputAccessoryView : UIView
 
 /**
@@ -28,6 +40,13 @@ FOUNDATION_EXPORT NSString *const KDINextPreviousInputAccessoryViewNotificationD
  */
 @property (readonly,weak,nonatomic) UIResponder *responder;
 
+/**
+ The designated initializer. An instance of UIResponder must be provided in order for the Done button functionality to work properly.
+ 
+ @param frame The frame of the receiver, safe to pass CGRectZero
+ @param responder The UIResponder instance tied to the receiver
+ @return An initialized instance
+ */
 - (instancetype)initWithFrame:(CGRect)frame responder:(UIResponder *)responder NS_DESIGNATED_INITIALIZER;
 
 - (instancetype)initWithFrame:(CGRect)frame __attribute__((unavailable("use initWithResponder:frame:")));

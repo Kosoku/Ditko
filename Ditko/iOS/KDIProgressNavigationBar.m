@@ -21,7 +21,7 @@ static NSString *const kProgressKeyPath = @"progress";
 @interface KDIProgressNavigationBar ()
 @property (strong,nonatomic) UIProgressView *progressView;
 
-- (void)_BBProgressNavigationBarInit;
+- (void)_KDIProgressNavigationBarInit;
 @end
 
 @implementation KDIProgressNavigationBar
@@ -31,7 +31,7 @@ static NSString *const kProgressKeyPath = @"progress";
     if (!(self = [super initWithFrame:frame]))
         return nil;
     
-    [self _BBProgressNavigationBarInit];
+    [self _KDIProgressNavigationBarInit];
     
     return self;
 }
@@ -39,7 +39,7 @@ static NSString *const kProgressKeyPath = @"progress";
     if (!(self = [super initWithCoder:aDecoder]))
         return nil;
     
-    [self _BBProgressNavigationBarInit];
+    [self _KDIProgressNavigationBarInit];
     
     return self;
 }
@@ -90,7 +90,7 @@ static NSString *const kProgressKeyPath = @"progress";
     [self didChangeValueForKey:kProgressKeyPath];
 }
 #pragma mark ** Private Methods **
-- (void)_BBProgressNavigationBarInit; {
+- (void)_KDIProgressNavigationBarInit; {
     [self setProgressView:[[UIProgressView alloc] initWithFrame:CGRectZero]];
     [self.progressView setTranslatesAutoresizingMaskIntoConstraints:NO];
     [self.progressView setAlpha:0.0];
