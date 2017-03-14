@@ -17,7 +17,52 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@class KDIPickerViewButton;
+@protocol KDIPickerViewButtonDataSource,KDIPickerViewButtonDelegate;
+
+/**
+ KDIPickerViewButton is a KDIButton subclass that manages a UIPickerView instance as its inputView.
+ */
+@interface KDIPickerViewButton : KDIButton
+
+/**
+ Get and set the data source of the picker view button.
+ 
+ @see KDIPickerViewButtonDataSource
+ */
+@property (weak,nonatomic,nullable) id<KDIPickerViewButtonDataSource> dataSource;
+/**
+ Get and set the delegate of the picker view button.
+ 
+ @see KDIPickerViewButtonDelegate
+ */
+@property (weak,nonatomic,nullable) id<KDIPickerViewButtonDelegate> delegate;
+
+/**
+ Get and set the string used to join each selected row string title when the selection of the picker view button changes. The default is @" ".
+ */
+@property (copy,nonatomic,null_resettable) NSString *selectedComponentsJoinString;
+
+/**
+ Reloads all the picker view button's rows/components.
+ */
+- (void)reloadData;
+
+/**
+ Returns the selected row for the provided component. Returns -1 if there is no row selected for the provided component.
+ 
+ @param component The component for which to return the selected row
+ @return The selected row
+ */
+- (NSInteger)selectedRowInComponent:(NSInteger)component;
+/**
+ Select the provided row in the component.
+ 
+ @param row The row to select
+ @param component The component to select
+ */
+- (void)selectRow:(NSInteger)row inComponent:(NSInteger)component;
+
+@end
 
 /**
  Protocol describing the data source of a KDIPickerViewButton instance.
@@ -90,51 +135,6 @@ NS_ASSUME_NONNULL_BEGIN
  @param component The component that was selected
  */
 - (void)pickerViewButton:(KDIPickerViewButton *)pickerViewButton didSelectRow:(NSInteger)row inComponent:(NSInteger)component;
-@end
-
-/**
- KDIPickerViewButton is a KDIButton subclass that manages a UIPickerView instance as its inputView.
- */
-@interface KDIPickerViewButton : KDIButton
-
-/**
- Get and set the data source of the picker view button.
- 
- @see KDIPickerViewButtonDataSource
- */
-@property (weak,nonatomic,nullable) id<KDIPickerViewButtonDataSource> dataSource;
-/**
- Get and set the delegate of the picker view button.
- 
- @see KDIPickerViewButtonDelegate
- */
-@property (weak,nonatomic,nullable) id<KDIPickerViewButtonDelegate> delegate;
-
-/**
- Get and set the string used to join each selected row string title when the selection of the picker view button changes. The default is @" ".
- */
-@property (copy,nonatomic,null_resettable) NSString *selectedComponentsJoinString;
-
-/**
- Reloads all the picker view button's rows/components.
- */
-- (void)reloadData;
-
-/**
- Returns the selected row for the provided component. Returns -1 if there is no row selected for the provided component.
- 
- @param component The component for which to return the selected row
- @return The selected row
- */
-- (NSInteger)selectedRowInComponent:(NSInteger)component;
-/**
- Select the provided row in the component.
- 
- @param row The row to select
- @param component The component to select
- */
-- (void)selectRow:(NSInteger)row inComponent:(NSInteger)component;
-
 @end
 
 NS_ASSUME_NONNULL_END
