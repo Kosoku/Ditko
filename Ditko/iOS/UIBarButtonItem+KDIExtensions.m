@@ -15,6 +15,14 @@
 
 #import "UIBarButtonItem+KDIExtensions.h"
 
+#import <objc/runtime.h>
+
+static void const *kKDIBlockKey = &kKDIBlockKey;
+
+@interface UIBarButtonItem (KDIPrivateExtensions)
+- (IBAction)_KDI_blockAction:(UIBarButtonItem *)sender;
+@end
+
 @implementation UIBarButtonItem (KDIExtensions)
 
 + (UIBarButtonItem *)KDI_flexibleSpaceBarButtonItem; {
@@ -42,6 +50,54 @@
     UIBarButtonItem *retval = [[UIBarButtonItem alloc] initWithCustomView:button];
     
     return retval;
+}
++ (UIBarButtonItem *)KDI_barButtonItemWithImage:(UIImage *)image style:(UIBarButtonItemStyle)style block:(KDIUIBarButtonItemBlock)block {
+    UIBarButtonItem *retval = [[UIBarButtonItem alloc] initWithImage:image style:style target:nil action:NULL];
+    
+    [retval setKDI_block:block];
+    
+    return retval;
+}
++ (UIBarButtonItem *)KDI_barButtonItemWithTitle:(NSString *)title style:(UIBarButtonItemStyle)style block:(KDIUIBarButtonItemBlock)block {
+    UIBarButtonItem *retval = [[UIBarButtonItem alloc] initWithTitle:title style:style target:nil action:NULL];
+    
+    [retval setKDI_block:block];
+    
+    return retval;
+}
++ (UIBarButtonItem *)KDI_barButtonSystemItem:(UIBarButtonSystemItem)barButtonSystemItem block:(KDIUIBarButtonItemBlock)block; {
+    UIBarButtonItem *retval = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:barButtonSystemItem target:nil action:NULL];
+    
+    [retval setKDI_block:block];
+    
+    return retval;
+}
+
+@dynamic KDI_block;
+- (KDIUIBarButtonItemBlock)KDI_block {
+    return objc_getAssociatedObject(self, kKDIBlockKey);
+}
+- (void)setKDI_block:(KDIUIBarButtonItemBlock)KDI_block {
+    if (KDI_block == nil) {
+        [self setTarget:nil];
+        [self setAction:NULL];
+    }
+    else {
+        [self setTarget:self];
+        [self setAction:@selector(_KDI_blockAction:)];
+    }
+    
+    objc_setAssociatedObject(self, kKDIBlockKey, KDI_block, OBJC_ASSOCIATION_COPY_NONATOMIC);
+}
+
+@end
+
+@implementation UIBarButtonItem (KDIPrivateExtensions)
+
+- (IBAction)_KDI_blockAction:(UIBarButtonItem *)sender; {
+    if (sender.KDI_block != nil) {
+        sender.KDI_block(sender);
+    }
 }
 
 @end

@@ -17,7 +17,19 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+/**
+ A block that is invoked when the bar button item is tapped. The receiver is sent as the only parameter.
+ 
+ @param barButtonItem The bar button item that was tapped
+ */
+typedef void(^KDIUIBarButtonItemBlock)(UIBarButtonItem *barButtonItem);
+
 @interface UIBarButtonItem (KDIExtensions)
+
+/**
+ Get and set the bar button item block which will be invoked when the bar button item is tapped. Setting this will override the target and action of the receiver.
+ */
+@property (copy,nonatomic,nullable) KDIUIBarButtonItemBlock KDI_block;
 
 /**
  Creates and returns a flexible space UIBarButtonItem.
@@ -32,6 +44,33 @@ NS_ASSUME_NONNULL_BEGIN
  @return The bar button item
  */
 + (UIBarButtonItem *)KDI_fixedSpaceBarButtonItemWithWidth:(CGFloat)width;
+
+/**
+ Creates and returns a UIBarButtonItem with *image* and *block*.
+ 
+ @param image The bar button item image
+ @param style The bar button item style
+ @param block The block to invoke when the bar button item is tapped
+ @return The bar button item
+ */
++ (UIBarButtonItem *)KDI_barButtonItemWithImage:(nullable UIImage *)image style:(UIBarButtonItemStyle)style block:(nullable KDIUIBarButtonItemBlock)block;
+/**
+ Creates and returns a UIBarButtonItem with *title* and *block*.
+ 
+ @param title The bar button item title
+ @param style The bar button item style
+ @param block The block to invoke when the bar button item is tapped
+ @return The bar button item
+ */
++ (UIBarButtonItem *)KDI_barButtonItemWithTitle:(nullable NSString *)title style:(UIBarButtonItemStyle)style block:(nullable KDIUIBarButtonItemBlock)block;
+/**
+ Creates and returns a UIBarButtonItem with *image* and *block*.
+ 
+ @param barButtonSystemItem The bar button system item
+ @param block The block to invoke when the bar button item is tapped
+ @return The bar button item
+ */
++ (UIBarButtonItem *)KDI_barButtonSystemItem:(UIBarButtonSystemItem)barButtonSystemItem block:(nullable KDIUIBarButtonItemBlock)block;
 
 @end
 
