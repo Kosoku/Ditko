@@ -1,5 +1,5 @@
 //
-//  UIButton+KDIExtensions.m
+//  UIControl+KDIExtensions.h
 //  Ditko
 //
 //  Created by William Towe on 3/22/17.
@@ -13,43 +13,18 @@
 //
 //  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-#import "UIButton+KDIExtensions.h"
+#import <UIKit/UIKit.h>
 
-#import <objc/runtime.h>
+NS_ASSUME_NONNULL_BEGIN
 
-static void const *kKDIBlockKey = &kKDIBlockKey;
+typedef void(^KDIUIControlBlock)(__kindof UIControl *control, UIControlEvents controlEvents);
 
-@interface UIButton (KDIPrivateExtensions)
-- (IBAction)_KDI_blockAction:(UIButton *)sender;
-@end
+@interface UIControl (KDIExtensions)
 
-@implementation UIButton (KDIExtensions)
-
-@dynamic KDI_block;
-- (KDIUIButtonBlock)KDI_block {
-    return objc_getAssociatedObject(self, kKDIBlockKey);
-}
-- (void)setKDI_block:(KDIUIButtonBlock)KDI_block {
-    objc_setAssociatedObject(self, kKDIBlockKey, KDI_block, OBJC_ASSOCIATION_COPY_NONATOMIC);
-    
-    if (KDI_block == nil) {
-        [self removeTarget:self action:@selector(_KDI_blockAction:) forControlEvents:UIControlEventTouchUpInside];
-    }
-    else {
-        [self addTarget:self action:@selector(_KDI_blockAction:) forControlEvents:UIControlEventTouchUpInside];
-    }
-}
+- (void)KDI_addBlock:(KDIUIControlBlock)block forControlEvents:(UIControlEvents)controlEvents;
+- (void)KDI_removeBlocksForControlEvents:(UIControlEvents)controlEvents;
+- (BOOL)KDI_hasBlocksForControlEvents:(UIControlEvents)controlEvents;
 
 @end
 
-@implementation UIButton (KDIPrivateExtensions)
-
-- (IBAction)_KDI_blockAction:(UIButton *)sender; {
-    KDIUIButtonBlock block = sender.KDI_block;
-    
-    if (block != nil) {
-        block(sender);
-    }
-}
-
-@end
+NS_ASSUME_NONNULL_END
