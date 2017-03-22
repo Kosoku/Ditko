@@ -78,6 +78,8 @@ static void const *kKDIBlockKey = &kKDIBlockKey;
     return objc_getAssociatedObject(self, kKDIBlockKey);
 }
 - (void)setKDI_block:(KDIUIBarButtonItemBlock)KDI_block {
+    objc_setAssociatedObject(self, kKDIBlockKey, KDI_block, OBJC_ASSOCIATION_COPY_NONATOMIC);
+    
     if (KDI_block == nil) {
         [self setTarget:nil];
         [self setAction:NULL];
@@ -86,8 +88,6 @@ static void const *kKDIBlockKey = &kKDIBlockKey;
         [self setTarget:self];
         [self setAction:@selector(_KDI_blockAction:)];
     }
-    
-    objc_setAssociatedObject(self, kKDIBlockKey, KDI_block, OBJC_ASSOCIATION_COPY_NONATOMIC);
 }
 
 @end
@@ -95,8 +95,10 @@ static void const *kKDIBlockKey = &kKDIBlockKey;
 @implementation UIBarButtonItem (KDIPrivateExtensions)
 
 - (IBAction)_KDI_blockAction:(UIBarButtonItem *)sender; {
-    if (sender.KDI_block != nil) {
-        sender.KDI_block(sender);
+    KDIUIBarButtonItemBlock block = sender.KDI_block;
+    
+    if (block != nil) {
+        block(sender);
     }
 }
 
