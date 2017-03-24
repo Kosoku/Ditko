@@ -17,12 +17,35 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+/**
+ A block that is invoked when the control events are executed.
+ 
+ @param control The control that executed the control events
+ @param controlEvents The control events that caused the control to execute
+ */
 typedef void(^KDIUIControlBlock)(__kindof UIControl *control, UIControlEvents controlEvents);
 
 @interface UIControl (KDIExtensions)
 
+/**
+ Add a *block* to be invoked for the provided *controlEvents*.
+ 
+ @param block The block to invoke
+ @param controlEvents The control events that should cause the block to invoke
+ */
 - (void)KDI_addBlock:(KDIUIControlBlock)block forControlEvents:(UIControlEvents)controlEvents;
+/**
+ Remove all the blocks for the provided *controlEvents*.
+ 
+ @param controlEvents The control events for which to remove all blocks
+ */
 - (void)KDI_removeBlocksForControlEvents:(UIControlEvents)controlEvents;
+/**
+ Returns whether the receiver has any added blocks for the provided *controlEvents*.
+ 
+ @param controlEvents The control events for which to check for blocks
+ @return YES if the receiver has blocks added, otherwise NO
+ */
 - (BOOL)KDI_hasBlocksForControlEvents:(UIControlEvents)controlEvents;
 
 @end
