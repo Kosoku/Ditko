@@ -1,4 +1,4 @@
-##Ditko
+## Ditko
 
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 [![Version](http://img.shields.io/cocoapods/v/Ditko.svg)](http://cocoapods.org/?q=Ditko)
@@ -9,11 +9,11 @@ Ditko is an iOS/macOS/tvOS/watchOS framework that extends the `AppKit`, `UIKit`,
 
 Demo icons by [Glyphish](http://www.glyphish.com/).
 
-###Installation
+### Installation
 
 You can install `Ditko` using [cocoapods](https://cocoapods.org/), [Carthage](https://github.com/Carthage/Carthage), or as a framework. When installing as a framework, ensure you also link to [Stanley](https://github.com/Kosoku/Stanley) as `Ditko` relies on it.
 
-###Dependencies
+### Dependencies
 
 Third party:
 
