@@ -54,6 +54,7 @@ FOUNDATION_EXPORT const unsigned char DitkoVersionString[];
 #import <Ditko/NSBezierPath+KDIExtensions.h>
 #import <Ditko/NSAlert+KDIExtensions.h>
 #import <Ditko/NSControl+KDIExtensions.h>
+#import <Ditko/NSTextField+KDIExtensions.h>
 #endif
 
 #if (TARGET_OS_IOS || TARGET_OS_TV || TARGET_OS_OSX)
@@ -63,10 +64,10 @@ FOUNDATION_EXPORT const unsigned char DitkoVersionString[];
 #endif
 #if (TARGET_OS_IOS || TARGET_OS_TV)
 #import <Ditko/KDILabel.h>
-#import <Ditko/KDITextField.h>
 #import <Ditko/KDITextView.h>
 #import <Ditko/KDIProgressNavigationBar.h>
 #import <Ditko/KDIButton.h>
+#import <Ditko/KDITextField.h>
 #endif
 #if (TARGET_OS_IOS)
 #import <Ditko/KDIProgressSlider.h>

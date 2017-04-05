@@ -64,6 +64,15 @@
     
     [gradientView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:[subview]-[view]" options:0 metrics:nil views:@{@"view": button, @"subview": badgeView}]];
     [gradientView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-[view]" options:0 metrics:nil views:@{@"view": button}]];
+    
+    NSTextField *label = [NSTextField KDI_labelWithText:@"Label"];
+    
+    [label setTranslatesAutoresizingMaskIntoConstraints:NO];
+    
+    [gradientView addSubview:label];
+    
+    [gradientView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:[subview]-[view]" options:0 metrics:nil views:@{@"view": label, @"subview": button}]];
+    [gradientView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-[view]" options:0 metrics:nil views:@{@"view": label}]];
 }
 
 @end

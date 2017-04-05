@@ -60,6 +60,28 @@
     [self setFrame:CGRectMake(CGRectGetMinX(self.frame), CGRectGetMinY(self.frame), CGRectGetWidth(self.frame), KDI_frameHeight)];
 }
 
+@dynamic KDI_borderColor;
+- (UIColor *)KDI_borderColor {
+    return self.layer.borderColor == nil ? nil : [UIColor colorWithCGColor:self.layer.borderColor];
+}
+- (void)setKDI_borderColor:(UIColor *)KDI_borderColor {
+    [self.layer setBorderColor:KDI_borderColor.CGColor];
+}
+@dynamic KDI_borderWidth;
+- (CGFloat)KDI_borderWidth {
+    return self.layer.borderWidth;
+}
+- (void)setKDI_borderWidth:(CGFloat)KDI_borderWidth {
+    [self.layer setBorderWidth:KDI_borderWidth];
+}
+@dynamic KDI_cornerRadius;
+- (CGFloat)KDI_cornerRadius {
+    return self.layer.cornerRadius;
+}
+- (void)setKDI_cornerRadius:(CGFloat)KDI_cornerRadius {
+    [self.layer setCornerRadius:KDI_cornerRadius];
+}
+
 - (NSArray *)KDI_recursiveSubviews; {
     NSMutableOrderedSet *retval = [[NSMutableOrderedSet alloc] init];
     

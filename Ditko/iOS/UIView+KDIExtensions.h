@@ -45,6 +45,19 @@ NS_ASSUME_NONNULL_BEGIN
 @property (assign,nonatomic) CGFloat KDI_frameHeight;
 
 /**
+ Set and get the border color of the receiver. Calls through to the relevant layer methods.
+ */
+@property (strong,nonatomic,nullable) UIColor *KDI_borderColor;
+/**
+ Set and get the border width of the receiver. Calls through to the relevant layer methods.
+ */
+@property (assign,nonatomic) CGFloat KDI_borderWidth;
+/**
+ Set and get the corner radius of the receiver. Calls through to the relevant layer methods.
+ */
+@property (assign,nonatomic) CGFloat KDI_cornerRadius;
+
+/**
  Creates and returns an NSArray containing all the receiver's subviews recursively.
  
  For each subview of the receiver, the subview is adding to the returned array, followed by the array of the subview's recursive subviews.

@@ -137,6 +137,8 @@
 		0795E6591E704A56004A5CB2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0795E6571E704A56004A5CB2 /* LaunchScreen.storyboard */; };
 		07A9208F1E95674C00B45199 /* NSControl+KDIExtensions.h in Headers */ = {isa = PBXBuildFile; fileRef = 07A9208D1E95674C00B45199 /* NSControl+KDIExtensions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		07A920901E95674C00B45199 /* NSControl+KDIExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 07A9208E1E95674C00B45199 /* NSControl+KDIExtensions.m */; };
+		07A920931E95767E00B45199 /* NSTextField+KDIExtensions.h in Headers */ = {isa = PBXBuildFile; fileRef = 07A920911E95767E00B45199 /* NSTextField+KDIExtensions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		07A920941E95767E00B45199 /* NSTextField+KDIExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 07A920921E95767E00B45199 /* NSTextField+KDIExtensions.m */; };
 		07DB3D5F1E737CA60044FB50 /* Ditko.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0735427A1E704D8F00177905 /* Ditko.framework */; };
 		07DB3D601E737CA60044FB50 /* Ditko.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0735427A1E704D8F00177905 /* Ditko.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		07DB3D621E737CBF0044FB50 /* Stanley.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07DB3D611E737CBF0044FB50 /* Stanley.framework */; };
@@ -413,6 +415,8 @@
 		0795E6601E704AE3004A5CB2 /* Stanley.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Stanley.framework; path = "../../Library/Developer/Xcode/DerivedData/Ditko-bqbmowdlvnipfjchljeblievobjg/Build/Products/Debug-iphonesimulator/Stanley.framework"; sourceTree = "<group>"; };
 		07A9208D1E95674C00B45199 /* NSControl+KDIExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSControl+KDIExtensions.h"; path = "macOS/NSControl+KDIExtensions.h"; sourceTree = "<group>"; };
 		07A9208E1E95674C00B45199 /* NSControl+KDIExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSControl+KDIExtensions.m"; path = "macOS/NSControl+KDIExtensions.m"; sourceTree = "<group>"; };
+		07A920911E95767E00B45199 /* NSTextField+KDIExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSTextField+KDIExtensions.h"; path = "macOS/NSTextField+KDIExtensions.h"; sourceTree = "<group>"; };
+		07A920921E95767E00B45199 /* NSTextField+KDIExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSTextField+KDIExtensions.m"; path = "macOS/NSTextField+KDIExtensions.m"; sourceTree = "<group>"; };
 		07DB3D611E737CBF0044FB50 /* Stanley.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Stanley.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		07DB3D641E737DD20044FB50 /* Stanley.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Stanley.framework; path = "../../Library/Developer/Xcode/DerivedData/Ditko-bqbmowdlvnipfjchljeblievobjg/Build/Products/Debug/Stanley.framework"; sourceTree = "<group>"; };
 		07DB3D6C1E737EDF0044FB50 /* Stanley.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Stanley.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -633,6 +637,8 @@
 				073B35151E82EF4B00C003A1 /* UIControl+KDIExtensions.m */,
 				07A9208D1E95674C00B45199 /* NSControl+KDIExtensions.h */,
 				07A9208E1E95674C00B45199 /* NSControl+KDIExtensions.m */,
+				07A920911E95767E00B45199 /* NSTextField+KDIExtensions.h */,
+				07A920921E95767E00B45199 /* NSTextField+KDIExtensions.m */,
 				07E8EB471E73454D001639A2 /* UIDevice+KDIExtensions.h */,
 				07E8EB481E73454D001639A2 /* UIDevice+KDIExtensions.m */,
 				0794A7E81E734D5300603C99 /* UINavigationController+KDIExtensions.h */,
@@ -840,6 +846,7 @@
 				0794A81B1E73584900603C99 /* NSBundle+KDIPrivateExtensions.h in Headers */,
 				071B62641E705D3500B7B85A /* KDIFunctions.h in Headers */,
 				0794A80C1E7355B900603C99 /* NSViewController+KDIExtensions.h in Headers */,
+				07A920931E95767E00B45199 /* NSTextField+KDIExtensions.h in Headers */,
 				071B626F1E70635D00B7B85A /* KDIGradientView.h in Headers */,
 				0794A8101E73568500603C99 /* NSWindow+KDIExtensions.h in Headers */,
 				073542A51E7053F100177905 /* Ditko.h in Headers */,
@@ -1355,6 +1362,7 @@
 				073542AA1E7057A000177905 /* NSColor-UIColor+KDIExtensions.m in Sources */,
 				0794A7F71E7351B500603C99 /* NSView+KDIExtensions.m in Sources */,
 				072628151E70BCCF00511F80 /* KDIView.m in Sources */,
+				07A920941E95767E00B45199 /* NSTextField+KDIExtensions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
