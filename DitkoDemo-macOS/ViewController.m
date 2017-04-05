@@ -16,6 +16,7 @@
 #import "ViewController.h"
 
 #import <Ditko/Ditko.h>
+#import <Loki/Loki.h>
 
 @implementation ViewController
 
@@ -55,7 +56,7 @@
     
     [button setTranslatesAutoresizingMaskIntoConstraints:NO];
     [button setBezelStyle:NSBezelStyleRounded];
-    [button setTitle:@"Button"];
+    [button setTitle:@"Block button"];
     [button setKDI_block:^(__kindof NSControl *control){
         NSLog(@"the button %@ was clicked!",control);
     }];
@@ -73,6 +74,26 @@
     
     [gradientView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:[subview]-[view]" options:0 metrics:nil views:@{@"view": label, @"subview": button}]];
     [gradientView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-[view]" options:0 metrics:nil views:@{@"view": label}]];
+    
+    KDIRolloverButton *rolloverButton = [[KDIRolloverButton alloc] initWithFrame:NSZeroRect];
+    NSImage *rolloverImage = [NSImage imageNamed:NSImageNameActionTemplate];
+    
+    [rolloverImage setSize:NSMakeSize(24, 24)];
+    
+    [rolloverButton setTranslatesAutoresizingMaskIntoConstraints:NO];
+    [rolloverButton setTitle:@"Rollover button"];
+    [rolloverButton setImagePosition:NSImageLeft];
+    [rolloverButton setImage:[rolloverImage KLO_imageByRenderingWithColor:KDIColorRandomRGB()] forState:KDIRolloverButtonStateNormal];
+    [rolloverButton setImage:[rolloverImage KLO_imageByRenderingWithColor:KDIColorRandomRGB()] forState:KDIRolloverButtonStatePressed];
+    [rolloverButton setImage:[rolloverImage KLO_imageByRenderingWithColor:KDIColorRandomRGB()] forState:KDIRolloverButtonStateRollover];
+    [rolloverButton setImage:[rolloverImage KLO_imageByRenderingWithColor:KDIColorRandomRGB()] forState:KDIRolloverButtonStateNormalInactive];
+    [rolloverButton setImage:[rolloverImage KLO_imageByRenderingWithColor:KDIColorRandomRGB()] forState:KDIRolloverButtonStatePressedInactive];
+    [rolloverButton setImage:[rolloverImage KLO_imageByRenderingWithColor:KDIColorRandomRGB()] forState:KDIRolloverButtonStateRolloverInactive];
+    
+    [gradientView addSubview:rolloverButton];
+    
+    [gradientView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:[subview]-[view]" options:0 metrics:nil views:@{@"view": rolloverButton, @"subview": label}]];
+    [gradientView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-[view]" options:0 metrics:nil views:@{@"view": rolloverButton}]];
 }
 
 @end

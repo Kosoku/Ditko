@@ -75,3 +75,6 @@ FOUNDATION_EXPORT const unsigned char DitkoVersionString[];
 #import <Ditko/KDIDatePickerButton.h>
 #import <Ditko/KDINextPreviousInputAccessoryView.h>
 #endif
+#if (TARGET_OS_OSX)
+#import <Ditko/KDIRolloverButton.h>
+#endif
