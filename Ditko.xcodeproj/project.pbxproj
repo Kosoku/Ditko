@@ -135,6 +135,8 @@
 		0795E6541E704A56004A5CB2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0795E6521E704A56004A5CB2 /* Main.storyboard */; };
 		0795E6561E704A56004A5CB2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0795E6551E704A56004A5CB2 /* Assets.xcassets */; };
 		0795E6591E704A56004A5CB2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0795E6571E704A56004A5CB2 /* LaunchScreen.storyboard */; };
+		07A9208F1E95674C00B45199 /* NSControl+KDIExtensions.h in Headers */ = {isa = PBXBuildFile; fileRef = 07A9208D1E95674C00B45199 /* NSControl+KDIExtensions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		07A920901E95674C00B45199 /* NSControl+KDIExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 07A9208E1E95674C00B45199 /* NSControl+KDIExtensions.m */; };
 		07DB3D5F1E737CA60044FB50 /* Ditko.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0735427A1E704D8F00177905 /* Ditko.framework */; };
 		07DB3D601E737CA60044FB50 /* Ditko.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0735427A1E704D8F00177905 /* Ditko.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		07DB3D621E737CBF0044FB50 /* Stanley.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07DB3D611E737CBF0044FB50 /* Stanley.framework */; };
@@ -409,6 +411,8 @@
 		0795E6581E704A56004A5CB2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0795E65A1E704A56004A5CB2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0795E6601E704AE3004A5CB2 /* Stanley.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Stanley.framework; path = "../../Library/Developer/Xcode/DerivedData/Ditko-bqbmowdlvnipfjchljeblievobjg/Build/Products/Debug-iphonesimulator/Stanley.framework"; sourceTree = "<group>"; };
+		07A9208D1E95674C00B45199 /* NSControl+KDIExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSControl+KDIExtensions.h"; path = "macOS/NSControl+KDIExtensions.h"; sourceTree = "<group>"; };
+		07A9208E1E95674C00B45199 /* NSControl+KDIExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSControl+KDIExtensions.m"; path = "macOS/NSControl+KDIExtensions.m"; sourceTree = "<group>"; };
 		07DB3D611E737CBF0044FB50 /* Stanley.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Stanley.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		07DB3D641E737DD20044FB50 /* Stanley.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Stanley.framework; path = "../../Library/Developer/Xcode/DerivedData/Ditko-bqbmowdlvnipfjchljeblievobjg/Build/Products/Debug/Stanley.framework"; sourceTree = "<group>"; };
 		07DB3D6C1E737EDF0044FB50 /* Stanley.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Stanley.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -627,6 +631,8 @@
 				07E8EB421E7341C2001639A2 /* UIBarButtonItem+KDIExtensions.m */,
 				073B35141E82EF4B00C003A1 /* UIControl+KDIExtensions.h */,
 				073B35151E82EF4B00C003A1 /* UIControl+KDIExtensions.m */,
+				07A9208D1E95674C00B45199 /* NSControl+KDIExtensions.h */,
+				07A9208E1E95674C00B45199 /* NSControl+KDIExtensions.m */,
 				07E8EB471E73454D001639A2 /* UIDevice+KDIExtensions.h */,
 				07E8EB481E73454D001639A2 /* UIDevice+KDIExtensions.m */,
 				0794A7E81E734D5300603C99 /* UINavigationController+KDIExtensions.h */,
@@ -828,6 +834,7 @@
 			files = (
 				0794A8021E73541200603C99 /* NSBezierPath+KDIExtensions.h in Headers */,
 				07E8EB3E1E733FE3001639A2 /* KDIDefines.h in Headers */,
+				07A9208F1E95674C00B45199 /* NSControl+KDIExtensions.h in Headers */,
 				072628121E70BCCF00511F80 /* KDIView.h in Headers */,
 				0794A8291E735D1400603C99 /* NSAlert+KDIExtensions.h in Headers */,
 				0794A81B1E73584900603C99 /* NSBundle+KDIPrivateExtensions.h in Headers */,
@@ -1337,6 +1344,7 @@
 				071B62711E70635D00B7B85A /* KDIGradientView.m in Sources */,
 				07E8EB391E733F34001639A2 /* NSURL+KDIExtensions.m in Sources */,
 				071B62661E705D3500B7B85A /* KDIFunctions.m in Sources */,
+				07A920901E95674C00B45199 /* NSControl+KDIExtensions.m in Sources */,
 				0794A8031E73541200603C99 /* NSBezierPath+KDIExtensions.m in Sources */,
 				0794A8111E73568500603C99 /* NSWindow+KDIExtensions.m in Sources */,
 				0794A83B1E73776C00603C99 /* KDIBadgeView.m in Sources */,
