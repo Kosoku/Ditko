@@ -50,6 +50,20 @@
     [gradientView addSubview:badgeView];
     [gradientView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[view]" options:0 metrics:nil views:@{@"view": badgeView}]];
     [gradientView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-[view]" options:0 metrics:nil views:@{@"view": badgeView}]];
+    
+    NSButton *button = [[NSButton alloc] initWithFrame:NSZeroRect];
+    
+    [button setTranslatesAutoresizingMaskIntoConstraints:NO];
+    [button setBezelStyle:NSBezelStyleRounded];
+    [button setTitle:@"Button"];
+    [button setKDI_block:^(__kindof NSControl *control){
+        NSLog(@"the button %@ was clicked!",control);
+    }];
+    
+    [gradientView addSubview:button];
+    
+    [gradientView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:[subview]-[view]" options:0 metrics:nil views:@{@"view": button, @"subview": badgeView}]];
+    [gradientView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-[view]" options:0 metrics:nil views:@{@"view": button}]];
 }
 
 @end
