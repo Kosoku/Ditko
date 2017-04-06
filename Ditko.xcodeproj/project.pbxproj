@@ -143,6 +143,8 @@
 		07A920991E958CA900B45199 /* KDIRolloverButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 07A920971E958CA900B45199 /* KDIRolloverButton.m */; };
 		07A9209B1E9599CB00B45199 /* Loki.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07A9209A1E9599CB00B45199 /* Loki.framework */; };
 		07A9209C1E9599CB00B45199 /* Loki.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 07A9209A1E9599CB00B45199 /* Loki.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		07D166C31E96A08E0073F69A /* NSButton+KDIExtensions.h in Headers */ = {isa = PBXBuildFile; fileRef = 07D166C11E96A08E0073F69A /* NSButton+KDIExtensions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		07D166C41E96A08E0073F69A /* NSButton+KDIExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 07D166C21E96A08E0073F69A /* NSButton+KDIExtensions.m */; };
 		07DB3D5F1E737CA60044FB50 /* Ditko.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0735427A1E704D8F00177905 /* Ditko.framework */; };
 		07DB3D601E737CA60044FB50 /* Ditko.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0735427A1E704D8F00177905 /* Ditko.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		07DB3D621E737CBF0044FB50 /* Stanley.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07DB3D611E737CBF0044FB50 /* Stanley.framework */; };
@@ -425,6 +427,8 @@
 		07A920961E958CA900B45199 /* KDIRolloverButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KDIRolloverButton.h; path = macOS/KDIRolloverButton.h; sourceTree = "<group>"; };
 		07A920971E958CA900B45199 /* KDIRolloverButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KDIRolloverButton.m; path = macOS/KDIRolloverButton.m; sourceTree = "<group>"; };
 		07A9209A1E9599CB00B45199 /* Loki.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Loki.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		07D166C11E96A08E0073F69A /* NSButton+KDIExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSButton+KDIExtensions.h"; path = "macOS/NSButton+KDIExtensions.h"; sourceTree = "<group>"; };
+		07D166C21E96A08E0073F69A /* NSButton+KDIExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSButton+KDIExtensions.m"; path = "macOS/NSButton+KDIExtensions.m"; sourceTree = "<group>"; };
 		07DB3D611E737CBF0044FB50 /* Stanley.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Stanley.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		07DB3D641E737DD20044FB50 /* Stanley.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Stanley.framework; path = "../../Library/Developer/Xcode/DerivedData/Ditko-bqbmowdlvnipfjchljeblievobjg/Build/Products/Debug/Stanley.framework"; sourceTree = "<group>"; };
 		07DB3D6C1E737EDF0044FB50 /* Stanley.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Stanley.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -676,6 +680,8 @@
 				0794A8281E735D1400603C99 /* NSAlert+KDIExtensions.m */,
 				0794A82B1E735E1200603C99 /* NSParagraphStyle+KDIExtensions.h */,
 				0794A82C1E735E1200603C99 /* NSParagraphStyle+KDIExtensions.m */,
+				07D166C11E96A08E0073F69A /* NSButton+KDIExtensions.h */,
+				07D166C21E96A08E0073F69A /* NSButton+KDIExtensions.m */,
 			);
 			name = Categories;
 			sourceTree = "<group>";
@@ -864,6 +870,7 @@
 				0794A8101E73568500603C99 /* NSWindow+KDIExtensions.h in Headers */,
 				073542A51E7053F100177905 /* Ditko.h in Headers */,
 				0794A8381E73776C00603C99 /* KDIBadgeView.h in Headers */,
+				07D166C31E96A08E0073F69A /* NSButton+KDIExtensions.h in Headers */,
 				071B626A1E705EA400B7B85A /* KDIColorMacros.h in Headers */,
 				0794A7F61E7351B500603C99 /* NSView+KDIExtensions.h in Headers */,
 				073542861E70503C00177905 /* NSColor+KDIExtensions.h in Headers */,
@@ -1372,6 +1379,7 @@
 				0794A81F1E73584900603C99 /* NSBundle+KDIPrivateExtensions.m in Sources */,
 				0794A80D1E7355B900603C99 /* NSViewController+KDIExtensions.m in Sources */,
 				0794A82A1E735D1400603C99 /* NSAlert+KDIExtensions.m in Sources */,
+				07D166C41E96A08E0073F69A /* NSButton+KDIExtensions.m in Sources */,
 				0794A8321E735E1200603C99 /* NSParagraphStyle+KDIExtensions.m in Sources */,
 				073542AA1E7057A000177905 /* NSColor-UIColor+KDIExtensions.m in Sources */,
 				0794A7F71E7351B500603C99 /* NSView+KDIExtensions.m in Sources */,

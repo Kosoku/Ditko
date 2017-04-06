@@ -52,10 +52,9 @@
     [gradientView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[view]" options:0 metrics:nil views:@{@"view": badgeView}]];
     [gradientView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-[view]" options:0 metrics:nil views:@{@"view": badgeView}]];
     
-    NSButton *button = [[NSButton alloc] initWithFrame:NSZeroRect];
+    NSButton *button = [NSButton KDI_buttonWithTitle:@"Block button" bezelStyle:NSBezelStyleRounded];
     
     [button setTranslatesAutoresizingMaskIntoConstraints:NO];
-    [button setBezelStyle:NSBezelStyleRounded];
     [button setTitle:@"Block button"];
     [button setKDI_block:^(__kindof NSControl *control){
         NSLog(@"the button %@ was clicked!",control);
@@ -94,6 +93,15 @@
     
     [gradientView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:[subview]-[view]" options:0 metrics:nil views:@{@"view": rolloverButton, @"subview": label}]];
     [gradientView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-[view]" options:0 metrics:nil views:@{@"view": rolloverButton}]];
+    
+    NSButton *checkBox = [NSButton KDI_checkBoxWithTitle:@"Check box"];
+    
+    [checkBox setTranslatesAutoresizingMaskIntoConstraints:NO];
+    
+    [gradientView addSubview:checkBox];
+    
+    [gradientView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[view]" options:0 metrics:nil views:@{@"view": checkBox}]];
+    [gradientView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[subview]-[view]" options:0 metrics:nil views:@{@"view": checkBox, @"subview": badgeView}]];
 }
 
 @end
