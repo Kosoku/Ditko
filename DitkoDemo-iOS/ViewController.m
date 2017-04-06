@@ -76,7 +76,7 @@ static NSArray<NSArray<NSString *> *> *kPickerViewButtonComponentsAndRows;
     [button setImageEdgeInsets:UIEdgeInsetsMake(0, 8, 0, 0)];
     [button setTitleColor:KDIColorRandomRGB() forState:UIControlStateNormal];
     [button setTitle:@"Title" forState:UIControlStateNormal];
-    [button setImage:[[UIImage imageNamed:@"globe"] KLO_imageByRenderingWithColor:KDIColorRandomRGB()] forState:UIControlStateNormal];
+    [button setImage:[[UIImage imageNamed:@"globe"] KLO_imageByTintingWithColor:KDIColorRandomRGB()] forState:UIControlStateNormal];
     [button setTitleAlignment:KDIButtonAlignmentLeft|KDIButtonAlignmentCenter];
     [button setImageAlignment:KDIButtonAlignmentRight|KDIButtonAlignmentCenter];
     [button setStyle:KDIButtonStyleRounded];

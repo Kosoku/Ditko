@@ -82,12 +82,12 @@
     [rolloverButton setTranslatesAutoresizingMaskIntoConstraints:NO];
     [rolloverButton setTitle:@"Rollover button"];
     [rolloverButton setImagePosition:NSImageLeft];
-    [rolloverButton setImage:[rolloverImage KLO_imageByRenderingWithColor:KDIColorRandomRGB()] forState:KDIRolloverButtonStateNormal];
-    [rolloverButton setImage:[rolloverImage KLO_imageByRenderingWithColor:KDIColorRandomRGB()] forState:KDIRolloverButtonStatePressed];
-    [rolloverButton setImage:[rolloverImage KLO_imageByRenderingWithColor:KDIColorRandomRGB()] forState:KDIRolloverButtonStateRollover];
-    [rolloverButton setImage:[rolloverImage KLO_imageByRenderingWithColor:KDIColorRandomRGB()] forState:KDIRolloverButtonStateNormalInactive];
-    [rolloverButton setImage:[rolloverImage KLO_imageByRenderingWithColor:KDIColorRandomRGB()] forState:KDIRolloverButtonStatePressedInactive];
-    [rolloverButton setImage:[rolloverImage KLO_imageByRenderingWithColor:KDIColorRandomRGB()] forState:KDIRolloverButtonStateRolloverInactive];
+    [rolloverButton setImage:[rolloverImage KLO_imageByTintingWithColor:KDIColorRandomRGB()] forState:KDIRolloverButtonStateNormal];
+    [rolloverButton setImage:[rolloverImage KLO_imageByTintingWithColor:KDIColorRandomRGB()] forState:KDIRolloverButtonStatePressed];
+    [rolloverButton setImage:[rolloverImage KLO_imageByTintingWithColor:KDIColorRandomRGB()] forState:KDIRolloverButtonStateRollover];
+    [rolloverButton setImage:[rolloverImage KLO_imageByTintingWithColor:KDIColorRandomRGB()] forState:KDIRolloverButtonStateNormalInactive];
+    [rolloverButton setImage:[rolloverImage KLO_imageByTintingWithColor:KDIColorRandomRGB()] forState:KDIRolloverButtonStatePressedInactive];
+    [rolloverButton setImage:[rolloverImage KLO_imageByTintingWithColor:KDIColorRandomRGB()] forState:KDIRolloverButtonStateRolloverInactive];
     
     [gradientView addSubview:rolloverButton];
     
