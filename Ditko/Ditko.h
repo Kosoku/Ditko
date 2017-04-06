@@ -56,6 +56,7 @@ FOUNDATION_EXPORT const unsigned char DitkoVersionString[];
 #import <Ditko/NSControl+KDIExtensions.h>
 #import <Ditko/NSTextField+KDIExtensions.h>
 #import <Ditko/NSButton+KDIExtensions.h>
+#import <Ditko/NSPopUpButton+KDIExtensions.h>
 #endif
 
 #if (TARGET_OS_IOS || TARGET_OS_TV || TARGET_OS_OSX)

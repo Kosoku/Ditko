@@ -75,7 +75,7 @@
     [gradientView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-[view]" options:0 metrics:nil views:@{@"view": label}]];
     
     KDIRolloverButton *rolloverButton = [[KDIRolloverButton alloc] initWithFrame:NSZeroRect];
-    NSImage *rolloverImage = [NSImage imageNamed:NSImageNameActionTemplate];
+    NSImage *rolloverImage = [NSImage imageNamed:NSImageNameLockLockedTemplate];
     
     [rolloverImage setSize:NSMakeSize(24, 24)];
     
@@ -102,6 +102,17 @@
     
     [gradientView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[view]" options:0 metrics:nil views:@{@"view": checkBox}]];
     [gradientView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[subview]-[view]" options:0 metrics:nil views:@{@"view": checkBox, @"subview": badgeView}]];
+    
+    NSPopUpButton *actionButton = [NSPopUpButton KDI_actionPopUpButtonBordered:YES];
+    
+    [actionButton setTranslatesAutoresizingMaskIntoConstraints:NO];
+    [actionButton.menu addItemWithTitle:@"Item 1" action:NULL keyEquivalent:@""];
+    [actionButton.menu addItemWithTitle:@"Item 2" action:NULL keyEquivalent:@""];
+    
+    [gradientView addSubview:actionButton];
+    
+    [gradientView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:[subview]-[view]" options:0 metrics:nil views:@{@"view": actionButton, @"subview": checkBox}]];
+    [gradientView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[subview]-[view]" options:0 metrics:nil views:@{@"view": actionButton, @"subview": badgeView}]];
 }
 
 @end
