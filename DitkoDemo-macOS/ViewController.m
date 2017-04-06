@@ -18,10 +18,31 @@
 #import <Ditko/Ditko.h>
 #import <Loki/Loki.h>
 
+@interface View : KDIView
+
+@end
+
+@implementation View
+
+- (instancetype)initWithFrame:(NSRect)frameRect {
+    if (!(self = [super initWithFrame:frameRect]))
+        return nil;
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(_View_stateDidChange:) name:KDIViewNotificationDidChangeState object:self];
+    
+    return self;
+}
+
+- (void)_View_stateDidChange:(NSNotification *)note {
+    [self setBorderColor:KDIColorRandomRGB()];
+}
+
+@end
+
 @implementation ViewController
 
 - (void)loadView {
-    KDIView *view = [[KDIView alloc] initWithFrame:CGRectZero];
+    KDIView *view = [[View alloc] initWithFrame:CGRectZero];
     
     [view setBackgroundColor:KDIColorRandomRGB()];
     [view setBorderColor:KDIColorRandomRGB()];

@@ -15,18 +15,32 @@
 
 #import "KDIView.h"
 
+#if (TARGET_OS_OSX)
+NSString *const KDIViewNotificationDidChangeState = @"KDIViewNotificationDidChangeState";
+#endif
+
 @interface KDIView ()
+#if (TARGET_OS_OSX)
+@property (readwrite,assign,nonatomic) KDIViewState state;
+#endif
 #if (TARGET_OS_IPHONE)
 @property (strong,nonatomic) UIView *topBorderView, *leftBorderView, *bottomBorderView, *rightBorderView;
 #endif
 
 - (void)_KDIViewInit;
+#if (TARGET_OS_OSX)
+- (void)_updateState;
+#endif
 
 + (CGFloat)_defaultBorderWidth;
 + (KDIColor *)_defaultBorderColor;
 @end
 
 @implementation KDIView
+
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
 
 - (instancetype)initWithFrame:(KDIRect)frame {
     if (!(self = [super initWithFrame:frame]))
@@ -83,6 +97,17 @@
     [self.rightBorderView setFrame:CGRectMake(CGRectGetWidth(self.bounds) - borderWidth - self.borderEdgeInsets.right, self.borderEdgeInsets.top, borderWidth, CGRectGetHeight(self.bounds) - self.borderEdgeInsets.top - self.borderEdgeInsets.bottom)];
 }
 #else
+- (BOOL)becomeFirstResponder {
+    [self _updateState];
+    
+    return [super becomeFirstResponder];
+}
+- (BOOL)resignFirstResponder {
+    [self _updateState];
+    
+    return [super resignFirstResponder];
+}
+
 - (BOOL)isOpaque {
     return NO;
 }
@@ -230,6 +255,12 @@
 }
     
 #if (TARGET_OS_OSX)
+- (void)setState:(KDIViewState)state {
+    _state = state;
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:KDIViewNotificationDidChangeState object:self];
+}
+
 - (void)setBackgroundColor:(NSColor *)backgroundColor {
     _backgroundColor = backgroundColor;
     
@@ -247,6 +278,40 @@
 - (void)_KDIViewInit; {
     _borderWidth = [self.class _defaultBorderWidth];
     _borderColor = [self.class _defaultBorderColor];
+    
+#if (TARGET_OS_OSX)
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(_stateDidChange:) name:NSApplicationDidBecomeActiveNotification object:NSApp];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(_stateDidChange:) name:NSApplicationDidResignActiveNotification object:NSApp];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(_stateDidChange:) name:NSWindowDidBecomeMainNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(_stateDidChange:) name:NSWindowDidResignMainNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(_stateDidChange:) name:NSWindowDidBecomeKeyNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(_stateDidChange:) name:NSWindowDidResignKeyNotification object:nil];
+#endif
 }
+
+#if (TARGET_OS_OSX)
+- (void)_updateState; {
+    KDIViewState state = KDIViewStateNone;
+    
+    if ([NSApplication sharedApplication].isActive) {
+        state |= KDIViewStateActive;
+    }
+    if (self.window.isMainWindow) {
+        state |= KDIViewStateMain;
+    }
+    if (self.window.isKeyWindow) {
+        state |= KDIViewStateKey;
+    }
+    if (self.window.firstResponder == self) {
+        state |= KDIViewStateFirstResponder;
+    }
+    
+    [self setState:state];
+}
+
+- (void)_stateDidChange:(NSNotification *)note {
+    [self _updateState];
+}
+#endif
 
 @end

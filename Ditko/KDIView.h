@@ -55,6 +55,39 @@ typedef NS_OPTIONS(NSUInteger, KDIViewBorderOptions) {
     KDIViewBorderOptionsAll = KDIViewBorderOptionsTop | KDIViewBorderOptionsLeft | KDIViewBorderOptionsBottom | KDIViewBorderOptionsRight
 };
 
+#if (TARGET_OS_OSX)
+/**
+ Options mask describing the state of the receiver.
+ */
+typedef NS_OPTIONS(NSUInteger, KDIViewState) {
+    /**
+     The view has no state.
+     */
+    KDIViewStateNone = 0,
+    /**
+     The app is active.
+     */
+    KDIViewStateActive = 1 << 0,
+    /**
+     The view's window is the main window.
+     */
+    KDIViewStateMain = 1 << 1,
+    /**
+     The view's window is the key window.
+     */
+    KDIViewStateKey = 1 << 2,
+    /**
+     The view is the current first responder.
+     */
+    KDIViewStateFirstResponder = 1 << 3
+};
+
+/**
+ Notification that is posted when the state of the receiver changes.
+ */
+FOUNDATION_EXPORT NSString *const KDIViewNotificationDidChangeState;
+#endif
+
 /**
  KDIView is a UIView/NSView subclass that provides a number of convenience methods.
  */
@@ -117,6 +150,8 @@ typedef NS_OPTIONS(NSUInteger, KDIViewBorderOptions) {
  Equivalent to backgroundColor on UIView.
  */
 #if (TARGET_OS_OSX)
+@property (readonly,assign,nonatomic) KDIViewState state;
+
 @property (strong,nonatomic,nullable) NSColor *backgroundColor;
 #endif
 
@@ -124,6 +159,8 @@ typedef NS_OPTIONS(NSUInteger, KDIViewBorderOptions) {
 - (void)didAddSubview:(UIView *)subview NS_REQUIRES_SUPER;
 - (void)layoutSubviews NS_REQUIRES_SUPER;
 #else
+- (BOOL)becomeFirstResponder NS_REQUIRES_SUPER;
+- (BOOL)resignFirstResponder NS_REQUIRES_SUPER;
 - (void)drawRect:(NSRect)dirtyRect NS_REQUIRES_SUPER;
 #endif
 
