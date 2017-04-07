@@ -79,4 +79,5 @@ FOUNDATION_EXPORT const unsigned char DitkoVersionString[];
 #endif
 #if (TARGET_OS_OSX)
 #import <Ditko/KDIRolloverButton.h>
+#import <Ditko/KDIClickableLabel.h>
 #endif

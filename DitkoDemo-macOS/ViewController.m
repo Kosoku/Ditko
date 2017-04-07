@@ -86,9 +86,14 @@
     [gradientView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:[subview]-[view]" options:0 metrics:nil views:@{@"view": button, @"subview": badgeView}]];
     [gradientView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-[view]" options:0 metrics:nil views:@{@"view": button}]];
     
-    NSTextField *label = [NSTextField KDI_labelWithText:@"Label"];
+    KDIClickableLabel *label = [KDIClickableLabel KDI_labelWithText:@"Clickable label"];
     
     [label setTranslatesAutoresizingMaskIntoConstraints:NO];
+    [label setClickableTextAttributes:@{NSForegroundColorAttributeName: KDIColorRandomRGB(), NSUnderlineColorAttributeName: KDIColorRandomRGB(), NSUnderlineStyleAttributeName: @(NSUnderlineStyleSingle|NSUnderlinePatternDot)}];
+    [label setClickableCursor:[NSCursor openHandCursor]];
+    [label setBlock:^(KDIClickableLabel *label) {
+        NSLog(@"the clickable label %@ was clicked!",label);
+    }];
     
     [gradientView addSubview:label];
     
