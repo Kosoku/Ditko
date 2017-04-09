@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'Ditko'
-  s.version          = '0.4.0'
+  s.version          = '0.5.0'
   s.summary          = 'Ditko is an iOS/macOS/tvOS/watchOS framework that extends the AppKit, UIKit, and WatchKit frameworks.'
 
 # This description is used to generate tags and improve search results.
@@ -41,6 +41,7 @@ Ditko is an iOS/macOS/tvOS/watchOS framework that extends the `AppKit`, `UIKit`,
   s.osx.exclude_files = 'Ditko/iOS'
   s.tvos.exclude_files = 'Ditko/macOS', 'Ditko/iOS/KDIProgressSlider.{h,m}', 'Ditko/iOS/KDIPickerViewButton.{h,m}', 'Ditko/iOS/KDIDatePickerButton.{h,m}', 'Ditko/iOS/KDINextPreviousInputAccessoryView.{h,m}'
   s.watchos.exclude_files = 'Ditko/macOS', 'Ditko/iOS/UIBarButtonItem+KDIExtensions.{h,m}', 'Ditko/iOS/UIControl+KDIExtensions.{h,m}', 'Ditko/iOS/UIDevice+KDIExtensions.{h,m}', 'Ditko/iOS/UINavigationController+KDIExtensions.{h,m}', 'Ditko/iOS/UIView+KDIExtensions.{h,m}', 'Ditko/iOS/UIViewController+KDIExtensions.{h,m}', 'Ditko/iOS/UIAlertController+KDIExtensions.{h,m}', 'Ditko/KDIView.{h,m}', 'Ditko/KDIGradientView.{h,m}', 'Ditko/KDIBadgeView.{h,m}', 'Ditko/iOS/KDILabel.{h,m}', 'Ditko/iOS/KDITextField.{h,m}', 'Ditko/iOS/KDITextView.{h,m}', 'Ditko/iOS/KDIProgressSlider.{h,m}', 'Ditko/iOS/KDIProgressNavigationBar.{h,m}', 'Ditko/iOS/KDIButton.{h,m}', 'Ditko/iOS/KDIPickerViewButton.{h,m}', 'Ditko/iOS/KDIDatePickerButton.{h,m}', 'Ditko/iOS/KDINextPreviousInputAccessoryView.{h,m}'
+  s.private_header_files = 'Ditko/Private/*.h'
   
   s.resource_bundles = {
     'Ditko' => ['Ditko/**/*.{xcassets,lproj}']

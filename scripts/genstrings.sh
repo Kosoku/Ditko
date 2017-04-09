@@ -1,1 +1,1 @@
-find $SRCROOT/Ditko/ -name *.{h,m} | xargs genstrings -o $SRCROOT/Ditko/en.lproj
+genstrings -o $SRCROOT/Ditko/en.lproj $SRCROOT/Ditko/* $SRCROOT/Ditko/iOS/* $SRCROOT/Ditko/macOS/*
