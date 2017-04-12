@@ -59,6 +59,7 @@
 		073B35171E82EF4B00C003A1 /* UIControl+KDIExtensions.h in Headers */ = {isa = PBXBuildFile; fileRef = 073B35141E82EF4B00C003A1 /* UIControl+KDIExtensions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		073B35181E82EF4B00C003A1 /* UIControl+KDIExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 073B35151E82EF4B00C003A1 /* UIControl+KDIExtensions.m */; };
 		073B35191E82EF4B00C003A1 /* UIControl+KDIExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 073B35151E82EF4B00C003A1 /* UIControl+KDIExtensions.m */; };
+		0745316E1E9EB0F200CEF9E0 /* Stanley.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0745316D1E9EB0F200CEF9E0 /* Stanley.framework */; };
 		0767306F1E75C2C100030F0C /* Loki.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0767306E1E75C2C100030F0C /* Loki.framework */; };
 		076730701E75C2C100030F0C /* Loki.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0767306E1E75C2C100030F0C /* Loki.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		076730731E75C6C700030F0C /* KDIPickerViewButton.h in Headers */ = {isa = PBXBuildFile; fileRef = 076730711E75C6C700030F0C /* KDIPickerViewButton.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -371,6 +372,7 @@
 		073542A31E7051BA00177905 /* Stanley.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Stanley.framework; path = Vendor/Stanley/build/Debug/Stanley.framework; sourceTree = "<group>"; };
 		073B35141E82EF4B00C003A1 /* UIControl+KDIExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIControl+KDIExtensions.h"; path = "iOS/UIControl+KDIExtensions.h"; sourceTree = "<group>"; };
 		073B35151E82EF4B00C003A1 /* UIControl+KDIExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIControl+KDIExtensions.m"; path = "iOS/UIControl+KDIExtensions.m"; sourceTree = "<group>"; };
+		0745316D1E9EB0F200CEF9E0 /* Stanley.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Stanley.framework; path = "../../Library/Developer/Xcode/DerivedData/Ditko-bqbmowdlvnipfjchljeblievobjg/Build/Products/Debug-watchsimulator/Stanley.framework"; sourceTree = "<group>"; };
 		0767306E1E75C2C100030F0C /* Loki.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Loki.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		076730711E75C6C700030F0C /* KDIPickerViewButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KDIPickerViewButton.h; path = iOS/KDIPickerViewButton.h; sourceTree = "<group>"; };
 		076730721E75C6C700030F0C /* KDIPickerViewButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KDIPickerViewButton.m; path = iOS/KDIPickerViewButton.m; sourceTree = "<group>"; };
@@ -467,6 +469,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0745316E1E9EB0F200CEF9E0 /* Stanley.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -799,6 +802,7 @@
 		0795E65F1E704AE3004A5CB2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0745316D1E9EB0F200CEF9E0 /* Stanley.framework */,
 				07A9209A1E9599CB00B45199 /* Loki.framework */,
 				0767306E1E75C2C100030F0C /* Loki.framework */,
 				07DB3D721E737F110044FB50 /* Stanley.framework */,
