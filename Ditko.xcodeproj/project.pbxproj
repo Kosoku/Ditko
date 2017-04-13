@@ -73,6 +73,10 @@
 		076730871E77544700030F0C /* KDINextPreviousInputAccessoryView.h in Headers */ = {isa = PBXBuildFile; fileRef = 076730851E77544700030F0C /* KDINextPreviousInputAccessoryView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		076730881E77544700030F0C /* KDINextPreviousInputAccessoryView.m in Sources */ = {isa = PBXBuildFile; fileRef = 076730861E77544700030F0C /* KDINextPreviousInputAccessoryView.m */; };
 		0767308A1E77575D00030F0C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 076730891E77575D00030F0C /* Assets.xcassets */; };
+		077EB9FD1E9F703E0087321E /* KDIBadgeButton.h in Headers */ = {isa = PBXBuildFile; fileRef = 077EB9FB1E9F703E0087321E /* KDIBadgeButton.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		077EB9FE1E9F703E0087321E /* KDIBadgeButton.h in Headers */ = {isa = PBXBuildFile; fileRef = 077EB9FB1E9F703E0087321E /* KDIBadgeButton.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		077EB9FF1E9F703E0087321E /* KDIBadgeButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 077EB9FC1E9F703E0087321E /* KDIBadgeButton.m */; };
+		077EBA001E9F703E0087321E /* KDIBadgeButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 077EB9FC1E9F703E0087321E /* KDIBadgeButton.m */; };
 		0794A7EA1E734D5300603C99 /* UINavigationController+KDIExtensions.h in Headers */ = {isa = PBXBuildFile; fileRef = 0794A7E81E734D5300603C99 /* UINavigationController+KDIExtensions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0794A7EB1E734D5300603C99 /* UINavigationController+KDIExtensions.h in Headers */ = {isa = PBXBuildFile; fileRef = 0794A7E81E734D5300603C99 /* UINavigationController+KDIExtensions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0794A7EC1E734D5300603C99 /* UINavigationController+KDIExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0794A7E91E734D5300603C99 /* UINavigationController+KDIExtensions.m */; };
@@ -384,6 +388,8 @@
 		076730851E77544700030F0C /* KDINextPreviousInputAccessoryView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KDINextPreviousInputAccessoryView.h; path = iOS/KDINextPreviousInputAccessoryView.h; sourceTree = "<group>"; };
 		076730861E77544700030F0C /* KDINextPreviousInputAccessoryView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KDINextPreviousInputAccessoryView.m; path = iOS/KDINextPreviousInputAccessoryView.m; sourceTree = "<group>"; };
 		076730891E77575D00030F0C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		077EB9FB1E9F703E0087321E /* KDIBadgeButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KDIBadgeButton.h; path = iOS/KDIBadgeButton.h; sourceTree = "<group>"; };
+		077EB9FC1E9F703E0087321E /* KDIBadgeButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KDIBadgeButton.m; path = iOS/KDIBadgeButton.m; sourceTree = "<group>"; };
 		0794A7E81E734D5300603C99 /* UINavigationController+KDIExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UINavigationController+KDIExtensions.h"; path = "iOS/UINavigationController+KDIExtensions.h"; sourceTree = "<group>"; };
 		0794A7E91E734D5300603C99 /* UINavigationController+KDIExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UINavigationController+KDIExtensions.m"; path = "iOS/UINavigationController+KDIExtensions.m"; sourceTree = "<group>"; };
 		0794A7EE1E73509100603C99 /* UIView+KDIExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIView+KDIExtensions.h"; path = "iOS/UIView+KDIExtensions.h"; sourceTree = "<group>"; };
@@ -568,6 +574,8 @@
 				07DB3D8D1E73B7BD0044FB50 /* KDIProgressNavigationBar.m */,
 				07DB3D921E73BA470044FB50 /* KDIButton.h */,
 				07DB3D931E73BA470044FB50 /* KDIButton.m */,
+				077EB9FB1E9F703E0087321E /* KDIBadgeButton.h */,
+				077EB9FC1E9F703E0087321E /* KDIBadgeButton.m */,
 				076730711E75C6C700030F0C /* KDIPickerViewButton.h */,
 				076730721E75C6C700030F0C /* KDIPickerViewButton.m */,
 				076730811E75F6FE00030F0C /* KDIDatePickerButton.h */,
@@ -852,6 +860,7 @@
 				071B62DF1E70864300B7B85A /* KDIGradientView.h in Headers */,
 				072628131E70BCCF00511F80 /* KDIView.h in Headers */,
 				07E8EB3F1E733FE3001639A2 /* KDIDefines.h in Headers */,
+				077EB9FE1E9F703E0087321E /* KDIBadgeButton.h in Headers */,
 				07DB3D831E7383EC0044FB50 /* KDITextView.h in Headers */,
 				0794A8071E7354EF00603C99 /* UIViewController+KDIExtensions.h in Headers */,
 				0794A7EB1E734D5300603C99 /* UINavigationController+KDIExtensions.h in Headers */,
@@ -904,6 +913,7 @@
 				0794A8141E73574A00603C99 /* UIAlertController+KDIExtensions.h in Headers */,
 				0794A7F01E73509100603C99 /* UIView+KDIExtensions.h in Headers */,
 				07E8EB3D1E733FE3001639A2 /* KDIDefines.h in Headers */,
+				077EB9FD1E9F703E0087321E /* KDIBadgeButton.h in Headers */,
 				076730871E77544700030F0C /* KDINextPreviousInputAccessoryView.h in Headers */,
 				07DB3D8E1E73B7BD0044FB50 /* KDIProgressNavigationBar.h in Headers */,
 				07DB3D761E7381010044FB50 /* KDILabel.h in Headers */,
@@ -1358,6 +1368,7 @@
 				07E8EB4D1E73454D001639A2 /* UIDevice+KDIExtensions.m in Sources */,
 				07E8EB501E734AEC001639A2 /* KDIFunctions.m in Sources */,
 				071B62C01E70846200B7B85A /* NSColor-UIColor+KDIExtensions.m in Sources */,
+				077EBA001E9F703E0087321E /* KDIBadgeButton.m in Sources */,
 				0794A83C1E73776C00603C99 /* KDIBadgeView.m in Sources */,
 				0794A8091E7354EF00603C99 /* UIViewController+KDIExtensions.m in Sources */,
 				07E8EB461E7341C2001639A2 /* UIBarButtonItem+KDIExtensions.m in Sources */,
@@ -1442,6 +1453,7 @@
 				07DB3D961E73BA470044FB50 /* KDIButton.m in Sources */,
 				07DB3D7E1E7382660044FB50 /* KDITextField.m in Sources */,
 				0794A8311E735E1200603C99 /* NSParagraphStyle+KDIExtensions.m in Sources */,
+				077EB9FF1E9F703E0087321E /* KDIBadgeButton.m in Sources */,
 				0794A7EC1E734D5300603C99 /* UINavigationController+KDIExtensions.m in Sources */,
 				07DB3D781E7381010044FB50 /* KDILabel.m in Sources */,
 				0794A81E1E73584900603C99 /* NSBundle+KDIPrivateExtensions.m in Sources */,

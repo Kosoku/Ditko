@@ -122,6 +122,30 @@ static NSArray<NSArray<NSString *> *> *kPickerViewButtonComponentsAndRows;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(_nextPreviousNotification:) name:KDINextPreviousInputAccessoryViewNotificationPrevious object:nil];
     
     [self setFirstResponderControls:@[pickerViewButton,datePickerButton]];
+    
+    KDIBadgeButton *badgeButton = [KDIBadgeButton buttonWithType:UIButtonTypeSystem];
+    
+    [badgeButton setTranslatesAutoresizingMaskIntoConstraints:NO];
+    [badgeButton setBackgroundColor:[UIColor whiteColor]];
+    [badgeButton setImage:[UIImage imageNamed:@"bolt"] forState:UIControlStateNormal];
+    [badgeButton.badgeView setBadge:@"1"];
+    
+    __block NSUInteger badgeButtonValue = 1;
+    
+    [badgeButton KDI_addBlock:^(__kindof UIControl * _Nonnull control, UIControlEvents controlEvents) {
+        KDIBadgeButtonBadgePosition badgePosition = [(KDIBadgeButton *)control badgePosition];
+        
+        if ((++badgePosition) > KDIBadgeButtonBadgePositionBottomRight) {
+            badgePosition = KDIBadgeButtonBadgePositionTopLeft;
+        }
+        
+        [(KDIBadgeButton *)control setBadgePosition:badgePosition];
+        [((KDIBadgeButton *)control).badgeView setBadge:[NSNumberFormatter localizedStringFromNumber:@(++badgeButtonValue) numberStyle:NSNumberFormatterDecimalStyle]];
+    } forControlEvents:UIControlEventTouchUpInside];
+    
+    [gradientView addSubview:badgeButton];
+    [gradientView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:[subview]-[view]" options:0 metrics:nil views:@{@"view": badgeButton, @"subview": datePickerButton}]];
+    [gradientView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[subview]-[view]" options:0 metrics:nil views:@{@"view": badgeButton, @"subview": button}]];
 }
 
 - (NSInteger)numberOfComponentsInPickerViewButton:(KDIPickerViewButton *)pickerViewButton {
