@@ -34,15 +34,15 @@ typedef void(^KDIClickableLabelBlock)(__kindof KDIClickableLabel *label);
 /**
  Set and get the text attributes to apply when the mouse enters the visible rect of the receiver. The attributes are removed when the mouse leaves the visiable rect of the receiver.
  
- The default attributes are @{NSForegroundColorAttributeName: [NSColor blueColor],
-                              NSUnderlineColorAttributeName: [NSColor blueColor],
-                              NSUnderlineStyleAttributeName: @(NSUnderlineStyleSingle|NSUnderlinePatternSolid)}.
+ The default is @{NSForegroundColorAttributeName: [NSColor blueColor],
+                  NSUnderlineColorAttributeName: [NSColor blueColor],
+                  NSUnderlineStyleAttributeName: @(NSUnderlineStyleSingle|NSUnderlinePatternSolid)}.
  */
 @property (copy,nonatomic,null_resettable) NSDictionary<NSString *, id> *clickableTextAttributes;
 /**
  Set and get the cursor to display when the mouse enters the visible rect of the receiver. The cursor is reset when the mouse leaves the visible rect of the receiver.
  
- The default cursor is [NSCursor pointingHandCursor].
+ The default is [NSCursor pointingHandCursor].
  */
 @property (strong,nonatomic,null_resettable) NSCursor *clickableCursor;
 
