@@ -32,6 +32,10 @@ static NSArray<NSArray<NSString *> *> *kPickerViewButtonComponentsAndRows;
     }
 }
 
+- (NSString *)title {
+    return @"Demo";
+}
+
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
@@ -52,12 +56,18 @@ static NSArray<NSArray<NSString *> *> *kPickerViewButtonComponentsAndRows;
     
     KDIGradientView *gradientView = [[KDIGradientView alloc] initWithFrame:CGRectZero];
     
-    [gradientView setColors:@[KDIColorRandomRGB(),KDIColorRandomRGB()]];
     [gradientView setTranslatesAutoresizingMaskIntoConstraints:NO];
+    [gradientView setColors:@[KDIColorRandomRGB(),KDIColorRandomRGB()]];
     
     [self.view addSubview:gradientView];
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-margin-[view]-margin-|" options:0 metrics:@{@"margin": @16.0} views:@{@"view": gradientView}]];
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-margin-[view]-margin-|" options:0 metrics:@{@"margin": @16.0} views:@{@"view": gradientView}]];
+    
+    UILayoutGuide *layoutGuide = [[UILayoutGuide alloc] init];
+    
+    [gradientView addLayoutGuide:layoutGuide];
+    [gradientView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[view]" options:0 metrics:nil views:@{@"view": layoutGuide}]];
+    [gradientView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-margin-[view]" options:0 metrics:@{@"margin": @44.0} views:@{@"view": layoutGuide}]];
     
     KDIBadgeView *badgeView = [[KDIBadgeView alloc] initWithFrame:CGRectZero];
     
@@ -66,7 +76,7 @@ static NSArray<NSArray<NSString *> *> *kPickerViewButtonComponentsAndRows;
     
     [gradientView addSubview:badgeView];
     [gradientView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[view]" options:0 metrics:nil views:@{@"view": badgeView}]];
-    [gradientView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-[view]" options:0 metrics:nil views:@{@"view": badgeView}]];
+    [gradientView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[subview]-[view]" options:0 metrics:nil views:@{@"view": badgeView, @"subview": layoutGuide}]];
     
     KDIButton *button = [[KDIButton alloc] initWithFrame:CGRectZero];
     
@@ -83,7 +93,7 @@ static NSArray<NSArray<NSString *> *> *kPickerViewButtonComponentsAndRows;
     
     [gradientView addSubview:button];
     [gradientView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:[subview]-[view]" options:0 metrics:nil views:@{@"view": button, @"subview": badgeView}]];
-    [gradientView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-[view]" options:0 metrics:nil views:@{@"view": button}]];
+    [gradientView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[subview]-[view]" options:0 metrics:nil views:@{@"view": button, @"subview": layoutGuide}]];
     
     KDIPickerViewButton *pickerViewButton = [KDIPickerViewButton buttonWithType:UIButtonTypeSystem];
     
@@ -101,7 +111,7 @@ static NSArray<NSArray<NSString *> *> *kPickerViewButtonComponentsAndRows;
     
     [gradientView addSubview:pickerViewButton];
     [gradientView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:[subview]-[view]" options:0 metrics:nil views:@{@"view": pickerViewButton, @"subview": button}]];
-    [gradientView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-[view]" options:0 metrics:nil views:@{@"view": pickerViewButton}]];
+    [gradientView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[subview]-[view]" options:0 metrics:nil views:@{@"view": pickerViewButton, @"subview": layoutGuide}]];
     
     KDIDatePickerButton *datePickerButton = [KDIDatePickerButton buttonWithType:UIButtonTypeSystem];
     
@@ -123,29 +133,26 @@ static NSArray<NSArray<NSString *> *> *kPickerViewButtonComponentsAndRows;
     
     [self setFirstResponderControls:@[pickerViewButton,datePickerButton]];
     
-    KDIBadgeButton *badgeButton = [KDIBadgeButton buttonWithType:UIButtonTypeSystem];
+    KDIBadgeButton *badgeButton = [[KDIBadgeButton alloc] initWithFrame:CGRectZero];
     
-    [badgeButton setTranslatesAutoresizingMaskIntoConstraints:NO];
-    [badgeButton setBackgroundColor:[UIColor whiteColor]];
-    [badgeButton setImage:[UIImage imageNamed:@"bolt"] forState:UIControlStateNormal];
+    [badgeButton.button setImage:[UIImage imageNamed:@"bolt"] forState:UIControlStateNormal];
     [badgeButton.badgeView setBadge:@"1"];
+    [badgeButton sizeToFit];
     
     __block NSUInteger badgeButtonValue = 1;
     
-    [badgeButton KDI_addBlock:^(__kindof UIControl * _Nonnull control, UIControlEvents controlEvents) {
-        KDIBadgeButtonBadgePosition badgePosition = [(KDIBadgeButton *)control badgePosition];
+    [badgeButton.button KDI_addBlock:^(__kindof UIControl * _Nonnull control, UIControlEvents controlEvents) {
+        KDIBadgeButtonBadgePosition badgePosition = badgeButton.badgePosition;
         
         if ((++badgePosition) > KDIBadgeButtonBadgePositionBottomRight) {
             badgePosition = KDIBadgeButtonBadgePositionTopLeft;
         }
         
-        [(KDIBadgeButton *)control setBadgePosition:badgePosition];
-        [((KDIBadgeButton *)control).badgeView setBadge:[NSNumberFormatter localizedStringFromNumber:@(++badgeButtonValue) numberStyle:NSNumberFormatterDecimalStyle]];
+        [badgeButton setBadgePosition:badgePosition];
+        [badgeButton.badgeView setBadge:[NSNumberFormatter localizedStringFromNumber:@(++badgeButtonValue) numberStyle:NSNumberFormatterDecimalStyle]];
     } forControlEvents:UIControlEventTouchUpInside];
     
-    [gradientView addSubview:badgeButton];
-    [gradientView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:[subview]-[view]" options:0 metrics:nil views:@{@"view": badgeButton, @"subview": datePickerButton}]];
-    [gradientView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[subview]-[view]" options:0 metrics:nil views:@{@"view": badgeButton, @"subview": button}]];
+    [self.navigationItem setRightBarButtonItems:@[[[UIBarButtonItem alloc] initWithCustomView:badgeButton]]];
 }
 
 - (NSInteger)numberOfComponentsInPickerViewButton:(KDIPickerViewButton *)pickerViewButton {

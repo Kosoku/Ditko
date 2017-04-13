@@ -13,7 +13,7 @@
 //
 //  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-#import <Ditko/Ditko.h>
+#import <UIKit/UIKit.h>
 
 /**
  Enum describing the possible values for the badge position. They affect where the KDIBadgeView subview is laid out during layoutSubviews.
@@ -42,7 +42,7 @@ typedef NS_ENUM(NSInteger, KDIBadgeButtonBadgePosition) {
 /**
  KDIBadgeButton is a KDIButton subclass that manages an instance of KDIBadgeView as a subview, allowing badging similar to system buttons (e.g. a UITabBarItem).
  */
-@interface KDIBadgeButton : KDIButton
+@interface KDIBadgeButton : UIView
 
 /**
  Set and get the badge position. The default is KDIBadgeButtonBadgePositionTopRight.
@@ -51,10 +51,20 @@ typedef NS_ENUM(NSInteger, KDIBadgeButtonBadgePosition) {
  */
 @property (assign,nonatomic) KDIBadgeButtonBadgePosition badgePosition;
 /**
- Get the KDIBadgeView instance managed by the receiver. You can set any appearance related properties of the badge view, but do not adjust its frame.
+ Get the KDIBadgeView instance managed by the receiver.
  
  @see KDIBadgeView
  */
 @property (readonly,strong,nonatomic) KDIBadgeView *badgeView;
+/**
+ Get the UIButton instance managed by the receiver.
+ 
+ @see UIButton
+ */
+@property (readonly,strong,nonatomic) UIButton *button;
+
+- (void)layoutSubviews NS_REQUIRES_SUPER;
+- (CGSize)intrinsicContentSize NS_REQUIRES_SUPER;
+- (CGSize)sizeThatFits:(CGSize)size NS_REQUIRES_SUPER;
 
 @end

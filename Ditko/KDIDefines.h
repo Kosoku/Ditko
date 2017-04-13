@@ -25,6 +25,7 @@
 #define KDIFont UIFont
 #define KDIImage UIImage
 #define KDIRect CGRect
+#define KDIRectZero CGRectZero
 #define KDISize CGSize
 #define KDISizeZero CGSizeZero
 #define KDIPoint CGPoint
@@ -38,6 +39,7 @@
 #define KDIFont NSFont
 #define KDIImage NSImage
 #define KDIRect NSRect
+#define KDIRectZero NSZeroRect
 #define KDISize NSSize
 #define KDISizeZero NSZeroSize
 #define KDIPoint NSPoint
