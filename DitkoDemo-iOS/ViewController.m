@@ -18,6 +18,21 @@
 #import <Ditko/Ditko.h>
 #import <Loki/Loki.h>
 
+@interface KDIBadgeView (ViewControllerExtensions) <KDIDynamicTypeView>
+@end
+
+@implementation KDIBadgeView (ViewControllerExtensions)
+
+@dynamic KDI_dynamicTypeFont;
+- (UIFont *)KDI_dynamicTypeFont {
+    return self.badgeFont;
+}
+- (void)setKDI_dynamicTypeFont:(UIFont *)KDI_dynamicTypeFont {
+    [self setBadgeFont:KDI_dynamicTypeFont];
+}
+
+@end
+
 static NSArray<NSArray<NSString *> *> *kPickerViewButtonComponentsAndRows;
 
 @interface ViewController () <KDIPickerViewButtonDataSource,KDIPickerViewButtonDelegate>
@@ -72,28 +87,30 @@ static NSArray<NSArray<NSString *> *> *kPickerViewButtonComponentsAndRows;
     KDIBadgeView *badgeView = [[KDIBadgeView alloc] initWithFrame:CGRectZero];
     
     [badgeView setBadge:@"1234"];
+    [badgeView setBadgeBackgroundColor:KDIColorRandomRGB()];
+    [badgeView setBadgeForegroundColor:KDIColorRandomRGB()];
     [badgeView setTranslatesAutoresizingMaskIntoConstraints:NO];
     
     [gradientView addSubview:badgeView];
     [gradientView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[view]" options:0 metrics:nil views:@{@"view": badgeView}]];
     [gradientView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[subview]-[view]" options:0 metrics:nil views:@{@"view": badgeView, @"subview": layoutGuide}]];
     
-    KDIButton *button = [[KDIButton alloc] initWithFrame:CGRectZero];
+    KDIButton *blockButton = [[KDIButton alloc] initWithFrame:CGRectZero];
     
-    [button setTranslatesAutoresizingMaskIntoConstraints:NO];
-    [button setBackgroundColor:KDIColorRandomRGB()];
-    [button setContentEdgeInsets:UIEdgeInsetsMake(8, 8, 8, 8)];
-    [button setImageEdgeInsets:UIEdgeInsetsMake(0, 8, 0, 0)];
-    [button setTitleColor:KDIColorRandomRGB() forState:UIControlStateNormal];
-    [button setTitle:@"Title" forState:UIControlStateNormal];
-    [button setImage:[[UIImage imageNamed:@"globe"] KLO_imageByTintingWithColor:KDIColorRandomRGB()] forState:UIControlStateNormal];
-    [button setTitleAlignment:KDIButtonAlignmentLeft|KDIButtonAlignmentCenter];
-    [button setImageAlignment:KDIButtonAlignmentRight|KDIButtonAlignmentCenter];
-    [button setStyle:KDIButtonStyleRounded];
+    [blockButton setTranslatesAutoresizingMaskIntoConstraints:NO];
+    [blockButton setBackgroundColor:KDIColorRandomRGB()];
+    [blockButton setContentEdgeInsets:UIEdgeInsetsMake(8, 8, 8, 8)];
+    [blockButton setImageEdgeInsets:UIEdgeInsetsMake(0, 8, 0, 0)];
+    [blockButton setTitleColor:KDIColorRandomRGB() forState:UIControlStateNormal];
+    [blockButton setTitle:@"Title" forState:UIControlStateNormal];
+    [blockButton setImage:[[UIImage imageNamed:@"globe"] KLO_imageByTintingWithColor:KDIColorRandomRGB()] forState:UIControlStateNormal];
+    [blockButton setTitleAlignment:KDIButtonAlignmentLeft|KDIButtonAlignmentCenter];
+    [blockButton setImageAlignment:KDIButtonAlignmentRight|KDIButtonAlignmentCenter];
+    [blockButton setStyle:KDIButtonStyleRounded];
     
-    [gradientView addSubview:button];
-    [gradientView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:[subview]-[view]" options:0 metrics:nil views:@{@"view": button, @"subview": badgeView}]];
-    [gradientView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[subview]-[view]" options:0 metrics:nil views:@{@"view": button, @"subview": layoutGuide}]];
+    [gradientView addSubview:blockButton];
+    [gradientView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:[subview]-[view]" options:0 metrics:nil views:@{@"view": blockButton, @"subview": badgeView}]];
+    [gradientView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[subview]-[view]" options:0 metrics:nil views:@{@"view": blockButton, @"subview": layoutGuide}]];
     
     KDIPickerViewButton *pickerViewButton = [KDIPickerViewButton buttonWithType:UIButtonTypeSystem];
     
@@ -110,7 +127,7 @@ static NSArray<NSArray<NSString *> *> *kPickerViewButtonComponentsAndRows;
     [pickerViewButton setSelectedComponentsJoinString:@", "];
     
     [gradientView addSubview:pickerViewButton];
-    [gradientView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:[subview]-[view]" options:0 metrics:nil views:@{@"view": pickerViewButton, @"subview": button}]];
+    [gradientView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:[subview]-[view]" options:0 metrics:nil views:@{@"view": pickerViewButton, @"subview": blockButton}]];
     [gradientView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[subview]-[view]" options:0 metrics:nil views:@{@"view": pickerViewButton, @"subview": layoutGuide}]];
     
     KDIDatePickerButton *datePickerButton = [KDIDatePickerButton buttonWithType:UIButtonTypeSystem];
@@ -126,7 +143,7 @@ static NSArray<NSArray<NSString *> *> *kPickerViewButtonComponentsAndRows;
     
     [gradientView addSubview:datePickerButton];
     [gradientView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[view]" options:0 metrics:nil views:@{@"view": datePickerButton}]];
-    [gradientView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[subview]-[view]" options:0 metrics:nil views:@{@"view": datePickerButton, @"subview": button}]];
+    [gradientView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[subview]-[view]" options:0 metrics:nil views:@{@"view": datePickerButton, @"subview": blockButton}]];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(_nextPreviousNotification:) name:KDINextPreviousInputAccessoryViewNotificationNext object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(_nextPreviousNotification:) name:KDINextPreviousInputAccessoryViewNotificationPrevious object:nil];
@@ -153,6 +170,8 @@ static NSArray<NSArray<NSString *> *> *kPickerViewButtonComponentsAndRows;
     } forControlEvents:UIControlEventTouchUpInside];
     
     [self.navigationItem setRightBarButtonItems:@[[[UIBarButtonItem alloc] initWithCustomView:badgeButton]]];
+    
+    [NSObject KDI_registerDynamicTypeViews:@[badgeView,blockButton,pickerViewButton,datePickerButton] forTextStyle:UIFontTextStyleBody];
 }
 
 - (NSInteger)numberOfComponentsInPickerViewButton:(KDIPickerViewButton *)pickerViewButton {

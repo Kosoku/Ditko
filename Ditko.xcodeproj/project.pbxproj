@@ -55,6 +55,10 @@
 		0735429B1E70515400177905 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 073542991E70515400177905 /* Main.storyboard */; };
 		073542A51E7053F100177905 /* Ditko.h in Headers */ = {isa = PBXBuildFile; fileRef = 0795E6351E704785004A5CB2 /* Ditko.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		073542AA1E7057A000177905 /* NSColor-UIColor+KDIExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0795E6401E70491E004A5CB2 /* NSColor-UIColor+KDIExtensions.m */; };
+		0738CE4A1EA014C9008FE9A0 /* NSObject+KDIDynamicTypeExtensions.h in Headers */ = {isa = PBXBuildFile; fileRef = 0738CE481EA014C9008FE9A0 /* NSObject+KDIDynamicTypeExtensions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0738CE4B1EA014C9008FE9A0 /* NSObject+KDIDynamicTypeExtensions.h in Headers */ = {isa = PBXBuildFile; fileRef = 0738CE481EA014C9008FE9A0 /* NSObject+KDIDynamicTypeExtensions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0738CE4C1EA014C9008FE9A0 /* NSObject+KDIDynamicTypeExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0738CE491EA014C9008FE9A0 /* NSObject+KDIDynamicTypeExtensions.m */; };
+		0738CE4D1EA014C9008FE9A0 /* NSObject+KDIDynamicTypeExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0738CE491EA014C9008FE9A0 /* NSObject+KDIDynamicTypeExtensions.m */; };
 		073B35161E82EF4B00C003A1 /* UIControl+KDIExtensions.h in Headers */ = {isa = PBXBuildFile; fileRef = 073B35141E82EF4B00C003A1 /* UIControl+KDIExtensions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		073B35171E82EF4B00C003A1 /* UIControl+KDIExtensions.h in Headers */ = {isa = PBXBuildFile; fileRef = 073B35141E82EF4B00C003A1 /* UIControl+KDIExtensions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		073B35181E82EF4B00C003A1 /* UIControl+KDIExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 073B35151E82EF4B00C003A1 /* UIControl+KDIExtensions.m */; };
@@ -373,6 +377,8 @@
 		0735429C1E70515400177905 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		073542A01E7051A700177905 /* Stanley.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Stanley.framework; path = Vendor/Stanley/build/Debug/Stanley.framework; sourceTree = "<group>"; };
 		073542A31E7051BA00177905 /* Stanley.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Stanley.framework; path = Vendor/Stanley/build/Debug/Stanley.framework; sourceTree = "<group>"; };
+		0738CE481EA014C9008FE9A0 /* NSObject+KDIDynamicTypeExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSObject+KDIDynamicTypeExtensions.h"; path = "iOS/NSObject+KDIDynamicTypeExtensions.h"; sourceTree = "<group>"; };
+		0738CE491EA014C9008FE9A0 /* NSObject+KDIDynamicTypeExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSObject+KDIDynamicTypeExtensions.m"; path = "iOS/NSObject+KDIDynamicTypeExtensions.m"; sourceTree = "<group>"; };
 		073B35141E82EF4B00C003A1 /* UIControl+KDIExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIControl+KDIExtensions.h"; path = "iOS/UIControl+KDIExtensions.h"; sourceTree = "<group>"; };
 		073B35151E82EF4B00C003A1 /* UIControl+KDIExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIControl+KDIExtensions.m"; path = "iOS/UIControl+KDIExtensions.m"; sourceTree = "<group>"; };
 		0745316D1E9EB0F200CEF9E0 /* Stanley.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Stanley.framework; path = "../../Library/Developer/Xcode/DerivedData/Ditko-bqbmowdlvnipfjchljeblievobjg/Build/Products/Debug-watchsimulator/Stanley.framework"; sourceTree = "<group>"; };
@@ -703,6 +709,8 @@
 				07D166C21E96A08E0073F69A /* NSButton+KDIExtensions.m */,
 				07D166C51E96ABDA0073F69A /* NSPopUpButton+KDIExtensions.h */,
 				07D166C61E96ABDA0073F69A /* NSPopUpButton+KDIExtensions.m */,
+				0738CE481EA014C9008FE9A0 /* NSObject+KDIDynamicTypeExtensions.h */,
+				0738CE491EA014C9008FE9A0 /* NSObject+KDIDynamicTypeExtensions.m */,
 			);
 			name = Categories;
 			sourceTree = "<group>";
@@ -859,6 +867,7 @@
 				07E8EB3F1E733FE3001639A2 /* KDIDefines.h in Headers */,
 				077EB9FE1E9F703E0087321E /* KDIBadgeButton.h in Headers */,
 				07DB3D831E7383EC0044FB50 /* KDITextView.h in Headers */,
+				0738CE4B1EA014C9008FE9A0 /* NSObject+KDIDynamicTypeExtensions.h in Headers */,
 				0794A8071E7354EF00603C99 /* UIViewController+KDIExtensions.h in Headers */,
 				0794A7EB1E734D5300603C99 /* UINavigationController+KDIExtensions.h in Headers */,
 				07E8EB4F1E734729001639A2 /* KDIFunctions.h in Headers */,
@@ -934,6 +943,7 @@
 				0794A81A1E73584900603C99 /* NSBundle+KDIPrivateExtensions.h in Headers */,
 				07DB3D881E73B6600044FB50 /* KDIProgressSlider.h in Headers */,
 				0794A8371E73776C00603C99 /* KDIBadgeView.h in Headers */,
+				0738CE4A1EA014C9008FE9A0 /* NSObject+KDIDynamicTypeExtensions.h in Headers */,
 				07E8EB341E733F34001639A2 /* NSURL+KDIExtensions.h in Headers */,
 				073B35161E82EF4B00C003A1 /* UIControl+KDIExtensions.h in Headers */,
 			);
@@ -1365,6 +1375,7 @@
 				07E8EB501E734AEC001639A2 /* KDIFunctions.m in Sources */,
 				071B62C01E70846200B7B85A /* NSColor-UIColor+KDIExtensions.m in Sources */,
 				077EBA001E9F703E0087321E /* KDIBadgeButton.m in Sources */,
+				0738CE4D1EA014C9008FE9A0 /* NSObject+KDIDynamicTypeExtensions.m in Sources */,
 				0794A83C1E73776C00603C99 /* KDIBadgeView.m in Sources */,
 				0794A8091E7354EF00603C99 /* UIViewController+KDIExtensions.m in Sources */,
 				07E8EB461E7341C2001639A2 /* UIBarButtonItem+KDIExtensions.m in Sources */,
@@ -1429,6 +1440,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0738CE4C1EA014C9008FE9A0 /* NSObject+KDIDynamicTypeExtensions.m in Sources */,
 				073B35181E82EF4B00C003A1 /* UIControl+KDIExtensions.m in Sources */,
 				07DB3D8A1E73B6600044FB50 /* KDIProgressSlider.m in Sources */,
 				0794A7FD1E73530400603C99 /* UIBezierPath+KDIExtensions.m in Sources */,
