@@ -153,10 +153,10 @@ static CGFloat const kTitleBrightnessAdjustment = 0.5;
             }
             
             if (self.imageAlignment & KDIButtonAlignmentCenter) {
-                [self.imageView setFrame:KSTCGRectCenterInRectVertically(CGRectMake(CGRectGetWidth(self.bounds) - imageSize.width - self.imageEdgeInsets.left - self.contentEdgeInsets.left, 0, imageSize.width, imageSize.height), self.bounds)];
+                [self.imageView setFrame:KSTCGRectCenterInRectVertically(CGRectMake(CGRectGetWidth(self.bounds) - imageSize.width - self.imageEdgeInsets.right - self.contentEdgeInsets.right, 0, imageSize.width, imageSize.height), self.bounds)];
             }
             else {
-                [self.imageView setFrame:CGRectMake(CGRectGetWidth(self.bounds) - imageSize.width - self.imageEdgeInsets.left - self.contentEdgeInsets.left, self.contentEdgeInsets.top + self.imageEdgeInsets.top, imageSize.width, imageSize.height)];
+                [self.imageView setFrame:CGRectMake(CGRectGetWidth(self.bounds) - imageSize.width - self.imageEdgeInsets.right - self.contentEdgeInsets.right, self.contentEdgeInsets.top + self.imageEdgeInsets.top, imageSize.width, imageSize.height)];
             }
         }
         else if ((self.titleAlignment & KDIButtonAlignmentRight) &&
@@ -170,10 +170,10 @@ static CGFloat const kTitleBrightnessAdjustment = 0.5;
             }
             
             if (self.titleAlignment & KDIButtonAlignmentCenter) {
-                [self.titleLabel setFrame:KSTCGRectCenterInRectVertically(CGRectMake(CGRectGetWidth(self.bounds) - imageSize.width - self.titleEdgeInsets.left - self.contentEdgeInsets.left, 0, titleSize.width, titleSize.height), self.bounds)];
+                [self.titleLabel setFrame:KSTCGRectCenterInRectVertically(CGRectMake(CGRectGetWidth(self.bounds) - titleSize.width - self.titleEdgeInsets.right - self.contentEdgeInsets.right, 0, titleSize.width, titleSize.height), self.bounds)];
             }
             else {
-                [self.titleLabel setFrame:CGRectMake(CGRectGetWidth(self.bounds) - imageSize.width - self.titleEdgeInsets.left - self.contentEdgeInsets.left, self.contentEdgeInsets.top + self.titleEdgeInsets.top, titleSize.width, titleSize.height)];
+                [self.titleLabel setFrame:CGRectMake(CGRectGetWidth(self.bounds) - titleSize.width - self.titleEdgeInsets.right - self.contentEdgeInsets.right, self.contentEdgeInsets.top + self.titleEdgeInsets.top, titleSize.width, titleSize.height)];
             }
         }
         else if ((self.titleAlignment & KDIButtonAlignmentTop) &&
