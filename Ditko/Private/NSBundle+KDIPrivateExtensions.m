@@ -18,7 +18,7 @@
 @implementation NSBundle (KDIPrivateExtensions)
 
 + (NSBundle *)KDI_frameworkBundle; {
-    return [self bundleWithIdentifier:@"com.kosoku.ditko"];
+    return [self bundleWithIdentifier:@"com.kosoku.ditko"] ?: [self bundleWithURL:[[[NSBundle mainBundle].privateFrameworksURL URLByAppendingPathComponent:@"Ditko.framework" isDirectory:YES] URLByAppendingPathComponent:@"Ditko.bundle" isDirectory:YES]];
 }
 
 @end
