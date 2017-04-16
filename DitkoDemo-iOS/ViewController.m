@@ -88,7 +88,7 @@ static NSArray<NSArray<NSString *> *> *kPickerViewButtonComponentsAndRows;
     
     [badgeView setBadge:@"1234"];
     [badgeView setBadgeBackgroundColor:KDIColorRandomRGB()];
-    [badgeView setBadgeForegroundColor:KDIColorRandomRGB()];
+    [badgeView setBadgeForegroundColor:[badgeView.badgeBackgroundColor KDI_inverseColor]];
     [badgeView setTranslatesAutoresizingMaskIntoConstraints:NO];
     
     [gradientView addSubview:badgeView];
@@ -101,11 +101,13 @@ static NSArray<NSArray<NSString *> *> *kPickerViewButtonComponentsAndRows;
     [blockButton setBackgroundColor:KDIColorRandomRGB()];
     [blockButton setContentEdgeInsets:UIEdgeInsetsMake(8, 8, 8, 8)];
     [blockButton setImageEdgeInsets:UIEdgeInsetsMake(0, 8, 0, 0)];
-    [blockButton setTitleColor:KDIColorRandomRGB() forState:UIControlStateNormal];
+    [blockButton setTitleColor:[blockButton.backgroundColor KDI_inverseColor] forState:UIControlStateNormal];
     [blockButton setTitle:@"Title" forState:UIControlStateNormal];
-    [blockButton setImage:[[UIImage imageNamed:@"globe"] KLO_imageByTintingWithColor:KDIColorRandomRGB()] forState:UIControlStateNormal];
+    [blockButton setImage:[[UIImage imageNamed:@"globe"] KLO_imageByTintingWithColor:[blockButton.backgroundColor KDI_inverseColor]] forState:UIControlStateNormal];
     [blockButton KDI_addBlock:^(__kindof UIControl * _Nonnull control, UIControlEvents controlEvents) {
-        NSLog(@"the button %@ was tapped!",control);
+        [blockButton setBackgroundColor:KDIColorRandomRGB()];
+        [blockButton setTitleColor:[blockButton.backgroundColor KDI_inverseColor] forState:UIControlStateNormal];
+        [blockButton setImage:[[UIImage imageNamed:@"globe"] KLO_imageByTintingWithColor:[blockButton.backgroundColor KDI_inverseColor]] forState:UIControlStateNormal];
     } forControlEvents:UIControlEventTouchUpInside];
     [blockButton setTitleAlignment:KDIButtonAlignmentLeft|KDIButtonAlignmentCenter];
     [blockButton setImageAlignment:KDIButtonAlignmentRight|KDIButtonAlignmentCenter];

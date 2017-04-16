@@ -20,6 +20,7 @@
 #else
 #import "NSColor+KDIExtensions.h"
 #endif
+#import "KDIDefines.h"
 
 #import <Stanley/KSTValueMacros.h>
 
@@ -61,6 +62,47 @@
 #else
     return [NSColor colorWithCalibratedRed:red/255.0 green:green/255.0 blue:blue/255.0 alpha:alpha/255.0];
 #endif
+}
+
++ (KDIColor *)KDI_inverseColorOfColor:(KDIColor *)color {
+#if (TARGET_OS_IPHONE)
+    CGFloat white;
+    if ([color getWhite:&white alpha:NULL]) {
+        return [UIColor colorWithWhite:1.0-white alpha:1.0];
+    }
+    CGFloat hue, saturation, brightness;
+    if ([color getHue:&hue saturation:&saturation brightness:&brightness alpha:NULL]) {
+        return [UIColor colorWithHue:1.0-hue saturation:1.0-saturation brightness:1.0-brightness alpha:1.0];
+    }
+    CGFloat red, green, blue;
+    if ([color getRed:&red green:&green blue:&blue alpha:NULL]) {
+        return [UIColor colorWithRed:1.0-red green:1.0-green blue:1.0-blue alpha:1.0];
+    }
+    return color;
+#else
+    if (color.colorSpace.colorSpaceModel == NSColorSpaceModelGray) {
+        CGFloat white;
+        [color getWhite:&white alpha:NULL];
+        
+        return [NSColor colorWithCalibratedWhite:1.0-white alpha:1.0];
+    }
+    else if (color.colorSpace.colorSpaceModel == NSColorSpaceModelRGB) {
+        CGFloat red, green, blue;
+        [color getRed:&red green:&green blue:&blue alpha:NULL];
+        
+        return [NSColor colorWithCalibratedRed:1.0-red green:1.0-green blue:1.0-blue alpha:1.0];
+    }
+    else if (color.colorSpace.colorSpaceModel == NSColorSpaceModelCMYK) {
+        CGFloat cyan, magenta, yellow, black;
+        [color getCyan:&cyan magenta:&magenta yellow:&yellow black:&black alpha:NULL];
+        
+        return [NSColor colorWithDeviceCyan:1.0-cyan magenta:1.0-magenta yellow:1.0-yellow black:1.0-black alpha:1.0];
+    }
+    return color;
+#endif
+}
+- (KDIColor *)KDI_inverseColor {
+    return [KDIColor KDI_inverseColorOfColor:self];
 }
 
 #if (TARGET_OS_IPHONE)

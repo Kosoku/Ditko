@@ -33,6 +33,20 @@ NS_ASSUME_NONNULL_BEGIN
 + (NSColor *)KDI_colorRandomRGBA;
 
 /**
+ Creates and returns the inverse of the provided color. The inverse of NSColor.blackColor is NSColor.whiteColor.
+ 
+ @param color The color for which to return the inverse color
+ @return The inverse color
+ */
++ (NSColor *)KDI_inverseColorOfColor:(NSColor *)color;
+/**
+ Returns [self.class KDI_inverseColorOfColor:self].
+ 
+ @return The inverse color
+ */
+- (NSColor *)KDI_inverseColor;
+
+/**
  Creates and returns an UIColor by parsing *hexadecimalString*. See http://www.karelia.com/cocoa_legacy/Foundation_Categories/NSColor__Instantiat.m for implementation reference.
  
  @param hexadecimalString The string to parse

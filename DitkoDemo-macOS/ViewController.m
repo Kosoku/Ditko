@@ -66,6 +66,8 @@
     
     KDIBadgeView *badgeView = [[KDIBadgeView alloc] initWithFrame:NSZeroRect];
     
+    [badgeView setBadgeBackgroundColor:KDIColorRandomRGB()];
+    [badgeView setBadgeForegroundColor:[badgeView.badgeBackgroundColor KDI_inverseColor]];
     [badgeView setBadge:@"1234"];
     [badgeView setTranslatesAutoresizingMaskIntoConstraints:NO];
     
