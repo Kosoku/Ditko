@@ -33,6 +33,20 @@ NS_ASSUME_NONNULL_BEGIN
 + (UIColor *)KDI_colorRandomRGBA;
 
 /**
+ Creates and returns a contrasting color for the provided *color*, which will either be UIColor.blackColor or UIColor.whiteColor depending on the perceived brightness of *color*. The perceived brightness is calculated using https://www.w3.org/TR/AERT#color-contrast as a reference. If the contrasting color cannot be computed, *color* is returned.
+ 
+ @param color The color for which to compute the contrasting color
+ @return The contrasting color
+ */
++ (UIColor *)KDI_contrastingColorOfColor:(UIColor *)color;
+/**
+ Returns [self.class KDI_contrastingColorOfColor:self].
+ 
+ @return The contrasting color
+ */
+- (UIColor *)KDI_contrastingColor;
+
+/**
  Creates and returns the inverse of the provided color. The inverse of UIColor.blackColor is UIColor.whiteColor.
  
  @param color The color for which to return the inverse color

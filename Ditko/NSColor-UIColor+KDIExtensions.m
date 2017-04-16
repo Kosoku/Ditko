@@ -24,6 +24,11 @@
 
 #import <Stanley/KSTValueMacros.h>
 
+// https://www.w3.org/TR/AERT#color-contrast
+static CGFloat KDIPerceivedBrightnessForRedGreenAndBlue(CGFloat red, CGFloat green, CGFloat blue) {
+    return 1.0 - (red * 0.299 + green * 0.587 + blue * 0.114);
+}
+
 #if (TARGET_OS_IPHONE)
 @implementation UIColor (KDIExtensions)
 #else
@@ -62,6 +67,53 @@
 #else
     return [NSColor colorWithCalibratedRed:red/255.0 green:green/255.0 blue:blue/255.0 alpha:alpha/255.0];
 #endif
+}
+    
++ (KDIColor *)KDI_contrastingColorOfColor:(KDIColor *)color; {
+#if (TARGET_OS_IPHONE)
+    CGFloat white;
+    if ([color getWhite:&white alpha:NULL]) {
+        if (white < 0.5) {
+            return UIColor.whiteColor;
+        }
+        else {
+            return UIColor.blackColor;
+        }
+    }
+    CGFloat red, green, blue;
+    if ([color getRed:&red green:&green blue:&blue alpha:NULL]) {
+        if (KDIPerceivedBrightnessForRedGreenAndBlue(red,green,blue) < 0.5) {
+            return UIColor.blackColor;
+        }
+        else {
+            return UIColor.whiteColor;
+        }
+    }
+    return color;
+#else
+    if (color.colorSpace.colorSpaceModel != NSColorSpaceModelRGB) {
+        NSColor *temp = [color colorUsingColorSpace:NSColorSpace.deviceRGBColorSpace];
+        
+        if (temp != nil) {
+            color = temp;
+        }
+    }
+    if (color.colorSpace.colorSpaceModel == NSColorSpaceModelRGB) {
+        CGFloat red, green, blue;
+        [color getRed:&red green:&green blue:&blue alpha:NULL];
+        
+        if (KDIPerceivedBrightnessForRedGreenAndBlue(red,green,blue) < 0.5) {
+            return NSColor.blackColor;
+        }
+        else {
+            return NSColor.whiteColor;
+        }
+    }
+    return color;
+#endif
+}
+- (KDIColor *)KDI_contrastingColor; {
+    return [KDIColor KDI_contrastingColorOfColor:self];
 }
 
 + (KDIColor *)KDI_inverseColorOfColor:(KDIColor *)color {

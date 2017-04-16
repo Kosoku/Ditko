@@ -101,13 +101,13 @@ static NSArray<NSArray<NSString *> *> *kPickerViewButtonComponentsAndRows;
     [blockButton setBackgroundColor:KDIColorRandomRGB()];
     [blockButton setContentEdgeInsets:UIEdgeInsetsMake(8, 8, 8, 8)];
     [blockButton setImageEdgeInsets:UIEdgeInsetsMake(0, 8, 0, 0)];
-    [blockButton setTitleColor:[blockButton.backgroundColor KDI_inverseColor] forState:UIControlStateNormal];
-    [blockButton setTitle:@"Title" forState:UIControlStateNormal];
-    [blockButton setImage:[[UIImage imageNamed:@"globe"] KLO_imageByTintingWithColor:[blockButton.backgroundColor KDI_inverseColor]] forState:UIControlStateNormal];
+    [blockButton setTitleColor:[blockButton.backgroundColor KDI_contrastingColor] forState:UIControlStateNormal];
+    [blockButton setTitle:@"Block button" forState:UIControlStateNormal];
+    [blockButton setImage:[[UIImage imageNamed:@"globe"] KLO_imageByTintingWithColor:[blockButton.backgroundColor KDI_contrastingColor]] forState:UIControlStateNormal];
     [blockButton KDI_addBlock:^(__kindof UIControl * _Nonnull control, UIControlEvents controlEvents) {
         [blockButton setBackgroundColor:KDIColorRandomRGB()];
-        [blockButton setTitleColor:[blockButton.backgroundColor KDI_inverseColor] forState:UIControlStateNormal];
-        [blockButton setImage:[[UIImage imageNamed:@"globe"] KLO_imageByTintingWithColor:[blockButton.backgroundColor KDI_inverseColor]] forState:UIControlStateNormal];
+        [blockButton setTitleColor:[blockButton.backgroundColor KDI_contrastingColor] forState:UIControlStateNormal];
+        [blockButton setImage:[[UIImage imageNamed:@"globe"] KLO_imageByTintingWithColor:[blockButton.backgroundColor KDI_contrastingColor]] forState:UIControlStateNormal];
     } forControlEvents:UIControlEventTouchUpInside];
     [blockButton setTitleAlignment:KDIButtonAlignmentLeft|KDIButtonAlignmentCenter];
     [blockButton setImageAlignment:KDIButtonAlignmentRight|KDIButtonAlignmentCenter];
