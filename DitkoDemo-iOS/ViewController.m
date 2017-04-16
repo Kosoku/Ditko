@@ -104,6 +104,9 @@ static NSArray<NSArray<NSString *> *> *kPickerViewButtonComponentsAndRows;
     [blockButton setTitleColor:KDIColorRandomRGB() forState:UIControlStateNormal];
     [blockButton setTitle:@"Title" forState:UIControlStateNormal];
     [blockButton setImage:[[UIImage imageNamed:@"globe"] KLO_imageByTintingWithColor:KDIColorRandomRGB()] forState:UIControlStateNormal];
+    [blockButton KDI_addBlock:^(__kindof UIControl * _Nonnull control, UIControlEvents controlEvents) {
+        NSLog(@"the button %@ was tapped!",control);
+    } forControlEvents:UIControlEventTouchUpInside];
     [blockButton setTitleAlignment:KDIButtonAlignmentLeft|KDIButtonAlignmentCenter];
     [blockButton setImageAlignment:KDIButtonAlignmentRight|KDIButtonAlignmentCenter];
     [blockButton setStyle:KDIButtonStyleRounded];
