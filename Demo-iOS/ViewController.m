@@ -87,27 +87,26 @@ static NSArray<NSArray<NSString *> *> *kPickerViewButtonComponentsAndRows;
     KDIBadgeView *badgeView = [[KDIBadgeView alloc] initWithFrame:CGRectZero];
     
     [badgeView setBadge:@"1234"];
-    [badgeView setBadgeBackgroundColor:KDIColorRandomRGB()];
-    [badgeView setBadgeForegroundColor:[badgeView.badgeBackgroundColor KDI_inverseColor]];
+    [badgeView setBadgeForegroundColor:KDIColorRandomRGB()];
+    [badgeView setBadgeBackgroundColor:[badgeView.badgeForegroundColor KDI_inverseColor]];
     [badgeView setTranslatesAutoresizingMaskIntoConstraints:NO];
     
     [gradientView addSubview:badgeView];
     [gradientView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[view]" options:0 metrics:nil views:@{@"view": badgeView}]];
     [gradientView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[subview]-[view]" options:0 metrics:nil views:@{@"view": badgeView, @"subview": layoutGuide}]];
     
-    KDIButton *blockButton = [[KDIButton alloc] initWithFrame:CGRectZero];
+    KDIButton *blockButton = [KDIButton buttonWithType:UIButtonTypeSystem];
     
     [blockButton setTranslatesAutoresizingMaskIntoConstraints:NO];
     [blockButton setBackgroundColor:KDIColorRandomRGB()];
     [blockButton setContentEdgeInsets:UIEdgeInsetsMake(8, 8, 8, 8)];
     [blockButton setImageEdgeInsets:UIEdgeInsetsMake(0, 8, 0, 0)];
-    [blockButton setTitleColor:[blockButton.backgroundColor KDI_contrastingColor] forState:UIControlStateNormal];
+    [blockButton setTintColor:[blockButton.backgroundColor KDI_contrastingColor]];
     [blockButton setTitle:@"Block button" forState:UIControlStateNormal];
-    [blockButton setImage:[[UIImage imageNamed:@"globe"] KLO_imageByTintingWithColor:[blockButton.backgroundColor KDI_contrastingColor]] forState:UIControlStateNormal];
+    [blockButton setImage:[UIImage imageNamed:@"globe"] forState:UIControlStateNormal];
     [blockButton KDI_addBlock:^(__kindof UIControl * _Nonnull control, UIControlEvents controlEvents) {
         [blockButton setBackgroundColor:KDIColorRandomRGB()];
-        [blockButton setTitleColor:[blockButton.backgroundColor KDI_contrastingColor] forState:UIControlStateNormal];
-        [blockButton setImage:[[UIImage imageNamed:@"globe"] KLO_imageByTintingWithColor:[blockButton.backgroundColor KDI_contrastingColor]] forState:UIControlStateNormal];
+        [blockButton setTintColor:[blockButton.backgroundColor KDI_contrastingColor]];
     } forControlEvents:UIControlEventTouchUpInside];
     [blockButton setTitleAlignment:KDIButtonAlignmentLeft|KDIButtonAlignmentCenter];
     [blockButton setImageAlignment:KDIButtonAlignmentRight|KDIButtonAlignmentCenter];
@@ -154,6 +153,28 @@ static NSArray<NSArray<NSString *> *> *kPickerViewButtonComponentsAndRows;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(_nextPreviousNotification:) name:KDINextPreviousInputAccessoryViewNotificationPrevious object:nil];
     
     [self setFirstResponderControls:@[pickerViewButton,datePickerButton]];
+    
+    KDIButton *centerButton = [KDIButton buttonWithType:UIButtonTypeSystem];
+    
+    [centerButton setTranslatesAutoresizingMaskIntoConstraints:NO];
+    [centerButton setTintColor:KDIColorRandomRGB()];
+    [centerButton setBackgroundColor:[centerButton.tintColor KDI_inverseColor]];
+    [centerButton setContentEdgeInsets:UIEdgeInsetsMake(8, 8, 8, 8)];
+    [centerButton setTitleEdgeInsets:UIEdgeInsetsMake(4, 0, 0, 0)];
+    [centerButton setTitle:@"Ghost" forState:UIControlStateNormal];
+    [centerButton setImage:[UIImage imageNamed:@"ghost"] forState:UIControlStateNormal];
+    [centerButton KDI_addBlock:^(__kindof UIControl * _Nonnull control, UIControlEvents controlEvents) {
+        [centerButton setTintColor:KDIColorRandomRGB()];
+        [centerButton setBackgroundColor:[centerButton.tintColor KDI_inverseColor]];
+    } forControlEvents:UIControlEventTouchUpInside];
+    [centerButton setTitleAlignment:KDIButtonAlignmentBottom|KDIButtonAlignmentCenter];
+    [centerButton setImageAlignment:KDIButtonAlignmentTop|KDIButtonAlignmentCenter];
+    [centerButton setKDI_cornerRadius:5.0];
+    [centerButton.layer setMasksToBounds:YES];
+    
+    [gradientView addSubview:centerButton];
+    [gradientView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:[subview]-[view]" options:0 metrics:nil views:@{@"view": centerButton, @"subview": datePickerButton}]];
+    [gradientView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[subview]-[view]" options:0 metrics:nil views:@{@"view": centerButton, @"subview": blockButton}]];
     
     KDIBadgeButton *badgeButton = [[KDIBadgeButton alloc] initWithFrame:CGRectZero];
     

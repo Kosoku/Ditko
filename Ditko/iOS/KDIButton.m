@@ -18,13 +18,32 @@
 
 #import <Stanley/KSTGeometryFunctions.h>
 
-static CGFloat const kTitleBrightnessAdjustment = 0.5;
+static CGFloat const kTitleColorBrightnessAdjustment = 0.5;
+static CGFloat const kTitleColorAlphaAdjustment = 0.5;
 
 @interface KDIButton ()
+- (void)_KDIButtonInit;
 - (CGSize)_sizeThatFits:(CGSize)size layout:(BOOL)layout;
 @end
 
 @implementation KDIButton
+#pragma mark *** Subclass Overrides ***
+- (instancetype)initWithFrame:(CGRect)frame {
+    if (!(self = [super initWithFrame:frame]))
+        return nil;
+    
+    [self _KDIButtonInit];
+    
+    return self;
+}
+- (instancetype)initWithCoder:(NSCoder *)aDecoder {
+    if (!(self = [super initWithCoder:aDecoder]))
+        return nil;
+    
+    [self _KDIButtonInit];
+    
+    return self;
+}
 
 - (void)layoutSubviews {
     [super layoutSubviews];
@@ -42,27 +61,59 @@ static CGFloat const kTitleBrightnessAdjustment = 0.5;
 - (void)setTitleColor:(UIColor *)color forState:(UIControlState)state {
     [super setTitleColor:color forState:state];
     
-    if (state == UIControlStateNormal) {
-        [self setTitleColor:[color KDI_colorByAdjustingBrightnessBy:kTitleBrightnessAdjustment] forState:UIControlStateHighlighted];
+    if (state == UIControlStateNormal &&
+        self.adjustsTitleColorWhenHighlighted) {
+        
+        CGFloat h, s, b;
+        if ([color getHue:&h saturation:&s brightness:&b alpha:NULL]) {
+            if (b < 0.5) {
+                color = [color colorWithAlphaComponent:kTitleColorAlphaAdjustment];
+            }
+            else {
+                color = [color KDI_colorByAdjustingBrightnessBy:kTitleColorBrightnessAdjustment];
+            }
+        }
+        else {
+            color = [color colorWithAlphaComponent:kTitleColorAlphaAdjustment];
+        }
+        
+        [self setTitleColor:color forState:UIControlStateHighlighted];
     }
 }
 - (void)setAttributedTitle:(NSAttributedString *)title forState:(UIControlState)state {
     [super setAttributedTitle:title forState:state];
     
-    if (state == UIControlStateNormal) {
+    if (state == UIControlStateNormal &&
+        self.adjustsTitleColorWhenHighlighted) {
+        
         if (title.length > 0 &&
             [title attribute:NSForegroundColorAttributeName atIndex:0 effectiveRange:NULL] != nil) {
             
             UIColor *color = [title attribute:NSForegroundColorAttributeName atIndex:0 effectiveRange:NULL];
+            
+            CGFloat h, s, b;
+            if ([color getHue:&h saturation:&s brightness:&b alpha:NULL]) {
+                if (b < 0.5) {
+                    color = [color colorWithAlphaComponent:kTitleColorAlphaAdjustment];
+                }
+                else {
+                    color = [color KDI_colorByAdjustingBrightnessBy:kTitleColorBrightnessAdjustment];
+                }
+            }
+            else {
+                color = [color colorWithAlphaComponent:kTitleColorAlphaAdjustment];
+            }
+            
             NSMutableAttributedString *temp = [title mutableCopy];
             
-            [temp addAttribute:NSForegroundColorAttributeName value:[color KDI_colorByAdjustingBrightnessBy:kTitleBrightnessAdjustment] range:NSMakeRange(0, title.length)];
+            [temp addAttribute:NSForegroundColorAttributeName value:color range:NSMakeRange(0, title.length)];
             
             [self setAttributedTitle:temp forState:UIControlStateHighlighted];
         }
     }
 }
-
+#pragma mark *** Public Methods ***
+#pragma mark Properties
 - (void)setStyle:(KDIButtonStyle)style {
     _style = style;
     
@@ -88,7 +139,12 @@ static CGFloat const kTitleBrightnessAdjustment = 0.5;
     
     [self invalidateIntrinsicContentSize];
 }
-
+#pragma mark *** Private Methods ***
+- (void)_KDIButtonInit; {
+    if (self.buttonType == UIButtonTypeCustom) {
+        _adjustsTitleColorWhenHighlighted = YES;
+    }
+}
 - (CGSize)_sizeThatFits:(CGSize)size layout:(BOOL)layout; {
     CGSize retval = CGSizeZero;
     
@@ -128,12 +184,9 @@ static CGFloat const kTitleBrightnessAdjustment = 0.5;
     if (layout) {
         switch (self.style) {
             case KDIButtonStyleRounded:
-                [self.layer setMasksToBounds:YES];
                 [self.layer setCornerRadius:ceil(CGRectGetHeight(self.frame) * 0.5)];
                 break;
             case KDIButtonStyleDefault:
-                [self.layer setMasksToBounds:NO];
-                [self.layer setCornerRadius:0.0];
                 break;
             default:
                 break;

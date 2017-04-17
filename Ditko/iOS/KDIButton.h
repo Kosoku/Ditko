@@ -83,6 +83,11 @@ typedef NS_ENUM(NSUInteger, KDIButtonAlignment) {
  */
 @property (assign,nonatomic) KDIButtonAlignment imageAlignment;
 
+/**
+ Set whether the receiver adjusts its title color when highlighted. If set to YES, the title color set for UIControlStateNormal will be inspected and the computed color will be set for the highlighted state. The title color is drawn lighter if the normal title color was dark and darker if the normal title color was light.
+ */
+@property (assign,nonatomic) BOOL adjustsTitleColorWhenHighlighted;
+
 - (void)layoutSubviews NS_REQUIRES_SUPER;
 - (CGSize)intrinsicContentSize NS_REQUIRES_SUPER;
 - (CGSize)sizeThatFits:(CGSize)size NS_REQUIRES_SUPER;
