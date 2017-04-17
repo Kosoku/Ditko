@@ -14,23 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "071B62851E707FCB00B7B85A"
-               BuildableName = "DitkoDemo-watchOS.app"
-               BlueprintName = "DitkoDemo-watchOS"
-               ReferencedContainer = "container:Ditko.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "YES"
-            buildForArchiving = "YES"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "0795E6461E704A56004A5CB2"
-               BuildableName = "DitkoDemo-iOS.app"
-               BlueprintName = "DitkoDemo-iOS"
+               BlueprintIdentifier = "071B62C41E70849500B7B85A"
+               BuildableName = "Demo-tvOS.app"
+               BlueprintName = "Demo-tvOS"
                ReferencedContainer = "container:Ditko.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -46,9 +32,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "071B62851E707FCB00B7B85A"
-            BuildableName = "DitkoDemo-watchOS.app"
-            BlueprintName = "DitkoDemo-watchOS"
+            BlueprintIdentifier = "071B62C41E70849500B7B85A"
+            BuildableName = "Demo-tvOS.app"
+            BlueprintName = "Demo-tvOS"
             ReferencedContainer = "container:Ditko.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -65,27 +51,16 @@
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
-      <RemoteRunnable
-         runnableDebuggingMode = "2"
-         BundleIdentifier = "com.apple.carousel"
-         RemotePath = "/DitkoDemo-iOS">
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "071B62851E707FCB00B7B85A"
-            BuildableName = "DitkoDemo-watchOS.app"
-            BlueprintName = "DitkoDemo-watchOS"
+            BlueprintIdentifier = "071B62C41E70849500B7B85A"
+            BuildableName = "Demo-tvOS.app"
+            BlueprintName = "Demo-tvOS"
             ReferencedContainer = "container:Ditko.xcodeproj">
          </BuildableReference>
-      </RemoteRunnable>
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "071B62851E707FCB00B7B85A"
-            BuildableName = "DitkoDemo-watchOS.app"
-            BlueprintName = "DitkoDemo-watchOS"
-            ReferencedContainer = "container:Ditko.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
+      </BuildableProductRunnable>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>
@@ -95,27 +70,16 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
-      <RemoteRunnable
-         runnableDebuggingMode = "2"
-         BundleIdentifier = "com.apple.carousel"
-         RemotePath = "/DitkoDemo-iOS">
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "071B62851E707FCB00B7B85A"
-            BuildableName = "DitkoDemo-watchOS.app"
-            BlueprintName = "DitkoDemo-watchOS"
+            BlueprintIdentifier = "071B62C41E70849500B7B85A"
+            BuildableName = "Demo-tvOS.app"
+            BlueprintName = "Demo-tvOS"
             ReferencedContainer = "container:Ditko.xcodeproj">
          </BuildableReference>
-      </RemoteRunnable>
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "071B62851E707FCB00B7B85A"
-            BuildableName = "DitkoDemo-watchOS.app"
-            BlueprintName = "DitkoDemo-watchOS"
-            ReferencedContainer = "container:Ditko.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
+      </BuildableProductRunnable>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">

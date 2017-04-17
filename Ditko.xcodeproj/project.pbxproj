@@ -23,11 +23,11 @@
 		071B62831E707F9B00B7B85A /* NSColor-UIColor+KDIExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0795E6401E70491E004A5CB2 /* NSColor-UIColor+KDIExtensions.m */; };
 		071B628A1E707FCB00B7B85A /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 071B62881E707FCB00B7B85A /* Interface.storyboard */; };
 		071B628C1E707FCB00B7B85A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 071B628B1E707FCB00B7B85A /* Assets.xcassets */; };
-		071B62931E707FCB00B7B85A /* DitkoDemo-watchOS Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 071B62921E707FCB00B7B85A /* DitkoDemo-watchOS Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		071B62931E707FCB00B7B85A /* Demo-watchOS Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 071B62921E707FCB00B7B85A /* Demo-watchOS Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		071B62991E707FCB00B7B85A /* InterfaceController.m in Sources */ = {isa = PBXBuildFile; fileRef = 071B62981E707FCB00B7B85A /* InterfaceController.m */; };
 		071B629C1E707FCB00B7B85A /* ExtensionDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 071B629B1E707FCB00B7B85A /* ExtensionDelegate.m */; };
 		071B629E1E707FCB00B7B85A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 071B629D1E707FCB00B7B85A /* Assets.xcassets */; };
-		071B62A21E707FCB00B7B85A /* DitkoDemo-watchOS.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 071B62861E707FCB00B7B85A /* DitkoDemo-watchOS.app */; };
+		071B62A21E707FCB00B7B85A /* Demo-watchOS.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 071B62861E707FCB00B7B85A /* Demo-watchOS.app */; };
 		071B62AC1E70805C00B7B85A /* Stanley.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 071B62AB1E70805C00B7B85A /* Stanley.framework */; };
 		071B62AD1E70806000B7B85A /* Ditko.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 071B62771E707E6F00B7B85A /* Ditko.framework */; };
 		071B62BE1E70845600B7B85A /* KDIColorMacros.h in Headers */ = {isa = PBXBuildFile; fileRef = 071B62681E705EA300B7B85A /* KDIColorMacros.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -272,7 +272,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				071B62931E707FCB00B7B85A /* DitkoDemo-watchOS Extension.appex in Embed App Extensions */,
+				071B62931E707FCB00B7B85A /* Demo-watchOS Extension.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -283,7 +283,7 @@
 			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
 			dstSubfolderSpec = 16;
 			files = (
-				071B62A21E707FCB00B7B85A /* DitkoDemo-watchOS.app in Embed Watch Content */,
+				071B62A21E707FCB00B7B85A /* Demo-watchOS.app in Embed Watch Content */,
 			);
 			name = "Embed Watch Content";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -336,11 +336,11 @@
 		071B626D1E70635D00B7B85A /* KDIGradientView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KDIGradientView.m; sourceTree = "<group>"; };
 		071B62771E707E6F00B7B85A /* Ditko.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Ditko.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		071B627F1E707EF700B7B85A /* Ditko-watchOS-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Ditko-watchOS-Info.plist"; sourceTree = "<group>"; };
-		071B62861E707FCB00B7B85A /* DitkoDemo-watchOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "DitkoDemo-watchOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		071B62861E707FCB00B7B85A /* Demo-watchOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Demo-watchOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		071B62891E707FCB00B7B85A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
 		071B628B1E707FCB00B7B85A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		071B628D1E707FCB00B7B85A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		071B62921E707FCB00B7B85A /* DitkoDemo-watchOS Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "DitkoDemo-watchOS Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		071B62921E707FCB00B7B85A /* Demo-watchOS Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Demo-watchOS Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		071B62971E707FCB00B7B85A /* InterfaceController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InterfaceController.h; sourceTree = "<group>"; };
 		071B62981E707FCB00B7B85A /* InterfaceController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InterfaceController.m; sourceTree = "<group>"; };
 		071B629A1E707FCB00B7B85A /* ExtensionDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ExtensionDelegate.h; sourceTree = "<group>"; };
@@ -350,7 +350,7 @@
 		071B62AB1E70805C00B7B85A /* Stanley.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Stanley.framework; path = "Vendor/Stanley/build/Debug-watchos/Stanley.framework"; sourceTree = "<group>"; };
 		071B62B51E70835C00B7B85A /* Ditko.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Ditko.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		071B62BD1E70842800B7B85A /* Ditko-tvOS-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Ditko-tvOS-Info.plist"; sourceTree = "<group>"; };
-		071B62C51E70849500B7B85A /* DitkoDemo-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "DitkoDemo-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		071B62C51E70849500B7B85A /* Demo-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Demo-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		071B62C81E70849500B7B85A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		071B62CA1E70849500B7B85A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		071B62CB1E70849500B7B85A /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -366,7 +366,7 @@
 		073542821E704DD600177905 /* Ditko-macOS-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Ditko-macOS-Info.plist"; sourceTree = "<group>"; };
 		073542831E704E0400177905 /* Ditko-Info.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Ditko-Info.h"; sourceTree = "<group>"; };
 		073542841E70503C00177905 /* NSColor+KDIExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSColor+KDIExtensions.h"; path = "macOS/NSColor+KDIExtensions.h"; sourceTree = "<group>"; };
-		0735428C1E70515300177905 /* DitkoDemo-macOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "DitkoDemo-macOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		0735428C1E70515300177905 /* Demo-macOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Demo-macOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0735428E1E70515400177905 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		0735428F1E70515400177905 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		073542921E70515400177905 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -426,7 +426,7 @@
 		0795E6361E704785004A5CB2 /* Ditko-iOS-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Ditko-iOS-Info.plist"; sourceTree = "<group>"; };
 		0795E63F1E70491E004A5CB2 /* UIColor+KDIExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIColor+KDIExtensions.h"; path = "iOS/UIColor+KDIExtensions.h"; sourceTree = "<group>"; };
 		0795E6401E70491E004A5CB2 /* NSColor-UIColor+KDIExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSColor-UIColor+KDIExtensions.m"; sourceTree = "<group>"; };
-		0795E6471E704A56004A5CB2 /* DitkoDemo-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "DitkoDemo-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		0795E6471E704A56004A5CB2 /* Demo-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Demo-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0795E64A1E704A56004A5CB2 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		0795E64C1E704A56004A5CB2 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		0795E64D1E704A56004A5CB2 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -594,17 +594,17 @@
 			name = Classes;
 			sourceTree = "<group>";
 		};
-		071B62871E707FCB00B7B85A /* DitkoDemo-watchOS */ = {
+		071B62871E707FCB00B7B85A /* Demo-watchOS */ = {
 			isa = PBXGroup;
 			children = (
 				071B62881E707FCB00B7B85A /* Interface.storyboard */,
 				071B628B1E707FCB00B7B85A /* Assets.xcassets */,
 				071B628D1E707FCB00B7B85A /* Info.plist */,
 			);
-			path = "DitkoDemo-watchOS";
+			path = "Demo-watchOS";
 			sourceTree = "<group>";
 		};
-		071B62961E707FCB00B7B85A /* DitkoDemo-watchOS Extension */ = {
+		071B62961E707FCB00B7B85A /* Demo-watchOS Extension */ = {
 			isa = PBXGroup;
 			children = (
 				071B62971E707FCB00B7B85A /* InterfaceController.h */,
@@ -614,10 +614,10 @@
 				071B629D1E707FCB00B7B85A /* Assets.xcassets */,
 				071B629F1E707FCB00B7B85A /* Info.plist */,
 			);
-			path = "DitkoDemo-watchOS Extension";
+			path = "Demo-watchOS Extension";
 			sourceTree = "<group>";
 		};
-		071B62C61E70849500B7B85A /* DitkoDemo-tvOS */ = {
+		071B62C61E70849500B7B85A /* Demo-tvOS */ = {
 			isa = PBXGroup;
 			children = (
 				071B62CA1E70849500B7B85A /* AppDelegate.h */,
@@ -629,7 +629,7 @@
 				071B62D51E70849500B7B85A /* Info.plist */,
 				071B62C71E70849500B7B85A /* Supporting Files */,
 			);
-			path = "DitkoDemo-tvOS";
+			path = "Demo-tvOS";
 			sourceTree = "<group>";
 		};
 		071B62C71E70849500B7B85A /* Supporting Files */ = {
@@ -640,7 +640,7 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		0735428D1E70515400177905 /* DitkoDemo-macOS */ = {
+		0735428D1E70515400177905 /* Demo-macOS */ = {
 			isa = PBXGroup;
 			children = (
 				0735428E1E70515400177905 /* AppDelegate.h */,
@@ -652,7 +652,7 @@
 				0735429C1E70515400177905 /* Info.plist */,
 				073542911E70515400177905 /* Supporting Files */,
 			);
-			path = "DitkoDemo-macOS";
+			path = "Demo-macOS";
 			sourceTree = "<group>";
 		};
 		073542911E70515400177905 /* Supporting Files */ = {
@@ -728,11 +728,11 @@
 			isa = PBXGroup;
 			children = (
 				0795E6341E704785004A5CB2 /* Ditko */,
-				0795E6481E704A56004A5CB2 /* DitkoDemo-iOS */,
-				0735428D1E70515400177905 /* DitkoDemo-macOS */,
-				071B62C61E70849500B7B85A /* DitkoDemo-tvOS */,
-				071B62871E707FCB00B7B85A /* DitkoDemo-watchOS */,
-				071B62961E707FCB00B7B85A /* DitkoDemo-watchOS Extension */,
+				0795E6481E704A56004A5CB2 /* Demo-iOS */,
+				0735428D1E70515400177905 /* Demo-macOS */,
+				071B62C61E70849500B7B85A /* Demo-tvOS */,
+				071B62871E707FCB00B7B85A /* Demo-watchOS */,
+				071B62961E707FCB00B7B85A /* Demo-watchOS Extension */,
 				0795E6331E704785004A5CB2 /* Products */,
 				0795E65F1E704AE3004A5CB2 /* Frameworks */,
 			);
@@ -742,14 +742,14 @@
 			isa = PBXGroup;
 			children = (
 				0795E6321E704785004A5CB2 /* Ditko.framework */,
-				0795E6471E704A56004A5CB2 /* DitkoDemo-iOS.app */,
+				0795E6471E704A56004A5CB2 /* Demo-iOS.app */,
 				0735427A1E704D8F00177905 /* Ditko.framework */,
-				0735428C1E70515300177905 /* DitkoDemo-macOS.app */,
+				0735428C1E70515300177905 /* Demo-macOS.app */,
 				071B62771E707E6F00B7B85A /* Ditko.framework */,
-				071B62861E707FCB00B7B85A /* DitkoDemo-watchOS.app */,
-				071B62921E707FCB00B7B85A /* DitkoDemo-watchOS Extension.appex */,
+				071B62861E707FCB00B7B85A /* Demo-watchOS.app */,
+				071B62921E707FCB00B7B85A /* Demo-watchOS Extension.appex */,
 				071B62B51E70835C00B7B85A /* Ditko.framework */,
-				071B62C51E70849500B7B85A /* DitkoDemo-tvOS.app */,
+				071B62C51E70849500B7B85A /* Demo-tvOS.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -789,7 +789,7 @@
 			name = Source;
 			sourceTree = "<group>";
 		};
-		0795E6481E704A56004A5CB2 /* DitkoDemo-iOS */ = {
+		0795E6481E704A56004A5CB2 /* Demo-iOS */ = {
 			isa = PBXGroup;
 			children = (
 				0795E64C1E704A56004A5CB2 /* AppDelegate.h */,
@@ -801,7 +801,7 @@
 				0795E65A1E704A56004A5CB2 /* Info.plist */,
 				0795E6491E704A56004A5CB2 /* Supporting Files */,
 			);
-			path = "DitkoDemo-iOS";
+			path = "Demo-iOS";
 			sourceTree = "<group>";
 		};
 		0795E6491E704A56004A5CB2 /* Supporting Files */ = {
@@ -971,9 +971,9 @@
 			productReference = 071B62771E707E6F00B7B85A /* Ditko.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		071B62851E707FCB00B7B85A /* DitkoDemo-watchOS */ = {
+		071B62851E707FCB00B7B85A /* Demo-watchOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 071B62A71E707FCB00B7B85A /* Build configuration list for PBXNativeTarget "DitkoDemo-watchOS" */;
+			buildConfigurationList = 071B62A71E707FCB00B7B85A /* Build configuration list for PBXNativeTarget "Demo-watchOS" */;
 			buildPhases = (
 				071B62841E707FCB00B7B85A /* Resources */,
 				071B62A61E707FCB00B7B85A /* Embed App Extensions */,
@@ -983,14 +983,14 @@
 			dependencies = (
 				071B62951E707FCB00B7B85A /* PBXTargetDependency */,
 			);
-			name = "DitkoDemo-watchOS";
+			name = "Demo-watchOS";
 			productName = "DitkoDemo-watchOS";
-			productReference = 071B62861E707FCB00B7B85A /* DitkoDemo-watchOS.app */;
+			productReference = 071B62861E707FCB00B7B85A /* Demo-watchOS.app */;
 			productType = "com.apple.product-type.application.watchapp2";
 		};
-		071B62911E707FCB00B7B85A /* DitkoDemo-watchOS Extension */ = {
+		071B62911E707FCB00B7B85A /* Demo-watchOS Extension */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 071B62A31E707FCB00B7B85A /* Build configuration list for PBXNativeTarget "DitkoDemo-watchOS Extension" */;
+			buildConfigurationList = 071B62A31E707FCB00B7B85A /* Build configuration list for PBXNativeTarget "Demo-watchOS Extension" */;
 			buildPhases = (
 				071B628E1E707FCB00B7B85A /* Sources */,
 				071B628F1E707FCB00B7B85A /* Frameworks */,
@@ -1001,9 +1001,9 @@
 			dependencies = (
 				071B62AF1E7081B800B7B85A /* PBXTargetDependency */,
 			);
-			name = "DitkoDemo-watchOS Extension";
+			name = "Demo-watchOS Extension";
 			productName = "DitkoDemo-watchOS Extension";
-			productReference = 071B62921E707FCB00B7B85A /* DitkoDemo-watchOS Extension.appex */;
+			productReference = 071B62921E707FCB00B7B85A /* Demo-watchOS Extension.appex */;
 			productType = "com.apple.product-type.watchkit2-extension";
 		};
 		071B62B41E70835C00B7B85A /* Ditko-tvOS */ = {
@@ -1025,9 +1025,9 @@
 			productReference = 071B62B51E70835C00B7B85A /* Ditko.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		071B62C41E70849500B7B85A /* DitkoDemo-tvOS */ = {
+		071B62C41E70849500B7B85A /* Demo-tvOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 071B62D61E70849500B7B85A /* Build configuration list for PBXNativeTarget "DitkoDemo-tvOS" */;
+			buildConfigurationList = 071B62D61E70849500B7B85A /* Build configuration list for PBXNativeTarget "Demo-tvOS" */;
 			buildPhases = (
 				071B62C11E70849500B7B85A /* Sources */,
 				071B62C21E70849500B7B85A /* Frameworks */,
@@ -1039,9 +1039,9 @@
 			dependencies = (
 				071B62DA1E7084B600B7B85A /* PBXTargetDependency */,
 			);
-			name = "DitkoDemo-tvOS";
+			name = "Demo-tvOS";
 			productName = "DitkoDemo-tvOS";
-			productReference = 071B62C51E70849500B7B85A /* DitkoDemo-tvOS.app */;
+			productReference = 071B62C51E70849500B7B85A /* Demo-tvOS.app */;
 			productType = "com.apple.product-type.application";
 		};
 		073542791E704D8F00177905 /* Ditko-macOS */ = {
@@ -1063,9 +1063,9 @@
 			productReference = 0735427A1E704D8F00177905 /* Ditko.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		0735428B1E70515300177905 /* DitkoDemo-macOS */ = {
+		0735428B1E70515300177905 /* Demo-macOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 0735429D1E70515400177905 /* Build configuration list for PBXNativeTarget "DitkoDemo-macOS" */;
+			buildConfigurationList = 0735429D1E70515400177905 /* Build configuration list for PBXNativeTarget "Demo-macOS" */;
 			buildPhases = (
 				073542881E70515300177905 /* Sources */,
 				073542891E70515300177905 /* Frameworks */,
@@ -1077,9 +1077,9 @@
 			dependencies = (
 				073542A91E70549300177905 /* PBXTargetDependency */,
 			);
-			name = "DitkoDemo-macOS";
+			name = "Demo-macOS";
 			productName = "DitkoDemo-macOS";
-			productReference = 0735428C1E70515300177905 /* DitkoDemo-macOS.app */;
+			productReference = 0735428C1E70515300177905 /* Demo-macOS.app */;
 			productType = "com.apple.product-type.application";
 		};
 		0795E6311E704785004A5CB2 /* Ditko-iOS */ = {
@@ -1101,9 +1101,9 @@
 			productReference = 0795E6321E704785004A5CB2 /* Ditko.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		0795E6461E704A56004A5CB2 /* DitkoDemo-iOS */ = {
+		0795E6461E704A56004A5CB2 /* Demo-iOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 0795E65B1E704A56004A5CB2 /* Build configuration list for PBXNativeTarget "DitkoDemo-iOS" */;
+			buildConfigurationList = 0795E65B1E704A56004A5CB2 /* Build configuration list for PBXNativeTarget "Demo-iOS" */;
 			buildPhases = (
 				0795E6431E704A56004A5CB2 /* Sources */,
 				0795E6441E704A56004A5CB2 /* Frameworks */,
@@ -1117,9 +1117,9 @@
 				073542A71E70549000177905 /* PBXTargetDependency */,
 				071B62A11E707FCB00B7B85A /* PBXTargetDependency */,
 			);
-			name = "DitkoDemo-iOS";
+			name = "Demo-iOS";
 			productName = "DitkoDemo-iOS";
-			productReference = 0795E6471E704A56004A5CB2 /* DitkoDemo-iOS.app */;
+			productReference = 0795E6471E704A56004A5CB2 /* Demo-iOS.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -1189,11 +1189,11 @@
 				073542791E704D8F00177905 /* Ditko-macOS */,
 				071B62B41E70835C00B7B85A /* Ditko-tvOS */,
 				071B62761E707E6F00B7B85A /* Ditko-watchOS */,
-				0795E6461E704A56004A5CB2 /* DitkoDemo-iOS */,
-				0735428B1E70515300177905 /* DitkoDemo-macOS */,
-				071B62C41E70849500B7B85A /* DitkoDemo-tvOS */,
-				071B62851E707FCB00B7B85A /* DitkoDemo-watchOS */,
-				071B62911E707FCB00B7B85A /* DitkoDemo-watchOS Extension */,
+				0795E6461E704A56004A5CB2 /* Demo-iOS */,
+				0735428B1E70515300177905 /* Demo-macOS */,
+				071B62C41E70849500B7B85A /* Demo-tvOS */,
+				071B62851E707FCB00B7B85A /* Demo-watchOS */,
+				071B62911E707FCB00B7B85A /* Demo-watchOS Extension */,
 			);
 		};
 /* End PBXProject section */
@@ -1485,12 +1485,12 @@
 /* Begin PBXTargetDependency section */
 		071B62951E707FCB00B7B85A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 071B62911E707FCB00B7B85A /* DitkoDemo-watchOS Extension */;
+			target = 071B62911E707FCB00B7B85A /* Demo-watchOS Extension */;
 			targetProxy = 071B62941E707FCB00B7B85A /* PBXContainerItemProxy */;
 		};
 		071B62A11E707FCB00B7B85A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 071B62851E707FCB00B7B85A /* DitkoDemo-watchOS */;
+			target = 071B62851E707FCB00B7B85A /* Demo-watchOS */;
 			targetProxy = 071B62A01E707FCB00B7B85A /* PBXContainerItemProxy */;
 		};
 		071B62AF1E7081B800B7B85A /* PBXTargetDependency */ = {
@@ -1617,9 +1617,9 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Vendor/Stanley/build/Debug-watchos",
 				);
-				INFOPLIST_FILE = "DitkoDemo-watchOS Extension/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Demo-watchOS Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.kosoku.DitkoDemo-iOS.watchkitapp.watchkitextension";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.kosoku.Demo-iOS.watchkitapp.watchkitextension";
 				PRODUCT_NAME = "${TARGET_NAME}";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -1636,9 +1636,9 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Vendor/Stanley/build/Debug-watchos",
 				);
-				INFOPLIST_FILE = "DitkoDemo-watchOS Extension/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Demo-watchOS Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.kosoku.DitkoDemo-iOS.watchkitapp.watchkitextension";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.kosoku.Demo-iOS.watchkitapp.watchkitextension";
 				PRODUCT_NAME = "${TARGET_NAME}";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -1652,8 +1652,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				IBSC_MODULE = DitkoDemo_watchOS_Extension;
-				INFOPLIST_FILE = "DitkoDemo-watchOS/Info.plist";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.kosoku.DitkoDemo-iOS.watchkitapp";
+				INFOPLIST_FILE = "$(SRCROOT)/Demo-watchOS/Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.kosoku.Demo-iOS.watchkitapp";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -1667,8 +1667,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				IBSC_MODULE = DitkoDemo_watchOS_Extension;
-				INFOPLIST_FILE = "DitkoDemo-watchOS/Info.plist";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.kosoku.DitkoDemo-iOS.watchkitapp";
+				INFOPLIST_FILE = "$(SRCROOT)/Demo-watchOS/Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.kosoku.Demo-iOS.watchkitapp";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -1732,9 +1732,9 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Vendor/Stanley/build/Debug-appletvos",
 				);
-				INFOPLIST_FILE = "DitkoDemo-tvOS/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Demo-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.kosoku.DitkoDemo-tvOS";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.kosoku.Demo-tvOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
 				TARGETED_DEVICE_FAMILY = 3;
@@ -1751,9 +1751,9 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Vendor/Stanley/build/Debug-appletvos",
 				);
-				INFOPLIST_FILE = "DitkoDemo-tvOS/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Demo-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.kosoku.DitkoDemo-tvOS";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.kosoku.Demo-tvOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
 				TARGETED_DEVICE_FAMILY = 3;
@@ -1819,10 +1819,10 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Vendor/Stanley/build/Debug",
 				);
-				INFOPLIST_FILE = "DitkoDemo-macOS/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Demo-macOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.kosoku.DitkoDemo-macOS";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.kosoku.Demo-macOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 			};
@@ -1838,10 +1838,10 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Vendor/Stanley/build/Debug",
 				);
-				INFOPLIST_FILE = "DitkoDemo-macOS/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Demo-macOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.kosoku.DitkoDemo-macOS";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.kosoku.Demo-macOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 			};
@@ -1991,9 +1991,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				INFOPLIST_FILE = "DitkoDemo-iOS/Info.plist";
+				INFOPLIST_FILE = "Demo-iOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.kosoku.DitkoDemo-iOS";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.kosoku.Demo-iOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -2002,9 +2002,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				INFOPLIST_FILE = "DitkoDemo-iOS/Info.plist";
+				INFOPLIST_FILE = "Demo-iOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.kosoku.DitkoDemo-iOS";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.kosoku.Demo-iOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -2021,7 +2021,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		071B62A31E707FCB00B7B85A /* Build configuration list for PBXNativeTarget "DitkoDemo-watchOS Extension" */ = {
+		071B62A31E707FCB00B7B85A /* Build configuration list for PBXNativeTarget "Demo-watchOS Extension" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				071B62A41E707FCB00B7B85A /* Debug */,
@@ -2030,7 +2030,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		071B62A71E707FCB00B7B85A /* Build configuration list for PBXNativeTarget "DitkoDemo-watchOS" */ = {
+		071B62A71E707FCB00B7B85A /* Build configuration list for PBXNativeTarget "Demo-watchOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				071B62A81E707FCB00B7B85A /* Debug */,
@@ -2048,7 +2048,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		071B62D61E70849500B7B85A /* Build configuration list for PBXNativeTarget "DitkoDemo-tvOS" */ = {
+		071B62D61E70849500B7B85A /* Build configuration list for PBXNativeTarget "Demo-tvOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				071B62D71E70849500B7B85A /* Debug */,
@@ -2066,7 +2066,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		0735429D1E70515400177905 /* Build configuration list for PBXNativeTarget "DitkoDemo-macOS" */ = {
+		0735429D1E70515400177905 /* Build configuration list for PBXNativeTarget "Demo-macOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				0735429E1E70515400177905 /* Debug */,
@@ -2093,7 +2093,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		0795E65B1E704A56004A5CB2 /* Build configuration list for PBXNativeTarget "DitkoDemo-iOS" */ = {
+		0795E65B1E704A56004A5CB2 /* Build configuration list for PBXNativeTarget "Demo-iOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				0795E65C1E704A56004A5CB2 /* Debug */,

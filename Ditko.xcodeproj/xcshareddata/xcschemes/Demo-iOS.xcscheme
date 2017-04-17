@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "071B62C41E70849500B7B85A"
-               BuildableName = "DitkoDemo-tvOS.app"
-               BlueprintName = "DitkoDemo-tvOS"
+               BlueprintIdentifier = "0795E6461E704A56004A5CB2"
+               BuildableName = "Demo-iOS.app"
+               BlueprintName = "Demo-iOS"
                ReferencedContainer = "container:Ditko.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -32,9 +32,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "071B62C41E70849500B7B85A"
-            BuildableName = "DitkoDemo-tvOS.app"
-            BlueprintName = "DitkoDemo-tvOS"
+            BlueprintIdentifier = "0795E6461E704A56004A5CB2"
+            BuildableName = "Demo-iOS.app"
+            BlueprintName = "Demo-iOS"
             ReferencedContainer = "container:Ditko.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -55,9 +55,9 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "071B62C41E70849500B7B85A"
-            BuildableName = "DitkoDemo-tvOS.app"
-            BlueprintName = "DitkoDemo-tvOS"
+            BlueprintIdentifier = "0795E6461E704A56004A5CB2"
+            BuildableName = "Demo-iOS.app"
+            BlueprintName = "Demo-iOS"
             ReferencedContainer = "container:Ditko.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -74,9 +74,9 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "071B62C41E70849500B7B85A"
-            BuildableName = "DitkoDemo-tvOS.app"
-            BlueprintName = "DitkoDemo-tvOS"
+            BlueprintIdentifier = "0795E6461E704A56004A5CB2"
+            BuildableName = "Demo-iOS.app"
+            BlueprintName = "Demo-iOS"
             ReferencedContainer = "container:Ditko.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
