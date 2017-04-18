@@ -699,8 +699,6 @@
 				0794A80F1E73568500603C99 /* NSWindow+KDIExtensions.m */,
 				0794A8121E73574A00603C99 /* UIAlertController+KDIExtensions.h */,
 				0794A8131E73574A00603C99 /* UIAlertController+KDIExtensions.m */,
-				0794A8181E73584900603C99 /* NSBundle+KDIPrivateExtensions.h */,
-				0794A8191E73584900603C99 /* NSBundle+KDIPrivateExtensions.m */,
 				0794A8271E735D1400603C99 /* NSAlert+KDIExtensions.h */,
 				0794A8281E735D1400603C99 /* NSAlert+KDIExtensions.m */,
 				0794A82B1E735E1200603C99 /* NSParagraphStyle+KDIExtensions.h */,
@@ -711,6 +709,7 @@
 				07D166C61E96ABDA0073F69A /* NSPopUpButton+KDIExtensions.m */,
 				0738CE481EA014C9008FE9A0 /* NSObject+KDIDynamicTypeExtensions.h */,
 				0738CE491EA014C9008FE9A0 /* NSObject+KDIDynamicTypeExtensions.m */,
+				079C88901EA5F7B200F4C09D /* Private */,
 			);
 			name = Categories;
 			sourceTree = "<group>";
@@ -781,10 +780,10 @@
 		0795E63E1E704893004A5CB2 /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				071B626B1E70633700B7B85A /* Classes */,
 				071B62671E705E8D00B7B85A /* Headers */,
 				073542AC1E705CAB00177905 /* Functions */,
 				073542AB1E705CA400177905 /* Categories */,
+				071B626B1E70633700B7B85A /* Classes */,
 			);
 			name = Source;
 			sourceTree = "<group>";
@@ -829,6 +828,15 @@
 				0795E6601E704AE3004A5CB2 /* Stanley.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		079C88901EA5F7B200F4C09D /* Private */ = {
+			isa = PBXGroup;
+			children = (
+				0794A8181E73584900603C99 /* NSBundle+KDIPrivateExtensions.h */,
+				0794A8191E73584900603C99 /* NSBundle+KDIPrivateExtensions.m */,
+			);
+			name = Private;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
