@@ -15,8 +15,7 @@
 
 #import "KDIProgressNavigationBar.h"
 
-static NSString *const kProgressHiddenKeyPath = @"progressHidden";
-static NSString *const kProgressKeyPath = @"progress";
+#import <Stanley/KSTScopeMacros.h>
 
 @interface KDIProgressNavigationBar ()
 @property (strong,nonatomic) UIProgressView *progressView;
@@ -59,7 +58,7 @@ static NSString *const kProgressKeyPath = @"progress";
     [self setProgressHidden:progressHidden animated:NO];
 }
 - (void)setProgressHidden:(BOOL)progressHidden animated:(BOOL)animated {
-    [self willChangeValueForKey:kProgressHiddenKeyPath];
+    [self willChangeValueForKey:@kstKeypath(self,progressHidden)];
     
     CGFloat const kAlpha = progressHidden ? 0.0 : 1.0;
     
@@ -72,7 +71,7 @@ static NSString *const kProgressKeyPath = @"progress";
         [self.progressView setAlpha:kAlpha];
     }
     
-    [self didChangeValueForKey:kProgressHiddenKeyPath];
+    [self didChangeValueForKey:@kstKeypath(self,progressHidden)];
 }
 
 @dynamic progress;
@@ -83,11 +82,11 @@ static NSString *const kProgressKeyPath = @"progress";
     [self setProgress:progress animated:NO];
 }
 - (void)setProgress:(float)progress animated:(BOOL)animated; {
-    [self willChangeValueForKey:kProgressKeyPath];
+    [self willChangeValueForKey:@kstKeypath(self,progress)];
     
     [self.progressView setProgress:progress animated:animated];
     
-    [self didChangeValueForKey:kProgressKeyPath];
+    [self didChangeValueForKey:@kstKeypath(self,progress)];
 }
 #pragma mark ** Private Methods **
 - (void)_KDIProgressNavigationBarInit; {
