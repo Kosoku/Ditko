@@ -144,6 +144,7 @@ static void *kKDIBadgeButtonObservingContext = &kKDIBadgeButtonObservingContext;
     [self addSubview:_button];
     
     _badgeView = [[KDIBadgeView alloc] initWithFrame:CGRectZero];
+    [_badgeView setUserInteractionEnabled:NO];
     [_badgeView setBadgeFont:[UIFont boldSystemFontOfSize:11.0]];
     [_badgeView setBadgeBackgroundColor:[UIColor redColor]];
     [_badgeView addObserver:self forKeyPath:@kstKeypath(_badgeView,badge) options:0 context:kKDIBadgeButtonObservingContext];

@@ -188,9 +188,6 @@
 }
 #pragma mark ** Private Methods **
 - (void)_KDIBadgeViewInit; {
-#if (TARGET_OS_IPHONE)
-    [self setUserInteractionEnabled:NO];
-#endif
     _badgeForegroundColor = [self.class _defaultBadgeForegroundColor];
     _badgeBackgroundColor = [self.class _defaultBadgeBackgroundColor];
     _badgeHighlightedForegroundColor = [self.class _defaultBadgeHighlightedForegroundColor];
