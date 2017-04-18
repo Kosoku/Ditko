@@ -53,7 +53,7 @@ FOUNDATION_EXPORT NSInteger const KDIUIAlertControllerCancelButtonIndex;
  @param otherButtonTitles The array of other button titles to add to the receiver
  @param completion The completion block to invoke after the alert controller is dismissed
  */
-+ (void)KDI_presentAlertControllerWithTitle:(nullable NSString *)title message:(nullable NSString *)message cancelButtonTitle:(nullable NSString *)cancelButtonTitle otherButtonTitles:(nullable NSArray *)otherButtonTitles completion:(nullable KDIUIAlertControllerCompletionBlock)completion;
++ (void)KDI_presentAlertControllerWithTitle:(nullable NSString *)title message:(nullable NSString *)message cancelButtonTitle:(nullable NSString *)cancelButtonTitle otherButtonTitles:(nullable NSArray<NSString *> *)otherButtonTitles completion:(nullable KDIUIAlertControllerCompletionBlock)completion;
 
 /**
  Calls `[self KDI_alertControllerWithError:completion:]`, passing error and nil respectively.
@@ -80,7 +80,7 @@ FOUNDATION_EXPORT NSInteger const KDIUIAlertControllerCancelButtonIndex;
  @param completion The completion block to invoke after the alert controller is dismissed
  @return The alert controller
  */
-+ (UIAlertController *)KDI_alertControllerWithTitle:(nullable NSString *)title message:(nullable NSString *)message cancelButtonTitle:(nullable NSString *)cancelButtonTitle otherButtonTitles:(nullable NSArray *)otherButtonTitles completion:(nullable KDIUIAlertControllerCompletionBlock)completion;
++ (UIAlertController *)KDI_alertControllerWithTitle:(nullable NSString *)title message:(nullable NSString *)message cancelButtonTitle:(nullable NSString *)cancelButtonTitle otherButtonTitles:(nullable NSArray<NSString *> *)otherButtonTitles completion:(nullable KDIUIAlertControllerCompletionBlock)completion;
 
 @end
 

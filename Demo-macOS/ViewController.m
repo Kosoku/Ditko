@@ -80,7 +80,17 @@
     [button setTranslatesAutoresizingMaskIntoConstraints:NO];
     [button setTitle:@"Block button"];
     [button setKDI_block:^(__kindof NSControl *control){
-        NSLog(@"the button %@ was clicked!",control);
+        KDIClickableLabel *accessoryView = [[KDIClickableLabel alloc] initWithFrame:NSZeroRect];
+        
+        [accessoryView setStringValue:@"This is an accessory view!"];
+        [accessoryView setBlock:^(KDIClickableLabel *label) {
+            NSLog(@"the accessory view %@ was clicked!",label);
+        }];
+        [accessoryView sizeToFit];
+        
+        [[NSAlert KDI_alertWithStyle:NSAlertStyleCritical title:@"Did you see that Morty?" message:@"It was terrible Rick. The operation couldn't be completed." cancelButtonTitle:@"Cancel" otherButtonTitles:@[@"Do nothing",@"Do something"] icon:nil helpAnchor:@"herp" showsSuppressionButton:YES accessoryView:accessoryView] KDI_presentAlertAsSheetWithCompletion:^(NSModalResponse returnCode, BOOL suppressionButtonWasChecked, __kindof NSView * _Nullable accessoryView) {
+            NSLog(@"%@ %@ %@",@(returnCode),@(suppressionButtonWasChecked),accessoryView);
+        }];
     }];
     
     [gradientView addSubview:button];
