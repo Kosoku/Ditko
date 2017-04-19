@@ -108,8 +108,11 @@
     return retval;
 }
 
-- (void)KDI_debugBorderWithColor:(UIColor *)color; {
+- (void)KDI_addDebugBorderWithColor:(UIColor *)color; {
+#ifdef DEBUG
     self.layer.borderWidth = 1.0;
     self.layer.borderColor = color.CGColor;
+#endif
 }
+
 @end

@@ -86,7 +86,7 @@ NS_ASSUME_NONNULL_BEGIN
  
  @param color The color to make the debug border
  */
-- (void)KDI_debugBorderWithColor:(UIColor *)color;
+- (void)KDI_addDebugBorderWithColor:(UIColor *)color;
 
 @end
 

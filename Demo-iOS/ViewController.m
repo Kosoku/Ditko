@@ -182,7 +182,7 @@ static NSArray<NSArray<NSString *> *> *kPickerViewButtonComponentsAndRows;
     [badgeButton.badgeView setBadge:@"1"];
     [badgeButton sizeToFit];
     
-    [badgeButton KDI_debugBorderWithColor:UIColor.redColor];
+    [badgeButton KDI_addDebugBorderWithColor:UIColor.redColor];
     
     __block NSUInteger badgeButtonValue = 1;
     
