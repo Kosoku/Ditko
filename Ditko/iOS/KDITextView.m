@@ -15,8 +15,7 @@
 
 #import "KDITextView.h"
 
-static NSString *const kPlaceholderFontKey = @"placeholderFont";
-static NSString *const kPlaceholderTextColorKey = @"placeholderTextColor";
+#import <Stanley/KSTScopeMacros.h>
 
 static void *kObservingContext = &kObservingContext;
 
@@ -35,8 +34,8 @@ static void *kObservingContext = &kObservingContext;
 
 #pragma mark *** Subclass Overrides ***
 - (void)dealloc {
-    [self removeObserver:self forKeyPath:kPlaceholderFontKey context:kObservingContext];
-    [self removeObserver:self forKeyPath:kPlaceholderTextColorKey context:kObservingContext];
+    [self removeObserver:self forKeyPath:@kstKeypath(self,placeholderFont) context:kObservingContext];
+    [self removeObserver:self forKeyPath:@kstKeypath(self,placeholderTextColor) context:kObservingContext];
     
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
@@ -88,8 +87,8 @@ static void *kObservingContext = &kObservingContext;
 #pragma mark NSKeyValueObserving
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
     if (context == kObservingContext) {
-        if ([keyPath isEqualToString:kPlaceholderFontKey] ||
-            [keyPath isEqualToString:kPlaceholderTextColorKey]) {
+        if ([keyPath isEqualToString:@kstKeypath(self,placeholderFont)] ||
+            [keyPath isEqualToString:@kstKeypath(self,placeholderTextColor)]) {
             
             [self setAttributedPlaceholder:[[NSAttributedString alloc] initWithString:self.placeholder ?: @"" attributes:@{NSFontAttributeName: self.placeholderFont, NSForegroundColorAttributeName: self.placeholderTextColor}]];
         }
@@ -139,8 +138,8 @@ static void *kObservingContext = &kObservingContext;
     [self.placeholderLabel setLineBreakMode:NSLineBreakByWordWrapping];
     [self addSubview:self.placeholderLabel];
     
-    [self addObserver:self forKeyPath:kPlaceholderFontKey options:0 context:kObservingContext];
-    [self addObserver:self forKeyPath:kPlaceholderTextColorKey options:0 context:kObservingContext];
+    [self addObserver:self forKeyPath:@kstKeypath(self,placeholderFont) options:0 context:kObservingContext];
+    [self addObserver:self forKeyPath:@kstKeypath(self,placeholderTextColor) options:0 context:kObservingContext];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(_textDidChangeNotification:) name:UITextViewTextDidChangeNotification object:self];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(_textStorageDidProcessEditingNotification:) name:NSTextStorageDidProcessEditingNotification object:self.textStorage];

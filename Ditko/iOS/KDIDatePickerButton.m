@@ -16,7 +16,7 @@
 #import "KDIDatePickerButton.h"
 #import "KDINextPreviousInputAccessoryView.h"
 
-static NSString *const kDateKey = @"date";
+#import <Stanley/KSTScopeMacros.h>
 
 @interface KDIDatePickerButton ()
 @property (readwrite,nonatomic) UIView *inputView;
@@ -126,11 +126,11 @@ static NSString *const kDateKey = @"date";
 }
 
 - (IBAction)_datePickerAction:(id)sender {
-    [self willChangeValueForKey:kDateKey];
+    [self willChangeValueForKey:@kstKeypath(self,date)];
     
     [self sendActionsForControlEvents:UIControlEventValueChanged];
     
-    [self didChangeValueForKey:kDateKey];
+    [self didChangeValueForKey:@kstKeypath(self,date)];
     
     [self _reloadTitleFromDatePickerDate];
 }
