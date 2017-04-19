@@ -54,6 +54,7 @@ FOUNDATION_EXPORT const unsigned char DitkoVersionString[];
 #import <Ditko/NSWindow+KDIExtensions.h>
 #import <Ditko/NSBezierPath+KDIExtensions.h>
 #import <Ditko/NSAlert+KDIExtensions.h>
+#import <Ditko/NSSavePanel+KDIExtensions.h>
 #import <Ditko/NSControl+KDIExtensions.h>
 #import <Ditko/NSTextField+KDIExtensions.h>
 #import <Ditko/NSButton+KDIExtensions.h>

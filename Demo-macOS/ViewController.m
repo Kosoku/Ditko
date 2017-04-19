@@ -17,6 +17,7 @@
 
 #import <Ditko/Ditko.h>
 #import <Loki/Loki.h>
+#import <Stanley/Stanley.h>
 
 @interface View : KDIView
 
@@ -82,9 +83,19 @@
     [button setKDI_block:^(__kindof NSControl *control){
         KDIClickableLabel *accessoryView = [[KDIClickableLabel alloc] initWithFrame:NSZeroRect];
         
-        [accessoryView setStringValue:@"This is an accessory view!"];
+        [accessoryView setStringValue:@"Click this to show a save panel!"];
         [accessoryView setBlock:^(KDIClickableLabel *label) {
-            NSLog(@"the accessory view %@ was clicked!",label);
+            [[NSSavePanel savePanel] KDI_presentAsSheetWithValidateURLBlock:^BOOL(NSSavePanel * _Nonnull savePanel, NSURL * _Nonnull URL, NSError * _Nullable __autoreleasing * _Nullable outError) {
+                if ([URL.lastPathComponent containsString:@"a"]) {
+                    if (outError != nil) {
+                        *outError = [NSError errorWithDomain:[NSBundle mainBundle].KST_bundleIdentifier code:0 userInfo:@{NSLocalizedDescriptionKey: @"The filename is not valid", NSLocalizedRecoverySuggestionErrorKey: @"The filename cannot have an \"a\" in it. Pick another filename."}];
+                    }
+                    return NO;
+                }
+                return YES;
+            } completion:^(NSSavePanel * _Nonnull savePanel, NSURL * _Nullable URL) {
+                NSLog(@"%@ %@",savePanel,URL);
+            }];
         }];
         [accessoryView sizeToFit];
         

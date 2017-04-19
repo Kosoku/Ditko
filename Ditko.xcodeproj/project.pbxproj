@@ -151,6 +151,8 @@
 		07A920991E958CA900B45199 /* KDIRolloverButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 07A920971E958CA900B45199 /* KDIRolloverButton.m */; };
 		07A9209B1E9599CB00B45199 /* Loki.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07A9209A1E9599CB00B45199 /* Loki.framework */; };
 		07A9209C1E9599CB00B45199 /* Loki.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 07A9209A1E9599CB00B45199 /* Loki.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		07C49DD01EA7EADD00C9F4D5 /* NSSavePanel+KDIExtensions.h in Headers */ = {isa = PBXBuildFile; fileRef = 07C49DCE1EA7EADD00C9F4D5 /* NSSavePanel+KDIExtensions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		07C49DD11EA7EADD00C9F4D5 /* NSSavePanel+KDIExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 07C49DCF1EA7EADD00C9F4D5 /* NSSavePanel+KDIExtensions.m */; };
 		07D166C31E96A08E0073F69A /* NSButton+KDIExtensions.h in Headers */ = {isa = PBXBuildFile; fileRef = 07D166C11E96A08E0073F69A /* NSButton+KDIExtensions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		07D166C41E96A08E0073F69A /* NSButton+KDIExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 07D166C21E96A08E0073F69A /* NSButton+KDIExtensions.m */; };
 		07D166C71E96ABDA0073F69A /* NSPopUpButton+KDIExtensions.h in Headers */ = {isa = PBXBuildFile; fileRef = 07D166C51E96ABDA0073F69A /* NSPopUpButton+KDIExtensions.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -443,6 +445,8 @@
 		07A920961E958CA900B45199 /* KDIRolloverButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KDIRolloverButton.h; path = macOS/KDIRolloverButton.h; sourceTree = "<group>"; };
 		07A920971E958CA900B45199 /* KDIRolloverButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KDIRolloverButton.m; path = macOS/KDIRolloverButton.m; sourceTree = "<group>"; };
 		07A9209A1E9599CB00B45199 /* Loki.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Loki.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		07C49DCE1EA7EADD00C9F4D5 /* NSSavePanel+KDIExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSSavePanel+KDIExtensions.h"; path = "macOS/NSSavePanel+KDIExtensions.h"; sourceTree = "<group>"; };
+		07C49DCF1EA7EADD00C9F4D5 /* NSSavePanel+KDIExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSSavePanel+KDIExtensions.m"; path = "macOS/NSSavePanel+KDIExtensions.m"; sourceTree = "<group>"; };
 		07D166C11E96A08E0073F69A /* NSButton+KDIExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSButton+KDIExtensions.h"; path = "macOS/NSButton+KDIExtensions.h"; sourceTree = "<group>"; };
 		07D166C21E96A08E0073F69A /* NSButton+KDIExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSButton+KDIExtensions.m"; path = "macOS/NSButton+KDIExtensions.m"; sourceTree = "<group>"; };
 		07D166C51E96ABDA0073F69A /* NSPopUpButton+KDIExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSPopUpButton+KDIExtensions.h"; path = "macOS/NSPopUpButton+KDIExtensions.h"; sourceTree = "<group>"; };
@@ -702,6 +706,8 @@
 				0794A8131E73574A00603C99 /* UIAlertController+KDIExtensions.m */,
 				0794A8271E735D1400603C99 /* NSAlert+KDIExtensions.h */,
 				0794A8281E735D1400603C99 /* NSAlert+KDIExtensions.m */,
+				07C49DCE1EA7EADD00C9F4D5 /* NSSavePanel+KDIExtensions.h */,
+				07C49DCF1EA7EADD00C9F4D5 /* NSSavePanel+KDIExtensions.m */,
 				0794A82B1E735E1200603C99 /* NSParagraphStyle+KDIExtensions.h */,
 				0794A82C1E735E1200603C99 /* NSParagraphStyle+KDIExtensions.m */,
 				07D166C11E96A08E0073F69A /* NSButton+KDIExtensions.h */,
@@ -909,6 +915,7 @@
 				07D166C71E96ABDA0073F69A /* NSPopUpButton+KDIExtensions.h in Headers */,
 				07A920981E958CA900B45199 /* KDIRolloverButton.h in Headers */,
 				07A920931E95767E00B45199 /* NSTextField+KDIExtensions.h in Headers */,
+				07C49DD01EA7EADD00C9F4D5 /* NSSavePanel+KDIExtensions.h in Headers */,
 				071B626F1E70635D00B7B85A /* KDIGradientView.h in Headers */,
 				0794A8101E73568500603C99 /* NSWindow+KDIExtensions.h in Headers */,
 				073542A51E7053F100177905 /* Ditko.h in Headers */,
@@ -1415,6 +1422,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				071B62711E70635D00B7B85A /* KDIGradientView.m in Sources */,
+				07C49DD11EA7EADD00C9F4D5 /* NSSavePanel+KDIExtensions.m in Sources */,
 				07E8EB391E733F34001639A2 /* NSURL+KDIExtensions.m in Sources */,
 				07D166C81E96ABDA0073F69A /* NSPopUpButton+KDIExtensions.m in Sources */,
 				071B62661E705D3500B7B85A /* KDIFunctions.m in Sources */,
