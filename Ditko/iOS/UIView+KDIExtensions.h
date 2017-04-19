@@ -81,6 +81,12 @@ NS_ASSUME_NONNULL_BEGIN
  @return The snapshot image
  */
 - (nullable UIImage *)KDI_snapshotImageFromRect:(CGRect)rect afterScreenUpdates:(BOOL)afterScreenUpdates;
+/**
+ Draws a 1pt border around the view in the color passed.
+ 
+ @param color The color to make the debug border
+ */
+- (void)KDI_debugBorderWithColor:(UIColor *)color;
 
 @end
 
