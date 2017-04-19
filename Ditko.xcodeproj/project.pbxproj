@@ -162,8 +162,6 @@
 		07DB3D621E737CBF0044FB50 /* Stanley.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07DB3D611E737CBF0044FB50 /* Stanley.framework */; };
 		07DB3D631E737CBF0044FB50 /* Stanley.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 07DB3D611E737CBF0044FB50 /* Stanley.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		07DB3D651E737DD20044FB50 /* Stanley.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07DB3D641E737DD20044FB50 /* Stanley.framework */; };
-		07DB3D661E737E7A0044FB50 /* Stanley.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0795E6601E704AE3004A5CB2 /* Stanley.framework */; };
-		07DB3D671E737E7A0044FB50 /* Stanley.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0795E6601E704AE3004A5CB2 /* Stanley.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		07DB3D691E737E800044FB50 /* Ditko.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0795E6321E704785004A5CB2 /* Ditko.framework */; };
 		07DB3D6A1E737E800044FB50 /* Ditko.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0795E6321E704785004A5CB2 /* Ditko.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		07DB3D6B1E737E9B0044FB50 /* Stanley.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0795E6601E704AE3004A5CB2 /* Stanley.framework */; };
@@ -218,6 +216,8 @@
 		07E8EB501E734AEC001639A2 /* KDIFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = 071B62621E705D3500B7B85A /* KDIFunctions.m */; };
 		07E8EB511E734AED001639A2 /* KDIFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = 071B62621E705D3500B7B85A /* KDIFunctions.m */; };
 		07E8EB521E734B0E001639A2 /* KDIFunctions.h in Headers */ = {isa = PBXBuildFile; fileRef = 071B62611E705D3500B7B85A /* KDIFunctions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7427127D1EA7B02000A406EC /* Stanley.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7427127C1EA7B02000A406EC /* Stanley.framework */; };
+		7427127E1EA7B02000A406EC /* Stanley.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7427127C1EA7B02000A406EC /* Stanley.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -307,9 +307,9 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				7427127E1EA7B02000A406EC /* Stanley.framework in Embed Frameworks */,
 				076730701E75C2C100030F0C /* Loki.framework in Embed Frameworks */,
 				07DB3D6A1E737E800044FB50 /* Ditko.framework in Embed Frameworks */,
-				07DB3D671E737E7A0044FB50 /* Stanley.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -472,6 +472,7 @@
 		07E8EB421E7341C2001639A2 /* UIBarButtonItem+KDIExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIBarButtonItem+KDIExtensions.m"; path = "iOS/UIBarButtonItem+KDIExtensions.m"; sourceTree = "<group>"; };
 		07E8EB471E73454D001639A2 /* UIDevice+KDIExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIDevice+KDIExtensions.h"; path = "iOS/UIDevice+KDIExtensions.h"; sourceTree = "<group>"; };
 		07E8EB481E73454D001639A2 /* UIDevice+KDIExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIDevice+KDIExtensions.m"; path = "iOS/UIDevice+KDIExtensions.m"; sourceTree = "<group>"; };
+		7427127C1EA7B02000A406EC /* Stanley.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Stanley.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -539,9 +540,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7427127D1EA7B02000A406EC /* Stanley.framework in Frameworks */,
 				0767306F1E75C2C100030F0C /* Loki.framework in Frameworks */,
 				07DB3D691E737E800044FB50 /* Ditko.framework in Frameworks */,
-				07DB3D661E737E7A0044FB50 /* Stanley.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -814,6 +815,7 @@
 		0795E65F1E704AE3004A5CB2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				7427127C1EA7B02000A406EC /* Stanley.framework */,
 				0745316D1E9EB0F200CEF9E0 /* Stanley.framework */,
 				07A9209A1E9599CB00B45199 /* Loki.framework */,
 				0767306E1E75C2C100030F0C /* Loki.framework */,
