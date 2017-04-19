@@ -16,7 +16,7 @@
 #import "KDIView.h"
 
 #if (TARGET_OS_OSX)
-NSString *const KDIViewNotificationDidChangeState = @"KDIViewNotificationDidChangeState";
+NSNotificationName const KDIViewNotificationDidChangeState = @"KDIViewNotificationDidChangeState";
 #endif
 
 @interface KDIView ()

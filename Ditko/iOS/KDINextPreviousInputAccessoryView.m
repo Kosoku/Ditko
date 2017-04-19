@@ -17,9 +17,9 @@
 #import "UIBarButtonItem+KDIExtensions.h"
 #import "NSBundle+KDIPrivateExtensions.h"
 
-NSString *const KDINextPreviousInputAccessoryViewNotificationNext = @"KDINextPreviousInputAccessoryViewNotificationNext";
-NSString *const KDINextPreviousInputAccessoryViewNotificationPrevious = @"KDINextPreviousInputAccessoryViewNotificationPrevious";
-NSString *const KDINextPreviousInputAccessoryViewNotificationDone = @"KDINextPreviousInputAccessoryViewNotificationDone";
+NSNotificationName const KDINextPreviousInputAccessoryViewNotificationNext = @"KDINextPreviousInputAccessoryViewNotificationNext";
+NSNotificationName const KDINextPreviousInputAccessoryViewNotificationPrevious = @"KDINextPreviousInputAccessoryViewNotificationPrevious";
+NSNotificationName const KDINextPreviousInputAccessoryViewNotificationDone = @"KDINextPreviousInputAccessoryViewNotificationDone";
 
 static CGFloat kDefaultFrameHeight;
 
