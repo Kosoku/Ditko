@@ -99,7 +99,7 @@
         }];
         [accessoryView sizeToFit];
         
-        [[NSAlert KDI_alertWithStyle:NSAlertStyleCritical title:@"Did you see that Morty?" message:@"It was terrible Rick. The operation couldn't be completed." cancelButtonTitle:@"Cancel" otherButtonTitles:@[@"Do nothing",@"Do something"] icon:nil helpAnchor:@"herp" showsSuppressionButton:YES accessoryView:accessoryView] KDI_presentAlertAsSheetWithCompletion:^(NSModalResponse returnCode, BOOL suppressionButtonWasChecked, __kindof NSView * _Nullable accessoryView) {
+        [[NSAlert KDI_alertWithOptions:@{KDINSAlertOptionsKeyStyle: @(NSAlertStyleCritical), KDINSAlertOptionsKeyTitle: @"Did you see that Morty?", KDINSAlertOptionsKeyMessage: @"It was terrible Rick. The operation couldn't be completed.", KDINSAlertOptionsKeyOtherButtonTitles: @[@"Do nothing",@"Do something"], KDINSAlertOptionsKeyHelpAnchor: @"help", KDINSAlertOptionsKeyShowsSuppressionButton: @YES, KDINSAlertOptionsKeyAccessoryView: accessoryView}] KDI_presentAlertAsSheetWithCompletion:^(NSModalResponse returnCode, BOOL suppressionButtonWasChecked, __kindof NSView * _Nullable accessoryView) {
             NSLog(@"%@ %@ %@",@(returnCode),@(suppressionButtonWasChecked),accessoryView);
         }];
     }];

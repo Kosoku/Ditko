@@ -26,6 +26,48 @@ NS_ASSUME_NONNULL_BEGIN
  */
 typedef void(^KDINSAlertCompletionBlock)(NSModalResponse returnCode, BOOL suppressionButtonWasChecked, __kindof NSView * _Nullable accessoryView);
 
+/**
+ Typedef for option keys to be used with KDI_alertWithOptions:.
+ */
+typedef NSString* KDINSAlertOptionsKey NS_STRING_ENUM;
+
+/**
+ Use this key to pass an NSAlertStyle. For example @{KDINSAlertOptionsKeyStyle: @(NSAlertStyleWarning)}.
+ */
+FOUNDATION_EXPORT KDINSAlertOptionsKey const KDINSAlertOptionsKeyStyle;
+/**
+ Use this key to pass the alert title. For example @{KDINSAlertOptionsKeyTitle: @"Title"}.
+ */
+FOUNDATION_EXPORT KDINSAlertOptionsKey const KDINSAlertOptionsKeyTitle;
+/**
+ Use this key to pass the alert message. For example @{KDINSAlertOptionsKeyMessage: @"Message"}.
+ */
+FOUNDATION_EXPORT KDINSAlertOptionsKey const KDINSAlertOptionsKeyMessage;
+/**
+ Use this key to pass the cancel button title. For example @{KDINSAlertOptionsKeyCancelButtonTitle: @"Cancel"}.
+ */
+FOUNDATION_EXPORT KDINSAlertOptionsKey const KDINSAlertOptionsKeyCancelButtonTitle;
+/**
+ Use this key to pass an NSArray of NSString instance for the other button titles. For example @{KDINSAlertOptionsKeyOtherButtonTitles: @[@"First", @"Second"]}.
+ */
+FOUNDATION_EXPORT KDINSAlertOptionsKey const KDINSAlertOptionsKeyOtherButtonTitles;
+/**
+ Use this key to pass a BOOL of whether to show the suppression button. For example @{KDINSAlertOptionsKeyShowsSuppressionButton: @YES}.
+ */
+FOUNDATION_EXPORT KDINSAlertOptionsKey const KDINSAlertOptionsKeyShowsSuppressionButton;
+/**
+ Use this key to pass an NSImage to show on the alert instead of the default. For example @{KDINSAlertOptionsKeyIcon: icon}.
+ */
+FOUNDATION_EXPORT KDINSAlertOptionsKey const KDINSAlertOptionsKeyIcon;
+/**
+ Use the key to pass the help anchor that the help button will link to. For example @{KDINSAlertOptionsKeyHelpAnchor: @"helpAnchor"}.
+ */
+FOUNDATION_EXPORT KDINSAlertOptionsKey const KDINSAlertOptionsKeyHelpAnchor;
+/**
+ Use the key to pass the accessory view that the alert will display. For example @{KDINSAlertOptionsKeyAccessoryView: accessoryView}.
+ */
+FOUNDATION_EXPORT KDINSAlertOptionsKey const KDINSAlertOptionsKeyAccessoryView;
+
 @interface NSAlert (KDIExtensions)
 
 /**
@@ -87,18 +129,10 @@ typedef void(^KDINSAlertCompletionBlock)(NSModalResponse returnCode, BOOL suppre
 /**
  Creates and returns an NSAlert instance with the provided parameters. Reasonable defaults are provided where appropriate.
  
- @param style The alert style
- @param title The alert title, this appears in bold font on the first line
- @param message The alert message, this appears in normal font on the second line
- @param cancelButtonTitle The right most button title (in left to right languages)
- @param otherButtonTitles Additional button titles that are added right to left (in left to right languages)
- @param icon A custom icon to use with the alert instead of the application icon (the default)
- @param helpAnchor The help anchor that should be displayed, if non-nil the alert will display a help button
- @param showsSuppressionButton Whether the suppression button (do not show me this again) is displayed
- @param accessoryView The accessory view that should added between the message and buttons on the alert
+ @param options The options dictionary to use when configuring the alert
  @return The NSAlert instance
  */
-+ (NSAlert *)KDI_alertWithStyle:(NSAlertStyle)style title:(nullable NSString *)title message:(nullable NSString *)message cancelButtonTitle:(nullable NSString *)cancelButtonTitle otherButtonTitles:(nullable NSArray<NSString *> *)otherButtonTitles icon:(nullable NSImage *)icon helpAnchor:(nullable NSString *)helpAnchor showsSuppressionButton:(BOOL)showsSuppressionButton accessoryView:(nullable NSView *)accessoryView;
++ (NSAlert *)KDI_alertWithOptions:(NSDictionary<KDINSAlertOptionsKey, id> *)options;
 
 @end
 
