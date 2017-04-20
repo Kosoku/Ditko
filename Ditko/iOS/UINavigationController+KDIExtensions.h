@@ -26,7 +26,7 @@ NS_ASSUME_NONNULL_BEGIN
  @param animated Whether or not to animate the transition
  @param completion The completion block to invoke when the animation is complete
  */
-- (void)KDI_pushViewController:(UIViewController *)viewController animated:(BOOL)animated completion:(void(^ _Nullable)(void))completion;
+- (void)KDI_pushViewController:(UIViewController *)viewController animated:(BOOL)animated completion:(nullable dispatch_block_t)completion;
 
 /**
  Calls through to popToRootViewControllerAnimated: and invokes the provided completion block when the animation is complete. If completion is nil, simply calls through to popToRootViewControllerAnimated:.
@@ -35,7 +35,7 @@ NS_ASSUME_NONNULL_BEGIN
  @param completion The completion block to invoke when the animation is complete
  @return The array of popped view controllers
  */
-- (nullable NSArray<__kindof UIViewController *> *)KDI_popToRootViewControllerAnimated:(BOOL)animated completion:(void(^ _Nullable)(void))completion;
+- (nullable NSArray<__kindof UIViewController *> *)KDI_popToRootViewControllerAnimated:(BOOL)animated completion:(nullable dispatch_block_t)completion;
 /**
  Calls through to popToViewController:animated: and invokes the provided completion block when the animation is complete. If completion is nil, simply calls through to popToViewController:animated:.
  
@@ -44,7 +44,7 @@ NS_ASSUME_NONNULL_BEGIN
  @param completion The completion block to invoke when the animation is complete
  @return The array of popped view controllers
  */
-- (nullable NSArray<__kindof UIViewController *> *)KDI_popToViewController:(UIViewController *)viewController animated:(BOOL)animated completion:(void(^ _Nullable)(void))completion;
+- (nullable NSArray<__kindof UIViewController *> *)KDI_popToViewController:(UIViewController *)viewController animated:(BOOL)animated completion:(nullable dispatch_block_t)completion;
 /**
  Calls through to popViewControllerAnimated: and invokes the provided completion block when the animation is complete. If completion is nil, simply calls through to popViewControllerAnimated:.
  
@@ -52,7 +52,7 @@ NS_ASSUME_NONNULL_BEGIN
  @param completion The completion block to invoke when the animation is complete
  @return The popped view controller
  */
-- (nullable UIViewController *)KDI_popViewControllerAnimated:(BOOL)animated completion:(void(^ _Nullable)(void))completion;
+- (nullable UIViewController *)KDI_popViewControllerAnimated:(BOOL)animated completion:(nullable dispatch_block_t)completion;
 
 @end
 

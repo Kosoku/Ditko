@@ -17,7 +17,7 @@
 
 @implementation UINavigationController (KDIExtensions)
 
-- (void)KDI_pushViewController:(UIViewController *)viewController animated:(BOOL)animated completion:(void(^ _Nullable)(void))completion; {
+- (void)KDI_pushViewController:(UIViewController *)viewController animated:(BOOL)animated completion:(dispatch_block_t)completion; {
     if (completion == nil) {
         [self pushViewController:viewController animated:animated];
     }
@@ -31,7 +31,7 @@
     }
 }
 
-- (nullable NSArray<__kindof UIViewController *> *)KDI_popToRootViewControllerAnimated:(BOOL)animated completion:(void(^ _Nullable)(void))completion; {
+- (nullable NSArray<__kindof UIViewController *> *)KDI_popToRootViewControllerAnimated:(BOOL)animated completion:(dispatch_block_t)completion; {
     if (completion == nil) {
         return [self popToRootViewControllerAnimated:animated];
     }
@@ -46,7 +46,7 @@
         return retval;
     }
 }
-- (nullable NSArray<__kindof UIViewController *> *)KDI_popToViewController:(UIViewController *)viewController animated:(BOOL)animated completion:(void(^ _Nullable)(void))completion; {
+- (nullable NSArray<__kindof UIViewController *> *)KDI_popToViewController:(UIViewController *)viewController animated:(BOOL)animated completion:(dispatch_block_t)completion; {
     if (completion == nil) {
         return [self popToViewController:viewController animated:animated];
     }
@@ -61,7 +61,7 @@
         return retval;
     }
 }
-- (nullable UIViewController *)KDI_popViewControllerAnimated:(BOOL)animated completion:(void(^ _Nullable)(void))completion; {
+- (nullable UIViewController *)KDI_popViewControllerAnimated:(BOOL)animated completion:(dispatch_block_t)completion; {
     if (completion == nil) {
         return [self popViewControllerAnimated:animated];
     }
