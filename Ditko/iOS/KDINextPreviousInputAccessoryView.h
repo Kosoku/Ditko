@@ -49,6 +49,8 @@ FOUNDATION_EXPORT NSNotificationName const KDINextPreviousInputAccessoryViewNoti
  */
 - (instancetype)initWithFrame:(CGRect)frame responder:(UIResponder *)responder NS_DESIGNATED_INITIALIZER;
 
++ (instancetype)new NS_UNAVAILABLE;
+- (instancetype)init __attribute__((unavailable("use initWithFrame:responder:")));
 - (instancetype)initWithFrame:(CGRect)frame __attribute__((unavailable("use initWithResponder:frame:")));
 - (nullable instancetype)initWithCoder:(NSCoder *)aDecoder __attribute__((unavailable("use initWithResponder:frame:")));
 
