@@ -66,5 +66,6 @@ typedef NS_ENUM(NSInteger, KDIBadgeButtonBadgePosition) {
 - (void)layoutSubviews NS_REQUIRES_SUPER;
 - (CGSize)intrinsicContentSize NS_REQUIRES_SUPER;
 - (CGSize)sizeThatFits:(CGSize)size NS_REQUIRES_SUPER;
+- (UIView *)hitTest:(CGPoint)point withEvent:(UIEvent *)event NS_REQUIRES_SUPER;
 
 @end
