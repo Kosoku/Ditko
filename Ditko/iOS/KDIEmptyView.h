@@ -17,14 +17,54 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+/**
+ KDIEmptyView is a UIView subclass for use as the placeholder view when there is no data available. For example, if the containing view displays items that the user has favorited, an instance of this calss could be used to display a call to action prompting the user to favorite an item. Another example would be if the user's permission is required before content can be displayed (e.g. Photos permission).
+ 
+ The relevant subviews are stacked vertically and centered horizontally:
+ 
+ [image] (UIImageView)
+    |
+ [headline] (UILabel)
+    |
+ [body] (UILabel)
+    |
+ [action] (UIButton)
+ 
+ The *image* and *action* will be tinted accordingly based on the receiver's tintColor property. The *body* and *action* are the same font size. The *headline* font is slightly larger and bold. The fonts used are based on dynamic type.
+ */
 @interface KDIEmptyView : UIView
 
+/**
+ Set and get the image of the receiver.
+ */
 @property (strong,nonatomic,nullable) UIImage *image;
+/**
+ Set and get the headline of the receiver.
+ */
 @property (copy,nonatomic,nullable) NSString *headline;
+/**
+ Set and get the headline text color of the receiver.
+ 
+ The default is UIColor.blackColor.
+ */
 @property (strong,nonatomic,null_resettable) UIColor *headlineColor UI_APPEARANCE_SELECTOR;
+/**
+ Set and get the body of the receiver.
+ */
 @property (copy,nonatomic,nullable) NSString *body;
+/**
+ Set and get the body text color of the receiver.
+ 
+ The default is UIColor.grayColor.
+ */
 @property (strong,nonatomic,null_resettable) UIColor *bodyColor UI_APPEARANCE_SELECTOR;
+/**
+ Set and get the action of the receiver. This is used as the title of a button.
+ */
 @property (copy,nonatomic,nullable) NSString *action;
+/**
+ Set and get the block that is invoked when the action button is tapped.
+ */
 @property (copy,nonatomic,nullable) dispatch_block_t actionBlock;
 
 @end
