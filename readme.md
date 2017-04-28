@@ -9,6 +9,9 @@
 
 Demo icons by [Glyphish](http://www.glyphish.com/).
 
+![iOS](screenshots/iOS.gif)
+![macOS](screenshots/macOS.gif)
+
 ### Installation
 
 You can install *Ditko* using [cocoapods](https://cocoapods.org/), [Carthage](https://github.com/Carthage/Carthage), or as a framework. When installing as a framework, ensure you also link to [Stanley](https://github.com/Kosoku/Stanley) as *Ditko* relies on it.
