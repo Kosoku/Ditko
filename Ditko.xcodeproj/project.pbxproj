@@ -64,6 +64,18 @@
 		073B35181E82EF4B00C003A1 /* UIControl+KDIExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 073B35151E82EF4B00C003A1 /* UIControl+KDIExtensions.m */; };
 		073B35191E82EF4B00C003A1 /* UIControl+KDIExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 073B35151E82EF4B00C003A1 /* UIControl+KDIExtensions.m */; };
 		0745316E1E9EB0F200CEF9E0 /* Stanley.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0745316D1E9EB0F200CEF9E0 /* Stanley.framework */; };
+		074B477B1EB3D266009B7C6D /* KDIEmptyView.h in Headers */ = {isa = PBXBuildFile; fileRef = 074B47791EB3D266009B7C6D /* KDIEmptyView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		074B477D1EB3D266009B7C6D /* KDIEmptyView.h in Headers */ = {isa = PBXBuildFile; fileRef = 074B47791EB3D266009B7C6D /* KDIEmptyView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		074B477E1EB3D266009B7C6D /* KDIEmptyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 074B477A1EB3D266009B7C6D /* KDIEmptyView.m */; };
+		074B47801EB3D266009B7C6D /* KDIEmptyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 074B477A1EB3D266009B7C6D /* KDIEmptyView.m */; };
+		074B47831EB3DF84009B7C6D /* EmptyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 074B47821EB3DF84009B7C6D /* EmptyViewController.m */; };
+		074B47851EB3E3D1009B7C6D /* KSOFontAwesomeExtensions.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 074B47841EB3E3D1009B7C6D /* KSOFontAwesomeExtensions.framework */; };
+		074B47861EB3E3D1009B7C6D /* KSOFontAwesomeExtensions.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 074B47841EB3E3D1009B7C6D /* KSOFontAwesomeExtensions.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		074B47881EB3E431009B7C6D /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 074B47871EB3E431009B7C6D /* FontAwesome.ttf */; };
+		074B478B1EB3E86F009B7C6D /* EmptyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 074B478A1EB3E86F009B7C6D /* EmptyViewController.m */; };
+		074B478D1EB3E8CD009B7C6D /* KSOFontAwesomeExtensions.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 074B478C1EB3E8CD009B7C6D /* KSOFontAwesomeExtensions.framework */; };
+		074B478E1EB3E8CD009B7C6D /* KSOFontAwesomeExtensions.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 074B478C1EB3E8CD009B7C6D /* KSOFontAwesomeExtensions.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		074B478F1EB3E98C009B7C6D /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 074B47871EB3E431009B7C6D /* FontAwesome.ttf */; };
 		0767306F1E75C2C100030F0C /* Loki.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0767306E1E75C2C100030F0C /* Loki.framework */; };
 		076730701E75C2C100030F0C /* Loki.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0767306E1E75C2C100030F0C /* Loki.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		076730731E75C6C700030F0C /* KDIPickerViewButton.h in Headers */ = {isa = PBXBuildFile; fileRef = 076730711E75C6C700030F0C /* KDIPickerViewButton.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -312,6 +324,7 @@
 				7427127E1EA7B02000A406EC /* Stanley.framework in Embed Frameworks */,
 				076730701E75C2C100030F0C /* Loki.framework in Embed Frameworks */,
 				07DB3D6A1E737E800044FB50 /* Ditko.framework in Embed Frameworks */,
+				074B47861EB3E3D1009B7C6D /* KSOFontAwesomeExtensions.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -323,6 +336,7 @@
 			dstSubfolderSpec = 10;
 			files = (
 				07DB3D711E737EEE0044FB50 /* Ditko.framework in Embed Frameworks */,
+				074B478E1EB3E8CD009B7C6D /* KSOFontAwesomeExtensions.framework in Embed Frameworks */,
 				07DB3D6E1E737EDF0044FB50 /* Stanley.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -384,6 +398,15 @@
 		073B35141E82EF4B00C003A1 /* UIControl+KDIExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIControl+KDIExtensions.h"; path = "iOS/UIControl+KDIExtensions.h"; sourceTree = "<group>"; };
 		073B35151E82EF4B00C003A1 /* UIControl+KDIExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIControl+KDIExtensions.m"; path = "iOS/UIControl+KDIExtensions.m"; sourceTree = "<group>"; };
 		0745316D1E9EB0F200CEF9E0 /* Stanley.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Stanley.framework; path = "../../Library/Developer/Xcode/DerivedData/Ditko-bqbmowdlvnipfjchljeblievobjg/Build/Products/Debug-watchsimulator/Stanley.framework"; sourceTree = "<group>"; };
+		074B47791EB3D266009B7C6D /* KDIEmptyView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KDIEmptyView.h; path = iOS/KDIEmptyView.h; sourceTree = "<group>"; };
+		074B477A1EB3D266009B7C6D /* KDIEmptyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KDIEmptyView.m; path = iOS/KDIEmptyView.m; sourceTree = "<group>"; };
+		074B47811EB3DF84009B7C6D /* EmptyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmptyViewController.h; sourceTree = "<group>"; };
+		074B47821EB3DF84009B7C6D /* EmptyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmptyViewController.m; sourceTree = "<group>"; };
+		074B47841EB3E3D1009B7C6D /* KSOFontAwesomeExtensions.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = KSOFontAwesomeExtensions.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		074B47871EB3E431009B7C6D /* FontAwesome.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FontAwesome.ttf; sourceTree = "<group>"; };
+		074B47891EB3E86F009B7C6D /* EmptyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmptyViewController.h; sourceTree = "<group>"; };
+		074B478A1EB3E86F009B7C6D /* EmptyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmptyViewController.m; sourceTree = "<group>"; };
+		074B478C1EB3E8CD009B7C6D /* KSOFontAwesomeExtensions.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = KSOFontAwesomeExtensions.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0767306E1E75C2C100030F0C /* Loki.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Loki.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		076730711E75C6C700030F0C /* KDIPickerViewButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KDIPickerViewButton.h; path = iOS/KDIPickerViewButton.h; sourceTree = "<group>"; };
 		076730721E75C6C700030F0C /* KDIPickerViewButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KDIPickerViewButton.m; path = iOS/KDIPickerViewButton.m; sourceTree = "<group>"; };
@@ -510,6 +533,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				07DB3D701E737EEE0044FB50 /* Ditko.framework in Frameworks */,
+				074B478D1EB3E8CD009B7C6D /* KSOFontAwesomeExtensions.framework in Frameworks */,
 				07DB3D6D1E737EDF0044FB50 /* Stanley.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -547,6 +571,7 @@
 				7427127D1EA7B02000A406EC /* Stanley.framework in Frameworks */,
 				0767306F1E75C2C100030F0C /* Loki.framework in Frameworks */,
 				07DB3D691E737E800044FB50 /* Ditko.framework in Frameworks */,
+				074B47851EB3E3D1009B7C6D /* KSOFontAwesomeExtensions.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -595,6 +620,8 @@
 				07A920971E958CA900B45199 /* KDIRolloverButton.m */,
 				07D166DB1E9759090073F69A /* KDIClickableLabel.h */,
 				07D166DC1E9759090073F69A /* KDIClickableLabel.m */,
+				074B47791EB3D266009B7C6D /* KDIEmptyView.h */,
+				074B477A1EB3D266009B7C6D /* KDIEmptyView.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -629,6 +656,8 @@
 				071B62CB1E70849500B7B85A /* AppDelegate.m */,
 				071B62CD1E70849500B7B85A /* ViewController.h */,
 				071B62CE1E70849500B7B85A /* ViewController.m */,
+				074B47891EB3E86F009B7C6D /* EmptyViewController.h */,
+				074B478A1EB3E86F009B7C6D /* EmptyViewController.m */,
 				071B62D01E70849500B7B85A /* Main.storyboard */,
 				071B62D31E70849500B7B85A /* Assets.xcassets */,
 				071B62D51E70849500B7B85A /* Info.plist */,
@@ -802,6 +831,8 @@
 				0795E64D1E704A56004A5CB2 /* AppDelegate.m */,
 				0795E64F1E704A56004A5CB2 /* ViewController.h */,
 				0795E6501E704A56004A5CB2 /* ViewController.m */,
+				074B47811EB3DF84009B7C6D /* EmptyViewController.h */,
+				074B47821EB3DF84009B7C6D /* EmptyViewController.m */,
 				0795E6551E704A56004A5CB2 /* Assets.xcassets */,
 				0795E6571E704A56004A5CB2 /* LaunchScreen.storyboard */,
 				0795E65A1E704A56004A5CB2 /* Info.plist */,
@@ -813,6 +844,7 @@
 		0795E6491E704A56004A5CB2 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				074B47871EB3E431009B7C6D /* FontAwesome.ttf */,
 				0795E64A1E704A56004A5CB2 /* main.m */,
 			);
 			name = "Supporting Files";
@@ -821,6 +853,8 @@
 		0795E65F1E704AE3004A5CB2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				074B478C1EB3E8CD009B7C6D /* KSOFontAwesomeExtensions.framework */,
+				074B47841EB3E3D1009B7C6D /* KSOFontAwesomeExtensions.framework */,
 				7427127C1EA7B02000A406EC /* Stanley.framework */,
 				0745316D1E9EB0F200CEF9E0 /* Stanley.framework */,
 				07A9209A1E9599CB00B45199 /* Loki.framework */,
@@ -886,6 +920,7 @@
 				0738CE4B1EA014C9008FE9A0 /* NSObject+KDIDynamicTypeExtensions.h in Headers */,
 				0794A8071E7354EF00603C99 /* UIViewController+KDIExtensions.h in Headers */,
 				0794A7EB1E734D5300603C99 /* UINavigationController+KDIExtensions.h in Headers */,
+				074B477D1EB3D266009B7C6D /* KDIEmptyView.h in Headers */,
 				07E8EB4F1E734729001639A2 /* KDIFunctions.h in Headers */,
 				071B62DE1E70861F00B7B85A /* Ditko.h in Headers */,
 				071B62BE1E70845600B7B85A /* KDIColorMacros.h in Headers */,
@@ -936,6 +971,7 @@
 				0794A8141E73574A00603C99 /* UIAlertController+KDIExtensions.h in Headers */,
 				0794A7F01E73509100603C99 /* UIView+KDIExtensions.h in Headers */,
 				07E8EB3D1E733FE3001639A2 /* KDIDefines.h in Headers */,
+				074B477B1EB3D266009B7C6D /* KDIEmptyView.h in Headers */,
 				077EB9FD1E9F703E0087321E /* KDIBadgeButton.h in Headers */,
 				076730871E77544700030F0C /* KDINextPreviousInputAccessoryView.h in Headers */,
 				07DB3D8E1E73B7BD0044FB50 /* KDIProgressNavigationBar.h in Headers */,
@@ -1255,6 +1291,7 @@
 			files = (
 				071B62D41E70849500B7B85A /* Assets.xcassets in Resources */,
 				071B62D21E70849500B7B85A /* Main.storyboard in Resources */,
+				074B478F1EB3E98C009B7C6D /* FontAwesome.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1290,6 +1327,7 @@
 			files = (
 				0795E6591E704A56004A5CB2 /* LaunchScreen.storyboard in Resources */,
 				0795E6561E704A56004A5CB2 /* Assets.xcassets in Resources */,
+				074B47881EB3E431009B7C6D /* FontAwesome.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1392,6 +1430,7 @@
 				07E8EB501E734AEC001639A2 /* KDIFunctions.m in Sources */,
 				071B62C01E70846200B7B85A /* NSColor-UIColor+KDIExtensions.m in Sources */,
 				077EBA001E9F703E0087321E /* KDIBadgeButton.m in Sources */,
+				074B47801EB3D266009B7C6D /* KDIEmptyView.m in Sources */,
 				0738CE4D1EA014C9008FE9A0 /* NSObject+KDIDynamicTypeExtensions.m in Sources */,
 				0794A83C1E73776C00603C99 /* KDIBadgeView.m in Sources */,
 				0794A8091E7354EF00603C99 /* UIViewController+KDIExtensions.m in Sources */,
@@ -1413,6 +1452,7 @@
 			files = (
 				071B62CF1E70849500B7B85A /* ViewController.m in Sources */,
 				071B62CC1E70849500B7B85A /* AppDelegate.m in Sources */,
+				074B478B1EB3E86F009B7C6D /* EmptyViewController.m in Sources */,
 				071B62C91E70849500B7B85A /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1473,6 +1513,7 @@
 				071B62651E705D3500B7B85A /* KDIFunctions.m in Sources */,
 				0795E6421E70491E004A5CB2 /* NSColor-UIColor+KDIExtensions.m in Sources */,
 				072628141E70BCCF00511F80 /* KDIView.m in Sources */,
+				074B477E1EB3D266009B7C6D /* KDIEmptyView.m in Sources */,
 				0794A83A1E73776C00603C99 /* KDIBadgeView.m in Sources */,
 				0794A8081E7354EF00603C99 /* UIViewController+KDIExtensions.m in Sources */,
 				07E8EB4C1E73454D001639A2 /* UIDevice+KDIExtensions.m in Sources */,
@@ -1494,6 +1535,7 @@
 			files = (
 				0795E6511E704A56004A5CB2 /* ViewController.m in Sources */,
 				0795E64E1E704A56004A5CB2 /* AppDelegate.m in Sources */,
+				074B47831EB3DF84009B7C6D /* EmptyViewController.m in Sources */,
 				0795E64B1E704A56004A5CB2 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

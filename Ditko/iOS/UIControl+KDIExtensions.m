@@ -61,6 +61,12 @@
         [self._KDI_controlEventsToBlockWrappers setObject:wrappers forKey:@(controlEvents)];
     }
     
+    if (controlEvents == UIControlEventTouchUpInside &&
+        UIDevice.currentDevice.userInterfaceIdiom == UIUserInterfaceIdiomTV) {
+        
+        controlEvents = UIControlEventPrimaryActionTriggered;
+    }
+    
     [wrappers addObject:[[_KDIUIControlBlockWrapper alloc] initWithBlock:block control:self controlEvents:controlEvents]];
 }
 - (void)KDI_removeBlocksForControlEvents:(UIControlEvents)controlEvents; {

@@ -17,6 +17,7 @@
 
 #import <Ditko/Ditko.h>
 #import <Loki/Loki.h>
+#import <KSOFontAwesomeExtensions/KSOFontAwesomeExtensions.h>
 
 @interface KDIBadgeView (ViewControllerExtensions) <KDIDynamicTypeView>
 @end
@@ -48,7 +49,7 @@ static NSArray<NSArray<NSString *> *> *kPickerViewButtonComponentsAndRows;
 }
 
 - (NSString *)title {
-    return @"Demo";
+    return @"Controls";
 }
 
 - (void)dealloc {
@@ -178,7 +179,7 @@ static NSArray<NSArray<NSString *> *> *kPickerViewButtonComponentsAndRows;
     
     KDIBadgeButton *badgeButton = [[KDIBadgeButton alloc] initWithFrame:CGRectZero];
     
-    [badgeButton.button setImage:[UIImage imageNamed:@"bolt"] forState:UIControlStateNormal];
+    [badgeButton.button setImage:[UIImage KSO_fontAwesomeImageWithString:@"\uf007" size:CGSizeMake(30, 30)] forState:UIControlStateNormal];
     [badgeButton.badgeView setBadge:@"1"];
     [badgeButton sizeToFit];
     

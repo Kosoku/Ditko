@@ -23,6 +23,10 @@
 
 @implementation ViewController
 
+- (NSString *)title {
+    return @"Controls";
+}
+
 - (void)loadView {
     KDIView *view = [[KDIView alloc] initWithFrame:CGRectZero];
     

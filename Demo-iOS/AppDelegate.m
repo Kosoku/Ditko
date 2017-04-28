@@ -15,6 +15,7 @@
 
 #import "AppDelegate.h"
 #import "ViewController.h"
+#import "EmptyViewController.h"
 
 @interface AppDelegate ()
 
@@ -25,7 +26,13 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     [self setWindow:[[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds]];
-    [self.window setRootViewController:[[UINavigationController alloc] initWithRootViewController:[[ViewController alloc] init]]];
+    
+    UITabBarController *controller = [[UITabBarController alloc] init];
+    
+    [controller setViewControllers:@[[[UINavigationController alloc] initWithRootViewController:[[ViewController alloc] init]],
+                                     [[UINavigationController alloc] initWithRootViewController:[[EmptyViewController alloc] init]]]];
+    
+    [self.window setRootViewController:controller];
     [self.window makeKeyAndVisible];
     
     return YES;
