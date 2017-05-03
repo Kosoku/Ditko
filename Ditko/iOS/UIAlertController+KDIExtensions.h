@@ -29,6 +29,58 @@ typedef void(^KDIUIAlertControllerCompletionBlock)(NSInteger buttonIndex);
  */
 FOUNDATION_EXPORT NSInteger const KDIUIAlertControllerCancelButtonIndex;
 
+/**
+ Typedef for option keys to be used with KDI_alertControllerWithOptions:completion: and KDI_presentAlertControllerWithOptions:completion:.
+ */
+typedef NSString* KDIUIAlertControllerOptionsKey NS_STRING_ENUM;
+
+/**
+ Use this key to pass an UIAlertControllerStyle. For example, @{KDIUIAlertControllerOptionsKeyStyle: @(UIAlertControllerStyleActionSheet)}. If a value is not provided, UIAlertControllerStyleAlert is the default.
+ */
+FOUNDATION_EXPORT KDIUIAlertControllerOptionsKey const KDIUIAlertControllerOptionsKeyStyle;
+/**
+ Use this key to pass the alert title. For example, @{KDIUIAlertControllerOptionsKeyTitle: @"Title"}. If a value is not provided a localized default is provided.
+ */
+FOUNDATION_EXPORT KDIUIAlertControllerOptionsKey const KDIUIAlertControllerOptionsKeyTitle;
+/**
+ Use this key to pass the alert message. For example, @{KDIUIAlertControllerOptionsKeyMessage: @"The alert message"}. If a value is not provided a localized default is provided.
+ */
+FOUNDATION_EXPORT KDIUIAlertControllerOptionsKey const KDIUIAlertControllerOptionsKeyMessage;
+/**
+ Use this key to pass the cancel button title of the alert. For example, @{KDIUIAlertControllerOptionsKeyCancelButtonTitle: @"Dismiss"}. If a value is not provided a localized default is provided.
+ */
+FOUNDATION_EXPORT KDIUIAlertControllerOptionsKey const KDIUIAlertControllerOptionsKeyCancelButtonTitle;
+/**
+ Use this key to pass an NSArray of NSString instances for the other button titles of the alert. For example, @{KDIUIAlertControllerOptionsKeyOtherButtonTitles: @[@"First",@"Second"]}.
+ */
+FOUNDATION_EXPORT KDIUIAlertControllerOptionsKey const KDIUIAlertControllerOptionsKeyOtherButtonTitles;
+/**
+ Use this key to pass the preferred button title. For example, @{KDIUIAlertControllerOptionsKeyPreferredButtonTitle: @"Destroy!"}. This will be matched against the cancel and other button titles to set the alert preferredAction property.
+ */
+FOUNDATION_EXPORT KDIUIAlertControllerOptionsKey const KDIUIAlertControllerOptionsKeyPreferredButtonTitle;
+/**
+ Use this key to pass an NSArray of NSDictionary instances using KDIUIAlertControllerOptionsActionKey keys. For example, @{KDIUIAlertControllerOptionsKeyActions: @[@{KDIUIAlertControllerOptionsActionKeyStyle: @(UIAlertActionStyle),KDIUIAlertControllerOptionsActionKeyTitle: @"Cancel",KDIUIAlertControllerOptionsActionKeyPreferred: @YES}]}. If non-nil, this array will be used to create the UIAlertActions of the UIAlertController instead of using the KDIUIAlertControllerOptionsKeyCancelButtonTitle and KDIUIAlertControllerOptionsKeyOtherButtonTitles keys.
+ */
+FOUNDATION_EXPORT KDIUIAlertControllerOptionsKey const KDIUIAlertControllerOptionsKeyActions;
+
+/**
+ Typedef for option keys to be used with the NSArray of NSDictionary instances associated with the KDIUIAlertControllerOptionsKeyActions options key.
+ */
+typedef NSString* KDIUIAlertControllerOptionsActionKey NS_STRING_ENUM;
+
+/**
+ Use this key to pass a UIAlertActionStyle. For example, @{KDIUIAlertControllerOptionsActionKeyStyle: @(UIAlertActionStyleDestructive)}. If a value is not provided, UIAlertActionStyleDefault is the default.
+ */
+FOUNDATION_EXPORT KDIUIAlertControllerOptionsActionKey const KDIUIAlertControllerOptionsActionKeyStyle;
+/**
+ Use this key to pass the title of the UIAlertAction. For example, @{KDIUIAlertControllerOptionsActionKeyTitle: @"Action Title"}.
+ */
+FOUNDATION_EXPORT KDIUIAlertControllerOptionsActionKey const KDIUIAlertControllerOptionsActionKeyTitle;
+/**
+ Use this key to signify that the UIAlertAction should be the preferredAction of the UIAlertController. For example, @{KDIUIAlertControllerOptionsActionKeyPreferred: @YES}. If a value is not provided, @NO is assumed.
+ */
+FOUNDATION_EXPORT KDIUIAlertControllerOptionsActionKey const KDIUIAlertControllerOptionsActionKeyPreferred;
+
 @interface UIAlertController (KDIExtensions)
 
 /**
@@ -54,6 +106,21 @@ FOUNDATION_EXPORT NSInteger const KDIUIAlertControllerCancelButtonIndex;
  @param completion The completion block to invoke after the alert controller is dismissed
  */
 + (void)KDI_presentAlertControllerWithTitle:(nullable NSString *)title message:(nullable NSString *)message cancelButtonTitle:(nullable NSString *)cancelButtonTitle otherButtonTitles:(nullable NSArray<NSString *> *)otherButtonTitles completion:(nullable KDIUIAlertControllerCompletionBlock)completion;
+/**
+ Creates an alert using `[self KDI_alertControllerWithOptions:options completion:completion]` and presents it using `KDI_presentAlertControllerAnimated:completion:` passing YES and nil respectively. If you want to handle presenting the alert yourself, use `KDI_alertControllerWithOptions:completion:`.
+ 
+ @param options The options used to create the UIAlertController
+ @param completion The completion block invoked when the UIAlertController is dismissed
+ */
++ (void)KDI_presentAlertControllerWithOptions:(NSDictionary<KDIUIAlertControllerOptionsKey, id> *)options completion:(nullable KDIUIAlertControllerCompletionBlock)completion;
+
+/**
+ Presents the receiver modally optionally *animated* and invokes *completion* when the presentation completes.
+ 
+ @param animated Whether to animate the presentation
+ @param completion The completion block to invoke when the presentation completes
+ */
+- (void)KDI_presentAlertControllerAnimated:(BOOL)animated completion:(nullable dispatch_block_t)completion;
 
 /**
  Calls `[self KDI_alertControllerWithError:completion:]`, passing error and nil respectively.
@@ -81,6 +148,13 @@ FOUNDATION_EXPORT NSInteger const KDIUIAlertControllerCancelButtonIndex;
  @return The alert controller
  */
 + (UIAlertController *)KDI_alertControllerWithTitle:(nullable NSString *)title message:(nullable NSString *)message cancelButtonTitle:(nullable NSString *)cancelButtonTitle otherButtonTitles:(nullable NSArray<NSString *> *)otherButtonTitles completion:(nullable KDIUIAlertControllerCompletionBlock)completion;
+/**
+ Creates and returns a UIAlertController with the provided *options* and invokes the *completion* block when the UIAlertController is dismissed.
+ 
+ @param options The options used to create the UIAlertController
+ @param completion The completio block to invoke when the UIAlertController is dismissed
+ */
++ (UIAlertController *)KDI_alertControllerWithOptions:(NSDictionary<KDIUIAlertControllerOptionsKey, id> *)options completion:(nullable KDIUIAlertControllerCompletionBlock)completion;
 
 @end
 

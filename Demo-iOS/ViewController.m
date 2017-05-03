@@ -56,6 +56,15 @@ static NSArray<NSArray<NSString *> *> *kPickerViewButtonComponentsAndRows;
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
+- (instancetype)init {
+    if (!(self = [super init]))
+        return nil;
+    
+    [self setTabBarItem:[[UITabBarItem alloc] initWithTitle:self.title image:[[UIImage KSO_fontAwesomeImageWithString:@"\uf11b" size:CGSizeMake(30, 30)] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] tag:0]];
+    
+    return self;
+}
+
 - (void)loadView {
     KDIView *view = [[KDIView alloc] initWithFrame:CGRectZero];
     
@@ -83,7 +92,7 @@ static NSArray<NSArray<NSString *> *> *kPickerViewButtonComponentsAndRows;
     
     [gradientView addLayoutGuide:layoutGuide];
     [gradientView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[view]" options:0 metrics:nil views:@{@"view": layoutGuide}]];
-    [gradientView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-margin-[view]" options:0 metrics:@{@"margin": @44.0} views:@{@"view": layoutGuide}]];
+    [gradientView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-margin-[view]" options:0 metrics:@{@"margin": @64.0} views:@{@"view": layoutGuide}]];
     
     KDIBadgeView *badgeView = [[KDIBadgeView alloc] initWithFrame:CGRectZero];
     
@@ -103,11 +112,15 @@ static NSArray<NSArray<NSString *> *> *kPickerViewButtonComponentsAndRows;
     [blockButton setContentEdgeInsets:UIEdgeInsetsMake(8, 8, 8, 8)];
     [blockButton setImageEdgeInsets:UIEdgeInsetsMake(0, 8, 0, 0)];
     [blockButton setTintColor:[blockButton.backgroundColor KDI_contrastingColor]];
-    [blockButton setTitle:@"Block button" forState:UIControlStateNormal];
+    [blockButton setTitle:@"Action Sheet" forState:UIControlStateNormal];
     [blockButton setImage:[UIImage imageNamed:@"globe"] forState:UIControlStateNormal];
     [blockButton KDI_addBlock:^(__kindof UIControl * _Nonnull control, UIControlEvents controlEvents) {
         [blockButton setBackgroundColor:KDIColorRandomRGB()];
         [blockButton setTintColor:[blockButton.backgroundColor KDI_contrastingColor]];
+        
+        [UIAlertController KDI_presentAlertControllerWithOptions:@{KDIUIAlertControllerOptionsKeyStyle: @(UIAlertControllerStyleActionSheet), KDIUIAlertControllerOptionsKeyTitle: @"Title", KDIUIAlertControllerOptionsKeyMessage: @"This is an alert message", KDIUIAlertControllerOptionsKeyActions: @[@{KDIUIAlertControllerOptionsActionKeyTitle: @"Cancel", KDIUIAlertControllerOptionsActionKeyStyle: @(UIAlertActionStyleCancel)},@{KDIUIAlertControllerOptionsActionKeyTitle: @"Destroy!",KDIUIAlertControllerOptionsActionKeyStyle: @(UIAlertActionStyleDestructive)},@{KDIUIAlertControllerOptionsActionKeyTitle: @"Action",KDIUIAlertControllerOptionsActionKeyPreferred: @YES}]} completion:^(NSInteger buttonIndex) {
+            NSLog(@"%@",@(buttonIndex));
+        }];
     } forControlEvents:UIControlEventTouchUpInside];
     [blockButton setTitleAlignment:KDIButtonAlignmentLeft|KDIButtonAlignmentCenter];
     [blockButton setImageAlignment:KDIButtonAlignmentRight|KDIButtonAlignmentCenter];
@@ -162,11 +175,15 @@ static NSArray<NSArray<NSString *> *> *kPickerViewButtonComponentsAndRows;
     [centerButton setBackgroundColor:[centerButton.tintColor KDI_inverseColor]];
     [centerButton setContentEdgeInsets:UIEdgeInsetsMake(8, 8, 8, 8)];
     [centerButton setTitleEdgeInsets:UIEdgeInsetsMake(4, 0, 0, 0)];
-    [centerButton setTitle:@"Ghost" forState:UIControlStateNormal];
+    [centerButton setTitle:@"Alert" forState:UIControlStateNormal];
     [centerButton setImage:[UIImage imageNamed:@"ghost"] forState:UIControlStateNormal];
     [centerButton KDI_addBlock:^(__kindof UIControl * _Nonnull control, UIControlEvents controlEvents) {
         [centerButton setTintColor:KDIColorRandomRGB()];
         [centerButton setBackgroundColor:[centerButton.tintColor KDI_inverseColor]];
+        
+        [UIAlertController KDI_presentAlertControllerWithOptions:@{KDIUIAlertControllerOptionsKeyTitle: @"Title", KDIUIAlertControllerOptionsKeyMessage: @"This is an alert message", KDIUIAlertControllerOptionsKeyActions: @[@{KDIUIAlertControllerOptionsActionKeyTitle: @"Cancel", KDIUIAlertControllerOptionsActionKeyStyle: @(UIAlertActionStyleCancel)},@{KDIUIAlertControllerOptionsActionKeyTitle: @"Destroy!",KDIUIAlertControllerOptionsActionKeyStyle: @(UIAlertActionStyleDestructive)},@{KDIUIAlertControllerOptionsActionKeyTitle: @"Action",KDIUIAlertControllerOptionsActionKeyPreferred: @YES}]} completion:^(NSInteger buttonIndex) {
+            NSLog(@"%@",@(buttonIndex));
+        }];
     } forControlEvents:UIControlEventTouchUpInside];
     [centerButton setTitleAlignment:KDIButtonAlignmentBottom|KDIButtonAlignmentCenter];
     [centerButton setImageAlignment:KDIButtonAlignmentTop|KDIButtonAlignmentCenter];
@@ -181,6 +198,8 @@ static NSArray<NSArray<NSString *> *> *kPickerViewButtonComponentsAndRows;
     
     [badgeButton.button setImage:[UIImage KSO_fontAwesomeImageWithString:@"\uf007" size:CGSizeMake(30, 30)] forState:UIControlStateNormal];
     [badgeButton.badgeView setBadge:@"1"];
+    [badgeButton.badgeView setBadgeBackgroundColor:KDIColorRandomRGB()];
+    [badgeButton.badgeView setBadgeForegroundColor:[badgeButton.badgeView.badgeBackgroundColor KDI_contrastingColor]];
     [badgeButton sizeToFit];
     
     __block NSUInteger badgeButtonValue = 1;
@@ -194,6 +213,8 @@ static NSArray<NSArray<NSString *> *> *kPickerViewButtonComponentsAndRows;
         
         [badgeButton setBadgePosition:badgePosition];
         [badgeButton.badgeView setBadge:[NSNumberFormatter localizedStringFromNumber:@(++badgeButtonValue) numberStyle:NSNumberFormatterDecimalStyle]];
+        [badgeButton.badgeView setBadgeBackgroundColor:KDIColorRandomRGB()];
+        [badgeButton.badgeView setBadgeForegroundColor:[badgeButton.badgeView.badgeBackgroundColor KDI_contrastingColor]];
     } forControlEvents:UIControlEventTouchUpInside];
     
     [self.navigationItem setRightBarButtonItems:@[[[UIBarButtonItem alloc] initWithCustomView:badgeButton]]];

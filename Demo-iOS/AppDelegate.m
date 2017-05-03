@@ -29,6 +29,8 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     [self setWindow:[[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds]];
     
+    [self.window setTintColor:KDIColorRandomRGB()];
+    
     UITabBarController *controller = [[UITabBarController alloc] init];
     UINavigationController *navigationController = [[UINavigationController alloc] initWithNavigationBarClass:[KDIProgressNavigationBar class] toolbarClass:Nil];
     

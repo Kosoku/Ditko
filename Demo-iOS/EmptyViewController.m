@@ -28,6 +28,15 @@
     return @"Empty";
 }
 
+- (instancetype)init {
+    if (!(self = [super init]))
+        return nil;
+    
+    [self setTabBarItem:[[UITabBarItem alloc] initWithTitle:self.title image:[[UIImage KSO_fontAwesomeImageWithString:@"\uf2cb" size:CGSizeMake(30, 30)] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] tag:0]];
+    
+    return self;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
