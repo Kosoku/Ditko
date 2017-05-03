@@ -183,8 +183,6 @@ static NSArray<NSArray<NSString *> *> *kPickerViewButtonComponentsAndRows;
     [badgeButton.badgeView setBadge:@"1"];
     [badgeButton sizeToFit];
     
-    [badgeButton KDI_addDebugBorderWithColor:UIColor.redColor];
-    
     __block NSUInteger badgeButtonValue = 1;
     
     [badgeButton.button KDI_addBlock:^(__kindof UIControl * _Nonnull control, UIControlEvents controlEvents) {
@@ -201,6 +199,37 @@ static NSArray<NSArray<NSString *> *> *kPickerViewButtonComponentsAndRows;
     [self.navigationItem setRightBarButtonItems:@[[[UIBarButtonItem alloc] initWithCustomView:badgeButton]]];
     
     [NSObject KDI_registerDynamicTypeViews:@[badgeView,blockButton,pickerViewButton,datePickerButton] forTextStyle:UIFontTextStyleBody];
+    
+    KDIButton *toggleButton = [KDIButton buttonWithType:UIButtonTypeSystem];
+    
+    [toggleButton setTranslatesAutoresizingMaskIntoConstraints:NO];
+    [toggleButton setBackgroundColor:UIColor.whiteColor];
+    [toggleButton setContentEdgeInsets:UIEdgeInsetsMake(8, 8, 8, 8)];
+    [toggleButton setStyle:KDIButtonStyleRounded];
+    [toggleButton setTitle:@"Show Progress" forState:UIControlStateNormal];
+    [toggleButton KDI_addBlock:^(__kindof UIControl * _Nonnull control, UIControlEvents controlEvents) {
+        BOOL progressHidden = !self.navigationController.KDI_progressNavigationBar.isProgressHidden;
+        
+        [self.navigationController.KDI_progressNavigationBar setProgressHidden:progressHidden animated:YES];
+        
+        [toggleButton setTitle:progressHidden ? @"Show Progress" : @"Hide Progress" forState:UIControlStateNormal];
+    } forControlEvents:UIControlEventTouchUpInside];
+    
+    [gradientView addSubview:toggleButton];
+    [gradientView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[view]" options:0 metrics:nil views:@{@"view": toggleButton}]];
+    [gradientView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[subview]-[view]" options:0 metrics:nil views:@{@"view": toggleButton, @"subview": datePickerButton}]];
+    
+    UIStepper *stepper = [[UIStepper alloc] initWithFrame:CGRectZero];
+    
+    [stepper setTranslatesAutoresizingMaskIntoConstraints:NO];
+    [stepper setStepValue:0.1];
+    [stepper KDI_addBlock:^(__kindof UIControl * _Nonnull control, UIControlEvents controlEvents) {
+        [self.navigationController.KDI_progressNavigationBar setProgress:stepper.value animated:YES];
+    } forControlEvents:UIControlEventValueChanged];
+    
+    [gradientView addSubview:stepper];
+    [gradientView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:[subview]-[view]" options:0 metrics:nil views:@{@"view": stepper, @"subview": toggleButton}]];
+    [gradientView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[subview]-[view]" options:0 metrics:nil views:@{@"view": stepper, @"subview": datePickerButton}]];
 }
 
 - (NSInteger)numberOfComponentsInPickerViewButton:(KDIPickerViewButton *)pickerViewButton {

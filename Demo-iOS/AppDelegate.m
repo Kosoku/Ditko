@@ -17,6 +17,8 @@
 #import "ViewController.h"
 #import "EmptyViewController.h"
 
+#import <Ditko/Ditko.h>
+
 @interface AppDelegate ()
 
 @end
@@ -28,8 +30,11 @@
     [self setWindow:[[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds]];
     
     UITabBarController *controller = [[UITabBarController alloc] init];
+    UINavigationController *navigationController = [[UINavigationController alloc] initWithNavigationBarClass:[KDIProgressNavigationBar class] toolbarClass:Nil];
     
-    [controller setViewControllers:@[[[UINavigationController alloc] initWithRootViewController:[[ViewController alloc] init]],
+    [navigationController setViewControllers:@[[[ViewController alloc] init]]];
+    
+    [controller setViewControllers:@[navigationController,
                                      [[UINavigationController alloc] initWithRootViewController:[[EmptyViewController alloc] init]]]];
     
     [self.window setRootViewController:controller];
