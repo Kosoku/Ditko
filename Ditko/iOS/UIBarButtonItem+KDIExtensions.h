@@ -22,7 +22,7 @@ NS_ASSUME_NONNULL_BEGIN
  
  @param barButtonItem The bar button item that was tapped
  */
-typedef void(^KDIUIBarButtonItemBlock)(UIBarButtonItem *barButtonItem);
+typedef void(^KDIUIBarButtonItemBlock)(__kindof UIBarButtonItem *barButtonItem);
 
 @interface UIBarButtonItem (KDIExtensions)
 
