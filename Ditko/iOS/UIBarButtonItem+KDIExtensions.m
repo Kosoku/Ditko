@@ -15,6 +15,8 @@
 
 #import "UIBarButtonItem+KDIExtensions.h"
 
+#import <Stanley/KSTLoggingMacros.h>
+
 #import <objc/runtime.h>
 
 static void const *kKDIBlockKey = &kKDIBlockKey;
@@ -85,6 +87,12 @@ static void const *kKDIBlockKey = &kKDIBlockKey;
         [self setAction:NULL];
     }
     else {
+        if (self.target != nil ||
+            self.action != NULL) {
+            
+            KSTLog(@"non-nil target or non-null action on control %@ while setting block!",self);
+        }
+        
         [self setTarget:self];
         [self setAction:@selector(_KDI_blockAction:)];
     }
