@@ -233,7 +233,7 @@
     [_headlineLabel setTranslatesAutoresizingMaskIntoConstraints:NO];
     [_headlineLabel setAdjustsFontForContentSizeCategory:YES];
     [_headlineLabel setFont:[UIFont preferredFontForTextStyle:UIFontTextStyleHeadline]];
-    [_headlineLabel setTextColor:UIColor.blackColor];
+    [_headlineLabel setTextColor:_headlineColor];
     
     _bodyLabel = [[UILabel alloc] initWithFrame:CGRectZero];
     [_bodyLabel setTranslatesAutoresizingMaskIntoConstraints:NO];
@@ -241,7 +241,7 @@
     [_bodyLabel setTextAlignment:NSTextAlignmentCenter];
     [_bodyLabel setAdjustsFontForContentSizeCategory:YES];
     [_bodyLabel setFont:[UIFont preferredFontForTextStyle:UIFontTextStyleBody]];
-    [_bodyLabel setTextColor:UIColor.grayColor];
+    [_bodyLabel setTextColor:_bodyColor];
     
     _actionButton = [UIButton buttonWithType:UIButtonTypeSystem];
     [_actionButton setTranslatesAutoresizingMaskIntoConstraints:NO];
@@ -257,10 +257,18 @@
 }
 
 + (UIColor *)_defaultHeadlineColor; {
+#if (TARGET_OS_IOS)
     return UIColor.blackColor;
+#else
+    return nil;
+#endif
 }
 + (UIColor *)_defaultBodyColor; {
+#if (TARGET_OS_IOS)
     return UIColor.grayColor;
+#else
+    return nil;
+#endif
 }
 
 @end
