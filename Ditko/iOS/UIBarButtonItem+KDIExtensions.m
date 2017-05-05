@@ -21,11 +21,9 @@
 #import <objc/runtime.h>
 
 static void const *kKDIBlockKey = &kKDIBlockKey;
-static void const *kKDIAsynchronousBlockKey = &kKDIAsynchronousBlockKey;
 
 @interface UIBarButtonItem (KDIPrivateExtensions)
 - (IBAction)_KDI_blockAction:(UIBarButtonItem *)sender;
-- (IBAction)_KDI_asyncBlockAction:(UIBarButtonItem *)sender;
 @end
 
 @implementation UIBarButtonItem (KDIExtensions)
@@ -101,29 +99,6 @@ static void const *kKDIAsynchronousBlockKey = &kKDIAsynchronousBlockKey;
     }
 }
 
-@dynamic KDI_asynchronousBlock;
-- (KDIUIBarButtonItemAsynchronousBlock)KDI_asynchronousBlock {
-    return objc_getAssociatedObject(self, kKDIAsynchronousBlockKey);
-}
-- (void)setKDI_asynchronousBlock:(KDIUIBarButtonItemAsynchronousBlock)KDI_asynchronousBlock {
-    objc_setAssociatedObject(self, kKDIAsynchronousBlockKey, KDI_asynchronousBlock, OBJC_ASSOCIATION_COPY_NONATOMIC);
-    
-    if (KDI_asynchronousBlock == nil) {
-        [self setTarget:nil];
-        [self setAction:NULL];
-    }
-    else {
-        if (self.target != nil ||
-            self.action != NULL) {
-            
-            KSTLog(@"non-nil target or non-null action on control %@ while setting async block!",self);
-        }
-        
-        [self setTarget:self];
-        [self setAction:@selector(_KDI_asyncBlockAction:)];
-    }
-}
-
 @end
 
 @implementation UIBarButtonItem (KDIPrivateExtensions)
@@ -133,19 +108,6 @@ static void const *kKDIAsynchronousBlockKey = &kKDIAsynchronousBlockKey;
     
     if (block != nil) {
         block(sender);
-    }
-}
-- (IBAction)_KDI_asyncBlockAction:(UIBarButtonItem *)sender {
-    KDIUIBarButtonItemAsynchronousBlock block = sender.KDI_asynchronousBlock;
-    
-    if (block != nil) {
-        [sender setEnabled:NO];
-        
-        block(sender,^{
-            KSTDispatchMainSync(^{
-                [sender setEnabled:YES];
-            });
-        });
     }
 }
 

@@ -21,21 +21,19 @@
 
 @interface _KDIUIControlBlockWrapper : NSObject
 @property (copy,nonatomic) KDIUIControlBlock block;
-@property (copy,nonatomic) KDIUIControlAsynchronousBlock asyncBlock;
 @property (weak,nonatomic) UIControl *control;
 @property (assign,nonatomic) UIControlEvents controlEvents;
 
-- (instancetype)initWithBlock:(KDIUIControlBlock)block asyncBlock:(KDIUIControlAsynchronousBlock)asyncBlock control:(UIControl *)control controlEvents:(UIControlEvents)controlEvents;
+- (instancetype)initWithBlock:(KDIUIControlBlock)block control:(UIControl *)control controlEvents:(UIControlEvents)controlEvents;
 @end
 
 @implementation _KDIUIControlBlockWrapper
 
-- (instancetype)initWithBlock:(KDIUIControlBlock)block asyncBlock:(KDIUIControlAsynchronousBlock)asyncBlock control:(UIControl *)control controlEvents:(UIControlEvents)controlEvents; {
+- (instancetype)initWithBlock:(KDIUIControlBlock)block control:(UIControl *)control controlEvents:(UIControlEvents)controlEvents; {
     if (!(self = [super init]))
         return nil;
     
     _block = [block copy];
-    _asyncBlock = [asyncBlock copy];
     _control = control;
     _controlEvents = controlEvents;
     
@@ -45,18 +43,7 @@
 }
 
 - (IBAction)_controlAction:(UIControl *)sender {
-    if (self.block != nil) {
-        self.block(sender,self.controlEvents);
-    }
-    else if (self.asyncBlock != nil) {
-        [sender setEnabled:NO];
-        
-        self.asyncBlock(sender, self.controlEvents, ^{
-            KSTDispatchMainSync(^{
-                [sender setEnabled:YES];
-            });
-        });
-    }
+    self.block(sender,self.controlEvents);
 }
 
 @end
@@ -82,24 +69,7 @@
         controlEvents = UIControlEventPrimaryActionTriggered;
     }
     
-    [wrappers addObject:[[_KDIUIControlBlockWrapper alloc] initWithBlock:block asyncBlock:nil control:self controlEvents:controlEvents]];
-}
-- (void)KDI_addAsynchronousBlock:(KDIUIControlAsynchronousBlock)block forControlEvents:(UIControlEvents)controlEvents {
-    NSMutableSet *wrappers = self._KDI_controlEventsToBlockWrappers[@(controlEvents)];
-    
-    if (wrappers == nil) {
-        wrappers = [[NSMutableSet alloc] init];
-        
-        [self._KDI_controlEventsToBlockWrappers setObject:wrappers forKey:@(controlEvents)];
-    }
-    
-    if (controlEvents == UIControlEventTouchUpInside &&
-        UIDevice.currentDevice.userInterfaceIdiom == UIUserInterfaceIdiomTV) {
-        
-        controlEvents = UIControlEventPrimaryActionTriggered;
-    }
-    
-    [wrappers addObject:[[_KDIUIControlBlockWrapper alloc] initWithBlock:nil asyncBlock:block control:self controlEvents:controlEvents]];
+    [wrappers addObject:[[_KDIUIControlBlockWrapper alloc] initWithBlock:block control:self controlEvents:controlEvents]];
 }
 - (void)KDI_removeBlocksForControlEvents:(UIControlEvents)controlEvents; {
     [self._KDI_controlEventsToBlockWrappers[@(controlEvents)] enumerateObjectsUsingBlock:^(_KDIUIControlBlockWrapper * _Nonnull obj, BOOL * _Nonnull stop) {

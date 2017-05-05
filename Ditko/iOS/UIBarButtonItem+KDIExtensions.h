@@ -23,7 +23,6 @@ NS_ASSUME_NONNULL_BEGIN
  @param barButtonItem The bar button item that was tapped
  */
 typedef void(^KDIUIBarButtonItemBlock)(__kindof UIBarButtonItem *barButtonItem);
-typedef void(^KDIUIBarButtonItemAsynchronousBlock)(__kindof UIBarButtonItem *barButtonItem, dispatch_block_t completion);
 
 @interface UIBarButtonItem (KDIExtensions)
 
@@ -31,7 +30,6 @@ typedef void(^KDIUIBarButtonItemAsynchronousBlock)(__kindof UIBarButtonItem *bar
  Get and set the bar button item block which will be invoked when the bar button item is tapped. Setting this will override the target and action of the receiver.
  */
 @property (copy,nonatomic,nullable) KDIUIBarButtonItemBlock KDI_block;
-@property (copy,nonatomic,nullable) KDIUIBarButtonItemAsynchronousBlock KDI_asynchronousBlock;
 
 /**
  Creates and returns a flexible space UIBarButtonItem.
