@@ -25,6 +25,7 @@ static void const *kKDIAsynchronousBlockKey = &kKDIAsynchronousBlockKey;
 
 @interface UIBarButtonItem (KDIPrivateExtensions)
 - (IBAction)_KDI_blockAction:(UIBarButtonItem *)sender;
+- (IBAction)_KDI_asyncBlockAction:(UIBarButtonItem *)sender;
 @end
 
 @implementation UIBarButtonItem (KDIExtensions)
