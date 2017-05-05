@@ -24,6 +24,7 @@ NS_ASSUME_NONNULL_BEGIN
  @param controlEvents The control events that caused the control to execute
  */
 typedef void(^KDIUIControlBlock)(__kindof UIControl *control, UIControlEvents controlEvents);
+typedef void(^KDIUIControlAsynchronousBlock)(__kindof UIControl *control, UIControlEvents controlEvents, dispatch_block_t completion);
 
 @interface UIControl (KDIExtensions)
 
@@ -34,6 +35,7 @@ typedef void(^KDIUIControlBlock)(__kindof UIControl *control, UIControlEvents co
  @param controlEvents The control events that should cause the block to invoke
  */
 - (void)KDI_addBlock:(KDIUIControlBlock)block forControlEvents:(UIControlEvents)controlEvents;
+- (void)KDI_addAsynchronousBlock:(KDIUIControlAsynchronousBlock)block forControlEvents:(UIControlEvents)controlEvents;
 /**
  Remove all the blocks for the provided *controlEvents*.
  
