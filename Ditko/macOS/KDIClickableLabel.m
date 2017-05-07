@@ -21,6 +21,8 @@
 
 @property (copy,nonatomic) NSAttributedString *originalAttributedString;
 
+@property (strong,nonatomic) NSClickGestureRecognizer *clickGestureRecognizer;
+
 - (void)_KDIClickableLabelInit;
 
 + (NSDictionary *)_defaultClickableTextAttributes;
@@ -54,11 +56,6 @@
 }
 - (void)cursorUpdate:(NSEvent *)event {
     [self.clickableCursor push];
-}
-- (void)mouseUp:(NSEvent *)event {
-    if (self.block != nil) {
-        self.block(self);
-    }
 }
 
 - (void)updateTrackingAreas {
@@ -96,6 +93,9 @@
     [self setDrawsBackground:NO];
     [self setEditable:NO];
     [self setSelectable:NO];
+    
+    _clickGestureRecognizer = [[NSClickGestureRecognizer alloc] initWithTarget:self action:@selector(_clickGestureRecognizerAction:)];
+    [self addGestureRecognizer:_clickGestureRecognizer];
 }
 
 + (NSDictionary *)_defaultClickableTextAttributes; {
@@ -129,6 +129,12 @@
         if (self.originalAttributedString != nil) {
             [self setAttributedStringValue:self.originalAttributedString];
         }
+    }
+}
+
+- (IBAction)_clickGestureRecognizerAction:(id)sender {
+    if (self.block != nil) {
+        self.block(self);
     }
 }
 
