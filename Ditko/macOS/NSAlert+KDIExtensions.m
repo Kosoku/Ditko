@@ -63,7 +63,7 @@ KDINSAlertOptionsKey const KDINSAlertOptionsKeyAccessoryView = @"KDINSAlertOptio
                                         KDINSAlertOptionsKeyTitle: error.KST_alertTitle,
                                         KDINSAlertOptionsKeyMessage: error.KST_alertMessage,
                                         KDINSAlertOptionsKeyCancelButtonTitle: cancelButtonTitle ?: @"",
-                                        KDINSAlertOptionsKeyOtherButtonTitles: otherButtonTitles ?: @""}];
+                                        KDINSAlertOptionsKeyOtherButtonTitles: otherButtonTitles ?: @[]}];
 }
 
 + (NSAlert *)KDI_alertWithTitle:(NSString *)title message:(NSString *)message cancelButtonTitle:(NSString *)cancelButtonTitle otherButtonTitles:(NSArray<NSString *> *)otherButtonTitles; {
@@ -71,14 +71,14 @@ KDINSAlertOptionsKey const KDINSAlertOptionsKeyAccessoryView = @"KDINSAlertOptio
                                         KDINSAlertOptionsKeyTitle: title ?: @"",
                                         KDINSAlertOptionsKeyMessage: message ?: @"",
                                         KDINSAlertOptionsKeyCancelButtonTitle: cancelButtonTitle ?: @"",
-                                        KDINSAlertOptionsKeyOtherButtonTitles: otherButtonTitles ?: @""}];
+                                        KDINSAlertOptionsKeyOtherButtonTitles: otherButtonTitles ?: @[]}];
 }
 + (NSAlert *)KDI_alertWithTitle:(NSString *)title message:(NSString *)message cancelButtonTitle:(NSString *)cancelButtonTitle otherButtonTitles:(NSArray<NSString *> *)otherButtonTitles showsSuppressionButton:(BOOL)showsSuppressionButton {
     return [self KDI_alertWithOptions:@{KDINSAlertOptionsKeyStyle: @(NSAlertStyleWarning),
                                         KDINSAlertOptionsKeyTitle: title ?: @"",
                                         KDINSAlertOptionsKeyMessage: message ?: @"",
                                         KDINSAlertOptionsKeyCancelButtonTitle: cancelButtonTitle ?: @"",
-                                        KDINSAlertOptionsKeyOtherButtonTitles: otherButtonTitles ?: @"",
+                                        KDINSAlertOptionsKeyOtherButtonTitles: otherButtonTitles ?: @[],
                                         KDINSAlertOptionsKeyShowsSuppressionButton: @(showsSuppressionButton)}];
 }
 + (NSAlert *)KDI_alertWithStyle:(NSAlertStyle)style title:(NSString *)title message:(NSString *)message cancelButtonTitle:(NSString *)cancelButtonTitle otherButtonTitles:(NSArray *)otherButtonTitles showsSuppressionButton:(BOOL)showsSuppressionButton; {
@@ -86,7 +86,7 @@ KDINSAlertOptionsKey const KDINSAlertOptionsKeyAccessoryView = @"KDINSAlertOptio
                                         KDINSAlertOptionsKeyTitle: title ?: @"",
                                         KDINSAlertOptionsKeyMessage: message ?: @"",
                                         KDINSAlertOptionsKeyCancelButtonTitle: cancelButtonTitle ?: @"",
-                                        KDINSAlertOptionsKeyOtherButtonTitles: otherButtonTitles ?: @"",
+                                        KDINSAlertOptionsKeyOtherButtonTitles: otherButtonTitles ?: @[],
                                         KDINSAlertOptionsKeyShowsSuppressionButton: @(showsSuppressionButton)}];
 }
 + (NSAlert *)KDI_alertWithOptions:(NSDictionary<KDINSAlertOptionsKey,id> *)options {
