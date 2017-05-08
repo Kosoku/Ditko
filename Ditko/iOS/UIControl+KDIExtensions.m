@@ -15,8 +15,6 @@
 
 #import "UIControl+KDIExtensions.h"
 
-#import <Stanley/KSTFunctions.h>
-
 #import <objc/runtime.h>
 
 @interface _KDIUIControlBlockWrapper : NSObject
