@@ -15,8 +15,6 @@
 
 #import "UIGestureRecognizer+KDIExtensions.h"
 
-#import <Stanley/KSTFunctions.h>
-
 #import <objc/runtime.h>
 
 @interface KDIUIGestureRecognizerBlockWrapper : NSObject
