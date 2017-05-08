@@ -16,20 +16,6 @@
 #import <UIKit/UIKit.h>
 
 /**
- Enum describing the style of the button.
- */
-typedef NS_ENUM(NSInteger, KDIButtonStyle) {
-    /**
-     Use the default UIButton style.
-     */
-    KDIButtonStyleDefault = 0,
-    /**
-     Round the corners of the button to match the height.
-     */
-    KDIButtonStyleRounded
-};
-
-/**
  Options mask describing the alignment options of the receiver.
  */
 typedef NS_ENUM(NSUInteger, KDIButtonAlignment) {
@@ -65,11 +51,17 @@ typedef NS_ENUM(NSUInteger, KDIButtonAlignment) {
 @interface KDIButton : UIButton
 
 /**
- Set and get the style of the button.
+ Set and get whether the receiver is inverted. If YES, the receiver's tintColor is used as the backgroundColor and KDI_contrastingColor is used to compute the titleColor for the normal state.
  
- @see KDIButtonStyle
+ The default is NO.
  */
-@property (assign,nonatomic) KDIButtonStyle style;
+@property (assign,nonatomic,getter=isInverted) BOOL inverted;
+/**
+ Set and get whether the receiver is rounded. If YES, the underlying CALayer corner radius property is set to match the height of the receiver.
+ 
+ The default is NO.
+ */
+@property (assign,nonatomic,getter=isRounded) BOOL rounded;
 /**
  Set and get the alignment of button title.
  
@@ -91,5 +83,6 @@ typedef NS_ENUM(NSUInteger, KDIButtonAlignment) {
 - (void)layoutSubviews NS_REQUIRES_SUPER;
 - (CGSize)intrinsicContentSize NS_REQUIRES_SUPER;
 - (CGSize)sizeThatFits:(CGSize)size NS_REQUIRES_SUPER;
+- (void)tintColorDidChange NS_REQUIRES_SUPER;
 
 @end

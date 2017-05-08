@@ -23,6 +23,7 @@ static CGFloat const kTitleColorAlphaAdjustment = 0.5;
 
 @interface KDIButton ()
 - (void)_KDIButtonInit;
+- (void)_updateAfterInvertedChange;
 - (CGSize)_sizeThatFits:(CGSize)size layout:(BOOL)layout;
 @end
 
@@ -56,6 +57,14 @@ static CGFloat const kTitleColorAlphaAdjustment = 0.5;
 }
 - (CGSize)sizeThatFits:(CGSize)size {
     return [self _sizeThatFits:[super sizeThatFits:size] layout:NO];
+}
+
+- (void)tintColorDidChange {
+    [super tintColorDidChange];
+    
+    if (self.isInverted) {
+        [self _updateAfterInvertedChange];
+    }
 }
 
 - (void)setTitleColor:(UIColor *)color forState:(UIControlState)state {
@@ -114,19 +123,28 @@ static CGFloat const kTitleColorAlphaAdjustment = 0.5;
 }
 #pragma mark *** Public Methods ***
 #pragma mark Properties
-- (void)setStyle:(KDIButtonStyle)style {
-    _style = style;
+- (void)setInverted:(BOOL)inverted {
+    if (_inverted == inverted) {
+        return;
+    }
     
-    switch (self.style) {
-        case KDIButtonStyleRounded:
-            [self.layer setMasksToBounds:YES];
-            break;
-        case KDIButtonStyleDefault:
-            [self.layer setCornerRadius:0.0];
-            [self.layer setMasksToBounds:NO];
-            break;
-        default:
-            break;
+    _inverted = inverted;
+    
+    [self _updateAfterInvertedChange];
+}
+- (void)setRounded:(BOOL)rounded {
+    if (_rounded == rounded) {
+        return;
+    }
+    
+    _rounded = rounded;
+    
+    if (_rounded) {
+        [self.layer setMasksToBounds:YES];
+    }
+    else {
+        [self.layer setCornerRadius:0.0];
+        [self.layer setMasksToBounds:NO];
     }
 }
 - (void)setTitleAlignment:(KDIButtonAlignment)titleAlignment {
@@ -143,6 +161,16 @@ static CGFloat const kTitleColorAlphaAdjustment = 0.5;
 - (void)_KDIButtonInit; {
     if (self.buttonType == UIButtonTypeCustom) {
         _adjustsTitleColorWhenHighlighted = YES;
+    }
+}
+- (void)_updateAfterInvertedChange; {
+    if (self.isInverted) {
+        [self setBackgroundColor:self.tintColor];
+        [self setTitleColor:[self.tintColor KDI_contrastingColor] forState:UIControlStateNormal];
+    }
+    else {
+        [self setBackgroundColor:UIColor.clearColor];
+        [self setTitleColor:self.tintColor forState:UIControlStateNormal];
     }
 }
 - (CGSize)_sizeThatFits:(CGSize)size layout:(BOOL)layout; {
@@ -182,14 +210,8 @@ static CGFloat const kTitleColorAlphaAdjustment = 0.5;
     }
     
     if (layout) {
-        switch (self.style) {
-            case KDIButtonStyleRounded:
-                [self.layer setCornerRadius:ceil(CGRectGetHeight(self.frame) * 0.5)];
-                break;
-            case KDIButtonStyleDefault:
-                break;
-            default:
-                break;
+        if (self.isRounded) {
+            [self.layer setCornerRadius:ceil(CGRectGetHeight(self.frame) * 0.5)];
         }
         
         CGSize titleSize = [self.titleLabel sizeThatFits:CGSizeZero];

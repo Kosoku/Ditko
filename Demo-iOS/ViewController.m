@@ -124,7 +124,7 @@ static NSArray<NSArray<NSString *> *> *kPickerViewButtonComponentsAndRows;
     } forControlEvents:UIControlEventTouchUpInside];
     [blockButton setTitleAlignment:KDIButtonAlignmentLeft|KDIButtonAlignmentCenter];
     [blockButton setImageAlignment:KDIButtonAlignmentRight|KDIButtonAlignmentCenter];
-    [blockButton setStyle:KDIButtonStyleRounded];
+    [blockButton setRounded:YES];
     
     [gradientView addSubview:blockButton];
     [gradientView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:[subview]-[view]" options:0 metrics:nil views:@{@"view": blockButton, @"subview": badgeView}]];
@@ -139,7 +139,7 @@ static NSArray<NSArray<NSString *> *> *kPickerViewButtonComponentsAndRows;
     [pickerViewButton setImage:[UIImage imageNamed:@"snake"] forState:UIControlStateNormal];
     [pickerViewButton setTitleAlignment:KDIButtonAlignmentRight|KDIButtonAlignmentCenter];
     [pickerViewButton setImageAlignment:KDIButtonAlignmentLeft|KDIButtonAlignmentCenter];
-    [pickerViewButton setStyle:KDIButtonStyleRounded];
+    [pickerViewButton setRounded:YES];
     [pickerViewButton setDataSource:self];
     [pickerViewButton setDelegate:self];
     [pickerViewButton setSelectedComponentsJoinString:@", "];
@@ -157,7 +157,7 @@ static NSArray<NSArray<NSString *> *> *kPickerViewButtonComponentsAndRows;
     [datePickerButton setImage:[UIImage imageNamed:@"ticket"] forState:UIControlStateNormal];
     [datePickerButton setTitleAlignment:KDIButtonAlignmentRight|KDIButtonAlignmentCenter];
     [datePickerButton setImageAlignment:KDIButtonAlignmentLeft|KDIButtonAlignmentCenter];
-    [datePickerButton setStyle:KDIButtonStyleRounded];
+    [datePickerButton setRounded:YES];
     
     [gradientView addSubview:datePickerButton];
     [gradientView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[view]" options:0 metrics:nil views:@{@"view": datePickerButton}]];
@@ -226,7 +226,7 @@ static NSArray<NSArray<NSString *> *> *kPickerViewButtonComponentsAndRows;
     [toggleButton setTranslatesAutoresizingMaskIntoConstraints:NO];
     [toggleButton setBackgroundColor:UIColor.whiteColor];
     [toggleButton setContentEdgeInsets:UIEdgeInsetsMake(8, 8, 8, 8)];
-    [toggleButton setStyle:KDIButtonStyleRounded];
+    [toggleButton setRounded:YES];
     [toggleButton setTitle:@"Show Progress" forState:UIControlStateNormal];
     [toggleButton KDI_addBlock:^(__kindof UIControl * _Nonnull control, UIControlEvents controlEvents) {
         BOOL progressHidden = !self.navigationController.KDI_progressNavigationBar.isProgressHidden;
