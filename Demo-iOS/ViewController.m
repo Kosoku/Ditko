@@ -52,10 +52,6 @@ static NSArray<NSArray<NSString *> *> *kPickerViewButtonComponentsAndRows;
     return @"Controls";
 }
 
-- (void)dealloc {
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
-}
-
 - (instancetype)init {
     if (!(self = [super init]))
         return nil;
@@ -134,7 +130,7 @@ static NSArray<NSArray<NSString *> *> *kPickerViewButtonComponentsAndRows;
     
     [pickerViewButton setTranslatesAutoresizingMaskIntoConstraints:NO];
     [pickerViewButton setBackgroundColor:[UIColor whiteColor]];
-    [pickerViewButton setContentEdgeInsets:UIEdgeInsetsMake(8, 8, 8, 8)];
+    [pickerViewButton setContentEdgeInsets:UIEdgeInsetsMake(8, 16, 8, 16)];
     [pickerViewButton setTitleEdgeInsets:UIEdgeInsetsMake(0, 8, 0, 0)];
     [pickerViewButton setImage:[UIImage imageNamed:@"snake"] forState:UIControlStateNormal];
     [pickerViewButton setTitleAlignment:KDIButtonAlignmentRight|KDIButtonAlignmentCenter];
@@ -151,13 +147,13 @@ static NSArray<NSArray<NSString *> *> *kPickerViewButtonComponentsAndRows;
     KDIDatePickerButton *datePickerButton = [KDIDatePickerButton buttonWithType:UIButtonTypeSystem];
     
     [datePickerButton setTranslatesAutoresizingMaskIntoConstraints:NO];
-    [datePickerButton setBackgroundColor:[UIColor whiteColor]];
-    [datePickerButton setContentEdgeInsets:UIEdgeInsetsMake(8, 8, 8, 8)];
+    [datePickerButton setContentEdgeInsets:UIEdgeInsetsMake(8, 16, 8, 16)];
     [datePickerButton setTitleEdgeInsets:UIEdgeInsetsMake(0, 8, 0, 0)];
-    [datePickerButton setImage:[UIImage imageNamed:@"ticket"] forState:UIControlStateNormal];
+    [datePickerButton setImage:[[UIImage imageNamed:@"ticket"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] forState:UIControlStateNormal];
     [datePickerButton setTitleAlignment:KDIButtonAlignmentRight|KDIButtonAlignmentCenter];
     [datePickerButton setImageAlignment:KDIButtonAlignmentLeft|KDIButtonAlignmentCenter];
     [datePickerButton setRounded:YES];
+    [datePickerButton setInverted:YES];
     
     [gradientView addSubview:datePickerButton];
     [gradientView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[view]" options:0 metrics:nil views:@{@"view": datePickerButton}]];
@@ -173,7 +169,7 @@ static NSArray<NSArray<NSString *> *> *kPickerViewButtonComponentsAndRows;
     [centerButton setTranslatesAutoresizingMaskIntoConstraints:NO];
     [centerButton setTintColor:KDIColorRandomRGB()];
     [centerButton setBackgroundColor:[centerButton.tintColor KDI_inverseColor]];
-    [centerButton setContentEdgeInsets:UIEdgeInsetsMake(8, 8, 8, 8)];
+    [centerButton setContentEdgeInsets:UIEdgeInsetsMake(8, 16, 8, 16)];
     [centerButton setTitleEdgeInsets:UIEdgeInsetsMake(4, 0, 0, 0)];
     [centerButton setTitle:@"Alert" forState:UIControlStateNormal];
     [centerButton setImage:[UIImage imageNamed:@"ghost"] forState:UIControlStateNormal];
@@ -225,7 +221,7 @@ static NSArray<NSArray<NSString *> *> *kPickerViewButtonComponentsAndRows;
     
     [toggleButton setTranslatesAutoresizingMaskIntoConstraints:NO];
     [toggleButton setBackgroundColor:UIColor.whiteColor];
-    [toggleButton setContentEdgeInsets:UIEdgeInsetsMake(8, 8, 8, 8)];
+    [toggleButton setContentEdgeInsets:UIEdgeInsetsMake(8, 16, 8, 16)];
     [toggleButton setRounded:YES];
     [toggleButton setTitle:@"Show Progress" forState:UIControlStateNormal];
     [toggleButton KDI_addBlock:^(__kindof UIControl * _Nonnull control, UIControlEvents controlEvents) {
@@ -251,6 +247,15 @@ static NSArray<NSArray<NSString *> *> *kPickerViewButtonComponentsAndRows;
     [gradientView addSubview:stepper];
     [gradientView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:[subview]-[view]" options:0 metrics:nil views:@{@"view": stepper, @"subview": toggleButton}]];
     [gradientView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[subview]-[view]" options:0 metrics:nil views:@{@"view": stepper, @"subview": datePickerButton}]];
+    
+    UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:nil action:NULL];
+    
+    [tapGestureRecognizer setNumberOfTapsRequired:2];
+    [tapGestureRecognizer setNumberOfTouchesRequired:1];
+    [tapGestureRecognizer KDI_addBlock:^(__kindof UIGestureRecognizer * _Nonnull gestureRecognizer) {
+        [self.view.window setTintColor:KDIColorRandomRGB()];
+    }];
+    [self.view addGestureRecognizer:tapGestureRecognizer];
 }
 
 - (NSInteger)numberOfComponentsInPickerViewButton:(KDIPickerViewButton *)pickerViewButton {

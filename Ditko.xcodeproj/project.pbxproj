@@ -161,6 +161,12 @@
 		079CF60F1EC1125700CE1BE9 /* UIGestureRecognizer+KDIExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 079CF60B1EC1125700CE1BE9 /* UIGestureRecognizer+KDIExtensions.m */; };
 		079CF6121EC116FB00CE1BE9 /* NSGestureRecognizer+KDIExtensions.h in Headers */ = {isa = PBXBuildFile; fileRef = 079CF6101EC116FB00CE1BE9 /* NSGestureRecognizer+KDIExtensions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		079CF6131EC116FB00CE1BE9 /* NSGestureRecognizer+KDIExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 079CF6111EC116FB00CE1BE9 /* NSGestureRecognizer+KDIExtensions.m */; };
+		079CF6151EC11C5300CE1BE9 /* Loki.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 079CF6141EC11C5300CE1BE9 /* Loki.framework */; };
+		079CF6171EC11C6E00CE1BE9 /* Loki.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 079CF6161EC11C6E00CE1BE9 /* Loki.framework */; };
+		079CF6191EC11C7300CE1BE9 /* Loki.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 079CF6181EC11C7300CE1BE9 /* Loki.framework */; };
+		079CF61B1EC11C7C00CE1BE9 /* Loki.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 079CF61A1EC11C7C00CE1BE9 /* Loki.framework */; };
+		079CF61D1EC11C8D00CE1BE9 /* Loki.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 079CF61C1EC11C8D00CE1BE9 /* Loki.framework */; };
+		079CF61F1EC11C9400CE1BE9 /* Loki.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 079CF61E1EC11C9400CE1BE9 /* Loki.framework */; };
 		07A9208F1E95674C00B45199 /* NSControl+KDIExtensions.h in Headers */ = {isa = PBXBuildFile; fileRef = 07A9208D1E95674C00B45199 /* NSControl+KDIExtensions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		07A920901E95674C00B45199 /* NSControl+KDIExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 07A9208E1E95674C00B45199 /* NSControl+KDIExtensions.m */; };
 		07A920931E95767E00B45199 /* NSTextField+KDIExtensions.h in Headers */ = {isa = PBXBuildFile; fileRef = 07A920911E95767E00B45199 /* NSTextField+KDIExtensions.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -471,6 +477,12 @@
 		079CF60B1EC1125700CE1BE9 /* UIGestureRecognizer+KDIExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIGestureRecognizer+KDIExtensions.m"; path = "iOS/UIGestureRecognizer+KDIExtensions.m"; sourceTree = "<group>"; };
 		079CF6101EC116FB00CE1BE9 /* NSGestureRecognizer+KDIExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSGestureRecognizer+KDIExtensions.h"; path = "macOS/NSGestureRecognizer+KDIExtensions.h"; sourceTree = "<group>"; };
 		079CF6111EC116FB00CE1BE9 /* NSGestureRecognizer+KDIExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSGestureRecognizer+KDIExtensions.m"; path = "macOS/NSGestureRecognizer+KDIExtensions.m"; sourceTree = "<group>"; };
+		079CF6141EC11C5300CE1BE9 /* Loki.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Loki.framework; path = "../../Library/Developer/Xcode/DerivedData/Ditko-bqbmowdlvnipfjchljeblievobjg/Build/Products/Debug-iphonesimulator/Loki.framework"; sourceTree = "<group>"; };
+		079CF6161EC11C6E00CE1BE9 /* Loki.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Loki.framework; path = "../../Library/Developer/Xcode/DerivedData/Ditko-bqbmowdlvnipfjchljeblievobjg/Build/Products/Debug/Loki.framework"; sourceTree = "<group>"; };
+		079CF6181EC11C7300CE1BE9 /* Loki.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Loki.framework; path = "Vendor/Loki/build/Debug-appletvos/Loki.framework"; sourceTree = "<group>"; };
+		079CF61A1EC11C7C00CE1BE9 /* Loki.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Loki.framework; path = "Vendor/Loki/build/Debug-watchos/Loki.framework"; sourceTree = "<group>"; };
+		079CF61C1EC11C8D00CE1BE9 /* Loki.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Loki.framework; path = "Vendor/Loki/build/Debug-appletvos/Loki.framework"; sourceTree = "<group>"; };
+		079CF61E1EC11C9400CE1BE9 /* Loki.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Loki.framework; path = "Vendor/Loki/build/Debug-watchos/Loki.framework"; sourceTree = "<group>"; };
 		07A9208D1E95674C00B45199 /* NSControl+KDIExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSControl+KDIExtensions.h"; path = "macOS/NSControl+KDIExtensions.h"; sourceTree = "<group>"; };
 		07A9208E1E95674C00B45199 /* NSControl+KDIExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSControl+KDIExtensions.m"; path = "macOS/NSControl+KDIExtensions.m"; sourceTree = "<group>"; };
 		07A920911E95767E00B45199 /* NSTextField+KDIExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSTextField+KDIExtensions.h"; path = "macOS/NSTextField+KDIExtensions.h"; sourceTree = "<group>"; };
@@ -517,6 +529,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				079CF61B1EC11C7C00CE1BE9 /* Loki.framework in Frameworks */,
 				0745316E1E9EB0F200CEF9E0 /* Stanley.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -525,6 +538,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				079CF61F1EC11C9400CE1BE9 /* Loki.framework in Frameworks */,
 				071B62AC1E70805C00B7B85A /* Stanley.framework in Frameworks */,
 				071B62AD1E70806000B7B85A /* Ditko.framework in Frameworks */,
 			);
@@ -534,6 +548,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				079CF6191EC11C7300CE1BE9 /* Loki.framework in Frameworks */,
 				07DB3D731E737F110044FB50 /* Stanley.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -542,6 +557,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				079CF61D1EC11C8D00CE1BE9 /* Loki.framework in Frameworks */,
 				07DB3D701E737EEE0044FB50 /* Ditko.framework in Frameworks */,
 				074B478D1EB3E8CD009B7C6D /* KSOFontAwesomeExtensions.framework in Frameworks */,
 				07DB3D6D1E737EDF0044FB50 /* Stanley.framework in Frameworks */,
@@ -552,6 +568,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				079CF6171EC11C6E00CE1BE9 /* Loki.framework in Frameworks */,
 				07DB3D651E737DD20044FB50 /* Stanley.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -570,6 +587,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				079CF6151EC11C5300CE1BE9 /* Loki.framework in Frameworks */,
 				07DB3D6B1E737E9B0044FB50 /* Stanley.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -867,6 +885,12 @@
 		0795E65F1E704AE3004A5CB2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				079CF61E1EC11C9400CE1BE9 /* Loki.framework */,
+				079CF61C1EC11C8D00CE1BE9 /* Loki.framework */,
+				079CF61A1EC11C7C00CE1BE9 /* Loki.framework */,
+				079CF6181EC11C7300CE1BE9 /* Loki.framework */,
+				079CF6161EC11C6E00CE1BE9 /* Loki.framework */,
+				079CF6141EC11C5300CE1BE9 /* Loki.framework */,
 				074B478C1EB3E8CD009B7C6D /* KSOFontAwesomeExtensions.framework */,
 				074B47841EB3E3D1009B7C6D /* KSOFontAwesomeExtensions.framework */,
 				7427127C1EA7B02000A406EC /* Stanley.framework */,
@@ -1650,6 +1674,10 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Vendor/Loki/build/Debug-watchos",
+				);
 				HEADER_SEARCH_PATHS = "$(SRCROOT)/Vendor/Stanley";
 				INFOPLIST_FILE = "$(SRCROOT)/Ditko/Ditko-watchOS-Info.plist";
 				INFOPLIST_PREFIX_HEADER = "$(SRCROOT)/Ditko/Ditko-Info.h";
@@ -1674,6 +1702,10 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Vendor/Loki/build/Debug-watchos",
+				);
 				HEADER_SEARCH_PATHS = "$(SRCROOT)/Vendor/Stanley";
 				INFOPLIST_FILE = "$(SRCROOT)/Ditko/Ditko-watchOS-Info.plist";
 				INFOPLIST_PREFIX_HEADER = "$(SRCROOT)/Ditko/Ditko-Info.h";
@@ -1696,6 +1728,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Vendor/Stanley/build/Debug-watchos",
+					"$(PROJECT_DIR)/Vendor/Loki/build/Debug-watchos",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/Demo-watchOS Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
@@ -1715,6 +1748,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Vendor/Stanley/build/Debug-watchos",
+					"$(PROJECT_DIR)/Vendor/Loki/build/Debug-watchos",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/Demo-watchOS Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
@@ -1765,6 +1799,10 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Vendor/Loki/build/Debug-appletvos",
+				);
 				HEADER_SEARCH_PATHS = "$(SRCROOT)/Vendor/Stanley";
 				INFOPLIST_FILE = "$(SRCROOT)/Ditko/Ditko-tvOS-Info.plist";
 				INFOPLIST_PREFIX_HEADER = "$(SRCROOT)/Ditko/Ditko-Info.h";
@@ -1788,6 +1826,10 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Vendor/Loki/build/Debug-appletvos",
+				);
 				HEADER_SEARCH_PATHS = "$(SRCROOT)/Vendor/Stanley";
 				INFOPLIST_FILE = "$(SRCROOT)/Ditko/Ditko-tvOS-Info.plist";
 				INFOPLIST_PREFIX_HEADER = "$(SRCROOT)/Ditko/Ditko-Info.h";
@@ -1811,6 +1853,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Vendor/Stanley/build/Debug-appletvos",
+					"$(PROJECT_DIR)/Vendor/Loki/build/Debug-appletvos",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/Demo-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1830,6 +1873,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Vendor/Stanley/build/Debug-appletvos",
+					"$(PROJECT_DIR)/Vendor/Loki/build/Debug-appletvos",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/Demo-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

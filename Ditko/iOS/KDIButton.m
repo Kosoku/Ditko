@@ -17,6 +17,7 @@
 #import "UIColor+KDIExtensions.h"
 
 #import <Stanley/KSTGeometryFunctions.h>
+#import <Loki/UIImage+KLOExtensions.h>
 
 static CGFloat const kTitleColorBrightnessAdjustment = 0.5;
 static CGFloat const kTitleColorAlphaAdjustment = 0.5;
@@ -166,7 +167,11 @@ static CGFloat const kTitleColorAlphaAdjustment = 0.5;
 - (void)_updateAfterInvertedChange; {
     if (self.isInverted) {
         [self setBackgroundColor:self.tintColor];
-        [self setTitleColor:[self.tintColor KDI_contrastingColor] forState:UIControlStateNormal];
+        
+        UIColor *tintColor = [self.tintColor KDI_contrastingColor];
+        
+        [self setTitleColor:tintColor forState:UIControlStateNormal];
+        [self setImage:[[self imageForState:UIControlStateNormal] KLO_imageByTintingWithColor:tintColor] forState:UIControlStateNormal];
     }
     else {
         [self setBackgroundColor:UIColor.clearColor];
@@ -211,7 +216,7 @@ static CGFloat const kTitleColorAlphaAdjustment = 0.5;
     
     if (layout) {
         if (self.isRounded) {
-            [self.layer setCornerRadius:ceil(CGRectGetHeight(self.frame) * 0.5)];
+            [self.layer setCornerRadius:ceil(MIN(CGRectGetWidth(self.bounds), CGRectGetHeight(self.bounds)) * 0.5)];
         }
         
         CGSize titleSize = [self.titleLabel sizeThatFits:CGSizeZero];
