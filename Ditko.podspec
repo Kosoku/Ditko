@@ -53,4 +53,5 @@ Ditko is an iOS/macOS/tvOS/watchOS framework that extends the `AppKit`, `UIKit`,
   s.watchos.frameworks = 'UIKit', 'WatchKit'
   
   s.dependency 'Stanley'
+  s.dependency 'Loki'
 end
