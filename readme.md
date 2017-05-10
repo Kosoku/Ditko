@@ -21,3 +21,4 @@ You can install *Ditko* using [cocoapods](https://cocoapods.org/), [Carthage](ht
 Third party:
 
 - [Stanley](https://github.com/Kosoku/Stanley)
+- [Loki](https://github.com/Kosoku/Loki)
