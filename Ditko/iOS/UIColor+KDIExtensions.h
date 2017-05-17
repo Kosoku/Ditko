@@ -59,6 +59,14 @@ NS_ASSUME_NONNULL_BEGIN
  @return The inverse color
  */
 - (UIColor *)KDI_inverseColor;
+/**
+ Tells where the the color has enough luminance compared to the backgroundColor at stated tolerance (luminance level to surpass).
+ 
+ @param backgroundColor the color of the background
+ @param tolerance the luminance level tolerance
+ @return BOOL
+ */
+- (BOOL *)KDI_colorVisibleOverBackgroundColor:(UIColor *)backgroundColor tolerance:(CGFloat)tolerance;
 
 /**
  Creates and returns an UIColor by parsing *hexadecimalString*. See http://www.karelia.com/cocoa_legacy/Foundation_Categories/NSColor__Instantiat.m for implementation reference.
@@ -83,6 +91,13 @@ NS_ASSUME_NONNULL_BEGIN
  @return The new color
  */
 - (nullable UIColor *)KDI_colorByAdjustingBrightnessBy:(CGFloat)delta;
+/**
+ Extracts and returns the dominant color from UIImage.
+ 
+ @param image: the image to evaluate
+ @return The dominant color
+ */
++ (UIColor *)KDI_dominantColorForImage:(UIImage *)image;
 
 @end
 
