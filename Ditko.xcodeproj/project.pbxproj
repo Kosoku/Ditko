@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0705AFD71ECE28F200BACC4E /* UIImage+KDIExtensions.h in Headers */ = {isa = PBXBuildFile; fileRef = 0705AFD51ECE28F200BACC4E /* UIImage+KDIExtensions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0705AFD81ECE28F200BACC4E /* UIImage+KDIExtensions.h in Headers */ = {isa = PBXBuildFile; fileRef = 0705AFD51ECE28F200BACC4E /* UIImage+KDIExtensions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0705AFD91ECE28F200BACC4E /* UIImage+KDIExtensions.h in Headers */ = {isa = PBXBuildFile; fileRef = 0705AFD51ECE28F200BACC4E /* UIImage+KDIExtensions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0705AFDA1ECE28F200BACC4E /* UIImage-NSImage+KDIExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0705AFD61ECE28F200BACC4E /* UIImage-NSImage+KDIExtensions.m */; };
+		0705AFDB1ECE28F200BACC4E /* UIImage-NSImage+KDIExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0705AFD61ECE28F200BACC4E /* UIImage-NSImage+KDIExtensions.m */; };
+		0705AFDC1ECE28F200BACC4E /* UIImage-NSImage+KDIExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0705AFD61ECE28F200BACC4E /* UIImage-NSImage+KDIExtensions.m */; };
+		0705AFDF1ECE29A000BACC4E /* NSImage+KDIExtensions.h in Headers */ = {isa = PBXBuildFile; fileRef = 0705AFDD1ECE29A000BACC4E /* NSImage+KDIExtensions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0705AFE11ECE2A2D00BACC4E /* UIImage-NSImage+KDIExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0705AFD61ECE28F200BACC4E /* UIImage-NSImage+KDIExtensions.m */; };
 		071B62631E705D3500B7B85A /* KDIFunctions.h in Headers */ = {isa = PBXBuildFile; fileRef = 071B62611E705D3500B7B85A /* KDIFunctions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		071B62641E705D3500B7B85A /* KDIFunctions.h in Headers */ = {isa = PBXBuildFile; fileRef = 071B62611E705D3500B7B85A /* KDIFunctions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		071B62651E705D3500B7B85A /* KDIFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = 071B62621E705D3500B7B85A /* KDIFunctions.m */; };
@@ -357,6 +365,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0705AFD51ECE28F200BACC4E /* UIImage+KDIExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImage+KDIExtensions.h"; path = "iOS/UIImage+KDIExtensions.h"; sourceTree = "<group>"; };
+		0705AFD61ECE28F200BACC4E /* UIImage-NSImage+KDIExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage-NSImage+KDIExtensions.m"; sourceTree = "<group>"; };
+		0705AFDD1ECE29A000BACC4E /* NSImage+KDIExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSImage+KDIExtensions.h"; path = "macOS/NSImage+KDIExtensions.h"; sourceTree = "<group>"; };
 		071B62611E705D3500B7B85A /* KDIFunctions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KDIFunctions.h; sourceTree = "<group>"; };
 		071B62621E705D3500B7B85A /* KDIFunctions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KDIFunctions.m; sourceTree = "<group>"; };
 		071B62681E705EA300B7B85A /* KDIColorMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KDIColorMacros.h; sourceTree = "<group>"; };
@@ -731,6 +742,9 @@
 				0795E63F1E70491E004A5CB2 /* UIColor+KDIExtensions.h */,
 				073542841E70503C00177905 /* NSColor+KDIExtensions.h */,
 				0795E6401E70491E004A5CB2 /* NSColor-UIColor+KDIExtensions.m */,
+				0705AFD51ECE28F200BACC4E /* UIImage+KDIExtensions.h */,
+				0705AFDD1ECE29A000BACC4E /* NSImage+KDIExtensions.h */,
+				0705AFD61ECE28F200BACC4E /* UIImage-NSImage+KDIExtensions.m */,
 				07E8EB321E733F34001639A2 /* NSURL+KDIExtensions.h */,
 				07E8EB331E733F34001639A2 /* NSURL+KDIExtensions.m */,
 				07E8EB411E7341C2001639A2 /* UIBarButtonItem+KDIExtensions.h */,
@@ -929,6 +943,7 @@
 				07E8EB371E733F34001639A2 /* NSURL+KDIExtensions.h in Headers */,
 				071B62821E707F9500B7B85A /* UIColor+KDIExtensions.h in Headers */,
 				071B62811E707F7A00B7B85A /* Ditko.h in Headers */,
+				0705AFD91ECE28F200BACC4E /* UIImage+KDIExtensions.h in Headers */,
 				07E8EB521E734B0E001639A2 /* KDIFunctions.h in Headers */,
 				0794A8301E735E1200603C99 /* NSParagraphStyle+KDIExtensions.h in Headers */,
 				0794A7FC1E73530400603C99 /* UIBezierPath+KDIExtensions.h in Headers */,
@@ -955,6 +970,7 @@
 				072628131E70BCCF00511F80 /* KDIView.h in Headers */,
 				07E8EB3F1E733FE3001639A2 /* KDIDefines.h in Headers */,
 				077EB9FE1E9F703E0087321E /* KDIBadgeButton.h in Headers */,
+				0705AFD81ECE28F200BACC4E /* UIImage+KDIExtensions.h in Headers */,
 				07DB3D831E7383EC0044FB50 /* KDITextView.h in Headers */,
 				0738CE4B1EA014C9008FE9A0 /* NSObject+KDIDynamicTypeExtensions.h in Headers */,
 				0794A8071E7354EF00603C99 /* UIViewController+KDIExtensions.h in Headers */,
@@ -985,6 +1001,7 @@
 				0794A81B1E73584900603C99 /* NSBundle+KDIPrivateExtensions.h in Headers */,
 				071B62641E705D3500B7B85A /* KDIFunctions.h in Headers */,
 				07D166DD1E9759090073F69A /* KDIClickableLabel.h in Headers */,
+				0705AFDF1ECE29A000BACC4E /* NSImage+KDIExtensions.h in Headers */,
 				0794A80C1E7355B900603C99 /* NSViewController+KDIExtensions.h in Headers */,
 				07D166C71E96ABDA0073F69A /* NSPopUpButton+KDIExtensions.h in Headers */,
 				07A920981E958CA900B45199 /* KDIRolloverButton.h in Headers */,
@@ -1025,6 +1042,7 @@
 				071B626E1E70635D00B7B85A /* KDIGradientView.h in Headers */,
 				07DB3D821E7383EC0044FB50 /* KDITextView.h in Headers */,
 				0794A8061E7354EF00603C99 /* UIViewController+KDIExtensions.h in Headers */,
+				0705AFD71ECE28F200BACC4E /* UIImage+KDIExtensions.h in Headers */,
 				076730831E75F6FE00030F0C /* KDIDatePickerButton.h in Headers */,
 				0794A7EA1E734D5300603C99 /* UINavigationController+KDIExtensions.h in Headers */,
 				0795E6371E704785004A5CB2 /* Ditko.h in Headers */,
@@ -1444,6 +1462,7 @@
 				07E8EB511E734AED001639A2 /* KDIFunctions.m in Sources */,
 				0794A7FF1E73530400603C99 /* UIBezierPath+KDIExtensions.m in Sources */,
 				07E8EB3B1E733F34001639A2 /* NSURL+KDIExtensions.m in Sources */,
+				0705AFDC1ECE28F200BACC4E /* UIImage-NSImage+KDIExtensions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1466,6 +1485,7 @@
 				07DB3D851E7383EC0044FB50 /* KDITextView.m in Sources */,
 				0794A7F31E73509100603C99 /* UIView+KDIExtensions.m in Sources */,
 				0794A8171E73574A00603C99 /* UIAlertController+KDIExtensions.m in Sources */,
+				0705AFDB1ECE28F200BACC4E /* UIImage-NSImage+KDIExtensions.m in Sources */,
 				07E8EB3A1E733F34001639A2 /* NSURL+KDIExtensions.m in Sources */,
 				07E8EB4D1E73454D001639A2 /* UIDevice+KDIExtensions.m in Sources */,
 				07E8EB501E734AEC001639A2 /* KDIFunctions.m in Sources */,
@@ -1518,6 +1538,7 @@
 				0794A80D1E7355B900603C99 /* NSViewController+KDIExtensions.m in Sources */,
 				0794A82A1E735D1400603C99 /* NSAlert+KDIExtensions.m in Sources */,
 				07D166C41E96A08E0073F69A /* NSButton+KDIExtensions.m in Sources */,
+				0705AFE11ECE2A2D00BACC4E /* UIImage-NSImage+KDIExtensions.m in Sources */,
 				079CF6131EC116FB00CE1BE9 /* NSGestureRecognizer+KDIExtensions.m in Sources */,
 				0794A8321E735E1200603C99 /* NSParagraphStyle+KDIExtensions.m in Sources */,
 				073542AA1E7057A000177905 /* NSColor-UIColor+KDIExtensions.m in Sources */,
@@ -1549,6 +1570,7 @@
 				071B62701E70635D00B7B85A /* KDIGradientView.m in Sources */,
 				07DB3D901E73B7BD0044FB50 /* KDIProgressNavigationBar.m in Sources */,
 				07DB3D841E7383EC0044FB50 /* KDITextView.m in Sources */,
+				0705AFDA1ECE28F200BACC4E /* UIImage-NSImage+KDIExtensions.m in Sources */,
 				0794A7F21E73509100603C99 /* UIView+KDIExtensions.m in Sources */,
 				0794A8161E73574A00603C99 /* UIAlertController+KDIExtensions.m in Sources */,
 				07E8EB381E733F34001639A2 /* NSURL+KDIExtensions.m in Sources */,

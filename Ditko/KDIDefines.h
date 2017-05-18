@@ -32,6 +32,7 @@
 #define KDIEdgeInsets UIEdgeInsets
 
 #define KDIEdgeInsetsMake(top,left,bottom,right) (UIEdgeInsetsMake(top,left,bottom,right))
+#define KDICGImageFromImage(theImage) (theImage.CGImage)
 #else
 #import <AppKit/AppKit.h>
 
@@ -46,6 +47,7 @@
 #define KDIEdgeInsets NSEdgeInsets
 
 #define KDIEdgeInsetsMake(top,left,bottom,right) (NSEdgeInsetsMake(top,left,bottom,right))
+#define KDICGImageFromImage(theImage) ([theImage CGImageForProposedRect:NULL context:nil hints:nil])
 #endif
 
 #endif

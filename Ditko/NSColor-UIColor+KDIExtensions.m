@@ -17,10 +17,8 @@
 
 #if (TARGET_OS_IPHONE)
 #import "UIColor+KDIExtensions.h"
-#define KDICGImageFromImage(theImage) (theImage.CGImage)
 #else
 #import "NSColor+KDIExtensions.h"
-#define KDICGImageFromImage(theImage) ([theImage CGImageForProposedRect:NULL context:nil hints:nil])
 #endif
 #import "KDIDefines.h"
 
@@ -159,23 +157,31 @@ static CGFloat KDIPerceivedBrightnessForRedGreenAndBlue(CGFloat red, CGFloat gre
     return [KDIColor KDI_inverseColorOfColor:self];
 }
     
-- (BOOL *)KDI_colorVisibleOverBackgroundColor:(KDIColor *)backgroundColor tolerance:(CGFloat)tolerance; {
+- (BOOL)KDI_colorVisibleOverBackgroundColor:(KDIColor *)backgroundColor tolerance:(CGFloat)tolerance; {
     CGFloat foregroundLuminance;
     CGFloat fRed = 0.0, fGreen = 0.0, fBlue = 0.0, fAlpha = 0.0;
+    
     [self getRed:&fRed green:&fGreen blue:&fBlue alpha:&fAlpha];
-    fRed *= 0.2126f; fGreen *= 0.7152f; fBlue *= 0.0722f;
+    
+    fRed *= 0.2126f;
+    fGreen *= 0.7152f;
+    fBlue *= 0.0722f;
     foregroundLuminance = fRed + fGreen + fBlue;
     
     CGFloat backgroundLuminance;
     CGFloat bRed = 0.0, bGreen = 0.0, bBlue = 0.0, bAlpha = 0.0;
+    
     [backgroundColor getRed:&bRed green:&bGreen blue:&bBlue alpha:&bAlpha];
-    bRed *= 0.2126f; bGreen *= 0.7152f; bBlue *= 0.0722f;
+    
+    bRed *= 0.2126f;
+    bGreen *= 0.7152f;
+    bBlue *= 0.0722f;
     backgroundLuminance = bRed + bGreen + bBlue;
     
     if (backgroundLuminance < tolerance) {
-        return foregroundLuminance > backgroundLuminance
+        return foregroundLuminance > backgroundLuminance;
     } else {
-        return foregroundLuminance < backgroundLuminance
+        return foregroundLuminance < backgroundLuminance;
     }
 }
 
@@ -257,36 +263,6 @@ static CGFloat KDIPerceivedBrightnessForRedGreenAndBlue(CGFloat red, CGFloat gre
 - (NSColor *)KDI_colorByAdjustingBrightnessBy:(CGFloat)delta; {
 #endif
     return [self.class KDI_colorByAdjustingBrightnessOfColor:self delta:delta];
-}
-
-+ (KDIColor *)KDI_dominantColorForImage:(KDIImage *)image; {
-    CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
-    unsigned char rgba[4];
-    CGContextRef context = CGBitmapContextCreate(rgba, 1, 1, 8, 4, colorSpace, kCGImageAlphaPremultipliedLast | kCGBitmapByteOrder32Big);
-        
-    CGContextDrawImage(context, CGRectMake(0, 0, 1, 1), KDICGImageFromImage(image));
-    CGColorSpaceRelease(colorSpace);
-    CGContextRelease(context);
-        
-    if (rgba[3] == 0) {
-        CGFloat imageAlpha = ((CGFloat)rgba[3])/255.0;
-        CGFloat multiplier = imageAlpha/255.0;
-#if (TARGET_OS_IPHONE)
-        UIColor *retval = [UIColor colorWithRed:((CGFloat)rgba[0])*multiplier green:((CGFloat)rgba[1])*multiplier blue:((CGFloat)rgba[2])*multiplier alpha:imageAlpha];
-            
-        return retval;
-    }
-    
-    UIColor *retval = [UIColor colorWithRed:((CGFloat)rgba[0])/255.0 green:((CGFloat)rgba[1])/255.0 blue:((CGFloat)rgba[2])/255.0 alpha:1.0];
-#else
-        NSColor *retval = [NSColor colorWithRed:((CGFloat)rgba[0])*multiplier green:((CGFloat)rgba[1])*multiplier blue:((CGFloat)rgba[2])*multiplier alpha:imageAlpha];
-    
-        return retval;
-    }
-        
-    NSColor *retval = [NSColor colorWithRed:((CGFloat)rgba[0])/255.0 green:((CGFloat)rgba[1])/255.0 blue:((CGFloat)rgba[2])/255.0 alpha:1.0];
-#endif
-    return retval;
 }
 
 @end

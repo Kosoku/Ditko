@@ -37,6 +37,7 @@ FOUNDATION_EXPORT const unsigned char DitkoVersionString[];
 #import <Ditko/NSParagraphStyle+KDIExtensions.h>
 #if (TARGET_OS_IOS || TARGET_OS_TV || TARGET_OS_WATCH)
 #import <Ditko/UIBezierPath+KDIExtensions.h>
+#import <Ditko/UIImage+KDIExtensions.h>
 #endif
 #if (TARGET_OS_IOS || TARGET_OS_TV)
 #import <Ditko/UIBarButtonItem+KDIExtensions.h>
@@ -61,6 +62,7 @@ FOUNDATION_EXPORT const unsigned char DitkoVersionString[];
 #import <Ditko/NSButton+KDIExtensions.h>
 #import <Ditko/NSPopUpButton+KDIExtensions.h>
 #import <Ditko/NSGestureRecognizer+KDIExtensions.h>
+#import <Ditko/NSImage+KDIExtensions.h>
 #endif
 
 #if (TARGET_OS_IOS || TARGET_OS_TV || TARGET_OS_OSX)
