@@ -6,6 +6,8 @@
 //  Copyright © 2017 Kosoku Interactive, LLC. All rights reserved.
 //
 
+#import <TargetConditionals.h>
+
 #if (TARGET_OS_IPHONE)
 #import "UIImage+KDIExtensions.h"
 #else

@@ -16,6 +16,7 @@
 #import "AppDelegate.h"
 #import "ViewController.h"
 #import "EmptyViewController.h"
+#import "DominantTestViewController.h"
 
 #import <Ditko/Ditko.h>
 
@@ -37,7 +38,8 @@
     [navigationController setViewControllers:@[[[ViewController alloc] init]]];
     
     [controller setViewControllers:@[navigationController,
-                                     [[UINavigationController alloc] initWithRootViewController:[[EmptyViewController alloc] init]]]];
+                                     [[UINavigationController alloc] initWithRootViewController:[[EmptyViewController alloc] init]],
+                                     [[UINavigationController alloc] initWithRootViewController:[[DominantTestViewController alloc] init]]]];
     
     [self.window setRootViewController:controller];
     [self.window makeKeyAndVisible];
