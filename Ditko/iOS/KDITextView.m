@@ -40,8 +40,8 @@ static void *kObservingContext = &kObservingContext;
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
-- (instancetype)initWithFrame:(CGRect)frame {
-    if (!(self = [super initWithFrame:frame]))
+- (instancetype)initWithFrame:(CGRect)frame textContainer:(NSTextContainer *)textContainer {
+    if (!(self = [super initWithFrame:frame textContainer:textContainer]))
         return nil;
     
     [self _KDITextViewInit];
