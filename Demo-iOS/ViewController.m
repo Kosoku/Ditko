@@ -250,7 +250,7 @@ static NSArray<NSArray<NSString *> *> *kPickerViewButtonComponentsAndRows;
     
     UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:nil action:NULL];
     
-    [tapGestureRecognizer setNumberOfTapsRequired:2];
+    [tapGestureRecognizer setNumberOfTapsRequired:3];
     [tapGestureRecognizer setNumberOfTouchesRequired:1];
     [tapGestureRecognizer KDI_addBlock:^(__kindof UIGestureRecognizer * _Nonnull gestureRecognizer) {
         [self.view.window setTintColor:KDIColorRandomRGB()];
