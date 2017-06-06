@@ -71,6 +71,13 @@ static void *kObservingContext = &kObservingContext;
     [self.placeholderLabel setFrame:CGRectMake(self.contentInset.left + self.textContainerInset.left, self.contentInset.top + self.textContainerInset.top, maxWidth, ceil([self.placeholderLabel sizeThatFits:CGSizeMake(maxWidth, CGFLOAT_MAX)].height))];
 }
 
+- (CGSize)intrinsicContentSize {
+    CGSize retval = [super intrinsicContentSize];
+    
+    retval.height = ceil(MAX(retval.height, [self.placeholderLabel sizeThatFits:CGSizeMake(CGRectGetWidth(self.bounds) - self.contentInset.left - self.textContainerInset.left - self.textContainerInset.right - self.contentInset.right, CGFLOAT_MAX)].height));
+    
+    return retval;
+}
 - (CGSize)sizeThatFits:(CGSize)size {
     CGSize retval = [super sizeThatFits:size];
     
@@ -114,6 +121,7 @@ static void *kObservingContext = &kObservingContext;
     [self.placeholderLabel setAttributedText:attributedPlaceholder];
     
     [self setNeedsLayout];
+    [self invalidateIntrinsicContentSize];
 }
 
 - (void)setPlaceholderFont:(UIFont *)placeholderFont {
@@ -133,9 +141,7 @@ static void *kObservingContext = &kObservingContext;
     [self.textContainer setLineFragmentPadding:0];
     
     [self setPlaceholderLabel:[[UILabel alloc] initWithFrame:CGRectZero]];
-    [self.placeholderLabel setTranslatesAutoresizingMaskIntoConstraints:NO];
     [self.placeholderLabel setNumberOfLines:0];
-    [self.placeholderLabel setLineBreakMode:NSLineBreakByWordWrapping];
     [self addSubview:self.placeholderLabel];
     
     [self addObserver:self forKeyPath:@kstKeypath(self,placeholderFont) options:0 context:kObservingContext];
