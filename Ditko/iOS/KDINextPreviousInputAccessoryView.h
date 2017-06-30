@@ -18,6 +18,32 @@
 NS_ASSUME_NONNULL_BEGIN
 
 /**
+ Options mask describing the items that can be displayed in the input accessory view.
+ */
+typedef NS_OPTIONS(NSUInteger, KDINextPreviousInputAccessoryViewItemOptions) {
+    /**
+     No items are displayed.
+     */
+    KDINextPreviousInputAccessoryViewItemOptionsNone = 0,
+    /**
+     The next item (right facing arrow) is displayed.
+     */
+    KDINextPreviousInputAccessoryViewItemOptionsNext = 1 << 0,
+    /**
+     The previous item (left facing arrow) is displayed.
+     */
+    KDINextPreviousInputAccessoryViewItemOptionsPrevious = 1 << 1,
+    /**
+     The done item is displayed.
+     */
+    KDINextPreviousInputAccessoryViewItemOptionsDone = 1 << 2,
+    /**
+     All items are displayed.
+     */
+    KDINextPreviousInputAccessoryViewItemOptionsAll = KDINextPreviousInputAccessoryViewItemOptionsNext|KDINextPreviousInputAccessoryViewItemOptionsPrevious|KDINextPreviousInputAccessoryViewItemOptionsDone
+};
+
+/**
  Notification posted when the next item is tapped. The object of the notification is the instance of KDINextPreviousInputAccessoryView that posted the notification.
  */
 FOUNDATION_EXPORT NSNotificationName const KDINextPreviousInputAccessoryViewNotificationNext;
@@ -39,6 +65,14 @@ FOUNDATION_EXPORT NSNotificationName const KDINextPreviousInputAccessoryViewNoti
  Get the owning UIResponder of the receiver.
  */
 @property (readonly,weak,nonatomic) UIResponder *responder;
+/**
+ Set and get the item options of the receiver, which affect the toolbar items shown.
+ 
+ The default is KDINextPreviousInputAccessoryViewItemOptionsAll.
+ 
+ @see KDINextPreviousInputAccessoryViewItemOptions
+ */
+@property (assign,nonatomic) KDINextPreviousInputAccessoryViewItemOptions itemOptions;
 
 /**
  The designated initializer. An instance of UIResponder must be provided in order for the Done button functionality to work properly.
@@ -51,8 +85,8 @@ FOUNDATION_EXPORT NSNotificationName const KDINextPreviousInputAccessoryViewNoti
 
 + (instancetype)new NS_UNAVAILABLE;
 - (instancetype)init __attribute__((unavailable("use initWithFrame:responder:")));
-- (instancetype)initWithFrame:(CGRect)frame __attribute__((unavailable("use initWithResponder:frame:")));
-- (nullable instancetype)initWithCoder:(NSCoder *)aDecoder __attribute__((unavailable("use initWithResponder:frame:")));
+- (instancetype)initWithFrame:(CGRect)frame __attribute__((unavailable("use initWithFrame:responder:")));
+- (nullable instancetype)initWithCoder:(NSCoder *)aDecoder __attribute__((unavailable("use initWithFrame:responder:")));
 
 @end
 

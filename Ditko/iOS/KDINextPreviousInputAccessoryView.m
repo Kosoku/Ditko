@@ -27,6 +27,8 @@ static CGFloat kDefaultFrameHeight;
 @property (readwrite,weak,nonatomic) UIResponder *responder;
 
 @property (strong,nonatomic) UIToolbar *toolbar;
+
+- (void)_updateToolbarItems;
 @end
 
 @implementation KDINextPreviousInputAccessoryView
@@ -44,13 +46,11 @@ static CGFloat kDefaultFrameHeight;
     [self setBackgroundColor:[UIColor clearColor]];
     
     _responder = responder;
+    _itemOptions = KDINextPreviousInputAccessoryViewItemOptionsAll;
     
     _toolbar = [[UIToolbar alloc] initWithFrame:CGRectZero];
     [_toolbar setTranslatesAutoresizingMaskIntoConstraints:NO];
-    [_toolbar setItems:@[[[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"arrow_left" inBundle:[NSBundle KDI_frameworkBundle] compatibleWithTraitCollection:nil] style:UIBarButtonItemStylePlain target:self action:@selector(_previousItemAction:)],
-                         [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"arrow_right" inBundle:[NSBundle KDI_frameworkBundle] compatibleWithTraitCollection:nil] style:UIBarButtonItemStylePlain target:self action:@selector(_nextItemAction:)],
-                         [UIBarButtonItem KDI_flexibleSpaceBarButtonItem],
-                         [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(_doneItemAction:)]]];
+    [self _updateToolbarItems];
     [_toolbar sizeToFit];
     [self addSubview:_toolbar];
     
@@ -58,6 +58,35 @@ static CGFloat kDefaultFrameHeight;
     [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[view(==height)]|" options:0 metrics:@{@"height": @(kDefaultFrameHeight)} views:@{@"view": _toolbar}]];
     
     return self;
+}
+
+- (void)setItemOptions:(KDINextPreviousInputAccessoryViewItemOptions)itemOptions {
+    if (_itemOptions == itemOptions) {
+        return;
+    }
+    
+    _itemOptions = itemOptions;
+    
+    [self _updateToolbarItems];
+}
+
+- (void)_updateToolbarItems {
+    NSMutableArray *items = [[NSMutableArray alloc] init];
+    
+    if (self.itemOptions & KDINextPreviousInputAccessoryViewItemOptionsPrevious) {
+        [items addObject:[[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"arrow_left" inBundle:[NSBundle KDI_frameworkBundle] compatibleWithTraitCollection:nil] style:UIBarButtonItemStylePlain target:self action:@selector(_previousItemAction:)]];
+    }
+    if (self.itemOptions & KDINextPreviousInputAccessoryViewItemOptionsNext) {
+        [items addObject:[[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"arrow_right" inBundle:[NSBundle KDI_frameworkBundle] compatibleWithTraitCollection:nil] style:UIBarButtonItemStylePlain target:self action:@selector(_nextItemAction:)]];
+    }
+    
+    [items addObject:[UIBarButtonItem KDI_flexibleSpaceBarButtonItem]];
+    
+    if (self.itemOptions & KDINextPreviousInputAccessoryViewItemOptionsDone) {
+        [items addObject:[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(_doneItemAction:)]];
+    }
+    
+    [self.toolbar setItems:items];
 }
 
 - (IBAction)_previousItemAction:(id)sender {
