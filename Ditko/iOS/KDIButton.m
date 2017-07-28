@@ -267,10 +267,10 @@ static CGFloat const kTitleColorAlphaAdjustment = 0.5;
             }
             
             if (self.imageAlignment & KDIButtonAlignmentCenter) {
-                [self.imageView setFrame:KSTCGRectCenterInRectHorizontally(CGRectMake(0, CGRectGetMaxY(self.titleLabel.frame) + self.imageEdgeInsets.top, imageSize.width, imageSize.height), self.bounds)];
+                [self.imageView setFrame:KSTCGRectCenterInRectHorizontally(CGRectMake(0, CGRectGetMaxY(self.titleLabel.frame) + self.titleEdgeInsets.bottom + self.imageEdgeInsets.top, imageSize.width, imageSize.height), self.bounds)];
             }
             else {
-                [self.imageView setFrame:CGRectMake(self.contentEdgeInsets.left + self.imageEdgeInsets.left, CGRectGetMaxY(self.titleLabel.frame) + self.imageEdgeInsets.top, imageSize.width, imageSize.height)];
+                [self.imageView setFrame:CGRectMake(self.contentEdgeInsets.left + self.imageEdgeInsets.left, CGRectGetMaxY(self.titleLabel.frame) + self.imageEdgeInsets.bottom + self.imageEdgeInsets.top, imageSize.width, imageSize.height)];
             }
         }
         else if ((self.titleAlignment & KDIButtonAlignmentBottom) &&
@@ -284,10 +284,10 @@ static CGFloat const kTitleColorAlphaAdjustment = 0.5;
             }
             
             if (self.titleAlignment & KDIButtonAlignmentCenter) {
-                [self.titleLabel setFrame:KSTCGRectCenterInRectHorizontally(CGRectMake(0, CGRectGetMaxY(self.imageView.frame) + self.titleEdgeInsets.top, titleSize.width, titleSize.height), self.bounds)];
+                [self.titleLabel setFrame:KSTCGRectCenterInRectHorizontally(CGRectMake(0, CGRectGetMaxY(self.imageView.frame) + self.imageEdgeInsets.bottom + self.titleEdgeInsets.top, titleSize.width, titleSize.height), self.bounds)];
             }
             else {
-                [self.titleLabel setFrame:CGRectMake(self.contentEdgeInsets.left + self.titleEdgeInsets.left, CGRectGetMaxY(self.imageView.frame) + self.titleEdgeInsets.top, titleSize.width, titleSize.height)];
+                [self.titleLabel setFrame:CGRectMake(self.contentEdgeInsets.left + self.titleEdgeInsets.left, CGRectGetMaxY(self.imageView.frame) + self.imageEdgeInsets.bottom + self.titleEdgeInsets.top, titleSize.width, titleSize.height)];
             }
         }
     }
