@@ -118,14 +118,14 @@ KDIUIAlertControllerOptionsActionKey const KDIUIAlertControllerOptionsActionKeyP
     
     if (options[KDIUIAlertControllerOptionsKeyActions] == nil) {
         [retval addAction:[UIAlertAction actionWithTitle:cancelButtonTitle style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
-            if (completion) {
+            if (completion != nil) {
                 completion(retval,KDIUIAlertControllerCancelButtonIndex);
             }
         }]];
         
         [otherButtonTitles enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
             [retval addAction:[UIAlertAction actionWithTitle:obj style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-                if (completion) {
+                if (completion != nil) {
                     completion(retval,idx);
                 }
             }]];
