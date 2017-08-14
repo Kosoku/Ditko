@@ -51,6 +51,10 @@ FOUNDATION_EXPORT KDIUIAlertControllerOptionsKey const KDIUIAlertControllerOptio
  */
 FOUNDATION_EXPORT KDIUIAlertControllerOptionsKey const KDIUIAlertControllerOptionsKeyMessage;
 /**
+ Use this key with a value of @YES to suppress the substitution of the default localized message if the provided message is zero length.
+ */
+FOUNDATION_EXPORT KDIUIAlertControllerOptionsKey const KDIUIAlertControllerOptionsKeyIgnoreEmptyMessage;
+/**
  Use this key to pass the cancel button title of the alert. For example, @{KDIUIAlertControllerOptionsKeyCancelButtonTitle: @"Dismiss"}. If a value is not provided a localized default is provided.
  */
 FOUNDATION_EXPORT KDIUIAlertControllerOptionsKey const KDIUIAlertControllerOptionsKeyCancelButtonTitle;
