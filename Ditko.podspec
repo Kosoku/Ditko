@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'Ditko'
-  s.version          = '0.31.0'
+  s.version          = '0.32.0'
   s.summary          = 'Ditko is an iOS/macOS/tvOS/watchOS framework that extends the AppKit, UIKit, and WatchKit frameworks.'
 
 # This description is used to generate tags and improve search results.
@@ -22,13 +22,13 @@ Ditko is an iOS/macOS/tvOS/watchOS framework that extends the `AppKit`, `UIKit`,
                        DESC
 
   s.homepage         = 'https://github.com/Kosoku/Ditko'
-  s.screenshots      = ['https://github.com/Kosoku/Ditko/raw/master/screenshots/iOS.gif','https://github.com/Kosoku/Ditko/raw/master/screenshots/macOS.gif']
+  s.screenshots      = ['https://github.com/Kosoku/Ditko/raw/master/screenshots/iOS-1.png','https://github.com/Kosoku/Ditko/raw/master/screenshots/iOS-2.png','https://github.com/Kosoku/Ditko/raw/master/screenshots/iOS-3.png']
   s.license          = { :type => 'BSD', :file => 'license.txt' }
   s.author           = { 'William Towe' => 'willbur1984@gmail.com' }
   s.source           = { :git => 'https://github.com/Kosoku/Ditko.git', :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
-  s.ios.deployment_target = '10.0'
+  s.ios.deployment_target = '9.0'
   s.osx.deployment_target = '10.12'
   s.tvos.deployment_target = '10.0'
   s.watchos.deployment_target = '3.0'
