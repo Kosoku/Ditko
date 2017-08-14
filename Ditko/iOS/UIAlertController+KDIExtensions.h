@@ -18,8 +18,9 @@
 NS_ASSUME_NONNULL_BEGIN
 
 /**
- Typedef for block that is invoked after the user has tapped on one of the alert buttons and the alert has been dismissed.
+ Typedef for the block that is invoked after the user has tapped on one of the alert buttons and the alert controller has been dismissed.
  
+ @param alertController The alert controller that was dismissed
  @param buttonIndex The index of the button that was tapped
  */
 typedef void(^KDIUIAlertControllerCompletionBlock)(__kindof UIAlertController *alertController, NSInteger buttonIndex);
@@ -70,6 +71,16 @@ FOUNDATION_EXPORT KDIUIAlertControllerOptionsKey const KDIUIAlertControllerOptio
  Use this key to pass an NSArray of NSDictionary instances using KDIUIAlertControllerOptionsActionKey keys. For example, @{KDIUIAlertControllerOptionsKeyActions: @[@{KDIUIAlertControllerOptionsActionKeyStyle: @(UIAlertActionStyle),KDIUIAlertControllerOptionsActionKeyTitle: @"Cancel",KDIUIAlertControllerOptionsActionKeyPreferred: @YES}]}. If non-nil, this array will be used to create the UIAlertActions of the UIAlertController instead of using the KDIUIAlertControllerOptionsKeyCancelButtonTitle and KDIUIAlertControllerOptionsKeyOtherButtonTitles keys.
  */
 FOUNDATION_EXPORT KDIUIAlertControllerOptionsKey const KDIUIAlertControllerOptionsKeyActions;
+/**
+ Typedef for a block that is invoked when configuring a UITextField being adding to the alert controller.
+ 
+ @param textField The UITextField being added
+ */
+typedef void(^KDIUIAlertControllerTextFieldConfigurationBlock)(UITextField *textField);
+/**
+ Use this key to pass an NSArray of KDIUIAlertControllerTextFieldConfigurationBlock instances that will be used to add and configure the corresponding number of text fields to the alert controller.
+ */
+FOUNDATION_EXPORT KDIUIAlertControllerOptionsKey const KDIUIAlertControllerOptionsKeyTextFieldConfigurationBlocks;
 
 /**
  Typedef for option keys to be used with the NSArray of NSDictionary instances associated with the KDIUIAlertControllerOptionsKeyActions options key.

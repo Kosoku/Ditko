@@ -30,6 +30,7 @@ KDIUIAlertControllerOptionsKey const KDIUIAlertControllerOptionsKeyCancelButtonT
 KDIUIAlertControllerOptionsKey const KDIUIAlertControllerOptionsKeyOtherButtonTitles = @"KDIUIAlertControllerOptionsKeyOtherButtonTitles";
 KDIUIAlertControllerOptionsKey const KDIUIAlertControllerOptionsKeyPreferredButtonTitle = @"KDIUIAlertControllerOptionsKeyPreferredButtonTitle";
 KDIUIAlertControllerOptionsKey const KDIUIAlertControllerOptionsKeyActions = @"KDIUIAlertControllerOptionsKeyActions";
+KDIUIAlertControllerOptionsKey const KDIUIAlertControllerOptionsKeyTextFieldConfigurationBlocks = @"KDIUIAlertControllerOptionsKeyTextFieldConfigurationBlocks";
 
 KDIUIAlertControllerOptionsActionKey const KDIUIAlertControllerOptionsActionKeyStyle = @"KDIUIAlertControllerOptionsActionKeyStyle";
 KDIUIAlertControllerOptionsActionKey const KDIUIAlertControllerOptionsActionKeyTitle = @"KDIUIAlertControllerOptionsActionKeyTitle";
@@ -180,6 +181,12 @@ KDIUIAlertControllerOptionsActionKey const KDIUIAlertControllerOptionsActionKeyP
                 [retval setPreferredAction:action];
             }
         }];
+    }
+    
+    if (options[KDIUIAlertControllerOptionsKeyTextFieldConfigurationBlocks] != nil) {
+        for (KDIUIAlertControllerTextFieldConfigurationBlock block in options[KDIUIAlertControllerOptionsKeyTextFieldConfigurationBlocks]) {
+            [retval addTextFieldWithConfigurationHandler:block];
+        }
     }
     
     return retval;
