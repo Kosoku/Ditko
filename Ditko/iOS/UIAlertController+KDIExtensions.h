@@ -22,7 +22,7 @@ NS_ASSUME_NONNULL_BEGIN
  
  @param buttonIndex The index of the button that was tapped
  */
-typedef void(^KDIUIAlertControllerCompletionBlock)(NSInteger buttonIndex);
+typedef void(^KDIUIAlertControllerCompletionBlock)(__kindof UIAlertController *alertController, NSInteger buttonIndex);
 
 /**
  The constant button index used to indicate the user tapped on the cancel button.

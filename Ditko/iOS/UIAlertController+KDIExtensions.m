@@ -113,14 +113,14 @@ KDIUIAlertControllerOptionsActionKey const KDIUIAlertControllerOptionsActionKeyP
     if (options[KDIUIAlertControllerOptionsKeyActions] == nil) {
         [retval addAction:[UIAlertAction actionWithTitle:cancelButtonTitle style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
             if (completion) {
-                completion(KDIUIAlertControllerCancelButtonIndex);
+                completion(retval,KDIUIAlertControllerCancelButtonIndex);
             }
         }]];
         
         [otherButtonTitles enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
             [retval addAction:[UIAlertAction actionWithTitle:obj style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
                 if (completion) {
-                    completion(idx);
+                    completion(retval,idx);
                 }
             }]];
         }];
@@ -144,7 +144,7 @@ KDIUIAlertControllerOptionsActionKey const KDIUIAlertControllerOptionsActionKeyP
             NSDictionary<KDIUIAlertControllerOptionsActionKey, id> *cancelActionDict = actionDicts[cancelActionDictIndex];
             UIAlertAction *action = [UIAlertAction actionWithTitle:cancelActionDict[KDIUIAlertControllerOptionsActionKeyTitle] style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
                 if (completion != nil) {
-                    completion(KDIUIAlertControllerCancelButtonIndex);
+                    completion(retval,KDIUIAlertControllerCancelButtonIndex);
                 }
             }];
             
@@ -164,7 +164,7 @@ KDIUIAlertControllerOptionsActionKey const KDIUIAlertControllerOptionsActionKeyP
         [actionDicts enumerateObjectsUsingBlock:^(NSDictionary<KDIUIAlertControllerOptionsActionKey,id> * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
             UIAlertAction *action = [UIAlertAction actionWithTitle:obj[KDIUIAlertControllerOptionsActionKeyTitle] style:[obj[KDIUIAlertControllerOptionsActionKeyStyle] integerValue] handler:^(UIAlertAction * _Nonnull action) {
                 if (completion != nil) {
-                    completion(idx);
+                    completion(retval,idx);
                 }
             }];
             
