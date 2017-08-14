@@ -43,6 +43,10 @@ FOUNDATION_EXPORT KDIUIAlertControllerOptionsKey const KDIUIAlertControllerOptio
  */
 FOUNDATION_EXPORT KDIUIAlertControllerOptionsKey const KDIUIAlertControllerOptionsKeyTitle;
 /**
+ Use this key with a value of @YES to suppress the substitution of the default localized title if the provided title is zero length.
+ */
+FOUNDATION_EXPORT KDIUIAlertControllerOptionsKey const KDIUIAlertControllerOptionsKeyIgnoreEmptyTitle;
+/**
  Use this key to pass the alert message. For example, @{KDIUIAlertControllerOptionsKeyMessage: @"The alert message"}. If a value is not provided a localized default is provided.
  */
 FOUNDATION_EXPORT KDIUIAlertControllerOptionsKey const KDIUIAlertControllerOptionsKeyMessage;

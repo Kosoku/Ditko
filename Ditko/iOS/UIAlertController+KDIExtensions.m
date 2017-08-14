@@ -23,6 +23,7 @@ NSInteger const KDIUIAlertControllerCancelButtonIndex = -1;
 
 KDIUIAlertControllerOptionsKey const KDIUIAlertControllerOptionsKeyStyle = @"KDIUIAlertControllerOptionsKeyStyle";
 KDIUIAlertControllerOptionsKey const KDIUIAlertControllerOptionsKeyTitle = @"KDIUIAlertControllerOptionsKeyTitle";
+KDIUIAlertControllerOptionsKey const KDIUIAlertControllerOptionsKeyIgnoreEmptyTitle = @"KDIUIAlertControllerOptionsKeyIgnoreEmptyTitle";
 KDIUIAlertControllerOptionsKey const KDIUIAlertControllerOptionsKeyMessage = @"KDIUIAlertControllerOptionsKeyMessage";
 KDIUIAlertControllerOptionsKey const KDIUIAlertControllerOptionsKeyCancelButtonTitle = @"KDIUIAlertControllerOptionsKeyCancelButtonTitle";
 KDIUIAlertControllerOptionsKey const KDIUIAlertControllerOptionsKeyOtherButtonTitles = @"KDIUIAlertControllerOptionsKeyOtherButtonTitles";
@@ -85,7 +86,9 @@ KDIUIAlertControllerOptionsActionKey const KDIUIAlertControllerOptionsActionKeyP
 + (UIAlertController *)KDI_alertControllerWithOptions:(NSDictionary<KDIUIAlertControllerOptionsKey, id> *)options completion:(nullable KDIUIAlertControllerCompletionBlock)completion; {
     NSString *title = options[KDIUIAlertControllerOptionsKeyTitle];
     
-    if (title.length == 0) {
+    if (title.length == 0 &&
+        ![options[KDIUIAlertControllerOptionsKeyIgnoreEmptyTitle] boolValue]) {
+        
         title = NSError.KST_defaultAlertTitle;
     }
     
