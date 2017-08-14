@@ -177,8 +177,8 @@ static NSArray<NSArray<NSString *> *> *kPickerViewButtonComponentsAndRows;
         [centerButton setTintColor:KDIColorRandomRGB()];
         [centerButton setBackgroundColor:[centerButton.tintColor KDI_inverseColor]];
         
-        [UIAlertController KDI_presentAlertControllerWithOptions:@{KDIUIAlertControllerOptionsKeyTitle: @"Title", KDIUIAlertControllerOptionsKeyMessage: @"This is an alert message", KDIUIAlertControllerOptionsKeyActions: @[@{KDIUIAlertControllerOptionsActionKeyTitle: @"Cancel", KDIUIAlertControllerOptionsActionKeyStyle: @(UIAlertActionStyleCancel)},@{KDIUIAlertControllerOptionsActionKeyTitle: @"Destroy!",KDIUIAlertControllerOptionsActionKeyStyle: @(UIAlertActionStyleDestructive)},@{KDIUIAlertControllerOptionsActionKeyTitle: @"Action",KDIUIAlertControllerOptionsActionKeyPreferred: @YES}]} completion:^(__kindof UIAlertController *alertController, NSInteger buttonIndex) {
-            NSLog(@"%@",@(buttonIndex));
+        [UIAlertController KDI_presentAlertControllerWithOptions:@{KDIUIAlertControllerOptionsKeyTitle: @"Title", KDIUIAlertControllerOptionsKeyMessage: @"This is an alert message", KDIUIAlertControllerOptionsKeyActions: @[@{KDIUIAlertControllerOptionsActionKeyTitle: @"Cancel", KDIUIAlertControllerOptionsActionKeyStyle: @(UIAlertActionStyleCancel)},@{KDIUIAlertControllerOptionsActionKeyTitle: @"Destroy!",KDIUIAlertControllerOptionsActionKeyStyle: @(UIAlertActionStyleDestructive)},@{KDIUIAlertControllerOptionsActionKeyTitle: @"Action",KDIUIAlertControllerOptionsActionKeyPreferred: @YES}], KDIUIAlertControllerOptionsKeyTextFieldConfigurationBlocks: @[^(UITextField *textField){textField.placeholder = @"All the #hashtags"; textField.keyboardType = UIKeyboardTypeTwitter;}]} completion:^(__kindof UIAlertController *alertController, NSInteger buttonIndex) {
+            NSLog(@"%@ %@",@(buttonIndex),alertController.textFields.firstObject.text);
         }];
     } forControlEvents:UIControlEventTouchUpInside];
     [centerButton setTitleAlignment:KDIButtonAlignmentBottom|KDIButtonAlignmentCenter];
