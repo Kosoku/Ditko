@@ -37,7 +37,7 @@ typedef NS_ENUM(NSInteger, KDIBadgeButtonBadgePosition) {
     KDIBadgeButtonBadgePositionBottomRight
 };
 
-@class KDIBadgeView;
+@class KDIBadgeView,KDIButton;
 
 /**
  KDIBadgeButton is a UIView subclass that manages an instance of UIButton and KDIBadgeView as subviews, allowing badging similar to system buttons (e.g. a UITabBarItem).
@@ -61,7 +61,7 @@ typedef NS_ENUM(NSInteger, KDIBadgeButtonBadgePosition) {
  
  @see UIButton
  */
-@property (readonly,strong,nonatomic) UIButton *button;
+@property (readonly,strong,nonatomic) KDIButton *button;
 
 - (void)layoutSubviews NS_REQUIRES_SUPER;
 - (CGSize)intrinsicContentSize NS_REQUIRES_SUPER;

@@ -15,6 +15,7 @@
 
 #import "KDIBadgeButton.h"
 #import "KDIBadgeView.h"
+#import "KDIButton.h"
 
 #import <Stanley/KSTScopeMacros.h>
 
@@ -22,7 +23,7 @@ static void *kKDIBadgeButtonObservingContext = &kKDIBadgeButtonObservingContext;
 
 @interface KDIBadgeButton ()
 @property (readwrite,strong,nonatomic) KDIBadgeView *badgeView;
-@property (readwrite,strong,nonatomic) UIButton *button;
+@property (readwrite,strong,nonatomic) KDIButton *button;
 
 - (void)_KDIBadgeButtonInit;
 @end
@@ -138,9 +139,7 @@ static void *kKDIBadgeButtonObservingContext = &kKDIBadgeButtonObservingContext;
 - (void)_KDIBadgeButtonInit; {
     _badgePosition = KDIBadgeButtonBadgePositionTopRight;
     
-    _button = [UIButton buttonWithType:UIButtonTypeSystem];
-    [_button setContentHorizontalAlignment:UIControlContentHorizontalAlignmentLeft];
-    [_button setContentVerticalAlignment:UIControlContentVerticalAlignmentTop];
+    _button = [KDIButton buttonWithType:UIButtonTypeSystem];
     [self addSubview:_button];
     
     _badgeView = [[KDIBadgeView alloc] initWithFrame:CGRectZero];
