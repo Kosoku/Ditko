@@ -57,9 +57,9 @@ typedef NS_ENUM(NSInteger, KDIBadgeButtonBadgePosition) {
  */
 @property (readonly,strong,nonatomic) KDIBadgeView *badgeView;
 /**
- Get the UIButton instance managed by the receiver.
+ Get the KDIButton instance managed by the receiver.
  
- @see UIButton
+ @see KDIButton
  */
 @property (readonly,strong,nonatomic) KDIButton *button;
 
