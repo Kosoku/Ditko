@@ -101,6 +101,15 @@
         [self reloadData];
     }
 }
+- (void)setDelegate:(id<KDIPickerViewButtonDelegate>)delegate {
+    _delegate = delegate;
+    
+    if (_dataSource != nil &&
+        _delegate != nil) {
+        
+        [self _reloadTitleForSelectedRowsInPickerView];
+    }
+}
 - (void)setSelectedComponentsJoinString:(NSString *)selectedComponentsJoinString {
     _selectedComponentsJoinString = selectedComponentsJoinString ?: [self.class _defaultSelectedComponentsJoinString];
     
