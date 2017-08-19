@@ -14,7 +14,7 @@ Demo icons by [Glyphish](http://www.glyphish.com/).
 
 ### Installation
 
-You can install *Ditko* using [cocoapods](https://cocoapods.org/), [Carthage](https://github.com/Carthage/Carthage), or as a framework. When installing as a framework, ensure you also link to [Stanley](https://github.com/Kosoku/Stanley) as *Ditko* relies on it.
+You can install *Ditko* using [cocoapods](https://cocoapods.org/), [Carthage](https://github.com/Carthage/Carthage), or as a framework. When installing as a framework, ensure you also link to [Stanley](https://github.com/Kosoku/Stanley) and [Loki](https://github.com/Kosoku/Loki) as *Ditko* relies on them.
 
 ### Dependencies
 
