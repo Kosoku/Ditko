@@ -55,7 +55,7 @@
 }
 
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView {
-    return [self.dataSource numberOfComponentsInPickerViewButton:self];
+    return [self _numberOfComponentsInPickerView];
 }
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
     return [self.dataSource pickerViewButton:self numberOfRowsInComponent:component];
