@@ -16,6 +16,7 @@
 #import <TargetConditionals.h>
 #if (TARGET_OS_IPHONE)
 #import <UIKit/UIKit.h>
+#import "UIFont+KDIDynamicTypeExtensions.h"
 #else
 #import <AppKit/AppKit.h>
 #endif
@@ -26,7 +27,7 @@ NS_ASSUME_NONNULL_BEGIN
  KDIBadgeView is a UIView or NSView subclass that represents a badge value, like those seen in the Mail application.
  */
 #if (TARGET_OS_IPHONE)
-@interface KDIBadgeView : UIView
+@interface KDIBadgeView : UIView <KDIDynamicTypeObject>
 #else
 @interface KDIBadgeView : NSView
 #endif

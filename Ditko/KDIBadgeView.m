@@ -95,6 +95,12 @@
     
     [self.badge drawInRect:KSTCGRectCenterInRect(CGRectMake(0, 0, size.width, size.height), self.bounds) withAttributes:@{NSFontAttributeName: self.badgeFont, NSForegroundColorAttributeName: self.isHighlighted ? self.badgeHighlightedForegroundColor : self.badgeForegroundColor}];
 }
+
+#pragma mark KDIDynamicTypeObject
+- (SEL)KDI_dynamicTypeSetFontSelector {
+    return @selector(setBadgeFont:);
+}
+
 #pragma mark ** Public Methods **
 #pragma mark Properties
 - (void)setHighlighted:(BOOL)highlighted {

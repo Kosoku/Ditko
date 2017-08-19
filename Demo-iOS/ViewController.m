@@ -19,21 +19,6 @@
 #import <Loki/Loki.h>
 #import <KSOFontAwesomeExtensions/KSOFontAwesomeExtensions.h>
 
-@interface KDIBadgeView (ViewControllerExtensions) <KDIDynamicTypeView>
-@end
-
-@implementation KDIBadgeView (ViewControllerExtensions)
-
-@dynamic KDI_dynamicTypeFont;
-- (UIFont *)KDI_dynamicTypeFont {
-    return self.badgeFont;
-}
-- (void)setKDI_dynamicTypeFont:(UIFont *)KDI_dynamicTypeFont {
-    [self setBadgeFont:KDI_dynamicTypeFont];
-}
-
-@end
-
 static NSArray<NSArray<NSString *> *> *kPickerViewButtonComponentsAndRows;
 
 @interface ViewController () <KDIPickerViewButtonDataSource,KDIPickerViewButtonDelegate>
@@ -215,7 +200,11 @@ static NSArray<NSArray<NSString *> *> *kPickerViewButtonComponentsAndRows;
     
     [self.navigationItem setRightBarButtonItems:@[[[UIBarButtonItem alloc] initWithCustomView:badgeButton]]];
     
-    [NSObject KDI_registerDynamicTypeViews:@[badgeView,blockButton,pickerViewButton,datePickerButton] forTextStyle:UIFontTextStyleBody];
+    [badgeButton.badgeView setKDI_dynamicTypeTextStyle:UIFontTextStyleCaption2];
+    [badgeView setKDI_dynamicTypeTextStyle:UIFontTextStyleCallout];
+    [blockButton.titleLabel setKDI_dynamicTypeTextStyle:UIFontTextStyleCallout];
+    [pickerViewButton.titleLabel setKDI_dynamicTypeTextStyle:UIFontTextStyleCallout];
+    [datePickerButton.titleLabel setKDI_dynamicTypeTextStyle:UIFontTextStyleCallout];
     
     KDIButton *toggleButton = [KDIButton buttonWithType:UIButtonTypeSystem];
     
