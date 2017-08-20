@@ -17,6 +17,39 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@protocol KDIDynamicTypeObject;
+
+@interface NSObject (KDIDynamicTypeExtensions)
+
+/**
+ Get the dynamic type text style of the receiver. This will be non-nil if the receiver was registered with registerDynamicTypeObject:forTextStyle: or registerDynamicTypeObjects:forTextStyle:.
+ */
+@property (readonly,nonatomic,nullable) UIFontTextStyle KDI_dynamicTypeTextStyle;
+
+/**
+ Register the object for dynamic type updates with the provided *textStyle*.
+ 
+ @param dynamicTypeObject The object to register for dynamic type updates
+ @param textStyle The text style to use when applying updates
+ */
++ (void)KDI_registerDynamicTypeObject:(id<KDIDynamicTypeObject>)dynamicTypeObject forTextStyle:(UIFontTextStyle)textStyle;
+/**
+ Register a collection of objects for dynamic type updates with the provided *textStyle*.
+ 
+ @param dynamicTypeObjects An array of objects to register for dynamic type updates
+ @param textStyle The text style to use when applying updates
+ */
++ (void)KDI_registerDynamicTypeObjects:(NSArray<id<KDIDynamicTypeObject>> *)dynamicTypeObjects forTextStyle:(UIFontTextStyle)textStyle;
+
+/**
+ Unregister the object for dynamic type updates. Calling this method is not required, the object is automatically unregistered when it is deallocated.
+ 
+ @param dynamicTypeObject The object to unregister
+ */
++ (void)KDI_unregisterDynamicTypeObject:(id<KDIDynamicTypeObject>)dynamicTypeObject;
+
+@end
+
 @interface UIFont (KDIDynamicTypeExtensions)
 
 /**
@@ -34,14 +67,7 @@ NS_ASSUME_NONNULL_BEGIN
 @protocol KDIDynamicTypeObject <NSObject>
 @required
 /**
- Set and get the text style of the receiver. Setting this to a non-nil value indicates you wish the framework to register for dynamic type updates on your behalf. Setting this to nil unregisters for dynamic type updates.
- 
- The default is nil.
- */
-@property (copy,nonatomic,nullable) UIFontTextStyle KDI_dynamicTypeTextStyle;
-@optional
-/**
- This method should return the selector that will be called to set the receiver's font when an update occurs. Any custom view object wishing to adopt the protocol should return the appropriate set selector. If the object does not implement this method, but responds to setFont:, setFont: will be used.
+ This method should return the selector that will be called to set the receiver's font when an update occurs. Any custom view object wishing to adopt the protocol should return the appropriate set selector.
  */
 @property (readonly,nonatomic) SEL KDI_dynamicTypeSetFontSelector;
 @end
