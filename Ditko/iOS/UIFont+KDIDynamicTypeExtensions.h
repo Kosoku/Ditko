@@ -41,7 +41,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (copy,nonatomic,nullable) UIFontTextStyle KDI_dynamicTypeTextStyle;
 @optional
 /**
- This method should return the selector that will be called to set the receiver's font when an update occurs. For example, support for UILabel is provided by returning @selector(setFont:) from this method. Any custom view object wishing to adopt the protocol should return the appropriate set selector.
+ This method should return the selector that will be called to set the receiver's font when an update occurs. Any custom view object wishing to adopt the protocol should return the appropriate set selector. If the object does not implement this method, but responds to setFont:, setFont: will be used.
  */
 @property (readonly,nonatomic) SEL KDI_dynamicTypeSetFontSelector;
 @end

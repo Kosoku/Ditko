@@ -16,6 +16,7 @@
 #import "UIFont+KDIDynamicTypeExtensions.h"
 
 #import <Stanley/NSArray+KSTExtensions.h>
+#import <Stanley/KSTLoggingMacros.h>
 
 #import <objc/runtime.h>
 
@@ -47,9 +48,10 @@
     return self;
 }
 - (void)updateDynamicTypeObject; {
-    SEL setFontSelector = [self.dynamicTypeObject KDI_dynamicTypeSetFontSelector];
+    SEL setFontSelector = [self.dynamicTypeObject respondsToSelector:@selector(KDI_dynamicTypeSetFontSelector)] ? [self.dynamicTypeObject KDI_dynamicTypeSetFontSelector] : @selector(setFont:);
     
     if (![self.dynamicTypeObject respondsToSelector:setFontSelector]) {
+        KSTLog(@"dynamic type object %@ does not respond to selector %@, returning",self.dynamicTypeObject,NSStringFromSelector(setFontSelector));
         return;
     }
     
@@ -97,10 +99,6 @@ static void const *kKDI_dynamicTypeTextStyleKey = &kKDI_dynamicTypeTextStyleKey;
     [self setKDI_dynamicTypeHelper:[[KDIDynamicTypeHelper alloc] initWithDynamicTypeObject:self textStyle:KDI_dynamicTypeTextStyle]];
 }
 
-- (SEL)KDI_dynamicTypeSetFontSelector {
-    return @selector(setFont:);
-}
-
 @end
 
 @implementation UITextField (KDIDynamicTypeExtensions)
@@ -113,10 +111,6 @@ static void const *kKDI_dynamicTypeTextStyleKey = &kKDI_dynamicTypeTextStyleKey;
     [self setKDI_dynamicTypeHelper:[[KDIDynamicTypeHelper alloc] initWithDynamicTypeObject:self textStyle:KDI_dynamicTypeTextStyle]];
 }
 
-- (SEL)KDI_dynamicTypeSetFontSelector {
-    return @selector(setFont:);
-}
-
 @end
 
 @implementation UITextView (KDIDynamicTypeExtensions)
@@ -127,10 +121,6 @@ static void const *kKDI_dynamicTypeTextStyleKey = &kKDI_dynamicTypeTextStyleKey;
 }
 - (void)setKDI_dynamicTypeTextStyle:(UIFontTextStyle)KDI_dynamicTypeTextStyle {
     [self setKDI_dynamicTypeHelper:[[KDIDynamicTypeHelper alloc] initWithDynamicTypeObject:self textStyle:KDI_dynamicTypeTextStyle]];
-}
-
-- (SEL)KDI_dynamicTypeSetFontSelector {
-    return @selector(setFont:);
 }
 
 @end
