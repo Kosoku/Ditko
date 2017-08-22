@@ -18,6 +18,12 @@
 NS_ASSUME_NONNULL_BEGIN
 
 /**
+ Typedef for the block that is invoked immediately before returning the alert controller. The client can further customize the alert controller.
+ 
+ @param alertController The alert controller to configure
+ */
+typedef void(^KDIUIAlertControllerConfigureBlock)(__kindof UIAlertController *alertController);
+/**
  Typedef for the block that is invoked after the user has tapped on one of the alert buttons and the alert controller has been dismissed.
  
  @param alertController The alert controller that was dismissed
@@ -132,6 +138,14 @@ FOUNDATION_EXPORT KDIUIAlertControllerOptionsActionKey const KDIUIAlertControlle
  @param completion The completion block invoked when the UIAlertController is dismissed
  */
 + (void)KDI_presentAlertControllerWithOptions:(NSDictionary<KDIUIAlertControllerOptionsKey, id> *)options completion:(nullable KDIUIAlertControllerCompletionBlock)completion;
+/**
+ Creates an alert using `[self KDI_alertControllerWithOptions:options configure:configure completion:completion]` and presents it using `KDI_presentAlertControllerAnimated:completion:` passing YES and nil respectively. If you want to handle presenting the alert yourself, use `KDI_alertControllerWithOptions:configure:completion:`.
+ 
+ @param options The options used to create the UIAlertController
+ @param configure The configure block that can be used to further customize the alert controller
+ @param completion The completion block invoked when the UIAlertController is dismissed
+ */
++ (void)KDI_presentAlertControllerWithOptions:(NSDictionary<KDIUIAlertControllerOptionsKey, id> *)options configure:(nullable KDIUIAlertControllerConfigureBlock)configure completion:(nullable KDIUIAlertControllerCompletionBlock)completion;
 
 /**
  Presents the receiver modally optionally *animated* and invokes *completion* when the presentation completes.
@@ -168,12 +182,32 @@ FOUNDATION_EXPORT KDIUIAlertControllerOptionsActionKey const KDIUIAlertControlle
  */
 + (UIAlertController *)KDI_alertControllerWithTitle:(nullable NSString *)title message:(nullable NSString *)message cancelButtonTitle:(nullable NSString *)cancelButtonTitle otherButtonTitles:(nullable NSArray<NSString *> *)otherButtonTitles completion:(nullable KDIUIAlertControllerCompletionBlock)completion;
 /**
+ Creates and returns a alert controller using the provided parameters.
+ 
+ @param title The title of the alert, if nil a localized default is used
+ @param message The message of the alert, if nil a localized default is used
+ @param cancelButtonTitle The cancel button title of the alert, if nil a localized default is used
+ @param otherButtonTitles The array of other button titles to add to the receiver
+ @param configure The configure block that can be used to further configure the alert controller
+ @param completion The completion block to invoke after the alert controller is dismissed
+ @return The alert controller
+ */
++ (UIAlertController *)KDI_alertControllerWithTitle:(nullable NSString *)title message:(nullable NSString *)message cancelButtonTitle:(nullable NSString *)cancelButtonTitle otherButtonTitles:(nullable NSArray<NSString *> *)otherButtonTitles configure:(nullable KDIUIAlertControllerConfigureBlock)configure completion:(nullable KDIUIAlertControllerCompletionBlock)completion;
+/**
  Creates and returns a UIAlertController with the provided *options* and invokes the *completion* block when the UIAlertController is dismissed.
  
  @param options The options used to create the UIAlertController
+ @param completion The completion block to invoke when the UIAlertController is dismissed
+ */
++ (UIAlertController *)KDI_alertControllerWithOptions:(NSDictionary<KDIUIAlertControllerOptionsKey, id> *)options  completion:(nullable KDIUIAlertControllerCompletionBlock)completion;
+/**
+ Creates and returns a UIAlertController with the provided *options* and invokes the *completion* block when the UIAlertController is dismissed. The provided *configure* block can be used to further customize the alert controller.
+ 
+ @param options The options used to create the UIAlertController
+ @param configure The configure block that can be used to further customize the alert controller
  @param completion The completio block to invoke when the UIAlertController is dismissed
  */
-+ (UIAlertController *)KDI_alertControllerWithOptions:(NSDictionary<KDIUIAlertControllerOptionsKey, id> *)options completion:(nullable KDIUIAlertControllerCompletionBlock)completion;
++ (UIAlertController *)KDI_alertControllerWithOptions:(NSDictionary<KDIUIAlertControllerOptionsKey, id> *)options configure:(nullable KDIUIAlertControllerConfigureBlock)configure completion:(nullable KDIUIAlertControllerCompletionBlock)completion;
 
 @end
 

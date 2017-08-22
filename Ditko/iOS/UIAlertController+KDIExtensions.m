@@ -50,7 +50,10 @@ KDIUIAlertControllerOptionsActionKey const KDIUIAlertControllerOptionsActionKeyP
     [alertController KDI_presentAlertControllerAnimated:YES completion:nil];
 }
 + (void)KDI_presentAlertControllerWithOptions:(NSDictionary<KDIUIAlertControllerOptionsKey,id> *)options completion:(KDIUIAlertControllerCompletionBlock)completion {
-    UIAlertController *alertController = [self KDI_alertControllerWithOptions:options completion:completion];
+    [self KDI_presentAlertControllerWithOptions:options configure:nil completion:completion];
+}
++ (void)KDI_presentAlertControllerWithOptions:(NSDictionary<KDIUIAlertControllerOptionsKey,id> *)options configure:(nullable KDIUIAlertControllerConfigureBlock)configure completion:(KDIUIAlertControllerCompletionBlock)completion {
+    UIAlertController *alertController = [self KDI_alertControllerWithOptions:options configure:configure completion:completion];
     
     [alertController KDI_presentAlertControllerAnimated:YES completion:nil];
 }
@@ -67,6 +70,9 @@ KDIUIAlertControllerOptionsActionKey const KDIUIAlertControllerOptionsActionKeyP
     return [self KDI_alertControllerWithTitle:error.KST_alertTitle message:error.KST_alertMessage cancelButtonTitle:nil otherButtonTitles:nil completion:completion];
 }
 + (UIAlertController *)KDI_alertControllerWithTitle:(nullable NSString *)title message:(nullable NSString *)message cancelButtonTitle:(nullable NSString *)cancelButtonTitle otherButtonTitles:(nullable NSArray *)otherButtonTitles completion:(nullable KDIUIAlertControllerCompletionBlock)completion; {
+    return [self KDI_alertControllerWithTitle:title message:message cancelButtonTitle:cancelButtonTitle otherButtonTitles:otherButtonTitles configure:nil completion:completion];
+}
++ (UIAlertController *)KDI_alertControllerWithTitle:(nullable NSString *)title message:(nullable NSString *)message cancelButtonTitle:(nullable NSString *)cancelButtonTitle otherButtonTitles:(nullable NSArray *)otherButtonTitles configure:(nullable KDIUIAlertControllerConfigureBlock)configure completion:(nullable KDIUIAlertControllerCompletionBlock)completion; {
     NSMutableDictionary *options = [[NSMutableDictionary alloc] init];
     
     if (title != nil) {
@@ -82,10 +88,12 @@ KDIUIAlertControllerOptionsActionKey const KDIUIAlertControllerOptionsActionKeyP
         [options setObject:otherButtonTitles forKey:KDIUIAlertControllerOptionsKeyOtherButtonTitles];
     }
     
-    return [self KDI_alertControllerWithOptions:options completion:completion];
+    return [self KDI_alertControllerWithOptions:options configure:configure completion:completion];
 }
-
 + (UIAlertController *)KDI_alertControllerWithOptions:(NSDictionary<KDIUIAlertControllerOptionsKey, id> *)options completion:(nullable KDIUIAlertControllerCompletionBlock)completion; {
+    return [self KDI_alertControllerWithOptions:options configure:nil completion:completion];
+}
++ (UIAlertController *)KDI_alertControllerWithOptions:(NSDictionary<KDIUIAlertControllerOptionsKey, id> *)options configure:(nullable KDIUIAlertControllerConfigureBlock)configure completion:(nullable KDIUIAlertControllerCompletionBlock)completion; {
     NSString *title = options[KDIUIAlertControllerOptionsKeyTitle];
     
     if (title.length == 0 &&
@@ -187,6 +195,10 @@ KDIUIAlertControllerOptionsActionKey const KDIUIAlertControllerOptionsActionKeyP
         for (KDIUIAlertControllerTextFieldConfigurationBlock block in options[KDIUIAlertControllerOptionsKeyTextFieldConfigurationBlocks]) {
             [retval addTextFieldWithConfigurationHandler:block];
         }
+    }
+    
+    if (configure != nil) {
+        configure(retval);
     }
     
     return retval;
