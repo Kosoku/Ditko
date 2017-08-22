@@ -132,6 +132,17 @@ FOUNDATION_EXPORT KDIUIAlertControllerOptionsActionKey const KDIUIAlertControlle
  */
 + (void)KDI_presentAlertControllerWithTitle:(nullable NSString *)title message:(nullable NSString *)message cancelButtonTitle:(nullable NSString *)cancelButtonTitle otherButtonTitles:(nullable NSArray<NSString *> *)otherButtonTitles completion:(nullable KDIUIAlertControllerCompletionBlock)completion;
 /**
+ Creates and presents an alert controller using the provided parameters. If you want to present the alert yourself, use `KDI_alertControllerWithTitle:message:cancelButtonTitle:otherButtonTitles:completion:` instead.
+ 
+ @param title The title of the alert, if nil a localized default is used
+ @param message The message of the alert, if nil a localized default is used
+ @param cancelButtonTitle The cancel button title of the alert, if nil a localized default is used
+ @param otherButtonTitles The array of other button titles to add to the receiver
+ @param configure The configure that can be used to further customize the alert controller
+ @param completion The completion block to invoke after the alert controller is dismissed
+ */
++ (void)KDI_presentAlertControllerWithTitle:(nullable NSString *)title message:(nullable NSString *)message cancelButtonTitle:(nullable NSString *)cancelButtonTitle otherButtonTitles:(nullable NSArray<NSString *> *)otherButtonTitles configure:(nullable KDIUIAlertControllerConfigureBlock)configure completion:(nullable KDIUIAlertControllerCompletionBlock)completion;
+/**
  Creates an alert using `[self KDI_alertControllerWithOptions:options completion:completion]` and presents it using `KDI_presentAlertControllerAnimated:completion:` passing YES and nil respectively. If you want to handle presenting the alert yourself, use `KDI_alertControllerWithOptions:completion:`.
  
  @param options The options used to create the UIAlertController
