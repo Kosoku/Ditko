@@ -53,11 +53,11 @@ NSString *kLastBadge = nil;
         return;
     }
     
-    UIFont *font = [UIFont systemFontOfSize:11.0];
+    UIFont *font = [UIFont boldSystemFontOfSize:11.0];
     CGSize size = [badge sizeWithAttributes:@{NSFontAttributeName: font}];
     CGRect rect = CGRectMake(0, 0, size.width + 8.0, size.height + 8.0);
     
-    UIGraphicsBeginImageContext(rect.size);
+    UIGraphicsBeginImageContextWithOptions(rect.size, NO, 0.0);
     
     UIColor *backgroundColor = self.viewController.view.backgroundColor ?: UIColor.redColor;
     

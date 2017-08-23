@@ -202,7 +202,6 @@ static NSArray<NSArray<NSString *> *> *kPickerViewButtonComponentsAndRows;
     
     [self.navigationItem setRightBarButtonItems:@[[[UIBarButtonItem alloc] initWithCustomView:badgeButton]]];
     
-    [NSObject KDI_registerDynamicTypeObject:badgeButton.badgeView forTextStyle:UIFontTextStyleCaption2];
     [NSObject KDI_registerDynamicTypeObjects:@[badgeView,blockButton.titleLabel,pickerViewButton.titleLabel,datePickerButton.titleLabel] forTextStyle:UIFontTextStyleCallout];
     
     KDIButton *toggleButton = [KDIButton buttonWithType:UIButtonTypeSystem];
