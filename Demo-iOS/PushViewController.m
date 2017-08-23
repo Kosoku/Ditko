@@ -48,23 +48,48 @@
     } forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:pushButton];
     
-    KDIButton *badgeButton = [KDIButton buttonWithType:UIButtonTypeSystem];
+    KDIButton *presentButton = [KDIButton buttonWithType:UIButtonTypeSystem];
     
-    [badgeButton setTranslatesAutoresizingMaskIntoConstraints:NO];
-    [badgeButton setTitle:@"Badge Back Button" forState:UIControlStateNormal];
-    [badgeButton setTintColor:pushButton.tintColor];
-    [badgeButton KDI_addBlock:^(__kindof UIControl * _Nonnull control, UIControlEvents controlEvents) {
+    [presentButton setTranslatesAutoresizingMaskIntoConstraints:NO];
+    [presentButton setTitle:@"Present VC" forState:UIControlStateNormal];
+    [presentButton setTintColor:[self.view.backgroundColor KDI_contrastingColor]];
+    [presentButton KDI_addBlock:^(__kindof UIControl * _Nonnull control, UIControlEvents controlEvents) {
+        kstStrongify(self);
+        [self presentViewController:[[UINavigationController alloc] initWithRootViewController:[[PushViewController alloc] init]] animated:YES completion:nil];
+    } forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:presentButton];
+    
+    KDIButton *actionButton = [KDIButton buttonWithType:UIButtonTypeSystem];
+    
+    [actionButton setTranslatesAutoresizingMaskIntoConstraints:NO];
+    [actionButton setTitle:@"Badge Back Button" forState:UIControlStateNormal];
+    [actionButton setTintColor:pushButton.tintColor];
+    [actionButton KDI_addBlock:^(__kindof UIControl * _Nonnull control, UIControlEvents controlEvents) {
         [NSNotificationCenter.defaultCenter postNotificationName:IOSDNotificationNameBadgeDidChange object:nil userInfo:@{IOSDUserInfoKeyBadge: [NSNumberFormatter localizedStringFromNumber:@(arc4random_uniform(1001)) numberStyle:NSNumberFormatterDecimalStyle]}];
     } forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:badgeButton];
+    [self.view addSubview:actionButton];
     
     [NSLayoutConstraint activateConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[top]-[view]" options:0 metrics:nil views:@{@"view": pushButton, @"top": self.topLayoutGuide}]];
     [NSLayoutConstraint activateConstraints:@[[NSLayoutConstraint constraintWithItem:pushButton attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeCenterX multiplier:1.0 constant:0]]];
     
-    [NSLayoutConstraint activateConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[subview]-[view]" options:0 metrics:nil views:@{@"view": badgeButton, @"subview": pushButton}]];
-    [NSLayoutConstraint activateConstraints:@[[NSLayoutConstraint constraintWithItem:badgeButton attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeCenterX multiplier:1.0 constant:0]]];
+    [NSLayoutConstraint activateConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[subview]-[view]" options:0 metrics:nil views:@{@"view": presentButton, @"subview": pushButton}]];
+    [NSLayoutConstraint activateConstraints:@[[NSLayoutConstraint constraintWithItem:presentButton attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeCenterX multiplier:1.0 constant:0]]];
+    
+    [NSLayoutConstraint activateConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[subview]-[view]" options:0 metrics:nil views:@{@"view": actionButton, @"subview": presentButton}]];
+    [NSLayoutConstraint activateConstraints:@[[NSLayoutConstraint constraintWithItem:actionButton attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeCenterX multiplier:1.0 constant:0]]];
     
     [self.navigationItem setBackBarButtonItem:[UIBarButtonItem iosd_backBarButtonItemWithViewController:self]];
+    
+    if (self.presentingViewController != nil) {
+        [self.navigationItem setLeftBarButtonItems:@[[UIBarButtonItem KDI_barButtonSystemItem:UIBarButtonSystemItemCancel block:^(__kindof UIBarButtonItem * _Nonnull barButtonItem) {
+            kstStrongify(self);
+            [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+        }]]];
+        
+        [self.navigationItem setRightBarButtonItems:@[[UIBarButtonItem KDI_barButtonSystemItem:UIBarButtonSystemItemDone block:^(__kindof UIBarButtonItem * _Nonnull barButtonItem) {
+            [[UIViewController KDI_viewControllerForPresenting] KDI_recursivelyDismissViewControllerAnimated:YES completion:nil];
+        }]]];
+    }
 }
 
 @end
