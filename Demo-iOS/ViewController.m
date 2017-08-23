@@ -14,6 +14,8 @@
 //  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #import "ViewController.h"
+#import "PushViewController.h"
+#import "UIBarButtonItem+DemoExtensions.h"
 
 #import <Ditko/Ditko.h>
 #import <Loki/Loki.h>
@@ -233,6 +235,23 @@ static NSArray<NSArray<NSString *> *> *kPickerViewButtonComponentsAndRows;
     [gradientView addSubview:stepper];
     [gradientView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:[subview]-[view]" options:0 metrics:nil views:@{@"view": stepper, @"subview": toggleButton}]];
     [gradientView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[subview]-[view]" options:0 metrics:nil views:@{@"view": stepper, @"subview": datePickerButton}]];
+    
+    KDIButton *pushViewControllerButton = [KDIButton buttonWithType:UIButtonTypeSystem];
+    
+    [pushViewControllerButton setTranslatesAutoresizingMaskIntoConstraints:NO];
+    [pushViewControllerButton setBackgroundColor:[pushViewControllerButton.tintColor KDI_contrastingColor]];
+    [pushViewControllerButton setTitle:@"Push VC" forState:UIControlStateNormal];
+    [pushViewControllerButton setContentEdgeInsets:UIEdgeInsetsMake(8, 16, 8, 16)];
+    [pushViewControllerButton setRounded:YES];
+    [pushViewControllerButton KDI_addBlock:^(__kindof UIControl * _Nonnull control, UIControlEvents controlEvents) {
+        [self.navigationController pushViewController:[[PushViewController alloc] init] animated:YES];
+    } forControlEvents:UIControlEventTouchUpInside];
+    
+    [gradientView addSubview:pushViewControllerButton];
+    [gradientView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[view]" options:0 metrics:nil views:@{@"view": pushViewControllerButton}]];
+    [gradientView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[subview]-[view]" options:0 metrics:nil views:@{@"view": pushViewControllerButton, @"subview": toggleButton}]];
+    
+    [self.navigationItem setBackBarButtonItem:[UIBarButtonItem iosd_backBarButtonItemWithViewController:self]];
     
     UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:nil action:NULL];
     
