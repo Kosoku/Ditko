@@ -16,19 +16,19 @@
 #import <UIKit/UIKit.h>
 
 /**
- Enum describing the possible values for the badge position. They affect which view the badge view is laid out relative to in combination with badgeOffset.
+ Enum describing the possible values for the badge position. They affect how the badge view is laid out.
  */
 typedef NS_ENUM(NSInteger, KDIBadgeButtonBadgePosition) {
     /**
-     Badge the top left of the button.
+     The badge view will be laid out relative to the bounds of the receiver.
      */
     KDIBadgeButtonBadgePositionRelativeToBounds,
     /**
-     Badge the top right of the button.
+     The badge view will be laid out relative to the frame of the image of the contained button.
      */
     KDIBadgeButtonBadgePositionRelativeToImage,
     /**
-     Badge the bottom left of the button.
+     The badge view will be laid out relative to the frame of the title of the contained button.
      */
     KDIBadgeButtonBadgePositionRelativeToTitle
 };
@@ -36,17 +36,33 @@ typedef NS_ENUM(NSInteger, KDIBadgeButtonBadgePosition) {
 @class KDIBadgeView,KDIButton;
 
 /**
- KDIBadgeButton is a UIView subclass that manages an instance of KDIButton and KDIBadgeView as subviews, allowing badging similar to system buttons (e.g. a UITabBarItem).
+ KDIBadgeButton is a UIView subclass that manages an instance of KDIButton and KDIBadgeView as subviews, allowing badging similar to system buttons (e.g. UITabBarItem).
  */
 @interface KDIBadgeButton : UIView
 
 /**
- Set and get the badge position. The default is KDIBadgeButtonBadgePositionRelativeToImage.
+ Set and get the badge position. This affects how badgePositionOffset and badgeSizeOffset are interpreted when laying out the badge view.
+ 
+ The default is KDIBadgeButtonBadgePositionRelativeToBounds.
  
  See KDIBadgeButtonBadgePosition
  */
 @property (assign,nonatomic) KDIBadgeButtonBadgePosition badgePosition;
+/**
+ Set and get the badge position offset. The badge view is laid out using this value to compute its origin and interpeting this value as a percentage of the size of the view referenced by badgePosition.
+ 
+ For example, if CGPointMake(1.0, 0.0) was set and the value of badgePosition was KDIBadgeButtonBadgePositionRelativeToBounds, the origin of the badge view would be CGPointMake(button.frame.origin.x + button.frame.size.width * badgePositionOffset.x, button.frame.origin.y + button.frame.size.height * badgePositionOffset.y).
+ 
+ The default is CGPointMake(1.0, 0.0), which means the badge view begins layout in the top right of the receiver.
+ */
 @property (assign,nonatomic) CGPoint badgePositionOffset;
+/**
+ Set and get the badge size offset. The badge view is further laid out using this value to adjust its origin by a percentage of its own size.
+ 
+ For example, if CGPointMake(-0.25, -0.25) was set the origin of the badge view would be CGPointMake(badgeView.origin.x + badgeView.size.width * badgeSizeOffset.x, badgeView.origin.y + badgeView.size.height * badgeSizeOffset.y).
+ 
+ The default is CGPointMake(-0.25, -0.25), which means the badge view is offset to the left by its width * 0.25 and to the top by its height * 0.25.
+ */
 @property (assign,nonatomic) CGPoint badgeSizeOffset;
 /**
  Get the KDIBadgeView instance managed by the receiver.

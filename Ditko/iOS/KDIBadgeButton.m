@@ -146,8 +146,8 @@ static void *kKDIBadgeButtonObservingContext = &kKDIBadgeButtonObservingContext;
             break;
     }
     
-    badgeViewFrame.origin.x += CGRectGetWidth(badgeViewFrame) * self.badgeSizeOffset.x;
-    badgeViewFrame.origin.y += CGRectGetHeight(badgeViewFrame) * self.badgeSizeOffset.y;
+    badgeViewFrame.origin.x += ceil(CGRectGetWidth(badgeViewFrame) * self.badgeSizeOffset.x);
+    badgeViewFrame.origin.y += ceil(CGRectGetHeight(badgeViewFrame) * self.badgeSizeOffset.y);
     
     if (CGRectGetMinX(buttonFrame) < 0.0) {
         CGFloat delta = ABS(CGRectGetMinX(buttonFrame));
