@@ -16,25 +16,21 @@
 #import <UIKit/UIKit.h>
 
 /**
- Enum describing the possible values for the badge position. They affect where the KDIBadgeView subview is laid out during layoutSubviews.
+ Enum describing the possible values for the badge position. They affect which view the badge view is laid out relative to in combination with badgeOffset.
  */
 typedef NS_ENUM(NSInteger, KDIBadgeButtonBadgePosition) {
     /**
      Badge the top left of the button.
      */
-    KDIBadgeButtonBadgePositionTopLeft,
+    KDIBadgeButtonBadgePositionRelativeToBounds,
     /**
      Badge the top right of the button.
      */
-    KDIBadgeButtonBadgePositionTopRight,
+    KDIBadgeButtonBadgePositionRelativeToImage,
     /**
      Badge the bottom left of the button.
      */
-    KDIBadgeButtonBadgePositionBottomLeft,
-    /**
-     Badge the bottom right of the button.
-     */
-    KDIBadgeButtonBadgePositionBottomRight
+    KDIBadgeButtonBadgePositionRelativeToTitle
 };
 
 @class KDIBadgeView,KDIButton;
@@ -45,11 +41,13 @@ typedef NS_ENUM(NSInteger, KDIBadgeButtonBadgePosition) {
 @interface KDIBadgeButton : UIView
 
 /**
- Set and get the badge position. The default is KDIBadgeButtonBadgePositionTopRight.
+ Set and get the badge position. The default is KDIBadgeButtonBadgePositionRelativeToImage.
  
  See KDIBadgeButtonBadgePosition
  */
 @property (assign,nonatomic) KDIBadgeButtonBadgePosition badgePosition;
+@property (assign,nonatomic) CGPoint badgePositionOffset;
+@property (assign,nonatomic) CGPoint badgeSizeOffset;
 /**
  Get the KDIBadgeView instance managed by the receiver.
  
