@@ -51,6 +51,10 @@
     return self;
 }
 
++ (BOOL)requiresConstraintBasedLayout {
+    return YES;
+}
+
 - (void)updateConstraints {
     [NSLayoutConstraint deactivateConstraints:self.activeConstraints];
     
