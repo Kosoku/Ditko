@@ -179,7 +179,7 @@ static NSArray<NSArray<NSString *> *> *kPickerViewButtonComponentsAndRows;
     
     KDIBadgeButton *badgeButton = [[KDIBadgeButton alloc] initWithFrame:CGRectZero];
     
-    [badgeButton.button setImage:[UIImage KSO_fontAwesomeImageWithString:@"\uf007" size:CGSizeMake(30, 30)] forState:UIControlStateNormal];
+    [badgeButton.button setImage:[UIImage KSO_fontAwesomeImageWithString:@"\uf007" size:CGSizeMake(25, 25)] forState:UIControlStateNormal];
     [badgeButton.badgeView setBadge:@"1"];
     [badgeButton.badgeView setBadgeBackgroundColor:KDIColorRandomRGB()];
     [badgeButton.badgeView setBadgeForegroundColor:[badgeButton.badgeView.badgeBackgroundColor KDI_contrastingColor]];
@@ -188,21 +188,13 @@ static NSArray<NSArray<NSString *> *> *kPickerViewButtonComponentsAndRows;
     __block NSUInteger badgeButtonValue = 1;
     
     [badgeButton.button KDI_addBlock:^(__kindof UIControl * _Nonnull control, UIControlEvents controlEvents) {
-        KDIBadgeButtonBadgePosition badgePosition = badgeButton.badgePosition;
-        
-        if ((++badgePosition) > KDIBadgeButtonBadgePositionBottomRight) {
-            badgePosition = KDIBadgeButtonBadgePositionTopLeft;
-        }
-        
-        [badgeButton setBadgePosition:badgePosition];
         [badgeButton.badgeView setBadge:[NSNumberFormatter localizedStringFromNumber:@(++badgeButtonValue) numberStyle:NSNumberFormatterDecimalStyle]];
         [badgeButton.badgeView setBadgeBackgroundColor:KDIColorRandomRGB()];
         [badgeButton.badgeView setBadgeForegroundColor:[badgeButton.badgeView.badgeBackgroundColor KDI_contrastingColor]];
+        [badgeButton sizeToFit];
     } forControlEvents:UIControlEventTouchUpInside];
     
     [self.navigationItem setRightBarButtonItems:@[[[UIBarButtonItem alloc] initWithCustomView:badgeButton]]];
-    
-    [NSObject KDI_registerDynamicTypeObjects:@[badgeView,blockButton.titleLabel,pickerViewButton.titleLabel,datePickerButton.titleLabel] forTextStyle:UIFontTextStyleCallout];
     
     KDIButton *toggleButton = [KDIButton buttonWithType:UIButtonTypeSystem];
     
@@ -249,6 +241,30 @@ static NSArray<NSArray<NSString *> *> *kPickerViewButtonComponentsAndRows;
     [gradientView addSubview:pushViewControllerButton];
     [gradientView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[view]" options:0 metrics:nil views:@{@"view": pushViewControllerButton}]];
     [gradientView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[subview]-[view]" options:0 metrics:nil views:@{@"view": pushViewControllerButton, @"subview": toggleButton}]];
+    
+    KDIBadgeButton *centerBadgeButton = [[KDIBadgeButton alloc] initWithFrame:CGRectZero];
+    
+    [centerBadgeButton setTranslatesAutoresizingMaskIntoConstraints:NO];
+    [centerBadgeButton setBadgePosition:KDIBadgeButtonBadgePositionRelativeToImage];
+    [centerBadgeButton setBadgePositionOffset:CGPointMake(1.0, 0.5)];
+    [centerBadgeButton.button setKDI_cornerRadius:5.0];
+    [centerBadgeButton.button setContentEdgeInsets:UIEdgeInsetsMake(8, 8, 8, 8)];
+    [centerBadgeButton.button setBackgroundColor:[pushViewControllerButton.tintColor KDI_contrastingColor]];
+    [centerBadgeButton.button setImageAlignment:KDIButtonAlignmentTop|KDIButtonAlignmentCenter];
+    [centerBadgeButton.button setTitleAlignment:KDIButtonAlignmentBottom|KDIButtonAlignmentCenter];
+    [centerBadgeButton.button setTitle:@"Center Badge" forState:UIControlStateNormal];
+    [centerBadgeButton.button setImage:[[UIImage KSO_fontAwesomeImageWithString:@"\uf1d9" size:CGSizeMake(32, 32)] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] forState:UIControlStateNormal];
+    [centerBadgeButton.badgeView setBadge:[NSNumberFormatter localizedStringFromNumber:@123 numberStyle:NSNumberFormatterDecimalStyle]];
+    [centerBadgeButton.button KDI_addBlock:^(__kindof UIControl * _Nonnull control, UIControlEvents controlEvents) {
+        [centerBadgeButton.badgeView setBadge:[NSNumberFormatter localizedStringFromNumber:@(arc4random_uniform(1001)) numberStyle:NSNumberFormatterDecimalStyle]];
+    } forControlEvents:UIControlEventTouchUpInside];
+    [NSObject KDI_registerDynamicTypeObject:centerBadgeButton.badgeView forTextStyle:UIFontTextStyleCaption2];
+    
+    [gradientView addSubview:centerBadgeButton];
+    [gradientView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:[subview]-[view]" options:0 metrics:nil views:@{@"view": centerBadgeButton, @"subview": pushViewControllerButton}]];
+    [gradientView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[subview]-[view]" options:0 metrics:nil views:@{@"view": centerBadgeButton, @"subview": toggleButton}]];
+    
+    [NSObject KDI_registerDynamicTypeObjects:@[badgeView,blockButton.titleLabel,pickerViewButton.titleLabel,datePickerButton.titleLabel,centerBadgeButton.button.titleLabel] forTextStyle:UIFontTextStyleCallout];
     
     [self.navigationItem setBackBarButtonItem:[UIBarButtonItem iosd_backBarButtonItemWithViewController:self]];
     
