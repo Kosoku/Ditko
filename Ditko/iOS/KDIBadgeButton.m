@@ -16,6 +16,7 @@
 #import "KDIBadgeButton.h"
 #import "KDIBadgeView.h"
 #import "KDIButton.h"
+#import "UIControl+KDIExtensions.h"
 
 #import <Stanley/KSTScopeMacros.h>
 
@@ -34,6 +35,8 @@ static void *kKDIBadgeButtonObservingContext = &kKDIBadgeButtonObservingContext;
 @implementation KDIBadgeButton
 
 - (void)dealloc {
+    [_button removeObserver:self forKeyPath:@kstKeypath(_button,highlighted) context:kKDIBadgeButtonObservingContext];
+    
     [_badgeView removeObserver:self forKeyPath:@kstKeypath(_badgeView,badge) context:kKDIBadgeButtonObservingContext];
     [_badgeView removeObserver:self forKeyPath:@kstKeypath(_badgeView,badgeFont) context:kKDIBadgeButtonObservingContext];
     [_badgeView removeObserver:self forKeyPath:@kstKeypath(_badgeView,badgeEdgeInsets) context:kKDIBadgeButtonObservingContext];
@@ -93,6 +96,9 @@ static void *kKDIBadgeButtonObservingContext = &kKDIBadgeButtonObservingContext;
             [self setNeedsLayout];
             [self invalidateIntrinsicContentSize];
         }
+        else if ([keyPath isEqualToString:@kstKeypath(self.button,highlighted)]) {
+            [self.badgeView setHighlighted:self.button.isHighlighted];
+        }
     }
     else {
         [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
@@ -100,19 +106,21 @@ static void *kKDIBadgeButtonObservingContext = &kKDIBadgeButtonObservingContext;
 }
 
 - (void)_KDIBadgeButtonInit; {
-    [self setClipsToBounds:YES];
-    
     _badgePosition = KDIBadgeButtonBadgePositionRelativeToBounds;
     _badgePositionOffset = CGPointMake(1.0, 0.0);
     _badgeSizeOffset = CGPointMake(-0.25, -0.25);
     
     _button = [KDIButton buttonWithType:UIButtonTypeSystem];
+    [_button addObserver:self forKeyPath:@kstKeypath(_button,highlighted) options:0 context:kKDIBadgeButtonObservingContext];
     [self addSubview:_button];
     
     _badgeView = [[KDIBadgeView alloc] initWithFrame:CGRectZero];
     [_badgeView setUserInteractionEnabled:NO];
     [_badgeView setBadgeFont:[UIFont preferredFontForTextStyle:UIFontTextStyleCaption2]];
-    [_badgeView setBadgeBackgroundColor:[UIColor redColor]];
+    [_badgeView setBadgeForegroundColor:UIColor.whiteColor];
+    [_badgeView setBadgeBackgroundColor:UIColor.redColor];
+    [_badgeView setBadgeHighlightedForegroundColor:[_badgeView.badgeForegroundColor colorWithAlphaComponent:0.5]];
+    [_badgeView setBadgeHighlightedBackgroundColor:[_badgeView.badgeBackgroundColor colorWithAlphaComponent:0.5]];
     [_badgeView addObserver:self forKeyPath:@kstKeypath(_badgeView,badge) options:0 context:kKDIBadgeButtonObservingContext];
     [_badgeView addObserver:self forKeyPath:@kstKeypath(_badgeView,badgeFont) options:0 context:kKDIBadgeButtonObservingContext];
     [_badgeView addObserver:self forKeyPath:@kstKeypath(_badgeView,badgeEdgeInsets) options:0 context:kKDIBadgeButtonObservingContext];

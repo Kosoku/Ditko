@@ -113,7 +113,7 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  Set and get the edge insets used to layout the `badge` value text.
  
- The default is `UIEdgeInsetsMake(4.0, 4.0, 4.0, 4.0)` or `NSEdgeInsetsMake(4.0, 4.0, 4.0, 4.0)`.
+ The default is `UIEdgeInsetsMake(4.0, 8.0, 4.0, 8.0)` or `NSEdgeInsetsMake(4.0, 8.0, 4.0, 8.0)`.
  */
 #if (TARGET_OS_IPHONE)
 @property (assign,nonatomic) UIEdgeInsets badgeEdgeInsets UI_APPEARANCE_SELECTOR;
