@@ -22,7 +22,9 @@ NS_ASSUME_NONNULL_BEGIN
 @interface NSObject (KDIDynamicTypeExtensions)
 
 /**
- Get the dynamic type text style of the receiver. This will be non-nil if the receiver was registered with registerDynamicTypeObject:forTextStyle: or registerDynamicTypeObjects:forTextStyle:.
+ Get the dynamic type text style of the receiver. This will be non-nil if the receiver was registered with the KDI_register family of methods.
+ 
+ The default is nil.
  */
 @property (readonly,nonatomic,nullable) UIFontTextStyle KDI_dynamicTypeTextStyle;
 
@@ -40,6 +42,13 @@ NS_ASSUME_NONNULL_BEGIN
  @param textStyle The text style to use when applying updates
  */
 + (void)KDI_registerDynamicTypeObjects:(NSArray<id<KDIDynamicTypeObject>> *)dynamicTypeObjects forTextStyle:(UIFontTextStyle)textStyle;
+/**
+ Register collections of objects for dynamic type updates using the keys in *textStylesToDynamicTypeObjects* as the text styles and the objects as arrays of dynamic type objects. The keys of *textStylesToDynamicTypeObjects* should be UIFontTextStyle constants and the objects should be NSArray containing objects conforming to KDIDynamicTypeObject.
+ 
+ @param textStylesToDynamicTypeObjects The dictionary of objects to register for dynamic type updates
+ */
++ (void)KDI_registerDynamicTypeObjectsForTextStyles:(NSDictionary<UIFontTextStyle, NSArray<id<KDIDynamicTypeObject>> *> *)textStylesToDynamicTypeObjects;
+                                                     
 
 /**
  Unregister the object for dynamic type updates. Calling this method is not required, the object is automatically unregistered when it is deallocated.

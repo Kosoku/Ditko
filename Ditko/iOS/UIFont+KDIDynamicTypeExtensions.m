@@ -80,10 +80,16 @@
     [(id)dynamicTypeObject setKDI_dynamicTypeHelper:[[KDIDynamicTypeHelper alloc] initWithDynamicTypeObject:dynamicTypeObject textStyle:textStyle]];
 }
 + (void)KDI_registerDynamicTypeObjects:(NSArray<id<KDIDynamicTypeObject>> *)dynamicTypeObjects forTextStyle:(UIFontTextStyle)textStyle {
-    for (id<KDIDynamicTypeObject> object in dynamicTypeObjects) {
-        [self KDI_registerDynamicTypeObject:object forTextStyle:textStyle];
-    }
+    [self KDI_registerDynamicTypeObjectsForTextStyles:@{textStyle: dynamicTypeObjects}];
 }
++ (void)KDI_registerDynamicTypeObjectsForTextStyles:(NSDictionary<UIFontTextStyle,NSArray<id<KDIDynamicTypeObject>> *> *)textStylesToDynamicTypeObjects {
+    [textStylesToDynamicTypeObjects enumerateKeysAndObjectsUsingBlock:^(UIFontTextStyle  _Nonnull key, NSArray<id<KDIDynamicTypeObject>> * _Nonnull obj, BOOL * _Nonnull stop) {
+        for (id<KDIDynamicTypeObject> dto in obj) {
+            [self KDI_registerDynamicTypeObject:dto forTextStyle:key];
+        }
+    }];
+}
+
 + (void)KDI_unregisterDynamicTypeObject:(id<KDIDynamicTypeObject>)dynamicTypeObject {
     [(id)dynamicTypeObject setKDI_dynamicTypeHelper:nil];
 }
