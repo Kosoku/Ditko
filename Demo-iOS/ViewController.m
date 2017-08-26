@@ -258,13 +258,13 @@ static NSArray<NSArray<NSString *> *> *kPickerViewButtonComponentsAndRows;
     [centerBadgeButton.button KDI_addBlock:^(__kindof UIControl * _Nonnull control, UIControlEvents controlEvents) {
         [centerBadgeButton.badgeView setBadge:[NSNumberFormatter localizedStringFromNumber:@(arc4random_uniform(1001)) numberStyle:NSNumberFormatterDecimalStyle]];
     } forControlEvents:UIControlEventTouchUpInside];
-    [NSObject KDI_registerDynamicTypeObject:centerBadgeButton.badgeView forTextStyle:UIFontTextStyleCaption2];
     
     [gradientView addSubview:centerBadgeButton];
     [gradientView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:[subview]-[view]" options:0 metrics:nil views:@{@"view": centerBadgeButton, @"subview": pushViewControllerButton}]];
     [gradientView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[subview]-[view]" options:0 metrics:nil views:@{@"view": centerBadgeButton, @"subview": toggleButton}]];
     
-    [NSObject KDI_registerDynamicTypeObjects:@[badgeView,blockButton.titleLabel,pickerViewButton.titleLabel,datePickerButton.titleLabel,centerBadgeButton.button.titleLabel] forTextStyle:UIFontTextStyleCallout];
+    [NSObject KDI_registerDynamicTypeObjectsForTextStyles:@{UIFontTextStyleCaption2: @[centerBadgeButton.badgeView],
+                                                            UIFontTextStyleCallout: @[badgeView,blockButton.titleLabel,pickerViewButton.titleLabel,datePickerButton.titleLabel,centerBadgeButton.button.titleLabel]}];
     
     [self.navigationItem setBackBarButtonItem:[UIBarButtonItem iosd_backBarButtonItemWithViewController:self]];
     
