@@ -290,10 +290,6 @@ static CGFloat const kTitleColorAlphaAdjustment = 0.5;
                 [self.titleLabel setFrame:CGRectMake(self.contentEdgeInsets.left + self.titleEdgeInsets.left, CGRectGetMaxY(self.imageView.frame) + self.imageEdgeInsets.bottom + self.titleEdgeInsets.top, titleSize.width, titleSize.height)];
             }
         }
-        else {
-            [self.imageView setFrame:CGRectMake(self.contentEdgeInsets.left + self.imageEdgeInsets.left, self.contentEdgeInsets.top + self.imageEdgeInsets.top, imageSize.width, imageSize.height)];
-            [self.titleLabel setFrame:CGRectMake(CGRectGetMaxX(self.imageView.frame) + self.titleEdgeInsets.left, self.contentEdgeInsets.top + self.titleEdgeInsets.top, titleSize.width, titleSize.height)];
-        }
     }
     
     return retval;
