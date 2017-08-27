@@ -23,11 +23,15 @@ NS_ASSUME_NONNULL_BEGIN
 @interface KDITextView : UITextView
 
 /**
- Set and get text field's placeholder text.
+ Set and get text view's placeholder text.
+ 
+ The default is nil.
  */
 @property (copy,nonatomic,nullable) NSString *placeholder;
 /**
- Set and get text field's attributed placeholder text.
+ Set and get text view's attributed placeholder text.
+ 
+ The default is nil.
  */
 @property (copy,nonatomic,nullable) NSAttributedString *attributedPlaceholder;
 
