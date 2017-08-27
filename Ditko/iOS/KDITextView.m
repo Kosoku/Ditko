@@ -110,6 +110,10 @@
     [self invalidateIntrinsicContentSize];
 }
 
+@synthesize placeholderTextColor=_placeholderTextColor;
+- (UIColor *)placeholderTextColor {
+    return _placeholderTextColor ?: [self.class _defaultPlaceholderTextColor];
+}
 - (void)setPlaceholderTextColor:(UIColor *)placeholderTextColor {
     _placeholderTextColor = placeholderTextColor ?: [self.class _defaultPlaceholderTextColor];
     
