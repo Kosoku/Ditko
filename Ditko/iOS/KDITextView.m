@@ -15,10 +15,6 @@
 
 #import "KDITextView.h"
 
-#import <Stanley/KSTScopeMacros.h>
-
-static void *kObservingContext = &kObservingContext;
-
 @interface KDITextView ()
 
 @property (strong,nonatomic) UILabel *placeholderLabel;
@@ -114,8 +110,15 @@ static void *kObservingContext = &kObservingContext;
     [self invalidateIntrinsicContentSize];
 }
 
+- (void)setPlaceholderTextColor:(UIColor *)placeholderTextColor {
+    _placeholderTextColor = placeholderTextColor ?: [self.class _defaultPlaceholderTextColor];
+    
+    [self _updatePlaceholderLabelWithText:self.placeholder];
+}
 #pragma mark *** Private Methods ***
 - (void)_KDITextViewInit {
+    _placeholderTextColor = [self.class _defaultPlaceholderTextColor];
+    
     [self setFont:[self.class _defaultFont]];
     [self setTextContainerInset:UIEdgeInsetsZero];
     [self.textContainer setLineFragmentPadding:0];
@@ -129,7 +132,7 @@ static void *kObservingContext = &kObservingContext;
 }
 
 - (void)_updatePlaceholderLabelWithText:(NSString *)text; {
-    [self setAttributedPlaceholder:[[NSAttributedString alloc] initWithString:text ?: @"" attributes:@{NSFontAttributeName: self.font, NSForegroundColorAttributeName: [self.class _defaultPlaceholderTextColor]}]];
+    [self setAttributedPlaceholder:[[NSAttributedString alloc] initWithString:text ?: @"" attributes:@{NSFontAttributeName: self.font, NSForegroundColorAttributeName: self.placeholderTextColor}]];
 }
 
 + (UIFont *)_defaultFont {

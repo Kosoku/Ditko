@@ -31,6 +31,13 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @property (copy,nonatomic,nullable) NSAttributedString *attributedPlaceholder;
 
+/**
+ Set and get the placeholder text color, which is used when setting the placeholder via `setPlaceholder:`.
+ 
+ The default is UIColor.lightGrayColor.
+ */
+@property (strong,nonatomic,null_resettable) UIColor *placeholderTextColor UI_APPEARANCE_SELECTOR;
+
 @end
 
 NS_ASSUME_NONNULL_END
