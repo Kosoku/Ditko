@@ -151,11 +151,13 @@ static CGFloat const kTitleColorAlphaAdjustment = 0.5;
 - (void)setTitleAlignment:(KDIButtonAlignment)titleAlignment {
     _titleAlignment = titleAlignment;
     
+    [self setNeedsLayout];
     [self invalidateIntrinsicContentSize];
 }
 - (void)setImageAlignment:(KDIButtonAlignment)imageAlignment {
     _imageAlignment = imageAlignment;
     
+    [self setNeedsLayout];
     [self invalidateIntrinsicContentSize];
 }
 #pragma mark *** Private Methods ***
