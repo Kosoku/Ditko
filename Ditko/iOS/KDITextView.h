@@ -26,25 +26,10 @@ NS_ASSUME_NONNULL_BEGIN
  Set and get text field's placeholder text.
  */
 @property (copy,nonatomic,nullable) NSString *placeholder;
-
 /**
  Set and get text field's attributed placeholder text.
  */
 @property (copy,nonatomic,nullable) NSAttributedString *attributedPlaceholder;
-
-/**
- Set and get text field's placeholder font.
- 
- The default is [UIFont systemFontOfSize:17].
- */
-@property (strong,nonatomic,null_resettable) UIFont *placeholderFont UI_APPEARANCE_SELECTOR;
-
-/**
- Set and get text field's placeholder text color.
- 
- The default is [UIColor darkGrayColor].
- */
-@property (strong,nonatomic,null_resettable) UIColor *placeholderTextColor UI_APPEARANCE_SELECTOR;
 
 @end
 
