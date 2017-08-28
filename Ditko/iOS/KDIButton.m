@@ -25,7 +25,6 @@ static CGFloat const kTitleColorAlphaAdjustment = 0.5;
 
 @interface KDIButton ()
 - (void)_KDIButtonInit;
-- (void)_updateAfterBorderedChange;
 - (void)_updateAfterInvertedChange;
 - (CGSize)_sizeThatFits:(CGSize)size layout:(BOOL)layout;
 @end
