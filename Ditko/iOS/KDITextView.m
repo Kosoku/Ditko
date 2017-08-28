@@ -143,7 +143,7 @@
     return [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
 }
 + (UIColor *)_defaultPlaceholderTextColor {
-    return UIColor.lightGrayColor;
+    return [UIColor colorWithWhite:0.7 alpha:1.0];
 }
 #pragma mark Notifications
 - (void)_textDidChangeNotification:(NSNotification *)note {
