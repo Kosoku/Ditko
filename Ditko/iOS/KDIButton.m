@@ -15,6 +15,7 @@
 
 #import "KDIButton.h"
 #import "UIColor+KDIExtensions.h"
+#import "UIView+KDIExtensions.h"
 
 #import <Stanley/KSTGeometryFunctions.h>
 #import <Loki/UIImage+KLOExtensions.h>
@@ -24,6 +25,7 @@ static CGFloat const kTitleColorAlphaAdjustment = 0.5;
 
 @interface KDIButton ()
 - (void)_KDIButtonInit;
+- (void)_updateAfterBorderedChange;
 - (void)_updateAfterInvertedChange;
 - (CGSize)_sizeThatFits:(CGSize)size layout:(BOOL)layout;
 @end
@@ -62,6 +64,10 @@ static CGFloat const kTitleColorAlphaAdjustment = 0.5;
 
 - (void)tintColorDidChange {
     [super tintColorDidChange];
+    
+    if (self.borderColorMatchesTintColor) {
+        [self setKDI_borderColor:self.tintColor];
+    }
     
     if (self.isInverted) {
         [self _updateAfterInvertedChange];
@@ -124,6 +130,13 @@ static CGFloat const kTitleColorAlphaAdjustment = 0.5;
 }
 #pragma mark *** Public Methods ***
 #pragma mark Properties
+- (void)setBorderColorMatchesTintColor:(BOOL)borderColorMatchesTintColor {
+    _borderColorMatchesTintColor = borderColorMatchesTintColor;
+    
+    if (_borderColorMatchesTintColor) {
+        [self setKDI_borderColor:self.tintColor];
+    }
+}
 - (void)setInverted:(BOOL)inverted {
     if (_inverted == inverted) {
         return;

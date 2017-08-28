@@ -51,6 +51,12 @@ typedef NS_ENUM(NSUInteger, KDIButtonAlignment) {
 @interface KDIButton : UIButton
 
 /**
+ Set and get whether the border color matches the tint color of the receiver.
+ 
+ The default is NO.
+ */
+@property (assign,nonatomic) BOOL borderColorMatchesTintColor;
+/**
  Set and get whether the receiver is inverted. If YES, the receiver's tintColor is used as the backgroundColor and KDI_contrastingColor is used to compute the titleColor for the normal state.
  
  The default is NO.
