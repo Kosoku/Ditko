@@ -16,7 +16,17 @@
 #import "KDITextField.h"
 
 @implementation KDITextField
-
+#pragma mark *** Subclass Overrides ***
+- (void)tintColorDidChange {
+    [super tintColorDidChange];
+    
+    if (self.isFirstResponder) {
+        // the selection highlight and caret mirror our tint color, but it won't refresh unless we do this
+        [self resignFirstResponder];
+        [self becomeFirstResponder];
+    }
+}
+#pragma mark -
 - (CGRect)textRectForBounds:(CGRect)bounds {
     CGFloat leftViewWidth = CGRectGetWidth([self leftViewRectForBounds:bounds]);
     CGFloat rightViewWidth = CGRectGetWidth([self rightViewRectForBounds:bounds]);
