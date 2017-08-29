@@ -50,6 +50,16 @@
     return self;
 }
 
+- (void)tintColorDidChange {
+    [super tintColorDidChange];
+    
+    if (self.isFirstResponder) {
+        // the selection highlight and caret mirror our tint color, but it won't refresh unless we do this
+        [self resignFirstResponder];
+        [self becomeFirstResponder];
+    }
+}
+
 - (void)didAddSubview:(UIView *)subview {
     [super didAddSubview:subview];
     
