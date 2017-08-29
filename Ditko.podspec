@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'Ditko'
-  s.version          = '1.4.7'
+  s.version          = '1.4.8'
   s.summary          = 'Ditko is an iOS/macOS/tvOS/watchOS framework that extends the AppKit, UIKit, and WatchKit frameworks.'
 
 # This description is used to generate tags and improve search results.
