@@ -231,7 +231,7 @@ static CGFloat KDIPerceivedBrightnessForRedGreenAndBlue(CGFloat red, CGFloat gre
     
 #if (TARGET_OS_IPHONE)
     if ([color getHue:&hue saturation:&saturation brightness:&brightness alpha:&alpha]) {
-        brightness += delta - 1.0;
+        brightness += delta;
         brightness = KSTBoundedValue(brightness, 0.0, 1.0);
         
         return [UIColor colorWithHue:hue saturation:saturation brightness:brightness alpha:alpha];
@@ -240,7 +240,7 @@ static CGFloat KDIPerceivedBrightnessForRedGreenAndBlue(CGFloat red, CGFloat gre
     CGFloat white;
     
     if ([color getWhite:&white alpha:&alpha]) {
-        white += delta - 1.0;
+        white += delta;
         white = KSTBoundedValue(white, 0.0, 1.0);
         
         return [UIColor colorWithWhite:white alpha:alpha];
@@ -250,7 +250,7 @@ static CGFloat KDIPerceivedBrightnessForRedGreenAndBlue(CGFloat red, CGFloat gre
 #else
     [color getHue:&hue saturation:&saturation brightness:&brightness alpha:&alpha];
     
-    brightness += delta - 1.0;
+    brightness += delta;
     brightness = KSTBoundedValue(brightness, 0.0, 1.0);
     
     return [NSColor colorWithCalibratedHue:hue saturation:saturation brightness:brightness alpha:alpha];
