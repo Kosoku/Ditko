@@ -27,12 +27,11 @@
 @end
 
 @implementation KDITextView
-
 #pragma mark *** Subclass Overrides ***
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
-
+#pragma mark -
 - (instancetype)initWithFrame:(CGRect)frame textContainer:(NSTextContainer *)textContainer {
     if (!(self = [super initWithFrame:frame textContainer:textContainer]))
         return nil;
@@ -49,7 +48,7 @@
     
     return self;
 }
-
+#pragma mark -
 - (void)tintColorDidChange {
     [super tintColorDidChange];
     
@@ -59,21 +58,7 @@
         [self becomeFirstResponder];
     }
 }
-
-- (void)didAddSubview:(UIView *)subview {
-    [super didAddSubview:subview];
-    
-    [self sendSubviewToBack:self.placeholderLabel];
-}
-
-- (void)layoutSubviews {
-    [super layoutSubviews];
-    
-    CGFloat maxWidth = CGRectGetWidth(self.bounds) - self.textContainerInset.left - self.textContainerInset.right;
-    
-    [self.placeholderLabel setFrame:CGRectMake(self.textContainerInset.left, self.textContainerInset.top, maxWidth, ceil([self.placeholderLabel sizeThatFits:CGSizeMake(maxWidth, CGFLOAT_MAX)].height))];
-}
-
+#pragma mark -
 - (CGSize)intrinsicContentSize {
     CGSize retval = [super intrinsicContentSize];
     
@@ -88,13 +73,25 @@
     
     return retval;
 }
-
+#pragma mark -
+- (void)didAddSubview:(UIView *)subview {
+    [super didAddSubview:subview];
+    
+    [self sendSubviewToBack:self.placeholderLabel];
+}
+- (void)layoutSubviews {
+    [super layoutSubviews];
+    
+    CGFloat maxWidth = CGRectGetWidth(self.bounds) - self.textContainerInset.left - self.textContainerInset.right;
+    
+    [self.placeholderLabel setFrame:CGRectMake(self.textContainerInset.left, self.textContainerInset.top, maxWidth, ceil([self.placeholderLabel sizeThatFits:CGSizeMake(maxWidth, CGFLOAT_MAX)].height))];
+}
+#pragma mark -
 - (void)setFont:(UIFont *)font {
     [super setFont:font ?: [self.class _defaultFont]];
     
     [self _updatePlaceholderLabelWithText:self.placeholder];
 }
-
 - (void)setAttributedText:(NSAttributedString *)attributedText {
     [super setAttributedText:attributedText];
     
@@ -119,7 +116,6 @@
     [self setNeedsLayout];
     [self invalidateIntrinsicContentSize];
 }
-
 @synthesize placeholderTextColor=_placeholderTextColor;
 - (UIColor *)placeholderTextColor {
     return _placeholderTextColor ?: [self.class _defaultPlaceholderTextColor];
@@ -144,11 +140,10 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(_textDidChangeNotification:) name:UITextViewTextDidChangeNotification object:self];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(_textStorageDidProcessEditingNotification:) name:NSTextStorageDidProcessEditingNotification object:self.textStorage];
 }
-
 - (void)_updatePlaceholderLabelWithText:(NSString *)text; {
     [self setAttributedPlaceholder:[[NSAttributedString alloc] initWithString:text ?: @"" attributes:@{NSFontAttributeName: self.font, NSForegroundColorAttributeName: self.placeholderTextColor}]];
 }
-
+#pragma mark -
 + (UIFont *)_defaultFont {
     return [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
 }

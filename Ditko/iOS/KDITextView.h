@@ -42,6 +42,12 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @property (strong,nonatomic,null_resettable) UIColor *placeholderTextColor UI_APPEARANCE_SELECTOR;
 
+- (void)tintColorDidChange NS_REQUIRES_SUPER;
+- (CGSize)intrinsicContentSize NS_REQUIRES_SUPER;
+- (CGSize)sizeThatFits:(CGSize)size NS_REQUIRES_SUPER;
+- (void)didAddSubview:(UIView *)subview NS_REQUIRES_SUPER;
+- (void)layoutSubviews NS_REQUIRES_SUPER;
+
 @end
 
 NS_ASSUME_NONNULL_END

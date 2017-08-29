@@ -43,6 +43,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property (assign,nonatomic) UIEdgeInsets rightViewEdgeInsets UI_APPEARANCE_SELECTOR;
 
 - (void)tintColorDidChange NS_REQUIRES_SUPER;
+- (CGRect)textRectForBounds:(CGRect)bounds NS_REQUIRES_SUPER;
+- (CGRect)leftViewRectForBounds:(CGRect)bounds NS_REQUIRES_SUPER;
+- (CGRect)rightViewRectForBounds:(CGRect)bounds NS_REQUIRES_SUPER;
 
 @end
 
