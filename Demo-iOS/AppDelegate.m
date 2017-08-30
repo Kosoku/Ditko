@@ -18,6 +18,7 @@
 #import "EmptyViewController.h"
 #import "DominantTestViewController.h"
 #import "TextViewController.h"
+#import "ButtonViewController.h"
 
 #import <Ditko/Ditko.h>
 
@@ -41,7 +42,8 @@
     [controller setViewControllers:@[navigationController,
                                      [[UINavigationController alloc] initWithRootViewController:[[EmptyViewController alloc] init]],
                                      [[UINavigationController alloc] initWithRootViewController:[[DominantTestViewController alloc] init]],
-                                     [[UINavigationController alloc] initWithRootViewController:[[TextViewController alloc] init]]]];
+                                     [[UINavigationController alloc] initWithRootViewController:[[TextViewController alloc] init]],
+                                     [[UINavigationController alloc] initWithRootViewController:[[ButtonViewController alloc] init]]]];
     
     [self.window setRootViewController:controller];
     [self.window makeKeyAndVisible];
