@@ -26,22 +26,24 @@ static void *kKDIBadgeButtonObservingContext = &kKDIBadgeButtonObservingContext;
 @property (readwrite,strong,nonatomic) KDIBadgeView *badgeView;
 @property (readwrite,strong,nonatomic) KDIButton *button;
 
-@property (copy,nonatomic) NSArray<NSLayoutConstraint *> *activeLayoutConstraints;
-
 - (void)_KDIBadgeButtonInit;
 - (CGSize)_sizeThatFits:(CGSize)size layout:(BOOL)layout;
 @end
 
 @implementation KDIBadgeButton
-
+#pragma mark *** Subclass Overrides ***
 - (void)dealloc {
     [_button removeObserver:self forKeyPath:@kstKeypath(_button,highlighted) context:kKDIBadgeButtonObservingContext];
+    [_button removeObserver:self forKeyPath:@kstKeypath(_button,titleContentVerticalAlignment) context:kKDIBadgeButtonObservingContext];
+    [_button removeObserver:self forKeyPath:@kstKeypath(_button,titleContentHorizontalAlignment) context:kKDIBadgeButtonObservingContext];
+    [_button removeObserver:self forKeyPath:@kstKeypath(_button,imageContentVerticalAlignment) context:kKDIBadgeButtonObservingContext];
+    [_button removeObserver:self forKeyPath:@kstKeypath(_button,imageContentHorizontalAlignment) context:kKDIBadgeButtonObservingContext];
     
     [_badgeView removeObserver:self forKeyPath:@kstKeypath(_badgeView,badge) context:kKDIBadgeButtonObservingContext];
     [_badgeView removeObserver:self forKeyPath:@kstKeypath(_badgeView,badgeFont) context:kKDIBadgeButtonObservingContext];
     [_badgeView removeObserver:self forKeyPath:@kstKeypath(_badgeView,badgeEdgeInsets) context:kKDIBadgeButtonObservingContext];
 }
-
+#pragma mark -
 - (instancetype)initWithFrame:(CGRect)frame {
     if (!(self = [super initWithFrame:frame]))
         return nil;
@@ -58,20 +60,20 @@ static void *kKDIBadgeButtonObservingContext = &kKDIBadgeButtonObservingContext;
     
     return self;
 }
-
+#pragma mark -
 - (CGSize)intrinsicContentSize {
     return [self _sizeThatFits:CGSizeZero layout:NO];
 }
 - (CGSize)sizeThatFits:(CGSize)size {
     return [self _sizeThatFits:size layout:NO];
 }
-
+#pragma mark -
 - (void)layoutSubviews {
     [super layoutSubviews];
     
     [self _sizeThatFits:self.bounds.size layout:YES];
 }
-
+#pragma mark -
 - (UIView *)hitTest:(CGPoint)point withEvent:(UIEvent *)event {
     UIView *retval = [super hitTest:point withEvent:event];
     
@@ -81,7 +83,7 @@ static void *kKDIBadgeButtonObservingContext = &kKDIBadgeButtonObservingContext;
     
     return retval;
 }
-
+#pragma mark KVO
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context {
     if (context == kKDIBadgeButtonObservingContext) {
         if ([keyPath isEqualToString:@kstKeypath(self.badgeView,badge)]) {
@@ -91,7 +93,11 @@ static void *kKDIBadgeButtonObservingContext = &kKDIBadgeButtonObservingContext;
             [self invalidateIntrinsicContentSize];
         }
         else if ([keyPath isEqualToString:@kstKeypath(self.badgeView,badgeFont)] ||
-                 [keyPath isEqualToString:@kstKeypath(self.badgeView,badgeEdgeInsets)]) {
+                 [keyPath isEqualToString:@kstKeypath(self.badgeView,badgeEdgeInsets)] ||
+                 [keyPath isEqualToString:@kstKeypath(self.button,titleContentVerticalAlignment)] ||
+                 [keyPath isEqualToString:@kstKeypath(self.button,titleContentHorizontalAlignment)] ||
+                 [keyPath isEqualToString:@kstKeypath(self.button,imageContentVerticalAlignment)] ||
+                 [keyPath isEqualToString:@kstKeypath(self.button,imageContentHorizontalAlignment)]) {
             
             [self setNeedsLayout];
             [self invalidateIntrinsicContentSize];
@@ -104,7 +110,27 @@ static void *kKDIBadgeButtonObservingContext = &kKDIBadgeButtonObservingContext;
         [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
     }
 }
-
+#pragma mark *** Public Methods ***
+#pragma mark Properties
+- (void)setBadgePosition:(KDIBadgeButtonBadgePosition)badgePosition {
+    _badgePosition = badgePosition;
+    
+    [self setNeedsLayout];
+    [self invalidateIntrinsicContentSize];
+}
+- (void)setBadgePositionOffset:(CGPoint)badgePositionOffset {
+    _badgePositionOffset = badgePositionOffset;
+    
+    [self setNeedsLayout];
+    [self invalidateIntrinsicContentSize];
+}
+- (void)setBadgeSizeOffset:(CGPoint)badgeSizeOffset {
+    _badgeSizeOffset = badgeSizeOffset;
+    
+    [self setNeedsLayout];
+    [self invalidateIntrinsicContentSize];
+}
+#pragma mark *** Private Methods ***
 - (void)_KDIBadgeButtonInit; {
     _badgePosition = KDIBadgeButtonBadgePositionRelativeToBounds;
     _badgePositionOffset = CGPointMake(1.0, 0.0);
@@ -112,6 +138,10 @@ static void *kKDIBadgeButtonObservingContext = &kKDIBadgeButtonObservingContext;
     
     _button = [KDIButton buttonWithType:UIButtonTypeSystem];
     [_button addObserver:self forKeyPath:@kstKeypath(_button,highlighted) options:0 context:kKDIBadgeButtonObservingContext];
+    [_button addObserver:self forKeyPath:@kstKeypath(_button,titleContentVerticalAlignment) options:0 context:kKDIBadgeButtonObservingContext];
+    [_button addObserver:self forKeyPath:@kstKeypath(_button,titleContentHorizontalAlignment) options:0 context:kKDIBadgeButtonObservingContext];
+    [_button addObserver:self forKeyPath:@kstKeypath(_button,imageContentVerticalAlignment) options:0 context:kKDIBadgeButtonObservingContext];
+    [_button addObserver:self forKeyPath:@kstKeypath(_button,imageContentHorizontalAlignment) options:0 context:kKDIBadgeButtonObservingContext];
     [self addSubview:_button];
     
     _badgeView = [[KDIBadgeView alloc] initWithFrame:CGRectZero];
@@ -126,6 +156,7 @@ static void *kKDIBadgeButtonObservingContext = &kKDIBadgeButtonObservingContext;
     [_badgeView addObserver:self forKeyPath:@kstKeypath(_badgeView,badgeEdgeInsets) options:0 context:kKDIBadgeButtonObservingContext];
     [self addSubview:_badgeView];
 }
+#pragma mark -
 - (CGSize)_sizeThatFits:(CGSize)size layout:(BOOL)layout; {
     CGSize retval = size;
     CGSize buttonSize = [self.button sizeThatFits:CGSizeZero];
@@ -135,22 +166,25 @@ static void *kKDIBadgeButtonObservingContext = &kKDIBadgeButtonObservingContext;
     
     switch (self.badgePosition) {
         case KDIBadgeButtonBadgePositionRelativeToBounds:
-            badgeViewFrame.origin.x = ceil(CGRectGetMaxX(buttonFrame) * self.badgePositionOffset.x);
-            badgeViewFrame.origin.y = ceil(CGRectGetMaxY(buttonFrame) * self.badgePositionOffset.y);
+            badgeViewFrame.origin = buttonFrame.origin;
+            badgeViewFrame.origin.x += ceil(CGRectGetWidth(buttonFrame) * self.badgePositionOffset.x);
+            badgeViewFrame.origin.y += ceil(CGRectGetHeight(buttonFrame) * self.badgePositionOffset.y);
             break;
         case KDIBadgeButtonBadgePositionRelativeToImage:
             [self.button setNeedsLayout];
             [self.button layoutIfNeeded];
             
-            badgeViewFrame.origin.x = ceil(CGRectGetMaxX([self convertRect:self.button.imageView.frame fromView:self.button]) * self.badgePositionOffset.x);
-            badgeViewFrame.origin.y = ceil(CGRectGetMaxY([self convertRect:self.button.imageView.frame fromView:self.button]) * self.badgePositionOffset.y);
+            badgeViewFrame.origin = [self convertRect:self.button.imageView.frame fromView:self.button].origin;
+            badgeViewFrame.origin.x += ceil(CGRectGetWidth(self.button.imageView.frame) * self.badgePositionOffset.x);
+            badgeViewFrame.origin.y += ceil(CGRectGetHeight(self.button.imageView.frame) * self.badgePositionOffset.y);
             break;
         case KDIBadgeButtonBadgePositionRelativeToTitle:
             [self.button setNeedsLayout];
             [self.button layoutIfNeeded];
             
-            badgeViewFrame.origin.x = ceil(CGRectGetMaxX([self convertRect:self.button.titleLabel.frame fromView:self.button]) * self.badgePositionOffset.x);
-            badgeViewFrame.origin.y = ceil(CGRectGetMaxY([self convertRect:self.button.titleLabel.frame fromView:self.button]) * self.badgePositionOffset.y);
+            badgeViewFrame.origin = [self convertRect:self.button.titleLabel.frame fromView:self.button].origin;
+            badgeViewFrame.origin.x += ceil(CGRectGetWidth(self.button.titleLabel.frame) * self.badgePositionOffset.x);
+            badgeViewFrame.origin.y += ceil(CGRectGetHeight(self.button.titleLabel.frame) * self.badgePositionOffset.y);
             break;
     }
     
@@ -185,6 +219,38 @@ static void *kKDIBadgeButtonObservingContext = &kKDIBadgeButtonObservingContext;
     retval = CGRectUnion(buttonFrame, badgeViewFrame).size;
     
     if (layout) {
+        switch (self.badgePosition) {
+            case KDIBadgeButtonBadgePositionRelativeToBounds:
+                if (CGRectGetMaxX(badgeViewFrame) > CGRectGetWidth(self.bounds)) {
+                    CGFloat delta = CGRectGetMaxX(badgeViewFrame) - CGRectGetWidth(self.bounds);
+                    
+                    badgeViewFrame.origin.x -= delta;
+                    buttonFrame.size.width -= delta;
+                }
+                if (CGRectGetMaxX(buttonFrame) > CGRectGetWidth(self.bounds)) {
+                    CGFloat delta = CGRectGetMaxX(buttonFrame) - CGRectGetWidth(self.bounds);
+                    
+                    buttonFrame.size.width -= delta;
+                }
+                break;
+            case KDIBadgeButtonBadgePositionRelativeToImage:
+                if (CGRectGetMaxX(buttonFrame) > CGRectGetWidth(self.bounds)) {
+                    CGFloat delta = CGRectGetMaxX(buttonFrame) - CGRectGetWidth(self.bounds);
+                    
+                    buttonFrame.size.width -= delta;
+                }
+                break;
+            case KDIBadgeButtonBadgePositionRelativeToTitle:
+                if (CGRectGetMaxX(buttonFrame) > CGRectGetWidth(self.bounds)) {
+                    CGFloat delta = CGRectGetMaxX(buttonFrame) - CGRectGetWidth(self.bounds);
+                    
+                    buttonFrame.size.width -= delta;
+                }
+                break;
+            default:
+                break;
+        }
+        
         [self.button setFrame:buttonFrame];
         [self.badgeView setFrame:badgeViewFrame];
     }
