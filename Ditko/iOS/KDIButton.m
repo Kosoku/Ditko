@@ -279,7 +279,7 @@ static CGFloat const kTitleColorAlphaAdjustment = 0.5;
             else if (self.titleContentVerticalAlignment == KDIButtonContentVerticalAlignmentTop && self.imageContentVerticalAlignment == KDIButtonContentVerticalAlignmentBottom) {
                 titleRect.origin.x = self.contentEdgeInsets.left + self.titleEdgeInsets.left;
                 titleRect.origin.y = self.contentEdgeInsets.top + self.titleEdgeInsets.top;
-                titleRect.size.width = CGRectGetWidth(self.bounds) - self.contentEdgeInsets.left - self.titleEdgeInsets.left - self.titleEdgeInsets.right - self.contentEdgeInsets.right;
+                titleRect.size.width = MIN(titleSize.width, CGRectGetWidth(self.bounds) - self.contentEdgeInsets.left - self.titleEdgeInsets.left - self.titleEdgeInsets.right - self.contentEdgeInsets.right);
                 imageRect.origin.x = self.contentEdgeInsets.left + self.imageEdgeInsets.left;
                 imageRect.origin.y = CGRectGetMaxY(titleRect) + self.titleEdgeInsets.bottom + self.imageEdgeInsets.top;
             }
@@ -289,7 +289,7 @@ static CGFloat const kTitleColorAlphaAdjustment = 0.5;
                 imageRect.origin.y = self.contentEdgeInsets.top + self.imageEdgeInsets.top;
                 titleRect.origin.x = self.contentEdgeInsets.left + self.titleEdgeInsets.left;
                 titleRect.origin.y = CGRectGetMaxY(imageRect) + self.imageEdgeInsets.bottom + self.titleEdgeInsets.top;
-                titleRect.size.width = CGRectGetWidth(self.bounds) - self.contentEdgeInsets.left - self.titleEdgeInsets.left - self.titleEdgeInsets.right - self.contentEdgeInsets.right;
+                titleRect.size.width = MIN(titleSize.width, CGRectGetWidth(self.bounds) - self.contentEdgeInsets.left - self.titleEdgeInsets.left - self.titleEdgeInsets.right - self.contentEdgeInsets.right);
             }
             
             if (self.titleContentVerticalAlignment == KDIButtonContentVerticalAlignmentCenter) {
