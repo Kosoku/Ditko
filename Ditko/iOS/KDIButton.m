@@ -47,20 +47,20 @@ static CGFloat const kTitleColorAlphaAdjustment = 0.5;
     
     return self;
 }
-
+#pragma mark -
 - (void)layoutSubviews {
     [super layoutSubviews];
     
     [self _sizeThatFits:self.bounds.size layout:YES];
 }
-
+#pragma mark -
 - (CGSize)intrinsicContentSize {
     return [self _sizeThatFits:[super intrinsicContentSize] layout:NO];
 }
 - (CGSize)sizeThatFits:(CGSize)size {
     return [self _sizeThatFits:[super sizeThatFits:size] layout:NO];
 }
-
+#pragma mark -
 - (void)tintColorDidChange {
     [super tintColorDidChange];
     
@@ -72,7 +72,7 @@ static CGFloat const kTitleColorAlphaAdjustment = 0.5;
         [self _updateAfterInvertedChange];
     }
 }
-
+#pragma mark -
 - (void)setTitleColor:(UIColor *)color forState:(UIControlState)state {
     [super setTitleColor:color forState:state];
     
@@ -160,24 +160,43 @@ static CGFloat const kTitleColorAlphaAdjustment = 0.5;
         [self.layer setMasksToBounds:NO];
     }
 }
-- (void)setTitleAlignment:(KDIButtonAlignment)titleAlignment {
-    _titleAlignment = titleAlignment;
+#pragma mark -
+- (void)setTitleContentVerticalAlignment:(KDIButtonContentVerticalAlignment)titleContentVerticalAlignment {
+    _titleContentVerticalAlignment = titleContentVerticalAlignment;
     
     [self setNeedsLayout];
     [self invalidateIntrinsicContentSize];
 }
-- (void)setImageAlignment:(KDIButtonAlignment)imageAlignment {
-    _imageAlignment = imageAlignment;
+- (void)setTitleContentHorizontalAlignment:(KDIButtonContentHorizontalAlignment)titleContentHorizontalAlignment {
+    _titleContentHorizontalAlignment = titleContentHorizontalAlignment;
+    
+    [self setNeedsLayout];
+    [self invalidateIntrinsicContentSize];
+}
+- (void)setImageContentVerticalAlignment:(KDIButtonContentVerticalAlignment)imageContentVerticalAlignment {
+    _imageContentVerticalAlignment = imageContentVerticalAlignment;
+    
+    [self setNeedsLayout];
+    [self invalidateIntrinsicContentSize];
+}
+- (void)setImageContentHorizontalAlignment:(KDIButtonContentHorizontalAlignment)imageContentHorizontalAlignment {
+    _imageContentHorizontalAlignment = imageContentHorizontalAlignment;
     
     [self setNeedsLayout];
     [self invalidateIntrinsicContentSize];
 }
 #pragma mark *** Private Methods ***
 - (void)_KDIButtonInit; {
+    _titleContentVerticalAlignment = KDIButtonContentVerticalAlignmentDefault;
+    _titleContentHorizontalAlignment = KDIButtonContentHorizontalAlignmentDefault;
+    _imageContentVerticalAlignment = KDIButtonContentVerticalAlignmentDefault;
+    _imageContentHorizontalAlignment = KDIButtonContentHorizontalAlignmentDefault;
+    
     if (self.buttonType == UIButtonTypeCustom) {
         _adjustsTitleColorWhenHighlighted = YES;
     }
 }
+#pragma mark -
 - (void)_updateAfterInvertedChange; {
     if (self.isInverted) {
         [self setBackgroundColor:self.tintColor];
@@ -193,38 +212,39 @@ static CGFloat const kTitleColorAlphaAdjustment = 0.5;
     }
 }
 - (CGSize)_sizeThatFits:(CGSize)size layout:(BOOL)layout; {
-    CGSize retval = CGSizeZero;
+    CGSize retval = size;
+    BOOL superDoesLayout = (self.titleContentVerticalAlignment == KDIButtonContentVerticalAlignmentDefault ||
+                            self.titleContentHorizontalAlignment == KDIButtonContentHorizontalAlignmentDefault ||
+                            self.imageContentVerticalAlignment == KDIButtonContentVerticalAlignmentDefault ||
+                            self.imageContentHorizontalAlignment == KDIButtonContentHorizontalAlignmentDefault);
     
-    if (self.titleAlignment == KDIButtonAlignmentDefault &&
-        self.imageAlignment == KDIButtonAlignmentDefault) {
-        
-        retval = size;
-        retval.width += self.titleEdgeInsets.left + self.titleEdgeInsets.right;
-        retval.width += self.imageEdgeInsets.left + self.imageEdgeInsets.right;
-        retval.height += self.titleEdgeInsets.top + self.titleEdgeInsets.bottom;
-        retval.height += self.imageEdgeInsets.top + self.imageEdgeInsets.bottom;
-    }
-    else {
+    if (!superDoesLayout) {
         CGSize titleSize = [self.titleLabel sizeThatFits:CGSizeZero];
         CGSize imageSize = [self.imageView sizeThatFits:CGSizeZero];
         
-        if (((self.titleAlignment & KDIButtonAlignmentTop) &&
-            (self.imageAlignment & KDIButtonAlignmentBottom)) ||
-            ((self.imageAlignment & KDIButtonAlignmentTop) &&
-             (self.titleAlignment & KDIButtonAlignmentBottom))) {
-                
-                retval.width = MAX(titleSize.width, imageSize.width);
-                retval.width += self.contentEdgeInsets.left + self.contentEdgeInsets.right;
-                retval.width += MAX(self.titleEdgeInsets.left, self.imageEdgeInsets.left) + MAX(self.imageEdgeInsets.right, self.imageEdgeInsets.right);
-                retval.height = titleSize.height + imageSize.height;
-                retval.height += self.contentEdgeInsets.top + self.titleEdgeInsets.top + self.imageEdgeInsets.top + self.imageEdgeInsets.bottom + self.titleEdgeInsets.bottom + self.contentEdgeInsets.bottom;
-        }
-        else {
+        // left/right layout
+        if ((self.titleContentHorizontalAlignment == KDIButtonContentHorizontalAlignmentLeft && self.imageContentHorizontalAlignment == KDIButtonContentHorizontalAlignmentRight) || (self.titleContentHorizontalAlignment == KDIButtonContentHorizontalAlignmentRight && self.imageContentHorizontalAlignment == KDIButtonContentHorizontalAlignmentLeft)) {
             retval.width = titleSize.width + imageSize.width;
-            retval.width += self.contentEdgeInsets.left + self.titleEdgeInsets.left + self.imageEdgeInsets.left + self.imageEdgeInsets.right + self.titleEdgeInsets.right + self.contentEdgeInsets.right;
+            retval.width += self.contentEdgeInsets.left + self.contentEdgeInsets.right;
+            retval.width += self.titleEdgeInsets.left + self.titleEdgeInsets.right;
+            retval.width += self.imageEdgeInsets.left + self.imageEdgeInsets.right;
+            
             retval.height = MAX(titleSize.height, imageSize.height);
             retval.height += self.contentEdgeInsets.top + self.contentEdgeInsets.bottom;
-            retval.height += MAX(self.titleEdgeInsets.top, self.imageEdgeInsets.top) + MAX(self.titleEdgeInsets.bottom, self.imageEdgeInsets.bottom);
+            retval.height += MAX(self.titleEdgeInsets.top, self.imageEdgeInsets.top);
+            retval.height += MAX(self.titleEdgeInsets.bottom, self.imageEdgeInsets.bottom);
+        }
+        // top/bottom layout
+        else if ((self.titleContentVerticalAlignment == KDIButtonContentVerticalAlignmentTop && self.imageContentVerticalAlignment == KDIButtonContentVerticalAlignmentBottom) || (self.titleContentVerticalAlignment == KDIButtonContentVerticalAlignmentBottom && self.imageContentVerticalAlignment == KDIButtonContentVerticalAlignmentTop)) {
+            retval.width = MAX(titleSize.width, imageSize.width);
+            retval.width += self.contentEdgeInsets.left + self.contentEdgeInsets.right;
+            retval.width += MAX(self.titleEdgeInsets.left, self.imageEdgeInsets.left);
+            retval.width += MAX(self.titleEdgeInsets.right, self.imageEdgeInsets.right);
+            
+            retval.height = titleSize.height + imageSize.height;
+            retval.height += self.contentEdgeInsets.top + self.contentEdgeInsets.bottom;
+            retval.height += self.titleEdgeInsets.top + self.titleEdgeInsets.bottom;
+            retval.height += self.imageEdgeInsets.top + self.imageEdgeInsets.bottom;
         }
     }
     
@@ -233,76 +253,60 @@ static CGFloat const kTitleColorAlphaAdjustment = 0.5;
             [self.layer setCornerRadius:ceil(MIN(CGRectGetWidth(self.bounds), CGRectGetHeight(self.bounds)) * 0.5)];
         }
         
-        CGSize titleSize = [self.titleLabel sizeThatFits:CGSizeZero];
-        CGSize imageSize = [self.imageView sizeThatFits:CGSizeZero];
-        
-        if ((self.titleAlignment & KDIButtonAlignmentLeft) &&
-            (self.imageAlignment & KDIButtonAlignmentRight)) {
+        if (!superDoesLayout) {
+            CGSize titleSize = [self.titleLabel sizeThatFits:CGSizeZero];
+            CGSize imageSize = [self.imageView sizeThatFits:CGSizeZero];
+            CGRect titleRect = CGRectMake(0, 0, titleSize.width, titleSize.height);
+            CGRect imageRect = CGRectMake(0, 0, imageSize.width, imageSize.height);
             
-            if (self.titleAlignment & KDIButtonAlignmentCenter) {
-                [self.titleLabel setFrame:KSTCGRectCenterInRectVertically(CGRectMake(self.contentEdgeInsets.left + self.titleEdgeInsets.left, 0, titleSize.width, titleSize.height), self.bounds)];
+            // title on left, image on right
+            if (self.titleContentHorizontalAlignment == KDIButtonContentHorizontalAlignmentLeft && self.imageContentHorizontalAlignment == KDIButtonContentHorizontalAlignmentRight) {
+                imageRect.origin.x = CGRectGetWidth(self.bounds) - self.contentEdgeInsets.right - self.imageEdgeInsets.right - CGRectGetWidth(imageRect);
+                imageRect.origin.y = self.contentEdgeInsets.top + self.imageEdgeInsets.top;
+                titleRect.origin.x = self.contentEdgeInsets.left + self.titleEdgeInsets.left;
+                titleRect.origin.y = self.contentEdgeInsets.top + self.titleEdgeInsets.top;
+                titleRect.size.width = CGRectGetMinX(imageRect) - CGRectGetMinX(titleRect) - self.titleEdgeInsets.right - self.imageEdgeInsets.left;
             }
-            else {
-                [self.titleLabel setFrame:CGRectMake(self.contentEdgeInsets.left + self.titleEdgeInsets.left, self.contentEdgeInsets.top + self.titleEdgeInsets.top, titleSize.width, titleSize.height)];
+            // title on right, image on left
+            else if (self.titleContentHorizontalAlignment == KDIButtonContentHorizontalAlignmentRight && self.imageContentHorizontalAlignment == KDIButtonContentHorizontalAlignmentLeft) {
+                imageRect.origin.x = self.contentEdgeInsets.left + self.imageEdgeInsets.left;
+                imageRect.origin.y = self.contentEdgeInsets.top + self.imageEdgeInsets.top;
+                titleRect.origin.x = CGRectGetMaxX(imageRect) + self.imageEdgeInsets.right + self.titleEdgeInsets.left;
+                titleRect.origin.y = self.contentEdgeInsets.top + self.titleEdgeInsets.top;
+                titleRect.size.width = CGRectGetWidth(self.bounds) - CGRectGetMinX(titleRect) - self.titleEdgeInsets.right - self.contentEdgeInsets.right;
             }
-            
-            if (self.imageAlignment & KDIButtonAlignmentCenter) {
-                [self.imageView setFrame:KSTCGRectCenterInRectVertically(CGRectMake(CGRectGetWidth(self.bounds) - imageSize.width - self.imageEdgeInsets.right - self.contentEdgeInsets.right, 0, imageSize.width, imageSize.height), self.bounds)];
+            // title on top, image on bottom
+            else if (self.titleContentVerticalAlignment == KDIButtonContentVerticalAlignmentTop && self.imageContentVerticalAlignment == KDIButtonContentVerticalAlignmentBottom) {
+                titleRect.origin.x = self.contentEdgeInsets.left + self.titleEdgeInsets.left;
+                titleRect.origin.y = self.contentEdgeInsets.top + self.titleEdgeInsets.top;
+                titleRect.size.width = CGRectGetWidth(self.bounds) - self.contentEdgeInsets.left - self.titleEdgeInsets.left - self.titleEdgeInsets.right - self.contentEdgeInsets.right;
+                imageRect.origin.x = self.contentEdgeInsets.left + self.imageEdgeInsets.left;
+                imageRect.origin.y = CGRectGetMaxY(titleRect) + self.titleEdgeInsets.bottom + self.imageEdgeInsets.top;
             }
-            else {
-                [self.imageView setFrame:CGRectMake(CGRectGetWidth(self.bounds) - imageSize.width - self.imageEdgeInsets.right - self.contentEdgeInsets.right, self.contentEdgeInsets.top + self.imageEdgeInsets.top, imageSize.width, imageSize.height)];
-            }
-        }
-        else if ((self.titleAlignment & KDIButtonAlignmentRight) &&
-                 (self.imageAlignment & KDIButtonAlignmentLeft)) {
-            
-            if (self.imageAlignment & KDIButtonAlignmentCenter) {
-                [self.imageView setFrame:KSTCGRectCenterInRectVertically(CGRectMake(self.contentEdgeInsets.left + self.imageEdgeInsets.left, 0, imageSize.width, imageSize.height), self.bounds)];
-            }
-            else {
-                [self.imageView setFrame:CGRectMake(self.contentEdgeInsets.left + self.imageEdgeInsets.left, self.contentEdgeInsets.top + self.imageEdgeInsets.top, imageSize.width, imageSize.height)];
-            }
-            
-            if (self.titleAlignment & KDIButtonAlignmentCenter) {
-                [self.titleLabel setFrame:KSTCGRectCenterInRectVertically(CGRectMake(CGRectGetWidth(self.bounds) - titleSize.width - self.titleEdgeInsets.right - self.contentEdgeInsets.right, 0, titleSize.width, titleSize.height), self.bounds)];
-            }
-            else {
-                [self.titleLabel setFrame:CGRectMake(CGRectGetWidth(self.bounds) - titleSize.width - self.titleEdgeInsets.right - self.contentEdgeInsets.right, self.contentEdgeInsets.top + self.titleEdgeInsets.top, titleSize.width, titleSize.height)];
-            }
-        }
-        else if ((self.titleAlignment & KDIButtonAlignmentTop) &&
-                 (self.imageAlignment & KDIButtonAlignmentBottom)) {
-            
-            if (self.titleAlignment & KDIButtonAlignmentCenter) {
-                [self.titleLabel setFrame:KSTCGRectCenterInRectHorizontally(CGRectMake(0, self.contentEdgeInsets.top + self.titleEdgeInsets.top, titleSize.width, titleSize.height), self.bounds)];
-            }
-            else {
-                [self.titleLabel setFrame:CGRectMake(self.contentEdgeInsets.left + self.titleEdgeInsets.left, self.contentEdgeInsets.top + self.titleEdgeInsets.top, titleSize.width, titleSize.height)];
+            // title on bottom, image on top
+            else if (self.titleContentVerticalAlignment == KDIButtonContentVerticalAlignmentBottom && self.imageContentVerticalAlignment == KDIButtonContentVerticalAlignmentTop) {
+                imageRect.origin.x = self.contentEdgeInsets.left + self.imageEdgeInsets.left;
+                imageRect.origin.y = self.contentEdgeInsets.top + self.imageEdgeInsets.top;
+                titleRect.origin.x = self.contentEdgeInsets.left + self.titleEdgeInsets.left;
+                titleRect.origin.y = CGRectGetMaxY(imageRect) + self.imageEdgeInsets.bottom + self.titleEdgeInsets.top;
+                titleRect.size.width = CGRectGetWidth(self.bounds) - self.contentEdgeInsets.left - self.titleEdgeInsets.left - self.titleEdgeInsets.right - self.contentEdgeInsets.right;
             }
             
-            if (self.imageAlignment & KDIButtonAlignmentCenter) {
-                [self.imageView setFrame:KSTCGRectCenterInRectHorizontally(CGRectMake(0, CGRectGetMaxY(self.titleLabel.frame) + self.titleEdgeInsets.bottom + self.imageEdgeInsets.top, imageSize.width, imageSize.height), self.bounds)];
+            if (self.titleContentVerticalAlignment == KDIButtonContentVerticalAlignmentCenter) {
+                titleRect = KSTCGRectCenterInRectVertically(titleRect, self.bounds);
             }
-            else {
-                [self.imageView setFrame:CGRectMake(self.contentEdgeInsets.left + self.imageEdgeInsets.left, CGRectGetMaxY(self.titleLabel.frame) + self.imageEdgeInsets.bottom + self.imageEdgeInsets.top, imageSize.width, imageSize.height)];
+            if (self.titleContentHorizontalAlignment == KDIButtonContentHorizontalAlignmentCenter) {
+                titleRect = KSTCGRectCenterInRectHorizontally(titleRect, self.bounds);
             }
-        }
-        else if ((self.titleAlignment & KDIButtonAlignmentBottom) &&
-                 (self.imageAlignment & KDIButtonAlignmentTop)) {
-            
-            if (self.imageAlignment & KDIButtonAlignmentCenter) {
-                [self.imageView setFrame:KSTCGRectCenterInRectHorizontally(CGRectMake(0, self.contentEdgeInsets.top + self.imageEdgeInsets.top, imageSize.width, imageSize.height), self.bounds)];
+            if (self.imageContentVerticalAlignment == KDIButtonContentVerticalAlignmentCenter) {
+                imageRect = KSTCGRectCenterInRectVertically(imageRect, self.bounds);
             }
-            else {
-                [self.imageView setFrame:CGRectMake(self.contentEdgeInsets.left + self.imageEdgeInsets.left, self.contentEdgeInsets.top + self.imageEdgeInsets.top, imageSize.width, imageSize.height)];
+            if (self.imageContentHorizontalAlignment == KDIButtonContentHorizontalAlignmentCenter) {
+                imageRect = KSTCGRectCenterInRectHorizontally(imageRect, self.bounds);
             }
             
-            if (self.titleAlignment & KDIButtonAlignmentCenter) {
-                [self.titleLabel setFrame:KSTCGRectCenterInRectHorizontally(CGRectMake(0, CGRectGetMaxY(self.imageView.frame) + self.imageEdgeInsets.bottom + self.titleEdgeInsets.top, titleSize.width, titleSize.height), self.bounds)];
-            }
-            else {
-                [self.titleLabel setFrame:CGRectMake(self.contentEdgeInsets.left + self.titleEdgeInsets.left, CGRectGetMaxY(self.imageView.frame) + self.imageEdgeInsets.bottom + self.titleEdgeInsets.top, titleSize.width, titleSize.height)];
-            }
+            [self.titleLabel setFrame:titleRect];
+            [self.imageView setFrame:imageRect];
         }
     }
     

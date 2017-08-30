@@ -16,37 +16,58 @@
 #import <UIKit/UIKit.h>
 
 /**
- Options mask describing the alignment options of the receiver.
+ Typedef for possible content vertical alignment. The same as UIControlContentVerticalAlignment with an additional value for default behavior.
  */
-typedef NS_ENUM(NSUInteger, KDIButtonAlignment) {
+typedef NS_ENUM(NSInteger, KDIButtonContentVerticalAlignment) {
     /**
-     The default UIButton alignment is used.
+     Use default UIButton behavior.
      */
-    KDIButtonAlignmentDefault = 0,
+    KDIButtonContentVerticalAlignmentDefault = -1,
     /**
-     Left alignment will be used. An exception will be thrown if this options is combined with either KDIButtonAlignmentTop or KDIButtonAlignmentBottom.
+     Center the content vertically.
      */
-    KDIButtonAlignmentLeft = 1 << 0,
+    KDIButtonContentVerticalAlignmentCenter = UIControlContentVerticalAlignmentCenter,
     /**
-     Right alignment will be used. An exception will be thrown if this options is combined with either KDIButtonAlignmentTop or KDIButtonAlignmentBottom.
+     Align the content to the top edge.
      */
-    KDIButtonAlignmentRight = 1 << 1,
+    KDIButtonContentVerticalAlignmentTop = UIControlContentVerticalAlignmentTop,
     /**
-     Top alignment will be used. An exception will be thrown if this options is combined with either KDIButtonAlignmentLeft or KDIButtonAlignmentRight.
+     Align the content to the bottom edge.
      */
-    KDIButtonAlignmentTop = 1 << 2,
+    KDIButtonContentVerticalAlignmentBottom = UIControlContentVerticalAlignmentBottom,
     /**
-     Bottom alignment will be used. An exception will be thrown if this options is combined with either KDIButtonAlignmentLeft or KDIButtonAlignmentRight.
+     Stretch the content to fill the available space.
      */
-    KDIButtonAlignmentBottom = 1 << 3,
+    KDIButtonContentVerticalAlignmentFill = UIControlContentVerticalAlignmentFill
+};
+/**
+ Typedef for possible content horizontal alignment. The same as UIControlContentHorizontalAlignment with an additional value for default behavior.
+ */
+typedef NS_ENUM(NSInteger, KDIButtonContentHorizontalAlignment) {
     /**
-     Horizontal or vertical center alignment will be used depending on the other alignment options.
+     Use default UIButton behavior.
      */
-    KDIButtonAlignmentCenter = 1 << 4
+    KDIButtonContentHorizontalAlignmentDefault = -1,
+    /**
+     Center the content horizontally.
+     */
+    KDIButtonContentHorizontalAlignmentCenter = UIControlContentHorizontalAlignmentCenter,
+    /**
+     Align the content to the leading edge.
+     */
+    KDIButtonContentHorizontalAlignmentLeft = UIControlContentHorizontalAlignmentLeft,
+    /**
+     Align the content to the trailing edge.
+     */
+    KDIButtonContentHorizontalAlignmentRight = UIControlContentHorizontalAlignmentRight,
+    /**
+     Stretch the content to fill the available space.
+     */
+    KDIButtonContentHorizontalAlignmentFill = UIControlContentHorizontalAlignmentFill
 };
 
 /**
- KDIButton is a subclass of UIButton that provides custom style and alignment options.
+ KDIButton is a subclass of UIButton that provides custom style and alignment options. Notably, you can set the alignment for title and image independantly of one another. This allows for unique layout combinations. For example, you can tell the button to layout the image at the top, title at the bottom, and center them both horizontally.
  */
 @interface KDIButton : UIButton
 
@@ -68,23 +89,37 @@ typedef NS_ENUM(NSUInteger, KDIButtonAlignment) {
  The default is NO.
  */
 @property (assign,nonatomic,getter=isRounded) BOOL rounded;
-/**
- Set and get the alignment of button title.
- 
- @see KDIButtonAlignment
- */
-@property (assign,nonatomic) KDIButtonAlignment titleAlignment;
-/**
- Set and get the alignment of button image.
- 
- @see KDIButtonAlignment
- */
-@property (assign,nonatomic) KDIButtonAlignment imageAlignment;
 
 /**
  Set whether the receiver adjusts its title color when highlighted. If set to YES, the title color set for UIControlStateNormal will be inspected and the computed color will be set for the highlighted state. The title color is drawn lighter if the normal title color was dark and darker if the normal title color was light.
  */
 @property (assign,nonatomic) BOOL adjustsTitleColorWhenHighlighted;
+
+/**
+ Set and get the vertical content alignment for the title.
+ 
+ The default is KDIButtonContentVerticalAlignmentDefault.
+ */
+@property (assign,nonatomic) KDIButtonContentVerticalAlignment titleContentVerticalAlignment;
+/**
+ Set and get the horizontal content alignment for the title.
+ 
+ The default is KDIButtonContentHorizontalAlignmentDefault.
+ */
+@property (assign,nonatomic) KDIButtonContentHorizontalAlignment titleContentHorizontalAlignment;
+
+/**
+ Set and get the vertical content alignment for the image.
+ 
+ The default is KDIButtonContentVerticalAlignmentDefault.
+ */
+@property (assign,nonatomic) KDIButtonContentVerticalAlignment imageContentVerticalAlignment;
+/**
+ Set and get the horizontal content alignment for the image.
+ 
+ The default is KDIButtonContentHorizontalAlignmentDefault.
+ */
+@property (assign,nonatomic) KDIButtonContentHorizontalAlignment imageContentHorizontalAlignment;
 
 - (void)layoutSubviews NS_REQUIRES_SUPER;
 - (CGSize)intrinsicContentSize NS_REQUIRES_SUPER;
