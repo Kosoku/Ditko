@@ -30,9 +30,13 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    UIColor *barTintColor = KDIColorRandomRGB();
+    
+    [UINavigationBar.appearance setBarTintColor:barTintColor];
+    
     [self setWindow:[[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds]];
     
-    [self.window setTintColor:KDIColorRandomRGB()];
+    [self.window setTintColor:[barTintColor KDI_contrastingColor]];
     
     UITabBarController *controller = [[UITabBarController alloc] init];
     UINavigationController *navigationController = [[UINavigationController alloc] initWithNavigationBarClass:[KDIProgressNavigationBar class] toolbarClass:Nil];
@@ -44,6 +48,8 @@
                                      [[UINavigationController alloc] initWithRootViewController:[[DominantTestViewController alloc] init]],
                                      [[UINavigationController alloc] initWithRootViewController:[[TextViewController alloc] init]],
                                      [[UINavigationController alloc] initWithRootViewController:[[ButtonViewController alloc] init]]]];
+    
+    [controller setSelectedIndex:3];
     
     [self.window setRootViewController:controller];
     [self.window makeKeyAndVisible];

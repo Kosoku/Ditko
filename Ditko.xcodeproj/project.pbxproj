@@ -51,6 +51,7 @@
 		071B62DE1E70861F00B7B85A /* Ditko.h in Headers */ = {isa = PBXBuildFile; fileRef = 0795E6351E704785004A5CB2 /* Ditko.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		071B62DF1E70864300B7B85A /* KDIGradientView.h in Headers */ = {isa = PBXBuildFile; fileRef = 071B626C1E70635D00B7B85A /* KDIGradientView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		071B62E01E70864900B7B85A /* KDIGradientView.m in Sources */ = {isa = PBXBuildFile; fileRef = 071B626D1E70635D00B7B85A /* KDIGradientView.m */; };
+		071E53361F58B9F800A36B59 /* TextViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 071E53351F58B9F800A36B59 /* TextViewController.xib */; };
 		072628111E70BCCF00511F80 /* KDIView.h in Headers */ = {isa = PBXBuildFile; fileRef = 0726280F1E70BCCF00511F80 /* KDIView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		072628121E70BCCF00511F80 /* KDIView.h in Headers */ = {isa = PBXBuildFile; fileRef = 0726280F1E70BCCF00511F80 /* KDIView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		072628131E70BCCF00511F80 /* KDIView.h in Headers */ = {isa = PBXBuildFile; fileRef = 0726280F1E70BCCF00511F80 /* KDIView.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -408,6 +409,7 @@
 		071B62D31E70849500B7B85A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		071B62D51E70849500B7B85A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		071B62DB1E7084BF00B7B85A /* Stanley.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Stanley.framework; path = "Vendor/Stanley/build/Debug-appletvos/Stanley.framework"; sourceTree = "<group>"; };
+		071E53351F58B9F800A36B59 /* TextViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TextViewController.xib; sourceTree = "<group>"; };
 		0726280F1E70BCCF00511F80 /* KDIView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KDIView.h; sourceTree = "<group>"; };
 		072628101E70BCCF00511F80 /* KDIView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KDIView.m; sourceTree = "<group>"; };
 		0735427A1E704D8F00177905 /* Ditko.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Ditko.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -902,6 +904,7 @@
 				07B71A591EDC914500139924 /* DominantTestViewController.m */,
 				07A276011F533FD5001219C8 /* TextViewController.h */,
 				07A276021F533FD5001219C8 /* TextViewController.m */,
+				071E53351F58B9F800A36B59 /* TextViewController.xib */,
 				07143C6F1F563BCE007E3410 /* ButtonViewController.h */,
 				07143C701F563BCE007E3410 /* ButtonViewController.m */,
 				07143C751F5645AC007E3410 /* ButtonViewController.xib */,
@@ -1413,6 +1416,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				07143C771F5645AC007E3410 /* ButtonViewController.xib in Resources */,
+				071E53361F58B9F800A36B59 /* TextViewController.xib in Resources */,
 				0795E6591E704A56004A5CB2 /* LaunchScreen.storyboard in Resources */,
 				0795E6561E704A56004A5CB2 /* Assets.xcassets in Resources */,
 				074B47881EB3E431009B7C6D /* FontAwesome.ttf in Resources */,

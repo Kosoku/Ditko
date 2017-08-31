@@ -16,27 +16,77 @@
 #import "TextViewController.h"
 
 #import <Ditko/Ditko.h>
+#import <Stanley/Stanley.h>
 
 @interface TextViewController ()
-@property (strong,nonatomic) KDITextView *textView;
+@property (weak,nonatomic) IBOutlet KDITextView *textView;
+@property (weak,nonatomic) IBOutlet KDITextField *textField;
 @end
 
 @implementation TextViewController
 
 - (NSString *)title {
-    return @"Text View";
+    return @"Text";
+}
+
+- (BOOL)automaticallyAdjustsScrollViewInsets {
+    return NO;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self setTextView:[[KDITextView alloc] initWithFrame:CGRectZero]];
-    [self.textView setTranslatesAutoresizingMaskIntoConstraints:NO];
-    [self.textView setPlaceholder:@"Type some stuff…"];
-    [self.view addSubview:self.textView];
+    kstWeakify(self);
     
-    [NSLayoutConstraint activateConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[view]|" options:0 metrics:nil views:@{@"view": self.textView}]];
-    [NSLayoutConstraint activateConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[view]|" options:0 metrics:nil views:@{@"view": self.textView}]];
+    [self.view setBackgroundColor:UIColor.lightGrayColor];
+    
+    [self.textView setScrollEnabled:NO];
+    [self.textView setBackgroundColor:UIColor.whiteColor];
+    [self.textView setPlaceholder:@"Text view placeholder…"];
+    
+    [self.textField setBackgroundColor:UIColor.whiteColor];
+    [self.textField setPlaceholder:@"Text field placeholder…"];
+    [self.textField setBorderOptions:KDITextFieldBorderOptionsAll];
+    [self.textField setBorderColor:KDIColorRandomRGB()];
+    
+    UISwitch *switchControl = [[UISwitch alloc] initWithFrame:CGRectZero];
+    
+    [switchControl setOn:NO];
+    [switchControl KDI_addBlock:^(__kindof UIControl * _Nonnull control, UIControlEvents controlEvents) {
+        kstStrongify(self);
+        [self.textField setBorderWidthRespectsScreenScale:switchControl.isOn];
+    } forControlEvents:UIControlEventValueChanged];
+    [switchControl sizeToFit];
+    
+    [self.navigationItem setLeftBarButtonItems:@[[[UIBarButtonItem alloc] initWithCustomView:switchControl]]];
+    
+    [self.navigationItem setRightBarButtonItems:@[[UIBarButtonItem KDI_barButtonItemWithTitle:@"Color" style:UIBarButtonItemStylePlain block:^(__kindof UIBarButtonItem * _Nonnull barButtonItem) {
+        kstStrongify(self);
+        [self.textField setBorderColor:KDIColorRandomRGB()];
+    }],[UIBarButtonItem KDI_barButtonItemWithTitle:@"Insets" style:UIBarButtonItemStylePlain block:^(__kindof UIBarButtonItem * _Nonnull barButtonItem) {
+        kstStrongify(self);
+        uint32_t max = 11;
+        CGFloat top = arc4random_uniform(max), left = arc4random_uniform(max), bottom = arc4random_uniform(max), right = arc4random_uniform(max);
+        UIEdgeInsets insets = UIEdgeInsetsMake(top, left, bottom, right);
+        
+        KSTLog(@"setting borderEdgeInsets to %@",NSStringFromUIEdgeInsets(UIEdgeInsetsMake(top, left, bottom, right)));
+        
+        [self.textField setBorderEdgeInsets:insets];
+        
+        
+    }],[UIBarButtonItem KDI_barButtonItemWithTitle:@"Width" style:UIBarButtonItemStylePlain block:^(__kindof UIBarButtonItem * _Nonnull barButtonItem) {
+        kstStrongify(self);
+        CGFloat width = arc4random_uniform(6);
+        
+        KSTLog(@"setting borderWidth to %@",@(width));
+        
+        [self.textField setBorderWidth:width];
+    }]]];
+}
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    
+    [self.textView becomeFirstResponder];
 }
 
 @end
