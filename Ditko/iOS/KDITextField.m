@@ -42,9 +42,6 @@
     
     return self;
 }
-- (void)prepareForInterfaceBuilder {
-    [self _KDITextFieldInit];
-}
 #pragma mark -
 - (void)tintColorDidChange {
     [super tintColorDidChange];
