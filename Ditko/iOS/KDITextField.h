@@ -18,9 +18,80 @@
 NS_ASSUME_NONNULL_BEGIN
 
 /**
+ Typedef for possible mask options describing the border options of the receiver.
+ */
+typedef NS_OPTIONS(NSUInteger, KDITextFieldBorderOptions) {
+    /**
+     No borders are displayed.
+     */
+    KDITextFieldBorderOptionsNone = 0,
+    /**
+     The top border is displayed.
+     */
+    KDITextFieldBorderOptionsTop = 1 << 0,
+    /**
+     The left border is displayed.
+     */
+    KDITextFieldBorderOptionsLeft = 1 << 1,
+    /**
+     The bottom border is displayed.
+     */
+    KDITextFieldBorderOptionsBottom = 1 << 2,
+    /**
+     The right border is displayed.
+     */
+    KDITextFieldBorderOptionsRight = 1 << 3,
+    /**
+     Top and bottom borders are displayed.
+     */
+    KDITextFieldBorderOptionsTopAndBottom = KDITextFieldBorderOptionsTop|KDITextFieldBorderOptionsBottom,
+    /**
+     Left and right borders are displayed.
+     */
+    KDITextFieldBorderOptionsLeftAndRight = KDITextFieldBorderOptionsLeft|KDITextFieldBorderOptionsRight,
+    /**
+     All borders are displayed.
+     */
+    KDITextFieldBorderOptionsAll = KDITextFieldBorderOptionsTop|KDITextFieldBorderOptionsLeft|KDITextFieldBorderOptionsBottom|KDITextFieldBorderOptionsRight
+};
+
+/**
  KDITextField is a UITextField subclass that adds edge insets related methods to control the placement of text. This eliminates the need to use padding views as the left and right views of the receiver.
  */
 @interface KDITextField : UITextField
+
+/**
+ Set and get the border options of the receiver.
+ 
+ The default is KDITextFieldBorderOptionsNone.
+ 
+ @see KDITextFieldBorderOptions
+ */
+@property (assign,nonatomic) KDITextFieldBorderOptions borderOptions;
+/**
+ Set and get the border width of the receiver. This describes the width of vertical borders and the height of horizontal borders. This is distinct from the underlying CALayer borderWidth property.
+ 
+ The default is 1.0.
+ */
+@property (assign,nonatomic) CGFloat borderWidth UI_APPEARANCE_SELECTOR;
+/**
+ Set and get whether the borderWidth of the receiver respects the screen scale of the receiver. If YES, this borderWidth will scale appropriately on retina screens. For example, a borderWidth of 1.0 would display as 2.0 on a retina screen.
+ 
+ The default is NO.
+ */
+@property (assign,nonatomic) BOOL borderWidthRespectsScreenScale;
+/**
+ Set and get the border edge insets of the receiver. This affects how the borders are displayed. They are inset according to this value.
+ 
+ The default is UIEdgeInsetsZero.
+ */
+@property (assign,nonatomic) UIEdgeInsets borderEdgeInsets UI_APPEARANCE_SELECTOR;
+/**
+ Set and get the border color of the receiver. This affects how the borders are displayed. This is distinct from the underlying CALayer borderColor property.
+ 
+ The default is UIColor.blackColor.
+ */
+@property (strong,nonatomic,null_resettable) UIColor *borderColor UI_APPEARANCE_SELECTOR;
 
 /**
  Set and get the text edge insets of the receiver. This value affects the return values of textRectForBounds: and editingRectForBounds:.
