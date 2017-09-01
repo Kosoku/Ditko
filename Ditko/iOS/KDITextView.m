@@ -14,11 +14,12 @@
 //  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #import "KDITextView.h"
+#import "KDIBorderedViewImpl.h"
 
 @interface KDITextView ()
-
 @property (strong,nonatomic) UILabel *placeholderLabel;
 
+@property (strong,nonatomic) KDIBorderedViewImpl *borderedViewImpl;
 @property (strong,nonatomic) UIFont *internalFont;
 
 - (void)_KDITextViewInit;
@@ -49,6 +50,13 @@
     [self _KDITextViewInit];
     
     return self;
+}
+#pragma mark -
+- (id)forwardingTargetForSelector:(SEL)aSelector {
+    if ([self.borderedViewImpl respondsToSelector:aSelector]) {
+        return self.borderedViewImpl;
+    }
+    return [super forwardingTargetForSelector:aSelector];
 }
 #pragma mark -
 - (void)tintColorDidChange {
@@ -84,6 +92,8 @@
 - (void)layoutSubviews {
     [super layoutSubviews];
     
+    [self.borderedViewImpl layoutSubviews];
+    
     CGFloat maxWidth = CGRectGetWidth(self.bounds) - self.textContainerInset.left - self.textContainerInset.right;
     
     [self.placeholderLabel setFrame:CGRectMake(self.textContainerInset.left, self.textContainerInset.top, maxWidth, ceil([self.placeholderLabel sizeThatFits:CGSizeMake(maxWidth, CGFLOAT_MAX)].height))];
@@ -104,6 +114,15 @@
     [super setFont:self.internalFont];
     
     [self _updatePlaceholderLabelWithText:self.placeholder];
+}
+#pragma mark KDIBorderedView
+@dynamic borderOptions;
+@dynamic borderWidth;
+@dynamic borderWidthRespectsScreenScale;
+@dynamic borderEdgeInsets;
+@dynamic borderColor;
+- (void)setBorderColor:(UIColor *)borderColor animated:(BOOL)animated {
+    [self.borderedViewImpl setBorderColor:borderColor animated:animated];
 }
 #pragma mark *** Public Methods ***
 #pragma mark Properties
@@ -135,6 +154,7 @@
 }
 #pragma mark *** Private Methods ***
 - (void)_KDITextViewInit {
+    _borderedViewImpl = [[KDIBorderedViewImpl alloc] initWithView:self];
     _placeholderTextColor = [self.class _defaultPlaceholderTextColor];
     
     [self setFont:[self.class _defaultFont]];

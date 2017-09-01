@@ -44,6 +44,8 @@
     [self.textView setBackgroundColor:UIColor.whiteColor];
     [self.textView setTintColor:UIColor.blackColor];
     [self.textView setPlaceholder:@"Text view placeholder…"];
+    [self.textView setBorderOptions:KDIBorderOptionsAll];
+    [self.textView setBorderColor:KDIColorRandomRGB()];
     
     [self.textField setBackgroundColor:UIColor.whiteColor];
     [self.textField setTintColor:UIColor.blackColor];
@@ -75,6 +77,7 @@
     [switchControl KDI_addBlock:^(__kindof UIControl * _Nonnull control, UIControlEvents controlEvents) {
         kstStrongify(self);
         [self.textField setBorderWidthRespectsScreenScale:switchControl.isOn];
+        [self.textView setBorderWidthRespectsScreenScale:switchControl.isOn];
     } forControlEvents:UIControlEventValueChanged];
     [switchControl sizeToFit];
     
@@ -83,6 +86,7 @@
     [self.navigationItem setRightBarButtonItems:@[[UIBarButtonItem KDI_barButtonItemWithTitle:@"Color" style:UIBarButtonItemStylePlain block:^(__kindof UIBarButtonItem * _Nonnull barButtonItem) {
         kstStrongify(self);
         [self.textField setBorderColor:KDIColorRandomRGB() animated:YES];
+        [self.textView setBorderColor:KDIColorRandomRGB() animated:YES];
     }],[UIBarButtonItem KDI_barButtonItemWithTitle:@"Insets" style:UIBarButtonItemStylePlain block:^(__kindof UIBarButtonItem * _Nonnull barButtonItem) {
         kstStrongify(self);
         uint32_t max = 11;
@@ -92,8 +96,7 @@
         KSTLog(@"setting borderEdgeInsets to %@",NSStringFromUIEdgeInsets(UIEdgeInsetsMake(top, left, bottom, right)));
         
         [self.textField setBorderEdgeInsets:insets];
-        
-        
+        [self.textView setBorderEdgeInsets:insets];
     }],[UIBarButtonItem KDI_barButtonItemWithTitle:@"Width" style:UIBarButtonItemStylePlain block:^(__kindof UIBarButtonItem * _Nonnull barButtonItem) {
         kstStrongify(self);
         CGFloat width = arc4random_uniform(6);
@@ -101,6 +104,7 @@
         KSTLog(@"setting borderWidth to %@",@(width));
         
         [self.textField setBorderWidth:width];
+        [self.textView setBorderWidth:width];
     }]]];
 }
 - (void)viewDidAppear:(BOOL)animated {
