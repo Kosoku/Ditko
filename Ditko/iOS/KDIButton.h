@@ -13,7 +13,7 @@
 //
 //  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-#import <UIKit/UIKit.h>
+#import <Ditko/KDIBorderedView.h>
 
 /**
  Typedef for possible content vertical alignment. The same as UIControlContentVerticalAlignment with an additional value for default behavior.
@@ -67,9 +67,11 @@ typedef NS_ENUM(NSInteger, KDIButtonContentHorizontalAlignment) {
 };
 
 /**
- KDIButton is a subclass of UIButton that provides custom style and alignment options. Notably, you can set the alignment for title and image independantly of one another. This allows for unique layout combinations. For example, you can tell the button to layout the image at the top, title at the bottom, and center them both horizontally.
+ KDIButton is a subclass of UIButton that provides custom style and alignment options. Notably, you can set the alignment for title and image independantly of one another. This allows for unique layout combinations. For example, you can tell the button to layout the image at the top, title at the bottom, and center them both horizontally. 
+ 
+ It also conforms to KDIBorderedView, allowing it to display borders.
  */
-@interface KDIButton : UIButton
+@interface KDIButton : UIButton <KDIBorderedView>
 
 /**
  Set and get whether the border color matches the tint color of the receiver.

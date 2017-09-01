@@ -82,6 +82,8 @@ typedef NS_ENUM(NSInteger, SubviewTag) {
         [self.badgeButton setBadgePosition:position];
     } forControlEvents:UIControlEventValueChanged];
     
+    [self.button setBorderOptions:KDIBorderOptionsAll];
+    [self.button setBorderColor:KDIColorRandomRGB()];
     [self.button setContentEdgeInsets:UIEdgeInsetsMake(8, 8, 8, 8)];
     [self.button setTitleEdgeInsets:UIEdgeInsetsMake(8, 8, 8, 8)];
     [self.button setImageEdgeInsets:UIEdgeInsetsMake(8, 8, 8, 8)];
@@ -93,6 +95,8 @@ typedef NS_ENUM(NSInteger, SubviewTag) {
         [self.badgeButton.badgeView setBadge:[NSNumberFormatter localizedStringFromNumber:@(arc4random_uniform(1001)) numberStyle:NSNumberFormatterDecimalStyle]];
     };
     
+    [self.badgeButton.button setBorderOptions:KDIBorderOptionsAll];
+    [self.badgeButton.button setBorderColor:KDIColorRandomRGB()];
     [self.badgeButton.button setContentEdgeInsets:UIEdgeInsetsMake(8, 8, 8, 8)];
     [self.badgeButton.button setTitleEdgeInsets:UIEdgeInsetsMake(8, 8, 8, 8)];
     [self.badgeButton.button setImageEdgeInsets:UIEdgeInsetsMake(8, 8, 8, 8)];

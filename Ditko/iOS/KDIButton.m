@@ -16,6 +16,7 @@
 #import "KDIButton.h"
 #import "UIColor+KDIExtensions.h"
 #import "UIView+KDIExtensions.h"
+#import "KDIBorderedViewImpl.h"
 
 #import <Stanley/KSTGeometryFunctions.h>
 #import <Loki/UIImage+KLOExtensions.h>
@@ -24,6 +25,8 @@ static CGFloat const kTitleColorBrightnessAdjustment = 0.5;
 static CGFloat const kTitleColorAlphaAdjustment = 0.5;
 
 @interface KDIButton ()
+@property (strong,nonatomic) KDIBorderedViewImpl *borderedViewImpl;
+
 - (void)_KDIButtonInit;
 - (void)_updateAfterInvertedChange;
 - (CGSize)_sizeThatFits:(CGSize)size layout:(BOOL)layout;
@@ -46,6 +49,13 @@ static CGFloat const kTitleColorAlphaAdjustment = 0.5;
     [self _KDIButtonInit];
     
     return self;
+}
+#pragma mark -
+- (id)forwardingTargetForSelector:(SEL)aSelector {
+    if ([self.borderedViewImpl respondsToSelector:aSelector]) {
+        return self.borderedViewImpl;
+    }
+    return [super forwardingTargetForSelector:aSelector];
 }
 #pragma mark -
 - (void)layoutSubviews {
@@ -127,6 +137,15 @@ static CGFloat const kTitleColorAlphaAdjustment = 0.5;
         }
     }
 }
+#pragma mark KDIBorderedView
+@dynamic borderOptions;
+@dynamic borderWidth;
+@dynamic borderWidthRespectsScreenScale;
+@dynamic borderEdgeInsets;
+@dynamic borderColor;
+- (void)setBorderColor:(UIColor *)borderColor animated:(BOOL)animated {
+    [self.borderedViewImpl setBorderColor:borderColor animated:animated];
+}
 #pragma mark *** Public Methods ***
 #pragma mark Properties
 - (void)setBorderColorMatchesTintColor:(BOOL)borderColorMatchesTintColor {
@@ -187,6 +206,8 @@ static CGFloat const kTitleColorAlphaAdjustment = 0.5;
 }
 #pragma mark *** Private Methods ***
 - (void)_KDIButtonInit; {
+    _borderedViewImpl = [[KDIBorderedViewImpl alloc] initWithView:self];
+    
     _titleContentVerticalAlignment = KDIButtonContentVerticalAlignmentDefault;
     _titleContentHorizontalAlignment = KDIButtonContentHorizontalAlignmentDefault;
     _imageContentVerticalAlignment = KDIButtonContentVerticalAlignmentDefault;
@@ -252,6 +273,8 @@ static CGFloat const kTitleColorAlphaAdjustment = 0.5;
         if (self.isRounded) {
             [self.layer setCornerRadius:ceil(MIN(CGRectGetWidth(self.bounds), CGRectGetHeight(self.bounds)) * 0.5)];
         }
+        
+        [self.borderedViewImpl layoutSubviews];
         
         if (!superDoesLayout) {
             CGSize titleSize = [self.titleLabel sizeThatFits:CGSizeZero];
