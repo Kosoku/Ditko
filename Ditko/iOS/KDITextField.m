@@ -14,17 +14,13 @@
 //  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #import "KDITextField.h"
-
-#import <Stanley/KSTScopeMacros.h>
+#import "KDIBorderedViewImpl.h"
 
 @interface KDITextField ()
-@property (strong,nonatomic) CALayer *topBorderLayer, *leftBorderLayer, *bottomBorderLayer, *rightBorderLayer;
+@property (strong,nonatomic) KDIBorderedViewImpl *borderedViewImpl;
 
 - (void)_KDITextFieldInit;
-- (void)_configureBorderLayer:(CALayer *)layer;
 - (CGSize)_sizeThatFits:(CGSize)size layout:(BOOL)layout;
-
-+ (UIColor *)_defaultBorderColor;
 @end
 
 @implementation KDITextField
@@ -44,6 +40,13 @@
     [self _KDITextFieldInit];
     
     return self;
+}
+#pragma mark -
+- (id)forwardingTargetForSelector:(SEL)aSelector {
+    if ([self.borderedViewImpl respondsToSelector:aSelector]) {
+        return self.borderedViewImpl;
+    }
+    return [super forwardingTargetForSelector:aSelector];
 }
 #pragma mark -
 - (void)tintColorDidChange {
@@ -92,95 +95,17 @@
     
     return CGRectMake(CGRectGetWidth(bounds) - self.rightViewEdgeInsets.right - CGRectGetWidth(retval), CGRectGetMinY(retval) + self.rightViewEdgeInsets.top, CGRectGetWidth(retval), CGRectGetHeight(retval));
 }
+#pragma mark KDIBorderedView
+@dynamic borderOptions;
+@dynamic borderWidth;
+@dynamic borderWidthRespectsScreenScale;
+@dynamic borderEdgeInsets;
+@dynamic borderColor;
+- (void)setBorderColor:(UIColor *)borderColor animated:(BOOL)animated {
+    [self.borderedViewImpl setBorderColor:borderColor animated:animated];
+}
 #pragma mark *** Public Methods ***
 #pragma mark Properties
-- (void)setBorderOptions:(KDITextFieldBorderOptions)borderOptions {
-    _borderOptions = borderOptions;
-    
-    if (_borderOptions & KDITextFieldBorderOptionsTop) {
-        if (self.topBorderLayer == nil) {
-            [self setTopBorderLayer:[CALayer layer]];
-            [self _configureBorderLayer:self.topBorderLayer];
-            [self.layer addSublayer:self.topBorderLayer];
-        }
-    }
-    else {
-        [self.topBorderLayer removeFromSuperlayer];
-        [self setTopBorderLayer:nil];
-    }
-    
-    if (_borderOptions & KDITextFieldBorderOptionsLeft) {
-        if (self.leftBorderLayer == nil) {
-            [self setLeftBorderLayer:[CALayer layer]];
-            [self _configureBorderLayer:self.leftBorderLayer];
-            [self.layer addSublayer:self.leftBorderLayer];
-        }
-    }
-    else {
-        [self.leftBorderLayer removeFromSuperlayer];
-        [self setLeftBorderLayer:nil];
-    }
-    
-    if (_borderOptions & KDITextFieldBorderOptionsBottom) {
-        if (self.bottomBorderLayer == nil) {
-            [self setBottomBorderLayer:[CALayer layer]];
-            [self _configureBorderLayer:self.bottomBorderLayer];
-            [self.layer addSublayer:self.bottomBorderLayer];
-        }
-    }
-    else {
-        [self.bottomBorderLayer removeFromSuperlayer];
-        [self setBottomBorderLayer:nil];
-    }
-    
-    if (_borderOptions & KDITextFieldBorderOptionsRight) {
-        if (self.rightBorderLayer == nil) {
-            [self setRightBorderLayer:[CALayer layer]];
-            [self _configureBorderLayer:self.rightBorderLayer];
-            [self.layer addSublayer:self.rightBorderLayer];
-        }
-    }
-    else {
-        [self.rightBorderLayer removeFromSuperlayer];
-        [self setRightBorderLayer:nil];
-    }
-}
-- (void)setBorderWidth:(CGFloat)borderWidth {
-    _borderWidth = borderWidth;
-    
-    [self setNeedsLayout];
-}
-- (void)setBorderWidthRespectsScreenScale:(BOOL)borderWidthRespectsScreenScale {
-    _borderWidthRespectsScreenScale = borderWidthRespectsScreenScale;
-    
-    [self setNeedsLayout];
-}
-- (void)setBorderEdgeInsets:(UIEdgeInsets)borderEdgeInsets {
-    _borderEdgeInsets = borderEdgeInsets;
-    
-    [self setNeedsLayout];
-}
-- (void)setBorderColor:(UIColor *)borderColor {
-    [self setBorderColor:borderColor animated:NO];
-}
-- (void)setBorderColor:(UIColor *)borderColor animated:(BOOL)animated {
-    [self willChangeValueForKey:@kstKeypath(self,borderColor)];
-    
-    _borderColor = borderColor ?: [self.class _defaultBorderColor];
-    
-    [self didChangeValueForKey:@kstKeypath(self,borderColor)];
-    
-    [CATransaction begin];
-    [CATransaction setDisableActions:!animated];
-    
-    [self.topBorderLayer setBackgroundColor:_borderColor.CGColor];
-    [self.leftBorderLayer setBackgroundColor:_borderColor.CGColor];
-    [self.bottomBorderLayer setBackgroundColor:_borderColor.CGColor];
-    [self.rightBorderLayer setBackgroundColor:_borderColor.CGColor];
-    
-    [CATransaction commit];
-}
-#pragma mark -
 - (void)setTextEdgeInsets:(UIEdgeInsets)textEdgeInsets {
     _textEdgeInsets = textEdgeInsets;
     
@@ -198,13 +123,9 @@
 }
 #pragma mark *** Private Methods ***
 - (void)_KDITextFieldInit; {
-    _borderColor = [self.class _defaultBorderColor];
-    _borderWidth = 1.0;
+    _borderedViewImpl = [[KDIBorderedViewImpl alloc] initWithView:self];
 }
 #pragma mark -
-- (void)_configureBorderLayer:(CALayer *)layer; {
-    [layer setBackgroundColor:self.borderColor.CGColor];
-}
 - (CGSize)_sizeThatFits:(CGSize)size layout:(BOOL)layout; {
     CGSize retval = size;
     CGFloat leftViewHeight = self.leftViewEdgeInsets.top + CGRectGetHeight(self.leftView.frame) + self.leftViewEdgeInsets.bottom;
@@ -213,26 +134,10 @@
     retval.height = MAX(textHeight, MAX(leftViewHeight, rightViewHeight));
     
     if (layout) {
-        if (self.window.screen != nil) {
-            CGFloat borderWidth = self.borderWidthRespectsScreenScale ? self.borderWidth : self.borderWidth / self.window.screen.scale;
-            
-            [CATransaction begin];
-            [CATransaction setDisableActions:YES];
-            
-            [self.topBorderLayer setFrame:CGRectMake(self.borderEdgeInsets.left, self.borderEdgeInsets.top, CGRectGetWidth(self.bounds) - self.borderEdgeInsets.left - self.borderEdgeInsets.right, borderWidth)];
-            [self.leftBorderLayer setFrame:CGRectMake(self.borderEdgeInsets.left, self.borderEdgeInsets.top, borderWidth, CGRectGetHeight(self.bounds) - self.borderEdgeInsets.top - self.borderEdgeInsets.bottom)];
-            [self.bottomBorderLayer setFrame:CGRectMake(self.borderEdgeInsets.left, CGRectGetHeight(self.bounds) - self.borderEdgeInsets.bottom - borderWidth, CGRectGetWidth(self.bounds) - self.borderEdgeInsets.left - self.borderEdgeInsets.right, borderWidth)];
-            [self.rightBorderLayer setFrame:CGRectMake(CGRectGetWidth(self.bounds) - self.borderEdgeInsets.right - borderWidth, self.borderEdgeInsets.top, borderWidth, CGRectGetHeight(self.bounds) - self.borderEdgeInsets.top - self.borderEdgeInsets.bottom)];
-            
-            [CATransaction commit];
-        }
+        [self.borderedViewImpl layoutSubviews];
     }
     
     return retval;
-}
-#pragma mark -
-+ (UIColor *)_defaultBorderColor; {
-    return UIColor.blackColor;
 }
 
 @end

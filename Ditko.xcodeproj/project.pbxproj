@@ -52,6 +52,15 @@
 		071B62DF1E70864300B7B85A /* KDIGradientView.h in Headers */ = {isa = PBXBuildFile; fileRef = 071B626C1E70635D00B7B85A /* KDIGradientView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		071B62E01E70864900B7B85A /* KDIGradientView.m in Sources */ = {isa = PBXBuildFile; fileRef = 071B626D1E70635D00B7B85A /* KDIGradientView.m */; };
 		071E53361F58B9F800A36B59 /* TextViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 071E53351F58B9F800A36B59 /* TextViewController.xib */; };
+		071E53381F58FEC400A36B59 /* KDIBorderedView.h in Headers */ = {isa = PBXBuildFile; fileRef = 071E53371F58FEC400A36B59 /* KDIBorderedView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		071E53391F58FEC400A36B59 /* KDIBorderedView.h in Headers */ = {isa = PBXBuildFile; fileRef = 071E53371F58FEC400A36B59 /* KDIBorderedView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		071E533A1F58FEC400A36B59 /* KDIBorderedView.h in Headers */ = {isa = PBXBuildFile; fileRef = 071E53371F58FEC400A36B59 /* KDIBorderedView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		071E533D1F59004C00A36B59 /* KDIBorderedViewImpl.h in Headers */ = {isa = PBXBuildFile; fileRef = 071E533B1F59004C00A36B59 /* KDIBorderedViewImpl.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		071E533E1F59004C00A36B59 /* KDIBorderedViewImpl.h in Headers */ = {isa = PBXBuildFile; fileRef = 071E533B1F59004C00A36B59 /* KDIBorderedViewImpl.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		071E533F1F59004C00A36B59 /* KDIBorderedViewImpl.h in Headers */ = {isa = PBXBuildFile; fileRef = 071E533B1F59004C00A36B59 /* KDIBorderedViewImpl.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		071E53401F59004C00A36B59 /* KDIBorderedViewImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = 071E533C1F59004C00A36B59 /* KDIBorderedViewImpl.m */; };
+		071E53411F59004C00A36B59 /* KDIBorderedViewImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = 071E533C1F59004C00A36B59 /* KDIBorderedViewImpl.m */; };
+		071E53421F59004C00A36B59 /* KDIBorderedViewImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = 071E533C1F59004C00A36B59 /* KDIBorderedViewImpl.m */; };
 		072628111E70BCCF00511F80 /* KDIView.h in Headers */ = {isa = PBXBuildFile; fileRef = 0726280F1E70BCCF00511F80 /* KDIView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		072628121E70BCCF00511F80 /* KDIView.h in Headers */ = {isa = PBXBuildFile; fileRef = 0726280F1E70BCCF00511F80 /* KDIView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		072628131E70BCCF00511F80 /* KDIView.h in Headers */ = {isa = PBXBuildFile; fileRef = 0726280F1E70BCCF00511F80 /* KDIView.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -410,6 +419,9 @@
 		071B62D51E70849500B7B85A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		071B62DB1E7084BF00B7B85A /* Stanley.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Stanley.framework; path = "Vendor/Stanley/build/Debug-appletvos/Stanley.framework"; sourceTree = "<group>"; };
 		071E53351F58B9F800A36B59 /* TextViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TextViewController.xib; sourceTree = "<group>"; };
+		071E53371F58FEC400A36B59 /* KDIBorderedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KDIBorderedView.h; sourceTree = "<group>"; };
+		071E533B1F59004C00A36B59 /* KDIBorderedViewImpl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KDIBorderedViewImpl.h; path = Private/KDIBorderedViewImpl.h; sourceTree = "<group>"; };
+		071E533C1F59004C00A36B59 /* KDIBorderedViewImpl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KDIBorderedViewImpl.m; path = Private/KDIBorderedViewImpl.m; sourceTree = "<group>"; };
 		0726280F1E70BCCF00511F80 /* KDIView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KDIView.h; sourceTree = "<group>"; };
 		072628101E70BCCF00511F80 /* KDIView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KDIView.m; sourceTree = "<group>"; };
 		0735427A1E704D8F00177905 /* Ditko.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Ditko.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -650,6 +662,9 @@
 			children = (
 				0726280F1E70BCCF00511F80 /* KDIView.h */,
 				072628101E70BCCF00511F80 /* KDIView.m */,
+				071E53371F58FEC400A36B59 /* KDIBorderedView.h */,
+				071E533B1F59004C00A36B59 /* KDIBorderedViewImpl.h */,
+				071E533C1F59004C00A36B59 /* KDIBorderedViewImpl.m */,
 				071B626C1E70635D00B7B85A /* KDIGradientView.h */,
 				071B626D1E70635D00B7B85A /* KDIGradientView.m */,
 				0794A8351E73776C00603C99 /* KDIBadgeView.h */,
@@ -990,7 +1005,9 @@
 			files = (
 				0794A8151E73574A00603C99 /* UIAlertController+KDIExtensions.h in Headers */,
 				079CF60D1EC1125700CE1BE9 /* UIGestureRecognizer+KDIExtensions.h in Headers */,
+				071E533F1F59004C00A36B59 /* KDIBorderedViewImpl.h in Headers */,
 				0794A7F11E73509100603C99 /* UIView+KDIExtensions.h in Headers */,
+				071E533A1F58FEC400A36B59 /* KDIBorderedView.h in Headers */,
 				073B35171E82EF4B00C003A1 /* UIControl+KDIExtensions.h in Headers */,
 				07E8EB361E733F34001639A2 /* NSURL+KDIExtensions.h in Headers */,
 				07DB3D8F1E73B7BD0044FB50 /* KDIProgressNavigationBar.h in Headers */,
@@ -1025,6 +1042,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0794A8021E73541200603C99 /* NSBezierPath+KDIExtensions.h in Headers */,
+				071E53391F58FEC400A36B59 /* KDIBorderedView.h in Headers */,
 				07E8EB3E1E733FE3001639A2 /* KDIDefines.h in Headers */,
 				07A9208F1E95674C00B45199 /* NSControl+KDIExtensions.h in Headers */,
 				072628121E70BCCF00511F80 /* KDIView.h in Headers */,
@@ -1038,6 +1056,7 @@
 				07A920981E958CA900B45199 /* KDIRolloverButton.h in Headers */,
 				07A920931E95767E00B45199 /* NSTextField+KDIExtensions.h in Headers */,
 				079CF6121EC116FB00CE1BE9 /* NSGestureRecognizer+KDIExtensions.h in Headers */,
+				071E533E1F59004C00A36B59 /* KDIBorderedViewImpl.h in Headers */,
 				07C49DD01EA7EADD00C9F4D5 /* NSSavePanel+KDIExtensions.h in Headers */,
 				071B626F1E70635D00B7B85A /* KDIGradientView.h in Headers */,
 				0794A8101E73568500603C99 /* NSWindow+KDIExtensions.h in Headers */,
@@ -1071,8 +1090,10 @@
 				076730731E75C6C700030F0C /* KDIPickerViewButton.h in Headers */,
 				071B62631E705D3500B7B85A /* KDIFunctions.h in Headers */,
 				071B626E1E70635D00B7B85A /* KDIGradientView.h in Headers */,
+				071E533D1F59004C00A36B59 /* KDIBorderedViewImpl.h in Headers */,
 				07DB3D821E7383EC0044FB50 /* KDITextView.h in Headers */,
 				0794A8061E7354EF00603C99 /* UIViewController+KDIExtensions.h in Headers */,
+				071E53381F58FEC400A36B59 /* KDIBorderedView.h in Headers */,
 				0705AFD71ECE28F200BACC4E /* UIImage+KDIExtensions.h in Headers */,
 				076730831E75F6FE00030F0C /* KDIDatePickerButton.h in Headers */,
 				0794A7EA1E734D5300603C99 /* UINavigationController+KDIExtensions.h in Headers */,
@@ -1518,6 +1539,7 @@
 				07DB3D851E7383EC0044FB50 /* KDITextView.m in Sources */,
 				0794A7F31E73509100603C99 /* UIView+KDIExtensions.m in Sources */,
 				0794A8171E73574A00603C99 /* UIAlertController+KDIExtensions.m in Sources */,
+				071E53421F59004C00A36B59 /* KDIBorderedViewImpl.m in Sources */,
 				0705AFDB1ECE28F200BACC4E /* UIImage-NSImage+KDIExtensions.m in Sources */,
 				07E8EB3A1E733F34001639A2 /* NSURL+KDIExtensions.m in Sources */,
 				07E8EB4D1E73454D001639A2 /* UIDevice+KDIExtensions.m in Sources */,
@@ -1569,6 +1591,7 @@
 				07A920991E958CA900B45199 /* KDIRolloverButton.m in Sources */,
 				0794A81F1E73584900603C99 /* NSBundle+KDIPrivateExtensions.m in Sources */,
 				0794A80D1E7355B900603C99 /* NSViewController+KDIExtensions.m in Sources */,
+				071E53411F59004C00A36B59 /* KDIBorderedViewImpl.m in Sources */,
 				0794A82A1E735D1400603C99 /* NSAlert+KDIExtensions.m in Sources */,
 				07D166C41E96A08E0073F69A /* NSButton+KDIExtensions.m in Sources */,
 				0705AFE11ECE2A2D00BACC4E /* UIImage-NSImage+KDIExtensions.m in Sources */,
@@ -1612,6 +1635,7 @@
 				0795E6421E70491E004A5CB2 /* NSColor-UIColor+KDIExtensions.m in Sources */,
 				072628141E70BCCF00511F80 /* KDIView.m in Sources */,
 				074B477E1EB3D266009B7C6D /* KDIEmptyView.m in Sources */,
+				071E53401F59004C00A36B59 /* KDIBorderedViewImpl.m in Sources */,
 				0794A83A1E73776C00603C99 /* KDIBadgeView.m in Sources */,
 				0794A8081E7354EF00603C99 /* UIViewController+KDIExtensions.m in Sources */,
 				07E8EB4C1E73454D001639A2 /* UIDevice+KDIExtensions.m in Sources */,

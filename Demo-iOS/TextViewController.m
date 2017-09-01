@@ -49,7 +49,7 @@
     [self.textField setTintColor:UIColor.blackColor];
     [self.textField setPlaceholder:@"Text field placeholder…"];
     [self.textField setTextEdgeInsets:UIEdgeInsetsMake(8, 8, 8, 8)];
-    [self.textField setBorderOptions:KDITextFieldBorderOptionsAll];
+    [self.textField setBorderOptions:KDIBorderOptionsAll];
     [self.textField setBorderColor:KDIColorRandomRGB()];
     
     UIButton *infoButton = [UIButton buttonWithType:UIButtonTypeInfoDark];
