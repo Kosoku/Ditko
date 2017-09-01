@@ -73,7 +73,7 @@
     [rightButton sizeToFit];
     [self.textField setRightView:rightButton];
     [self.textField setRightViewMode:UITextFieldViewModeAlways];
-    [self.textField setRightViewEdgeInsets:UIEdgeInsetsMake(0, 0, 0, 8)];
+    [self.textField setRightViewEdgeInsets:UIEdgeInsetsMake(8, 0, 8, 8)];
     
     UISwitch *switchControl = [[UISwitch alloc] initWithFrame:CGRectZero];
     

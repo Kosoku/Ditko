@@ -88,12 +88,12 @@
 - (CGRect)leftViewRectForBounds:(CGRect)bounds {
     CGRect retval = [super leftViewRectForBounds:bounds];
     
-    return CGRectMake(self.leftViewEdgeInsets.left, CGRectGetMinY(retval) + self.leftViewEdgeInsets.top, CGRectGetWidth(retval), CGRectGetHeight(retval));
+    return CGRectMake(self.leftViewEdgeInsets.left, CGRectGetMinY(retval), CGRectGetWidth(retval), CGRectGetHeight(retval));
 }
 - (CGRect)rightViewRectForBounds:(CGRect)bounds {
     CGRect retval = [super rightViewRectForBounds:bounds];
     
-    return CGRectMake(CGRectGetWidth(bounds) - self.rightViewEdgeInsets.right - CGRectGetWidth(retval), CGRectGetMinY(retval) + self.rightViewEdgeInsets.top, CGRectGetWidth(retval), CGRectGetHeight(retval));
+    return CGRectMake(CGRectGetWidth(bounds) - self.rightViewEdgeInsets.right - CGRectGetWidth(retval), CGRectGetMinY(retval), CGRectGetWidth(retval), CGRectGetHeight(retval));
 }
 #pragma mark KDIBorderedView
 @dynamic borderOptions;
@@ -129,8 +129,9 @@
 - (CGSize)_sizeThatFits:(CGSize)size layout:(BOOL)layout; {
     CGSize retval = size;
     CGFloat leftViewHeight = self.leftViewEdgeInsets.top + CGRectGetHeight(self.leftView.frame) + self.leftViewEdgeInsets.bottom;
-    CGFloat textHeight = self.textEdgeInsets.top + size.height + self.textEdgeInsets.bottom;
+    CGFloat textHeight = size.height;
     CGFloat rightViewHeight = self.rightViewEdgeInsets.top + CGRectGetHeight(self.rightView.frame) + self.rightViewEdgeInsets.bottom;
+    
     retval.height = MAX(textHeight, MAX(leftViewHeight, rightViewHeight));
     
     if (layout) {
