@@ -55,6 +55,9 @@ typedef NS_OPTIONS(NSUInteger, KDIBorderOptions) {
     KDIBorderOptionsAll = KDIBorderOptionsTop|KDIBorderOptionsLeft|KDIBorderOptionsBottom|KDIBorderOptionsRight
 };
 
+/**
+ KDIBorderedView is a protocol that describes a view that can display borders around its content. On iOS, CALayer sublayers are used to display the borders in conforming classes (KDIView, KDITextField, KDITextView). On macOS, drawRect: is overriden to display the borders in conforming classes (KDIView).
+ */
 @protocol KDIBorderedView <NSObject>
 @required
 /**
@@ -111,11 +114,13 @@ typedef NS_OPTIONS(NSUInteger, KDIBorderOptions) {
 /**
  Set the border color and optionally animate the change. This animates the underlying CALayer instances that are used to represent the borders.
  
+ This is only available on iOS.
+ 
  @param borderColor The new border color, setting to nil will reset to the default border color
  @param animated Whether to animate the change
  */
 #if (TARGET_OS_IPHONE)
-- (void)setBorderColor:(nullable KDIColor *)borderColor animated:(BOOL)animated;
+- (void)setBorderColor:(nullable UIColor *)borderColor animated:(BOOL)animated;
 #endif
 @end
 

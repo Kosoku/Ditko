@@ -126,7 +126,7 @@
 #endif
 }
 #if (TARGET_OS_IPHONE)
-- (void)setBorderColor:(KDIColor *)borderColor animated:(BOOL)animated {
+- (void)setBorderColor:(UIColor *)borderColor animated:(BOOL)animated {
     [self willChangeValueForKey:@kstKeypath(self,borderColor)];
     
     _borderColor = borderColor ?: [self.class _defaultBorderColor];

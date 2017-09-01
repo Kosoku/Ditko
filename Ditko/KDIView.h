@@ -51,7 +51,7 @@ FOUNDATION_EXPORT NSNotificationName const KDIViewNotificationDidChangeState;
 #endif
 
 /**
- KDIView is a UIView/NSView subclass that provides a number of convenience methods.
+ KDIView is a UIView/NSView subclass that provides state change methods on macOS. It also conforms to KDIBorderedView, allowing it to display borders.
  */
 @interface KDIView : KDIViewClass <KDIBorderedView>
 
