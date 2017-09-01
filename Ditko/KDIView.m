@@ -113,6 +113,11 @@ NSNotificationName const KDIViewNotificationDidChangeState = @"KDIViewNotificati
 @dynamic borderWidthRespectsScreenScale;
 @dynamic borderEdgeInsets;
 @dynamic borderColor;
+#if (TARGET_OS_IPHONE)
+- (void)setBorderColor:(KDIColor *)borderColor animated:(BOOL)animated {
+    [self.borderedViewImpl setBorderColor:borderColor animated:animated];
+}
+#endif
 #pragma mark *** Private Methods ***
 - (void)_KDIViewInit; {
     _borderedViewImpl = [[KDIBorderedViewImpl alloc] initWithView:self];
