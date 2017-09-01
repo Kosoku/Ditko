@@ -56,7 +56,7 @@ typedef NS_OPTIONS(NSUInteger, KDIBorderOptions) {
 };
 
 /**
- KDIBorderedView is a protocol that describes a view that can display borders around its content. On iOS, CALayer sublayers are used to display the borders in conforming classes (KDIView, KDITextField, KDITextView). On macOS, drawRect: is overriden to display the borders in conforming classes (KDIView).
+ KDIBorderedView is a protocol that describes a view that can display borders around its content. On iOS, CALayer sublayers are used to display the borders in conforming classes (KDIView, KDITextField, KDITextView, KDIButton, KDILabel). On macOS, drawRect: is overriden to display the borders in conforming classes (KDIView).
  */
 @protocol KDIBorderedView <NSObject>
 @required
