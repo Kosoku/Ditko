@@ -73,7 +73,11 @@ typedef NS_OPTIONS(NSUInteger, KDIBorderOptions) {
  
  @warning Changes to this property do not affect the intrinsicContentSize of the receiver
  */
+#if (TARGET_OS_IPHONE)
 @property (assign,nonatomic) CGFloat borderWidth UI_APPEARANCE_SELECTOR;
+#else
+@property (assign,nonatomic) CGFloat borderWidth;
+#endif
 /**
  Set and get whether the borderWidth of the receiver respects the screen scale of the receiver. If YES, this borderWidth will scale appropriately on retina screens. For example, a borderWidth of 1.0 would display as 2.0 on a retina screen.
  
@@ -89,20 +93,30 @@ typedef NS_OPTIONS(NSUInteger, KDIBorderOptions) {
  
  @warning Changes to this property do not affect the intrinsicContentSize of the receiver
  */
-@property (assign,nonatomic) KDIEdgeInsets borderEdgeInsets UI_APPEARANCE_SELECTOR;
+#if (TARGET_OS_IPHONE)
+@property (assign,nonatomic) UIEdgeInsets borderEdgeInsets UI_APPEARANCE_SELECTOR;
+#else
+@property (assign,nonatomic) NSEdgeInsets borderEdgeInsets;
+#endif
 /**
  Set and get the border color of the receiver. This affects how the borders are displayed. This is distinct from the underlying CALayer borderColor property.
  
  The default is UIColor.blackColor.
  */
-@property (strong,nonatomic,null_resettable) KDIColor *borderColor UI_APPEARANCE_SELECTOR;
+#if (TARGET_OS_IPHONE)
+@property (strong,nonatomic,null_resettable) UIColor *borderColor UI_APPEARANCE_SELECTOR;
+#else
+@property (strong,nonatomic,null_resettable) NSColor *borderColor;
+#endif
 /**
  Set the border color and optionally animate the change. This animates the underlying CALayer instances that are used to represent the borders.
  
  @param borderColor The new border color, setting to nil will reset to the default border color
  @param animated Whether to animate the change
  */
+#if (TARGET_OS_IPHONE)
 - (void)setBorderColor:(nullable KDIColor *)borderColor animated:(BOOL)animated;
+#endif
 @end
 
 NS_ASSUME_NONNULL_END

@@ -54,7 +54,7 @@ static NSArray<NSArray<NSString *> *> *kPickerViewButtonComponentsAndRows;
     [view setBackgroundColor:KDIColorRandomRGB()];
     [view setBorderColor:KDIColorRandomRGB()];
     [view setBorderWidth:4.0];
-    [view setBorderOptions:KDIViewBorderOptionsAll];
+    [view setBorderOptions:KDIBorderOptionsAll];
     [view setBorderEdgeInsets:UIEdgeInsetsMake(8.0, 8.0, 8.0, 8.0)];
     
     [self setView:view];
