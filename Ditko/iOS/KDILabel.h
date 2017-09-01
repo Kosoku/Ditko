@@ -13,21 +13,26 @@
 //
 //  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-#import <UIKit/UIKit.h>
+#import <Ditko/KDIBorderedView.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
 /**
- KDILabel is a UILabel subclass that adds support for edge insets.
+ KDILabel is a UILabel subclass adds an edgeInsets property to add padding around its text. It also conforms to KDIBorderedView, allowing it to display borders.
  */
-@interface KDILabel : UILabel
+@interface KDILabel : UILabel <KDIBorderedView>
 
 /**
- Set and get the edge insets of the receiver. These affect the rectangle in which text is drawn.
+ Set and get the edge insets of the receiver. They affect how text is drawn using drawTextInRect:.
  
  The default is UIEdgeInsetsZero.
  */
 @property (assign,nonatomic) UIEdgeInsets edgeInsets UI_APPEARANCE_SELECTOR;
+
+- (void)layoutSubviews NS_REQUIRES_SUPER;
+- (CGSize)intrinsicContentSize NS_REQUIRES_SUPER;
+- (CGSize)sizeThatFits:(CGSize)size NS_REQUIRES_SUPER;
+- (void)drawTextInRect:(CGRect)rect NS_REQUIRES_SUPER;
 
 @end
 

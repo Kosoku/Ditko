@@ -25,6 +25,7 @@ typedef NS_ENUM(NSInteger, SubviewTag) {
 @property (weak,nonatomic) IBOutlet UISegmentedControl *badgeSegmentedControl;
 @property (weak,nonatomic) IBOutlet KDIButton *button;
 @property (weak,nonatomic) IBOutlet KDIBadgeButton *badgeButton;
+@property (strong,nonatomic) IBOutletCollection(KDILabel) NSArray *labels;
 @end
 
 @implementation ButtonViewController
@@ -37,6 +38,13 @@ typedef NS_ENUM(NSInteger, SubviewTag) {
     [super viewDidLoad];
     
     kstWeakify(self);
+    
+    for (KDILabel *label in self.labels) {
+        [label setBorderColor:KDIColorRandomRGB()];
+        [label setBorderWidthRespectsScreenScale:YES];
+        [label setBorderOptions:KDIBorderOptionsBottom];
+        [label setEdgeInsets:UIEdgeInsetsMake(0, 0, 0, 8)];
+    }
     
     [self.titleVerticalSegmentedControl KDI_addBlock:^(__kindof UIControl * _Nonnull control, UIControlEvents controlEvents) {
         kstStrongify(self);

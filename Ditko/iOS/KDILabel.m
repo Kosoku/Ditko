@@ -14,30 +14,66 @@
 //  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #import "KDILabel.h"
+#import "KDIBorderedViewImpl.h"
+
+@interface KDILabel ()
+@property (strong,nonatomic) KDIBorderedViewImpl *borderedViewImpl;
+
+- (void)_KDILabelInit;
+- (CGSize)_sizeThatFits:(CGSize)size layout:(BOOL)layout;
+@end
 
 @implementation KDILabel
 
 #pragma mark *** Subclass Overrides ***
+- (instancetype)initWithFrame:(CGRect)frame {
+    if (!(self = [super initWithFrame:frame]))
+        return nil;
+    
+    [self _KDILabelInit];
+    
+    return self;
+}
+- (instancetype)initWithCoder:(NSCoder *)aDecoder {
+    if (!(self = [super initWithCoder:aDecoder]))
+        return nil;
+    
+    [self _KDILabelInit];
+    
+    return self;
+}
+#pragma mark -
+- (id)forwardingTargetForSelector:(SEL)aSelector {
+    if ([self.borderedViewImpl respondsToSelector:aSelector]) {
+        return self.borderedViewImpl;
+    }
+    return [super forwardingTargetForSelector:aSelector];
+}
+#pragma mark -
 - (CGSize)intrinsicContentSize {
-    CGSize retval = [super intrinsicContentSize];
-    
-    retval.width += self.edgeInsets.left + self.edgeInsets.right;
-    retval.height += self.edgeInsets.top + self.edgeInsets.bottom;
-    
-    return retval;
+    return [self _sizeThatFits:[super intrinsicContentSize] layout:NO];
 }
-
 - (CGSize)sizeThatFits:(CGSize)size {
-    CGSize retval = [super sizeThatFits:size];
-    
-    retval.width += self.edgeInsets.left + self.edgeInsets.right;
-    retval.height += self.edgeInsets.top + self.edgeInsets.bottom;
-    
-    return retval;
+    return [self _sizeThatFits:[super sizeThatFits:size] layout:NO];
 }
-
+#pragma mark -
+- (void)layoutSubviews {
+    [super layoutSubviews];
+    
+    [self _sizeThatFits:self.bounds.size layout:YES];
+}
+#pragma mark -
 - (void)drawTextInRect:(CGRect)rect {
     [super drawTextInRect:UIEdgeInsetsInsetRect(rect, self.edgeInsets)];
+}
+#pragma mark KDIBorderedView
+@dynamic borderOptions;
+@dynamic borderWidth;
+@dynamic borderWidthRespectsScreenScale;
+@dynamic borderEdgeInsets;
+@dynamic borderColor;
+- (void)setBorderColor:(UIColor *)borderColor animated:(BOOL)animated {
+    [self.borderedViewImpl setBorderColor:borderColor animated:animated];
 }
 #pragma mark *** Public Methods ***
 #pragma mark Properties
@@ -46,6 +82,22 @@
     
     [self setNeedsDisplay];
     [self invalidateIntrinsicContentSize];
+}
+#pragma mark *** Private Methods ***
+- (void)_KDILabelInit; {
+    _borderedViewImpl = [[KDIBorderedViewImpl alloc] initWithView:self];
+}
+- (CGSize)_sizeThatFits:(CGSize)size layout:(BOOL)layout {
+    CGSize retval = size;
+    
+    retval.width += self.edgeInsets.left + self.edgeInsets.right;
+    retval.height += self.edgeInsets.top + self.edgeInsets.bottom;
+    
+    if (layout) {
+        [self.borderedViewImpl layoutSubviews];
+    }
+    
+    return retval;
 }
 
 @end
