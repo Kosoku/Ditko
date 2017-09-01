@@ -83,7 +83,7 @@
     
     [self.navigationItem setRightBarButtonItems:@[[UIBarButtonItem KDI_barButtonItemWithTitle:@"Color" style:UIBarButtonItemStylePlain block:^(__kindof UIBarButtonItem * _Nonnull barButtonItem) {
         kstStrongify(self);
-        [self.textField setBorderColor:KDIColorRandomRGB()];
+        [self.textField setBorderColor:KDIColorRandomRGB() animated:YES];
     }],[UIBarButtonItem KDI_barButtonItemWithTitle:@"Insets" style:UIBarButtonItemStylePlain block:^(__kindof UIBarButtonItem * _Nonnull barButtonItem) {
         kstStrongify(self);
         uint32_t max = 11;

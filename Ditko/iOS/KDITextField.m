@@ -15,6 +15,8 @@
 
 #import "KDITextField.h"
 
+#import <Stanley/KSTScopeMacros.h>
+
 @interface KDITextField ()
 @property (strong,nonatomic) CALayer *topBorderLayer, *leftBorderLayer, *bottomBorderLayer, *rightBorderLayer;
 
@@ -159,14 +161,22 @@
     [self setNeedsLayout];
 }
 - (void)setBorderColor:(UIColor *)borderColor {
+    [self setBorderColor:borderColor animated:NO];
+}
+- (void)setBorderColor:(UIColor *)borderColor animated:(BOOL)animated {
+    [self willChangeValueForKey:@kstKeypath(self,borderColor)];
+    
     _borderColor = borderColor ?: [self.class _defaultBorderColor];
     
-    [CATransaction begin];
-    [CATransaction setDisableActions:YES];
+    [self didChangeValueForKey:@kstKeypath(self,borderColor)];
     
-    for (CALayer *layer in @[self.topBorderLayer,self.leftBorderLayer,self.bottomBorderLayer,self.rightBorderLayer]) {
-        [layer setBackgroundColor:_borderColor.CGColor];
-    }
+    [CATransaction begin];
+    [CATransaction setDisableActions:!animated];
+    
+    [self.topBorderLayer setBackgroundColor:_borderColor.CGColor];
+    [self.leftBorderLayer setBackgroundColor:_borderColor.CGColor];
+    [self.bottomBorderLayer setBackgroundColor:_borderColor.CGColor];
+    [self.rightBorderLayer setBackgroundColor:_borderColor.CGColor];
     
     [CATransaction commit];
 }

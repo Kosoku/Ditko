@@ -99,6 +99,13 @@ typedef NS_OPTIONS(NSUInteger, KDITextFieldBorderOptions) {
  The default is UIColor.blackColor.
  */
 @property (strong,nonatomic,null_resettable) UIColor *borderColor UI_APPEARANCE_SELECTOR;
+/**
+ Set the border color and optionally animate the change. This animates the underlying CALayer instances that are used to represent the borders.
+ 
+ @param borderColor The new border color, setting to nil will reset to the default border color
+ @param animated Whether to animate the change
+ */
+- (void)setBorderColor:(nullable UIColor *)borderColor animated:(BOOL)animated;
 
 /**
  Set and get the text edge insets of the receiver. This value affects the return values of textRectForBounds: and editingRectForBounds:.
