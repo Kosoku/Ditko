@@ -19,6 +19,8 @@
 
 @property (strong,nonatomic) UILabel *placeholderLabel;
 
+@property (strong,nonatomic) UIFont *internalFont;
+
 - (void)_KDITextViewInit;
 - (void)_updatePlaceholderLabelWithText:(NSString *)text;
 
@@ -87,15 +89,21 @@
     [self.placeholderLabel setFrame:CGRectMake(self.textContainerInset.left, self.textContainerInset.top, maxWidth, ceil([self.placeholderLabel sizeThatFits:CGSizeMake(maxWidth, CGFLOAT_MAX)].height))];
 }
 #pragma mark -
+- (UIFont *)font {
+    UIFont *retval = [super font];
+    
+    if (![retval isEqual:self.internalFont]) {
+        retval = self.internalFont;
+    }
+    
+    return retval;
+}
 - (void)setFont:(UIFont *)font {
-    [super setFont:font ?: [self.class _defaultFont]];
+    [self setInternalFont:font];
+    
+    [super setFont:self.internalFont];
     
     [self _updatePlaceholderLabelWithText:self.placeholder];
-}
-- (void)setAttributedText:(NSAttributedString *)attributedText {
-    [super setAttributedText:attributedText];
-    
-    [self.placeholderLabel setHidden:attributedText.length > 0];
 }
 #pragma mark *** Public Methods ***
 #pragma mark Properties
@@ -135,10 +143,11 @@
     
     [self setPlaceholderLabel:[[UILabel alloc] initWithFrame:CGRectZero]];
     [self.placeholderLabel setNumberOfLines:0];
+    // if the super sets text before label is created
+    [self.placeholderLabel setHidden:self.text.length > 0];
     [self addSubview:self.placeholderLabel];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(_textDidChangeNotification:) name:UITextViewTextDidChangeNotification object:self];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(_textStorageDidProcessEditingNotification:) name:NSTextStorageDidProcessEditingNotification object:self.textStorage];
 }
 - (void)_updatePlaceholderLabelWithText:(NSString *)text; {
     [self setAttributedPlaceholder:[[NSAttributedString alloc] initWithString:text ?: @"" attributes:@{NSFontAttributeName: self.font, NSForegroundColorAttributeName: self.placeholderTextColor}]];
@@ -150,14 +159,13 @@
 + (UIColor *)_defaultPlaceholderTextColor {
     return [UIColor colorWithWhite:0.7 alpha:1.0];
 }
+#pragma mark Properties
+- (void)setInternalFont:(UIFont *)internalFont {
+    _internalFont = internalFont ?: [self.class _defaultFont];
+}
 #pragma mark Notifications
 - (void)_textDidChangeNotification:(NSNotification *)note {
     [self.placeholderLabel setHidden:self.text.length > 0];
-}
-- (void)_textStorageDidProcessEditingNotification:(NSNotification *)note {
-    if (self.textStorage.editedMask & NSTextStorageEditedCharacters) {
-        [self.placeholderLabel setHidden:self.textStorage.length > 0];
-    }
 }
 
 @end

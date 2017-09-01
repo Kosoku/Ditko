@@ -41,7 +41,6 @@
     
     [self.view setBackgroundColor:UIColor.lightGrayColor];
     
-    [self.textView setScrollEnabled:NO];
     [self.textView setBackgroundColor:UIColor.whiteColor];
     [self.textView setTintColor:UIColor.blackColor];
     [self.textView setPlaceholder:@"Text view placeholder…"];
