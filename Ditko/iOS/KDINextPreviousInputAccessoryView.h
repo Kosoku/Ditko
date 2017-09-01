@@ -62,6 +62,19 @@ FOUNDATION_EXPORT NSNotificationName const KDINextPreviousInputAccessoryViewNoti
 @interface KDINextPreviousInputAccessoryView : UIView
 
 /**
+ Set and get the next item image. Set this to non-nil if you wish to use a custom image for the next item. A default image is used if this is nil.
+ */
+@property (class,strong,nonatomic,nullable) UIImage *nextItemImage;
+/**
+ Set and get the previous item image. Set this to non-nil if you wish to use a custom image for the previous item. A default image is used if this is nil.
+ */
+@property (class,strong,nonatomic,nullable) UIImage *previousItemImage;
+/**
+ Set and get the done item image. Set this to non-nil if you wish to use a custom image for the done item. The default UIBarButtonItemStyleDone style is used if this is nil.
+ */
+@property (class,strong,nonatomic,nullable) UIImage *doneItemImage;
+
+/**
  Get the owning UIResponder of the receiver.
  */
 @property (readonly,weak,nonatomic) UIResponder *responder;

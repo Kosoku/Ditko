@@ -74,16 +74,25 @@ static CGFloat kDefaultFrameHeight;
     NSMutableArray *items = [[NSMutableArray alloc] init];
     
     if (self.itemOptions & KDINextPreviousInputAccessoryViewItemOptionsPrevious) {
-        [items addObject:[[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"arrow_left" inBundle:[NSBundle KDI_frameworkBundle] compatibleWithTraitCollection:nil] style:UIBarButtonItemStylePlain target:self action:@selector(_previousItemAction:)]];
+        UIImage *image = [self.class previousItemImage] ?: [UIImage imageNamed:@"arrow_left" inBundle:[NSBundle KDI_frameworkBundle] compatibleWithTraitCollection:nil];
+        
+        [items addObject:[[UIBarButtonItem alloc] initWithImage:image style:UIBarButtonItemStylePlain target:self action:@selector(_previousItemAction:)]];
     }
     if (self.itemOptions & KDINextPreviousInputAccessoryViewItemOptionsNext) {
-        [items addObject:[[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"arrow_right" inBundle:[NSBundle KDI_frameworkBundle] compatibleWithTraitCollection:nil] style:UIBarButtonItemStylePlain target:self action:@selector(_nextItemAction:)]];
+        UIImage *image = [self.class nextItemImage] ?: [UIImage imageNamed:@"arrow_right" inBundle:[NSBundle KDI_frameworkBundle] compatibleWithTraitCollection:nil];
+        
+        [items addObject:[[UIBarButtonItem alloc] initWithImage:image style:UIBarButtonItemStylePlain target:self action:@selector(_nextItemAction:)]];
     }
     
     [items addObject:[UIBarButtonItem KDI_flexibleSpaceBarButtonItem]];
     
     if (self.itemOptions & KDINextPreviousInputAccessoryViewItemOptionsDone) {
-        [items addObject:[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(_doneItemAction:)]];
+        if ([self.class doneItemImage] == nil) {
+            [items addObject:[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(_doneItemAction:)]];
+        }
+        else {
+            [items addObject:[[UIBarButtonItem alloc] initWithImage:[self.class doneItemImage] style:UIBarButtonItemStyleDone target:self action:@selector(_doneItemAction:)]];
+        }
     }
     
     [self.toolbar setItems:items];
