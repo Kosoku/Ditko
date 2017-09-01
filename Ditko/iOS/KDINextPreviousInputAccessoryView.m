@@ -17,6 +17,8 @@
 #import "UIBarButtonItem+KDIExtensions.h"
 #import "NSBundle+KDIPrivateExtensions.h"
 
+#import <objc/runtime.h>
+
 NSNotificationName const KDINextPreviousInputAccessoryViewNotificationNext = @"KDINextPreviousInputAccessoryViewNotificationNext";
 NSNotificationName const KDINextPreviousInputAccessoryViewNotificationPrevious = @"KDINextPreviousInputAccessoryViewNotificationPrevious";
 NSNotificationName const KDINextPreviousInputAccessoryViewNotificationDone = @"KDINextPreviousInputAccessoryViewNotificationDone";
@@ -96,6 +98,28 @@ static CGFloat kDefaultFrameHeight;
     }
     
     [self.toolbar setItems:items];
+}
+
+static void const *kNextItemImageKey = &kNextItemImageKey;
++ (UIImage *)nextItemImage {
+    return objc_getAssociatedObject(self, kNextItemImageKey);
+}
++ (void)setNextItemImage:(UIImage *)nextItemImage {
+    objc_setAssociatedObject(self, kNextItemImageKey, nextItemImage, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+static void const *kPreviousItemImageKey = &kPreviousItemImageKey;
++ (UIImage *)previousItemImage {
+    return objc_getAssociatedObject(self, kPreviousItemImageKey);
+}
++ (void)setPreviousItemImage:(UIImage *)previousItemImage {
+    objc_setAssociatedObject(self, kPreviousItemImageKey, previousItemImage, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+static void const *kDoneItemImageKey = &kDoneItemImageKey;
++ (UIImage *)doneItemImage {
+    return objc_getAssociatedObject(self, kDoneItemImageKey);
+}
++ (void)setDoneItemImage:(UIImage *)doneItemImage {
+    objc_setAssociatedObject(self, kDoneItemImageKey, doneItemImage, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
 - (IBAction)_previousItemAction:(id)sender {
