@@ -137,10 +137,20 @@
         [CATransaction begin];
         [CATransaction setDisableActions:YES];
         
-        [self.topBorderLayer setFrame:CGRectMake(self.borderEdgeInsets.left, self.borderEdgeInsets.top, CGRectGetWidth(self.view.bounds) - self.borderEdgeInsets.left - self.borderEdgeInsets.right, borderWidth)];
-        [self.leftBorderLayer setFrame:CGRectMake(self.borderEdgeInsets.left, self.borderEdgeInsets.top, borderWidth, CGRectGetHeight(self.view.bounds) - self.borderEdgeInsets.top - self.borderEdgeInsets.bottom)];
-        [self.bottomBorderLayer setFrame:CGRectMake(self.borderEdgeInsets.left, CGRectGetHeight(self.view.bounds) - self.borderEdgeInsets.bottom - borderWidth, CGRectGetWidth(self.view.bounds) - self.borderEdgeInsets.left - self.borderEdgeInsets.right, borderWidth)];
-        [self.rightBorderLayer setFrame:CGRectMake(CGRectGetWidth(self.view.bounds) - self.borderEdgeInsets.right - borderWidth, self.borderEdgeInsets.top, borderWidth, CGRectGetHeight(self.view.bounds) - self.borderEdgeInsets.top - self.borderEdgeInsets.bottom)];
+        if ([self.view isKindOfClass:UIScrollView.class]) {
+            UIScrollView *scrollView = (UIScrollView *)self.view;
+            
+            [self.topBorderLayer setFrame:CGRectMake(scrollView.contentOffset.x + self.borderEdgeInsets.left, scrollView.contentOffset.y + self.borderEdgeInsets.top, CGRectGetWidth(self.view.bounds) - self.borderEdgeInsets.left - self.borderEdgeInsets.right, borderWidth)];
+            [self.leftBorderLayer setFrame:CGRectMake(scrollView.contentOffset.x + self.borderEdgeInsets.left, scrollView.contentOffset.y + self.borderEdgeInsets.top, borderWidth, CGRectGetHeight(self.view.bounds) - self.borderEdgeInsets.top - self.borderEdgeInsets.bottom)];
+            [self.bottomBorderLayer setFrame:CGRectMake(scrollView.contentOffset.x + self.borderEdgeInsets.left, scrollView.contentOffset.y + CGRectGetHeight(self.view.bounds) - self.borderEdgeInsets.bottom - borderWidth, CGRectGetWidth(self.view.bounds) - self.borderEdgeInsets.left - self.borderEdgeInsets.right, borderWidth)];
+            [self.rightBorderLayer setFrame:CGRectMake(scrollView.contentOffset.x + CGRectGetWidth(self.view.bounds) - self.borderEdgeInsets.right - borderWidth, scrollView.contentOffset.y + self.borderEdgeInsets.top, borderWidth, CGRectGetHeight(self.view.bounds) - self.borderEdgeInsets.top - self.borderEdgeInsets.bottom)];
+        }
+        else {
+            [self.topBorderLayer setFrame:CGRectMake(self.borderEdgeInsets.left, self.borderEdgeInsets.top, CGRectGetWidth(self.view.bounds) - self.borderEdgeInsets.left - self.borderEdgeInsets.right, borderWidth)];
+            [self.leftBorderLayer setFrame:CGRectMake(self.borderEdgeInsets.left, self.borderEdgeInsets.top, borderWidth, CGRectGetHeight(self.view.bounds) - self.borderEdgeInsets.top - self.borderEdgeInsets.bottom)];
+            [self.bottomBorderLayer setFrame:CGRectMake(self.borderEdgeInsets.left, CGRectGetHeight(self.view.bounds) - self.borderEdgeInsets.bottom - borderWidth, CGRectGetWidth(self.view.bounds) - self.borderEdgeInsets.left - self.borderEdgeInsets.right, borderWidth)];
+            [self.rightBorderLayer setFrame:CGRectMake(CGRectGetWidth(self.view.bounds) - self.borderEdgeInsets.right - borderWidth, self.borderEdgeInsets.top, borderWidth, CGRectGetHeight(self.view.bounds) - self.borderEdgeInsets.top - self.borderEdgeInsets.bottom)];
+        }
         
         [CATransaction commit];
     }

@@ -45,6 +45,8 @@
     [self.textView setTintColor:UIColor.blackColor];
     [self.textView setPlaceholder:@"Text view placeholder…"];
     [self.textView setBorderOptions:KDIBorderOptionsAll];
+    [self.textView setBorderWidth:5.0];
+    [self.textView setBorderWidthRespectsScreenScale:YES];
     [self.textView setBorderColor:KDIColorRandomRGB()];
     
     [self.textField setBackgroundColor:UIColor.whiteColor];
@@ -52,6 +54,8 @@
     [self.textField setPlaceholder:@"Text field placeholder…"];
     [self.textField setTextEdgeInsets:UIEdgeInsetsMake(8, 8, 8, 8)];
     [self.textField setBorderOptions:KDIBorderOptionsAll];
+    [self.textField setBorderWidth:5.0];
+    [self.textField setBorderWidthRespectsScreenScale:YES];
     [self.textField setBorderColor:KDIColorRandomRGB()];
     
     UIButton *infoButton = [UIButton buttonWithType:UIButtonTypeInfoDark];
@@ -73,7 +77,7 @@
     
     UISwitch *switchControl = [[UISwitch alloc] initWithFrame:CGRectZero];
     
-    [switchControl setOn:NO];
+    [switchControl setOn:self.textView.borderWidthRespectsScreenScale];
     [switchControl KDI_addBlock:^(__kindof UIControl * _Nonnull control, UIControlEvents controlEvents) {
         kstStrongify(self);
         [self.textField setBorderWidthRespectsScreenScale:switchControl.isOn];
