@@ -17,6 +17,7 @@
 
 #import <Ditko/Ditko.h>
 #import <Stanley/Stanley.h>
+#import <KSOFontAwesomeExtensions/KSOFontAwesomeExtensions.h>
 
 @interface TextViewController ()
 @property (weak,nonatomic) IBOutlet KDITextView *textView;
@@ -42,12 +43,32 @@
     
     [self.textView setScrollEnabled:NO];
     [self.textView setBackgroundColor:UIColor.whiteColor];
+    [self.textView setTintColor:UIColor.blackColor];
     [self.textView setPlaceholder:@"Text view placeholder…"];
     
     [self.textField setBackgroundColor:UIColor.whiteColor];
+    [self.textField setTintColor:UIColor.blackColor];
     [self.textField setPlaceholder:@"Text field placeholder…"];
+    [self.textField setTextEdgeInsets:UIEdgeInsetsMake(8, 8, 8, 8)];
     [self.textField setBorderOptions:KDITextFieldBorderOptionsAll];
     [self.textField setBorderColor:KDIColorRandomRGB()];
+    
+    UIButton *infoButton = [UIButton buttonWithType:UIButtonTypeInfoDark];
+    
+    [infoButton setTintColor:UIColor.blackColor];
+    [infoButton sizeToFit];
+    [self.textField setLeftView:infoButton];
+    [self.textField setLeftViewMode:UITextFieldViewModeAlways];
+    [self.textField setLeftViewEdgeInsets:UIEdgeInsetsMake(0, 8, 0, 0)];
+    
+    UIButton *rightButton = [UIButton buttonWithType:UIButtonTypeSystem];
+    
+    [rightButton setTintColor:UIColor.blackColor];
+    [rightButton setImage:[[UIImage KSO_fontAwesomeImageWithIcon:KSOFontAwesomeIconBeer size:CGSizeMake(48, 48)] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] forState:UIControlStateNormal];
+    [rightButton sizeToFit];
+    [self.textField setRightView:rightButton];
+    [self.textField setRightViewMode:UITextFieldViewModeAlways];
+    [self.textField setRightViewEdgeInsets:UIEdgeInsetsMake(0, 0, 0, 8)];
     
     UISwitch *switchControl = [[UISwitch alloc] initWithFrame:CGRectZero];
     
