@@ -20,6 +20,7 @@
 
 - (void)_KDITextFieldInit;
 - (void)_configureBorderLayer:(CALayer *)layer;
+- (CGSize)_sizeThatFits:(CGSize)size layout:(BOOL)layout;
 
 + (UIColor *)_defaultBorderColor;
 @end
@@ -52,24 +53,18 @@
         [self becomeFirstResponder];
     }
 }
+#pragma mark -
+- (CGSize)intrinsicContentSize {
+    return [self _sizeThatFits:[super intrinsicContentSize] layout:NO];
+}
+- (CGSize)sizeThatFits:(CGSize)size {
+    return [self _sizeThatFits:[super sizeThatFits:size] layout:NO];
+}
+#pragma mark -
 - (void)layoutSubviews {
     [super layoutSubviews];
     
-    if (self.window.screen == nil) {
-        return;
-    }
-    
-    CGFloat borderWidth = self.borderWidthRespectsScreenScale ? self.borderWidth : self.borderWidth / self.window.screen.scale;
-    
-    [CATransaction begin];
-    [CATransaction setDisableActions:YES];
-    
-    [self.topBorderLayer setFrame:CGRectMake(self.borderEdgeInsets.left, self.borderEdgeInsets.top, CGRectGetWidth(self.bounds) - self.borderEdgeInsets.left - self.borderEdgeInsets.right, borderWidth)];
-    [self.leftBorderLayer setFrame:CGRectMake(self.borderEdgeInsets.left, self.borderEdgeInsets.top, borderWidth, CGRectGetHeight(self.bounds) - self.borderEdgeInsets.top - self.borderEdgeInsets.bottom)];
-    [self.bottomBorderLayer setFrame:CGRectMake(self.borderEdgeInsets.left, CGRectGetHeight(self.bounds) - self.borderEdgeInsets.bottom - borderWidth, CGRectGetWidth(self.bounds) - self.borderEdgeInsets.left - self.borderEdgeInsets.right, borderWidth)];
-    [self.rightBorderLayer setFrame:CGRectMake(CGRectGetWidth(self.bounds) - self.borderEdgeInsets.right - borderWidth, self.borderEdgeInsets.top, borderWidth, CGRectGetHeight(self.bounds) - self.borderEdgeInsets.top - self.borderEdgeInsets.bottom)];
-    
-    [CATransaction commit];
+    [self _sizeThatFits:self.bounds.size layout:YES];
 }
 #pragma mark -
 - (CGRect)textRectForBounds:(CGRect)bounds {
@@ -88,12 +83,12 @@
 - (CGRect)leftViewRectForBounds:(CGRect)bounds {
     CGRect retval = [super leftViewRectForBounds:bounds];
     
-    return CGRectMake(self.leftViewEdgeInsets.left, CGRectGetMinY(retval), CGRectGetWidth(retval), CGRectGetHeight(retval));
+    return CGRectMake(self.leftViewEdgeInsets.left, CGRectGetMinY(retval) + self.leftViewEdgeInsets.top, CGRectGetWidth(retval), CGRectGetHeight(retval));
 }
 - (CGRect)rightViewRectForBounds:(CGRect)bounds {
     CGRect retval = [super rightViewRectForBounds:bounds];
     
-    return CGRectMake(CGRectGetWidth(bounds) - self.rightViewEdgeInsets.right - CGRectGetWidth(retval), CGRectGetMinY(retval), CGRectGetWidth(retval), CGRectGetHeight(retval));
+    return CGRectMake(CGRectGetWidth(bounds) - self.rightViewEdgeInsets.right - CGRectGetWidth(retval), CGRectGetMinY(retval) + self.rightViewEdgeInsets.top, CGRectGetWidth(retval), CGRectGetHeight(retval));
 }
 #pragma mark *** Public Methods ***
 #pragma mark Properties
@@ -199,6 +194,31 @@
 #pragma mark -
 - (void)_configureBorderLayer:(CALayer *)layer; {
     [layer setBackgroundColor:self.borderColor.CGColor];
+}
+- (CGSize)_sizeThatFits:(CGSize)size layout:(BOOL)layout; {
+    CGSize retval = size;
+    CGFloat leftViewHeight = self.leftViewEdgeInsets.top + CGRectGetHeight(self.leftView.frame) + self.leftViewEdgeInsets.bottom;
+    CGFloat textHeight = self.textEdgeInsets.top + size.height + self.textEdgeInsets.bottom;
+    CGFloat rightViewHeight = self.rightViewEdgeInsets.top + CGRectGetHeight(self.rightView.frame) + self.rightViewEdgeInsets.bottom;
+    retval.height = MAX(textHeight, MAX(leftViewHeight, rightViewHeight));
+    
+    if (layout) {
+        if (self.window.screen != nil) {
+            CGFloat borderWidth = self.borderWidthRespectsScreenScale ? self.borderWidth : self.borderWidth / self.window.screen.scale;
+            
+            [CATransaction begin];
+            [CATransaction setDisableActions:YES];
+            
+            [self.topBorderLayer setFrame:CGRectMake(self.borderEdgeInsets.left, self.borderEdgeInsets.top, CGRectGetWidth(self.bounds) - self.borderEdgeInsets.left - self.borderEdgeInsets.right, borderWidth)];
+            [self.leftBorderLayer setFrame:CGRectMake(self.borderEdgeInsets.left, self.borderEdgeInsets.top, borderWidth, CGRectGetHeight(self.bounds) - self.borderEdgeInsets.top - self.borderEdgeInsets.bottom)];
+            [self.bottomBorderLayer setFrame:CGRectMake(self.borderEdgeInsets.left, CGRectGetHeight(self.bounds) - self.borderEdgeInsets.bottom - borderWidth, CGRectGetWidth(self.bounds) - self.borderEdgeInsets.left - self.borderEdgeInsets.right, borderWidth)];
+            [self.rightBorderLayer setFrame:CGRectMake(CGRectGetWidth(self.bounds) - self.borderEdgeInsets.right - borderWidth, self.borderEdgeInsets.top, borderWidth, CGRectGetHeight(self.bounds) - self.borderEdgeInsets.top - self.borderEdgeInsets.bottom)];
+            
+            [CATransaction commit];
+        }
+    }
+    
+    return retval;
 }
 #pragma mark -
 + (UIColor *)_defaultBorderColor; {

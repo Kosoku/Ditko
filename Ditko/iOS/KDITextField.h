@@ -66,24 +66,31 @@ typedef NS_OPTIONS(NSUInteger, KDITextFieldBorderOptions) {
  The default is KDITextFieldBorderOptionsNone.
  
  @see KDITextFieldBorderOptions
+ @warning Changes to this property do not affect the intrinsicContentSize of the receiver
  */
 @property (assign,nonatomic) KDITextFieldBorderOptions borderOptions;
 /**
  Set and get the border width of the receiver. This describes the width of vertical borders and the height of horizontal borders. This is distinct from the underlying CALayer borderWidth property.
  
  The default is 1.0.
+ 
+ @warning Changes to this property do not affect the intrinsicContentSize of the receiver
  */
 @property (assign,nonatomic) CGFloat borderWidth UI_APPEARANCE_SELECTOR;
 /**
  Set and get whether the borderWidth of the receiver respects the screen scale of the receiver. If YES, this borderWidth will scale appropriately on retina screens. For example, a borderWidth of 1.0 would display as 2.0 on a retina screen.
  
  The default is NO.
+ 
+ @warning Changes to this property do not affect the intrinsicContentSize of the receiver
  */
 @property (assign,nonatomic) BOOL borderWidthRespectsScreenScale;
 /**
  Set and get the border edge insets of the receiver. This affects how the borders are displayed. They are inset according to this value.
  
  The default is UIEdgeInsetsZero.
+ 
+ @warning Changes to this property do not affect the intrinsicContentSize of the receiver
  */
 @property (assign,nonatomic) UIEdgeInsets borderEdgeInsets UI_APPEARANCE_SELECTOR;
 /**
@@ -114,8 +121,11 @@ typedef NS_OPTIONS(NSUInteger, KDITextFieldBorderOptions) {
 @property (assign,nonatomic) UIEdgeInsets rightViewEdgeInsets UI_APPEARANCE_SELECTOR;
 
 - (void)tintColorDidChange NS_REQUIRES_SUPER;
+- (CGSize)intrinsicContentSize NS_REQUIRES_SUPER;
+- (CGSize)sizeThatFits:(CGSize)size NS_REQUIRES_SUPER;
 - (void)layoutSubviews NS_REQUIRES_SUPER;
 - (CGRect)textRectForBounds:(CGRect)bounds NS_REQUIRES_SUPER;
+- (CGRect)editingRectForBounds:(CGRect)bounds NS_REQUIRES_SUPER;
 - (CGRect)leftViewRectForBounds:(CGRect)bounds NS_REQUIRES_SUPER;
 - (CGRect)rightViewRectForBounds:(CGRect)bounds NS_REQUIRES_SUPER;
 
