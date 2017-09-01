@@ -33,6 +33,7 @@
     UIColor *barTintColor = KDIColorRandomRGB();
     
     [UINavigationBar.appearance setBarTintColor:barTintColor];
+    [UITabBar.appearance setBarTintColor:barTintColor];
     
     [self setWindow:[[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds]];
     
@@ -49,7 +50,7 @@
                                      [[UINavigationController alloc] initWithRootViewController:[[TextViewController alloc] init]],
                                      [[UINavigationController alloc] initWithRootViewController:[[ButtonViewController alloc] init]]]];
     
-    [controller setSelectedIndex:3];
+//    [controller setSelectedIndex:3];
     
     [self.window setRootViewController:controller];
     [self.window makeKeyAndVisible];

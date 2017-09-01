@@ -34,6 +34,15 @@
     return NO;
 }
 
+- (instancetype)init {
+    if (!(self = [super init]))
+        return nil;
+    
+    [self setTabBarItem:[[UITabBarItem alloc] initWithTitle:self.title image:[[UIImage KSO_fontAwesomeImageWithIcon:(KSOFontAwesomeIcon)arc4random_uniform((uint32_t)KSO_FONT_AWESOME_ICON_TOTAL_ICONS) size:CGSizeMake(25, 25)] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] tag:0]];
+    
+    return self;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -45,7 +54,6 @@
     [self.textView setTintColor:UIColor.blackColor];
     [self.textView setPlaceholder:@"Text view placeholder…"];
     [self.textView setBorderOptions:KDIBorderOptionsAll];
-    [self.textView setBorderWidth:5.0];
     [self.textView setBorderWidthRespectsScreenScale:YES];
     [self.textView setBorderColor:KDIColorRandomRGB()];
     
@@ -54,7 +62,6 @@
     [self.textField setPlaceholder:@"Text field placeholder…"];
     [self.textField setTextEdgeInsets:UIEdgeInsetsMake(8, 8, 8, 8)];
     [self.textField setBorderOptions:KDIBorderOptionsAll];
-    [self.textField setBorderWidth:5.0];
     [self.textField setBorderWidthRespectsScreenScale:YES];
     [self.textField setBorderColor:KDIColorRandomRGB()];
     

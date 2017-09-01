@@ -34,16 +34,32 @@ typedef NS_ENUM(NSInteger, SubviewTag) {
     return @"Buttons";
 }
 
+- (instancetype)init {
+    if (!(self = [super init]))
+        return nil;
+    
+    [self setTabBarItem:[[UITabBarItem alloc] initWithTitle:self.title image:[[UIImage KSO_fontAwesomeImageWithIcon:(KSOFontAwesomeIcon)arc4random_uniform((uint32_t)KSO_FONT_AWESOME_ICON_TOTAL_ICONS) size:CGSizeMake(25, 25)] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] tag:0]];
+    
+    return self;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     kstWeakify(self);
+    
+    UIColor *tintColor = UIApplication.sharedApplication.delegate.window.tintColor;
+    UIColor *backgroundColor = [tintColor KDI_contrastingColor];
+    
+    [self.view setBackgroundColor:backgroundColor];
     
     for (KDILabel *label in self.labels) {
         [label setBorderColor:KDIColorRandomRGB()];
         [label setBorderWidthRespectsScreenScale:YES];
         [label setBorderOptions:KDIBorderOptionsBottom];
         [label setEdgeInsets:UIEdgeInsetsMake(0, 0, 0, 8)];
+        [label setCopyable:YES];
+        [label setTextColor:tintColor];
     }
     
     [self.titleVerticalSegmentedControl KDI_addBlock:^(__kindof UIControl * _Nonnull control, UIControlEvents controlEvents) {
@@ -103,6 +119,7 @@ typedef NS_ENUM(NSInteger, SubviewTag) {
         [self.badgeButton.badgeView setBadge:[NSNumberFormatter localizedStringFromNumber:@(arc4random_uniform(1001)) numberStyle:NSNumberFormatterDecimalStyle]];
     };
     
+    [self.badgeButton setBackgroundColor:backgroundColor];
     [self.badgeButton.button setBorderOptions:KDIBorderOptionsAll];
     [self.badgeButton.button setBorderColor:KDIColorRandomRGB()];
     [self.badgeButton.button setContentEdgeInsets:UIEdgeInsetsMake(8, 8, 8, 8)];

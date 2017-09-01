@@ -18,6 +18,9 @@
 
 @interface KDILabel ()
 @property (strong,nonatomic) KDIBorderedViewImpl *borderedViewImpl;
+#if (TARGET_OS_IOS)
+@property (strong,nonatomic) UILongPressGestureRecognizer *longPressGestureRecognizer;
+#endif
 
 - (void)_KDILabelInit;
 - (CGSize)_sizeThatFits:(CGSize)size layout:(BOOL)layout;
@@ -50,6 +53,26 @@
     return [super forwardingTargetForSelector:aSelector];
 }
 #pragma mark -
+#if (TARGET_OS_IOS)
+- (BOOL)canPerformAction:(SEL)action withSender:(id)sender {
+    if (action == @selector(copy:)) {
+        return self.isCopyable;
+    }
+    return [super canPerformAction:action withSender:sender];
+}
+- (void)copy:(id)sender {
+    if (!self.isCopyable) {
+        return;
+    }
+    
+    [UIPasteboard.generalPasteboard setString:self.text];
+}
+
+- (BOOL)canBecomeFirstResponder {
+    return self.isCopyable;
+}
+#endif
+#pragma mark -
 - (CGSize)intrinsicContentSize {
     return [self _sizeThatFits:[super intrinsicContentSize] layout:NO];
 }
@@ -77,6 +100,15 @@
 }
 #pragma mark *** Public Methods ***
 #pragma mark Properties
+#if (TARGET_OS_IOS)
+- (void)setCopyable:(BOOL)copyable {
+    _copyable = copyable;
+    
+    [self setUserInteractionEnabled:_copyable];
+    
+    [self setLongPressGestureRecognizer:_copyable ? [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(_longPressGestureRecognizerAction:)] : nil];
+}
+#endif
 - (void)setEdgeInsets:(UIEdgeInsets)edgeInsets {
     _edgeInsets = edgeInsets;
     
@@ -99,5 +131,26 @@
     
     return retval;
 }
+#if (TARGET_OS_IOS)
+#pragma mark Properties
+- (void)setLongPressGestureRecognizer:(UILongPressGestureRecognizer *)longPressGestureRecognizer {
+    [_longPressGestureRecognizer.view removeGestureRecognizer:_longPressGestureRecognizer];
+    
+    _longPressGestureRecognizer = longPressGestureRecognizer;
+    
+    if (_longPressGestureRecognizer != nil) {
+        [self addGestureRecognizer:_longPressGestureRecognizer];
+    }
+}
+#pragma mark Actions
+- (IBAction)_longPressGestureRecognizerAction:(id)sender {
+    if (!UIMenuController.sharedMenuController.isMenuVisible) {
+        [self becomeFirstResponder];
+        
+        [UIMenuController.sharedMenuController setTargetRect:self.bounds inView:self];
+        [UIMenuController.sharedMenuController setMenuVisible:YES animated:YES];
+    }
+}
+#endif
 
 @end

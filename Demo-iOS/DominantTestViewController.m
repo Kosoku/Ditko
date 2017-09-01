@@ -29,14 +29,14 @@
 @implementation DominantTestViewController
 
 - (NSString *)title {
-    return @"Dominant Color";
+    return @"Colors";
 }
 
 - (instancetype)init {
     if (!(self = [super init]))
         return nil;
     
-    [self setTabBarItem:[[UITabBarItem alloc] initWithTitle:@"Dominant" image:[[UIImage KSO_fontAwesomeImageWithString:@"\uf042" size:CGSizeMake(30, 30)] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] tag:0]];
+    [self setTabBarItem:[[UITabBarItem alloc] initWithTitle:self.title image:[[UIImage KSO_fontAwesomeImageWithIcon:(KSOFontAwesomeIcon)arc4random_uniform((uint32_t)KSO_FONT_AWESOME_ICON_TOTAL_ICONS) size:CGSizeMake(25, 25)] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] tag:0]];
     
     return self;
 }

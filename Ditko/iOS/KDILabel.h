@@ -23,6 +23,15 @@ NS_ASSUME_NONNULL_BEGIN
 @interface KDILabel : UILabel <KDIBorderedView>
 
 /**
+ Set and get whether the receiver can copy the value of its text property to the pasteboard. If YES, when the receiver is long pressed on, it will show the edit menu via UIMenuController with the Copy item.
+ 
+ The default is NO.
+ */
+#if (TARGET_OS_IOS)
+@property (assign,nonatomic,getter=isCopyable) BOOL copyable;
+#endif
+
+/**
  Set and get the edge insets of the receiver. They affect how text is drawn using drawTextInRect:.
  
  The default is UIEdgeInsetsZero.

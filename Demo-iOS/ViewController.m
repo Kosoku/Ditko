@@ -43,7 +43,7 @@ static NSArray<NSArray<NSString *> *> *kPickerViewButtonComponentsAndRows;
     if (!(self = [super init]))
         return nil;
     
-    [self setTabBarItem:[[UITabBarItem alloc] initWithTitle:self.title image:[[UIImage KSO_fontAwesomeImageWithString:@"\uf11b" size:CGSizeMake(30, 30)] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] tag:0]];
+    [self setTabBarItem:[[UITabBarItem alloc] initWithTitle:self.title image:[[UIImage KSO_fontAwesomeImageWithIcon:(KSOFontAwesomeIcon)arc4random_uniform((uint32_t)KSO_FONT_AWESOME_ICON_TOTAL_ICONS) size:CGSizeMake(25, 25)] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] tag:0]];
     
     return self;
 }
@@ -61,6 +61,8 @@ static NSArray<NSArray<NSString *> *> *kPickerViewButtonComponentsAndRows;
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    UIColor *backgroundColor = [UIApplication.sharedApplication.delegate.window.tintColor KDI_contrastingColor];
     
     KDIGradientView *gradientView = [[KDIGradientView alloc] initWithFrame:CGRectZero];
     
@@ -119,7 +121,7 @@ static NSArray<NSArray<NSString *> *> *kPickerViewButtonComponentsAndRows;
     KDIPickerViewButton *pickerViewButton = [KDIPickerViewButton buttonWithType:UIButtonTypeSystem];
     
     [pickerViewButton setTranslatesAutoresizingMaskIntoConstraints:NO];
-    [pickerViewButton setBackgroundColor:[UIColor whiteColor]];
+    [pickerViewButton setBackgroundColor:backgroundColor];
     [pickerViewButton setContentEdgeInsets:UIEdgeInsetsMake(8, 16, 8, 16)];
     [pickerViewButton setTitleEdgeInsets:UIEdgeInsetsMake(0, 8, 0, 0)];
     [pickerViewButton setImage:[UIImage imageNamed:@"snake"] forState:UIControlStateNormal];
@@ -188,7 +190,7 @@ static NSArray<NSArray<NSString *> *> *kPickerViewButtonComponentsAndRows;
     
     KDIBadgeButton *badgeButton = [[KDIBadgeButton alloc] initWithFrame:CGRectZero];
     
-    [badgeButton.button setImage:[UIImage KSO_fontAwesomeImageWithString:@"\uf007" size:CGSizeMake(25, 25)] forState:UIControlStateNormal];
+    [badgeButton.button setImage:[UIImage KSO_fontAwesomeImageWithIcon:(KSOFontAwesomeIcon)arc4random_uniform((uint32_t)KSO_FONT_AWESOME_ICON_TOTAL_ICONS) size:CGSizeMake(25, 25)] forState:UIControlStateNormal];
     [badgeButton.badgeView setBadge:@"1"];
     [badgeButton.badgeView setBadgeBackgroundColor:KDIColorRandomRGB()];
     [badgeButton.badgeView setBadgeForegroundColor:[badgeButton.badgeView.badgeBackgroundColor KDI_contrastingColor]];
@@ -197,6 +199,7 @@ static NSArray<NSArray<NSString *> *> *kPickerViewButtonComponentsAndRows;
     __block NSUInteger badgeButtonValue = 1;
     
     [badgeButton.button KDI_addBlock:^(__kindof UIControl * _Nonnull control, UIControlEvents controlEvents) {
+        [badgeButton.button setImage:[UIImage KSO_fontAwesomeImageWithIcon:(KSOFontAwesomeIcon)arc4random_uniform((uint32_t)KSO_FONT_AWESOME_ICON_TOTAL_ICONS) size:CGSizeMake(25, 25)] forState:UIControlStateNormal];
         [badgeButton.badgeView setBadge:[NSNumberFormatter localizedStringFromNumber:@(++badgeButtonValue) numberStyle:NSNumberFormatterDecimalStyle]];
         [badgeButton.badgeView setBadgeBackgroundColor:KDIColorRandomRGB()];
         [badgeButton.badgeView setBadgeForegroundColor:[badgeButton.badgeView.badgeBackgroundColor KDI_contrastingColor]];
@@ -208,7 +211,7 @@ static NSArray<NSArray<NSString *> *> *kPickerViewButtonComponentsAndRows;
     KDIButton *toggleButton = [KDIButton buttonWithType:UIButtonTypeSystem];
     
     [toggleButton setTranslatesAutoresizingMaskIntoConstraints:NO];
-    [toggleButton setBackgroundColor:UIColor.whiteColor];
+    [toggleButton setBackgroundColor:backgroundColor];
     [toggleButton setContentEdgeInsets:UIEdgeInsetsMake(8, 16, 8, 16)];
     [toggleButton setRounded:YES];
     [toggleButton setTitle:@"Show Progress" forState:UIControlStateNormal];
@@ -239,7 +242,7 @@ static NSArray<NSArray<NSString *> *> *kPickerViewButtonComponentsAndRows;
     KDIButton *pushViewControllerButton = [KDIButton buttonWithType:UIButtonTypeSystem];
     
     [pushViewControllerButton setTranslatesAutoresizingMaskIntoConstraints:NO];
-    [pushViewControllerButton setBackgroundColor:[pushViewControllerButton.tintColor KDI_contrastingColor]];
+    [pushViewControllerButton setBackgroundColor:backgroundColor];
     [pushViewControllerButton setTitle:@"Push VC" forState:UIControlStateNormal];
     [pushViewControllerButton setContentEdgeInsets:UIEdgeInsetsMake(8, 16, 8, 16)];
     [pushViewControllerButton setRounded:YES];
@@ -260,7 +263,7 @@ static NSArray<NSArray<NSString *> *> *kPickerViewButtonComponentsAndRows;
     [centerBadgeButton.button setKDI_cornerRadius:5.0];
     [centerBadgeButton.button setContentEdgeInsets:UIEdgeInsetsMake(8, 16, 8, 16)];
     [centerBadgeButton.button setTitleEdgeInsets:UIEdgeInsetsMake(8, 0, 0, 0)];
-    [centerBadgeButton.button setBackgroundColor:[pushViewControllerButton.tintColor KDI_contrastingColor]];
+    [centerBadgeButton.button setBackgroundColor:backgroundColor];
     [centerBadgeButton.button setTitleContentVerticalAlignment:KDIButtonContentVerticalAlignmentBottom];
     [centerBadgeButton.button setTitleContentHorizontalAlignment:KDIButtonContentHorizontalAlignmentCenter];
     [centerBadgeButton.button setImageContentVerticalAlignment:KDIButtonContentVerticalAlignmentTop];
@@ -276,8 +279,23 @@ static NSArray<NSArray<NSString *> *> *kPickerViewButtonComponentsAndRows;
     [gradientView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:[subview]-[view]" options:0 metrics:nil views:@{@"view": centerBadgeButton, @"subview": pushViewControllerButton}]];
     [gradientView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[subview]-[view]" options:0 metrics:nil views:@{@"view": centerBadgeButton, @"subview": toggleButton}]];
     
+    KDILabel *label = [[KDILabel alloc] initWithFrame:CGRectZero];
+    
+    [label setTranslatesAutoresizingMaskIntoConstraints:NO];
+    [label setCopyable:YES];
+    [label setBorderWidthRespectsScreenScale:YES];
+    [label setBorderOptions:KDIBorderOptionsBottom];
+    [label setBorderColor:KDIColorRandomRGB()];
+    [label setEdgeInsets:UIEdgeInsetsMake(0, 0, 4, 0)];
+    [label setText:@"Long press to copy!"];
+    
+    [gradientView addSubview:label];
+    [gradientView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[view]" options:0 metrics:nil views:@{@"view": label}]];
+    [gradientView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[subview]-[view]" options:0 metrics:nil views:@{@"view": label, @"subview": centerBadgeButton}]];
+    
     [NSObject KDI_registerDynamicTypeObjectsForTextStyles:@{UIFontTextStyleCaption2: @[centerBadgeButton.badgeView],
-                                                            UIFontTextStyleCallout: @[badgeView,blockButton.titleLabel,pickerViewButton.titleLabel,datePickerButton.titleLabel,centerBadgeButton.button.titleLabel]}];
+                                                            UIFontTextStyleCallout: @[badgeView,blockButton.titleLabel,pickerViewButton.titleLabel,datePickerButton.titleLabel,centerBadgeButton.button.titleLabel],
+                                                            UIFontTextStyleBody: @[label]}];
     
     [self.navigationItem setBackBarButtonItem:[UIBarButtonItem iosd_backBarButtonItemWithViewController:self]];
     
