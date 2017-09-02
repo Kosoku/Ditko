@@ -55,7 +55,7 @@
         return;
     }
     
-    SEL getFontSelector = [UIFont KDI_dynamicTypeFontForTextStyleSelector];
+    SEL getFontSelector = [UIFont dynamicTypeFontForTextStyleSelector];
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Warc-performSelector-leaks"
     UIFont *font = [UIFont.class performSelector:getFontSelector withObject:self.textStyle];
@@ -100,15 +100,15 @@
 
 @end
 
-static void const *kKDI_dynamicTypeFontForTextStyleSelectorKey = &kKDI_dynamicTypeFontForTextStyleSelectorKey;
+static void const *kDynamicTypeFontForTextStyleSelectorKey = &kDynamicTypeFontForTextStyleSelectorKey;
 
 @implementation UIFont (KDIDynamicTypeExtensions)
 
-+ (SEL)KDI_dynamicTypeFontForTextStyleSelector {
-    return NSSelectorFromString(objc_getAssociatedObject(self, kKDI_dynamicTypeFontForTextStyleSelectorKey)) ?: @selector(preferredFontForTextStyle:);
++ (SEL)dynamicTypeFontForTextStyleSelector {
+    return NSSelectorFromString(objc_getAssociatedObject(self, kDynamicTypeFontForTextStyleSelectorKey)) ?: @selector(preferredFontForTextStyle:);
 }
-+ (void)setKDI_dynamicTypeFontForTextStyleSelector:(SEL)KDI_dynamicTypeFontForTextStyleSelector {
-    objc_setAssociatedObject(self, kKDI_dynamicTypeFontForTextStyleSelectorKey, NSStringFromSelector(KDI_dynamicTypeFontForTextStyleSelector), OBJC_ASSOCIATION_COPY_NONATOMIC);
++ (void)setDynamicTypeFontForTextStyleSelector:(SEL)dynamicTypeFontForTextStyleSelector {
+    objc_setAssociatedObject(self, kDynamicTypeFontForTextStyleSelectorKey, NSStringFromSelector(dynamicTypeFontForTextStyleSelector), OBJC_ASSOCIATION_COPY_NONATOMIC);
 }
 
 @end

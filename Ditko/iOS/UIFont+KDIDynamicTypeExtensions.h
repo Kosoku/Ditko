@@ -62,11 +62,11 @@ NS_ASSUME_NONNULL_BEGIN
 @interface UIFont (KDIDynamicTypeExtensions)
 
 /**
- Set and get the class selector used to to retrieve the correct font when an update is needed. This must be a class method.
+ Set and get the class selector used to to retrieve the correct font when an update is needed. This must be a class method that takes a single argument, which is the text style.
  
  The default is [UIFont preferredFontForTextStyle:].
  */
-@property (class,assign,nonatomic,null_resettable) SEL KDI_dynamicTypeFontForTextStyleSelector;
+@property (class,assign,nonatomic,null_resettable) SEL dynamicTypeFontForTextStyleSelector;
 
 @end
 
