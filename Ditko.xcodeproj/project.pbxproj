@@ -828,7 +828,6 @@
 				07D166C61E96ABDA0073F69A /* NSPopUpButton+KDIExtensions.m */,
 				0738CE481EA014C9008FE9A0 /* UIFont+KDIDynamicTypeExtensions.h */,
 				0738CE491EA014C9008FE9A0 /* UIFont+KDIDynamicTypeExtensions.m */,
-				07D3D1EE1F5B995E005C512E /* KDIUIResponder.h */,
 				079C88901EA5F7B200F4C09D /* Private */,
 			);
 			name = Categories;
@@ -902,6 +901,7 @@
 			children = (
 				071B62671E705E8D00B7B85A /* Headers */,
 				073542AC1E705CAB00177905 /* Functions */,
+				07D3D1F71F5BB3D9005C512E /* Protocols */,
 				073542AB1E705CA400177905 /* Categories */,
 				071B626B1E70633700B7B85A /* Classes */,
 			);
@@ -981,6 +981,14 @@
 				0794A8191E73584900603C99 /* NSBundle+KDIPrivateExtensions.m */,
 			);
 			name = Private;
+			sourceTree = "<group>";
+		};
+		07D3D1F71F5BB3D9005C512E /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				07D3D1EE1F5B995E005C512E /* KDIUIResponder.h */,
+			);
+			name = Protocols;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
