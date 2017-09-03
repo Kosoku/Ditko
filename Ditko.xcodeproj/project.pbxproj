@@ -207,6 +207,8 @@
 		07D166C81E96ABDA0073F69A /* NSPopUpButton+KDIExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 07D166C61E96ABDA0073F69A /* NSPopUpButton+KDIExtensions.m */; };
 		07D166DD1E9759090073F69A /* KDIClickableLabel.h in Headers */ = {isa = PBXBuildFile; fileRef = 07D166DB1E9759090073F69A /* KDIClickableLabel.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		07D166DE1E9759090073F69A /* KDIClickableLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 07D166DC1E9759090073F69A /* KDIClickableLabel.m */; };
+		07D3D1EF1F5B995E005C512E /* KDIUIResponder.h in Headers */ = {isa = PBXBuildFile; fileRef = 07D3D1EE1F5B995E005C512E /* KDIUIResponder.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		07D3D1F01F5B995E005C512E /* KDIUIResponder.h in Headers */ = {isa = PBXBuildFile; fileRef = 07D3D1EE1F5B995E005C512E /* KDIUIResponder.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		07DB3D5F1E737CA60044FB50 /* Ditko.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0735427A1E704D8F00177905 /* Ditko.framework */; };
 		07DB3D601E737CA60044FB50 /* Ditko.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0735427A1E704D8F00177905 /* Ditko.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		07DB3D621E737CBF0044FB50 /* Stanley.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07DB3D611E737CBF0044FB50 /* Stanley.framework */; };
@@ -540,6 +542,7 @@
 		07D166C61E96ABDA0073F69A /* NSPopUpButton+KDIExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSPopUpButton+KDIExtensions.m"; path = "macOS/NSPopUpButton+KDIExtensions.m"; sourceTree = "<group>"; };
 		07D166DB1E9759090073F69A /* KDIClickableLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KDIClickableLabel.h; path = macOS/KDIClickableLabel.h; sourceTree = "<group>"; };
 		07D166DC1E9759090073F69A /* KDIClickableLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KDIClickableLabel.m; path = macOS/KDIClickableLabel.m; sourceTree = "<group>"; };
+		07D3D1EE1F5B995E005C512E /* KDIUIResponder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KDIUIResponder.h; path = iOS/KDIUIResponder.h; sourceTree = "<group>"; };
 		07DB3D611E737CBF0044FB50 /* Stanley.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Stanley.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		07DB3D641E737DD20044FB50 /* Stanley.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Stanley.framework; path = "../../Library/Developer/Xcode/DerivedData/Ditko-bqbmowdlvnipfjchljeblievobjg/Build/Products/Debug/Stanley.framework"; sourceTree = "<group>"; };
 		07DB3D6C1E737EDF0044FB50 /* Stanley.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Stanley.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -825,6 +828,7 @@
 				07D166C61E96ABDA0073F69A /* NSPopUpButton+KDIExtensions.m */,
 				0738CE481EA014C9008FE9A0 /* UIFont+KDIDynamicTypeExtensions.h */,
 				0738CE491EA014C9008FE9A0 /* UIFont+KDIDynamicTypeExtensions.m */,
+				07D3D1EE1F5B995E005C512E /* KDIUIResponder.h */,
 				079C88901EA5F7B200F4C09D /* Private */,
 			);
 			name = Categories;
@@ -1017,6 +1021,7 @@
 				071B62DF1E70864300B7B85A /* KDIGradientView.h in Headers */,
 				072628131E70BCCF00511F80 /* KDIView.h in Headers */,
 				07E8EB3F1E733FE3001639A2 /* KDIDefines.h in Headers */,
+				07D3D1F01F5B995E005C512E /* KDIUIResponder.h in Headers */,
 				077EB9FE1E9F703E0087321E /* KDIBadgeButton.h in Headers */,
 				0705AFD81ECE28F200BACC4E /* UIImage+KDIExtensions.h in Headers */,
 				07DB3D831E7383EC0044FB50 /* KDITextView.h in Headers */,
@@ -1089,6 +1094,7 @@
 				07E8EB431E7341C2001639A2 /* UIBarButtonItem+KDIExtensions.h in Headers */,
 				076730731E75C6C700030F0C /* KDIPickerViewButton.h in Headers */,
 				071B62631E705D3500B7B85A /* KDIFunctions.h in Headers */,
+				07D3D1EF1F5B995E005C512E /* KDIUIResponder.h in Headers */,
 				071B626E1E70635D00B7B85A /* KDIGradientView.h in Headers */,
 				071E533D1F59004C00A36B59 /* KDIBorderedViewImpl.h in Headers */,
 				07DB3D821E7383EC0044FB50 /* KDITextView.h in Headers */,

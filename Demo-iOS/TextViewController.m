@@ -50,14 +50,15 @@
     
     [self.view setBackgroundColor:UIColor.lightGrayColor];
     
-    [self.textView setBackgroundColor:UIColor.whiteColor];
+    [self.textView setBackgroundColor:KDIColorRandomRGB()];
     [self.textView setTintColor:UIColor.blackColor];
+    [self.textView setTextContainerInset:UIEdgeInsetsMake(8, 8, 8, 8)];
     [self.textView setPlaceholder:@"Text view placeholder…"];
     [self.textView setBorderOptions:KDIBorderOptionsAll];
     [self.textView setBorderWidthRespectsScreenScale:YES];
     [self.textView setBorderColor:KDIColorRandomRGB()];
     
-    [self.textField setBackgroundColor:UIColor.whiteColor];
+    [self.textField setBackgroundColor:KDIColorRandomRGB()];
     [self.textField setTintColor:UIColor.blackColor];
     [self.textField setPlaceholder:@"Text field placeholder…"];
     [self.textField setTextEdgeInsets:UIEdgeInsetsMake(8, 8, 8, 8)];
@@ -117,11 +118,19 @@
         [self.textField setBorderWidth:width];
         [self.textView setBorderWidth:width];
     }]]];
+    
+    [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(_firstResponderDidChange:) name:KDIUIResponderNotificationDidBecomeFirstResponder object:nil];
+    [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(_firstResponderDidChange:) name:KDIUIResponderNotificationDidResignFirstResponder object:nil];
 }
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     
     [self.textView becomeFirstResponder];
+}
+
+- (void)_firstResponderDidChange:(NSNotification *)note {
+    [self.textView setBackgroundColor:self.textView.isFirstResponder ? UIColor.whiteColor : KDIColorRandomRGB()];
+    [self.textField setBackgroundColor:self.textField.isFirstResponder ? UIColor.whiteColor : KDIColorRandomRGB()];
 }
 
 @end

@@ -16,6 +16,8 @@
 #import "KDITextField.h"
 #import "KDIBorderedViewImpl.h"
 
+#import <Stanley/KSTScopeMacros.h>
+
 @interface KDITextField ()
 @property (strong,nonatomic) KDIBorderedViewImpl *borderedViewImpl;
 
@@ -47,6 +49,33 @@
         return self.borderedViewImpl;
     }
     return [super forwardingTargetForSelector:aSelector];
+}
+#pragma mark -
+- (BOOL)becomeFirstResponder {
+    [self willChangeValueForKey:@kstKeypath(self,isFirstResponder)];
+    
+    BOOL retval = [super becomeFirstResponder];
+    
+    [self didChangeValueForKey:@kstKeypath(self,isFirstResponder)];
+    
+    [self firstResponderDidChange];
+    
+    [NSNotificationCenter.defaultCenter postNotificationName:KDIUIResponderNotificationDidBecomeFirstResponder object:self];
+    
+    return retval;
+}
+- (BOOL)resignFirstResponder {
+    [self willChangeValueForKey:@kstKeypath(self,isFirstResponder)];
+    
+    BOOL retval = [super resignFirstResponder];
+    
+    [self didChangeValueForKey:@kstKeypath(self,isFirstResponder)];
+    
+    [self firstResponderDidChange];
+    
+    [NSNotificationCenter.defaultCenter postNotificationName:KDIUIResponderNotificationDidResignFirstResponder object:self];
+    
+    return retval;
 }
 #pragma mark -
 - (void)tintColorDidChange {
@@ -103,6 +132,10 @@
 @dynamic borderColor;
 - (void)setBorderColor:(UIColor *)borderColor animated:(BOOL)animated {
     [self.borderedViewImpl setBorderColor:borderColor animated:animated];
+}
+#pragma mark KDIUIResponder
+- (void)firstResponderDidChange; {
+    
 }
 #pragma mark *** Public Methods ***
 #pragma mark Properties

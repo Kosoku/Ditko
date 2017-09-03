@@ -14,13 +14,14 @@
 //  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #import <Ditko/KDIBorderedView.h>
+#import <Ditko/KDIUIResponder.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
 /**
  KDITextField is a UITextField subclass that adds edge inset methods to adjust the layout of the text, left, and right views respectively. It also conforms to KDIBorderedView, allowing it to display borders.
  */
-@interface KDITextField : UITextField <KDIBorderedView>
+@interface KDITextField : UITextField <KDIBorderedView,KDIUIResponder>
 
 /**
  Set and get the text edge insets of the receiver. This value affects the return values of textRectForBounds: and editingRectForBounds:.
@@ -42,6 +43,8 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @property (assign,nonatomic) UIEdgeInsets rightViewEdgeInsets UI_APPEARANCE_SELECTOR;
 
+- (BOOL)becomeFirstResponder NS_REQUIRES_SUPER;
+- (BOOL)resignFirstResponder NS_REQUIRES_SUPER;
 - (void)tintColorDidChange NS_REQUIRES_SUPER;
 - (CGSize)intrinsicContentSize NS_REQUIRES_SUPER;
 - (CGSize)sizeThatFits:(CGSize)size NS_REQUIRES_SUPER;

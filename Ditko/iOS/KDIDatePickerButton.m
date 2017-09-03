@@ -49,9 +49,39 @@
     
     return self;
 }
-
+#pragma mark -
 - (BOOL)canBecomeFirstResponder {
     return YES;
+}
+- (BOOL)becomeFirstResponder {
+    [self willChangeValueForKey:@kstKeypath(self,isFirstResponder)];
+    
+    BOOL retval = [super becomeFirstResponder];
+    
+    [self didChangeValueForKey:@kstKeypath(self,isFirstResponder)];
+    
+    [self firstResponderDidChange];
+    
+    [NSNotificationCenter.defaultCenter postNotificationName:KDIUIResponderNotificationDidBecomeFirstResponder object:self];
+    
+    return retval;
+}
+- (BOOL)resignFirstResponder {
+    [self willChangeValueForKey:@kstKeypath(self,isFirstResponder)];
+    
+    BOOL retval = [super resignFirstResponder];
+    
+    [self didChangeValueForKey:@kstKeypath(self,isFirstResponder)];
+    
+    [self firstResponderDidChange];
+    
+    [NSNotificationCenter.defaultCenter postNotificationName:KDIUIResponderNotificationDidResignFirstResponder object:self];
+    
+    return retval;
+}
+
+- (void)firstResponderDidChange {
+    
 }
 
 @dynamic date;

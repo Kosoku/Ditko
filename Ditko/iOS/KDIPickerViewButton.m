@@ -16,6 +16,11 @@
 #import "KDIPickerViewButton.h"
 #import "KDINextPreviousInputAccessoryView.h"
 
+#import <Stanley/KSTScopeMacros.h>
+
+NSNotificationName const KDIPickerViewButtonNotificationDidBecomeFirstResponder = @"KDIPickerViewButtonNotificationDidBecomeFirstResponder";
+NSNotificationName const KDIPickerViewButtonNotificationDidResignFirstResponder = @"KDIPickerViewButtonNotificationDidResignFirstResponder";
+
 @interface KDIPickerViewButton () <UIPickerViewDataSource,UIPickerViewDelegate>
 @property (readwrite,nonatomic) UIView *inputView;
 @property (readwrite,nonatomic) UIView *inputAccessoryView;
@@ -49,9 +54,39 @@
     
     return self;
 }
-
+#pragma mark -
 - (BOOL)canBecomeFirstResponder {
     return YES;
+}
+- (BOOL)becomeFirstResponder {
+    [self willChangeValueForKey:@kstKeypath(self,isFirstResponder)];
+    
+    BOOL retval = [super becomeFirstResponder];
+    
+    [self didChangeValueForKey:@kstKeypath(self,isFirstResponder)];
+    
+    [self firstResponderDidChange];
+    
+    [NSNotificationCenter.defaultCenter postNotificationName:KDIUIResponderNotificationDidBecomeFirstResponder object:self];
+    
+    return retval;
+}
+- (BOOL)resignFirstResponder {
+    [self willChangeValueForKey:@kstKeypath(self,isFirstResponder)];
+    
+    BOOL retval = [super resignFirstResponder];
+    
+    [self didChangeValueForKey:@kstKeypath(self,isFirstResponder)];
+    
+    [self firstResponderDidChange];
+    
+    [NSNotificationCenter.defaultCenter postNotificationName:KDIUIResponderNotificationDidResignFirstResponder object:self];
+    
+    return retval;
+}
+
+- (void)firstResponderDidChange {
+    
 }
 
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView {

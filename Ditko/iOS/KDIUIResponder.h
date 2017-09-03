@@ -1,8 +1,8 @@
 //
-//  KDITextView.h
+//  KDIUIResponder.h
 //  Ditko
 //
-//  Created by William Towe on 3/10/17.
+//  Created by William Towe on 9/2/17.
 //  Copyright © 2017 Kosoku Interactive, LLC. All rights reserved.
 //
 //  Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
@@ -13,44 +13,21 @@
 //
 //  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-#import <Ditko/KDIBorderedView.h>
-#import <Ditko/KDIUIResponder.h>
-
-NS_ASSUME_NONNULL_BEGIN
+#import <Foundation/Foundation.h>
 
 /**
- KDITextView is a UITextView subclass that provides placeholder functionality like UITextField. It also conforms to KDIBorderedView, allowing it to display borders.
+ Notification posted when an object becomes first responder. The object of the notification should be the object that just became first responder.
  */
-@interface KDITextView : UITextView <KDIBorderedView,KDIUIResponder>
-
+static NSNotificationName const KDIUIResponderNotificationDidBecomeFirstResponder = @"KDIUIResponderNotificationDidBecomeFirstResponder";
 /**
- Set and get text view's placeholder text.
- 
- The default is nil.
+ Notification posted when an object resigns first responder. The object of the notification should be the object that just resigned first responder.
  */
-@property (copy,nonatomic,nullable) NSString *placeholder;
+static NSNotificationName const KDIUIResponderNotificationDidResignFirstResponder = @"KDIUIResponderNotificationDidResignFirstResponder";
+
+@protocol KDIUIResponder <NSObject>
+@required
 /**
- Set and get text view's attributed placeholder text.
- 
- The default is nil.
+ Method is called when the first responder status of the receiver changes.
  */
-@property (copy,nonatomic,nullable) NSAttributedString *attributedPlaceholder;
-
-/**
- Set and get the placeholder text color, which is used when setting the placeholder via `setPlaceholder:`.
- 
- The default is UIColor.lightGrayColor.
- */
-@property (strong,nonatomic,null_resettable) UIColor *placeholderTextColor UI_APPEARANCE_SELECTOR;
-
-- (BOOL)becomeFirstResponder NS_REQUIRES_SUPER;
-- (BOOL)resignFirstResponder NS_REQUIRES_SUPER;
-- (void)tintColorDidChange NS_REQUIRES_SUPER;
-- (CGSize)intrinsicContentSize NS_REQUIRES_SUPER;
-- (CGSize)sizeThatFits:(CGSize)size NS_REQUIRES_SUPER;
-- (void)didAddSubview:(UIView *)subview NS_REQUIRES_SUPER;
-- (void)layoutSubviews NS_REQUIRES_SUPER;
-
+- (void)firstResponderDidChange;
 @end
-
-NS_ASSUME_NONNULL_END
