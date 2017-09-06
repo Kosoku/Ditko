@@ -27,7 +27,8 @@ static CGFloat const kTitleColorAlphaAdjustment = 0.5;
 @interface KDIButton ()
 @property (strong,nonatomic) KDIBorderedViewImpl *borderedViewImpl;
 
-@property (strong,nonatomic) UIColor *originalTintColor, *originalBackgroundColor;
+@property (strong,nonatomic) UIColor *originalBackgroundColor;
+@property (strong,nonatomic) UIImage *originalNormalImage;
 
 - (void)_KDIButtonInit;
 - (void)_updateAfterInvertedChange;
@@ -207,23 +208,25 @@ static CGFloat const kTitleColorAlphaAdjustment = 0.5;
 #pragma mark -
 - (void)_updateAfterInvertedChange; {
     if (self.isInverted) {
-        if (self.originalTintColor != nil) {
-            return;
+        if (self.originalNormalImage == nil ||
+            self.originalBackgroundColor == nil) {
+            
+            [self setOriginalBackgroundColor:self.backgroundColor ?: UIColor.clearColor];
+            [self setOriginalNormalImage:[[self imageForState:UIControlStateNormal] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate]];
         }
         
-        [self setOriginalTintColor:self.tintColor];
-        [self setOriginalBackgroundColor:self.backgroundColor];
+        [self setBackgroundColor:self.tintColor];
         
-        [self setBackgroundColor:self.originalTintColor];
+        UIColor *contrastingColor = [self.tintColor KDI_contrastingColor];
         
-        UIColor *tintColor = [self.originalTintColor KDI_contrastingColor];
-        
-        [self setTintColor:tintColor];
+        [self setTitleColor:contrastingColor forState:UIControlStateNormal];
+        [self setImage:[self.originalNormalImage KLO_imageByTintingWithColor:contrastingColor] forState:UIControlStateNormal];
     }
     else {
         [self setBackgroundColor:self.originalBackgroundColor];
-        [self setTintColor:self.originalTintColor];
-        [self setOriginalTintColor:nil];
+        [self setTitleColor:nil forState:UIControlStateNormal];
+        [self setImage:self.originalNormalImage forState:UIControlStateNormal];
+        [self setOriginalNormalImage:nil];
         [self setOriginalBackgroundColor:nil];
     }
 }
