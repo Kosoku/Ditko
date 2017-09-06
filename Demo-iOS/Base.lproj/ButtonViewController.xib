@@ -16,6 +16,7 @@
                 <outlet property="button" destination="DJe-75-4IO" id="jfK-jz-Hpa"/>
                 <outlet property="imageHorizontalSegmentedControl" destination="SPG-SV-BIM" id="GE3-WV-osO"/>
                 <outlet property="imageVerticalSegmentedControl" destination="BXc-Xd-Ss2" id="pwI-Lx-c7F"/>
+                <outlet property="systemButton" destination="Wq5-d1-z6r" id="YiE-nb-EiF"/>
                 <outlet property="titleHorizontalSegmentedControl" destination="8w6-6Y-jpw" id="ICJ-UN-S90"/>
                 <outlet property="titleVerticalSegmentedControl" destination="26Q-0D-d03" id="M93-rM-1yW"/>
                 <outlet property="view" destination="iN0-l3-epB" id="9fb-pO-69O"/>
@@ -113,10 +114,15 @@
                         <segment title="Fill"/>
                     </segments>
                 </segmentedControl>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wq5-d1-z6r" customClass="KDIButton">
+                    <rect key="frame" x="16" y="382" width="343" height="30"/>
+                    <state key="normal" title="Tap to Toggle Selected"/>
+                </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="6fV-Ye-L2P" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="1De-92-Bnb"/>
+                <constraint firstItem="Wq5-d1-z6r" firstAttribute="top" secondItem="7UK-EM-vM8" secondAttribute="bottom" constant="8" id="1Zu-ae-WAH"/>
                 <constraint firstItem="R9W-9f-IXy" firstAttribute="centerY" secondItem="pVP-uY-rYI" secondAttribute="centerY" id="4o0-hb-yrL"/>
                 <constraint firstAttribute="trailing" secondItem="pVP-uY-rYI" secondAttribute="trailing" constant="16" id="9Vm-pZ-Cuz"/>
                 <constraint firstAttribute="trailing" secondItem="8w6-6Y-jpw" secondAttribute="trailing" constant="16" id="B9C-xr-heW"/>
@@ -138,9 +144,11 @@
                 <constraint firstItem="bfa-cX-vLa" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="ecq-0t-F3Z"/>
                 <constraint firstItem="7UK-EM-vM8" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="fDK-lM-v6C"/>
                 <constraint firstItem="pVP-uY-rYI" firstAttribute="top" secondItem="SPG-SV-BIM" secondAttribute="bottom" constant="8" id="fjN-Rp-x0q"/>
+                <constraint firstAttribute="trailing" secondItem="Wq5-d1-z6r" secondAttribute="trailing" constant="16" id="g5v-8m-puL"/>
                 <constraint firstItem="8w6-6Y-jpw" firstAttribute="leading" secondItem="EwQ-xy-b6i" secondAttribute="trailing" constant="8" id="gbg-zJ-Aex"/>
                 <constraint firstItem="DJe-75-4IO" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="hME-er-kZU"/>
                 <constraint firstAttribute="trailing" secondItem="BXc-Xd-Ss2" secondAttribute="trailing" constant="16" id="jKg-v1-hbH"/>
+                <constraint firstItem="Wq5-d1-z6r" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="m9w-Kw-DJr"/>
                 <constraint firstAttribute="trailing" secondItem="7UK-EM-vM8" secondAttribute="trailing" constant="16" id="oVW-4s-7zy"/>
                 <constraint firstItem="8w6-6Y-jpw" firstAttribute="top" secondItem="26Q-0D-d03" secondAttribute="bottom" constant="8" id="p42-ln-EdF"/>
                 <constraint firstItem="6fV-Ye-L2P" firstAttribute="centerY" secondItem="BXc-Xd-Ss2" secondAttribute="centerY" id="qMZ-Nt-e9E"/>

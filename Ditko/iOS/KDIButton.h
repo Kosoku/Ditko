@@ -86,7 +86,7 @@ typedef NS_ENUM(NSInteger, KDIButtonContentHorizontalAlignment) {
  */
 @property (assign,nonatomic,getter=isInverted) BOOL inverted;
 /**
- Set and get whether the receiver is rounded. If YES, the underlying CALayer corner radius property is set to match the height of the receiver.
+ Set and get whether the receiver is rounded. If YES, the mask of the view's layer is set to enclose the title and image and any associated padding. If the corner radius of the view's layer is already set, that corner radius is used for the mask layer, otherwise ceil(MIN(CGRectGetWidth(self.bounds), CGRectGetHeight(self.bounds)) * 0.5) is used.
  
  The default is NO.
  */

@@ -18,14 +18,16 @@
 #import "UIView+KDIExtensions.h"
 #import "KDIBorderedViewImpl.h"
 
-#import <Stanley/KSTGeometryFunctions.h>
-#import <Loki/UIImage+KLOExtensions.h>
+#import <Stanley/Stanley.h>
+#import <Loki/Loki.h>
 
 static CGFloat const kTitleColorBrightnessAdjustment = 0.5;
 static CGFloat const kTitleColorAlphaAdjustment = 0.5;
 
 @interface KDIButton ()
 @property (strong,nonatomic) KDIBorderedViewImpl *borderedViewImpl;
+
+@property (strong,nonatomic) UIColor *originalTintColor, *originalBackgroundColor;
 
 - (void)_KDIButtonInit;
 - (void)_updateAfterInvertedChange;
@@ -164,21 +166,6 @@ static CGFloat const kTitleColorAlphaAdjustment = 0.5;
     
     [self _updateAfterInvertedChange];
 }
-- (void)setRounded:(BOOL)rounded {
-    if (_rounded == rounded) {
-        return;
-    }
-    
-    _rounded = rounded;
-    
-    if (_rounded) {
-        [self.layer setMasksToBounds:YES];
-    }
-    else {
-        [self.layer setCornerRadius:0.0];
-        [self.layer setMasksToBounds:NO];
-    }
-}
 #pragma mark -
 - (void)setTitleContentVerticalAlignment:(KDIButtonContentVerticalAlignment)titleContentVerticalAlignment {
     _titleContentVerticalAlignment = titleContentVerticalAlignment;
@@ -220,16 +207,24 @@ static CGFloat const kTitleColorAlphaAdjustment = 0.5;
 #pragma mark -
 - (void)_updateAfterInvertedChange; {
     if (self.isInverted) {
-        [self setBackgroundColor:self.tintColor];
+        if (self.originalTintColor != nil) {
+            return;
+        }
         
-        UIColor *tintColor = [self.tintColor KDI_contrastingColor];
+        [self setOriginalTintColor:self.tintColor];
+        [self setOriginalBackgroundColor:self.backgroundColor];
         
-        [self setTitleColor:tintColor forState:UIControlStateNormal];
-        [self setImage:[[self imageForState:UIControlStateNormal] KLO_imageByTintingWithColor:tintColor] forState:UIControlStateNormal];
+        [self setBackgroundColor:self.originalTintColor];
+        
+        UIColor *tintColor = [self.originalTintColor KDI_contrastingColor];
+        
+        [self setTintColor:tintColor];
     }
     else {
-        [self setBackgroundColor:UIColor.clearColor];
-        [self setTitleColor:self.tintColor forState:UIControlStateNormal];
+        [self setBackgroundColor:self.originalBackgroundColor];
+        [self setTintColor:self.originalTintColor];
+        [self setOriginalTintColor:nil];
+        [self setOriginalBackgroundColor:nil];
     }
 }
 - (CGSize)_sizeThatFits:(CGSize)size layout:(BOOL)layout; {
@@ -270,10 +265,6 @@ static CGFloat const kTitleColorAlphaAdjustment = 0.5;
     }
     
     if (layout) {
-        if (self.isRounded) {
-            [self.layer setCornerRadius:ceil(MIN(CGRectGetWidth(self.bounds), CGRectGetHeight(self.bounds)) * 0.5)];
-        }
-        
         [self.borderedViewImpl layoutSubviews];
         
         if (!superDoesLayout) {
@@ -330,6 +321,36 @@ static CGFloat const kTitleColorAlphaAdjustment = 0.5;
             
             [self.titleLabel setFrame:titleRect];
             [self.imageView setFrame:imageRect];
+        }
+        
+        if (self.isRounded) {
+            UIEdgeInsets insets = self.contentEdgeInsets;
+            
+            if ((self.titleContentHorizontalAlignment == KDIButtonContentHorizontalAlignmentLeft && self.imageContentHorizontalAlignment == KDIButtonContentHorizontalAlignmentRight) || (self.titleContentHorizontalAlignment == KDIButtonContentHorizontalAlignmentRight && self.imageContentHorizontalAlignment == KDIButtonContentHorizontalAlignmentLeft)) {
+                insets.top += MAX(self.titleEdgeInsets.top, self.imageEdgeInsets.top);
+                insets.bottom += MAX(self.titleEdgeInsets.bottom, self.imageEdgeInsets.bottom);
+                insets.left += self.titleContentHorizontalAlignment == KDIButtonContentHorizontalAlignmentLeft ? self.titleEdgeInsets.left : self.imageEdgeInsets.left;
+                insets.right += self.titleContentHorizontalAlignment == KDIButtonContentHorizontalAlignmentLeft ? self.imageEdgeInsets.right : self.titleEdgeInsets.right;
+            }
+            else if ((self.titleContentVerticalAlignment == KDIButtonContentVerticalAlignmentTop && self.imageContentVerticalAlignment == KDIButtonContentVerticalAlignmentBottom) || (self.titleContentVerticalAlignment == KDIButtonContentVerticalAlignmentBottom && self.imageContentVerticalAlignment == KDIButtonContentVerticalAlignmentTop)) {
+                insets.left += MAX(self.titleEdgeInsets.left, self.imageEdgeInsets.left);
+                insets.right += MAX(self.titleEdgeInsets.right, self.imageEdgeInsets.right);
+                insets.top += self.titleContentVerticalAlignment == KDIButtonContentVerticalAlignmentTop ? self.titleEdgeInsets.top : self.imageEdgeInsets.top;
+                insets.bottom += self.titleContentVerticalAlignment == KDIButtonContentVerticalAlignmentTop ? self.imageEdgeInsets.bottom : self.titleEdgeInsets.bottom;
+            }
+            
+            insets.top *= -1.0;
+            insets.left *= -1.0;
+            insets.bottom *= -1.0;
+            insets.right *= -1.0;
+            
+            CAShapeLayer *mask = [CAShapeLayer layer];
+            CGRect rect = CGRectIsEmpty(self.imageView.frame) ? self.titleLabel.frame : CGRectIsEmpty(self.titleLabel.frame) ? self.imageView.frame : CGRectUnion(self.titleLabel.frame, self.imageView.frame);
+            CGFloat radius = self.layer.cornerRadius > 0 ? self.layer.cornerRadius : ceil(MIN(CGRectGetWidth(self.bounds), CGRectGetHeight(self.bounds)) * 0.5);
+            
+            [mask setPath:[UIBezierPath bezierPathWithRoundedRect:UIEdgeInsetsInsetRect(rect, insets) cornerRadius:radius].CGPath];
+            
+            [self.layer setMask:mask];
         }
     }
     

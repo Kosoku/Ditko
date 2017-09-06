@@ -25,6 +25,7 @@ typedef NS_ENUM(NSInteger, SubviewTag) {
 @property (weak,nonatomic) IBOutlet UISegmentedControl *badgeSegmentedControl;
 @property (weak,nonatomic) IBOutlet KDIButton *button;
 @property (weak,nonatomic) IBOutlet KDIBadgeButton *badgeButton;
+@property (weak,nonatomic) IBOutlet KDIButton *systemButton;
 @property (strong,nonatomic) IBOutletCollection(KDILabel) NSArray *labels;
 @end
 
@@ -53,6 +54,11 @@ typedef NS_ENUM(NSInteger, SubviewTag) {
     
     [self.view setBackgroundColor:backgroundColor];
     
+    [self.navigationItem setRightBarButtonItems:@[[UIBarButtonItem KDI_barButtonSystemItem:UIBarButtonSystemItemRefresh block:^(__kindof UIBarButtonItem * _Nonnull barButtonItem) {
+        kstStrongify(self);
+        [self.view setTintColor:KDIColorRandomRGB()];
+    }]]];
+    
     for (KDILabel *label in self.labels) {
         [label setBorderColor:KDIColorRandomRGB()];
         [label setBorderWidthRespectsScreenScale:YES];
@@ -65,24 +71,28 @@ typedef NS_ENUM(NSInteger, SubviewTag) {
     [self.titleVerticalSegmentedControl KDI_addBlock:^(__kindof UIControl * _Nonnull control, UIControlEvents controlEvents) {
         kstStrongify(self);
         [self.button setTitleContentVerticalAlignment:[(UISegmentedControl *)control selectedSegmentIndex]];
+        [self.systemButton setTitleContentVerticalAlignment:[(UISegmentedControl *)control selectedSegmentIndex]];
         [self.badgeButton.button setTitleContentVerticalAlignment:[(UISegmentedControl *)control selectedSegmentIndex]];
     } forControlEvents:UIControlEventValueChanged];
     
     [self.titleHorizontalSegmentedControl KDI_addBlock:^(__kindof UIControl * _Nonnull control, UIControlEvents controlEvents) {
         kstStrongify(self);
         [self.button setTitleContentHorizontalAlignment:[(UISegmentedControl *)control selectedSegmentIndex]];
+        [self.systemButton setTitleContentHorizontalAlignment:[(UISegmentedControl *)control selectedSegmentIndex]];
         [self.badgeButton.button setTitleContentHorizontalAlignment:[(UISegmentedControl *)control selectedSegmentIndex]];
     } forControlEvents:UIControlEventValueChanged];
     
     [self.imageVerticalSegmentedControl KDI_addBlock:^(__kindof UIControl * _Nonnull control, UIControlEvents controlEvents) {
         kstStrongify(self);
         [self.button setImageContentVerticalAlignment:[(UISegmentedControl *)control selectedSegmentIndex]];
+        [self.systemButton setImageContentVerticalAlignment:[(UISegmentedControl *)control selectedSegmentIndex]];
         [self.badgeButton.button setImageContentVerticalAlignment:[(UISegmentedControl *)control selectedSegmentIndex]];
     } forControlEvents:UIControlEventValueChanged];
     
     [self.imageHorizontalSegmentedControl KDI_addBlock:^(__kindof UIControl * _Nonnull control, UIControlEvents controlEvents) {
         kstStrongify(self);
         [self.button setImageContentHorizontalAlignment:[(UISegmentedControl *)control selectedSegmentIndex]];
+        [self.systemButton setImageContentHorizontalAlignment:[(UISegmentedControl *)control selectedSegmentIndex]];
         [self.badgeButton.button setImageContentHorizontalAlignment:[(UISegmentedControl *)control selectedSegmentIndex]];
     } forControlEvents:UIControlEventValueChanged];
     
@@ -129,6 +139,16 @@ typedef NS_ENUM(NSInteger, SubviewTag) {
     [self.badgeButton.button setTitle:@"button title that is really long and will truncate if the screen is not wide enough" forState:UIControlStateNormal];
     [self.badgeButton.button KDI_addBlock:^(__kindof UIControl * _Nonnull control, UIControlEvents controlEvents) {
         setBadgeBlock();
+    } forControlEvents:UIControlEventTouchUpInside];
+    
+    [self.systemButton setKDI_cornerRadius:5.0];
+    [self.systemButton setContentEdgeInsets:UIEdgeInsetsMake(8, 8, 8, 8)];
+    [self.systemButton setTitleEdgeInsets:UIEdgeInsetsMake(8, 8, 8, 8)];
+    [self.systemButton setImageEdgeInsets:UIEdgeInsetsMake(8, 8, 8, 8)];
+    [self.systemButton setRounded:YES];
+    [self.systemButton setImage:[[UIImage KSO_fontAwesomeImageWithIcon:KSOFontAwesomeIconBook size:CGSizeMake(25, 25)] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] forState:UIControlStateNormal];
+    [self.systemButton KDI_addBlock:^(__kindof UIControl * _Nonnull control, UIControlEvents controlEvents) {
+        [(KDIButton *)control setInverted:![(KDIButton *)control isInverted]];
     } forControlEvents:UIControlEventTouchUpInside];
     
     setBadgeBlock();

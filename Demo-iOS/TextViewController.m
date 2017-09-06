@@ -53,6 +53,7 @@
     [self.textView setBackgroundColor:KDIColorRandomRGB()];
     [self.textView setTintColor:UIColor.blackColor];
     [self.textView setTextContainerInset:UIEdgeInsetsMake(8, 8, 8, 8)];
+    [self.textView setInputAccessoryView:[[KDINextPreviousInputAccessoryView alloc] initWithFrame:CGRectZero responder:self.textView]];
     [self.textView setPlaceholder:@"Text view placeholder…"];
     [self.textView setBorderOptions:KDIBorderOptionsAll];
     [self.textView setBorderWidthRespectsScreenScale:YES];
@@ -61,6 +62,7 @@
     [self.textField setBackgroundColor:KDIColorRandomRGB()];
     [self.textField setTintColor:UIColor.blackColor];
     [self.textField setPlaceholder:@"Text field placeholder…"];
+    [self.textField setInputAccessoryView:[[KDINextPreviousInputAccessoryView alloc] initWithFrame:CGRectZero responder:self.textField]];
     [self.textField setTextEdgeInsets:UIEdgeInsetsMake(8, 8, 8, 8)];
     [self.textField setBorderOptions:KDIBorderOptionsAll];
     [self.textField setBorderWidthRespectsScreenScale:YES];
