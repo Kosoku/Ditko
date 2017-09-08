@@ -167,6 +167,15 @@ static CGFloat const kTitleColorAlphaAdjustment = 0.5;
     
     [self _updateAfterInvertedChange];
 }
+- (void)setRoundedRelativeToImageAndTitle:(BOOL)roundedRelativeToImageAndTitle {
+    if (_roundedRelativeToImageAndTitle == roundedRelativeToImageAndTitle) {
+        return;
+    }
+    
+    _roundedRelativeToImageAndTitle = roundedRelativeToImageAndTitle;
+    
+    [self setNeedsLayout];
+}
 #pragma mark -
 - (void)setTitleContentVerticalAlignment:(KDIButtonContentVerticalAlignment)titleContentVerticalAlignment {
     _titleContentVerticalAlignment = titleContentVerticalAlignment;
@@ -195,6 +204,8 @@ static CGFloat const kTitleColorAlphaAdjustment = 0.5;
 #pragma mark *** Private Methods ***
 - (void)_KDIButtonInit; {
     _borderedViewImpl = [[KDIBorderedViewImpl alloc] initWithView:self];
+    
+    _roundedRelativeToImageAndTitle = YES;
     
     _titleContentVerticalAlignment = KDIButtonContentVerticalAlignmentDefault;
     _titleContentHorizontalAlignment = KDIButtonContentHorizontalAlignmentDefault;
@@ -327,33 +338,43 @@ static CGFloat const kTitleColorAlphaAdjustment = 0.5;
         }
         
         if (self.isRounded) {
-            UIEdgeInsets insets = self.contentEdgeInsets;
-            
-            if ((self.titleContentHorizontalAlignment == KDIButtonContentHorizontalAlignmentLeft && self.imageContentHorizontalAlignment == KDIButtonContentHorizontalAlignmentRight) || (self.titleContentHorizontalAlignment == KDIButtonContentHorizontalAlignmentRight && self.imageContentHorizontalAlignment == KDIButtonContentHorizontalAlignmentLeft)) {
-                insets.top += MAX(self.titleEdgeInsets.top, self.imageEdgeInsets.top);
-                insets.bottom += MAX(self.titleEdgeInsets.bottom, self.imageEdgeInsets.bottom);
-                insets.left += self.titleContentHorizontalAlignment == KDIButtonContentHorizontalAlignmentLeft ? self.titleEdgeInsets.left : self.imageEdgeInsets.left;
-                insets.right += self.titleContentHorizontalAlignment == KDIButtonContentHorizontalAlignmentLeft ? self.imageEdgeInsets.right : self.titleEdgeInsets.right;
+            if (self.roundedRelativeToImageAndTitle) {
+                UIEdgeInsets insets = self.contentEdgeInsets;
+                
+                if ((self.titleContentHorizontalAlignment == KDIButtonContentHorizontalAlignmentLeft && self.imageContentHorizontalAlignment == KDIButtonContentHorizontalAlignmentRight) || (self.titleContentHorizontalAlignment == KDIButtonContentHorizontalAlignmentRight && self.imageContentHorizontalAlignment == KDIButtonContentHorizontalAlignmentLeft)) {
+                    insets.top += MAX(self.titleEdgeInsets.top, self.imageEdgeInsets.top);
+                    insets.bottom += MAX(self.titleEdgeInsets.bottom, self.imageEdgeInsets.bottom);
+                    insets.left += self.titleContentHorizontalAlignment == KDIButtonContentHorizontalAlignmentLeft ? self.titleEdgeInsets.left : self.imageEdgeInsets.left;
+                    insets.right += self.titleContentHorizontalAlignment == KDIButtonContentHorizontalAlignmentLeft ? self.imageEdgeInsets.right : self.titleEdgeInsets.right;
+                }
+                else if ((self.titleContentVerticalAlignment == KDIButtonContentVerticalAlignmentTop && self.imageContentVerticalAlignment == KDIButtonContentVerticalAlignmentBottom) || (self.titleContentVerticalAlignment == KDIButtonContentVerticalAlignmentBottom && self.imageContentVerticalAlignment == KDIButtonContentVerticalAlignmentTop)) {
+                    insets.left += MAX(self.titleEdgeInsets.left, self.imageEdgeInsets.left);
+                    insets.right += MAX(self.titleEdgeInsets.right, self.imageEdgeInsets.right);
+                    insets.top += self.titleContentVerticalAlignment == KDIButtonContentVerticalAlignmentTop ? self.titleEdgeInsets.top : self.imageEdgeInsets.top;
+                    insets.bottom += self.titleContentVerticalAlignment == KDIButtonContentVerticalAlignmentTop ? self.imageEdgeInsets.bottom : self.titleEdgeInsets.bottom;
+                }
+                
+                insets.top *= -1.0;
+                insets.left *= -1.0;
+                insets.bottom *= -1.0;
+                insets.right *= -1.0;
+                
+                CAShapeLayer *mask = [CAShapeLayer layer];
+                CGRect rect = CGRectIsEmpty(self.imageView.frame) ? self.titleLabel.frame : CGRectIsEmpty(self.titleLabel.frame) ? self.imageView.frame : CGRectUnion(self.titleLabel.frame, self.imageView.frame);
+                CGFloat radius = self.layer.cornerRadius > 0 ? self.layer.cornerRadius : ceil(MIN(CGRectGetWidth(self.bounds), CGRectGetHeight(self.bounds)) * 0.5);
+                
+                [mask setPath:[UIBezierPath bezierPathWithRoundedRect:UIEdgeInsetsInsetRect(rect, insets) cornerRadius:radius].CGPath];
+                
+                [self.layer setMask:mask];
             }
-            else if ((self.titleContentVerticalAlignment == KDIButtonContentVerticalAlignmentTop && self.imageContentVerticalAlignment == KDIButtonContentVerticalAlignmentBottom) || (self.titleContentVerticalAlignment == KDIButtonContentVerticalAlignmentBottom && self.imageContentVerticalAlignment == KDIButtonContentVerticalAlignmentTop)) {
-                insets.left += MAX(self.titleEdgeInsets.left, self.imageEdgeInsets.left);
-                insets.right += MAX(self.titleEdgeInsets.right, self.imageEdgeInsets.right);
-                insets.top += self.titleContentVerticalAlignment == KDIButtonContentVerticalAlignmentTop ? self.titleEdgeInsets.top : self.imageEdgeInsets.top;
-                insets.bottom += self.titleContentVerticalAlignment == KDIButtonContentVerticalAlignmentTop ? self.imageEdgeInsets.bottom : self.titleEdgeInsets.bottom;
+            else {
+                CAShapeLayer *mask = [CAShapeLayer layer];
+                CGFloat radius = self.layer.cornerRadius > 0 ? self.layer.cornerRadius : ceil(MIN(CGRectGetWidth(self.bounds), CGRectGetHeight(self.bounds)) * 0.5);
+                
+                [mask setPath:[UIBezierPath bezierPathWithRoundedRect:self.bounds cornerRadius:radius].CGPath];
+                
+                [self.layer setMask:mask];
             }
-            
-            insets.top *= -1.0;
-            insets.left *= -1.0;
-            insets.bottom *= -1.0;
-            insets.right *= -1.0;
-            
-            CAShapeLayer *mask = [CAShapeLayer layer];
-            CGRect rect = CGRectIsEmpty(self.imageView.frame) ? self.titleLabel.frame : CGRectIsEmpty(self.titleLabel.frame) ? self.imageView.frame : CGRectUnion(self.titleLabel.frame, self.imageView.frame);
-            CGFloat radius = self.layer.cornerRadius > 0 ? self.layer.cornerRadius : ceil(MIN(CGRectGetWidth(self.bounds), CGRectGetHeight(self.bounds)) * 0.5);
-            
-            [mask setPath:[UIBezierPath bezierPathWithRoundedRect:UIEdgeInsetsInsetRect(rect, insets) cornerRadius:radius].CGPath];
-            
-            [self.layer setMask:mask];
         }
     }
     

@@ -91,6 +91,12 @@ typedef NS_ENUM(NSInteger, KDIButtonContentHorizontalAlignment) {
  The default is NO.
  */
 @property (assign,nonatomic,getter=isRounded) BOOL rounded;
+/**
+ If YES, and *rounded* is YES, the rounded mask is relative to the content of the receiver (i.e. the title and image) instead of the bounds of the receiver.
+ 
+ The default is YES.
+ */
+@property (assign,nonatomic) BOOL roundedRelativeToImageAndTitle;
 
 /**
  Set whether the receiver adjusts its title color when highlighted. If set to YES, the title color set for UIControlStateNormal will be inspected and the computed color will be set for the highlighted state. The title color is drawn lighter if the normal title color was dark and darker if the normal title color was light.
