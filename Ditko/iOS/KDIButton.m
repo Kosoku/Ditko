@@ -167,6 +167,20 @@ static CGFloat const kTitleColorAlphaAdjustment = 0.5;
     
     [self _updateAfterInvertedChange];
 }
+- (void)setRounded:(BOOL)rounded {
+    if (_rounded == rounded) {
+        return;
+    }
+    
+    _rounded = rounded;
+    
+    if (_rounded) {
+        [self setNeedsLayout];
+    }
+    else {
+        [self.layer setMask:nil];
+    }
+}
 - (void)setRoundedRelativeToImageAndTitle:(BOOL)roundedRelativeToImageAndTitle {
     if (_roundedRelativeToImageAndTitle == roundedRelativeToImageAndTitle) {
         return;
