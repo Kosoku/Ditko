@@ -66,7 +66,7 @@ NS_ASSUME_NONNULL_BEGIN
  
  The default is [UIFont preferredFontForTextStyle:].
  */
-@property (class,assign,nonatomic,null_resettable) SEL dynamicTypeFontForTextStyleSelector;
+@property (class,assign,nonatomic,null_resettable) SEL KDI_dynamicTypeFontForTextStyleSelector;
 
 @end
 
@@ -78,7 +78,7 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  This method should return the selector that will be called to set the receiver's font when an update occurs. Any custom view object wishing to adopt the protocol should return the appropriate set selector.
  */
-@property (readonly,nonatomic) SEL KDI_dynamicTypeSetFontSelector;
+@property (readonly,nonatomic) SEL dynamicTypeSetFontSelector;
 @end
 
 /**

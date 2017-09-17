@@ -98,7 +98,7 @@
 
 #if (TARGET_OS_IPHONE)
 #pragma mark KDIDynamicTypeObject
-- (SEL)KDI_dynamicTypeSetFontSelector {
+- (SEL)dynamicTypeSetFontSelector {
     return @selector(setBadgeFont:);
 }
 #endif
