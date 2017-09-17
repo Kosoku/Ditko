@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AgC-eL-Hgc">
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AgC-eL-Hgc">
     <device id="watch38" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="watchOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="11508"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="12029"/>
     </dependencies>
     <scenes>
         <!--Interface Controller-->
@@ -14,10 +14,26 @@
             <objects>
                 <controller id="AgC-eL-Hgc" customClass="InterfaceController">
                     <items>
-                        <label alignment="left" text="Label" id="Af5-Gr-yIU"/>
+                        <button width="1" alignment="left" title="Button" id="kiz-Ka-ECS">
+                            <connections>
+                                <action selector="_showAlertAction:" destination="AgC-eL-Hgc" id="J9P-dV-2hk"/>
+                            </connections>
+                        </button>
+                        <button width="1" alignment="left" title="Button" id="Zn6-gR-KLe">
+                            <connections>
+                                <action selector="_showSideBySideAlertAction:" destination="AgC-eL-Hgc" id="EY2-ry-XQf"/>
+                            </connections>
+                        </button>
+                        <button width="1" alignment="left" title="Button" id="152-Wg-57B">
+                            <connections>
+                                <action selector="_showActionSheetAction:" destination="AgC-eL-Hgc" id="KBv-NV-VEA"/>
+                            </connections>
+                        </button>
                     </items>
                     <connections>
-                        <outlet property="label" destination="Af5-Gr-yIU" id="UvG-Mx-0t4"/>
+                        <outlet property="actionSheetButton" destination="152-Wg-57B" id="eIg-pV-n9p"/>
+                        <outlet property="alertButton" destination="kiz-Ka-ECS" id="2kM-cr-Kof"/>
+                        <outlet property="sideBySideButton" destination="Zn6-gR-KLe" id="4vE-bZ-Phi"/>
                     </connections>
                 </controller>
             </objects>

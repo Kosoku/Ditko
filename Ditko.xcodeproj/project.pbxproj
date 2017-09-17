@@ -169,6 +169,12 @@
 		0794A83A1E73776C00603C99 /* KDIBadgeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0794A8361E73776C00603C99 /* KDIBadgeView.m */; };
 		0794A83B1E73776C00603C99 /* KDIBadgeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0794A8361E73776C00603C99 /* KDIBadgeView.m */; };
 		0794A83C1E73776C00603C99 /* KDIBadgeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0794A8361E73776C00603C99 /* KDIBadgeView.m */; };
+		0794C2391F6EDDEE0051C4C8 /* WKInterfaceController+KDIExtensions.h in Headers */ = {isa = PBXBuildFile; fileRef = 0794C2371F6EDDEE0051C4C8 /* WKInterfaceController+KDIExtensions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0794C23A1F6EDDEE0051C4C8 /* WKInterfaceController+KDIExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0794C2381F6EDDEE0051C4C8 /* WKInterfaceController+KDIExtensions.m */; };
+		0794C23D1F6EE68C0051C4C8 /* KDILocalizedStrings.h in Headers */ = {isa = PBXBuildFile; fileRef = 0794C23C1F6EE68C0051C4C8 /* KDILocalizedStrings.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		0794C23E1F6EE68C0051C4C8 /* KDILocalizedStrings.h in Headers */ = {isa = PBXBuildFile; fileRef = 0794C23C1F6EE68C0051C4C8 /* KDILocalizedStrings.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		0794C23F1F6EE68C0051C4C8 /* KDILocalizedStrings.h in Headers */ = {isa = PBXBuildFile; fileRef = 0794C23C1F6EE68C0051C4C8 /* KDILocalizedStrings.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		0794C2401F6EE68C0051C4C8 /* KDILocalizedStrings.h in Headers */ = {isa = PBXBuildFile; fileRef = 0794C23C1F6EE68C0051C4C8 /* KDILocalizedStrings.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		0795E6371E704785004A5CB2 /* Ditko.h in Headers */ = {isa = PBXBuildFile; fileRef = 0795E6351E704785004A5CB2 /* Ditko.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0795E6411E70491E004A5CB2 /* UIColor+KDIExtensions.h in Headers */ = {isa = PBXBuildFile; fileRef = 0795E63F1E70491E004A5CB2 /* UIColor+KDIExtensions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0795E6421E70491E004A5CB2 /* NSColor-UIColor+KDIExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0795E6401E70491E004A5CB2 /* NSColor-UIColor+KDIExtensions.m */; };
@@ -499,6 +505,9 @@
 		0794A82C1E735E1200603C99 /* NSParagraphStyle+KDIExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSParagraphStyle+KDIExtensions.m"; sourceTree = "<group>"; };
 		0794A8351E73776C00603C99 /* KDIBadgeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KDIBadgeView.h; sourceTree = "<group>"; };
 		0794A8361E73776C00603C99 /* KDIBadgeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KDIBadgeView.m; sourceTree = "<group>"; };
+		0794C2371F6EDDEE0051C4C8 /* WKInterfaceController+KDIExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "WKInterfaceController+KDIExtensions.h"; path = "watchOS/WKInterfaceController+KDIExtensions.h"; sourceTree = "<group>"; };
+		0794C2381F6EDDEE0051C4C8 /* WKInterfaceController+KDIExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "WKInterfaceController+KDIExtensions.m"; path = "watchOS/WKInterfaceController+KDIExtensions.m"; sourceTree = "<group>"; };
+		0794C23C1F6EE68C0051C4C8 /* KDILocalizedStrings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KDILocalizedStrings.h; path = Private/KDILocalizedStrings.h; sourceTree = "<group>"; };
 		0795E6321E704785004A5CB2 /* Ditko.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Ditko.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0795E6351E704785004A5CB2 /* Ditko.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Ditko.h; sourceTree = "<group>"; };
 		0795E6361E704785004A5CB2 /* Ditko-iOS-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Ditko-iOS-Info.plist"; sourceTree = "<group>"; };
@@ -657,6 +666,7 @@
 			children = (
 				07E8EB3C1E733FE3001639A2 /* KDIDefines.h */,
 				071B62681E705EA300B7B85A /* KDIColorMacros.h */,
+				0794C23B1F6EE65D0051C4C8 /* Private */,
 			);
 			name = Headers;
 			sourceTree = "<group>";
@@ -829,6 +839,8 @@
 				07D166C61E96ABDA0073F69A /* NSPopUpButton+KDIExtensions.m */,
 				0738CE481EA014C9008FE9A0 /* UIFont+KDIDynamicTypeExtensions.h */,
 				0738CE491EA014C9008FE9A0 /* UIFont+KDIDynamicTypeExtensions.m */,
+				0794C2371F6EDDEE0051C4C8 /* WKInterfaceController+KDIExtensions.h */,
+				0794C2381F6EDDEE0051C4C8 /* WKInterfaceController+KDIExtensions.m */,
 				079C88901EA5F7B200F4C09D /* Private */,
 			);
 			name = Categories;
@@ -841,6 +853,14 @@
 				071B62621E705D3500B7B85A /* KDIFunctions.m */,
 			);
 			name = Functions;
+			sourceTree = "<group>";
+		};
+		0794C23B1F6EE65D0051C4C8 /* Private */ = {
+			isa = PBXGroup;
+			children = (
+				0794C23C1F6EE68C0051C4C8 /* KDILocalizedStrings.h */,
+			);
+			name = Private;
 			sourceTree = "<group>";
 		};
 		0795E6281E704784004A5CB2 = {
@@ -1003,6 +1023,8 @@
 				071B62821E707F9500B7B85A /* UIColor+KDIExtensions.h in Headers */,
 				071B62811E707F7A00B7B85A /* Ditko.h in Headers */,
 				0705AFD91ECE28F200BACC4E /* UIImage+KDIExtensions.h in Headers */,
+				0794C2401F6EE68C0051C4C8 /* KDILocalizedStrings.h in Headers */,
+				0794C2391F6EDDEE0051C4C8 /* WKInterfaceController+KDIExtensions.h in Headers */,
 				07E8EB521E734B0E001639A2 /* KDIFunctions.h in Headers */,
 				0794A8301E735E1200603C99 /* NSParagraphStyle+KDIExtensions.h in Headers */,
 				0794A7FC1E73530400603C99 /* UIBezierPath+KDIExtensions.h in Headers */,
@@ -1026,6 +1048,7 @@
 				07DB3D8F1E73B7BD0044FB50 /* KDIProgressNavigationBar.h in Headers */,
 				07DB3D771E7381010044FB50 /* KDILabel.h in Headers */,
 				07DB3D951E73BA470044FB50 /* KDIButton.h in Headers */,
+				0794C23F1F6EE68C0051C4C8 /* KDILocalizedStrings.h in Headers */,
 				07E8EB4A1E73454D001639A2 /* UIDevice+KDIExtensions.h in Headers */,
 				071B62DF1E70864300B7B85A /* KDIGradientView.h in Headers */,
 				072628131E70BCCF00511F80 /* KDIView.h in Headers */,
@@ -1055,6 +1078,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0794C23E1F6EE68C0051C4C8 /* KDILocalizedStrings.h in Headers */,
 				0794A8021E73541200603C99 /* NSBezierPath+KDIExtensions.h in Headers */,
 				071E53391F58FEC400A36B59 /* KDIBorderedView.h in Headers */,
 				07E8EB3E1E733FE3001639A2 /* KDIDefines.h in Headers */,
@@ -1103,6 +1127,7 @@
 				07E8EB431E7341C2001639A2 /* UIBarButtonItem+KDIExtensions.h in Headers */,
 				076730731E75C6C700030F0C /* KDIPickerViewButton.h in Headers */,
 				071B62631E705D3500B7B85A /* KDIFunctions.h in Headers */,
+				0794C23D1F6EE68C0051C4C8 /* KDILocalizedStrings.h in Headers */,
 				07D3D1EF1F5B995E005C512E /* KDIUIResponder.h in Headers */,
 				071B626E1E70635D00B7B85A /* KDIGradientView.h in Headers */,
 				071E533D1F59004C00A36B59 /* KDIBorderedViewImpl.h in Headers */,
@@ -1528,6 +1553,7 @@
 			files = (
 				0794A8211E73584900603C99 /* NSBundle+KDIPrivateExtensions.m in Sources */,
 				071B62831E707F9B00B7B85A /* NSColor-UIColor+KDIExtensions.m in Sources */,
+				0794C23A1F6EDDEE0051C4C8 /* WKInterfaceController+KDIExtensions.m in Sources */,
 				0794A8341E735E1200603C99 /* NSParagraphStyle+KDIExtensions.m in Sources */,
 				07E8EB511E734AED001639A2 /* KDIFunctions.m in Sources */,
 				0794A7FF1E73530400603C99 /* UIBezierPath+KDIExtensions.m in Sources */,

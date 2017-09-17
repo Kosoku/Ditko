@@ -64,6 +64,9 @@ FOUNDATION_EXPORT const unsigned char DitkoVersionString[];
 #import <Ditko/NSGestureRecognizer+KDIExtensions.h>
 #import <Ditko/NSImage+KDIExtensions.h>
 #endif
+#if (TARGET_OS_WATCH)
+#import <Ditko/WKInterfaceController+KDIExtensions.h>
+#endif
 
 #if (TARGET_OS_IOS || TARGET_OS_TV || TARGET_OS_OSX)
 #import <Ditko/KDIView.h>

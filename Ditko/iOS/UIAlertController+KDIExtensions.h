@@ -115,7 +115,7 @@ FOUNDATION_EXPORT KDIUIAlertControllerOptionsActionKey const KDIUIAlertControlle
  */
 + (void)KDI_presentAlertControllerWithError:(nullable NSError *)error;
 /**
- Calls `[self KDI_presentAlertControllerWithTitle:message:cancelButtonTitle:otherButtonTitles:completion:]`, passing [error KST_alertTitle], [error KDI_alertMessage], nil, nil, and completion respectively.
+ Calls `[self KDI_presentAlertControllerWithTitle:error.KST_alertTitle message:error.KST_alertMessage cancelButtonTitle:nil otherButtonTitles:nil completion:completion]`.
  
  @param error The error from which to create and present the alert controller
  @param completion The completion block to invoke after the alert controller is dismissed
