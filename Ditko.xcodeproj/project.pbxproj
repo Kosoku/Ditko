@@ -426,6 +426,7 @@
 		071E533C1F59004C00A36B59 /* KDIBorderedViewImpl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KDIBorderedViewImpl.m; path = Private/KDIBorderedViewImpl.m; sourceTree = "<group>"; };
 		0726280F1E70BCCF00511F80 /* KDIView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KDIView.h; sourceTree = "<group>"; };
 		072628101E70BCCF00511F80 /* KDIView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KDIView.m; sourceTree = "<group>"; };
+		072FDE161F6ED4A400E73661 /* ro */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ro; path = ro.lproj/Localizable.strings; sourceTree = "<group>"; };
 		0735427A1E704D8F00177905 /* Ditko.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Ditko.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		073542821E704DD600177905 /* Ditko-macOS-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Ditko-macOS-Info.plist"; sourceTree = "<group>"; };
 		073542831E704E0400177905 /* Ditko-Info.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Ditko-Info.h"; sourceTree = "<group>"; };
@@ -1357,6 +1358,7 @@
 				Base,
 				es,
 				ja,
+				ro,
 			);
 			mainGroup = 0795E6281E704784004A5CB2;
 			productRefGroup = 0795E6331E704785004A5CB2 /* Products */;
@@ -1756,6 +1758,7 @@
 				0767307A1E75DF4900030F0C /* en */,
 				0767307F1E75DFB100030F0C /* es */,
 				076730801E75DFBA00030F0C /* ja */,
+				072FDE161F6ED4A400E73661 /* ro */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
