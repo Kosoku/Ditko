@@ -11,6 +11,7 @@ Demo icons by [Glyphish](http://www.glyphish.com/).
 
 ![iOS](screenshots/iOS.gif)
 ![macOS](screenshots/macOS.gif)
+![watchOS](screenshots/watchOS.gif)
 
 ### Installation
 
