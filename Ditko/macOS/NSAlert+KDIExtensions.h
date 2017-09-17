@@ -34,39 +34,39 @@ typedef NSString* KDINSAlertOptionsKey NS_STRING_ENUM;
 /**
  Use this key to pass an NSAlertStyle. For example @{KDINSAlertOptionsKeyStyle: @(NSAlertStyleWarning)}.
  */
-FOUNDATION_EXPORT KDINSAlertOptionsKey const KDINSAlertOptionsKeyStyle;
+APPKIT_EXTERN KDINSAlertOptionsKey const KDINSAlertOptionsKeyStyle;
 /**
  Use this key to pass the alert title. For example @{KDINSAlertOptionsKeyTitle: @"Title"}.
  */
-FOUNDATION_EXPORT KDINSAlertOptionsKey const KDINSAlertOptionsKeyTitle;
+APPKIT_EXTERN KDINSAlertOptionsKey const KDINSAlertOptionsKeyTitle;
 /**
  Use this key to pass the alert message. For example @{KDINSAlertOptionsKeyMessage: @"Message"}.
  */
-FOUNDATION_EXPORT KDINSAlertOptionsKey const KDINSAlertOptionsKeyMessage;
+APPKIT_EXTERN KDINSAlertOptionsKey const KDINSAlertOptionsKeyMessage;
 /**
  Use this key to pass the cancel button title. For example @{KDINSAlertOptionsKeyCancelButtonTitle: @"Cancel"}.
  */
-FOUNDATION_EXPORT KDINSAlertOptionsKey const KDINSAlertOptionsKeyCancelButtonTitle;
+APPKIT_EXTERN KDINSAlertOptionsKey const KDINSAlertOptionsKeyCancelButtonTitle;
 /**
  Use this key to pass an NSArray of NSString instance for the other button titles. For example @{KDINSAlertOptionsKeyOtherButtonTitles: @[@"First", @"Second"]}.
  */
-FOUNDATION_EXPORT KDINSAlertOptionsKey const KDINSAlertOptionsKeyOtherButtonTitles;
+APPKIT_EXTERN KDINSAlertOptionsKey const KDINSAlertOptionsKeyOtherButtonTitles;
 /**
  Use this key to pass a BOOL of whether to show the suppression button. For example @{KDINSAlertOptionsKeyShowsSuppressionButton: @YES}.
  */
-FOUNDATION_EXPORT KDINSAlertOptionsKey const KDINSAlertOptionsKeyShowsSuppressionButton;
+APPKIT_EXTERN KDINSAlertOptionsKey const KDINSAlertOptionsKeyShowsSuppressionButton;
 /**
  Use this key to pass an NSImage to show on the alert instead of the default. For example @{KDINSAlertOptionsKeyIcon: icon}.
  */
-FOUNDATION_EXPORT KDINSAlertOptionsKey const KDINSAlertOptionsKeyIcon;
+APPKIT_EXTERN KDINSAlertOptionsKey const KDINSAlertOptionsKeyIcon;
 /**
  Use the key to pass the help anchor that the help button will link to. For example @{KDINSAlertOptionsKeyHelpAnchor: @"helpAnchor"}.
  */
-FOUNDATION_EXPORT KDINSAlertOptionsKey const KDINSAlertOptionsKeyHelpAnchor;
+APPKIT_EXTERN KDINSAlertOptionsKey const KDINSAlertOptionsKeyHelpAnchor;
 /**
  Use the key to pass the accessory view that the alert will display. For example @{KDINSAlertOptionsKeyAccessoryView: accessoryView}.
  */
-FOUNDATION_EXPORT KDINSAlertOptionsKey const KDINSAlertOptionsKeyAccessoryView;
+APPKIT_EXTERN KDINSAlertOptionsKey const KDINSAlertOptionsKeyAccessoryView;
 
 @interface NSAlert (KDIExtensions)
 

@@ -15,8 +15,8 @@
 
 #import <UIKit/UIKit.h>
 
-FOUNDATION_EXPORT NSNotificationName const IOSDNotificationNameBadgeDidChange;
-FOUNDATION_EXPORT NSString *const IOSDUserInfoKeyBadge;
+UIKIT_EXTERN NSNotificationName const IOSDNotificationNameBadgeDidChange;
+UIKIT_EXTERN NSString *const IOSDUserInfoKeyBadge;
 
 @interface UIBarButtonItem (DemoExtensions)
 

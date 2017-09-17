@@ -34,7 +34,7 @@ typedef void(^KDIUIAlertControllerCompletionBlock)(__kindof UIAlertController *a
 /**
  The constant button index used to indicate the user tapped on the cancel button.
  */
-FOUNDATION_EXPORT NSInteger const KDIUIAlertControllerCancelButtonIndex;
+UIKIT_EXTERN NSInteger const KDIUIAlertControllerCancelButtonIndex;
 
 /**
  Typedef for option keys to be used with KDI_alertControllerWithOptions:completion: and KDI_presentAlertControllerWithOptions:completion:.
@@ -44,39 +44,39 @@ typedef NSString* KDIUIAlertControllerOptionsKey NS_STRING_ENUM;
 /**
  Use this key to pass an UIAlertControllerStyle. For example, @{KDIUIAlertControllerOptionsKeyStyle: @(UIAlertControllerStyleActionSheet)}. If a value is not provided, UIAlertControllerStyleAlert is the default.
  */
-FOUNDATION_EXPORT KDIUIAlertControllerOptionsKey const KDIUIAlertControllerOptionsKeyStyle;
+UIKIT_EXTERN KDIUIAlertControllerOptionsKey const KDIUIAlertControllerOptionsKeyStyle;
 /**
  Use this key to pass the alert title. For example, @{KDIUIAlertControllerOptionsKeyTitle: @"Title"}. If a value is not provided a localized default is provided.
  */
-FOUNDATION_EXPORT KDIUIAlertControllerOptionsKey const KDIUIAlertControllerOptionsKeyTitle;
+UIKIT_EXTERN KDIUIAlertControllerOptionsKey const KDIUIAlertControllerOptionsKeyTitle;
 /**
  Use this key with a value of @YES to suppress the substitution of the default localized title if the provided title is zero length.
  */
-FOUNDATION_EXPORT KDIUIAlertControllerOptionsKey const KDIUIAlertControllerOptionsKeyIgnoreEmptyTitle;
+UIKIT_EXTERN KDIUIAlertControllerOptionsKey const KDIUIAlertControllerOptionsKeyIgnoreEmptyTitle;
 /**
  Use this key to pass the alert message. For example, @{KDIUIAlertControllerOptionsKeyMessage: @"The alert message"}. If a value is not provided a localized default is provided.
  */
-FOUNDATION_EXPORT KDIUIAlertControllerOptionsKey const KDIUIAlertControllerOptionsKeyMessage;
+UIKIT_EXTERN KDIUIAlertControllerOptionsKey const KDIUIAlertControllerOptionsKeyMessage;
 /**
  Use this key with a value of @YES to suppress the substitution of the default localized message if the provided message is zero length.
  */
-FOUNDATION_EXPORT KDIUIAlertControllerOptionsKey const KDIUIAlertControllerOptionsKeyIgnoreEmptyMessage;
+UIKIT_EXTERN KDIUIAlertControllerOptionsKey const KDIUIAlertControllerOptionsKeyIgnoreEmptyMessage;
 /**
  Use this key to pass the cancel button title of the alert. For example, @{KDIUIAlertControllerOptionsKeyCancelButtonTitle: @"Dismiss"}. If a value is not provided a localized default is provided.
  */
-FOUNDATION_EXPORT KDIUIAlertControllerOptionsKey const KDIUIAlertControllerOptionsKeyCancelButtonTitle;
+UIKIT_EXTERN KDIUIAlertControllerOptionsKey const KDIUIAlertControllerOptionsKeyCancelButtonTitle;
 /**
  Use this key to pass an NSArray of NSString instances for the other button titles of the alert. For example, @{KDIUIAlertControllerOptionsKeyOtherButtonTitles: @[@"First",@"Second"]}.
  */
-FOUNDATION_EXPORT KDIUIAlertControllerOptionsKey const KDIUIAlertControllerOptionsKeyOtherButtonTitles;
+UIKIT_EXTERN KDIUIAlertControllerOptionsKey const KDIUIAlertControllerOptionsKeyOtherButtonTitles;
 /**
  Use this key to pass the preferred button title. For example, @{KDIUIAlertControllerOptionsKeyPreferredButtonTitle: @"Destroy!"}. This will be matched against the cancel and other button titles to set the alert preferredAction property.
  */
-FOUNDATION_EXPORT KDIUIAlertControllerOptionsKey const KDIUIAlertControllerOptionsKeyPreferredButtonTitle;
+UIKIT_EXTERN KDIUIAlertControllerOptionsKey const KDIUIAlertControllerOptionsKeyPreferredButtonTitle;
 /**
  Use this key to pass an NSArray of NSDictionary instances using KDIUIAlertControllerOptionsActionKey keys. For example, @{KDIUIAlertControllerOptionsKeyActions: @[@{KDIUIAlertControllerOptionsActionKeyStyle: @(UIAlertActionStyle),KDIUIAlertControllerOptionsActionKeyTitle: @"Cancel",KDIUIAlertControllerOptionsActionKeyPreferred: @YES}]}. If non-nil, this array will be used to create the UIAlertActions of the UIAlertController instead of using the KDIUIAlertControllerOptionsKeyCancelButtonTitle and KDIUIAlertControllerOptionsKeyOtherButtonTitles keys.
  */
-FOUNDATION_EXPORT KDIUIAlertControllerOptionsKey const KDIUIAlertControllerOptionsKeyActions;
+UIKIT_EXTERN KDIUIAlertControllerOptionsKey const KDIUIAlertControllerOptionsKeyActions;
 /**
  Typedef for a block that is invoked when configuring a UITextField being adding to the alert controller.
  
@@ -86,7 +86,7 @@ typedef void(^KDIUIAlertControllerTextFieldConfigurationBlock)(UITextField *text
 /**
  Use this key to pass an NSArray of KDIUIAlertControllerTextFieldConfigurationBlock instances that will be used to add and configure the corresponding number of text fields to the alert controller.
  */
-FOUNDATION_EXPORT KDIUIAlertControllerOptionsKey const KDIUIAlertControllerOptionsKeyTextFieldConfigurationBlocks;
+UIKIT_EXTERN KDIUIAlertControllerOptionsKey const KDIUIAlertControllerOptionsKeyTextFieldConfigurationBlocks;
 
 /**
  Typedef for option keys to be used with the NSArray of NSDictionary instances associated with the KDIUIAlertControllerOptionsKeyActions options key.
@@ -96,15 +96,15 @@ typedef NSString* KDIUIAlertControllerOptionsActionKey NS_STRING_ENUM;
 /**
  Use this key to pass a UIAlertActionStyle. For example, @{KDIUIAlertControllerOptionsActionKeyStyle: @(UIAlertActionStyleDestructive)}. If a value is not provided, UIAlertActionStyleDefault is the default.
  */
-FOUNDATION_EXPORT KDIUIAlertControllerOptionsActionKey const KDIUIAlertControllerOptionsActionKeyStyle;
+UIKIT_EXTERN KDIUIAlertControllerOptionsActionKey const KDIUIAlertControllerOptionsActionKeyStyle;
 /**
  Use this key to pass the title of the UIAlertAction. For example, @{KDIUIAlertControllerOptionsActionKeyTitle: @"Action Title"}.
  */
-FOUNDATION_EXPORT KDIUIAlertControllerOptionsActionKey const KDIUIAlertControllerOptionsActionKeyTitle;
+UIKIT_EXTERN KDIUIAlertControllerOptionsActionKey const KDIUIAlertControllerOptionsActionKeyTitle;
 /**
  Use this key to signify that the UIAlertAction should be the preferredAction of the UIAlertController. For example, @{KDIUIAlertControllerOptionsActionKeyPreferred: @YES}. If a value is not provided, @NO is assumed.
  */
-FOUNDATION_EXPORT KDIUIAlertControllerOptionsActionKey const KDIUIAlertControllerOptionsActionKeyPreferred;
+UIKIT_EXTERN KDIUIAlertControllerOptionsActionKey const KDIUIAlertControllerOptionsActionKeyPreferred;
 
 @interface UIAlertController (KDIExtensions)
 

@@ -46,15 +46,15 @@ typedef NS_OPTIONS(NSUInteger, KDINextPreviousInputAccessoryViewItemOptions) {
 /**
  Notification posted when the next item is tapped. The object of the notification is the instance of KDINextPreviousInputAccessoryView that posted the notification.
  */
-FOUNDATION_EXPORT NSNotificationName const KDINextPreviousInputAccessoryViewNotificationNext;
+UIKIT_EXTERN NSNotificationName const KDINextPreviousInputAccessoryViewNotificationNext;
 /**
  Notification posted when the previous item is tapped. The object of the notification is the instance of KDINextPreviousInputAccessoryView that posted the notification.
  */
-FOUNDATION_EXPORT NSNotificationName const KDINextPreviousInputAccessoryViewNotificationPrevious;
+UIKIT_EXTERN NSNotificationName const KDINextPreviousInputAccessoryViewNotificationPrevious;
 /**
  Notification posted when the done item is tapped. The object of the notification is the instance of KDINextPreviousInputAccessoryView that posted the notification.
  */
-FOUNDATION_EXPORT NSNotificationName const KDINextPreviousInputAccessoryViewNotificationDone;
+UIKIT_EXTERN NSNotificationName const KDINextPreviousInputAccessoryViewNotificationDone;
 
 /**
  KDINextPreviousInputAccessoryView is a UIView subclass that manages a UIToolbar containing next, previous, and done bar button items. It posts appropriate notifications when any of the items are tapped. It automatically calls resignFirstResponder on its owning responder when the done item is tapped.

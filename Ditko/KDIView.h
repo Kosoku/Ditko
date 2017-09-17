@@ -47,7 +47,7 @@ typedef NS_OPTIONS(NSUInteger, KDIViewState) {
 /**
  Notification that is posted when the state of the receiver changes.
  */
-FOUNDATION_EXPORT NSNotificationName const KDIViewNotificationDidChangeState;
+APPKIT_EXTERN NSNotificationName const KDIViewNotificationDidChangeState;
 #endif
 
 /**
