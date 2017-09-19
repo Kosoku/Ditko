@@ -131,6 +131,16 @@ NSNotificationName const KDITextViewNotificationDidResignFirstResponder = @"KDIT
     [self.placeholderLabel setFrame:CGRectMake(self.textContainerInset.left, self.textContainerInset.top, maxWidth, ceil([self.placeholderLabel sizeThatFits:CGSizeMake(maxWidth, CGFLOAT_MAX)].height))];
 }
 #pragma mark -
+- (void)setText:(NSString *)text {
+    [super setText:text];
+    
+    [self _updatePlaceholderLabelWithText:self.placeholder];
+}
+- (void)setAttributedText:(NSAttributedString *)attributedText {
+    [super setAttributedText:attributedText];
+    
+    [self _updatePlaceholderLabelWithText:self.placeholder];
+}
 - (UIFont *)font {
     UIFont *retval = [super font];
     

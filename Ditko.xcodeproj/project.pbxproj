@@ -507,7 +507,7 @@
 		0794A8361E73776C00603C99 /* KDIBadgeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KDIBadgeView.m; sourceTree = "<group>"; };
 		0794C2371F6EDDEE0051C4C8 /* WKInterfaceController+KDIExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "WKInterfaceController+KDIExtensions.h"; path = "watchOS/WKInterfaceController+KDIExtensions.h"; sourceTree = "<group>"; };
 		0794C2381F6EDDEE0051C4C8 /* WKInterfaceController+KDIExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "WKInterfaceController+KDIExtensions.m"; path = "watchOS/WKInterfaceController+KDIExtensions.m"; sourceTree = "<group>"; };
-		0794C23C1F6EE68C0051C4C8 /* KDILocalizedStrings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KDILocalizedStrings.h; path = Private/KDILocalizedStrings.h; sourceTree = "<group>"; };
+		0794C23C1F6EE68C0051C4C8 /* KDILocalizedStrings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KDILocalizedStrings.h; sourceTree = "<group>"; };
 		0795E6321E704785004A5CB2 /* Ditko.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Ditko.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0795E6351E704785004A5CB2 /* Ditko.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Ditko.h; sourceTree = "<group>"; };
 		0795E6361E704785004A5CB2 /* Ditko-iOS-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Ditko-iOS-Info.plist"; sourceTree = "<group>"; };
@@ -860,7 +860,7 @@
 			children = (
 				0794C23C1F6EE68C0051C4C8 /* KDILocalizedStrings.h */,
 			);
-			name = Private;
+			path = Private;
 			sourceTree = "<group>";
 		};
 		0795E6281E704784004A5CB2 = {
