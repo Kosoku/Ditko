@@ -214,8 +214,10 @@ NSNotificationName const KDITextViewNotificationDidResignFirstResponder = @"KDIT
     [self addSubview:self.placeholderLabel];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(_textDidChangeNotification:) name:UITextViewTextDidChangeNotification object:self];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(_textStorageDidProcessEditingNotification:) name:NSTextStorageDidProcessEditingNotification object:nil];
 }
 - (void)_updatePlaceholderLabelWithText:(NSString *)text; {
+    [self.placeholderLabel setHidden:self.text.length > 0];
     [self setAttributedPlaceholder:[[NSAttributedString alloc] initWithString:text ?: @"" attributes:@{NSFontAttributeName: self.font, NSForegroundColorAttributeName: self.placeholderTextColor}]];
 }
 #pragma mark -
@@ -231,7 +233,14 @@ NSNotificationName const KDITextViewNotificationDidResignFirstResponder = @"KDIT
 }
 #pragma mark Notifications
 - (void)_textDidChangeNotification:(NSNotification *)note {
-    [self.placeholderLabel setHidden:self.text.length > 0];
+    [self _updatePlaceholderLabelWithText:self.placeholder];
+}
+- (void)_textStorageDidProcessEditingNotification:(NSNotification *)note {
+    if ([note.object isEqual:self.textStorage] &&
+        self.textStorage.editedMask & NSTextStorageEditedCharacters) {
+        
+        [self _updatePlaceholderLabelWithText:self.placeholder];
+    }
 }
 
 @end
