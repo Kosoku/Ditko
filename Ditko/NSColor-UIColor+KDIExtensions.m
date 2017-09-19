@@ -25,8 +25,8 @@
 #import <Stanley/KSTValueMacros.h>
 
 // https://www.w3.org/TR/AERT#color-contrast
-static CGFloat KDIPerceivedBrightnessForRedGreenAndBlue(CGFloat red, CGFloat green, CGFloat blue) {
-    return 1.0 - (red * 0.299 + green * 0.587 + blue * 0.114);
+static inline CGFloat KDIPerceivedBrightnessForRedGreenAndBlue(CGFloat red, CGFloat green, CGFloat blue) {
+    return (1.0 - (red * 0.299 + green * 0.587 + blue * 0.114));
 }
 
 #if (TARGET_OS_IPHONE)
@@ -71,15 +71,6 @@ static CGFloat KDIPerceivedBrightnessForRedGreenAndBlue(CGFloat red, CGFloat gre
     
 + (KDIColor *)KDI_contrastingColorOfColor:(KDIColor *)color; {
 #if (TARGET_OS_IPHONE)
-    CGFloat white;
-    if ([color getWhite:&white alpha:NULL]) {
-        if (white < 0.5) {
-            return UIColor.whiteColor;
-        }
-        else {
-            return UIColor.blackColor;
-        }
-    }
     CGFloat red, green, blue;
     if ([color getRed:&red green:&green blue:&blue alpha:NULL]) {
         if (KDIPerceivedBrightnessForRedGreenAndBlue(red,green,blue) < 0.5) {
@@ -87,6 +78,15 @@ static CGFloat KDIPerceivedBrightnessForRedGreenAndBlue(CGFloat red, CGFloat gre
         }
         else {
             return UIColor.whiteColor;
+        }
+    }
+    CGFloat white;
+    if ([color getWhite:&white alpha:NULL]) {
+        if (white < 0.5) {
+            return UIColor.whiteColor;
+        }
+        else {
+            return UIColor.blackColor;
         }
     }
     return color;
