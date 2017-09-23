@@ -20,6 +20,15 @@ NS_ASSUME_NONNULL_BEGIN
 @interface NSImage (KDIExtensions)
 
 /**
+ If self.isTemplate is NO, returns the receiver. Otherwise creates a copy of the receiver and sets `template` to NO.
+ */
+@property (readonly,nonatomic) NSImage *KDI_originalImage;
+/**
+ If self.isTemplate is YES, returns the receiver. Otherwise creates a copy of the receiver and sets `template` to YES.
+ */
+@property (readonly,nonatomic) NSImage *KDI_templateImage;
+
+/**
  Extracts and returns the dominant color from *image*.
  
  @param image the image to evaluate

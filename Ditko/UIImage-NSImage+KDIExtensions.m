@@ -61,4 +61,46 @@
     return [self.class KDI_dominantColorForImage:self];
 }
 
+- (KDIImage *)KDI_originalImage {
+#if (TARGET_OS_IPHONE)
+    if (self.renderingMode == UIImageRenderingModeAlwaysOriginal) {
+        return self;
+    }
+    else {
+        return [self imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    }
+#else
+    if (self.isTemplate) {
+        NSImage *retval = [self copy];
+        
+        [retval setTemplate:NO];
+        
+        return retval;
+    }
+    else {
+        return self;
+    }
+#endif
+}
+- (KDIImage *)KDI_templateImage {
+#if (TARGET_OS_IPHONE)
+    if (self.renderingMode == UIImageRenderingModeAlwaysTemplate) {
+        return self;
+    }
+    else {
+        return [self imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+    }
+#else
+    if (self.isTemplate) {
+        return self;
+    }
+    else {
+        NSImage *retval = [self copy];
+        
+        [retval setTemplate:YES];
+        
+        return retval;
+    }
+#endif
+}
 @end

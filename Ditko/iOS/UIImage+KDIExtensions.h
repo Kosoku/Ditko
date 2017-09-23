@@ -20,6 +20,15 @@ NS_ASSUME_NONNULL_BEGIN
 @interface UIImage (KDIExtensions)
 
 /**
+ If the receiver is already an original image, returns self. Otherwise returns `[self imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]`.
+ */
+@property (readonly,nonatomic) UIImage *KDI_originalImage;
+/**
+ If the receiver is already a template image, returns self. Otherwise returns `[self imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate]`;
+ */
+@property (readonly,nonatomic) UIImage *KDI_templateImage;
+
+/**
  Extracts and returns the dominant color from *image*.
  
  @param image the image to evaluate
