@@ -262,7 +262,14 @@ static CGFloat const kTitleColorAlphaAdjustment = 0.5;
                             self.imageContentVerticalAlignment == KDIButtonContentVerticalAlignmentDefault ||
                             self.imageContentHorizontalAlignment == KDIButtonContentHorizontalAlignmentDefault);
     
-    if (!superDoesLayout) {
+    if (superDoesLayout) {
+        retval.width += self.titleEdgeInsets.left + self.titleEdgeInsets.right;
+        retval.width += self.imageEdgeInsets.left + self.imageEdgeInsets.right;
+        
+        retval.height += MAX(self.titleEdgeInsets.top, self.imageEdgeInsets.top);
+        retval.height += MAX(self.titleEdgeInsets.bottom, self.imageEdgeInsets.bottom);
+    }
+    else {
         CGSize titleSize = [self.titleLabel sizeThatFits:CGSizeZero];
         CGSize imageSize = [self.imageView sizeThatFits:CGSizeZero];
         
