@@ -103,4 +103,19 @@ UIKIT_EXTERN NSNotificationName const KDINextPreviousInputAccessoryViewNotificat
 
 @end
 
+@interface NSObject (KDINextPreviousInputAccessoryViewExtensions)
+
+/**
+ Registers the receiver to handle next/previous notifications for the array of *responders*. This method will automatically handle moving to the next/previous responder based on the order in the provided array.
+ 
+ @param responders The array of responders to consider for next/previous notifications
+ */
+- (void)KDI_registerForNextPreviousNotificationsWithResponders:(NSArray<UIResponder *> *)responders;
+/**
+ Unregister the receiver for next/previous notifications. You are not required to call this method, it exists if you want to manually stop next/previous observation for the previously passed list of responders.
+ */
+- (void)KDI_unregisterForNextPreviousNotifications;
+
+@end
+
 NS_ASSUME_NONNULL_END

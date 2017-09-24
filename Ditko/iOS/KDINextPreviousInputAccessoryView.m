@@ -135,3 +135,80 @@ static void const *kDoneItemImageKey = &kDoneItemImageKey;
 }
 
 @end
+
+@interface KDINextPreviousInputAccessoryViewNotificationWrapper : NSObject
+@property (copy,nonatomic) NSArray<UIResponder *> *responders;
+- (instancetype)initWithResponders:(NSArray<UIResponder *> *)responders;
+@end
+
+@interface NSObject (KDINextPreviousInputAccessoryViewExtensionsPrivate)
+@property (strong,nonatomic) KDINextPreviousInputAccessoryViewNotificationWrapper *KDI_nextPreviousInputAccessoryViewNotificationWrapper;
+@end
+
+@implementation NSObject (KDINextPreviousInputAccessoryViewExtensions)
+- (void)KDI_registerForNextPreviousNotificationsWithResponders:(NSArray<UIResponder *> *)responders {
+    [self setKDI_nextPreviousInputAccessoryViewNotificationWrapper:[[KDINextPreviousInputAccessoryViewNotificationWrapper alloc] initWithResponders:responders]];
+}
+- (void)KDI_unregisterForNextPreviousNotifications; {
+    [self setKDI_nextPreviousInputAccessoryViewNotificationWrapper:nil];
+}
+@end
+
+@implementation KDINextPreviousInputAccessoryViewNotificationWrapper
+- (void)dealloc {
+    [NSNotificationCenter.defaultCenter removeObserver:self];
+}
+
+- (instancetype)initWithResponders:(NSArray<UIResponder *> *)responders {
+    if (!(self = [super init]))
+        return nil;
+    
+    _responders = [responders copy];
+    
+    [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(_nextPreviousNotification:) name:KDINextPreviousInputAccessoryViewNotificationNext object:nil];
+    [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(_nextPreviousNotification:) name:KDINextPreviousInputAccessoryViewNotificationPrevious object:nil];
+    
+    return self;
+}
+
+- (void)_nextPreviousNotification:(NSNotification *)note {
+    KDINextPreviousInputAccessoryView *accessoryView = note.object;
+    __block UIResponder *view = nil;
+    
+    [self.responders enumerateObjectsUsingBlock:^(UIResponder * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        if ([accessoryView.responder isEqual:obj]) {
+            view = obj;
+            *stop = YES;
+        }
+    }];
+    
+    NSInteger index = [self.responders indexOfObject:view];
+    
+    if (index == NSNotFound) {
+        return;
+    }
+    
+    if ([note.name isEqualToString:KDINextPreviousInputAccessoryViewNotificationNext]) {
+        if ((++index) == self.responders.count) {
+            index = 0;
+        }
+    }
+    else {
+        if ((--index) < 0) {
+            index = self.responders.count - 1;
+        }
+    }
+    
+    [self.responders[index] becomeFirstResponder];
+}
+@end
+
+@implementation NSObject (KDINextPreviousInputAccessoryViewExtensionsPrivate)
+static void const *KDI_nextPreviousInputAccessoryViewNotificationWrapperKey = &KDI_nextPreviousInputAccessoryViewNotificationWrapperKey;
+- (KDINextPreviousInputAccessoryViewNotificationWrapper *)KDI_nextPreviousInputAccessoryViewNotificationWrapper {
+    return objc_getAssociatedObject(self, KDI_nextPreviousInputAccessoryViewNotificationWrapperKey);
+}
+- (void)setKDI_nextPreviousInputAccessoryViewNotificationWrapper:(KDINextPreviousInputAccessoryViewNotificationWrapper *)KDI_nextPreviousInputAccessoryViewNotificationWrapper {
+    objc_setAssociatedObject(self, KDI_nextPreviousInputAccessoryViewNotificationWrapperKey, KDI_nextPreviousInputAccessoryViewNotificationWrapper, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+@end
