@@ -18,6 +18,7 @@
 #import "UIBarButtonItem+DemoExtensions.h"
 
 #import <Ditko/Ditko.h>
+#import <Stanley/Stanley.h>
 #import <Loki/Loki.h>
 #import <KSOFontAwesomeExtensions/KSOFontAwesomeExtensions.h>
 
@@ -293,8 +294,29 @@ static NSArray<NSArray<NSString *> *> *kPickerViewButtonComponentsAndRows;
     [gradientView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[view]" options:0 metrics:nil views:@{@"view": label}]];
     [gradientView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[subview]-[view]" options:0 metrics:nil views:@{@"view": label, @"subview": centerBadgeButton}]];
     
+    KDIButton *cameraButton = [KDIButton buttonWithType:UIButtonTypeSystem];
+    
+    [cameraButton setTranslatesAutoresizingMaskIntoConstraints:NO];
+    [cameraButton setImage:[UIImage KSO_fontAwesomeImageWithString:@"\uf030" size:CGSizeMake(25, 25)].KDI_templateImage forState:UIControlStateNormal];
+    [cameraButton setTitle:@"Camera" forState:UIControlStateNormal];
+    [cameraButton setContentEdgeInsets:UIEdgeInsetsMake(8, 8, 8, 8)];
+    [cameraButton setTitleEdgeInsets:UIEdgeInsetsMake(0, 8, 0, 0)];
+    [cameraButton KDI_addBlock:^(__kindof UIControl * _Nonnull control, UIControlEvents controlEvents) {
+        UIImagePickerController *imagePickerController = [[UIImagePickerController alloc] init];
+        
+        [imagePickerController setSourceType:UIImagePickerControllerSourceTypeCamera];
+        
+        [imagePickerController KDI_presentImagePickerControllerAnimated:YES completion:^(NSDictionary<NSString *,id> * _Nullable info) {
+            KSTLogObject(info);
+        }];
+    } forControlEvents:UIControlEventTouchUpInside];
+    
+    [gradientView addSubview:cameraButton];
+    [NSLayoutConstraint activateConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:[subview]-[view]" options:0 metrics:nil views:@{@"view": cameraButton, @"subview": label}]];
+    [NSLayoutConstraint activateConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[subview]-[view]" options:0 metrics:nil views:@{@"view": cameraButton, @"subview": centerBadgeButton}]];
+    
     [NSObject KDI_registerDynamicTypeObjectsForTextStyles:@{UIFontTextStyleCaption2: @[centerBadgeButton.badgeView],
-                                                            UIFontTextStyleCallout: @[badgeView,blockButton.titleLabel,pickerViewButton.titleLabel,datePickerButton.titleLabel,centerBadgeButton.button.titleLabel],
+                                                            UIFontTextStyleCallout: @[badgeView,blockButton.titleLabel,pickerViewButton.titleLabel,datePickerButton.titleLabel,centerBadgeButton.button.titleLabel,cameraButton.titleLabel],
                                                             UIFontTextStyleBody: @[label]}];
     
     [self.navigationItem setBackBarButtonItem:[UIBarButtonItem iosd_backBarButtonItemWithViewController:self]];

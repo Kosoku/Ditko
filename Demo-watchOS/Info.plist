@@ -26,7 +26,7 @@
 		<string>UIInterfaceOrientationPortraitUpsideDown</string>
 	</array>
 	<key>WKCompanionAppBundleIdentifier</key>
-	<string>com.kosoku.Demo-iOS</string>
+	<string>com.kosoku.Ditko.Demo-iOS</string>
 	<key>WKWatchKitApp</key>
 	<true/>
 </dict>
