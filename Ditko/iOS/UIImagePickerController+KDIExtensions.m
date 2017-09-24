@@ -54,10 +54,13 @@
     _imagePickerController = imagePickerController;
     [_imagePickerController setDelegate:self];
     
-    if (imagePickerController.modalPresentationStyle == UIModalPresentationPopover &&
-        imagePickerController.popoverPresentationController.delegate == nil) {
-        
-        [imagePickerController.popoverPresentationController setDelegate:self];
+    if (imagePickerController.modalPresentationStyle == UIModalPresentationPopover) {
+        if (imagePickerController.popoverPresentationController.delegate == nil) {
+            [imagePickerController.popoverPresentationController setDelegate:self];
+        }
+        else {
+            KSTLog(@"UIImagePickerController modalPresentationStyle set to UIModalPresentationPopover with non-nil delegate, completion block will not be called for cancel!");
+        }
     }
     
     return self;

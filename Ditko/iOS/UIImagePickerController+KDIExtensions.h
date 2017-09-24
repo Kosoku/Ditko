@@ -18,30 +18,74 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+/**
+ Block that is invoked when the image picker confirms or cancels selection by the user. The block is always invoked on the main thread.
+ 
+ @param info The info dictionary populated with keys from UIImagePickerController.h
+ */
 typedef void(^KDIUIImagePickerControllerCompletion)(NSDictionary<NSString *,id> * _Nullable info);
 
 @interface UIImagePickerController (KDIExtensions)
 
+/**
+ Presents the receiver optionally *animated* and invokes *completion* when the user selects/takes a photo/video or cancels.
+ 
+ @param animated Whether to animate the presentation
+ @param completion The block to invoke when a selection is made or cancelled
+ */
 - (void)KDI_presentImagePickerControllerAnimated:(BOOL)animated completion:(KDIUIImagePickerControllerCompletion)completion;
 
 @end
 
+/**
+ Convenience methods on NSDictionary to return various UIImagePickerController specific objects. These are meant to be used on the info dictionary that is returned as part of the KDIUIImagePickerControllerCompletion block.
+ */
 @interface NSDictionary (KDIUIImagePickerControllerExtensions)
 
+/**
+ Returns `KDI_editedImage` is non-nil, otherwise returns `KDI_originalImage`.
+ */
 @property (readonly,nonatomic,nullable) UIImage *KDI_image;
+/**
+ Returns the file URL for the `KDI_originalImage` if non-nil.
+ */
 @property (readonly,nonatomic,nullable) NSURL *KDI_imageURL;
+/**
+ Returns the edited image.
+ */
 @property (readonly,nonatomic,nullable) UIImage *KDI_editedImage;
+/**
+ Returns the original image.
+ */
 @property (readonly,nonatomic,nullable) UIImage *KDI_originalImage;
 
+/**
+ Returns the UTI for the media type (e.g. kUTTypeImage).
+ */
 @property (readonly,nonatomic,nullable) NSString *KDI_mediaType;
 
+/**
+ Returns the crop rect if an image was chosen.
+ */
 @property (readonly,nonatomic) CGRect KDI_cropRect;
 
+/**
+ Returns the file URL for the chosen video.
+ */
 @property (readonly,nonatomic,nullable) NSURL *KDI_mediaURL;
 
+/**
+ Returns the metadata dictionary for the chosen photo/video.
+ */
 @property (readonly,nonatomic,nullable) NSDictionary *KDI_mediaMetadata;
 
+/**
+ Returns the PHLivePhoto instance that was chosen.
+ */
 @property (readonly,nonatomic,nullable) PHLivePhoto *KDI_livePhoto;
+/**
+ Returns the PHAsset that was chosen.
+ */
 @property (readonly,nonatomic,nullable) PHAsset *KDI_asset;
 
 @end
