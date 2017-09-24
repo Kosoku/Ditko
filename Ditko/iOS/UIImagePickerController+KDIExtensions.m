@@ -16,6 +16,8 @@
 #import "UIImagePickerController+KDIExtensions.h"
 #import "UIViewController+KDIExtensions.h"
 
+#import <Stanley/Stanley.h>
+
 #import <objc/runtime.h>
 
 @interface KDIUIImagePickerControllerDelegate : NSObject <UIImagePickerControllerDelegate,UINavigationControllerDelegate,UIPopoverPresentationControllerDelegate>
