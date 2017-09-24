@@ -18,7 +18,7 @@
 
 #import <objc/runtime.h>
 
-@interface KDIUIImagePickerControllerDelegate : NSObject <UIImagePickerControllerDelegate,UINavigationControllerDelegate>
+@interface KDIUIImagePickerControllerDelegate : NSObject <UIImagePickerControllerDelegate,UINavigationControllerDelegate,UIPopoverPresentationControllerDelegate>
 @property (weak,nonatomic) UIImagePickerController *imagePickerController;
 @property (copy,nonatomic) KDIUIImagePickerControllerCompletion completion;
 - (instancetype)initWithImagePickerController:(UIImagePickerController *)imagePickerController completion:(KDIUIImagePickerControllerCompletion)completion;
@@ -38,6 +38,11 @@
     self.completion = nil;
 }
 
+- (void)popoverPresentationControllerDidDismissPopover:(UIPopoverPresentationController *)popoverPresentationController {
+    self.completion(nil);
+    self.completion = nil;
+}
+
 - (instancetype)initWithImagePickerController:(UIImagePickerController *)imagePickerController completion:(KDIUIImagePickerControllerCompletion)completion {
     if (!(self = [super init]))
         return nil;
@@ -46,6 +51,12 @@
     
     _imagePickerController = imagePickerController;
     [_imagePickerController setDelegate:self];
+    
+    if (imagePickerController.modalPresentationStyle == UIModalPresentationPopover &&
+        imagePickerController.popoverPresentationController.delegate == nil) {
+        
+        [imagePickerController.popoverPresentationController setDelegate:self];
+    }
     
     return self;
 }
@@ -63,6 +74,54 @@
     [[UIViewController KDI_viewControllerForPresenting] presentViewController:self animated:animated completion:nil];
 }
 
+@end
+
+@implementation NSDictionary (KDIUIImagePickerControllerExtensions)
+- (UIImage *)KDI_image {
+    return self.KDI_editedImage ?: self.KDI_originalImage;
+}
+- (NSURL *)KDI_imageURL {
+    if (@available(iOS 11.0, *)) {
+        return self[UIImagePickerControllerImageURL];
+    }
+    else {
+        return nil;
+    }
+}
+- (UIImage *)KDI_editedImage {
+    return self[UIImagePickerControllerEditedImage];
+}
+- (UIImage *)KDI_originalImage {
+    return self[UIImagePickerControllerOriginalImage];
+}
+
+- (NSString *)KDI_mediaType {
+    return self[UIImagePickerControllerMediaType];
+}
+
+- (CGRect)KDI_cropRect {
+    return [self[UIImagePickerControllerCropRect] CGRectValue];
+}
+
+- (NSURL *)KDI_mediaURL {
+    return self[UIImagePickerControllerMediaURL];
+}
+
+- (NSDictionary *)KDI_mediaMetadata {
+    return self[UIImagePickerControllerMediaMetadata];
+}
+
+- (PHLivePhoto *)KDI_livePhoto {
+    return self[UIImagePickerControllerLivePhoto];
+}
+- (PHAsset *)KDI_asset {
+    if (@available(iOS 11.0, *)) {
+        return self[UIImagePickerControllerPHAsset];
+    }
+    else {
+        return nil;
+    }
+}
 @end
 
 @implementation UIImagePickerController (KDIExtensionsPrivate)
