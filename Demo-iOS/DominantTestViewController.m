@@ -16,9 +16,8 @@
 #import "DominantTestViewController.h"
 
 #import <Ditko/Ditko.h>
+#import <Stanley/Stanley.h>
 #import <KSOFontAwesomeExtensions/KSOFontAwesomeExtensions.h>
-
-#import <MobileCoreServices/MobileCoreServices.h>
 
 @interface DominantTestViewController () <UIImagePickerControllerDelegate,UINavigationControllerDelegate>
 @property (strong,nonatomic) UIImageView *imageView;
@@ -43,6 +42,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    kstWeakify(self);
     
     [self setImageView:[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"dominant_test"]]];
     [self.imageView setTranslatesAutoresizingMaskIntoConstraints:NO];
@@ -83,34 +84,36 @@
     UIBarButtonItem *photoItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCamera target:nil action:NULL];
     
     [photoItem setKDI_block:^(UIBarButtonItem *item){
-        UIImagePickerController *controller = [[UIImagePickerController alloc] init];
+        kstStrongify(self);
+        if (![UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypePhotoLibrary]) {
+            return;
+        }
         
-        [controller setMediaTypes:@[(__bridge NSString *)kUTTypeImage]];
-        [controller setAllowsEditing:NO];
-        [controller setDelegate:self];
+        UIImagePickerController *imagePickerController = [[UIImagePickerController alloc] init];
         
-        [self presentViewController:controller animated:YES completion:nil];
+        [imagePickerController setSourceType:UIImagePickerControllerSourceTypePhotoLibrary];
+        
+        [imagePickerController KDI_presentImagePickerControllerAnimated:YES completion:^(NSDictionary<NSString *,id> * _Nullable info) {
+            kstStrongify(self);
+            if (info == nil) {
+                return;
+            }
+            
+            [self.imageView setImage:info.KDI_image];
+            [self.imageView startAnimating];
+            
+            UIColor *textColor = [self.imageView.image KDI_dominantColor];
+            UIColor *backgroundColor = [textColor KDI_contrastingColor];
+            
+            [self.button setTitleColor:textColor forState:UIControlStateNormal];
+            [self.button setBackgroundColor:backgroundColor];
+            
+            [self.inverseButton setTitleColor:backgroundColor forState:UIControlStateNormal];
+            [self.inverseButton setBackgroundColor:textColor];
+        }];
     }];
     
     [self.navigationItem setRightBarButtonItems:@[photoItem]];
-}
-
-- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
-    [picker.presentingViewController dismissViewControllerAnimated:YES completion:nil];
-}
-- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
-    [picker.presentingViewController dismissViewControllerAnimated:YES completion:nil];
-    
-    [self.imageView setImage:info[UIImagePickerControllerOriginalImage]];
-    
-    UIColor *textColor = [self.imageView.image KDI_dominantColor];
-    UIColor *backgroundColor = [textColor KDI_contrastingColor];
-    
-    [self.button setTitleColor:textColor forState:UIControlStateNormal];
-    [self.button setBackgroundColor:backgroundColor];
-    
-    [self.inverseButton setTitleColor:backgroundColor forState:UIControlStateNormal];
-    [self.inverseButton setBackgroundColor:textColor];
 }
 
 @end

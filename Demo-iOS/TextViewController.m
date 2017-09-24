@@ -121,6 +121,8 @@
         [self.textView setBorderWidth:width];
     }]]];
     
+    [self KDI_registerForNextPreviousNotificationsWithResponders:@[self.textView,self.textField]];
+    
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(_firstResponderDidChange:) name:KDIUIResponderNotificationDidBecomeFirstResponder object:nil];
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(_firstResponderDidChange:) name:KDIUIResponderNotificationDidResignFirstResponder object:nil];
 }

@@ -27,7 +27,6 @@ static NSArray<NSArray<NSString *> *> *kPickerViewButtonComponentsAndRows;
 @interface ViewController () <KDIPickerViewButtonDataSource,KDIPickerViewButtonDelegate>
 @property (strong,nonatomic) UIStackView *stackView;
 @property (strong,nonatomic) UIScrollView *scrollView;
-@property (copy,nonatomic) NSArray<UIResponder *> *firstResponderControls;
 @end
 
 @implementation ViewController
@@ -162,11 +161,6 @@ static NSArray<NSArray<NSString *> *> *kPickerViewButtonComponentsAndRows;
     
     [self.stackView addArrangedSubview:datePickerButton];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(_nextPreviousNotification:) name:KDINextPreviousInputAccessoryViewNotificationNext object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(_nextPreviousNotification:) name:KDINextPreviousInputAccessoryViewNotificationPrevious object:nil];
-    
-    [self setFirstResponderControls:@[pickerViewButton,datePickerButton]];
-    
     KDIButton *centerButton = [KDIButton buttonWithType:UIButtonTypeSystem];
     
     [centerButton setTranslatesAutoresizingMaskIntoConstraints:NO];
@@ -294,12 +288,17 @@ static NSArray<NSArray<NSString *> *> *kPickerViewButtonComponentsAndRows;
     [cameraButton setRounded:YES];
     [cameraButton setImage:[UIImage KSO_fontAwesomeImageWithString:@"\uf030" size:CGSizeMake(25, 25)].KDI_templateImage forState:UIControlStateNormal];
     [cameraButton setTitle:@"Camera" forState:UIControlStateNormal];
-    [cameraButton setContentEdgeInsets:UIEdgeInsetsMake(8, 8, 8, 8)];
+    [cameraButton setContentEdgeInsets:UIEdgeInsetsMake(8, 16, 8, 16)];
     [cameraButton setTitleEdgeInsets:UIEdgeInsetsMake(0, 8, 0, 0)];
     [cameraButton KDI_addBlock:^(__kindof UIControl * _Nonnull control, UIControlEvents controlEvents) {
+        if (![UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
+            return;
+        }
+        
         UIImagePickerController *imagePickerController = [[UIImagePickerController alloc] init];
         
         [imagePickerController setSourceType:UIImagePickerControllerSourceTypeCamera];
+        [imagePickerController setMediaTypes:[UIImagePickerController availableMediaTypesForSourceType:UIImagePickerControllerSourceTypeCamera]];
         
         [imagePickerController KDI_presentImagePickerControllerAnimated:YES completion:^(NSDictionary<NSString *,id> * _Nullable info) {
             KSTLogObject(info);
@@ -307,6 +306,33 @@ static NSArray<NSArray<NSString *> *> *kPickerViewButtonComponentsAndRows;
     } forControlEvents:UIControlEventTouchUpInside];
     
     [self.stackView addArrangedSubview:cameraButton];
+    
+    KDIButton *photosButton = [KDIButton buttonWithType:UIButtonTypeSystem];
+    
+    [photosButton setTranslatesAutoresizingMaskIntoConstraints:NO];
+    [photosButton setBackgroundColor:backgroundColor];
+    [photosButton setRounded:YES];
+    [photosButton setImage:[UIImage KSO_fontAwesomeImageWithString:@"\uf03e" size:CGSizeMake(25, 25)].KDI_templateImage forState:UIControlStateNormal];
+    [photosButton setTitle:@"Photos" forState:UIControlStateNormal];
+    [photosButton setContentEdgeInsets:UIEdgeInsetsMake(8, 16, 8, 16)];
+    [photosButton setTitleEdgeInsets:UIEdgeInsetsMake(0, 8, 0, 0)];
+    [photosButton KDI_addBlock:^(__kindof UIControl * _Nonnull control, UIControlEvents controlEvents) {
+        if (![UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypePhotoLibrary]) {
+            return;
+        }
+        
+        UIImagePickerController *imagePickerController = [[UIImagePickerController alloc] init];
+        
+        [imagePickerController setSourceType:UIImagePickerControllerSourceTypePhotoLibrary];
+        
+        [imagePickerController KDI_presentImagePickerControllerAnimated:YES completion:^(NSDictionary<NSString *,id> * _Nullable info) {
+            KSTLogObject(info);
+        }];
+    } forControlEvents:UIControlEventTouchUpInside];
+    
+    [self.stackView addArrangedSubview:photosButton];
+    
+    [self KDI_registerForNextPreviousNotificationsWithResponders:@[pickerViewButton,datePickerButton]];
     
     [NSObject KDI_registerDynamicTypeObjectsForTextStyles:@{UIFontTextStyleCaption2: @[centerBadgeButton.badgeView],
                                                             UIFontTextStyleCallout: @[badgeView,blockButton.titleLabel,pickerViewButton.titleLabel,datePickerButton.titleLabel,centerBadgeButton.button.titleLabel,cameraButton.titleLabel],
@@ -332,32 +358,6 @@ static NSArray<NSArray<NSString *> *> *kPickerViewButtonComponentsAndRows;
 }
 - (NSString *)pickerViewButton:(KDIPickerViewButton *)pickerViewButton titleForRow:(NSInteger)row forComponent:(NSInteger)component {
     return kPickerViewButtonComponentsAndRows[component][row];
-}
-
-- (void)_nextPreviousNotification:(NSNotification *)note {
-    KDINextPreviousInputAccessoryView *inputAccessoryView = note.object;
-    
-    if (![self.firstResponderControls containsObject:inputAccessoryView.responder]) {
-        return;
-    }
-    
-    NSInteger index = [self.firstResponderControls indexOfObject:inputAccessoryView.responder];
-    
-    if ([note.name isEqualToString:KDINextPreviousInputAccessoryViewNotificationNext]) {
-        index++;
-    }
-    else {
-        index--;
-    }
-    
-    if (index < 0) {
-        index = self.firstResponderControls.count - 1;
-    }
-    else if (index == self.firstResponderControls.count) {
-        index = 0;
-    }
-    
-    [self.firstResponderControls[index] becomeFirstResponder];
 }
 
 @end
