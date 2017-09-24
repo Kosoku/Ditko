@@ -64,6 +64,8 @@ static NSArray<NSArray<NSString *> *> *kPickerViewButtonComponentsAndRows;
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    kstWeakify(self);
+    
     UIColor *backgroundColor = [UIApplication.sharedApplication.delegate.window.tintColor KDI_contrastingColor];
     
     KDIGradientView *gradientView = [[KDIGradientView alloc] initWithFrame:CGRectZero];
@@ -291,6 +293,7 @@ static NSArray<NSArray<NSString *> *> *kPickerViewButtonComponentsAndRows;
     [cameraButton setContentEdgeInsets:UIEdgeInsetsMake(8, 16, 8, 16)];
     [cameraButton setTitleEdgeInsets:UIEdgeInsetsMake(0, 8, 0, 0)];
     [cameraButton KDI_addBlock:^(__kindof UIControl * _Nonnull control, UIControlEvents controlEvents) {
+        kstStrongify(self);
         if (![UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
             return;
         }
@@ -300,7 +303,7 @@ static NSArray<NSArray<NSString *> *> *kPickerViewButtonComponentsAndRows;
         [imagePickerController setSourceType:UIImagePickerControllerSourceTypeCamera];
         [imagePickerController setMediaTypes:[UIImagePickerController availableMediaTypesForSourceType:UIImagePickerControllerSourceTypeCamera]];
         
-        [imagePickerController KDI_presentImagePickerControllerAnimated:YES completion:^(NSDictionary<NSString *,id> * _Nullable info) {
+        [self KDI_presentImagePickerController:imagePickerController barButtonItem:nil sourceView:control sourceRect:CGRectZero permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES completion:^(NSDictionary<NSString *,id> * _Nullable info) {
             KSTLogObject(info);
         }];
     } forControlEvents:UIControlEventTouchUpInside];
@@ -317,6 +320,7 @@ static NSArray<NSArray<NSString *> *> *kPickerViewButtonComponentsAndRows;
     [photosButton setContentEdgeInsets:UIEdgeInsetsMake(8, 16, 8, 16)];
     [photosButton setTitleEdgeInsets:UIEdgeInsetsMake(0, 8, 0, 0)];
     [photosButton KDI_addBlock:^(__kindof UIControl * _Nonnull control, UIControlEvents controlEvents) {
+        kstStrongify(self);
         if (![UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypePhotoLibrary]) {
             return;
         }
@@ -325,7 +329,7 @@ static NSArray<NSArray<NSString *> *> *kPickerViewButtonComponentsAndRows;
         
         [imagePickerController setSourceType:UIImagePickerControllerSourceTypePhotoLibrary];
         
-        [imagePickerController KDI_presentImagePickerControllerAnimated:YES completion:^(NSDictionary<NSString *,id> * _Nullable info) {
+        [self KDI_presentImagePickerController:imagePickerController barButtonItem:nil sourceView:control sourceRect:CGRectZero permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES completion:^(NSDictionary<NSString *,id> * _Nullable info) {
             KSTLogObject(info);
         }];
     } forControlEvents:UIControlEventTouchUpInside];

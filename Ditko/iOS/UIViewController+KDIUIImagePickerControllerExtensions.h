@@ -1,5 +1,5 @@
 //
-//  UIImagePickerController+KDIExtensions.h
+//  UIViewController+KDIExtensions.h
 //  Ditko-iOS
 //
 //  Created by William Towe on 9/24/17.
@@ -25,15 +25,20 @@ NS_ASSUME_NONNULL_BEGIN
  */
 typedef void(^KDIUIImagePickerControllerCompletion)(NSDictionary<NSString *,id> * _Nullable info);
 
-@interface UIImagePickerController (KDIExtensions)
+@interface UIViewController (KDIUIImagePickerControllerExtensions)
 
 /**
- Presents the receiver optionally *animated* and invokes *completion* when the user selects/takes a photo/video or cancels.
+ Presents the *imagePickerController* optionally *animated* and invokes *completion* when the user selects/takes a photo/video or cancels.
  
+ @param imagePickerController The image picker controller to present
+ @param barButtonItem The bar button item to present from
+ @param sourceView The source view to present from
+ @param sourceRect The source rect relative to *sourceView* to present from
+ @param permittedArrowDirections The permitted popover arrow directions
  @param animated Whether to animate the presentation
  @param completion The block to invoke when a selection is made or cancelled
  */
-- (void)KDI_presentImagePickerControllerAnimated:(BOOL)animated completion:(KDIUIImagePickerControllerCompletion)completion;
+- (void)KDI_presentImagePickerController:(UIImagePickerController *)imagePickerController barButtonItem:(nullable UIBarButtonItem *)barButtonItem sourceView:(nullable UIView *)sourceView sourceRect:(CGRect)sourceRect permittedArrowDirections:(UIPopoverArrowDirection)permittedArrowDirections animated:(BOOL)animated completion:(KDIUIImagePickerControllerCompletion)completion;
 
 @end
 

@@ -41,6 +41,24 @@
     return retval;
 }
 
+- (void)KDI_presentViewControllerAsPopover:(UIViewController *)viewController barButtonItem:(UIBarButtonItem *)barButtonItem sourceView:(UIView *)sourceView sourceRect:(CGRect)sourceRect permittedArrowDirections:(UIPopoverArrowDirection)permittedArrowDirections animated:(BOOL)animated completion:(dispatch_block_t)completion {
+    [viewController setModalPresentationStyle:UIModalPresentationPopover];
+    
+    UIPopoverPresentationController *popoverPresentationController = viewController.popoverPresentationController;
+    
+    [popoverPresentationController setPermittedArrowDirections:permittedArrowDirections];
+    
+    if (barButtonItem != nil) {
+        [popoverPresentationController setBarButtonItem:barButtonItem];
+    }
+    else if (sourceView != nil) {
+        [popoverPresentationController setSourceView:sourceView];
+        [popoverPresentationController setSourceRect:CGRectIsEmpty(sourceRect) ? sourceView.bounds : sourceRect];
+    }
+    
+    [self presentViewController:viewController animated:animated completion:completion];
+}
+
 - (void)KDI_recursivelyDismissViewControllerAnimated:(BOOL)animated completion:(void(^ _Nullable)(void))completion; {
     /**
      Track the view controller that is presenting something.
@@ -84,5 +102,7 @@
      */
     block();
 }
+
+
 
 @end

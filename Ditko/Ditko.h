@@ -65,7 +65,7 @@ FOUNDATION_EXPORT const unsigned char DitkoVersionString[];
 #import <Ditko/NSImage+KDIExtensions.h>
 #endif
 #if (TARGET_OS_IOS)
-#import <Ditko/UIImagePickerController+KDIExtensions.h>
+#import <Ditko/UIViewController+KDIUIImagePickerControllerExtensions.h>
 #endif
 #if (TARGET_OS_WATCH)
 #import <Ditko/WKInterfaceController+KDIExtensions.h>

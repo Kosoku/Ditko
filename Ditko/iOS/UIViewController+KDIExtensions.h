@@ -42,12 +42,25 @@ NS_ASSUME_NONNULL_BEGIN
 - (UIViewController *)KDI_viewControllerForPresenting;
 
 /**
+ Presents *viewController* as a popover (on iPad) or fullscreen (on iPhone) from *barButtonItem* or *sourceView* relative to *sourceRect* optionally *animated* and invoking *completion* when the presentation completes.
+ 
+ @param viewController The view controller to present
+ @param barButtonItem The bar button item to present from
+ @param sourceView The source view to present from
+ @param sourceRect The source rect relative to *sourceView* to present from
+ @param permittedArrowDirections The permitted popover arrow directions
+ @param animated Whether to animate the presentation
+ @param completion The block to invoke when the presentation completes
+ */
+- (void)KDI_presentViewControllerAsPopover:(UIViewController *)viewController barButtonItem:(nullable UIBarButtonItem *)barButtonItem sourceView:(nullable UIView *)sourceView sourceRect:(CGRect)sourceRect permittedArrowDirections:(UIPopoverArrowDirection)permittedArrowDirections animated:(BOOL)animated completion:(nullable dispatch_block_t)completion;
+
+/**
  Recursively dismisses the presented view controller until there are no view controllers being presented, with optional animation. If non-nil, the provided completion block is invoked after the final view controller is dismissed.
  
  @param animated Whether to animate the recursive dismissal
  @param completion The completion block to invoke after the final view controller is dismissed
  */
-- (void)KDI_recursivelyDismissViewControllerAnimated:(BOOL)animated completion:(void(^ _Nullable)(void))completion;
+- (void)KDI_recursivelyDismissViewControllerAnimated:(BOOL)animated completion:(nullable dispatch_block_t)completion;
 
 @end
 

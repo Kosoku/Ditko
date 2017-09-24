@@ -93,7 +93,7 @@
         
         [imagePickerController setSourceType:UIImagePickerControllerSourceTypePhotoLibrary];
         
-        [imagePickerController KDI_presentImagePickerControllerAnimated:YES completion:^(NSDictionary<NSString *,id> * _Nullable info) {
+        [self KDI_presentImagePickerController:imagePickerController barButtonItem:item sourceView:nil sourceRect:CGRectZero permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES completion:^(NSDictionary<NSString *,id> * _Nullable info) {
             kstStrongify(self);
             if (info == nil) {
                 return;

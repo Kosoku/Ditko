@@ -1,5 +1,5 @@
 //
-//  UIImagePickerController+KDIExtensions.m
+//  UIViewController+KDIExtensions.m
 //  Ditko-iOS
 //
 //  Created by William Towe on 9/24/17.
@@ -13,7 +13,7 @@
 //
 //  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-#import "UIImagePickerController+KDIExtensions.h"
+#import "UIViewController+KDIUIImagePickerControllerExtensions.h"
 #import "UIViewController+KDIExtensions.h"
 
 #import <Stanley/Stanley.h>
@@ -21,9 +21,18 @@
 #import <objc/runtime.h>
 
 @interface KDIUIImagePickerControllerDelegate : NSObject <UIImagePickerControllerDelegate,UINavigationControllerDelegate,UIPopoverPresentationControllerDelegate>
+@property (weak,nonatomic) UIViewController *viewController;
 @property (weak,nonatomic) UIImagePickerController *imagePickerController;
+@property (weak,nonatomic) UIBarButtonItem *barButtonItem;
+@property (weak,nonatomic) UIView *sourceView;
+@property (assign,nonatomic) CGRect sourceRect;
+@property (assign,nonatomic) UIPopoverArrowDirection permittedArrowDirections;
+@property (assign,nonatomic) BOOL animated;
 @property (copy,nonatomic) KDIUIImagePickerControllerCompletion completion;
-- (instancetype)initWithImagePickerController:(UIImagePickerController *)imagePickerController completion:(KDIUIImagePickerControllerCompletion)completion;
+
+- (instancetype)initWithViewController:(UIViewController *)viewController imagePickerController:(UIImagePickerController *)imagePickerController barButtonItem:(UIBarButtonItem *)barButtonItem sourceView:(UIView *)sourceView sourceRect:(CGRect)sourceRect permittedArrowDirections:(UIPopoverArrowDirection)permittedArrowDirections animated:(BOOL)animated completion:(KDIUIImagePickerControllerCompletion)completion;
+
+- (void)presentImagePickerController;
 @end
 
 @implementation KDIUIImagePickerControllerDelegate
@@ -45,38 +54,64 @@
     self.completion = nil;
 }
 
-- (instancetype)initWithImagePickerController:(UIImagePickerController *)imagePickerController completion:(KDIUIImagePickerControllerCompletion)completion {
+- (instancetype)initWithViewController:(UIViewController *)viewController imagePickerController:(UIImagePickerController *)imagePickerController barButtonItem:(UIBarButtonItem *)barButtonItem sourceView:(UIView *)sourceView sourceRect:(CGRect)sourceRect permittedArrowDirections:(UIPopoverArrowDirection)permittedArrowDirections animated:(BOOL)animated completion:(KDIUIImagePickerControllerCompletion)completion; {
     if (!(self = [super init]))
         return nil;
     
+    _barButtonItem = barButtonItem;
+    _sourceRect = sourceRect;
+    _sourceView = sourceView;
+    _permittedArrowDirections = permittedArrowDirections;
+    _animated = animated;
     _completion = [completion copy];
-    
+    _viewController = viewController;
     _imagePickerController = imagePickerController;
-    [_imagePickerController setDelegate:self];
     
-    if (imagePickerController.modalPresentationStyle == UIModalPresentationPopover) {
-        if (imagePickerController.popoverPresentationController.delegate == nil) {
-            [imagePickerController.popoverPresentationController setDelegate:self];
-        }
-        else {
-            KSTLog(@"UIImagePickerController modalPresentationStyle set to UIModalPresentationPopover with non-nil delegate, completion block will not be called for cancel!");
-        }
-    }
+    [_imagePickerController setDelegate:self];
     
     return self;
 }
+
+- (void)presentImagePickerController; {
+    switch (self.imagePickerController.sourceType) {
+        case UIImagePickerControllerSourceTypeCamera:
+            [self.viewController presentViewController:self.imagePickerController animated:self.animated completion:nil];
+            break;
+        case UIImagePickerControllerSourceTypePhotoLibrary:
+        case UIImagePickerControllerSourceTypeSavedPhotosAlbum:
+            if (self.viewController.traitCollection.userInterfaceIdiom == UIUserInterfaceIdiomPad) {
+                [self.imagePickerController setModalPresentationStyle:UIModalPresentationPopover];
+            }
+            
+            if (self.imagePickerController.modalPresentationStyle == UIModalPresentationPopover) {
+                if (self.imagePickerController.popoverPresentationController.delegate != nil) {
+                    KSTLog(@"popoverPresentationController delegate is non-nil, overriding");
+                }
+                
+                [self.imagePickerController.popoverPresentationController setDelegate:self];
+                
+                [self.viewController KDI_presentViewControllerAsPopover:self.imagePickerController barButtonItem:self.barButtonItem sourceView:self.sourceView sourceRect:self.sourceRect permittedArrowDirections:self.permittedArrowDirections animated:self.animated completion:nil];
+            }
+            else {
+                [self.viewController presentViewController:self.imagePickerController animated:self.animated completion:nil];
+            }
+            break;
+        default:
+            break;
+    }
+}
 @end
 
-@interface UIImagePickerController (KDIExtensionsPrivate)
+@interface UIViewController (KDIUIImagePickerControllerExtensionsPrivate)
 @property (strong,nonatomic) KDIUIImagePickerControllerDelegate *KDI_imagePickerDelegate;
 @end
 
-@implementation UIImagePickerController (KDIExtensions)
+@implementation UIViewController (KDIUIImagePickerControllerExtensions)
 
-- (void)KDI_presentImagePickerControllerAnimated:(BOOL)animated completion:(KDIUIImagePickerControllerCompletion)completion; {
-    [self setKDI_imagePickerDelegate:[[KDIUIImagePickerControllerDelegate alloc] initWithImagePickerController:self completion:completion]];
+- (void)KDI_presentImagePickerController:(UIImagePickerController *)imagePickerController barButtonItem:(UIBarButtonItem *)barButtonItem sourceView:(UIView *)sourceView sourceRect:(CGRect)sourceRect permittedArrowDirections:(UIPopoverArrowDirection)permittedArrowDirections animated:(BOOL)animated completion:(KDIUIImagePickerControllerCompletion)completion {
+    [imagePickerController setKDI_imagePickerDelegate:[[KDIUIImagePickerControllerDelegate alloc] initWithViewController:self imagePickerController:imagePickerController barButtonItem:barButtonItem sourceView:sourceView sourceRect:sourceRect permittedArrowDirections:permittedArrowDirections animated:animated completion:completion]];
     
-    [[UIViewController KDI_viewControllerForPresenting] presentViewController:self animated:animated completion:nil];
+    [imagePickerController.KDI_imagePickerDelegate presentImagePickerController];
 }
 
 @end
@@ -129,7 +164,7 @@
 }
 @end
 
-@implementation UIImagePickerController (KDIExtensionsPrivate)
+@implementation UIViewController (KDIUIImagePickerControllerExtensionsPrivate)
 static void const *kKDI_imagePickerDelegateKey = &kKDI_imagePickerDelegateKey;
 - (KDIUIImagePickerControllerDelegate *)KDI_imagePickerDelegate {
     return objc_getAssociatedObject(self, kKDI_imagePickerDelegateKey);
