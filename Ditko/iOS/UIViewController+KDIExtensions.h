@@ -41,6 +41,7 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (UIViewController *)KDI_viewControllerForPresenting;
 
+#if (TARGET_OS_IOS)
 /**
  Presents *viewController* as a popover (on iPad) or fullscreen (on iPhone) from *barButtonItem* or *sourceView* relative to *sourceRect* optionally *animated* and invoking *completion* when the presentation completes.
  
@@ -53,6 +54,7 @@ NS_ASSUME_NONNULL_BEGIN
  @param completion The block to invoke when the presentation completes
  */
 - (void)KDI_presentViewControllerAsPopover:(UIViewController *)viewController barButtonItem:(nullable UIBarButtonItem *)barButtonItem sourceView:(nullable UIView *)sourceView sourceRect:(CGRect)sourceRect permittedArrowDirections:(UIPopoverArrowDirection)permittedArrowDirections animated:(BOOL)animated completion:(nullable dispatch_block_t)completion;
+#endif
 
 /**
  Recursively dismisses the presented view controller until there are no view controllers being presented, with optional animation. If non-nil, the provided completion block is invoked after the final view controller is dismissed.

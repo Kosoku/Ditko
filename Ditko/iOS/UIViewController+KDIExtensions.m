@@ -41,6 +41,7 @@
     return retval;
 }
 
+#if (TARGET_OS_IOS)
 - (void)KDI_presentViewControllerAsPopover:(UIViewController *)viewController barButtonItem:(UIBarButtonItem *)barButtonItem sourceView:(UIView *)sourceView sourceRect:(CGRect)sourceRect permittedArrowDirections:(UIPopoverArrowDirection)permittedArrowDirections animated:(BOOL)animated completion:(dispatch_block_t)completion {
     [viewController setModalPresentationStyle:UIModalPresentationPopover];
     
@@ -58,6 +59,7 @@
     
     [self presentViewController:viewController animated:animated completion:completion];
 }
+#endif
 
 - (void)KDI_recursivelyDismissViewControllerAnimated:(BOOL)animated completion:(void(^ _Nullable)(void))completion; {
     /**
