@@ -102,11 +102,26 @@
 }
 #pragma mark -
 - (CGRect)textRectForBounds:(CGRect)bounds {
+    BOOL leftViewVisible = self.leftViewMode == UITextFieldViewModeAlways || (self.isEditing && self.leftViewMode == UITextFieldViewModeWhileEditing) || (!self.isEditing && self.leftViewMode == UITextFieldViewModeUnlessEditing);
+    BOOL rightViewVisible = self.rightViewMode == UITextFieldViewModeAlways || (self.isEditing && self.rightViewMode == UITextFieldViewModeWhileEditing) || (!self.isEditing && self.rightViewMode == UITextFieldViewModeUnlessEditing);
     CGFloat leftViewWidth = CGRectGetWidth([self leftViewRectForBounds:bounds]);
     CGFloat rightViewWidth = CGRectGetWidth([self rightViewRectForBounds:bounds]);
-    CGFloat x = self.leftViewEdgeInsets.left + leftViewWidth + self.leftViewEdgeInsets.right + self.textEdgeInsets.left;
+    CGFloat x = self.textEdgeInsets.left;
+    
+    if (leftViewVisible) {
+        x += self.leftViewEdgeInsets.left + leftViewWidth + self.leftViewEdgeInsets.right;
+    }
+    
     CGFloat y = self.textEdgeInsets.top;
-    CGFloat width = CGRectGetWidth(bounds) - self.leftViewEdgeInsets.left - leftViewWidth - self.leftViewEdgeInsets.right - self.textEdgeInsets.left - self.textEdgeInsets.right - self.rightViewEdgeInsets.left - rightViewWidth - self.rightViewEdgeInsets.right;
+    CGFloat width = CGRectGetWidth(bounds) - self.textEdgeInsets.left - self.textEdgeInsets.right;
+    
+    if (leftViewVisible) {
+        width -= self.leftViewEdgeInsets.left + leftViewWidth + self.leftViewEdgeInsets.right;
+    }
+    if (rightViewVisible) {
+        width -= self.rightViewEdgeInsets.left + rightViewWidth + self.rightViewEdgeInsets.right;
+    }
+    
     CGFloat height = CGRectGetHeight(bounds) - self.textEdgeInsets.top - self.textEdgeInsets.bottom;
     
     return CGRectMake(x, y, width, height);
