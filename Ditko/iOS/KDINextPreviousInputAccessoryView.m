@@ -79,6 +79,10 @@ static CGFloat kDefaultFrameHeight;
         UIImage *image = [self.class previousItemImage] ?: [UIImage imageNamed:@"arrow_left" inBundle:[NSBundle KDI_frameworkBundle] compatibleWithTraitCollection:nil];
         
         [items addObject:[[UIBarButtonItem alloc] initWithImage:image style:UIBarButtonItemStylePlain target:self action:@selector(_previousItemAction:)]];
+        
+        if (self.itemOptions & KDINextPreviousInputAccessoryViewItemOptionsNext) {
+            [items addObject:[UIBarButtonItem KDI_fixedSpaceBarButtonItemWithWidth:8.0]];
+        }
     }
     if (self.itemOptions & KDINextPreviousInputAccessoryViewItemOptionsNext) {
         UIImage *image = [self.class nextItemImage] ?: [UIImage imageNamed:@"arrow_right" inBundle:[NSBundle KDI_frameworkBundle] compatibleWithTraitCollection:nil];
