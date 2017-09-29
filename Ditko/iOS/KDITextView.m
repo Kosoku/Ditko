@@ -157,6 +157,11 @@ NSNotificationName const KDITextViewNotificationDidResignFirstResponder = @"KDIT
     
     [self _updatePlaceholderLabelWithText:self.placeholder];
 }
+- (void)setTextAlignment:(NSTextAlignment)textAlignment {
+    [super setTextAlignment:textAlignment];
+    
+    [self.placeholderLabel setTextAlignment:textAlignment];
+}
 #pragma mark KDIBorderedView
 @dynamic borderOptions;
 @dynamic borderWidth;
