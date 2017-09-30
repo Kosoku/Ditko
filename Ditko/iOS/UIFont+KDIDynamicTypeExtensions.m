@@ -137,6 +137,18 @@ static void const *kDynamicTypeFontForTextStyleSelectorKey = &kDynamicTypeFontFo
 
 @end
 
+@implementation UISegmentedControl (KDIDynamicTypeExtensions)
+
+- (SEL)dynamicTypeSetFontSelector {
+    return @selector(KDI_setFont:);
+}
+
+- (void)KDI_setFont:(UIFont *)font {
+    [self setTitleTextAttributes:@{NSFontAttributeName: font} forState:UIControlStateNormal];
+}
+
+@end
+
 static void const *kKDI_dynamicTypeHelperKey = &kKDI_dynamicTypeHelperKey;
 
 @implementation NSObject (KDIDynamicTypePrivateExtensions)

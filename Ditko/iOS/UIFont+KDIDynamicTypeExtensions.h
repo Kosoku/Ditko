@@ -48,7 +48,6 @@ NS_ASSUME_NONNULL_BEGIN
  @param textStylesToDynamicTypeObjects The dictionary of objects to register for dynamic type updates
  */
 + (void)KDI_registerDynamicTypeObjectsForTextStyles:(NSDictionary<UIFontTextStyle, NSArray<id<KDIDynamicTypeObject>> *> *)textStylesToDynamicTypeObjects;
-                                                     
 
 /**
  Unregister the object for dynamic type updates. Calling this method is not required, the object is automatically unregistered when it is deallocated.
@@ -97,6 +96,12 @@ NS_ASSUME_NONNULL_BEGIN
  Category allowing UITextView instances to be used with KDIDynamicTypeObject methods.
  */
 @interface UITextView (KDIDynamicTypeExtensions) <KDIDynamicTypeObject>
+@end
+
+/**
+ Category allowing UISegmentedControl instances to be used with KDIDynamicTypeObject methods.
+ */
+@interface UISegmentedControl (KDIDynamicTypeExtensions) <KDIDynamicTypeObject>
 @end
 
 NS_ASSUME_NONNULL_END

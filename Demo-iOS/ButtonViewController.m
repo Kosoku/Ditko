@@ -152,6 +152,10 @@ typedef NS_ENUM(NSInteger, SubviewTag) {
     } forControlEvents:UIControlEventTouchUpInside];
     
     setBadgeBlock();
+    
+    [NSObject KDI_registerDynamicTypeObjectsForTextStyles:@{UIFontTextStyleBody: self.labels,
+                                                            UIFontTextStyleFootnote: @[self.titleVerticalSegmentedControl,self.titleHorizontalSegmentedControl,self.imageVerticalSegmentedControl,self.imageHorizontalSegmentedControl,self.badgeSegmentedControl,self.button.titleLabel,self.badgeButton.button.titleLabel,self.systemButton.titleLabel]
+                                                            }];
 }
 
 @end
