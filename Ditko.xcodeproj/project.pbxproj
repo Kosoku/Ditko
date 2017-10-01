@@ -15,6 +15,8 @@
 		0705AFDC1ECE28F200BACC4E /* UIImage-NSImage+KDIExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0705AFD61ECE28F200BACC4E /* UIImage-NSImage+KDIExtensions.m */; };
 		0705AFDF1ECE29A000BACC4E /* NSImage+KDIExtensions.h in Headers */ = {isa = PBXBuildFile; fileRef = 0705AFDD1ECE29A000BACC4E /* NSImage+KDIExtensions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0705AFE11ECE2A2D00BACC4E /* UIImage-NSImage+KDIExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0705AFD61ECE28F200BACC4E /* UIImage-NSImage+KDIExtensions.m */; };
+		0711B1831F817B3600DCE131 /* KDIUIResponder.m in Sources */ = {isa = PBXBuildFile; fileRef = 0711B1821F817B3600DCE131 /* KDIUIResponder.m */; };
+		0711B1841F817B3600DCE131 /* KDIUIResponder.m in Sources */ = {isa = PBXBuildFile; fileRef = 0711B1821F817B3600DCE131 /* KDIUIResponder.m */; };
 		07143C711F563BCE007E3410 /* ButtonViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 07143C701F563BCE007E3410 /* ButtonViewController.m */; };
 		07143C771F5645AC007E3410 /* ButtonViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 07143C751F5645AC007E3410 /* ButtonViewController.xib */; };
 		071B62631E705D3500B7B85A /* KDIFunctions.h in Headers */ = {isa = PBXBuildFile; fileRef = 071B62611E705D3500B7B85A /* KDIFunctions.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -394,6 +396,7 @@
 		0705AFD51ECE28F200BACC4E /* UIImage+KDIExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImage+KDIExtensions.h"; path = "iOS/UIImage+KDIExtensions.h"; sourceTree = "<group>"; };
 		0705AFD61ECE28F200BACC4E /* UIImage-NSImage+KDIExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage-NSImage+KDIExtensions.m"; sourceTree = "<group>"; };
 		0705AFDD1ECE29A000BACC4E /* NSImage+KDIExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSImage+KDIExtensions.h"; path = "macOS/NSImage+KDIExtensions.h"; sourceTree = "<group>"; };
+		0711B1821F817B3600DCE131 /* KDIUIResponder.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = KDIUIResponder.m; path = iOS/KDIUIResponder.m; sourceTree = "<group>"; };
 		07143C6F1F563BCE007E3410 /* ButtonViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ButtonViewController.h; sourceTree = "<group>"; };
 		07143C701F563BCE007E3410 /* ButtonViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ButtonViewController.m; sourceTree = "<group>"; };
 		07143C761F5645AC007E3410 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/ButtonViewController.xib; sourceTree = "<group>"; };
@@ -1014,6 +1017,7 @@
 			isa = PBXGroup;
 			children = (
 				07D3D1EE1F5B995E005C512E /* KDIUIResponder.h */,
+				0711B1821F817B3600DCE131 /* KDIUIResponder.m */,
 			);
 			name = Protocols;
 			sourceTree = "<group>";
@@ -1588,6 +1592,7 @@
 				0794A7FE1E73530400603C99 /* UIBezierPath+KDIExtensions.m in Sources */,
 				072628161E70BCCF00511F80 /* KDIView.m in Sources */,
 				07DB3D911E73B7BD0044FB50 /* KDIProgressNavigationBar.m in Sources */,
+				0711B1841F817B3600DCE131 /* KDIUIResponder.m in Sources */,
 				07DB3D851E7383EC0044FB50 /* KDITextView.m in Sources */,
 				0794A7F31E73509100603C99 /* UIView+KDIExtensions.m in Sources */,
 				0794A8171E73574A00603C99 /* UIAlertController+KDIExtensions.m in Sources */,
@@ -1685,6 +1690,7 @@
 				076730881E77544700030F0C /* KDINextPreviousInputAccessoryView.m in Sources */,
 				071B62651E705D3500B7B85A /* KDIFunctions.m in Sources */,
 				0795E6421E70491E004A5CB2 /* NSColor-UIColor+KDIExtensions.m in Sources */,
+				0711B1831F817B3600DCE131 /* KDIUIResponder.m in Sources */,
 				072628141E70BCCF00511F80 /* KDIView.m in Sources */,
 				074B477E1EB3D266009B7C6D /* KDIEmptyView.m in Sources */,
 				071E53401F59004C00A36B59 /* KDIBorderedViewImpl.m in Sources */,
