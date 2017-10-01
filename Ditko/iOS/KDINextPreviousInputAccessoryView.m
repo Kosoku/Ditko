@@ -16,12 +16,17 @@
 #import "KDINextPreviousInputAccessoryView.h"
 #import "UIBarButtonItem+KDIExtensions.h"
 #import "NSBundle+KDIPrivateExtensions.h"
+#import "UIImage+KDIExtensions.h"
+
+#import <KSOFontAwesomeExtensions/KSOFontAwesomeExtensions.h>
 
 #import <objc/runtime.h>
 
 NSNotificationName const KDINextPreviousInputAccessoryViewNotificationNext = @"KDINextPreviousInputAccessoryViewNotificationNext";
 NSNotificationName const KDINextPreviousInputAccessoryViewNotificationPrevious = @"KDINextPreviousInputAccessoryViewNotificationPrevious";
 NSNotificationName const KDINextPreviousInputAccessoryViewNotificationDone = @"KDINextPreviousInputAccessoryViewNotificationDone";
+
+CGSize const kImageSize = {.width=25.0, .height=25.0};
 
 static CGFloat kDefaultFrameHeight;
 
@@ -76,7 +81,7 @@ static CGFloat kDefaultFrameHeight;
     NSMutableArray *items = [[NSMutableArray alloc] init];
     
     if (self.itemOptions & KDINextPreviousInputAccessoryViewItemOptionsPrevious) {
-        UIImage *image = [self.class previousItemImage] ?: [UIImage imageNamed:@"arrow_left" inBundle:[NSBundle KDI_frameworkBundle] compatibleWithTraitCollection:nil];
+        UIImage *image = [self.class previousItemImage] ?: [UIImage KSO_fontAwesomeImageWithString:@"\uf053" size:kImageSize].KDI_templateImage;
         
         [items addObject:[[UIBarButtonItem alloc] initWithImage:image style:UIBarButtonItemStylePlain target:self action:@selector(_previousItemAction:)]];
         
@@ -85,7 +90,7 @@ static CGFloat kDefaultFrameHeight;
         }
     }
     if (self.itemOptions & KDINextPreviousInputAccessoryViewItemOptionsNext) {
-        UIImage *image = [self.class nextItemImage] ?: [UIImage imageNamed:@"arrow_right" inBundle:[NSBundle KDI_frameworkBundle] compatibleWithTraitCollection:nil];
+        UIImage *image = [self.class nextItemImage] ?: [UIImage KSO_fontAwesomeImageWithString:@"\uf054" size:kImageSize].KDI_templateImage;
         
         [items addObject:[[UIBarButtonItem alloc] initWithImage:image style:UIBarButtonItemStylePlain target:self action:@selector(_nextItemAction:)]];
     }

@@ -96,10 +96,10 @@ UIKIT_EXTERN NSNotificationName const KDINextPreviousInputAccessoryViewNotificat
  */
 - (instancetype)initWithFrame:(CGRect)frame responder:(UIResponder *)responder NS_DESIGNATED_INITIALIZER;
 
+- (instancetype)initWithFrame:(CGRect)frame NS_UNAVAILABLE;
+- (nullable instancetype)initWithCoder:(NSCoder *)aDecoder NS_UNAVAILABLE;
+- (instancetype)init NS_UNAVAILABLE;
 + (instancetype)new NS_UNAVAILABLE;
-- (instancetype)init __attribute__((unavailable("use initWithFrame:responder:")));
-- (instancetype)initWithFrame:(CGRect)frame __attribute__((unavailable("use initWithFrame:responder:")));
-- (nullable instancetype)initWithCoder:(NSCoder *)aDecoder __attribute__((unavailable("use initWithFrame:responder:")));
 
 @end
 

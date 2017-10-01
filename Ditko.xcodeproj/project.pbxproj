@@ -17,6 +17,7 @@
 		0705AFE11ECE2A2D00BACC4E /* UIImage-NSImage+KDIExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0705AFD61ECE28F200BACC4E /* UIImage-NSImage+KDIExtensions.m */; };
 		0711B1831F817B3600DCE131 /* KDIUIResponder.m in Sources */ = {isa = PBXBuildFile; fileRef = 0711B1821F817B3600DCE131 /* KDIUIResponder.m */; };
 		0711B1841F817B3600DCE131 /* KDIUIResponder.m in Sources */ = {isa = PBXBuildFile; fileRef = 0711B1821F817B3600DCE131 /* KDIUIResponder.m */; };
+		0711B1871F817CFC00DCE131 /* KSOFontAwesomeExtensions.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0711B1881F817CFC00DCE131 /* KSOFontAwesomeExtensions.framework */; };
 		07143C711F563BCE007E3410 /* ButtonViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 07143C701F563BCE007E3410 /* ButtonViewController.m */; };
 		07143C771F5645AC007E3410 /* ButtonViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 07143C751F5645AC007E3410 /* ButtonViewController.xib */; };
 		071B62631E705D3500B7B85A /* KDIFunctions.h in Headers */ = {isa = PBXBuildFile; fileRef = 071B62611E705D3500B7B85A /* KDIFunctions.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -397,6 +398,8 @@
 		0705AFD61ECE28F200BACC4E /* UIImage-NSImage+KDIExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage-NSImage+KDIExtensions.m"; sourceTree = "<group>"; };
 		0705AFDD1ECE29A000BACC4E /* NSImage+KDIExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSImage+KDIExtensions.h"; path = "macOS/NSImage+KDIExtensions.h"; sourceTree = "<group>"; };
 		0711B1821F817B3600DCE131 /* KDIUIResponder.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = KDIUIResponder.m; path = iOS/KDIUIResponder.m; sourceTree = "<group>"; };
+		0711B1861F817CEF00DCE131 /* KSOFontAwesomeExtensions.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = KSOFontAwesomeExtensions.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		0711B1881F817CFC00DCE131 /* KSOFontAwesomeExtensions.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = KSOFontAwesomeExtensions.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		07143C6F1F563BCE007E3410 /* ButtonViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ButtonViewController.h; sourceTree = "<group>"; };
 		07143C701F563BCE007E3410 /* ButtonViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ButtonViewController.m; sourceTree = "<group>"; };
 		07143C761F5645AC007E3410 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/ButtonViewController.xib; sourceTree = "<group>"; };
@@ -649,6 +652,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0711B1871F817CFC00DCE131 /* KSOFontAwesomeExtensions.framework in Frameworks */,
 				079CF6151EC11C5300CE1BE9 /* Loki.framework in Frameworks */,
 				07DB3D6B1E737E9B0044FB50 /* Stanley.framework in Frameworks */,
 			);
@@ -979,6 +983,8 @@
 		0795E65F1E704AE3004A5CB2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0711B1881F817CFC00DCE131 /* KSOFontAwesomeExtensions.framework */,
+				0711B1861F817CEF00DCE131 /* KSOFontAwesomeExtensions.framework */,
 				079CF61E1EC11C9400CE1BE9 /* Loki.framework */,
 				079CF61C1EC11C8D00CE1BE9 /* Loki.framework */,
 				079CF61A1EC11C7C00CE1BE9 /* Loki.framework */,
