@@ -16,6 +16,6 @@
 #ifndef __DITKO_INFO__
 #define __DITKO_INFO__
 
-#define KDI_BUNDLE_SHORT_VERSION_STRING 2.3.0
+#define KDI_BUNDLE_SHORT_VERSION_STRING 2.4.0
 
 #endif
