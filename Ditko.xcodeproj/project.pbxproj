@@ -437,6 +437,12 @@
 		071E53371F58FEC400A36B59 /* KDIBorderedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KDIBorderedView.h; sourceTree = "<group>"; };
 		071E533B1F59004C00A36B59 /* KDIBorderedViewImpl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KDIBorderedViewImpl.h; path = Private/KDIBorderedViewImpl.h; sourceTree = "<group>"; };
 		071E533C1F59004C00A36B59 /* KDIBorderedViewImpl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KDIBorderedViewImpl.m; path = Private/KDIBorderedViewImpl.m; sourceTree = "<group>"; };
+		072474941F82B94600327E65 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
+		072474951F82B99A00327E65 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
+		072474961F82B9DF00327E65 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/Localizable.strings; sourceTree = "<group>"; };
+		072474971F82BA2B00327E65 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		072474981F82BA5A00327E65 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		072474991F82BAAF00327E65 /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/Localizable.strings; sourceTree = "<group>"; };
 		0726280F1E70BCCF00511F80 /* KDIView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KDIView.h; sourceTree = "<group>"; };
 		072628101E70BCCF00511F80 /* KDIView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KDIView.m; sourceTree = "<group>"; };
 		072FDE161F6ED4A400E73661 /* ro */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ro; path = ro.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -1401,6 +1407,12 @@
 				es,
 				ja,
 				ro,
+				de,
+				fr,
+				it,
+				"zh-Hans",
+				"zh-Hant",
+				nl,
 			);
 			mainGroup = 0795E6281E704784004A5CB2;
 			productRefGroup = 0795E6331E704785004A5CB2 /* Products */;
@@ -1804,6 +1816,12 @@
 				0767307F1E75DFB100030F0C /* es */,
 				076730801E75DFBA00030F0C /* ja */,
 				072FDE161F6ED4A400E73661 /* ro */,
+				072474941F82B94600327E65 /* de */,
+				072474951F82B99A00327E65 /* fr */,
+				072474961F82B9DF00327E65 /* it */,
+				072474971F82BA2B00327E65 /* zh-Hans */,
+				072474981F82BA5A00327E65 /* zh-Hant */,
+				072474991F82BAAF00327E65 /* nl */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
