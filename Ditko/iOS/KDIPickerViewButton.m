@@ -97,7 +97,7 @@ NSNotificationName const KDIPickerViewButtonNotificationDidResignFirstResponder 
 }
 
 - (NSAttributedString *)pickerView:(UIPickerView *)pickerView attributedTitleForRow:(NSInteger)row forComponent:(NSInteger)component {
-    if ([self.dataSource respondsToSelector:@selector(pickerView:attributedTitleForRow:forComponent:)]) {
+    if ([self.dataSource respondsToSelector:@selector(pickerViewButton:attributedTitleForRow:forComponent:)]) {
         return [self.dataSource pickerViewButton:self attributedTitleForRow:row forComponent:component];
     }
     else {
