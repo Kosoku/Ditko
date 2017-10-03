@@ -119,6 +119,11 @@
     
     [self _reloadTitleFromDatePickerDate];
 }
+- (void)setDateTitleBlock:(KDIDatePickerButtonDateTitleBlock)dateTitleBlock {
+    _dateTitleBlock = dateTitleBlock;
+    
+    [self _reloadTitleFromDatePickerDate];
+}
 
 - (void)_KDIDatePickerButtonInit; {
     _dateFormatter = [self.class _defaultDateFormatter];
@@ -137,7 +142,10 @@
     [self _reloadTitleFromDatePickerDate];
 }
 - (void)_reloadTitleFromDatePickerDate; {
-    [self setTitle:[self.dateFormatter stringFromDate:self.date] forState:UIControlStateNormal];
+    NSString *defaultTitle = [self.dateFormatter stringFromDate:self.date];
+    NSString *title = self.dateTitleBlock == nil ? defaultTitle : (self.dateTitleBlock(self,defaultTitle) ?: defaultTitle);
+    
+    [self setTitle:title forState:UIControlStateNormal];
 }
 
 + (NSDate *)_defaultDate; {

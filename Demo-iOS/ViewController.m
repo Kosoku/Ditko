@@ -154,6 +154,9 @@ static NSArray<NSArray<NSString *> *> *kPickerViewButtonComponentsAndRows;
     [datePickerButton setContentEdgeInsets:UIEdgeInsetsMake(8, 16, 8, 16)];
     [datePickerButton setTitleEdgeInsets:UIEdgeInsetsMake(0, 8, 0, 0)];
     [datePickerButton setImage:[[UIImage imageNamed:@"ticket"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] forState:UIControlStateNormal];
+    [datePickerButton setDateTitleBlock:^NSString * _Nullable(__kindof KDIDatePickerButton * _Nonnull datePickerButton, NSString * _Nonnull defaultTitle) {
+        return [NSString stringWithFormat:@"Date: %@",defaultTitle];
+    }];
     [datePickerButton setTitleContentVerticalAlignment:KDIButtonContentVerticalAlignmentCenter];
     [datePickerButton setTitleContentHorizontalAlignment:KDIButtonContentHorizontalAlignmentRight];
     [datePickerButton setImageContentVerticalAlignment:KDIButtonContentVerticalAlignmentCenter];

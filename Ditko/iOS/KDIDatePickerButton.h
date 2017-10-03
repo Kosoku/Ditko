@@ -18,6 +18,17 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@class KDIDatePickerButton;
+
+/**
+ A block that is invoked to determine the title for display.
+ 
+ @param datePickerButton The date picker button invoking the block
+ @param defaultTitle The default title, already formatted using the attached dateFormatter
+ @return The display title or nil if you want the default title to be used
+ */
+typedef NSString* _Nullable (^KDIDatePickerButtonDateTitleBlock)(__kindof KDIDatePickerButton *datePickerButton, NSString *defaultTitle);
+
 /**
  KDIPickerViewButton is a KDIButton subclass that manages a UIDatePicker instance as its inputView.
  */
@@ -56,6 +67,13 @@ NS_ASSUME_NONNULL_BEGIN
  The default is a NSDateFormatter with date style and time style set to NSDateFormatterMediumStyle.
  */
 @property (strong,nonatomic,null_resettable) NSDateFormatter *dateFormatter UI_APPEARANCE_SELECTOR;
+
+/**
+ Set and get a block that is invoked to determine the displayed title. The receiver and default title are passed as arguments. The block should return a new title or nil if they want the default title to be used.
+ 
+ @see KDIDatePickerButtonDateTitleBlock
+ */
+@property (copy,nonatomic,nullable) KDIDatePickerButtonDateTitleBlock dateTitleBlock;
 
 @end
 
