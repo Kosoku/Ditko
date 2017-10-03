@@ -19,6 +19,29 @@
 #import <Stanley/Stanley.h>
 #import <KSOFontAwesomeExtensions/KSOFontAwesomeExtensions.h>
 
+@interface CustomInputAccessoryView : KDINextPreviousInputAccessoryView
+
+@end
+
+@implementation CustomInputAccessoryView
+- (instancetype)initWithFrame:(CGRect)frame responder:(UIResponder *)responder {
+    if (!(self = [super initWithFrame:frame responder:responder]))
+        return nil;
+    
+    [self setToolbarItems:@[self.previousItem,
+                            self.nextItem,
+                            [UIBarButtonItem KDI_flexibleSpaceBarButtonItem],
+                            [[UIBarButtonItem alloc] initWithTitle:@"Select All" style:UIBarButtonItemStylePlain target:self action:@selector(_editItemAction:)],
+                            self.doneItem]];
+    
+    return self;
+}
+
+- (IBAction)_editItemAction:(id)sender {
+    [self.responder selectAll:nil];
+}
+@end
+
 @interface TextViewController ()
 @property (weak,nonatomic) IBOutlet KDITextView *textView;
 @property (weak,nonatomic) IBOutlet KDITextField *textField;
@@ -53,7 +76,7 @@
     [self.textView setBackgroundColor:KDIColorRandomRGB()];
     [self.textView setTintColor:UIColor.blackColor];
     [self.textView setTextContainerInset:UIEdgeInsetsMake(8, 8, 8, 8)];
-    [self.textView setInputAccessoryView:[[KDINextPreviousInputAccessoryView alloc] initWithFrame:CGRectZero responder:self.textView]];
+    [self.textView setInputAccessoryView:[[CustomInputAccessoryView alloc] initWithFrame:CGRectZero responder:self.textView]];
     [self.textView setPlaceholder:@"Text view placeholder…"];
     [self.textView setBorderOptions:KDIBorderOptionsAll];
     [self.textView setBorderWidthRespectsScreenScale:YES];
@@ -62,7 +85,7 @@
     [self.textField setBackgroundColor:KDIColorRandomRGB()];
     [self.textField setTintColor:UIColor.blackColor];
     [self.textField setPlaceholder:@"Text field placeholder…"];
-    [self.textField setInputAccessoryView:[[KDINextPreviousInputAccessoryView alloc] initWithFrame:CGRectZero responder:self.textField]];
+    [self.textField setInputAccessoryView:[[CustomInputAccessoryView alloc] initWithFrame:CGRectZero responder:self.textField]];
     [self.textField setTextEdgeInsets:UIEdgeInsetsMake(8, 8, 8, 8)];
     [self.textField setBorderOptions:KDIBorderOptionsAll];
     [self.textField setBorderWidthRespectsScreenScale:YES];

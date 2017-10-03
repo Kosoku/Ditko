@@ -77,36 +77,50 @@ static CGFloat kDefaultFrameHeight;
     [self _updateToolbarItems];
 }
 
+- (UIBarButtonItem *)nextItem {
+    UIImage *image = [self.class nextItemImage] ?: [UIImage KSO_fontAwesomeImageWithString:@"\uf054" size:kImageSize].KDI_templateImage;
+    
+    return [[UIBarButtonItem alloc] initWithImage:image style:UIBarButtonItemStylePlain target:self action:@selector(_nextItemAction:)];
+}
+- (UIBarButtonItem *)previousItem {
+    UIImage *image = [self.class previousItemImage] ?: [UIImage KSO_fontAwesomeImageWithString:@"\uf053" size:kImageSize].KDI_templateImage;
+    
+    return [[UIBarButtonItem alloc] initWithImage:image style:UIBarButtonItemStylePlain target:self action:@selector(_previousItemAction:)];
+}
+- (UIBarButtonItem *)doneItem {
+    if ([self.class doneItemImage] == nil) {
+        return [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(_doneItemAction:)];
+    }
+    else {
+        return [[UIBarButtonItem alloc] initWithImage:[self.class doneItemImage] style:UIBarButtonItemStyleDone target:self action:@selector(_doneItemAction:)];
+    }
+}
+
+- (void)setToolbarItems:(NSArray<UIBarButtonItem *> *)toolbarItems {
+    [self.toolbar setItems:toolbarItems];
+}
+
 - (void)_updateToolbarItems {
     NSMutableArray *items = [[NSMutableArray alloc] init];
     
     if (self.itemOptions & KDINextPreviousInputAccessoryViewItemOptionsPrevious) {
-        UIImage *image = [self.class previousItemImage] ?: [UIImage KSO_fontAwesomeImageWithString:@"\uf053" size:kImageSize].KDI_templateImage;
-        
-        [items addObject:[[UIBarButtonItem alloc] initWithImage:image style:UIBarButtonItemStylePlain target:self action:@selector(_previousItemAction:)]];
+        [items addObject:self.previousItem];
         
         if (self.itemOptions & KDINextPreviousInputAccessoryViewItemOptionsNext) {
             [items addObject:[UIBarButtonItem KDI_fixedSpaceBarButtonItemWithWidth:8.0]];
         }
     }
     if (self.itemOptions & KDINextPreviousInputAccessoryViewItemOptionsNext) {
-        UIImage *image = [self.class nextItemImage] ?: [UIImage KSO_fontAwesomeImageWithString:@"\uf054" size:kImageSize].KDI_templateImage;
-        
-        [items addObject:[[UIBarButtonItem alloc] initWithImage:image style:UIBarButtonItemStylePlain target:self action:@selector(_nextItemAction:)]];
+        [items addObject:self.nextItem];
     }
     
     [items addObject:[UIBarButtonItem KDI_flexibleSpaceBarButtonItem]];
     
     if (self.itemOptions & KDINextPreviousInputAccessoryViewItemOptionsDone) {
-        if ([self.class doneItemImage] == nil) {
-            [items addObject:[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(_doneItemAction:)]];
-        }
-        else {
-            [items addObject:[[UIBarButtonItem alloc] initWithImage:[self.class doneItemImage] style:UIBarButtonItemStyleDone target:self action:@selector(_doneItemAction:)]];
-        }
+        [items addObject:self.doneItem];
     }
     
-    [self.toolbar setItems:items];
+    [self setToolbarItems:items];
 }
 
 static void const *kNextItemImageKey = &kNextItemImageKey;

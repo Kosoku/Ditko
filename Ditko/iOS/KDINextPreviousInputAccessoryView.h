@@ -88,6 +88,26 @@ UIKIT_EXTERN NSNotificationName const KDINextPreviousInputAccessoryViewNotificat
 @property (assign,nonatomic) KDINextPreviousInputAccessoryViewItemOptions itemOptions;
 
 /**
+ Get the next bar button item that corresponds to the KDINextPreviousInputAccessoryViewItemOptionsNext option.
+ */
+@property (readonly,strong,nonatomic) UIBarButtonItem *nextItem;
+/**
+ Get the previous bar button item that corresponds to the KDINextPreviousInputAccessoryViewItemOptionsPrevious option.
+ */
+@property (readonly,strong,nonatomic) UIBarButtonItem *previousItem;
+/**
+ Get the done bar button item that corresponds to the KDINextPreviousInputAccessoryViewItemOptionsDone option.
+ */
+@property (readonly,strong,nonatomic) UIBarButtonItem *doneItem;
+
+/**
+ Set and get the toolbar items of the receiver. Setting this will override setting itemOptions above. Setting itemOptions will update this property.
+ 
+ The default are items corresponding to KDINextPreviousInputAccessoryViewItemOptionsAll.
+ */
+@property (copy,nonatomic,nullable) NSArray<UIBarButtonItem *> *toolbarItems;
+
+/**
  The designated initializer. An instance of UIResponder must be provided in order for the Done button functionality to work properly.
  
  @param frame The frame of the receiver, safe to pass CGRectZero
