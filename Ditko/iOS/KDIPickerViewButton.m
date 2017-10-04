@@ -15,6 +15,7 @@
 
 #import "KDIPickerViewButton.h"
 #import "KDINextPreviousInputAccessoryView.h"
+#import "UIViewController+KDIExtensions.h"
 
 #import <Stanley/KSTScopeMacros.h>
 
@@ -56,7 +57,7 @@ NSNotificationName const KDIPickerViewButtonNotificationDidResignFirstResponder 
 }
 #pragma mark -
 - (BOOL)canBecomeFirstResponder {
-    return YES;
+    return UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone;
 }
 - (BOOL)becomeFirstResponder {
     [self willChangeValueForKey:@kstKeypath(self,isFirstResponder)];
@@ -166,7 +167,6 @@ NSNotificationName const KDIPickerViewButtonNotificationDidResignFirstResponder 
     [_pickerView setDataSource:self];
     [_pickerView setDelegate:self];
     [_pickerView sizeToFit];
-    
     [self setInputView:_pickerView];
     
     [self setInputAccessoryView:[[KDINextPreviousInputAccessoryView alloc] initWithFrame:CGRectZero responder:self]];
@@ -237,11 +237,21 @@ NSNotificationName const KDIPickerViewButtonNotificationDidResignFirstResponder 
 }
 
 - (IBAction)_toggleFirstResponderAction:(id)sender {
-    if (self.isFirstResponder) {
-        [self resignFirstResponder];
+    if (self.canBecomeFocused) {
+        if (self.isFirstResponder) {
+            [self resignFirstResponder];
+        }
+        else {
+            [self becomeFirstResponder];
+        }
     }
     else {
-        [self becomeFirstResponder];
+        UIViewController *viewController = [[UIViewController alloc] init];
+        
+        [viewController setPreferredContentSize:self.pickerView.frame.size];
+        [viewController setView:self.pickerView];
+        
+        [[UIViewController KDI_viewControllerForPresenting] KDI_presentViewControllerAsPopover:viewController barButtonItem:nil sourceView:self sourceRect:CGRectZero permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES completion:nil];
     }
 }
 
