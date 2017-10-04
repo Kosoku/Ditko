@@ -28,7 +28,7 @@
     return retval.array;
 }
 
-+ (nullable UIViewController *)KDI_viewControllerForPresenting; {
++ (UIViewController *)KDI_viewControllerForPresenting; {
     return [[UIApplication sharedApplication].keyWindow.rootViewController KDI_viewControllerForPresenting];
 }
 - (UIViewController *)KDI_viewControllerForPresenting {

@@ -33,13 +33,13 @@ NS_ASSUME_NONNULL_BEGIN
  
  @return The view controller
  */
-+ (nullable UIViewController *)KDI_viewControllerForPresenting;
++ (nullable __kindof UIViewController *)KDI_viewControllerForPresenting;
 /**
  Returns the view controller that should be used for modal presentation.
  
  @return The view controller
  */
-- (UIViewController *)KDI_viewControllerForPresenting;
+- (__kindof UIViewController *)KDI_viewControllerForPresenting;
 
 #if (TARGET_OS_IOS)
 /**
