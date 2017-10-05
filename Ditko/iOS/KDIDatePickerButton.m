@@ -19,7 +19,7 @@
 
 #import <Stanley/KSTScopeMacros.h>
 
-@interface KDIDatePickerButton ()
+@interface KDIDatePickerButton () <UIPopoverPresentationControllerDelegate>
 @property (readwrite,nonatomic) UIView *inputView;
 @property (readwrite,nonatomic) UIView *inputAccessoryView;
 
@@ -83,6 +83,10 @@
 
 - (void)firstResponderDidChange {
     
+}
+
+- (void)popoverPresentationControllerDidDismissPopover:(UIPopoverPresentationController *)popoverPresentationController {
+    [NSNotificationCenter.defaultCenter postNotificationName:KDIUIResponderNotificationDidResignFirstResponder object:self];
 }
 
 @dynamic date;
@@ -187,8 +191,18 @@
         
         [viewController setPreferredContentSize:self.datePicker.frame.size];
         [viewController setView:self.datePicker];
+        [viewController setModalPresentationStyle:UIModalPresentationPopover];
         
-        [[UIViewController KDI_viewControllerForPresenting] KDI_presentViewControllerAsPopover:viewController barButtonItem:nil sourceView:self sourceRect:CGRectZero permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES completion:nil];
+        UIPopoverPresentationController *controller = viewController.popoverPresentationController;
+        
+        [controller setPermittedArrowDirections:UIPopoverArrowDirectionAny];
+        [controller setSourceView:self];
+        [controller setSourceRect:self.bounds];
+        [controller setDelegate:self];
+        
+        [[UIViewController KDI_viewControllerForPresenting] presentViewController:viewController animated:YES completion:nil];
+        
+        [NSNotificationCenter.defaultCenter postNotificationName:KDIUIResponderNotificationDidBecomeFirstResponder object:self];
     }
 }
 
