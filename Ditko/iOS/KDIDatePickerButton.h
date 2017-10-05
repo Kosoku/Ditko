@@ -75,6 +75,20 @@ typedef NSString* _Nullable (^KDIDatePickerButtonDateTitleBlock)(__kindof KDIDat
  */
 @property (copy,nonatomic,nullable) KDIDatePickerButtonDateTitleBlock dateTitleBlock;
 
+/**
+ Get whether the receiver is presenting the date picker. This is updated whenever the user taps on the receiver or presentDatePicker or dismissDatePicker methods are called.
+ */
+@property (readonly,nonatomic,getter=isPresentingDatePicker) BOOL presentingDatePicker;
+
+/**
+ Present the UIDatePicker using the appropriate method. On iPad, present using a popover, otherwise become the first responder and present as the inputView.
+ */
+- (void)presentDatePicker;
+/**
+ Dismiss the UIDatePicker using the appropriate method.
+ */
+- (void)dismissDatePicker;
+
 @end
 
 NS_ASSUME_NONNULL_END

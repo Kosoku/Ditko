@@ -44,6 +44,11 @@ NS_ASSUME_NONNULL_BEGIN
 @property (copy,nonatomic,null_resettable) NSString *selectedComponentsJoinString;
 
 /**
+ Get whether the receiver is presenting the picker view. This is updated whenever the user taps on the receiver or presentPickerView or dismissPickerView methods are called.
+ */
+@property (readonly,nonatomic,getter=isPresentingPickerView) BOOL presentingPickerView;
+
+/**
  Reloads all the picker view button's rows/components.
  */
 - (void)reloadData;
@@ -62,6 +67,15 @@ NS_ASSUME_NONNULL_BEGIN
  @param component The component to select
  */
 - (void)selectRow:(NSInteger)row inComponent:(NSInteger)component;
+
+/**
+ Present the UIPickerView using the appropriate method. On iPad, present using a popover, otherwise become the first responder and present as the inputView.
+ */
+- (void)presentPickerView;
+/**
+ Dismiss the UIPickerView using the appropriate method.
+ */
+- (void)dismissPickerView;
 
 @end
 

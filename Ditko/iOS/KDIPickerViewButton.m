@@ -28,6 +28,8 @@ NSNotificationName const KDIPickerViewButtonNotificationDidResignFirstResponder 
 
 @property (strong,nonatomic) UIPickerView *pickerView;
 
+@property (weak,nonatomic) UIPopoverPresentationController *popoverPresentationController;
+
 - (void)_KDIPickerViewButtonInit;
 - (NSInteger)_numberOfComponentsInPickerView;
 - (NSAttributedString *)_attributedTitleForRow:(NSInteger)row inComponent:(NSInteger)component;
@@ -38,7 +40,7 @@ NSNotificationName const KDIPickerViewButtonNotificationDidResignFirstResponder 
 @end
 
 @implementation KDIPickerViewButton
-
+#pragma mark *** Subclass Overrides ***
 - (instancetype)initWithFrame:(CGRect)frame {
     if (!(self = [super initWithFrame:frame]))
         return nil;
@@ -89,14 +91,13 @@ NSNotificationName const KDIPickerViewButtonNotificationDidResignFirstResponder 
 - (void)firstResponderDidChange {
     
 }
-
+#pragma mark UIPickerViewDataSource
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView {
     return [self _numberOfComponentsInPickerView];
 }
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
     return [self.dataSource pickerViewButton:self numberOfRowsInComponent:component];
 }
-
 - (NSAttributedString *)pickerView:(UIPickerView *)pickerView attributedTitleForRow:(NSInteger)row forComponent:(NSInteger)component {
     if ([self.dataSource respondsToSelector:@selector(pickerViewButton:attributedTitleForRow:forComponent:)]) {
         return [self.dataSource pickerViewButton:self attributedTitleForRow:row forComponent:component];
@@ -105,6 +106,7 @@ NSNotificationName const KDIPickerViewButtonNotificationDidResignFirstResponder 
         return [[NSAttributedString alloc] initWithString:[self.dataSource pickerViewButton:self titleForRow:row forComponent:component]];
     }
 }
+#pragma mark UIPickerViewDelegate
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
     [self _reloadTitleForSelectedRowsInPickerView];
     
@@ -112,17 +114,17 @@ NSNotificationName const KDIPickerViewButtonNotificationDidResignFirstResponder 
         [self.delegate pickerViewButton:self didSelectRow:row inComponent:component];
     }
 }
-
+#pragma mark UIPopoverPresentationControllerDelegate
 - (void)popoverPresentationControllerDidDismissPopover:(UIPopoverPresentationController *)popoverPresentationController {
     [NSNotificationCenter.defaultCenter postNotificationName:KDIUIResponderNotificationDidResignFirstResponder object:self];
 }
-
+#pragma mark *** Public Methods ***
 - (void)reloadData {
     [self.pickerView reloadAllComponents];
     
     [self _reloadTitleForSelectedRowsInPickerView];
 }
-
+#pragma mark -
 - (NSInteger)selectedRowInComponent:(NSInteger)component {
     if (component < [self.pickerView numberOfComponents]) {
         return [self.pickerView selectedRowInComponent:component];
@@ -136,7 +138,41 @@ NSNotificationName const KDIPickerViewButtonNotificationDidResignFirstResponder 
     
     [self _reloadTitleForSelectedRowsInPickerView];
 }
-
+#pragma mark -
+- (void)presentPickerView {
+    if (self.canBecomeFirstResponder) {
+        [self becomeFirstResponder];
+    }
+    else {
+        UIViewController *viewController = [[UIViewController alloc] init];
+        
+        [viewController setPreferredContentSize:self.pickerView.frame.size];
+        [viewController setView:self.pickerView];
+        [viewController setModalPresentationStyle:UIModalPresentationPopover];
+        
+        UIPopoverPresentationController *controller = viewController.popoverPresentationController;
+        
+        [self setPopoverPresentationController:controller];
+        
+        [controller setPermittedArrowDirections:UIPopoverArrowDirectionAny];
+        [controller setSourceView:self];
+        [controller setSourceRect:self.bounds];
+        [controller setDelegate:self];
+        
+        [[UIViewController KDI_viewControllerForPresenting] presentViewController:viewController animated:YES completion:nil];
+        
+        [NSNotificationCenter.defaultCenter postNotificationName:KDIUIResponderNotificationDidBecomeFirstResponder object:self];
+    }
+}
+- (void)dismissPickerView {
+    if (self.isFirstResponder) {
+        [self resignFirstResponder];
+    }
+    else {
+        [self.popoverPresentationController.presentedViewController.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+    }
+}
+#pragma mark Properties
 - (void)setDataSource:(id<KDIPickerViewButtonDataSource>)dataSource {
     _dataSource = dataSource;
     
@@ -161,6 +197,10 @@ NSNotificationName const KDIPickerViewButtonNotificationDidResignFirstResponder 
     [self _reloadTitleForSelectedRowsInPickerView];
 }
 
+- (BOOL)isPresentingPickerView {
+    return self.isFirstResponder || self.popoverPresentationController != nil;
+}
+#pragma mark *** Private Methods ***
 - (void)_KDIPickerViewButtonInit; {
     _selectedComponentsJoinString = [self.class _defaultSelectedComponentsJoinString];
     
@@ -239,33 +279,13 @@ NSNotificationName const KDIPickerViewButtonNotificationDidResignFirstResponder 
 + (NSString *)_defaultSelectedComponentsJoinString; {
     return @" ";
 }
-
+#pragma mark Actions
 - (IBAction)_toggleFirstResponderAction:(id)sender {
-    if (self.canBecomeFocused) {
-        if (self.isFirstResponder) {
-            [self resignFirstResponder];
-        }
-        else {
-            [self becomeFirstResponder];
-        }
+    if (self.isPresentingPickerView) {
+        [self dismissPickerView];
     }
     else {
-        UIViewController *viewController = [[UIViewController alloc] init];
-        
-        [viewController setPreferredContentSize:self.pickerView.frame.size];
-        [viewController setView:self.pickerView];
-        [viewController setModalPresentationStyle:UIModalPresentationPopover];
-        
-        UIPopoverPresentationController *controller = viewController.popoverPresentationController;
-        
-        [controller setPermittedArrowDirections:UIPopoverArrowDirectionAny];
-        [controller setSourceView:self];
-        [controller setSourceRect:self.bounds];
-        [controller setDelegate:self];
-        
-        [[UIViewController KDI_viewControllerForPresenting] presentViewController:viewController animated:YES completion:nil];
-        
-        [NSNotificationCenter.defaultCenter postNotificationName:KDIUIResponderNotificationDidBecomeFirstResponder object:self];
+        [self presentPickerView];
     }
 }
 

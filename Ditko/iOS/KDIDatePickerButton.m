@@ -25,6 +25,8 @@
 
 @property (strong,nonatomic) UIDatePicker *datePicker;
 
+@property (weak,nonatomic) UIPopoverPresentationController *popoverPresentationController;
+
 - (void)_KDIDatePickerButtonInit;
 - (void)_reloadTitleFromDatePickerDate;
 
@@ -89,6 +91,40 @@
     [NSNotificationCenter.defaultCenter postNotificationName:KDIUIResponderNotificationDidResignFirstResponder object:self];
 }
 
+- (void)presentDatePicker {
+    if (self.canBecomeFirstResponder) {
+        [self becomeFirstResponder];
+    }
+    else {
+        UIViewController *viewController = [[UIViewController alloc] init];
+        
+        [viewController setPreferredContentSize:self.datePicker.frame.size];
+        [viewController setView:self.datePicker];
+        [viewController setModalPresentationStyle:UIModalPresentationPopover];
+        
+        UIPopoverPresentationController *controller = viewController.popoverPresentationController;
+        
+        [self setPopoverPresentationController:controller];
+        
+        [controller setPermittedArrowDirections:UIPopoverArrowDirectionAny];
+        [controller setSourceView:self];
+        [controller setSourceRect:self.bounds];
+        [controller setDelegate:self];
+        
+        [[UIViewController KDI_viewControllerForPresenting] presentViewController:viewController animated:YES completion:nil];
+        
+        [NSNotificationCenter.defaultCenter postNotificationName:KDIUIResponderNotificationDidBecomeFirstResponder object:self];
+    }
+}
+- (void)dismissDatePicker {
+    if (self.isFirstResponder) {
+        [self resignFirstResponder];
+    }
+    else {
+        [self.popoverPresentationController.presentedViewController.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+    }
+}
+
 @dynamic date;
 - (NSDate *)date {
     return self.datePicker.date;
@@ -128,6 +164,10 @@
     _dateTitleBlock = dateTitleBlock;
     
     [self _reloadTitleFromDatePickerDate];
+}
+
+- (BOOL)isPresentingDatePicker {
+    return self.isFirstResponder || self.popoverPresentationController != nil;
 }
 
 - (void)_KDIDatePickerButtonInit; {
@@ -178,31 +218,11 @@
     [self _reloadTitleFromDatePickerDate];
 }
 - (IBAction)_toggleFirstResponderAction:(id)sender {
-    if (self.canBecomeFirstResponder) {
-        if (self.isFirstResponder) {
-            [self resignFirstResponder];
-        }
-        else {
-            [self becomeFirstResponder];
-        }
+    if (self.isPresentingDatePicker) {
+        [self dismissDatePicker];
     }
     else {
-        UIViewController *viewController = [[UIViewController alloc] init];
-        
-        [viewController setPreferredContentSize:self.datePicker.frame.size];
-        [viewController setView:self.datePicker];
-        [viewController setModalPresentationStyle:UIModalPresentationPopover];
-        
-        UIPopoverPresentationController *controller = viewController.popoverPresentationController;
-        
-        [controller setPermittedArrowDirections:UIPopoverArrowDirectionAny];
-        [controller setSourceView:self];
-        [controller setSourceRect:self.bounds];
-        [controller setDelegate:self];
-        
-        [[UIViewController KDI_viewControllerForPresenting] presentViewController:viewController animated:YES completion:nil];
-        
-        [NSNotificationCenter.defaultCenter postNotificationName:KDIUIResponderNotificationDidBecomeFirstResponder object:self];
+        [self presentDatePicker];
     }
 }
 
