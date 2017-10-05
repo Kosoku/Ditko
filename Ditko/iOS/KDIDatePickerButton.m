@@ -15,6 +15,7 @@
 
 #import "KDIDatePickerButton.h"
 #import "KDINextPreviousInputAccessoryView.h"
+#import "UIViewController+KDIExtensions.h"
 
 #import <Stanley/KSTScopeMacros.h>
 
@@ -51,7 +52,7 @@
 }
 #pragma mark -
 - (BOOL)canBecomeFirstResponder {
-    return YES;
+    return UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone;
 }
 - (BOOL)becomeFirstResponder {
     [self willChangeValueForKey:@kstKeypath(self,isFirstResponder)];
@@ -173,11 +174,21 @@
     [self _reloadTitleFromDatePickerDate];
 }
 - (IBAction)_toggleFirstResponderAction:(id)sender {
-    if (self.isFirstResponder) {
-        [self resignFirstResponder];
+    if (self.canBecomeFirstResponder) {
+        if (self.isFirstResponder) {
+            [self resignFirstResponder];
+        }
+        else {
+            [self becomeFirstResponder];
+        }
     }
     else {
-        [self becomeFirstResponder];
+        UIViewController *viewController = [[UIViewController alloc] init];
+        
+        [viewController setPreferredContentSize:self.datePicker.frame.size];
+        [viewController setView:self.datePicker];
+        
+        [[UIViewController KDI_viewControllerForPresenting] KDI_presentViewControllerAsPopover:viewController barButtonItem:nil sourceView:self sourceRect:CGRectZero permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES completion:nil];
     }
 }
 
