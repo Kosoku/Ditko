@@ -255,8 +255,8 @@ static NSArray<NSArray<NSString *> *> *kPickerViewButtonComponentsAndRows;
     
     [centerBadgeButton setTranslatesAutoresizingMaskIntoConstraints:NO];
     [centerBadgeButton setBadgePosition:KDIBadgeButtonBadgePositionRelativeToImage];
-    [centerBadgeButton setBadgePositionOffset:CGPointMake(1.0, 0.5)];
-    [centerBadgeButton setBadgeSizeOffset:CGPointMake(-0.25, -0.5)];
+    [centerBadgeButton setBadgePositionOffset:UIOffsetMake(1.0, 0.5)];
+    [centerBadgeButton setBadgeSizeOffset:UIOffsetMake(-0.25, -0.5)];
     [centerBadgeButton.button setKDI_cornerRadius:5.0];
     [centerBadgeButton.button setContentEdgeInsets:UIEdgeInsetsMake(8, 16, 8, 16)];
     [centerBadgeButton.button setTitleEdgeInsets:UIEdgeInsetsMake(8, 0, 0, 0)];

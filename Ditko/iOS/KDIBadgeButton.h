@@ -55,7 +55,7 @@ typedef NS_ENUM(NSInteger, KDIBadgeButtonBadgePosition) {
  
  The default is CGPointMake(1.0, 0.0), which means the badge view begins layout in the top right of the receiver.
  */
-@property (assign,nonatomic) CGPoint badgePositionOffset;
+@property (assign,nonatomic) UIOffset badgePositionOffset;
 /**
  Set and get the badge size offset. The badge view is further laid out using this value to adjust its origin by a percentage of its own size.
  
@@ -63,7 +63,7 @@ typedef NS_ENUM(NSInteger, KDIBadgeButtonBadgePosition) {
  
  The default is CGPointMake(-0.25, -0.25), which means the badge view is offset to the left by its width * 0.25 and to the top by its height * 0.25.
  */
-@property (assign,nonatomic) CGPoint badgeSizeOffset;
+@property (assign,nonatomic) UIOffset badgeSizeOffset;
 /**
  Get the KDIBadgeView instance managed by the receiver.
  
