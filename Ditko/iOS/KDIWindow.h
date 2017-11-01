@@ -1,8 +1,8 @@
 //
-//  UIBarButtonItem+DemoExtensions.h
-//  Ditko
+//  KDIWindow.h
+//  Ditko-iOS
 //
-//  Created by William Towe on 8/23/17.
+//  Created by William Towe on 11/1/17.
 //  Copyright © 2017 Kosoku Interactive, LLC. All rights reserved.
 //
 //  Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
@@ -15,13 +15,18 @@
 
 #import <UIKit/UIKit.h>
 
-UIKIT_EXTERN NSNotificationName const IOSDNotificationNameBadgeDidChange;
-UIKIT_EXTERN NSString *const IOSDUserInfoKeyBadge;
+NS_ASSUME_NONNULL_BEGIN
 
-@interface UIBarButtonItem (DemoExtensions)
+typedef NS_ENUM(NSInteger, KDIWindowAccessoryViewPosition) {
+    KDIWindowAccessoryViewPositionTop = 0,
+    KDIWindowAccessoryViewPositionBottom
+};
 
-+ (UIBarButtonItem *)iosd_backBarButtonItemWithViewController:(UIViewController *)viewController;
+@interface KDIWindow : UIWindow
 
-+ (UIBarButtonItem *)iosd_toggleWindowAccessoryViewBarButtonItem;
+@property (strong,nonatomic,nullable) __kindof UIView *accessoryView;
+@property (assign,nonatomic) KDIWindowAccessoryViewPosition accessoryViewPosition;
 
 @end
+
+NS_ASSUME_NONNULL_END

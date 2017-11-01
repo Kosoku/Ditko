@@ -209,7 +209,7 @@ static NSArray<NSArray<NSString *> *> *kPickerViewButtonComponentsAndRows;
         [badgeButton sizeToFit];
     } forControlEvents:UIControlEventTouchUpInside];
     
-    [self.navigationItem setRightBarButtonItems:@[[[UIBarButtonItem alloc] initWithCustomView:badgeButton]]];
+    [self.navigationItem setRightBarButtonItems:@[[[UIBarButtonItem alloc] initWithCustomView:badgeButton],[UIBarButtonItem iosd_toggleWindowAccessoryViewBarButtonItem]]];
     
     KDIButton *toggleButton = [KDIButton buttonWithType:UIButtonTypeSystem];
     

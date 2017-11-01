@@ -14,9 +14,11 @@
 //  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #import "UIBarButtonItem+DemoExtensions.h"
+#import "AccessoryView.h"
 
 #import <Ditko/Ditko.h>
 #import <Stanley/Stanley.h>
+#import <KSOFontAwesomeExtensions/KSOFontAwesomeExtensions.h>
 
 NSNotificationName const IOSDNotificationNameBadgeDidChange = @"IOSDNotificationNameBadgeDidChange";
 NSString *const IOSDUserInfoKeyBadge = @"IOSDUserInfoKeyBadge";
@@ -91,6 +93,19 @@ NSString *kLastBadge = nil;
     BadgeBarButtonItem *retval = [[BadgeBarButtonItem alloc] initWithViewController:viewController];
     
     return retval;
+}
+
++ (UIBarButtonItem *)iosd_toggleWindowAccessoryViewBarButtonItem; {
+    return [UIBarButtonItem KDI_barButtonItemWithImage:[UIImage KSO_fontAwesomeImageWithString:@"\uf095" size:CGSizeMake(25, 25)].KDI_templateImage style:UIBarButtonItemStylePlain block:^(__kindof UIBarButtonItem * _Nonnull barButtonItem) {
+        KDIWindow *window = (KDIWindow *)UIApplication.sharedApplication.delegate.window;
+        
+        if (window.accessoryView == nil) {
+            [window setAccessoryView:[[AccessoryView alloc] initWithFrame:CGRectZero]];
+        }
+        else {
+            [window setAccessoryView:nil];
+        }
+    }];
 }
 
 @end

@@ -1,8 +1,8 @@
 //
-//  UIBarButtonItem+DemoExtensions.h
-//  Ditko
+//  AccessoryView.h
+//  Demo-iOS
 //
-//  Created by William Towe on 8/23/17.
+//  Created by William Towe on 11/1/17.
 //  Copyright © 2017 Kosoku Interactive, LLC. All rights reserved.
 //
 //  Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
@@ -15,13 +15,6 @@
 
 #import <UIKit/UIKit.h>
 
-UIKIT_EXTERN NSNotificationName const IOSDNotificationNameBadgeDidChange;
-UIKIT_EXTERN NSString *const IOSDUserInfoKeyBadge;
-
-@interface UIBarButtonItem (DemoExtensions)
-
-+ (UIBarButtonItem *)iosd_backBarButtonItemWithViewController:(UIViewController *)viewController;
-
-+ (UIBarButtonItem *)iosd_toggleWindowAccessoryViewBarButtonItem;
+@interface AccessoryView : UIView
 
 @end

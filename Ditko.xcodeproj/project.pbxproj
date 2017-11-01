@@ -70,6 +70,9 @@
 		072628141E70BCCF00511F80 /* KDIView.m in Sources */ = {isa = PBXBuildFile; fileRef = 072628101E70BCCF00511F80 /* KDIView.m */; };
 		072628151E70BCCF00511F80 /* KDIView.m in Sources */ = {isa = PBXBuildFile; fileRef = 072628101E70BCCF00511F80 /* KDIView.m */; };
 		072628161E70BCCF00511F80 /* KDIView.m in Sources */ = {isa = PBXBuildFile; fileRef = 072628101E70BCCF00511F80 /* KDIView.m */; };
+		07272F2E1FAA641D0063CE5B /* AccessoryView.m in Sources */ = {isa = PBXBuildFile; fileRef = 07272F2D1FAA641D0063CE5B /* AccessoryView.m */; };
+		07284F0F1FAA4F84001CCBF7 /* KDIWindow.h in Headers */ = {isa = PBXBuildFile; fileRef = 07284F0D1FAA4F84001CCBF7 /* KDIWindow.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		07284F101FAA4F84001CCBF7 /* KDIWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 07284F0E1FAA4F84001CCBF7 /* KDIWindow.m */; };
 		073542861E70503C00177905 /* NSColor+KDIExtensions.h in Headers */ = {isa = PBXBuildFile; fileRef = 073542841E70503C00177905 /* NSColor+KDIExtensions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		073542901E70515400177905 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0735428F1E70515400177905 /* AppDelegate.m */; };
 		073542931E70515400177905 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 073542921E70515400177905 /* main.m */; };
@@ -445,6 +448,10 @@
 		072474991F82BAAF00327E65 /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/Localizable.strings; sourceTree = "<group>"; };
 		0726280F1E70BCCF00511F80 /* KDIView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KDIView.h; sourceTree = "<group>"; };
 		072628101E70BCCF00511F80 /* KDIView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KDIView.m; sourceTree = "<group>"; };
+		07272F2C1FAA641D0063CE5B /* AccessoryView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AccessoryView.h; sourceTree = "<group>"; };
+		07272F2D1FAA641D0063CE5B /* AccessoryView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AccessoryView.m; sourceTree = "<group>"; };
+		07284F0D1FAA4F84001CCBF7 /* KDIWindow.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = KDIWindow.h; path = iOS/KDIWindow.h; sourceTree = "<group>"; };
+		07284F0E1FAA4F84001CCBF7 /* KDIWindow.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = KDIWindow.m; path = iOS/KDIWindow.m; sourceTree = "<group>"; };
 		072FDE161F6ED4A400E73661 /* ro */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ro; path = ro.lproj/Localizable.strings; sourceTree = "<group>"; };
 		0735427A1E704D8F00177905 /* Ditko.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Ditko.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		073542821E704DD600177905 /* Ditko-macOS-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Ditko-macOS-Info.plist"; sourceTree = "<group>"; };
@@ -689,6 +696,8 @@
 		071B626B1E70633700B7B85A /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				07284F0D1FAA4F84001CCBF7 /* KDIWindow.h */,
+				07284F0E1FAA4F84001CCBF7 /* KDIWindow.m */,
 				0726280F1E70BCCF00511F80 /* KDIView.h */,
 				072628101E70BCCF00511F80 /* KDIView.m */,
 				071E53371F58FEC400A36B59 /* KDIBorderedView.h */,
@@ -950,6 +959,8 @@
 			children = (
 				0795E64C1E704A56004A5CB2 /* AppDelegate.h */,
 				0795E64D1E704A56004A5CB2 /* AppDelegate.m */,
+				07272F2C1FAA641D0063CE5B /* AccessoryView.h */,
+				07272F2D1FAA641D0063CE5B /* AccessoryView.m */,
 				0795E64F1E704A56004A5CB2 /* ViewController.h */,
 				0795E6501E704A56004A5CB2 /* ViewController.m */,
 				077FE3F91F4E19420093CCBB /* PushViewController.h */,
@@ -1141,6 +1152,7 @@
 				07DB3D8E1E73B7BD0044FB50 /* KDIProgressNavigationBar.h in Headers */,
 				07DB3D761E7381010044FB50 /* KDILabel.h in Headers */,
 				07DB3D941E73BA470044FB50 /* KDIButton.h in Headers */,
+				07284F0F1FAA4F84001CCBF7 /* KDIWindow.h in Headers */,
 				079CF60C1EC1125700CE1BE9 /* UIGestureRecognizer+KDIExtensions.h in Headers */,
 				072628111E70BCCF00511F80 /* KDIView.h in Headers */,
 				07E8EB431E7341C2001639A2 /* UIBarButtonItem+KDIExtensions.h in Headers */,
@@ -1717,6 +1729,7 @@
 				075F40041F780EF9009709EB /* UIViewController+KDIUIImagePickerControllerExtensions.m in Sources */,
 				077EB9FF1E9F703E0087321E /* KDIBadgeButton.m in Sources */,
 				0794A7EC1E734D5300603C99 /* UINavigationController+KDIExtensions.m in Sources */,
+				07284F101FAA4F84001CCBF7 /* KDIWindow.m in Sources */,
 				07DB3D781E7381010044FB50 /* KDILabel.m in Sources */,
 				0794A81E1E73584900603C99 /* NSBundle+KDIPrivateExtensions.m in Sources */,
 				079CF60E1EC1125700CE1BE9 /* UIGestureRecognizer+KDIExtensions.m in Sources */,
@@ -1738,6 +1751,7 @@
 				07B71A5A1EDC914500139924 /* DominantTestViewController.m in Sources */,
 				074B47831EB3DF84009B7C6D /* EmptyViewController.m in Sources */,
 				0795E64B1E704A56004A5CB2 /* main.m in Sources */,
+				07272F2E1FAA641D0063CE5B /* AccessoryView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
