@@ -80,16 +80,22 @@
     
     [self.navigationItem setBackBarButtonItem:[UIBarButtonItem iosd_backBarButtonItemWithViewController:self]];
     
+    NSMutableArray *rightItems = [[NSMutableArray alloc] init];
+    
     if (self.presentingViewController != nil) {
         [self.navigationItem setLeftBarButtonItems:@[[UIBarButtonItem KDI_barButtonSystemItem:UIBarButtonSystemItemCancel block:^(__kindof UIBarButtonItem * _Nonnull barButtonItem) {
             kstStrongify(self);
             [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
         }]]];
         
-        [self.navigationItem setRightBarButtonItems:@[[UIBarButtonItem KDI_barButtonSystemItem:UIBarButtonSystemItemDone block:^(__kindof UIBarButtonItem * _Nonnull barButtonItem) {
+        [rightItems addObject:[UIBarButtonItem KDI_barButtonSystemItem:UIBarButtonSystemItemDone block:^(__kindof UIBarButtonItem * _Nonnull barButtonItem) {
             [[UIViewController KDI_viewControllerForPresenting] KDI_recursivelyDismissViewControllerAnimated:YES completion:nil];
-        }]]];
+        }]];
     }
+    
+    [rightItems addObject:[UIBarButtonItem iosd_toggleWindowAccessoryViewBarButtonItem]];
+    
+    [self.navigationItem setRightBarButtonItems:rightItems];
 }
 
 @end

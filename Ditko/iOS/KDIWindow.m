@@ -39,7 +39,18 @@
     CGRect rect = self.bounds;
     
     if (self.accessoryView != nil) {
-        CGFloat height = [self.accessoryView.class requiresConstraintBasedLayout] ? self.accessoryView.intrinsicContentSize.height : [self.accessoryView sizeThatFits:CGSizeZero].height;
+        CGFloat height = 0.0;
+        
+        if ([self.accessoryView.class requiresConstraintBasedLayout]) {
+            height = [self.accessoryView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize].height;
+        }
+        else {
+            height = self.accessoryView.intrinsicContentSize.height;
+            
+            if (height <= 0.0) {
+                height = [self.accessoryView sizeThatFits:CGSizeZero].height;
+            }
+        }
         
         switch (self.accessoryViewPosition) {
             case KDIWindowAccessoryViewPositionTop:
@@ -68,13 +79,11 @@
     }
 }
 
-//- (UIView *)hitTest:(CGPoint)point withEvent:(UIEvent *)event {
-//    UIView *retval = [super hitTest:point withEvent:event];
-//    KSTLogObject(retval);
-//    return retval;
-//}
-
 - (void)setAccessoryView:(__kindof UIView *)accessoryView {
+    if (_accessoryView == accessoryView) {
+        return;
+    }
+    
     [_accessoryView removeFromSuperview];
     
     _accessoryView = accessoryView;

@@ -17,14 +17,37 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+/**
+ Enum for possible accessory view positions. When positioned at the top, the height of the accessory view will be increased to account for the status bar.
+ */
 typedef NS_ENUM(NSInteger, KDIWindowAccessoryViewPosition) {
+    /**
+     The accessory view is anchored to the top of the window.
+     */
     KDIWindowAccessoryViewPositionTop = 0,
+    /**
+     The accessory view is anchored to the bottom of the window.
+     */
     KDIWindowAccessoryViewPositionBottom
 };
 
 @interface KDIWindow : UIWindow
 
+/**
+ Set and get the accessory view. The accessory is anchored to the top or bottom of the window, similar to UINavigationBar or UIToolbar. The remaining content of the window, that is the rootViewController and all presented view controllers will be laid out above or below the accessory view, based on the value of accessoryViewPosition.
+ 
+ The window will determine the height of the accessory in the following order:
+ 
+ - If the accessory view class returns YES for requiresConstraintBasedLayout, the instance will be sent systemLayoutSizeFittingSize: passing UILayoutFittingCompressedSize
+ - The instance is asked for its intrinsicContentSize, if the height of the returned is > 0.0, it is used
+ - Finally, the instance is sent sizeThatFits: passing CGSizeZero and the height of the returned size is used
+ */
 @property (strong,nonatomic,nullable) __kindof UIView *accessoryView;
+/**
+ Set and get the accessory view position, which affects where the accessory view is anchored within the window.
+ 
+ The default is KDIWindowAccessoryViewPositionTop.
+ */
 @property (assign,nonatomic) KDIWindowAccessoryViewPosition accessoryViewPosition;
 
 @end
