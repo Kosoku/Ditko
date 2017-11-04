@@ -15,13 +15,15 @@
 
 #import "KDIEmptyView.h"
 #import "UIControl+KDIExtensions.h"
+#import "UIFont+KDIDynamicTypeExtensions.h"
 
 #import <Stanley/KSTScopeMacros.h>
 
 @interface KDIEmptyView ()
-@property (strong,nonatomic) UIView *containerView;
+@property (strong,nonatomic) UIStackView *stackView;
 @property (strong,nonatomic) UIImageView *imageView;
 @property (strong,nonatomic) UILabel *headlineLabel;
+@property (strong,nonatomic) UIActivityIndicatorView *activityIndicatorView;
 @property (strong,nonatomic) UILabel *bodyLabel;
 @property (strong,nonatomic) UIButton *actionButton;
 
@@ -29,7 +31,10 @@
 
 - (void)_KDIEmptyViewInit;
 + (UIColor *)_defaultHeadlineColor;
++ (UIFontTextStyle)_defaultHeadlineTextStyle;
 + (UIColor *)_defaultBodyColor;
++ (UIFontTextStyle)_defaultBodyTextStyle;
++ (UIFontTextStyle)_defaultActionTextStyle;
 @end
 
 @implementation KDIEmptyView
@@ -51,76 +56,11 @@
     return self;
 }
 
-+ (BOOL)requiresConstraintBasedLayout {
-    return YES;
-}
-
-- (void)updateConstraints {
-    [NSLayoutConstraint deactivateConstraints:self.activeConstraints];
+- (void)tintColorDidChange {
+    [super tintColorDidChange];
     
-    NSMutableArray *constraints = [[NSMutableArray alloc] init];
-    UIView *previousView = nil;
-    
-    if (self.image != nil) {
-        [constraints addObject:[NSLayoutConstraint constraintWithItem:self.imageView attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self.containerView attribute:NSLayoutAttributeCenterX multiplier:1.0 constant:0]];
-        [constraints addObject:[NSLayoutConstraint constraintWithItem:self.imageView attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.containerView attribute:NSLayoutAttributeTop multiplier:1.0 constant:0]];
-        
-        previousView = self.imageView;
-    }
-    
-    if (self.headline.length > 0) {
-        [constraints addObject:[NSLayoutConstraint constraintWithItem:self.headlineLabel attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self.containerView attribute:NSLayoutAttributeCenterX multiplier:1.0 constant:0]];
-        
-        if (previousView == nil) {
-            [constraints addObject:[NSLayoutConstraint constraintWithItem:self.headlineLabel attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.containerView attribute:NSLayoutAttributeTop multiplier:1.0 constant:0]];
-        }
-        else {
-            [constraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[subview]-[view]" options:0 metrics:nil views:@{@"view": self.headlineLabel, @"subview": previousView}]];
-        }
-        
-        previousView = self.headlineLabel;
-    }
-    
-    if (self.body.length > 0) {
-        [constraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[view]|" options:0 metrics:nil views:@{@"view": self.bodyLabel}]];
-        
-        if (previousView == nil) {
-            [constraints addObject:[NSLayoutConstraint constraintWithItem:self.bodyLabel attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.containerView attribute:NSLayoutAttributeTop multiplier:1.0 constant:0]];
-        }
-        else {
-            [constraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[subview]-[view]" options:0 metrics:nil views:@{@"view": self.bodyLabel, @"subview": previousView}]];
-        }
-        
-        previousView = self.bodyLabel;
-    }
-    
-    if (self.action.length > 0) {
-        [constraints addObject:[NSLayoutConstraint constraintWithItem:self.actionButton attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self.containerView attribute:NSLayoutAttributeCenterX multiplier:1.0 constant:0]];
-        
-        if (previousView == nil) {
-            [constraints addObject:[NSLayoutConstraint constraintWithItem:self.actionButton attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.containerView attribute:NSLayoutAttributeTop multiplier:1.0 constant:0]];
-        }
-        else {
-            [constraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[subview]-[view]" options:0 metrics:nil views:@{@"view": self.actionButton, @"subview": previousView}]];
-        }
-        
-        previousView = self.actionButton;
-    }
-    
-    if (previousView != nil) {
-        [constraints addObject:[NSLayoutConstraint constraintWithItem:previousView attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self.containerView attribute:NSLayoutAttributeBottom multiplier:1.0 constant:0]];
-    }
-    
-    CGFloat padding = 20.0;
-    
-    [constraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-padding-[view]-padding-|" options:0 metrics:@{@"padding": @(padding)} views:@{@"view": self.containerView}]];
-    [constraints addObject:[NSLayoutConstraint constraintWithItem:self.containerView attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeCenterY multiplier:1.0 constant:0]];
-    
-    [self setActiveConstraints:constraints];
-    
-    [NSLayoutConstraint activateConstraints:constraints];
-    
-    [super updateConstraints];
+    [self.imageView setTintColor:self.tintColor];
+    [self.activityIndicatorView setColor:self.tintColor];
 }
 
 @dynamic image;
@@ -128,136 +68,132 @@
     return self.imageView.image;
 }
 - (void)setImage:(UIImage *)image {
-    BOOL wasVisible = self.image != nil;
-    
     [self.imageView setImage:image];
-    
-    if (image != nil &&
-        !wasVisible) {
-        
-        [self.containerView addSubview:self.imageView];
-        [self setNeedsUpdateConstraints];
-    }
-    else if (image == nil &&
-             wasVisible) {
-        
-        [self.imageView removeFromSuperview];
-        [self setNeedsUpdateConstraints];
-    }
+    [self.imageView setHidden:image == nil];
 }
 @dynamic headline;
 - (NSString *)headline {
     return self.headlineLabel.text;
 }
 - (void)setHeadline:(NSString *)headline {
-    BOOL wasVisible = self.headline.length > 0;
-    
     [self.headlineLabel setText:headline];
-    
-    if (headline.length > 0 &&
-        !wasVisible) {
-        
-        [self.containerView addSubview:self.headlineLabel];
-        [self setNeedsUpdateConstraints];
-    }
-    else if (headline.length == 0 &&
-             wasVisible) {
-        
-        [self.headlineLabel removeFromSuperview];
-        [self setNeedsUpdateConstraints];
-    }
+    [self.headlineLabel setHidden:headline.length == 0];
 }
 - (void)setHeadlineColor:(UIColor *)headlineColor {
     _headlineColor = headlineColor ?: [self.class _defaultHeadlineColor];
     
     [self.headlineLabel setTextColor:_headlineColor];
 }
+- (void)setHeadlineTextStyle:(UIFontTextStyle)headlineTextStyle {
+    _headlineTextStyle = headlineTextStyle ?: [self.class _defaultHeadlineTextStyle];
+    
+    [NSObject KDI_registerDynamicTypeObject:self.headlineLabel forTextStyle:_headlineTextStyle];
+}
 @dynamic body;
 - (NSString *)body {
     return self.bodyLabel.text;
 }
 - (void)setBody:(NSString *)body {
-    BOOL wasVisible = self.body.length > 0;
-    
     [self.bodyLabel setText:body];
-    
-    if (body.length > 0 &&
-        !wasVisible) {
-        
-        [self.containerView addSubview:self.bodyLabel];
-        [self setNeedsUpdateConstraints];
-    }
-    else if (body.length == 0 &&
-             wasVisible) {
-        
-        [self.bodyLabel removeFromSuperview];
-        [self setNeedsUpdateConstraints];
-    }
+    [self.bodyLabel setHidden:body.length == 0];
 }
 - (void)setBodyColor:(UIColor *)bodyColor {
     _bodyColor = bodyColor ?: [self.class _defaultBodyColor];
     
     [self.bodyLabel setTextColor:_bodyColor];
 }
+- (void)setBodyTextStyle:(UIFontTextStyle)bodyTextStyle {
+    _bodyTextStyle = bodyTextStyle ?: [self.class _defaultBodyTextStyle];
+    
+    [NSObject KDI_registerDynamicTypeObject:self.bodyLabel forTextStyle:_bodyTextStyle];
+}
 @dynamic action;
 - (NSString *)action {
     return [self.actionButton titleForState:UIControlStateNormal];
 }
 - (void)setAction:(NSString *)action {
-    BOOL wasVisible = self.action.length > 0;
-    
     [self.actionButton setTitle:action forState:UIControlStateNormal];
+    [self.actionButton setHidden:action.length == 0];
+}
+- (void)setActionTextStyle:(UIFontTextStyle)actionTextStyle {
+    _actionTextStyle = actionTextStyle ?: [self.class _defaultActionTextStyle];
     
-    if (action.length > 0 &&
-        !wasVisible) {
-        
-        [self.containerView addSubview:self.actionButton];
-        [self setNeedsUpdateConstraints];
+    [NSObject KDI_registerDynamicTypeObject:self.actionButton.titleLabel forTextStyle:_actionTextStyle];
+}
+@dynamic loading;
+- (BOOL)isLoading {
+    return self.activityIndicatorView.isAnimating;
+}
+- (void)setLoading:(BOOL)loading {
+    if (loading) {
+        [self.activityIndicatorView startAnimating];
     }
-    else if (action.length == 0 &&
-             wasVisible) {
-        
-        [self.actionButton removeFromSuperview];
-        [self setNeedsUpdateConstraints];
+    else {
+        [self.activityIndicatorView stopAnimating];
     }
 }
 
 - (void)_KDIEmptyViewInit; {
-    _headlineColor = [self.class _defaultHeadlineColor];
-    _bodyColor = [self.class _defaultBodyColor];
+    kstWeakify(self);
     
-    _containerView = [[UIView alloc] initWithFrame:CGRectZero];
-    [_containerView setTranslatesAutoresizingMaskIntoConstraints:NO];
-    [self addSubview:_containerView];
+    _headlineColor = [self.class _defaultHeadlineColor];
+    _headlineTextStyle = [self.class _defaultHeadlineTextStyle];
+    _bodyColor = [self.class _defaultBodyColor];
+    _bodyTextStyle = [self.class _defaultBodyTextStyle];
+    _actionTextStyle = [self.class _defaultActionTextStyle];
+    
+    _stackView = [[UIStackView alloc] initWithFrame:CGRectZero];
+    _stackView.translatesAutoresizingMaskIntoConstraints = NO;
+    _stackView.axis = UILayoutConstraintAxisVertical;
+    _stackView.alignment = UIStackViewAlignmentCenter;
+    _stackView.distribution = UIStackViewDistributionEqualSpacing;
+    _stackView.spacing = 8.0;
+    [self addSubview:_stackView];
     
     _imageView = [[UIImageView alloc] initWithFrame:CGRectZero];
-    [_imageView setTranslatesAutoresizingMaskIntoConstraints:NO];
+    _imageView.translatesAutoresizingMaskIntoConstraints = NO;
+    [_stackView addArrangedSubview:_imageView];
     
     _headlineLabel = [[UILabel alloc] initWithFrame:CGRectZero];
-    [_headlineLabel setTranslatesAutoresizingMaskIntoConstraints:NO];
-    [_headlineLabel setAdjustsFontForContentSizeCategory:YES];
-    [_headlineLabel setFont:[UIFont preferredFontForTextStyle:UIFontTextStyleHeadline]];
-    [_headlineLabel setTextColor:_headlineColor];
+    _headlineLabel.translatesAutoresizingMaskIntoConstraints = NO;
+    _headlineLabel.textColor = _headlineColor;
+    [_stackView addArrangedSubview:_headlineLabel];
+    
+    _activityIndicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
+    _activityIndicatorView.translatesAutoresizingMaskIntoConstraints = NO;
+    _activityIndicatorView.hidesWhenStopped = YES;
+    [_stackView addSubview:_activityIndicatorView];
     
     _bodyLabel = [[UILabel alloc] initWithFrame:CGRectZero];
-    [_bodyLabel setTranslatesAutoresizingMaskIntoConstraints:NO];
-    [_bodyLabel setNumberOfLines:0];
-    [_bodyLabel setTextAlignment:NSTextAlignmentCenter];
-    [_bodyLabel setAdjustsFontForContentSizeCategory:YES];
-    [_bodyLabel setFont:[UIFont preferredFontForTextStyle:UIFontTextStyleBody]];
-    [_bodyLabel setTextColor:_bodyColor];
+    _bodyLabel.translatesAutoresizingMaskIntoConstraints = NO;
+    _bodyLabel.numberOfLines = 0;
+    _bodyLabel.textAlignment = NSTextAlignmentCenter;
+    _bodyLabel.textColor = _bodyColor;
+    [_stackView addArrangedSubview:_bodyLabel];
     
     _actionButton = [UIButton buttonWithType:UIButtonTypeSystem];
-    [_actionButton setTranslatesAutoresizingMaskIntoConstraints:NO];
-    [_actionButton.titleLabel setAdjustsFontForContentSizeCategory:YES];
-    [_actionButton.titleLabel setFont:[UIFont preferredFontForTextStyle:UIFontTextStyleBody]];
-    kstWeakify(self);
+    _actionButton.translatesAutoresizingMaskIntoConstraints = NO;
     [_actionButton KDI_addBlock:^(__kindof UIControl * _Nonnull control, UIControlEvents controlEvents) {
         kstStrongify(self);
         if (self.actionBlock != nil) {
-            self.actionBlock();
+            self.actionBlock(self);
         }
     } forControlEvents:UIControlEventTouchUpInside];
+    [_stackView addArrangedSubview:_actionButton];
+    
+    [NSObject KDI_registerDynamicTypeObjectsForTextStyles:@{_bodyTextStyle: @[_bodyLabel],
+                                                            _headlineTextStyle: @[_headlineLabel],
+                                                            _actionTextStyle: @[_actionButton.titleLabel]
+                                                            }];
+    
+    NSNumber *margin = @8.0;
+    
+    [NSLayoutConstraint activateConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-margin-[view]-margin-|" options:0 metrics:@{@"margin": margin} views:@{@"view": _stackView}]];
+    [NSLayoutConstraint activateConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|->=margin-[view]->=margin-|" options:0 metrics:@{@"margin": margin} views:@{@"view": _stackView}]];
+    [NSLayoutConstraint activateConstraints:@[[NSLayoutConstraint constraintWithItem:_stackView attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeCenterY multiplier:1.0 constant:0]]];
+    
+    [NSLayoutConstraint activateConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|->=margin-[view]-[subview]" options:0 metrics:@{@"margin": margin} views:@{@"view": _activityIndicatorView, @"subview": _bodyLabel}]];
+    [NSLayoutConstraint activateConstraints:@[[NSLayoutConstraint constraintWithItem:_activityIndicatorView attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:_bodyLabel attribute:NSLayoutAttributeTop multiplier:1.0 constant:0]]];
 }
 
 + (UIColor *)_defaultHeadlineColor; {
@@ -267,12 +203,21 @@
     return nil;
 #endif
 }
++ (UIFontTextStyle)_defaultHeadlineTextStyle; {
+    return UIFontTextStyleHeadline;
+}
 + (UIColor *)_defaultBodyColor; {
 #if (TARGET_OS_IOS)
-    return UIColor.grayColor;
+    return UIColor.darkGrayColor;
 #else
     return nil;
 #endif
+}
++ (UIFontTextStyle)_defaultBodyTextStyle {
+    return UIFontTextStyleBody;
+}
++ (UIFontTextStyle)_defaultActionTextStyle {
+    return UIFontTextStyleCallout;
 }
 
 @end

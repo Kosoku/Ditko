@@ -46,13 +46,15 @@
     
     [emptyView setTranslatesAutoresizingMaskIntoConstraints:NO];
     [emptyView setBackgroundColor:UIColor.whiteColor];
-    [emptyView setImage:[UIImage KSO_fontAwesomeImageWithString:@"\uf080" size:CGSizeMake(128, 128)]];
+    [emptyView setTintColor:KDIColorRandomRGB()];
+    [emptyView setImage:[UIImage KSO_fontAwesomeImageWithString:@"\uf080" size:CGSizeMake(128, 128)].KDI_templateImage];
     [emptyView setHeadline:@"Headline Text"];
     [emptyView setBody:@"Body text that should wrap to multiple lines and do something nifty"];
     [emptyView setAction:@"Action Button Text"];
-    [emptyView setActionBlock:^{
+    [emptyView setActionBlock:^(__kindof KDIEmptyView * _Nullable emptyView){
         [UIAlertController KDI_presentAlertControllerWithError:nil];
     }];
+    [emptyView setLoading:YES];
     
     [self.view addSubview:emptyView];
     

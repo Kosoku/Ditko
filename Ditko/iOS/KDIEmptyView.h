@@ -17,18 +17,22 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@class KDIEmptyView;
+
+typedef void(^KDIEmptyViewActionBlock)(__kindof KDIEmptyView *emptyView);
+
 /**
  KDIEmptyView is a UIView subclass for use as the placeholder view when there is no data available. For example, if the containing view displays items that the user has favorited, an instance of this calss could be used to display a call to action prompting the user to favorite an item. Another example would be if the user's permission is required before content can be displayed (e.g. Photos permission).
  
  The relevant subviews are stacked vertically and centered horizontally:
  
- [image] (UIImageView)
+ [image (UIImageView)]
     |
- [headline] (UILabel)
+ [headline (UILabel)]
     |
- [body] (UILabel)
+ [loading (UIActivityIndicatorView)]-[body (UILabel)]
     |
- [action] (UIButton)
+ [action (UIButton)]
  
  The *image* and *action* will be tinted accordingly based on the receiver's tintColor property. The *body* and *action* are the same font size. The *headline* font is slightly larger and bold. The fonts used are based on dynamic type.
  */
@@ -49,6 +53,12 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @property (strong,nonatomic,null_resettable) UIColor *headlineColor UI_APPEARANCE_SELECTOR;
 /**
+ Set and get the headline text style.
+ 
+ The default is UIFontTextStyleHeadline.
+ */
+@property (copy,nonatomic,null_resettable) UIFontTextStyle headlineTextStyle UI_APPEARANCE_SELECTOR;
+/**
  Set and get the body of the receiver.
  */
 @property (copy,nonatomic,nullable) NSString *body;
@@ -59,13 +69,31 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @property (strong,nonatomic,null_resettable) UIColor *bodyColor UI_APPEARANCE_SELECTOR;
 /**
+ Set and get the body text style.
+ 
+ The default is UIFontTextStyleBody.
+ */
+@property (copy,nonatomic,null_resettable) UIFontTextStyle bodyTextStyle UI_APPEARANCE_SELECTOR;
+/**
  Set and get the action of the receiver. This is used as the title of a button.
  */
 @property (copy,nonatomic,nullable) NSString *action;
 /**
+ Set and get the action text style.
+ 
+ The default is UIFontTextStyleCallout.
+ */
+@property (copy,nonatomic,null_resettable) UIFontTextStyle actionTextStyle UI_APPEARANCE_SELECTOR;
+/**
  Set and get the block that is invoked when the action button is tapped.
  */
-@property (copy,nonatomic,nullable) dispatch_block_t actionBlock;
+@property (copy,nonatomic,nullable) KDIEmptyViewActionBlock actionBlock;
+/**
+ Set and get whether the loading activity indicator is shown.
+ 
+ The default is NO.
+ */
+@property (assign,nonatomic,getter=isLoading) BOOL loading;
 
 @end
 
