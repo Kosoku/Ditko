@@ -457,7 +457,7 @@
 		073542821E704DD600177905 /* Ditko-macOS-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Ditko-macOS-Info.plist"; sourceTree = "<group>"; };
 		073542831E704E0400177905 /* Ditko-Info.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Ditko-Info.h"; sourceTree = "<group>"; };
 		073542841E70503C00177905 /* NSColor+KDIExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSColor+KDIExtensions.h"; path = "macOS/NSColor+KDIExtensions.h"; sourceTree = "<group>"; };
-		0735428C1E70515300177905 /* Demo-macOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Demo-macOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		0735428C1E70515300177905 /* Ditko.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ditko.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0735428E1E70515400177905 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		0735428F1E70515400177905 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		073542921E70515400177905 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -909,7 +909,7 @@
 				0795E6321E704785004A5CB2 /* Ditko.framework */,
 				0795E6471E704A56004A5CB2 /* Demo-iOS.app */,
 				0735427A1E704D8F00177905 /* Ditko.framework */,
-				0735428C1E70515300177905 /* Demo-macOS.app */,
+				0735428C1E70515300177905 /* Ditko.app */,
 				071B62771E707E6F00B7B85A /* Ditko.framework */,
 				071B62861E707FCB00B7B85A /* Demo-watchOS.app */,
 				071B62921E707FCB00B7B85A /* Demo-watchOS Extension.appex */,
@@ -1315,7 +1315,7 @@
 			);
 			name = "Demo-macOS";
 			productName = "DitkoDemo-macOS";
-			productReference = 0735428C1E70515300177905 /* Demo-macOS.app */;
+			productReference = 0735428C1E70515300177905 /* Ditko.app */;
 			productType = "com.apple.product-type.application";
 		};
 		0795E6311E704785004A5CB2 /* Ditko-iOS */ = {
@@ -2137,7 +2137,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.kosoku.Ditko.Demo-macOS";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Ditko;
 				SDKROOT = macosx;
 			};
 			name = Debug;
@@ -2156,7 +2156,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.kosoku.Ditko.Demo-macOS";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Ditko;
 				SDKROOT = macosx;
 			};
 			name = Release;

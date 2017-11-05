@@ -24,6 +24,15 @@ NS_ASSUME_NONNULL_BEGIN
 @interface KDITextView : UITextView <KDIBorderedView,KDIUIResponder>
 
 /**
+ Set and get the minimum height of the receiver. This will factor into the sizes returned by intrinsicContentSize and sizeThatFits:.
+ */
+@property (assign,nonatomic) CGFloat minimumHeight;
+/**
+ Set and get the maximum height of the receiver. This will factor into the sizes returned by intrinsicContentSize and sizeThatFits:.
+ */
+@property (assign,nonatomic) CGFloat maximumHeight;
+
+/**
  Set and get text view's placeholder text.
  
  The default is nil.

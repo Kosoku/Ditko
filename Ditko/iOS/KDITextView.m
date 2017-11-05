@@ -16,7 +16,7 @@
 #import "KDITextView.h"
 #import "KDIBorderedViewImpl.h"
 
-#import <Stanley/KSTScopeMacros.h>
+#import <Stanley/Stanley.h>
 
 NSNotificationName const KDITextViewNotificationDidBecomeFirstResponder = @"KDITextViewNotificationDidBecomeFirstResponder";
 NSNotificationName const KDITextViewNotificationDidResignFirstResponder = @"KDITextViewNotificationDidResignFirstResponder";
@@ -104,14 +104,39 @@ NSNotificationName const KDITextViewNotificationDidResignFirstResponder = @"KDIT
 - (CGSize)intrinsicContentSize {
     CGSize retval = [super intrinsicContentSize];
     
-    retval.height = ceil(MAX(retval.height, [self.placeholderLabel sizeThatFits:CGSizeMake(CGRectGetWidth(self.bounds) - self.textContainerInset.left - self.textContainerInset.right, CGFLOAT_MAX)].height));
+    if (retval.height == UIViewNoIntrinsicMetric) {
+        retval.height = self.contentSize.height;
+    }
+    
+    CGFloat placeholderHeight = [self.placeholderLabel sizeThatFits:CGSizeMake(CGRectGetWidth(self.bounds) - self.textContainerInset.left - self.textContainerInset.right, CGFLOAT_MAX)].height;
+    CGFloat height = MAX(retval.height, placeholderHeight);
+    
+    if (self.minimumHeight > 0) {
+        height = MAX(height, self.minimumHeight);
+    }
+    
+    if (self.maximumHeight > 0) {
+        height = MIN(height, self.maximumHeight);
+    }
+    
+    retval.height = ceil(height);
     
     return retval;
 }
 - (CGSize)sizeThatFits:(CGSize)size {
     CGSize retval = [super sizeThatFits:size];
+    CGFloat placeholderHeight = [self.placeholderLabel sizeThatFits:CGSizeMake(CGRectGetWidth(self.bounds) - self.textContainerInset.left - self.textContainerInset.right, CGFLOAT_MAX)].height;
+    CGFloat height = MAX(retval.height, placeholderHeight);
     
-    retval.height = ceil(MAX(retval.height, [self.placeholderLabel sizeThatFits:CGSizeMake(size.width - self.textContainerInset.left - self.textContainerInset.right, CGFLOAT_MAX)].height));
+    if (self.minimumHeight > 0) {
+        height = MAX(height, self.minimumHeight);
+    }
+    
+    if (self.maximumHeight > 0) {
+        height = MIN(height, self.maximumHeight);
+    }
+    
+    retval.height = ceil(height);
     
     return retval;
 }
@@ -177,6 +202,16 @@ NSNotificationName const KDITextViewNotificationDidResignFirstResponder = @"KDIT
 }
 #pragma mark *** Public Methods ***
 #pragma mark Properties
+- (void)setMinimumHeight:(CGFloat)minimumHeight {
+    _minimumHeight = minimumHeight;
+    
+    [self invalidateIntrinsicContentSize];
+}
+- (void)setMaximumHeight:(CGFloat)maximumHeight {
+    _maximumHeight = maximumHeight;
+    
+    [self invalidateIntrinsicContentSize];
+}
 @dynamic placeholder;
 - (NSString *)placeholder {
     return self.attributedPlaceholder.string;
