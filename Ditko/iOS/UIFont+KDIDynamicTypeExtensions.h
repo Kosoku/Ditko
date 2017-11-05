@@ -26,7 +26,7 @@ NS_ASSUME_NONNULL_BEGIN
  
  The default is nil.
  */
-@property (copy,nullable) UIFontTextStyle KDI_dynamicTypeTextStyle;
+@property (copy,nonatomic,nullable) UIFontTextStyle KDI_dynamicTypeTextStyle;
 
 /**
  Register the object for dynamic type updates with the provided *textStyle*.
