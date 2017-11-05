@@ -94,8 +94,21 @@
     [(id)dynamicTypeObject setKDI_dynamicTypeHelper:nil];
 }
 
+@dynamic KDI_dynamicTypeTextStyle;
 - (UIFontTextStyle)KDI_dynamicTypeTextStyle {
     return self.KDI_dynamicTypeHelper.textStyle;
+}
+- (void)setKDI_dynamicTypeTextStyle:(UIFontTextStyle)KDI_dynamicTypeTextStyle {
+    if (![self conformsToProtocol:@protocol(KDIDynamicTypeObject)]) {
+        return;
+    }
+    
+    if (KDI_dynamicTypeTextStyle == nil) {
+        [NSObject KDI_unregisterDynamicTypeObject:(id<KDIDynamicTypeObject>)self];
+    }
+    else {
+        [NSObject KDI_registerDynamicTypeObject:(id<KDIDynamicTypeObject>)self forTextStyle:KDI_dynamicTypeTextStyle];
+    }
 }
 
 @end

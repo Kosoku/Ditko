@@ -22,11 +22,11 @@ NS_ASSUME_NONNULL_BEGIN
 @interface NSObject (KDIDynamicTypeExtensions)
 
 /**
- Get the dynamic type text style of the receiver. This will be non-nil if the receiver was registered with the KDI_register family of methods.
+ Set and get the dynamic type text style of the receiver. This will call through to KDI_registerDynamicTypeObject:forTextStyle: passing self and the text style or KDI_unregisterDynamicTypeObject: passing self, but only if self conforms to KDIDynamicTypeObject.
  
  The default is nil.
  */
-@property (readonly,nonatomic,nullable) UIFontTextStyle KDI_dynamicTypeTextStyle;
+@property (copy,nullable) UIFontTextStyle KDI_dynamicTypeTextStyle;
 
 /**
  Register the object for dynamic type updates with the provided *textStyle*.
