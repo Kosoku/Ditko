@@ -11,8 +11,10 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TextViewController">
             <connections>
+                <outlet property="subtitleTextField" destination="v7Z-1W-rMu" id="sUR-sb-NRu"/>
                 <outlet property="textField" destination="wDI-CT-rCn" id="NJB-hh-XC3"/>
                 <outlet property="textView" destination="ooJ-Z6-THJ" id="Mm1-I0-TGg"/>
+                <outlet property="titleTextField" destination="U1e-aI-zXf" id="NR3-NR-ilC"/>
                 <outlet property="view" destination="iN0-l3-epB" id="Lb4-Ce-iNB"/>
             </connections>
         </placeholder>
@@ -34,15 +36,33 @@
                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                     <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
                 </textField>
+                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Title" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="U1e-aI-zXf">
+                    <rect key="frame" x="16" y="209" width="343" height="30"/>
+                    <nil key="textColor"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" textContentType="name"/>
+                </textField>
+                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Subtitle" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="v7Z-1W-rMu">
+                    <rect key="frame" x="16" y="247" width="343" height="30"/>
+                    <nil key="textColor"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="no"/>
+                </textField>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="ooJ-Z6-THJ" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="72" id="66q-oQ-nHY"/>
                 <constraint firstItem="wDI-CT-rCn" firstAttribute="top" secondItem="ooJ-Z6-THJ" secondAttribute="bottom" constant="8" id="G6n-QO-j7a"/>
+                <constraint firstItem="v7Z-1W-rMu" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="OPJ-nV-hEb"/>
+                <constraint firstItem="v7Z-1W-rMu" firstAttribute="top" secondItem="U1e-aI-zXf" secondAttribute="bottom" constant="8" id="UHU-1u-5nI"/>
+                <constraint firstAttribute="trailing" secondItem="v7Z-1W-rMu" secondAttribute="trailing" constant="16" id="UMp-iW-UKG"/>
                 <constraint firstAttribute="trailing" secondItem="ooJ-Z6-THJ" secondAttribute="trailing" id="VtP-pD-WsG"/>
+                <constraint firstItem="U1e-aI-zXf" firstAttribute="top" secondItem="wDI-CT-rCn" secondAttribute="bottom" constant="8" id="btA-dx-olo"/>
                 <constraint firstItem="ooJ-Z6-THJ" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="cIM-TA-ZCR"/>
+                <constraint firstAttribute="trailing" secondItem="U1e-aI-zXf" secondAttribute="trailing" constant="16" id="dzh-3g-QeJ"/>
                 <constraint firstAttribute="trailing" secondItem="wDI-CT-rCn" secondAttribute="trailing" id="eLS-ir-tRb"/>
                 <constraint firstItem="wDI-CT-rCn" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="oAY-Tx-OKm"/>
+                <constraint firstItem="U1e-aI-zXf" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="uVj-27-DWe"/>
             </constraints>
             <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
             <point key="canvasLocation" x="-237.5" y="-184.5"/>

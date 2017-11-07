@@ -45,6 +45,8 @@
 @interface TextViewController ()
 @property (weak,nonatomic) IBOutlet KDITextView *textView;
 @property (weak,nonatomic) IBOutlet KDITextField *textField;
+@property (weak,nonatomic) IBOutlet UITextField *titleTextField;
+@property (weak,nonatomic) IBOutlet UITextField *subtitleTextField;
 @end
 
 @implementation TextViewController
@@ -92,6 +94,21 @@
     [self.textField setBorderOptions:KDIBorderOptionsAll];
     [self.textField setBorderWidthRespectsScreenScale:YES];
     [self.textField setBorderColor:KDIColorRandomRGB()];
+    
+    [self.titleTextField setTintColor:nil];
+    [self.titleTextField setText:self.title];
+    [self.titleTextField setInputAccessoryView:[[CustomInputAccessoryView alloc] initWithFrame:CGRectZero responder:self.titleTextField]];
+    [self.titleTextField KDI_addBlock:^(__kindof UIControl * _Nonnull control, UIControlEvents controlEvents) {
+        kstStrongify(self);
+        ((KDINavigationBarTitleView *)self.navigationItem.titleView).title = self.titleTextField.text;
+    } forControlEvents:UIControlEventEditingChanged];
+    
+    [self.subtitleTextField setTintColor:nil];
+    [self.subtitleTextField setInputAccessoryView:[[CustomInputAccessoryView alloc] initWithFrame:CGRectZero responder:self.subtitleTextField]];
+    [self.subtitleTextField KDI_addBlock:^(__kindof UIControl * _Nonnull control, UIControlEvents controlEvents) {
+        kstStrongify(self);
+        ((KDINavigationBarTitleView *)self.navigationItem.titleView).subtitle = self.subtitleTextField.text;
+    } forControlEvents:UIControlEventEditingChanged];
     
     UIButton *infoButton = [UIButton buttonWithType:UIButtonTypeInfoDark];
     
@@ -146,10 +163,16 @@
         [self.textView setBorderWidth:width];
     }]]];
     
-    [self KDI_registerForNextPreviousNotificationsWithResponders:@[self.textView,self.textField]];
+    [self KDI_registerForNextPreviousNotificationsWithResponders:@[self.textView,self.textField,self.titleTextField,self.subtitleTextField]];
     
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(_firstResponderDidChange:) name:KDIUIResponderNotificationDidBecomeFirstResponder object:nil];
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(_firstResponderDidChange:) name:KDIUIResponderNotificationDidResignFirstResponder object:nil];
+    
+    KDINavigationBarTitleView *titleView = [[KDINavigationBarTitleView alloc] initWithFrame:CGRectZero];
+    
+    titleView.title = self.title;
+    
+    [self.navigationItem setTitleView:titleView];
 }
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];

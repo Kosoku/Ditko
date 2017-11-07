@@ -84,6 +84,7 @@ FOUNDATION_EXPORT const unsigned char DitkoVersionString[];
 #import <Ditko/KDIBadgeButton.h>
 #import <Ditko/KDITextField.h>
 #import <Ditko/KDIEmptyView.h>
+#import <Ditko/KDINavigationBarTitleView.h>
 #endif
 #if (TARGET_OS_IOS)
 #import <Ditko/KDIWindow.h>

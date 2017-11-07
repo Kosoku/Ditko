@@ -41,7 +41,7 @@
     [emptyView setHeadline:@"Headline Text"];
     [emptyView setBody:@"Body text that should wrap to multiple lines and do something nifty"];
     [emptyView setAction:@"Action Button Text"];
-    [emptyView setActionBlock:^{
+    [emptyView setActionBlock:^(__kindof KDIEmptyView * _Nonnull emptyView) {
         [UIAlertController KDI_presentAlertControllerWithError:nil];
     }];
     

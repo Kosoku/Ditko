@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "0735428B1E70515300177905"
-               BuildableName = "Demo-macOS.app"
+               BuildableName = "Ditko.app"
                BlueprintName = "Demo-macOS"
                ReferencedContainer = "container:Ditko.xcodeproj">
             </BuildableReference>
@@ -34,7 +34,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "0735428B1E70515300177905"
-            BuildableName = "Demo-macOS.app"
+            BuildableName = "Ditko.app"
             BlueprintName = "Demo-macOS"
             ReferencedContainer = "container:Ditko.xcodeproj">
          </BuildableReference>
@@ -58,7 +58,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "0735428B1E70515300177905"
-            BuildableName = "Demo-macOS.app"
+            BuildableName = "Ditko.app"
             BlueprintName = "Demo-macOS"
             ReferencedContainer = "container:Ditko.xcodeproj">
          </BuildableReference>
@@ -77,7 +77,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "0735428B1E70515300177905"
-            BuildableName = "Demo-macOS.app"
+            BuildableName = "Ditko.app"
             BlueprintName = "Demo-macOS"
             ReferencedContainer = "container:Ditko.xcodeproj">
          </BuildableReference>

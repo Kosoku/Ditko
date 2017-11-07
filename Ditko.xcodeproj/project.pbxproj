@@ -211,6 +211,9 @@
 		07A920991E958CA900B45199 /* KDIRolloverButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 07A920971E958CA900B45199 /* KDIRolloverButton.m */; };
 		07A9209B1E9599CB00B45199 /* Loki.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07A9209A1E9599CB00B45199 /* Loki.framework */; };
 		07A9209C1E9599CB00B45199 /* Loki.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 07A9209A1E9599CB00B45199 /* Loki.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		07AA83961FB260CA00F99400 /* KDINavigationBarTitleView.h in Headers */ = {isa = PBXBuildFile; fileRef = 07AA83941FB260CA00F99400 /* KDINavigationBarTitleView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		07AA83971FB260CA00F99400 /* KDINavigationBarTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 07AA83951FB260CA00F99400 /* KDINavigationBarTitleView.m */; };
+		07AA83981FB26AD900F99400 /* KDINavigationBarTitleView.h in Headers */ = {isa = PBXBuildFile; fileRef = 07AA83941FB260CA00F99400 /* KDINavigationBarTitleView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		07B71A5A1EDC914500139924 /* DominantTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 07B71A591EDC914500139924 /* DominantTestViewController.m */; };
 		07C49DD01EA7EADD00C9F4D5 /* NSSavePanel+KDIExtensions.h in Headers */ = {isa = PBXBuildFile; fileRef = 07C49DCE1EA7EADD00C9F4D5 /* NSSavePanel+KDIExtensions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		07C49DD11EA7EADD00C9F4D5 /* NSSavePanel+KDIExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 07C49DCF1EA7EADD00C9F4D5 /* NSSavePanel+KDIExtensions.m */; };
@@ -563,6 +566,8 @@
 		07A920961E958CA900B45199 /* KDIRolloverButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KDIRolloverButton.h; path = macOS/KDIRolloverButton.h; sourceTree = "<group>"; };
 		07A920971E958CA900B45199 /* KDIRolloverButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KDIRolloverButton.m; path = macOS/KDIRolloverButton.m; sourceTree = "<group>"; };
 		07A9209A1E9599CB00B45199 /* Loki.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Loki.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		07AA83941FB260CA00F99400 /* KDINavigationBarTitleView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = KDINavigationBarTitleView.h; path = iOS/KDINavigationBarTitleView.h; sourceTree = "<group>"; };
+		07AA83951FB260CA00F99400 /* KDINavigationBarTitleView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = KDINavigationBarTitleView.m; path = iOS/KDINavigationBarTitleView.m; sourceTree = "<group>"; };
 		07B71A581EDC914500139924 /* DominantTestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DominantTestViewController.h; sourceTree = "<group>"; };
 		07B71A591EDC914500139924 /* DominantTestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DominantTestViewController.m; sourceTree = "<group>"; };
 		07C49DCE1EA7EADD00C9F4D5 /* NSSavePanel+KDIExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSSavePanel+KDIExtensions.h"; path = "macOS/NSSavePanel+KDIExtensions.h"; sourceTree = "<group>"; };
@@ -733,6 +738,8 @@
 				07D166DC1E9759090073F69A /* KDIClickableLabel.m */,
 				074B47791EB3D266009B7C6D /* KDIEmptyView.h */,
 				074B477A1EB3D266009B7C6D /* KDIEmptyView.m */,
+				07AA83941FB260CA00F99400 /* KDINavigationBarTitleView.h */,
+				07AA83951FB260CA00F99400 /* KDINavigationBarTitleView.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -1089,6 +1096,7 @@
 				07DB3D831E7383EC0044FB50 /* KDITextView.h in Headers */,
 				0738CE4B1EA014C9008FE9A0 /* UIFont+KDIDynamicTypeExtensions.h in Headers */,
 				0794A8071E7354EF00603C99 /* UIViewController+KDIExtensions.h in Headers */,
+				07AA83981FB26AD900F99400 /* KDINavigationBarTitleView.h in Headers */,
 				0794A7EB1E734D5300603C99 /* UINavigationController+KDIExtensions.h in Headers */,
 				074B477D1EB3D266009B7C6D /* KDIEmptyView.h in Headers */,
 				07E8EB4F1E734729001639A2 /* KDIFunctions.h in Headers */,
@@ -1146,6 +1154,7 @@
 				0794A8141E73574A00603C99 /* UIAlertController+KDIExtensions.h in Headers */,
 				0794A7F01E73509100603C99 /* UIView+KDIExtensions.h in Headers */,
 				07E8EB3D1E733FE3001639A2 /* KDIDefines.h in Headers */,
+				07AA83961FB260CA00F99400 /* KDINavigationBarTitleView.h in Headers */,
 				074B477B1EB3D266009B7C6D /* KDIEmptyView.h in Headers */,
 				077EB9FD1E9F703E0087321E /* KDIBadgeButton.h in Headers */,
 				076730871E77544700030F0C /* KDINextPreviousInputAccessoryView.h in Headers */,
@@ -1714,6 +1723,7 @@
 				0794A8161E73574A00603C99 /* UIAlertController+KDIExtensions.m in Sources */,
 				07E8EB381E733F34001639A2 /* NSURL+KDIExtensions.m in Sources */,
 				076730881E77544700030F0C /* KDINextPreviousInputAccessoryView.m in Sources */,
+				07AA83971FB260CA00F99400 /* KDINavigationBarTitleView.m in Sources */,
 				071B62651E705D3500B7B85A /* KDIFunctions.m in Sources */,
 				0795E6421E70491E004A5CB2 /* NSColor-UIColor+KDIExtensions.m in Sources */,
 				0711B1831F817B3600DCE131 /* KDIUIResponder.m in Sources */,

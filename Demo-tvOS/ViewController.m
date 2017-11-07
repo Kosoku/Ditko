@@ -33,7 +33,7 @@
     [view setBackgroundColor:KDIColorRandomRGB()];
     [view setBorderColor:KDIColorRandomRGB()];
     [view setBorderWidth:4.0];
-    [view setBorderOptions:KDIViewBorderOptionsAll];
+    [view setBorderOptions:KDIBorderOptionsAll];
     [view setBorderEdgeInsets:UIEdgeInsetsMake(8.0, 8.0, 8.0, 8.0)];
     
     [self setView:view];
@@ -66,8 +66,10 @@
     [button setTitleColor:KDIColorRandomRGB() forState:UIControlStateNormal];
     [button setTitle:@"Title" forState:UIControlStateNormal];
     [button setImage:[UIImage imageNamed:@"button_image"] forState:UIControlStateNormal];
-    [button setTitleAlignment:KDIButtonAlignmentLeft|KDIButtonAlignmentCenter];
-    [button setImageAlignment:KDIButtonAlignmentRight|KDIButtonAlignmentCenter];
+    [button setTitleContentHorizontalAlignment:KDIButtonContentHorizontalAlignmentLeft];
+    [button setTitleContentVerticalAlignment:KDIButtonContentVerticalAlignmentCenter];
+    [button setImageContentHorizontalAlignment:KDIButtonContentHorizontalAlignmentRight];
+    [button setImageContentVerticalAlignment:KDIButtonContentVerticalAlignmentCenter];
     
     [gradientView addSubview:button];
     [gradientView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:[subview]-[view]" options:0 metrics:nil views:@{@"view": button, @"subview": badgeView}]];
