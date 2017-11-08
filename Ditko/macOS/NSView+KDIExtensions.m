@@ -15,6 +15,8 @@
 
 #import "NSView+KDIExtensions.h"
 
+#import <objc/runtime.h>
+
 @implementation NSView (KDIExtensions)
 
 @dynamic KDI_frameMinimumX;
@@ -58,6 +60,26 @@
 }
 - (void)setKDI_frameHeight:(CGFloat)KDI_frameHeight {
     [self setFrame:NSMakeRect(NSMinX(self.frame), NSMinY(self.frame), NSWidth(self.frame), KDI_frameHeight)];
+}
+
+static void const *kKDI_customConstraintsKey = &kKDI_customConstraintsKey;
+
+@dynamic KDI_customConstraints;
+- (NSArray<NSLayoutConstraint *> *)KDI_customConstraints {
+    return objc_getAssociatedObject(self, kKDI_customConstraintsKey);
+}
+- (void)setKDI_customConstraints:(NSArray<NSLayoutConstraint *> *)KDI_customConstraints {
+    NSArray *oldCustomConstraints = self.KDI_customConstraints;
+    
+    if (oldCustomConstraints != nil) {
+        [NSLayoutConstraint deactivateConstraints:oldCustomConstraints];
+    }
+    
+    objc_setAssociatedObject(self, kKDI_customConstraintsKey, KDI_customConstraints, OBJC_ASSOCIATION_COPY_NONATOMIC);
+    
+    if (KDI_customConstraints != nil) {
+        [NSLayoutConstraint activateConstraints:KDI_customConstraints];
+    }
 }
 
 - (NSArray<__kindof NSView *> *)KDI_recursiveSubviews {
