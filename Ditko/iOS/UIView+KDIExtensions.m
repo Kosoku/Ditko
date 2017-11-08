@@ -15,6 +15,8 @@
 
 #import "UIView+KDIExtensions.h"
 
+#import <objc/runtime.h>
+
 @implementation UIView (KDIExtensions)
 
 @dynamic KDI_frameMinimumX;
@@ -80,6 +82,26 @@
 }
 - (void)setKDI_cornerRadius:(CGFloat)KDI_cornerRadius {
     [self.layer setCornerRadius:KDI_cornerRadius];
+}
+
+static void const *kKDI_customConstraintsKey = &kKDI_customConstraintsKey;
+
+@dynamic KDI_customConstraints;
+- (NSArray<NSLayoutConstraint *> *)KDI_customConstraints {
+    return objc_getAssociatedObject(self, kKDI_customConstraintsKey);
+}
+- (void)setKDI_customConstraints:(NSArray<NSLayoutConstraint *> *)KDI_customConstraints {
+    NSArray *oldCustomConstraints = self.KDI_customConstraints;
+    
+    if (oldCustomConstraints != nil) {
+        [NSLayoutConstraint deactivateConstraints:oldCustomConstraints];
+    }
+    
+    objc_setAssociatedObject(self, kKDI_customConstraintsKey, KDI_customConstraints, OBJC_ASSOCIATION_COPY_NONATOMIC);
+    
+    if (KDI_customConstraints != nil) {
+        [NSLayoutConstraint activateConstraints:KDI_customConstraints];
+    }
 }
 
 - (NSArray *)KDI_recursiveSubviews; {
