@@ -40,7 +40,7 @@
 
 - (void)_KDIScrollViewInit; {
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(_keyboardNotification:) name:UIKeyboardWillShowNotification object:nil];
-    [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(_keyboardNotification:) name:UIKeyboardDidShowNotification object:nil];
+    [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(_keyboardNotification:) name:UIKeyboardWillHideNotification object:nil];
 }
 
 - (void)_keyboardNotification:(NSNotification *)notification {
