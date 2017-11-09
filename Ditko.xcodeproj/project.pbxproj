@@ -215,6 +215,8 @@
 		07AA83971FB260CA00F99400 /* KDINavigationBarTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 07AA83951FB260CA00F99400 /* KDINavigationBarTitleView.m */; };
 		07AA83981FB26AD900F99400 /* KDINavigationBarTitleView.h in Headers */ = {isa = PBXBuildFile; fileRef = 07AA83941FB260CA00F99400 /* KDINavigationBarTitleView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		07B71A5A1EDC914500139924 /* DominantTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 07B71A591EDC914500139924 /* DominantTestViewController.m */; };
+		07B828551FB50DEF00EA46AC /* KDIScrollView.h in Headers */ = {isa = PBXBuildFile; fileRef = 07B828531FB50DEF00EA46AC /* KDIScrollView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		07B828561FB50DEF00EA46AC /* KDIScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 07B828541FB50DEF00EA46AC /* KDIScrollView.m */; };
 		07C49DD01EA7EADD00C9F4D5 /* NSSavePanel+KDIExtensions.h in Headers */ = {isa = PBXBuildFile; fileRef = 07C49DCE1EA7EADD00C9F4D5 /* NSSavePanel+KDIExtensions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		07C49DD11EA7EADD00C9F4D5 /* NSSavePanel+KDIExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 07C49DCF1EA7EADD00C9F4D5 /* NSSavePanel+KDIExtensions.m */; };
 		07D166C31E96A08E0073F69A /* NSButton+KDIExtensions.h in Headers */ = {isa = PBXBuildFile; fileRef = 07D166C11E96A08E0073F69A /* NSButton+KDIExtensions.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -570,6 +572,8 @@
 		07AA83951FB260CA00F99400 /* KDINavigationBarTitleView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = KDINavigationBarTitleView.m; path = iOS/KDINavigationBarTitleView.m; sourceTree = "<group>"; };
 		07B71A581EDC914500139924 /* DominantTestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DominantTestViewController.h; sourceTree = "<group>"; };
 		07B71A591EDC914500139924 /* DominantTestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DominantTestViewController.m; sourceTree = "<group>"; };
+		07B828531FB50DEF00EA46AC /* KDIScrollView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = KDIScrollView.h; path = iOS/KDIScrollView.h; sourceTree = "<group>"; };
+		07B828541FB50DEF00EA46AC /* KDIScrollView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = KDIScrollView.m; path = iOS/KDIScrollView.m; sourceTree = "<group>"; };
 		07C49DCE1EA7EADD00C9F4D5 /* NSSavePanel+KDIExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSSavePanel+KDIExtensions.h"; path = "macOS/NSSavePanel+KDIExtensions.h"; sourceTree = "<group>"; };
 		07C49DCF1EA7EADD00C9F4D5 /* NSSavePanel+KDIExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSSavePanel+KDIExtensions.m"; path = "macOS/NSSavePanel+KDIExtensions.m"; sourceTree = "<group>"; };
 		07D166C11E96A08E0073F69A /* NSButton+KDIExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSButton+KDIExtensions.h"; path = "macOS/NSButton+KDIExtensions.h"; sourceTree = "<group>"; };
@@ -705,9 +709,8 @@
 				07284F0E1FAA4F84001CCBF7 /* KDIWindow.m */,
 				0726280F1E70BCCF00511F80 /* KDIView.h */,
 				072628101E70BCCF00511F80 /* KDIView.m */,
-				071E53371F58FEC400A36B59 /* KDIBorderedView.h */,
-				071E533B1F59004C00A36B59 /* KDIBorderedViewImpl.h */,
-				071E533C1F59004C00A36B59 /* KDIBorderedViewImpl.m */,
+				07B828531FB50DEF00EA46AC /* KDIScrollView.h */,
+				07B828541FB50DEF00EA46AC /* KDIScrollView.m */,
 				071B626C1E70635D00B7B85A /* KDIGradientView.h */,
 				071B626D1E70635D00B7B85A /* KDIGradientView.m */,
 				0794A8351E73776C00603C99 /* KDIBadgeView.h */,
@@ -740,6 +743,7 @@
 				074B477A1EB3D266009B7C6D /* KDIEmptyView.m */,
 				07AA83941FB260CA00F99400 /* KDINavigationBarTitleView.h */,
 				07AA83951FB260CA00F99400 /* KDINavigationBarTitleView.m */,
+				07B828521FB50D2400EA46AC /* Private */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -1040,9 +1044,19 @@
 			name = Private;
 			sourceTree = "<group>";
 		};
+		07B828521FB50D2400EA46AC /* Private */ = {
+			isa = PBXGroup;
+			children = (
+				071E533B1F59004C00A36B59 /* KDIBorderedViewImpl.h */,
+				071E533C1F59004C00A36B59 /* KDIBorderedViewImpl.m */,
+			);
+			name = Private;
+			sourceTree = "<group>";
+		};
 		07D3D1F71F5BB3D9005C512E /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
+				071E53371F58FEC400A36B59 /* KDIBorderedView.h */,
 				07D3D1EE1F5B995E005C512E /* KDIUIResponder.h */,
 				0711B1821F817B3600DCE131 /* KDIUIResponder.m */,
 			);
@@ -1152,6 +1166,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0794A8141E73574A00603C99 /* UIAlertController+KDIExtensions.h in Headers */,
+				07B828551FB50DEF00EA46AC /* KDIScrollView.h in Headers */,
 				0794A7F01E73509100603C99 /* UIView+KDIExtensions.h in Headers */,
 				07E8EB3D1E733FE3001639A2 /* KDIDefines.h in Headers */,
 				07AA83961FB260CA00F99400 /* KDINavigationBarTitleView.h in Headers */,
@@ -1734,6 +1749,7 @@
 				0794A8081E7354EF00603C99 /* UIViewController+KDIExtensions.m in Sources */,
 				07E8EB4C1E73454D001639A2 /* UIDevice+KDIExtensions.m in Sources */,
 				07DB3D961E73BA470044FB50 /* KDIButton.m in Sources */,
+				07B828561FB50DEF00EA46AC /* KDIScrollView.m in Sources */,
 				07DB3D7E1E7382660044FB50 /* KDITextField.m in Sources */,
 				0794A8311E735E1200603C99 /* NSParagraphStyle+KDIExtensions.m in Sources */,
 				075F40041F780EF9009709EB /* UIViewController+KDIUIImagePickerControllerExtensions.m in Sources */,
