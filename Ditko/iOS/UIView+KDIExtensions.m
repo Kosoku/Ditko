@@ -104,6 +104,20 @@ static void const *kKDI_customConstraintsKey = &kKDI_customConstraintsKey;
     }
 }
 
+- (UIScrollView *)KDI_enclosingScrollView {
+    UIView *view = self;
+    
+    while (view != nil) {
+        if ([view isKindOfClass:UIScrollView.class]) {
+            return (UIScrollView *)view;
+        }
+        
+        view = view.superview;
+    }
+    
+    return nil;
+}
+
 - (NSArray *)KDI_recursiveSubviews; {
     NSMutableOrderedSet *retval = [[NSMutableOrderedSet alloc] init];
     

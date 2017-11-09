@@ -63,6 +63,13 @@ NS_ASSUME_NONNULL_BEGIN
 @property (copy,nonatomic,nullable) NSArray<NSLayoutConstraint *> *KDI_customConstraints;
 
 /**
+ Get the enclosing scroll view of the receiver or nil if one cannot be found.
+ 
+ @return The enclosing scroll view or nil
+ */
+- (nullable __kindof UIScrollView *)KDI_enclosingScrollView;
+
+/**
  Creates and returns an NSArray containing all the receiver's subviews recursively.
  
  For each subview of the receiver, the subview is adding to the returned array, followed by the array of the subview's recursive subviews.

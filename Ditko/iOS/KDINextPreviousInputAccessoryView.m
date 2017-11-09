@@ -17,6 +17,7 @@
 #import "UIBarButtonItem+KDIExtensions.h"
 #import "NSBundle+KDIPrivateExtensions.h"
 #import "UIImage+KDIExtensions.h"
+#import "UIView+KDIExtensions.h"
 
 #import <KSOFontAwesomeExtensions/KSOFontAwesomeExtensions.h>
 
@@ -222,7 +223,16 @@ static void const *kDoneItemImageKey = &kDoneItemImageKey;
         }
     }
     
-    [self.responders[index] becomeFirstResponder];
+    UIResponder *nextResponder = self.responders[index];
+    
+    if ([nextResponder isKindOfClass:UIView.class]) {
+        UIView *nextView = (UIView *)nextResponder;
+        UIScrollView *scrollView = [nextView KDI_enclosingScrollView];
+        
+        [scrollView scrollRectToVisible:[scrollView convertRect:nextView.bounds fromView:nextView] animated:YES];
+    }
+    
+    [nextResponder becomeFirstResponder];
 }
 @end
 
