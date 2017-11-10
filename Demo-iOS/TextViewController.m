@@ -79,8 +79,7 @@
     [self.textView setTintColor:UIColor.blackColor];
     [self.textView setTextContainerInset:UIEdgeInsetsMake(8, 8, 8, 8)];
     [self.textView setInputAccessoryView:[[CustomInputAccessoryView alloc] initWithFrame:CGRectZero responder:self.textView]];
-    [self.textView setMinimumHeight:44.0];
-    [self.textView setMaximumHeight:44.0 * 3];
+    [self.textView setMaximumNumberOfLines:4];
     [self.textView setPlaceholder:@"Text view placeholder…"];
     [self.textView setBorderOptions:KDIBorderOptionsAll];
     [self.textView setBorderWidthRespectsScreenScale:YES];

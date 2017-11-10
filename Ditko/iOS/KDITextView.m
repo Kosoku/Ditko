@@ -29,6 +29,7 @@ NSNotificationName const KDITextViewNotificationDidResignFirstResponder = @"KDIT
 
 - (void)_KDITextViewInit;
 - (void)_updatePlaceholderLabelWithText:(NSString *)text;
+- (CGSize)_sizeThatFits:(CGSize)size layout:(BOOL)layout;
 
 + (UIFont *)_defaultFont;
 + (UIColor *)_defaultPlaceholderTextColor;
@@ -102,43 +103,10 @@ NSNotificationName const KDITextViewNotificationDidResignFirstResponder = @"KDIT
 }
 #pragma mark -
 - (CGSize)intrinsicContentSize {
-    CGSize retval = [super intrinsicContentSize];
-    
-    if (retval.height == UIViewNoIntrinsicMetric) {
-        retval.height = self.contentSize.height;
-    }
-    
-    CGFloat placeholderHeight = [self.placeholderLabel sizeThatFits:CGSizeMake(CGRectGetWidth(self.bounds) - self.textContainerInset.left - self.textContainerInset.right, CGFLOAT_MAX)].height;
-    CGFloat height = MAX(retval.height, placeholderHeight);
-    
-    if (self.minimumHeight > 0) {
-        height = MAX(height, self.minimumHeight);
-    }
-    
-    if (self.maximumHeight > 0) {
-        height = MIN(height, self.maximumHeight);
-    }
-    
-    retval.height = ceil(height);
-    
-    return retval;
+    return [self _sizeThatFits:[super intrinsicContentSize] layout:NO];
 }
 - (CGSize)sizeThatFits:(CGSize)size {
-    CGSize retval = [super sizeThatFits:size];
-    CGFloat placeholderHeight = [self.placeholderLabel sizeThatFits:CGSizeMake(CGRectGetWidth(self.bounds) - self.textContainerInset.left - self.textContainerInset.right, CGFLOAT_MAX)].height;
-    CGFloat height = MAX(retval.height, placeholderHeight);
-    
-    if (self.minimumHeight > 0) {
-        height = MAX(height, self.minimumHeight);
-    }
-    
-    if (self.maximumHeight > 0) {
-        height = MIN(height, self.maximumHeight);
-    }
-    
-    retval.height = ceil(height);
-    
-    return retval;
+    return [self _sizeThatFits:size layout:NO];
 }
 #pragma mark -
 - (void)didAddSubview:(UIView *)subview {
@@ -149,11 +117,7 @@ NSNotificationName const KDITextViewNotificationDidResignFirstResponder = @"KDIT
 - (void)layoutSubviews {
     [super layoutSubviews];
     
-    [self.borderedViewImpl layoutSubviews];
-    
-    CGFloat maxWidth = CGRectGetWidth(self.bounds) - self.textContainerInset.left - self.textContainerInset.right;
-    
-    [self.placeholderLabel setFrame:CGRectMake(self.textContainerInset.left, self.textContainerInset.top, maxWidth, ceil([self.placeholderLabel sizeThatFits:CGSizeMake(maxWidth, CGFLOAT_MAX)].height))];
+    [self _sizeThatFits:self.bounds.size layout:YES];
 }
 #pragma mark -
 - (void)setText:(NSString *)text {
@@ -202,16 +166,6 @@ NSNotificationName const KDITextViewNotificationDidResignFirstResponder = @"KDIT
 }
 #pragma mark *** Public Methods ***
 #pragma mark Properties
-- (void)setMinimumHeight:(CGFloat)minimumHeight {
-    _minimumHeight = minimumHeight;
-    
-    [self invalidateIntrinsicContentSize];
-}
-- (void)setMaximumHeight:(CGFloat)maximumHeight {
-    _maximumHeight = maximumHeight;
-    
-    [self invalidateIntrinsicContentSize];
-}
 @dynamic placeholder;
 - (NSString *)placeholder {
     return self.attributedPlaceholder.string;
@@ -238,6 +192,27 @@ NSNotificationName const KDITextViewNotificationDidResignFirstResponder = @"KDIT
     
     [self _updatePlaceholderLabelWithText:self.placeholder];
 }
+#pragma mark -
+- (void)setMinimumHeight:(CGFloat)minimumHeight {
+    _minimumHeight = minimumHeight;
+    
+    [self invalidateIntrinsicContentSize];
+}
+- (void)setMaximumHeight:(CGFloat)maximumHeight {
+    _maximumHeight = maximumHeight;
+    
+    [self invalidateIntrinsicContentSize];
+}
+- (void)setMinimumNumberOfLines:(NSUInteger)minimumNumberOfLines {
+    _minimumNumberOfLines = minimumNumberOfLines;
+    
+    [self invalidateIntrinsicContentSize];
+}
+- (void)setMaximumNumberOfLines:(NSUInteger)maximumNumberOfLines {
+    _maximumNumberOfLines = maximumNumberOfLines;
+    
+    [self invalidateIntrinsicContentSize];
+}
 #pragma mark *** Private Methods ***
 - (void)_KDITextViewInit {
     _borderedViewImpl = [[KDIBorderedViewImpl alloc] initWithView:self];
@@ -259,6 +234,65 @@ NSNotificationName const KDITextViewNotificationDidResignFirstResponder = @"KDIT
 - (void)_updatePlaceholderLabelWithText:(NSString *)text; {
     [self.placeholderLabel setHidden:self.text.length > 0];
     [self setAttributedPlaceholder:[[NSAttributedString alloc] initWithString:text ?: @"" attributes:@{NSFontAttributeName: self.font, NSForegroundColorAttributeName: self.placeholderTextColor}]];
+}
+- (CGSize)_sizeThatFits:(CGSize)size layout:(BOOL)layout; {
+    CGSize retval = size;
+    
+    if (!layout) {
+        if (retval.height <= 0) {
+            retval.height = self.contentSize.height;
+        }
+        
+        CGFloat placeholderHeight = [self.placeholderLabel sizeThatFits:CGSizeMake(CGRectGetWidth(self.bounds) - self.textContainerInset.left - self.textContainerInset.right, CGFLOAT_MAX)].height;
+        CGFloat lineHeight = self.font.lineHeight;
+        CGFloat height = MAX(MAX(retval.height, placeholderHeight), lineHeight);
+        
+        if (self.minimumHeight > 0) {
+            height = MAX(height, self.minimumHeight);
+        }
+        
+        if (self.minimumNumberOfLines > 0) {
+            height = MAX(height, (lineHeight * self.minimumNumberOfLines) + self.textContainerInset.top + self.textContainerInset.bottom);
+        }
+        
+        if (self.maximumHeight > 0) {
+            height = MIN(height, self.maximumHeight);
+        }
+        
+        if (self.maximumNumberOfLines > 0) {
+            height = MIN(height, (lineHeight * self.maximumNumberOfLines) + self.textContainerInset.top + self.textContainerInset.bottom);
+        }
+        
+        retval.height = ceil(height);
+    }
+    
+    if (layout) {
+        [self.borderedViewImpl layoutSubviews];
+        
+        CGFloat maxWidth = CGRectGetWidth(self.bounds) - self.textContainerInset.left - self.textContainerInset.right;
+        
+        [self.placeholderLabel setFrame:CGRectMake(self.textContainerInset.left, self.textContainerInset.top, maxWidth, ceil([self.placeholderLabel sizeThatFits:CGSizeMake(maxWidth, CGFLOAT_MAX)].height))];
+    }
+    
+    if (!layout) {
+        KSTDispatchMainAsync(^{
+            if (self.selectedRange.location == self.text.length) {
+                CGRect rect = [self caretRectForPosition:self.selectedTextRange.end];
+                rect.size.height += self.textContainerInset.bottom;
+                
+                [UIView performWithoutAnimation:^{
+                    [self scrollRectToVisible:rect animated:NO];
+                }];
+            }
+            else {
+                [UIView performWithoutAnimation:^{
+                    [self scrollRangeToVisible:self.selectedRange];
+                }];
+            }
+        });
+    }
+    
+    return retval;
 }
 #pragma mark -
 + (UIFont *)_defaultFont {
