@@ -65,12 +65,26 @@
     
     NSNumber *margin = @8.0;
     
-    [temp addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-margin-[view]-margin-|" options:0 metrics:@{@"margin": margin} views:@{@"view": _stackView}]];
-    [temp addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|->=margin-[view]->=margin-|" options:0 metrics:@{@"margin": margin} views:@{@"view": _stackView}]];
-    [temp addObject:[NSLayoutConstraint constraintWithItem:_stackView attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeCenterY multiplier:1.0 constant:0]];
+    [temp addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-margin-[view]-margin-|" options:0 metrics:@{@"margin": margin} views:@{@"view": self.stackView}]];
+    [temp addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|->=margin-[view]->=margin-|" options:0 metrics:@{@"margin": margin} views:@{@"view": self.stackView}]];
     
-    [temp addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|->=margin-[view]-[subview]" options:0 metrics:@{@"margin": margin} views:@{@"view": _activityIndicatorView, @"subview": _bodyLabel}]];
-    [temp addObject:[NSLayoutConstraint constraintWithItem:_activityIndicatorView attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:_bodyLabel attribute:NSLayoutAttributeTop multiplier:1.0 constant:0]];
+    switch (self.alignmentVertical) {
+        case KDIEmptyViewAlignmentVerticalCenter:
+            [temp addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|->=margin-[view]->=margin-|" options:0 metrics:@{@"margin": margin} views:@{@"view": self.stackView}]];
+            [temp addObject:[NSLayoutConstraint constraintWithItem:self.stackView attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeCenterY multiplier:1.0 constant:0]];
+            break;
+        case KDIEmptyViewAlignmentVerticalSystemSpacing:
+            [temp addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-[view]->=margin-|" options:0 metrics:@{@"margin": margin} views:@{@"view": self.stackView}]];
+            break;
+        case KDIEmptyViewAlignmentVerticalCustomSpacing:
+            [temp addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-spacing-[view]->=margin-|" options:0 metrics:@{@"margin": margin, @"spacing": @(self.alignmentVerticalCustomSpacing)} views:@{@"view": self.stackView}]];
+            break;
+        default:
+            break;
+    }
+    
+    [temp addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|->=margin-[view]-[subview]" options:0 metrics:@{@"margin": margin} views:@{@"view": self.activityIndicatorView, @"subview": self.bodyLabel}]];
+    [temp addObject:[NSLayoutConstraint constraintWithItem:self.activityIndicatorView attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.bodyLabel attribute:NSLayoutAttributeTop multiplier:1.0 constant:0]];
     
     self.KDI_customConstraints = temp;
     

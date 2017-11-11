@@ -26,7 +26,7 @@ typedef NS_ENUM(NSInteger, KDIEmptyViewAlignmentVertical) {
      */
     KDIEmptyViewAlignmentVerticalCenter = 0,
     /**
-     The spacing you get when you use the @"-" character in VFL.
+     Spacing from the top edge, using the @"-" character in VFL.
      */
     KDIEmptyViewAlignmentVerticalSystemSpacing,
     /**
@@ -37,6 +37,11 @@ typedef NS_ENUM(NSInteger, KDIEmptyViewAlignmentVertical) {
 
 @class KDIEmptyView;
 
+/**
+ Block that is invoked when the action button in the receiver is tapped.
+ 
+ @param emptyView The view that contains the action button
+ */
 typedef void(^KDIEmptyViewActionBlock)(__kindof KDIEmptyView *emptyView);
 
 /**
