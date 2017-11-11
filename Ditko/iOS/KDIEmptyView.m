@@ -94,8 +94,8 @@
 - (void)tintColorDidChange {
     [super tintColorDidChange];
     
-    [self.imageView setTintColor:self.tintColor];
-    [self.activityIndicatorView setColor:self.tintColor];
+    [self.imageView setTintColor:self.imageColor ?: self.tintColor];
+    [self.activityIndicatorView setColor:self.loadingColor ?: self.tintColor];
 }
 
 - (void)setAlignmentVertical:(KDIEmptyViewAlignmentVertical)alignmentVertical {
@@ -116,6 +116,11 @@
 - (void)setImage:(UIImage *)image {
     [self.imageView setImage:image];
     [self.imageView setHidden:image == nil];
+}
+- (void)setImageColor:(UIColor *)imageColor {
+    _imageColor = imageColor;
+    
+    [self.imageView setTintColor:_imageColor];
 }
 @dynamic headline;
 - (NSString *)headline {
@@ -177,6 +182,11 @@
     else {
         [self.activityIndicatorView stopAnimating];
     }
+}
+- (void)setLoadingColor:(UIColor *)loadingColor {
+    _loadingColor = loadingColor;
+    
+    [self.activityIndicatorView setColor:_loadingColor];
 }
 
 - (void)_KDIEmptyViewInit; {

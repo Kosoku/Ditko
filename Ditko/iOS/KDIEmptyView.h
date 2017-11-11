@@ -79,6 +79,12 @@ typedef void(^KDIEmptyViewActionBlock)(__kindof KDIEmptyView *emptyView);
  */
 @property (strong,nonatomic,nullable) UIImage *image;
 /**
+ Set and get the image tint color, if nil defaults to self.tintColor.
+ 
+ The default is nil.
+ */
+@property (strong,nonatomic,nullable) UIColor *imageColor UI_APPEARANCE_SELECTOR;
+/**
  Set and get the headline of the receiver.
  */
 @property (copy,nonatomic,nullable) NSString *headline;
@@ -130,6 +136,12 @@ typedef void(^KDIEmptyViewActionBlock)(__kindof KDIEmptyView *emptyView);
  The default is NO.
  */
 @property (assign,nonatomic,getter=isLoading) BOOL loading;
+/**
+ Set and get the loading indicator tint color, if nil defaults to self.tintColor.
+ 
+ The default is nil.
+ */
+@property (strong,nonatomic,nullable) UIColor *loadingColor UI_APPEARANCE_SELECTOR;
 
 @end
 
