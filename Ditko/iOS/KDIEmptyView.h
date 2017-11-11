@@ -13,9 +13,27 @@
 //
 //  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-#import <UIKit/UIKit.h>
+#import <Ditko/KDIView.h>
 
 NS_ASSUME_NONNULL_BEGIN
+
+/**
+ Enum for possible vertical alignment values.
+ */
+typedef NS_ENUM(NSInteger, KDIEmptyViewAlignmentVertical) {
+    /**
+     The receiver's subviews are centered vertically within its bounds.
+     */
+    KDIEmptyViewAlignmentVerticalCenter = 0,
+    /**
+     The spacing you get when you use the @"-" character in VFL.
+     */
+    KDIEmptyViewAlignmentVerticalSystemSpacing,
+    /**
+     Custom spacing from the top edge, you should set the desired value for alignmentVerticalCustomSpacing if this value is used.
+     */
+    KDIEmptyViewAlignmentVerticalCustomSpacing
+};
 
 @class KDIEmptyView;
 
@@ -36,7 +54,20 @@ typedef void(^KDIEmptyViewActionBlock)(__kindof KDIEmptyView *emptyView);
  
  The *image* and *action* will be tinted accordingly based on the receiver's tintColor property. The *body* and *action* are the same font size. The *headline* font is slightly larger and bold. The fonts used are based on dynamic type.
  */
-@interface KDIEmptyView : UIView
+@interface KDIEmptyView : KDIView
+
+/**
+ Get and set the vertical alignment of the receiver.
+ 
+ The default is KDIEmptyViewAlignmentVerticalCenter.
+ 
+ @see KDIEmptyViewAlignmentVertical
+ */
+@property (assign,nonatomic) KDIEmptyViewAlignmentVertical alignmentVertical;
+/**
+ Get and set the custom vertical alignment spacing to use, expressed as the distance from the top edge of the receiver.
+ */
+@property (assign,nonatomic) CGFloat alignmentVerticalCustomSpacing;
 
 /**
  Set and get the image of the receiver.

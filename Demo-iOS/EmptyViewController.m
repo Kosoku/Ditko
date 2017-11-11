@@ -52,6 +52,8 @@
     [emptyView setBody:@"Body text that should wrap to multiple lines and do something nifty"];
     [emptyView setAction:@"Action Button Text"];
     [emptyView setActionBlock:^(__kindof KDIEmptyView * _Nullable emptyView){
+        emptyView.loading = !emptyView.isLoading;
+        
         [UIAlertController KDI_presentAlertControllerWithError:nil];
     }];
     [emptyView setLoading:YES];

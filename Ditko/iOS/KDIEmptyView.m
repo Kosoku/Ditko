@@ -16,8 +16,9 @@
 #import "KDIEmptyView.h"
 #import "UIControl+KDIExtensions.h"
 #import "UIFont+KDIDynamicTypeExtensions.h"
+#import "UIView+KDIExtensions.h"
 
-#import <Stanley/KSTScopeMacros.h>
+#import <Stanley/Stanley.h>
 
 @interface KDIEmptyView ()
 @property (strong,nonatomic) UIStackView *stackView;
@@ -56,11 +57,42 @@
     return self;
 }
 
++ (BOOL)requiresConstraintBasedLayout {
+    return YES;
+}
+- (void)updateConstraints {
+    NSMutableArray *temp = [[NSMutableArray alloc] init];
+    
+    NSNumber *margin = @8.0;
+    
+    [temp addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-margin-[view]-margin-|" options:0 metrics:@{@"margin": margin} views:@{@"view": _stackView}]];
+    [temp addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|->=margin-[view]->=margin-|" options:0 metrics:@{@"margin": margin} views:@{@"view": _stackView}]];
+    [temp addObject:[NSLayoutConstraint constraintWithItem:_stackView attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeCenterY multiplier:1.0 constant:0]];
+    
+    [temp addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|->=margin-[view]-[subview]" options:0 metrics:@{@"margin": margin} views:@{@"view": _activityIndicatorView, @"subview": _bodyLabel}]];
+    [temp addObject:[NSLayoutConstraint constraintWithItem:_activityIndicatorView attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:_bodyLabel attribute:NSLayoutAttributeTop multiplier:1.0 constant:0]];
+    
+    self.KDI_customConstraints = temp;
+    
+    [super updateConstraints];
+}
+
 - (void)tintColorDidChange {
     [super tintColorDidChange];
     
     [self.imageView setTintColor:self.tintColor];
     [self.activityIndicatorView setColor:self.tintColor];
+}
+
+- (void)setAlignmentVertical:(KDIEmptyViewAlignmentVertical)alignmentVertical {
+    _alignmentVertical = alignmentVertical;
+    
+    [self setNeedsUpdateConstraints];
+}
+- (void)setAlignmentVerticalCustomSpacing:(CGFloat)alignmentVerticalCustomSpacing {
+    _alignmentVerticalCustomSpacing = alignmentVerticalCustomSpacing;
+    
+    [self setNeedsUpdateConstraints];
 }
 
 @dynamic image;
@@ -185,15 +217,6 @@
                                                             _headlineTextStyle: @[_headlineLabel],
                                                             _actionTextStyle: @[_actionButton.titleLabel]
                                                             }];
-    
-    NSNumber *margin = @8.0;
-    
-    [NSLayoutConstraint activateConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-margin-[view]-margin-|" options:0 metrics:@{@"margin": margin} views:@{@"view": _stackView}]];
-    [NSLayoutConstraint activateConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|->=margin-[view]->=margin-|" options:0 metrics:@{@"margin": margin} views:@{@"view": _stackView}]];
-    [NSLayoutConstraint activateConstraints:@[[NSLayoutConstraint constraintWithItem:_stackView attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeCenterY multiplier:1.0 constant:0]]];
-    
-    [NSLayoutConstraint activateConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|->=margin-[view]-[subview]" options:0 metrics:@{@"margin": margin} views:@{@"view": _activityIndicatorView, @"subview": _bodyLabel}]];
-    [NSLayoutConstraint activateConstraints:@[[NSLayoutConstraint constraintWithItem:_activityIndicatorView attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:_bodyLabel attribute:NSLayoutAttributeTop multiplier:1.0 constant:0]]];
 }
 
 + (UIColor *)_defaultHeadlineColor; {
