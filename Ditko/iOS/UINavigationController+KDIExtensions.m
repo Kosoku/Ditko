@@ -17,6 +17,20 @@
 
 @implementation UINavigationController (KDIExtensions)
 
+- (void)KDI_setViewControllers:(NSArray<UIViewController *> *)viewControllers animated:(BOOL)animated completion:(dispatch_block_t)completion {
+    if (completion == nil) {
+        [self setViewControllers:viewControllers animated:animated];
+    }
+    else {
+        [CATransaction begin];
+        [CATransaction setCompletionBlock:completion];
+        
+        [self setViewControllers:viewControllers animated:animated];
+        
+        [CATransaction commit];
+    }
+}
+
 - (void)KDI_pushViewController:(UIViewController *)viewController animated:(BOOL)animated completion:(dispatch_block_t)completion; {
     if (completion == nil) {
         [self pushViewController:viewController animated:animated];
@@ -29,6 +43,13 @@
         
         [CATransaction commit];
     }
+}
+- (void)KDI_pushViewControllers:(NSArray<UIViewController *> *)viewControllers animated:(BOOL)animated completion:(dispatch_block_t)completion {
+    NSMutableArray *temp = [NSMutableArray arrayWithArray:self.viewControllers];
+    
+    [temp addObjectsFromArray:viewControllers];
+    
+    [self KDI_setViewControllers:viewControllers animated:animated completion:completion];
 }
 
 - (nullable NSArray<__kindof UIViewController *> *)KDI_popToRootViewControllerAnimated:(BOOL)animated completion:(dispatch_block_t)completion; {
