@@ -49,7 +49,7 @@
     
     [temp addObjectsFromArray:viewControllers];
     
-    [self KDI_setViewControllers:viewControllers animated:animated completion:completion];
+    [self KDI_setViewControllers:temp animated:animated completion:completion];
 }
 
 - (nullable NSArray<__kindof UIViewController *> *)KDI_popToRootViewControllerAnimated:(BOOL)animated completion:(dispatch_block_t)completion; {
