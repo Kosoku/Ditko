@@ -80,20 +80,30 @@ static CGFloat kDefaultFrameHeight;
 
 - (UIBarButtonItem *)nextItem {
     UIImage *image = [self.class nextItemImage] ?: [UIImage KSO_fontAwesomeImageWithString:@"\uf054" size:kImageSize].KDI_templateImage;
+    UIBarButtonItem *retval = [[UIBarButtonItem alloc] initWithImage:image style:UIBarButtonItemStylePlain target:self action:@selector(_nextItemAction:)];
     
-    return [[UIBarButtonItem alloc] initWithImage:image style:UIBarButtonItemStylePlain target:self action:@selector(_nextItemAction:)];
+    retval.accessibilityLabel = NSLocalizedStringWithDefaultValue(@"accessibility.label.next", nil, NSBundle.KDI_frameworkBundle, @"Next", @"accessibility label next");
+    
+    return retval;
 }
 - (UIBarButtonItem *)previousItem {
     UIImage *image = [self.class previousItemImage] ?: [UIImage KSO_fontAwesomeImageWithString:@"\uf053" size:kImageSize].KDI_templateImage;
+    UIBarButtonItem *retval = [[UIBarButtonItem alloc] initWithImage:image style:UIBarButtonItemStylePlain target:self action:@selector(_previousItemAction:)];
     
-    return [[UIBarButtonItem alloc] initWithImage:image style:UIBarButtonItemStylePlain target:self action:@selector(_previousItemAction:)];
+    retval.accessibilityLabel = NSLocalizedStringWithDefaultValue(@"accessibility.label.previous", nil, NSBundle.KDI_frameworkBundle, @"Previous", @"accessibility label previous");
+    
+    return retval;
 }
 - (UIBarButtonItem *)doneItem {
     if ([self.class doneItemImage] == nil) {
         return [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(_doneItemAction:)];
     }
     else {
-        return [[UIBarButtonItem alloc] initWithImage:[self.class doneItemImage] style:UIBarButtonItemStyleDone target:self action:@selector(_doneItemAction:)];
+        UIBarButtonItem *retval = [[UIBarButtonItem alloc] initWithImage:[self.class doneItemImage] style:UIBarButtonItemStyleDone target:self action:@selector(_doneItemAction:)];
+     
+        retval.accessibilityLabel = NSLocalizedStringWithDefaultValue(@"accessibility.label.done", nil, NSBundle.KDI_frameworkBundle, @"Done", @"accessibility label done");
+        
+        return retval;
     }
 }
 
