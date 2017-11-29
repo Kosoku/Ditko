@@ -35,6 +35,9 @@ FOUNDATION_EXPORT const unsigned char DitkoVersionString[];
 
 #import <Ditko/NSURL+KDIExtensions.h>
 #import <Ditko/NSParagraphStyle+KDIExtensions.h>
+#if (TARGET_OS_IOS || TARGET_OS_TV || TARGET_OS_OSX)
+#import <Ditko/NSObject+KDIExtensions.h>
+#endif
 #if (TARGET_OS_IOS || TARGET_OS_TV || TARGET_OS_WATCH)
 #import <Ditko/UIBezierPath+KDIExtensions.h>
 #import <Ditko/UIImage+KDIExtensions.h>

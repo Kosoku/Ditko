@@ -122,6 +122,12 @@
 		077EBA001E9F703E0087321E /* KDIBadgeButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 077EB9FC1E9F703E0087321E /* KDIBadgeButton.m */; };
 		077FE3FB1F4E19420093CCBB /* PushViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 077FE3FA1F4E19420093CCBB /* PushViewController.m */; };
 		077FE3FE1F4E1D190093CCBB /* UIBarButtonItem+DemoExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 077FE3FD1F4E1D190093CCBB /* UIBarButtonItem+DemoExtensions.m */; };
+		07824F571FCF0E3A005FBF26 /* NSObject+KDIExtensions.h in Headers */ = {isa = PBXBuildFile; fileRef = 07824F551FCF0E3A005FBF26 /* NSObject+KDIExtensions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		07824F581FCF0E3A005FBF26 /* NSObject+KDIExtensions.h in Headers */ = {isa = PBXBuildFile; fileRef = 07824F551FCF0E3A005FBF26 /* NSObject+KDIExtensions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		07824F591FCF0E3A005FBF26 /* NSObject+KDIExtensions.h in Headers */ = {isa = PBXBuildFile; fileRef = 07824F551FCF0E3A005FBF26 /* NSObject+KDIExtensions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		07824F5A1FCF0E3A005FBF26 /* NSObject+KDIExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 07824F561FCF0E3A005FBF26 /* NSObject+KDIExtensions.m */; };
+		07824F5B1FCF0E3A005FBF26 /* NSObject+KDIExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 07824F561FCF0E3A005FBF26 /* NSObject+KDIExtensions.m */; };
+		07824F5C1FCF0E3A005FBF26 /* NSObject+KDIExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 07824F561FCF0E3A005FBF26 /* NSObject+KDIExtensions.m */; };
 		0794A7EA1E734D5300603C99 /* UINavigationController+KDIExtensions.h in Headers */ = {isa = PBXBuildFile; fileRef = 0794A7E81E734D5300603C99 /* UINavigationController+KDIExtensions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0794A7EB1E734D5300603C99 /* UINavigationController+KDIExtensions.h in Headers */ = {isa = PBXBuildFile; fileRef = 0794A7E81E734D5300603C99 /* UINavigationController+KDIExtensions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0794A7EC1E734D5300603C99 /* UINavigationController+KDIExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0794A7E91E734D5300603C99 /* UINavigationController+KDIExtensions.m */; };
@@ -505,6 +511,8 @@
 		077FE3FA1F4E19420093CCBB /* PushViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PushViewController.m; sourceTree = "<group>"; };
 		077FE3FC1F4E1D190093CCBB /* UIBarButtonItem+DemoExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIBarButtonItem+DemoExtensions.h"; sourceTree = "<group>"; };
 		077FE3FD1F4E1D190093CCBB /* UIBarButtonItem+DemoExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIBarButtonItem+DemoExtensions.m"; sourceTree = "<group>"; };
+		07824F551FCF0E3A005FBF26 /* NSObject+KDIExtensions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+KDIExtensions.h"; sourceTree = "<group>"; };
+		07824F561FCF0E3A005FBF26 /* NSObject+KDIExtensions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSObject+KDIExtensions.m"; sourceTree = "<group>"; };
 		0794A7E81E734D5300603C99 /* UINavigationController+KDIExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UINavigationController+KDIExtensions.h"; path = "iOS/UINavigationController+KDIExtensions.h"; sourceTree = "<group>"; };
 		0794A7E91E734D5300603C99 /* UINavigationController+KDIExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UINavigationController+KDIExtensions.m"; path = "iOS/UINavigationController+KDIExtensions.m"; sourceTree = "<group>"; };
 		0794A7EE1E73509100603C99 /* UIView+KDIExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIView+KDIExtensions.h"; path = "iOS/UIView+KDIExtensions.h"; sourceTree = "<group>"; };
@@ -878,6 +886,8 @@
 				0794C2381F6EDDEE0051C4C8 /* WKInterfaceController+KDIExtensions.m */,
 				075F40011F780EF9009709EB /* UIViewController+KDIUIImagePickerControllerExtensions.h */,
 				075F40021F780EF9009709EB /* UIViewController+KDIUIImagePickerControllerExtensions.m */,
+				07824F551FCF0E3A005FBF26 /* NSObject+KDIExtensions.h */,
+				07824F561FCF0E3A005FBF26 /* NSObject+KDIExtensions.m */,
 				079C88901EA5F7B200F4C09D /* Private */,
 			);
 			name = Categories;
@@ -1103,6 +1113,7 @@
 				07E8EB4A1E73454D001639A2 /* UIDevice+KDIExtensions.h in Headers */,
 				071B62DF1E70864300B7B85A /* KDIGradientView.h in Headers */,
 				072628131E70BCCF00511F80 /* KDIView.h in Headers */,
+				07824F591FCF0E3A005FBF26 /* NSObject+KDIExtensions.h in Headers */,
 				07E8EB3F1E733FE3001639A2 /* KDIDefines.h in Headers */,
 				07D3D1F01F5B995E005C512E /* KDIUIResponder.h in Headers */,
 				077EB9FE1E9F703E0087321E /* KDIBadgeButton.h in Headers */,
@@ -1141,6 +1152,7 @@
 				071B62641E705D3500B7B85A /* KDIFunctions.h in Headers */,
 				07D166DD1E9759090073F69A /* KDIClickableLabel.h in Headers */,
 				0705AFDF1ECE29A000BACC4E /* NSImage+KDIExtensions.h in Headers */,
+				07824F581FCF0E3A005FBF26 /* NSObject+KDIExtensions.h in Headers */,
 				0794A80C1E7355B900603C99 /* NSViewController+KDIExtensions.h in Headers */,
 				07D166C71E96ABDA0073F69A /* NSPopUpButton+KDIExtensions.h in Headers */,
 				07A920981E958CA900B45199 /* KDIRolloverButton.h in Headers */,
@@ -1200,6 +1212,7 @@
 				0795E6411E70491E004A5CB2 /* UIColor+KDIExtensions.h in Headers */,
 				0794A82D1E735E1200603C99 /* NSParagraphStyle+KDIExtensions.h in Headers */,
 				0794A7FA1E73530400603C99 /* UIBezierPath+KDIExtensions.h in Headers */,
+				07824F571FCF0E3A005FBF26 /* NSObject+KDIExtensions.h in Headers */,
 				0794A81A1E73584900603C99 /* NSBundle+KDIPrivateExtensions.h in Headers */,
 				07DB3D881E73B6600044FB50 /* KDIProgressSlider.h in Headers */,
 				0794A8371E73776C00603C99 /* KDIBadgeView.h in Headers */,
@@ -1639,6 +1652,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				07824F5C1FCF0E3A005FBF26 /* NSObject+KDIExtensions.m in Sources */,
 				0794A7FE1E73530400603C99 /* UIBezierPath+KDIExtensions.m in Sources */,
 				072628161E70BCCF00511F80 /* KDIView.m in Sources */,
 				07DB3D911E73B7BD0044FB50 /* KDIProgressNavigationBar.m in Sources */,
@@ -1691,6 +1705,7 @@
 				07D166C81E96ABDA0073F69A /* NSPopUpButton+KDIExtensions.m in Sources */,
 				071B62661E705D3500B7B85A /* KDIFunctions.m in Sources */,
 				07A920901E95674C00B45199 /* NSControl+KDIExtensions.m in Sources */,
+				07824F5B1FCF0E3A005FBF26 /* NSObject+KDIExtensions.m in Sources */,
 				0794A8031E73541200603C99 /* NSBezierPath+KDIExtensions.m in Sources */,
 				0794A8111E73568500603C99 /* NSWindow+KDIExtensions.m in Sources */,
 				0794A83B1E73776C00603C99 /* KDIBadgeView.m in Sources */,
@@ -1742,6 +1757,7 @@
 				071B62651E705D3500B7B85A /* KDIFunctions.m in Sources */,
 				0795E6421E70491E004A5CB2 /* NSColor-UIColor+KDIExtensions.m in Sources */,
 				0711B1831F817B3600DCE131 /* KDIUIResponder.m in Sources */,
+				07824F5A1FCF0E3A005FBF26 /* NSObject+KDIExtensions.m in Sources */,
 				072628141E70BCCF00511F80 /* KDIView.m in Sources */,
 				074B477E1EB3D266009B7C6D /* KDIEmptyView.m in Sources */,
 				071E53401F59004C00A36B59 /* KDIBorderedViewImpl.m in Sources */,

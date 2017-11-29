@@ -17,6 +17,7 @@
 #import "UIControl+KDIExtensions.h"
 #import "UIFont+KDIDynamicTypeExtensions.h"
 #import "UIView+KDIExtensions.h"
+#import "NSObject+KDIExtensions.h"
 
 #import <Stanley/Stanley.h>
 

@@ -58,11 +58,6 @@ NS_ASSUME_NONNULL_BEGIN
 @property (assign,nonatomic) CGFloat KDI_cornerRadius;
 
 /**
- Convenience property to set and get the custom constraints managed by the receiver. Setting this will deactivate the old custom constraints and active the new custom constraints.
- */
-@property (copy,nonatomic,nullable) NSArray<NSLayoutConstraint *> *KDI_customConstraints;
-
-/**
  Get the enclosing scroll view of the receiver or nil if one cannot be found.
  
  @return The enclosing scroll view or nil
