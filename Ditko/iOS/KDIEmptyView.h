@@ -57,7 +57,7 @@ typedef void(^KDIEmptyViewActionBlock)(__kindof KDIEmptyView *emptyView);
     |
  [action (UIButton)]
  
- The *image* and *action* will be tinted accordingly based on the receiver's tintColor property. The *body* and *action* are the same font size. The *headline* font is slightly larger and bold. The fonts used are based on dynamic type.
+ The *image* and *action* will be tinted accordingly based on the receiver's tintColor property. The *headline*, *body*, and *action* all use their respectively named font styles.
  */
 @interface KDIEmptyView : KDIView
 

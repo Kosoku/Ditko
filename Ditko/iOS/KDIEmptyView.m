@@ -117,6 +117,7 @@
 - (void)setImage:(UIImage *)image {
     [self.imageView setImage:image];
     [self.imageView setHidden:image == nil];
+    [self.imageView setIsAccessibilityElement:!self.imageView.isHidden];
 }
 - (void)setImageColor:(UIColor *)imageColor {
     _imageColor = imageColor;
@@ -130,6 +131,7 @@
 - (void)setHeadline:(NSString *)headline {
     [self.headlineLabel setText:headline];
     [self.headlineLabel setHidden:headline.length == 0];
+    [self.headlineLabel setIsAccessibilityElement:!self.headlineLabel.isHidden];
 }
 - (void)setHeadlineColor:(UIColor *)headlineColor {
     _headlineColor = headlineColor ?: [self.class _defaultHeadlineColor];
@@ -139,7 +141,7 @@
 - (void)setHeadlineTextStyle:(UIFontTextStyle)headlineTextStyle {
     _headlineTextStyle = headlineTextStyle ?: [self.class _defaultHeadlineTextStyle];
     
-    [NSObject KDI_registerDynamicTypeObject:self.headlineLabel forTextStyle:_headlineTextStyle];
+    self.headlineLabel.KDI_dynamicTypeTextStyle = _headlineTextStyle;
 }
 @dynamic body;
 - (NSString *)body {
@@ -148,6 +150,7 @@
 - (void)setBody:(NSString *)body {
     [self.bodyLabel setText:body];
     [self.bodyLabel setHidden:body.length == 0];
+    [self.bodyLabel setIsAccessibilityElement:!self.bodyLabel.isHidden];
 }
 - (void)setBodyColor:(UIColor *)bodyColor {
     _bodyColor = bodyColor ?: [self.class _defaultBodyColor];
@@ -157,7 +160,7 @@
 - (void)setBodyTextStyle:(UIFontTextStyle)bodyTextStyle {
     _bodyTextStyle = bodyTextStyle ?: [self.class _defaultBodyTextStyle];
     
-    [NSObject KDI_registerDynamicTypeObject:self.bodyLabel forTextStyle:_bodyTextStyle];
+    self.bodyLabel.KDI_dynamicTypeTextStyle = _bodyTextStyle;
 }
 @dynamic action;
 - (NSString *)action {
@@ -166,11 +169,12 @@
 - (void)setAction:(NSString *)action {
     [self.actionButton setTitle:action forState:UIControlStateNormal];
     [self.actionButton setHidden:action.length == 0];
+    [self.actionButton setIsAccessibilityElement:!self.actionButton.isHidden];
 }
 - (void)setActionTextStyle:(UIFontTextStyle)actionTextStyle {
     _actionTextStyle = actionTextStyle ?: [self.class _defaultActionTextStyle];
     
-    [NSObject KDI_registerDynamicTypeObject:self.actionButton.titleLabel forTextStyle:_actionTextStyle];
+    self.actionButton.titleLabel.KDI_dynamicTypeTextStyle = _actionTextStyle;
 }
 @dynamic loading;
 - (BOOL)isLoading {
