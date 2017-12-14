@@ -218,6 +218,7 @@
     _headlineLabel = [[UILabel alloc] initWithFrame:CGRectZero];
     _headlineLabel.translatesAutoresizingMaskIntoConstraints = NO;
     _headlineLabel.textColor = _headlineColor;
+    _headlineLabel.KDI_dynamicTypeTextStyle = _headlineTextStyle;
     [_stackView addArrangedSubview:_headlineLabel];
     
     _activityIndicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
@@ -230,10 +231,12 @@
     _bodyLabel.numberOfLines = 0;
     _bodyLabel.textAlignment = NSTextAlignmentCenter;
     _bodyLabel.textColor = _bodyColor;
+    _bodyLabel.KDI_dynamicTypeTextStyle = _bodyTextStyle;
     [_stackView addArrangedSubview:_bodyLabel];
     
     _actionButton = [UIButton buttonWithType:UIButtonTypeSystem];
     _actionButton.translatesAutoresizingMaskIntoConstraints = NO;
+    _actionButton.titleLabel.KDI_dynamicTypeTextStyle = _actionTextStyle;
     [_actionButton KDI_addBlock:^(__kindof UIControl * _Nonnull control, UIControlEvents controlEvents) {
         kstStrongify(self);
         if (self.actionBlock != nil) {
@@ -242,10 +245,10 @@
     } forControlEvents:UIControlEventTouchUpInside];
     [_stackView addArrangedSubview:_actionButton];
     
-    [NSObject KDI_registerDynamicTypeObjectsForTextStyles:@{_bodyTextStyle: @[_bodyLabel],
-                                                            _headlineTextStyle: @[_headlineLabel],
-                                                            _actionTextStyle: @[_actionButton.titleLabel]
-                                                            }];
+    self.image = nil;
+    self.headline = nil;
+    self.body = nil;
+    self.action = nil;
 }
 
 + (UIColor *)_defaultHeadlineColor; {
