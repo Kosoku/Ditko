@@ -16,6 +16,7 @@
 #import "NSAlert+KDIExtensions.h"
 #import "NSBundle+KDIPrivateExtensions.h"
 #import "NSWindow+KDIExtensions.h"
+#import "KDILocalizedStrings.h"
 
 #import <Stanley/NSError+KSTExtensions.h>
 
@@ -109,10 +110,10 @@ KDINSAlertOptionsKey const KDINSAlertOptionsKeyAccessoryView = @"KDINSAlertOptio
     
     if (cancelButtonTitle.length == 0) {
         if (otherButtonTitles.count == 0) {
-            cancelButtonTitle = NSLocalizedStringWithDefaultValue(@"ERROR_ALERT_DEFAULT_SINGLE_CANCEL_BUTTON_TITLE", nil, [NSBundle KDI_frameworkBundle], @"Ok", @"default error alert single cancel button title");
+            cancelButtonTitle = KDILocalizedStringErrorAlertDefaultSingleCancelButtonTitle();
         }
         else {
-            cancelButtonTitle = NSLocalizedStringWithDefaultValue(@"ERROR_ALERT_DEFAULT_MULTIPLE_CANCEL_BUTTON_TITLE", nil, [NSBundle KDI_frameworkBundle], @"Cancel", @"default error alert multiple cancel button title");
+            cancelButtonTitle = KDILocalizedStringErrorAlertDefaultMultipleCancelButtonTitle();
         }
     }
     
