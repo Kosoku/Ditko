@@ -1,1 +1,1 @@
-genstrings -o $SRCROOT/Ditko/en.lproj $SRCROOT/Ditko/*.m $SRCROOT/Ditko/iOS/*.m $SRCROOT/Ditko/macOS/*.m
+genstrings -o $SRCROOT/Ditko/en.lproj $SRCROOT/Ditko/*.m $SRCROOT/Ditko/iOS/*.m $SRCROOT/Ditko/macOS/*.m $SRCROOT/Ditko/Private/*.h
