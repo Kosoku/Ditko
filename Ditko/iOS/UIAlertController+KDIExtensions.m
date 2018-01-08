@@ -136,8 +136,6 @@ KDIUIAlertControllerOptionsActionKey const KDIUIAlertControllerOptionsActionKeyA
             }
         }];
         
-        cancelAction.accessibilityLabel = cancelButtonTitle;
-        
         [retval addAction:cancelAction];
         
         [otherButtonTitles enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
@@ -146,8 +144,6 @@ KDIUIAlertControllerOptionsActionKey const KDIUIAlertControllerOptionsActionKeyA
                     completion(retval,idx);
                 }
             }];
-            
-            action.accessibilityLabel = obj;
             
             [retval addAction:action];
         }];
@@ -176,8 +172,6 @@ KDIUIAlertControllerOptionsActionKey const KDIUIAlertControllerOptionsActionKeyA
                 }
             }];
             
-            action.accessibilityLabel = cancelActionTitle;
-            
             [retval addAction:action];
             
             if ([cancelActionDict[KDIUIAlertControllerOptionsActionKeyPreferred] boolValue]) {
@@ -199,7 +193,9 @@ KDIUIAlertControllerOptionsActionKey const KDIUIAlertControllerOptionsActionKeyA
                 }
             }];
             
-            action.accessibilityLabel = obj[KDIUIAlertControllerOptionsActionKeyAccessibilityLabel] ?: actionTitle;
+            if (obj[KDIUIAlertControllerOptionsActionKeyAccessibilityLabel] != nil) {
+                action.accessibilityLabel = obj[KDIUIAlertControllerOptionsActionKeyAccessibilityLabel];
+            }
             
             [retval addAction:action];
             
