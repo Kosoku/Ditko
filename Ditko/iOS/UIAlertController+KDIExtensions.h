@@ -105,6 +105,10 @@ UIKIT_EXTERN KDIUIAlertControllerOptionsActionKey const KDIUIAlertControllerOpti
  Use this key to signify that the UIAlertAction should be the preferredAction of the UIAlertController. For example, @{KDIUIAlertControllerOptionsActionKeyPreferred: @YES}. If a value is not provided, @NO is assumed.
  */
 UIKIT_EXTERN KDIUIAlertControllerOptionsActionKey const KDIUIAlertControllerOptionsActionKeyPreferred;
+/**
+ Use this key to specify the accessibility label for the UIAlertAction, if nil the title is used.
+ */
+UIKIT_EXTERN KDIUIAlertControllerOptionsActionKey const KDIUIAlertControllerOptionsActionKeyAccessibilityLabel;
 
 @interface UIAlertController (KDIExtensions)
 

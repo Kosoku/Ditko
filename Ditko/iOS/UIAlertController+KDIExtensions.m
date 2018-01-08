@@ -35,6 +35,7 @@ KDIUIAlertControllerOptionsKey const KDIUIAlertControllerOptionsKeyTextFieldConf
 KDIUIAlertControllerOptionsActionKey const KDIUIAlertControllerOptionsActionKeyStyle = @"KDIUIAlertControllerOptionsActionKeyStyle";
 KDIUIAlertControllerOptionsActionKey const KDIUIAlertControllerOptionsActionKeyTitle = @"KDIUIAlertControllerOptionsActionKeyTitle";
 KDIUIAlertControllerOptionsActionKey const KDIUIAlertControllerOptionsActionKeyPreferred = @"KDIUIAlertControllerOptionsActionKeyPreferred";
+KDIUIAlertControllerOptionsActionKey const KDIUIAlertControllerOptionsActionKeyAccessibilityLabel = @"KDIUIAlertControllerOptionsActionKeyAccessibilityLabel";
 
 @implementation UIAlertController (KDIExtensions)
 
@@ -129,18 +130,26 @@ KDIUIAlertControllerOptionsActionKey const KDIUIAlertControllerOptionsActionKeyP
     UIAlertController *retval = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:style];
     
     if (options[KDIUIAlertControllerOptionsKeyActions] == nil) {
-        [retval addAction:[UIAlertAction actionWithTitle:cancelButtonTitle style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:cancelButtonTitle style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
             if (completion != nil) {
                 completion(retval,KDIUIAlertControllerCancelButtonIndex);
             }
-        }]];
+        }];
+        
+        cancelAction.accessibilityLabel = cancelButtonTitle;
+        
+        [retval addAction:cancelAction];
         
         [otherButtonTitles enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-            [retval addAction:[UIAlertAction actionWithTitle:obj style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            UIAlertAction *action = [UIAlertAction actionWithTitle:obj style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
                 if (completion != nil) {
                     completion(retval,idx);
                 }
-            }]];
+            }];
+            
+            action.accessibilityLabel = obj;
+            
+            [retval addAction:action];
         }];
         
         if (options[KDIUIAlertControllerOptionsKeyPreferredButtonTitle] != nil) {
@@ -160,11 +169,14 @@ KDIUIAlertControllerOptionsActionKey const KDIUIAlertControllerOptionsActionKeyP
         
         if (cancelActionDictIndex != NSNotFound) {
             NSDictionary<KDIUIAlertControllerOptionsActionKey, id> *cancelActionDict = actionDicts[cancelActionDictIndex];
-            UIAlertAction *action = [UIAlertAction actionWithTitle:cancelActionDict[KDIUIAlertControllerOptionsActionKeyTitle] style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+            NSString *cancelActionTitle = cancelActionDict[KDIUIAlertControllerOptionsActionKeyTitle];
+            UIAlertAction *action = [UIAlertAction actionWithTitle:cancelActionTitle style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
                 if (completion != nil) {
                     completion(retval,KDIUIAlertControllerCancelButtonIndex);
                 }
             }];
+            
+            action.accessibilityLabel = cancelActionTitle;
             
             [retval addAction:action];
             
@@ -180,11 +192,14 @@ KDIUIAlertControllerOptionsActionKey const KDIUIAlertControllerOptionsActionKeyP
         }
         
         [actionDicts enumerateObjectsUsingBlock:^(NSDictionary<KDIUIAlertControllerOptionsActionKey,id> * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-            UIAlertAction *action = [UIAlertAction actionWithTitle:obj[KDIUIAlertControllerOptionsActionKeyTitle] style:[obj[KDIUIAlertControllerOptionsActionKeyStyle] integerValue] handler:^(UIAlertAction * _Nonnull action) {
+            NSString *actionTitle = obj[KDIUIAlertControllerOptionsActionKeyTitle];
+            UIAlertAction *action = [UIAlertAction actionWithTitle:actionTitle style:[obj[KDIUIAlertControllerOptionsActionKeyStyle] integerValue] handler:^(UIAlertAction * _Nonnull action) {
                 if (completion != nil) {
                     completion(retval,idx);
                 }
             }];
+            
+            action.accessibilityLabel = obj[KDIUIAlertControllerOptionsActionKeyAccessibilityLabel] ?: actionTitle;
             
             [retval addAction:action];
             
