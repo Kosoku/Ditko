@@ -118,8 +118,10 @@
 - (void)setBadge:(NSString *)badge {
     _badge = badge;
     
+#if (TARGET_OS_IPHONE)
     self.isAccessibilityElement = _badge.length > 0;
     self.accessibilityLabel = _badge;
+#endif
     
 #if (TARGET_OS_IPHONE)
     [self setNeedsDisplay];
@@ -199,7 +201,9 @@
 }
 #pragma mark ** Private Methods **
 - (void)_KDIBadgeViewInit; {
+#if (TARGET_OS_IPHONE)
     self.accessibilityTraits = UIAccessibilityTraitStaticText;
+#endif
     
     _badgeForegroundColor = [self.class _defaultBadgeForegroundColor];
     _badgeBackgroundColor = [self.class _defaultBadgeBackgroundColor];
