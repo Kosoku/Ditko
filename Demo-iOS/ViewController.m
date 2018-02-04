@@ -37,10 +37,6 @@ static NSArray<NSArray<NSString *> *> *kPickerViewButtonComponentsAndRows;
     }
 }
 
-- (NSString *)title {
-    return @"Controls";
-}
-
 - (instancetype)init {
     if (!(self = [super init]))
         return nil;
@@ -346,6 +342,13 @@ static NSArray<NSArray<NSString *> *> *kPickerViewButtonComponentsAndRows;
                                                             UIFontTextStyleBody: @[label]}];
     
     [self.navigationItem setBackBarButtonItem:[UIBarButtonItem iosd_backBarButtonItemWithViewController:self]];
+    
+    KDINavigationBarTitleView *titleView = [[KDINavigationBarTitleView alloc] initWithFrame:CGRectZero];
+    
+    titleView.title = @"Controls";
+    titleView.subtitle = @"Triple tap to change the tint color";
+    
+    self.navigationItem.titleView = titleView;
     
     UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:nil action:NULL];
     
