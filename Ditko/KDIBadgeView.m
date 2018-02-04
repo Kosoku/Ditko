@@ -120,8 +120,11 @@
     
 #if (TARGET_OS_IPHONE)
     self.isAccessibilityElement = _badge.length > 0;
-    self.accessibilityLabel = _badge;
+#else
+    self.accessibilityElement = _badge.length > 0;
 #endif
+    
+    self.accessibilityLabel = _badge;
     
 #if (TARGET_OS_IPHONE)
     [self setNeedsDisplay];
