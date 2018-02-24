@@ -49,10 +49,10 @@
     
     [popoverPresentationController setPermittedArrowDirections:permittedArrowDirections];
     
-    if (barButtonItem != nil) {
+    if ([barButtonItem isKindOfClass:UIBarButtonItem.class]) {
         [popoverPresentationController setBarButtonItem:barButtonItem];
     }
-    else if (sourceView != nil) {
+    else if ([sourceView isKindOfClass:UIView.class]) {
         [popoverPresentationController setSourceView:sourceView];
         [popoverPresentationController setSourceRect:CGRectIsEmpty(sourceRect) ? sourceView.bounds : sourceRect];
     }
