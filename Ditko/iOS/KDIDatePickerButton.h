@@ -76,6 +76,11 @@ typedef NSString* _Nullable (^KDIDatePickerButtonDateTitleBlock)(__kindof KDIDat
 @property (copy,nonatomic,nullable) KDIDatePickerButtonDateTitleBlock dateTitleBlock;
 
 /**
+ Reloads the title from the date pickers current date.
+ */
+- (void)reloadTitleFromDate;
+
+/**
  Get whether the receiver is presenting the date picker. This is updated whenever the user taps on the receiver or presentDatePicker or dismissDatePicker methods are called.
  */
 @property (readonly,nonatomic,getter=isPresentingDatePicker) BOOL presentingDatePicker;

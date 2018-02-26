@@ -91,6 +91,10 @@
     [NSNotificationCenter.defaultCenter postNotificationName:KDIUIResponderNotificationDidResignFirstResponder object:self];
 }
 
+- (void)reloadTitleFromDate; {
+    [self _reloadTitleFromDatePickerDate];
+}
+
 - (void)presentDatePicker {
     if (self.canBecomeFirstResponder) {
         [self becomeFirstResponder];
