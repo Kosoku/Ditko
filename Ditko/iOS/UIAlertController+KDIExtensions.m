@@ -37,6 +37,10 @@ KDIUIAlertControllerOptionsActionKey const KDIUIAlertControllerOptionsActionKeyT
 KDIUIAlertControllerOptionsActionKey const KDIUIAlertControllerOptionsActionKeyPreferred = @"KDIUIAlertControllerOptionsActionKeyPreferred";
 KDIUIAlertControllerOptionsActionKey const KDIUIAlertControllerOptionsActionKeyAccessibilityLabel = @"KDIUIAlertControllerOptionsActionKeyAccessibilityLabel";
 
+static NSString* KDIUIAlertControllerAccessibilityLabelFromTitle(NSString *title) {
+    return title;
+}
+
 @implementation UIAlertController (KDIExtensions)
 
 + (void)KDI_presentAlertControllerWithError:(nullable NSError *)error; {
@@ -136,6 +140,8 @@ KDIUIAlertControllerOptionsActionKey const KDIUIAlertControllerOptionsActionKeyA
             }
         }];
         
+        cancelAction.accessibilityLabel = KDIUIAlertControllerAccessibilityLabelFromTitle(cancelButtonTitle);
+        
         [retval addAction:cancelAction];
         
         [otherButtonTitles enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
@@ -144,6 +150,8 @@ KDIUIAlertControllerOptionsActionKey const KDIUIAlertControllerOptionsActionKeyA
                     completion(retval,idx);
                 }
             }];
+            
+            action.accessibilityLabel = KDIUIAlertControllerAccessibilityLabelFromTitle(obj);
             
             [retval addAction:action];
         }];
@@ -172,6 +180,8 @@ KDIUIAlertControllerOptionsActionKey const KDIUIAlertControllerOptionsActionKeyA
                 }
             }];
             
+            action.accessibilityLabel = KDIUIAlertControllerAccessibilityLabelFromTitle(cancelActionTitle);
+            
             [retval addAction:action];
             
             if ([cancelActionDict[KDIUIAlertControllerOptionsActionKeyPreferred] boolValue]) {
@@ -192,6 +202,8 @@ KDIUIAlertControllerOptionsActionKey const KDIUIAlertControllerOptionsActionKeyA
                     completion(retval,idx);
                 }
             }];
+            
+            action.accessibilityLabel = KDIUIAlertControllerAccessibilityLabelFromTitle(actionTitle);
             
             if (obj[KDIUIAlertControllerOptionsActionKeyAccessibilityLabel] != nil) {
                 action.accessibilityLabel = obj[KDIUIAlertControllerOptionsActionKeyAccessibilityLabel];
