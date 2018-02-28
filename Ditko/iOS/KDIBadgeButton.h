@@ -16,6 +16,28 @@
 #import <UIKit/UIKit.h>
 
 /**
+ Options that control which subviews are exposed to the accessibility client.
+ */
+typedef NS_OPTIONS(NSUInteger, KDIBadgeButtonAccessibilityOptions) {
+    /**
+     No subviews are exposed to the accessibility client.
+     */
+    KDIBadgeButtonAccessibilityOptionsNone = 0,
+    /**
+     The button is exposed to the accessibility client.
+     */
+    KDIBadgeButtonAccessibilityOptionsElementButton = 1 << 0,
+    /**
+     The badge view is exposed to the accessibility client.
+     */
+    KDIBadgeButtonAccessibilityOptionsElementBadgeView = 1 << 1,
+    /**
+     Button and badge view are exposed to the accessibility client.
+     */
+    KDIBadgeButtonAccessibilityOptionsAll = KDIBadgeButtonAccessibilityOptionsElementButton|KDIBadgeButtonAccessibilityOptionsElementBadgeView
+};
+
+/**
  Enum describing the possible values for the badge position. They affect how the badge view is laid out.
  */
 typedef NS_ENUM(NSInteger, KDIBadgeButtonBadgePosition) {
@@ -39,6 +61,15 @@ typedef NS_ENUM(NSInteger, KDIBadgeButtonBadgePosition) {
  KDIBadgeButton is a UIView subclass that manages an instance of KDIButton and KDIBadgeView as subviews, allowing badging similar to system buttons (e.g. UITabBarItem).
  */
 @interface KDIBadgeButton : UIView
+
+/**
+ Set and get the accessibility options for the receiver.
+ 
+ The default is KDIBadgeButtonAccessibilityOptionsAll.
+ 
+ @see KDIBadgeButtonAccessibilityOptions
+ */
+@property (assign,nonatomic) KDIBadgeButtonAccessibilityOptions accessibilityOptions;
 
 /**
  Set and get the badge position. This affects how badgePositionOffset and badgeSizeOffset are interpreted when laying out the badge view.

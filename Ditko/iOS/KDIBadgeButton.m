@@ -83,6 +83,19 @@ static void *kKDIBadgeButtonObservingContext = &kKDIBadgeButtonObservingContext;
     
     return retval;
 }
+#pragma mark -
+- (NSArray *)accessibilityElements {
+    NSMutableArray *retval = [[NSMutableArray alloc] init];
+    
+    if (self.accessibilityOptions & KDIBadgeButtonAccessibilityOptionsElementButton) {
+        [retval addObject:self.button];
+    }
+    if (self.accessibilityOptions & KDIBadgeButtonAccessibilityOptionsElementBadgeView) {
+        [retval addObject:self.badgeView];
+    }
+    
+    return [retval copy];
+}
 #pragma mark KVO
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context {
     if (context == kKDIBadgeButtonObservingContext) {
@@ -132,6 +145,7 @@ static void *kKDIBadgeButtonObservingContext = &kKDIBadgeButtonObservingContext;
 }
 #pragma mark *** Private Methods ***
 - (void)_KDIBadgeButtonInit; {
+    _accessibilityOptions = KDIBadgeButtonAccessibilityOptionsAll;
     _badgePosition = KDIBadgeButtonBadgePositionRelativeToBounds;
     _badgePositionOffset = UIOffsetMake(1.0, 0.0);
     _badgeSizeOffset = UIOffsetMake(-0.25, -0.25);
