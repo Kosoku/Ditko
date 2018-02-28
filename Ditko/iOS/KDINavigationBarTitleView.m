@@ -42,6 +42,7 @@
     _titleLabel.translatesAutoresizingMaskIntoConstraints = NO;
     _titleLabel.textColor = _titleTextColor;
     _titleLabel.font = _titleFont;
+    _titleLabel.accessibilityTraits = _titleLabel.accessibilityTraits|UIAccessibilityTraitHeader;
     [_stackView addArrangedSubview:_titleLabel];
     
     _subtitleLabel = [[UILabel alloc] initWithFrame:CGRectZero];
