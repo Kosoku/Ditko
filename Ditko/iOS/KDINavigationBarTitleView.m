@@ -48,6 +48,7 @@
     _subtitleLabel.translatesAutoresizingMaskIntoConstraints = NO;
     _subtitleLabel.textColor = _subtitleTextColor;
     _subtitleLabel.font = _subtitleFont;
+    _subtitleLabel.isAccessibilityElement = NO;
     [_stackView addArrangedSubview:_subtitleLabel];
     
     [NSLayoutConstraint activateConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[view]-|" options:0 metrics:nil views:@{@"view": _stackView}]];
