@@ -63,6 +63,7 @@
 - (void)setTitle:(NSString *)title {
     [self.titleLabel setText:title];
     [self.titleLabel setHidden:title.length == 0];
+    [self.titleLabel setIsAccessibilityElement:!self.titleLabel.isHidden];
 }
 @dynamic subtitle;
 - (NSString *)subtitle {
@@ -71,6 +72,7 @@
 - (void)setSubtitle:(NSString *)subtitle {
     [self.subtitleLabel setText:subtitle];
     [self.subtitleLabel setHidden:subtitle.length == 0];
+    [self.subtitleLabel setIsAccessibilityElement:!self.subtitleLabel.isHidden];
 }
 
 - (void)setTitleFont:(UIFont *)titleFont {
