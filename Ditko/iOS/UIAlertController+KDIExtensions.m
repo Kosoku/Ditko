@@ -37,10 +37,6 @@ KDIUIAlertControllerOptionsActionKey const KDIUIAlertControllerOptionsActionKeyT
 KDIUIAlertControllerOptionsActionKey const KDIUIAlertControllerOptionsActionKeyPreferred = @"KDIUIAlertControllerOptionsActionKeyPreferred";
 KDIUIAlertControllerOptionsActionKey const KDIUIAlertControllerOptionsActionKeyAccessibilityLabel = @"KDIUIAlertControllerOptionsActionKeyAccessibilityLabel";
 
-static NSString* KDIUIAlertControllerAccessibilityLabelFromTitle(NSString *title) {
-    return title;
-}
-
 @implementation UIAlertController (KDIExtensions)
 
 + (void)KDI_presentAlertControllerWithError:(nullable NSError *)error; {
@@ -140,8 +136,6 @@ static NSString* KDIUIAlertControllerAccessibilityLabelFromTitle(NSString *title
             }
         }];
         
-        cancelAction.accessibilityLabel = KDIUIAlertControllerAccessibilityLabelFromTitle(cancelButtonTitle);
-        
         [retval addAction:cancelAction];
         
         [otherButtonTitles enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
@@ -150,8 +144,6 @@ static NSString* KDIUIAlertControllerAccessibilityLabelFromTitle(NSString *title
                     completion(retval,idx);
                 }
             }];
-            
-            action.accessibilityLabel = KDIUIAlertControllerAccessibilityLabelFromTitle(obj);
             
             [retval addAction:action];
         }];
@@ -180,8 +172,6 @@ static NSString* KDIUIAlertControllerAccessibilityLabelFromTitle(NSString *title
                 }
             }];
             
-            action.accessibilityLabel = KDIUIAlertControllerAccessibilityLabelFromTitle(cancelActionTitle);
-            
             [retval addAction:action];
             
             if ([cancelActionDict[KDIUIAlertControllerOptionsActionKeyPreferred] boolValue]) {
@@ -203,8 +193,6 @@ static NSString* KDIUIAlertControllerAccessibilityLabelFromTitle(NSString *title
                 }
             }];
             
-            action.accessibilityLabel = KDIUIAlertControllerAccessibilityLabelFromTitle(actionTitle);
-            
             if (obj[KDIUIAlertControllerOptionsActionKeyAccessibilityLabel] != nil) {
                 action.accessibilityLabel = obj[KDIUIAlertControllerOptionsActionKeyAccessibilityLabel];
             }
@@ -225,6 +213,14 @@ static NSString* KDIUIAlertControllerAccessibilityLabelFromTitle(NSString *title
     
     if (configure != nil) {
         configure(retval);
+    }
+    
+    if (options[KDIUIAlertControllerOptionsKeyActions] == nil) {
+        for (UIAlertAction *action in retval.actions) {
+            if (action.accessibilityLabel == nil) {
+                action.accessibilityLabel = action.title;
+            }
+        }
     }
     
     return retval;
