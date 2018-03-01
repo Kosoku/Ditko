@@ -56,6 +56,13 @@
         [popoverPresentationController setSourceView:sourceView];
         [popoverPresentationController setSourceRect:CGRectIsEmpty(sourceRect) ? sourceView.bounds : sourceRect];
     }
+    else {
+        sourceView = [UIViewController KDI_viewControllerForPresenting].view;
+        sourceRect = sourceView.bounds;
+        
+        [popoverPresentationController setSourceView:sourceView];
+        [popoverPresentationController setSourceRect:sourceRect];
+    }
     
     [self presentViewController:viewController animated:animated completion:completion];
 }
