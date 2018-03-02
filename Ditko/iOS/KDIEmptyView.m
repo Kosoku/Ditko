@@ -117,12 +117,21 @@
 - (void)setImage:(UIImage *)image {
     [self.imageView setImage:image];
     [self.imageView setHidden:image == nil];
-    [self.imageView setIsAccessibilityElement:!self.imageView.isHidden];
+    [self.imageView setIsAccessibilityElement:!self.imageView.isHidden && self.imageAccessibilityLabel.length > 0];
 }
 - (void)setImageColor:(UIColor *)imageColor {
     _imageColor = imageColor;
     
     [self.imageView setTintColor:_imageColor];
+}
+@dynamic imageAccessibilityLabel;
+- (NSString *)imageAccessibilityLabel {
+    return self.imageView.accessibilityLabel;
+}
+- (void)setImageAccessibilityLabel:(NSString *)imageAccessibilityLabel {
+    self.imageView.accessibilityLabel = imageAccessibilityLabel;
+    
+    [self.imageView setIsAccessibilityElement:!self.imageView.isHidden && self.imageAccessibilityLabel.length > 0];
 }
 @dynamic headline;
 - (NSString *)headline {

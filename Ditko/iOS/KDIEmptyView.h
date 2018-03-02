@@ -85,6 +85,12 @@ typedef void(^KDIEmptyViewActionBlock)(__kindof KDIEmptyView *emptyView);
  */
 @property (strong,nonatomic,nullable) UIColor *imageColor UI_APPEARANCE_SELECTOR;
 /**
+ Set and get the accessibility label used for the image. The UIImageView containing the image is only exposed to the accessibility client if this value is non-nil.
+ 
+ The default is nil.
+ */
+@property (copy,nonatomic,nullable) NSString *imageAccessibilityLabel;
+/**
  Set and get the headline of the receiver.
  */
 @property (copy,nonatomic,nullable) NSString *headline;
