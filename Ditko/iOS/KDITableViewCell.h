@@ -29,6 +29,10 @@ NS_ASSUME_NONNULL_BEGIN
 @property (strong,nonatomic,null_resettable) UIColor *subtitleColor;
 @property (strong,nonatomic,null_resettable) UIColor *infoColor;
 
+@property (copy,nonatomic,null_resettable) UIFontTextStyle titleTextStyle;
+@property (copy,nonatomic,null_resettable) UIFontTextStyle subtitleTextStyle;
+@property (copy,nonatomic,null_resettable) UIFontTextStyle infoTextStyle;
+
 @property (assign,nonatomic) CGFloat horizontalMargin;
 @property (assign,nonatomic) CGFloat verticalMargin;
 

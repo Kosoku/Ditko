@@ -29,10 +29,13 @@
 + (UIColor *)_defaultTitleColor;
 + (UIColor *)_defaultSubtitleColor;
 + (UIColor *)_defaultInfoColor;
++ (UIFontTextStyle)_defaultTitleTextStyle;
++ (UIFontTextStyle)_defaultSubtitleTextStyle;
++ (UIFontTextStyle)_defaultInfoTextStyle;
 @end
 
 @implementation KDITableViewCell
-
+#pragma mark *** Subclass Overrides ***
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     if (!(self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]))
         return nil;
@@ -92,7 +95,7 @@
     
     return self;
 }
-
+#pragma mark -
 + (BOOL)requiresConstraintBasedLayout {
     return YES;
 }
@@ -102,27 +105,24 @@
     [temp addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-left-[view]-right-|" options:0 metrics:@{@"left": @(self.layoutMargins.left), @"right": @(self.accessoryType == UITableViewCellAccessoryNone ? self.layoutMargins.right : 0.0)} views:@{@"view": self.stackView}]];
     [temp addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-top-[view]-bottom-|" options:0 metrics:@{@"top": @(self.layoutMargins.top), @"bottom": @(self.layoutMargins.bottom)} views:@{@"view": self.stackView}]];
     
-    [temp addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[view]|" options:0 metrics:nil views:@{@"view": self.titleLabel}]];
-    
-    [temp addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[view]|" options:0 metrics:nil views:@{@"view": self.subtitleLabel}]];
-    
     self.KDI_customConstraints = temp;
     
     [super updateConstraints];
 }
-
+#pragma mark -
 - (void)layoutSubviews {
     [super layoutSubviews];
     
     self.separatorInset = UIEdgeInsetsMake(0, self.iconImageView.isHidden ? self.layoutMargins.left : CGRectGetMinX([self convertRect:self.titleLabel.bounds fromView:self.titleLabel]), 0, 0);
 }
-
+#pragma mark -
 - (void)layoutMarginsDidChange {
     [super layoutMarginsDidChange];
     
     [self setNeedsUpdateConstraints];
 }
-
+#pragma mark *** Public Methods ***
+#pragma mark Properties
 @dynamic icon;
 - (UIImage *)icon {
     return self.iconImageView.image;
@@ -155,7 +155,7 @@
     self.infoLabel.text = info;
     self.infoLabel.hidden = self.infoLabel.text == 0;
 }
-
+#pragma mark -
 - (void)setIconColor:(UIColor *)iconColor {
     _iconColor = iconColor;
     
@@ -176,7 +176,23 @@
     
     self.infoLabel.textColor = _infoColor;
 }
-
+#pragma mark -
+- (void)setTitleTextStyle:(UIFontTextStyle)titleTextStyle {
+    _titleTextStyle = titleTextStyle ?: [self.class _defaultTitleTextStyle];
+    
+    self.titleLabel.KDI_dynamicTypeTextStyle = _titleTextStyle;
+}
+- (void)setSubtitleTextStyle:(UIFontTextStyle)subtitleTextStyle {
+    _subtitleTextStyle = subtitleTextStyle ?: [self.class _defaultSubtitleTextStyle];
+    
+    self.subtitleLabel.KDI_dynamicTypeTextStyle = _subtitleTextStyle;
+}
+- (void)setInfoTextStyle:(UIFontTextStyle)infoTextStyle {
+    _infoTextStyle = infoTextStyle ?: [self.class _defaultInfoTextStyle];
+    
+    self.infoTextStyle.KDI_dynamicTypeTextStyle = _infoTextStyle;
+}
+#pragma mark -
 @dynamic horizontalMargin;
 - (CGFloat)horizontalMargin {
     return self.stackView.spacing;
@@ -191,7 +207,7 @@
 - (void)setVerticalMargin:(CGFloat)verticalMargin {
     self.titleSubtitleStackView.spacing = verticalMargin;
 }
-
+#pragma mark *** Private Methods ***
 + (UIColor *)_defaultTitleColor; {
     return UIColor.blackColor;
 }
@@ -200,6 +216,15 @@
 }
 + (UIColor *)_defaultInfoColor; {
     return UIColor.lightGrayColor;
+}
++ (UIFontTextStyle)_defaultTitleTextStyle; {
+    return UIFontTextStyleBody;
+}
++ (UIFontTextStyle)_defaultSubtitleTextStyle; {
+    return UIFontTextStyleFootnote;
+}
++ (UIFontTextStyle)_defaultInfoTextStyle; {
+    return UIFontTextStyleFootnote;
 }
 
 @end
