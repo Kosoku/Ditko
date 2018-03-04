@@ -121,7 +121,9 @@
 - (void)layoutSubviews {
     [super layoutSubviews];
     
+#if (TARGET_OS_IOS)
     self.separatorInset = UIEdgeInsetsMake(0, self.iconImageView.isHidden ? self.layoutMargins.left : CGRectGetMinX([self convertRect:self.titleLabel.bounds fromView:self.titleLabel]), 0, 0);
+#endif
 }
 #pragma mark -
 - (void)layoutMarginsDidChange {
