@@ -19,22 +19,26 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface KDITableViewCell : UITableViewCell
 
+@property (assign,nonatomic) BOOL showsSelectionUsingAccessoryType;
+
 @property (strong,nonatomic,nullable) UIImage *icon;
 @property (copy,nonatomic,nullable) NSString *title;
 @property (copy,nonatomic,nullable) NSString *subtitle;
 @property (copy,nonatomic,nullable) NSString *info;
 
-@property (strong,nonatomic,nullable) UIColor *iconColor;
-@property (strong,nonatomic,null_resettable) UIColor *titleColor;
-@property (strong,nonatomic,null_resettable) UIColor *subtitleColor;
-@property (strong,nonatomic,null_resettable) UIColor *infoColor;
+@property (strong,nonatomic,nullable) UIColor *iconColor UI_APPEARANCE_SELECTOR;
+@property (strong,nonatomic,null_resettable) UIColor *titleColor UI_APPEARANCE_SELECTOR;
+@property (strong,nonatomic,null_resettable) UIColor *subtitleColor UI_APPEARANCE_SELECTOR;
+@property (strong,nonatomic,null_resettable) UIColor *infoColor UI_APPEARANCE_SELECTOR;
 
-@property (copy,nonatomic,null_resettable) UIFontTextStyle titleTextStyle;
-@property (copy,nonatomic,null_resettable) UIFontTextStyle subtitleTextStyle;
-@property (copy,nonatomic,null_resettable) UIFontTextStyle infoTextStyle;
+@property (copy,nonatomic,null_resettable) UIFontTextStyle titleTextStyle UI_APPEARANCE_SELECTOR;
+@property (copy,nonatomic,null_resettable) UIFontTextStyle subtitleTextStyle UI_APPEARANCE_SELECTOR;
+@property (copy,nonatomic,null_resettable) UIFontTextStyle infoTextStyle UI_APPEARANCE_SELECTOR;
 
-@property (assign,nonatomic) CGFloat horizontalMargin;
-@property (assign,nonatomic) CGFloat verticalMargin;
+@property (assign,nonatomic) CGFloat horizontalMargin UI_APPEARANCE_SELECTOR;
+@property (assign,nonatomic) CGFloat verticalMargin UI_APPEARANCE_SELECTOR;
+
+@property (copy,nonatomic,nullable) NSString *iconAccessibilityLabel;
 
 @end
 

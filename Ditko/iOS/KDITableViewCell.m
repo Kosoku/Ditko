@@ -26,6 +26,9 @@
 @property (strong,nonatomic) UILabel *subtitleLabel;
 @property (strong,nonatomic) UILabel *infoLabel;
 
+- (void)_updateAccessoryTypeForSelection;
+- (void)_updateIconImageViewAccessibility;
+
 + (UIColor *)_defaultTitleColor;
 + (UIColor *)_defaultSubtitleColor;
 + (UIColor *)_defaultInfoColor;
@@ -43,6 +46,9 @@
     _titleColor = [self.class _defaultTitleColor];
     _subtitleColor = [self.class _defaultSubtitleColor];
     _infoColor = [self.class _defaultInfoColor];
+    _titleTextStyle = [self.class _defaultTitleTextStyle];
+    _subtitleTextStyle = [self.class _defaultSubtitleTextStyle];
+    _infoTextStyle = [self.class _defaultInfoTextStyle];
     
     _stackView = [[UIStackView alloc] initWithFrame:CGRectZero];
     _stackView.translatesAutoresizingMaskIntoConstraints = NO;
@@ -69,7 +75,7 @@
     _titleLabel.translatesAutoresizingMaskIntoConstraints = NO;
     _titleLabel.numberOfLines = 0;
     _titleLabel.textColor = _titleColor;
-    _titleLabel.KDI_dynamicTypeTextStyle = UIFontTextStyleBody;
+    _titleLabel.KDI_dynamicTypeTextStyle = _titleTextStyle;
     [_titleLabel setContentCompressionResistancePriority:UILayoutPriorityDefaultHigh forAxis:UILayoutConstraintAxisHorizontal];
     [_titleLabel setContentHuggingPriority:UILayoutPriorityDefaultLow forAxis:UILayoutConstraintAxisHorizontal];
     [_titleSubtitleStackView addArrangedSubview:_titleLabel];
@@ -79,7 +85,7 @@
     _subtitleLabel.hidden = YES;
     _subtitleLabel.numberOfLines = 0;
     _subtitleLabel.textColor = _subtitleColor;
-    _subtitleLabel.KDI_dynamicTypeTextStyle = UIFontTextStyleFootnote;
+    _subtitleLabel.KDI_dynamicTypeTextStyle = _subtitleTextStyle;
     [_subtitleLabel setContentCompressionResistancePriority:UILayoutPriorityDefaultHigh forAxis:UILayoutConstraintAxisHorizontal];
     [_subtitleLabel setContentHuggingPriority:UILayoutPriorityDefaultLow forAxis:UILayoutConstraintAxisHorizontal];
     [_titleSubtitleStackView addArrangedSubview:_subtitleLabel];
@@ -88,7 +94,7 @@
     _infoLabel.translatesAutoresizingMaskIntoConstraints = NO;
     _infoLabel.hidden = YES;
     _infoLabel.textColor = _infoColor;
-    _infoLabel.KDI_dynamicTypeTextStyle = UIFontTextStyleFootnote;
+    _infoLabel.KDI_dynamicTypeTextStyle = _infoTextStyle;
     [_infoLabel setContentCompressionResistancePriority:UILayoutPriorityRequired forAxis:UILayoutConstraintAxisHorizontal];
     [_infoLabel setContentHuggingPriority:UILayoutPriorityRequired forAxis:UILayoutConstraintAxisHorizontal];
     [_stackView addArrangedSubview:_infoLabel];
@@ -101,6 +107,8 @@
 }
 - (void)updateConstraints {
     NSMutableArray *temp = [[NSMutableArray alloc] init];
+    
+    [temp addObject:[NSLayoutConstraint constraintWithItem:self.contentView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationGreaterThanOrEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:44.0]];
     
     [temp addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-left-[view]-right-|" options:0 metrics:@{@"left": @(self.layoutMargins.left), @"right": @(self.accessoryType == UITableViewCellAccessoryNone ? self.layoutMargins.right : 0.0)} views:@{@"view": self.stackView}]];
     [temp addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-top-[view]-bottom-|" options:0 metrics:@{@"top": @(self.layoutMargins.top), @"bottom": @(self.layoutMargins.bottom)} views:@{@"view": self.stackView}]];
@@ -121,8 +129,25 @@
     
     [self setNeedsUpdateConstraints];
 }
+#pragma mark -
+- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
+    [super setSelected:selected animated:animated];
+    
+    [self _updateAccessoryTypeForSelection];
+}
+- (void)setAccessoryType:(UITableViewCellAccessoryType)accessoryType {
+    [super setAccessoryType:accessoryType];
+    
+    [self setNeedsUpdateConstraints];
+}
 #pragma mark *** Public Methods ***
 #pragma mark Properties
+- (void)setShowsSelectionUsingAccessoryType:(BOOL)showsSelectionUsingAccessoryType {
+    _showsSelectionUsingAccessoryType = showsSelectionUsingAccessoryType;
+    
+    [self _updateAccessoryTypeForSelection];
+}
+#pragma mark -
 @dynamic icon;
 - (UIImage *)icon {
     return self.iconImageView.image;
@@ -130,6 +155,8 @@
 - (void)setIcon:(UIImage *)icon {
     self.iconImageView.image = icon;
     self.iconImageView.hidden = self.iconImageView.image == nil;
+    
+    [self _updateIconImageViewAccessibility];
 }
 @dynamic title;
 - (NSString *)title {
@@ -138,6 +165,7 @@
 - (void)setTitle:(NSString *)title {
     self.titleLabel.text = title;
     self.titleLabel.hidden = self.titleLabel.text.length == 0;
+    self.titleLabel.isAccessibilityElement = !self.titleLabel.isHidden;
 }
 @dynamic subtitle;
 - (NSString *)subtitle {
@@ -146,6 +174,7 @@
 - (void)setSubtitle:(NSString *)subtitle {
     self.subtitleLabel.text = subtitle;
     self.subtitleLabel.hidden = self.subtitleLabel.text.length == 0;
+    self.subtitleLabel.isAccessibilityElement = !self.subtitleLabel.isHidden;
 }
 @dynamic info;
 - (NSString *)info {
@@ -154,6 +183,7 @@
 - (void)setInfo:(NSString *)info {
     self.infoLabel.text = info;
     self.infoLabel.hidden = self.infoLabel.text == 0;
+    self.infoLabel.isAccessibilityElement = !self.infoLabel.isHidden;
 }
 #pragma mark -
 - (void)setIconColor:(UIColor *)iconColor {
@@ -207,7 +237,27 @@
 - (void)setVerticalMargin:(CGFloat)verticalMargin {
     self.titleSubtitleStackView.spacing = verticalMargin;
 }
+#pragma mark -
+@dynamic iconAccessibilityLabel;
+- (NSString *)iconAccessibilityLabel {
+    return self.imageView.accessibilityLabel;
+}
+- (void)setIconAccessibilityLabel:(NSString *)iconAccessibilityLabel {
+    self.imageView.accessibilityLabel = iconAccessibilityLabel;
+    
+    [self _updateIconImageViewAccessibility];
+}
 #pragma mark *** Private Methods ***
+- (void)_updateAccessoryTypeForSelection; {
+    if (self.showsSelectionUsingAccessoryType) {
+        self.selectionStyle = UITableViewCellSelectionStyleNone;
+        self.accessoryType = self.isSelected ? UITableViewCellAccessoryCheckmark : UITableViewCellAccessoryNone;
+    }
+}
+- (void)_updateIconImageViewAccessibility; {
+    self.iconImageView.isAccessibilityElement = self.iconImageView.image != nil && self.iconAccessibilityLabel != nil;
+}
+#pragma mark -
 + (UIColor *)_defaultTitleColor; {
     return UIColor.blackColor;
 }

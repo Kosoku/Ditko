@@ -24,6 +24,13 @@
 
 @implementation TableViewController
 
++ (void)load {
+    [KDITableViewCell.appearance setIconColor:KDIColorRandomRGB()];
+    [KDITableViewCell.appearance setTitleColor:KDIColorRandomRGB()];
+    [KDITableViewCell.appearance setSubtitleColor:KDIColorRandomRGB()];
+    [KDITableViewCell.appearance setInfoColor:KDIColorRandomRGB()];
+}
+
 - (NSString *)title {
     return @"Table View";
 }
@@ -40,6 +47,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.tableView.allowsMultipleSelection = YES;
     self.tableView.estimatedRowHeight = 44.0;
     [self.tableView registerClass:KDITableViewCell.class forCellReuseIdentifier:NSStringFromClass(KDITableViewCell.class)];
 }
@@ -50,7 +58,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     KDITableViewCell *retval = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass(KDITableViewCell.class) forIndexPath:indexPath];
     
-    retval.iconColor = KDIColorRandomRGB();
+    retval.showsSelectionUsingAccessoryType = YES;
     
     retval.icon = [UIImage KSO_fontAwesomeImageWithIcon:arc4random_uniform((uint32_t)KSO_FONT_AWESOME_ICON_TOTAL_ICONS) size:CGSizeMake(25.0, 25.0)].KDI_templateImage;
     retval.title = @"This is the title";
