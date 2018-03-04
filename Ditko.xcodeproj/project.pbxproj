@@ -15,6 +15,11 @@
 		0705AFDC1ECE28F200BACC4E /* UIImage-NSImage+KDIExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0705AFD61ECE28F200BACC4E /* UIImage-NSImage+KDIExtensions.m */; };
 		0705AFDF1ECE29A000BACC4E /* NSImage+KDIExtensions.h in Headers */ = {isa = PBXBuildFile; fileRef = 0705AFDD1ECE29A000BACC4E /* NSImage+KDIExtensions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0705AFE11ECE2A2D00BACC4E /* UIImage-NSImage+KDIExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0705AFD61ECE28F200BACC4E /* UIImage-NSImage+KDIExtensions.m */; };
+		070F991A204BD834001CFEFE /* KDITableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 070F9918204BD834001CFEFE /* KDITableViewCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		070F991B204BD834001CFEFE /* KDITableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 070F9918204BD834001CFEFE /* KDITableViewCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		070F991C204BD834001CFEFE /* KDITableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 070F9919204BD834001CFEFE /* KDITableViewCell.m */; };
+		070F991D204BD834001CFEFE /* KDITableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 070F9919204BD834001CFEFE /* KDITableViewCell.m */; };
+		070F9921204BDF55001CFEFE /* TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 070F9920204BDF55001CFEFE /* TableViewController.m */; };
 		0711B1831F817B3600DCE131 /* KDIUIResponder.m in Sources */ = {isa = PBXBuildFile; fileRef = 0711B1821F817B3600DCE131 /* KDIUIResponder.m */; };
 		0711B1841F817B3600DCE131 /* KDIUIResponder.m in Sources */ = {isa = PBXBuildFile; fileRef = 0711B1821F817B3600DCE131 /* KDIUIResponder.m */; };
 		0711B1871F817CFC00DCE131 /* KSOFontAwesomeExtensions.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0711B1881F817CFC00DCE131 /* KSOFontAwesomeExtensions.framework */; };
@@ -410,6 +415,10 @@
 		0705AFD51ECE28F200BACC4E /* UIImage+KDIExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImage+KDIExtensions.h"; path = "iOS/UIImage+KDIExtensions.h"; sourceTree = "<group>"; };
 		0705AFD61ECE28F200BACC4E /* UIImage-NSImage+KDIExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage-NSImage+KDIExtensions.m"; sourceTree = "<group>"; };
 		0705AFDD1ECE29A000BACC4E /* NSImage+KDIExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSImage+KDIExtensions.h"; path = "macOS/NSImage+KDIExtensions.h"; sourceTree = "<group>"; };
+		070F9918204BD834001CFEFE /* KDITableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = KDITableViewCell.h; path = iOS/KDITableViewCell.h; sourceTree = "<group>"; };
+		070F9919204BD834001CFEFE /* KDITableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = KDITableViewCell.m; path = iOS/KDITableViewCell.m; sourceTree = "<group>"; };
+		070F991F204BDF55001CFEFE /* TableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TableViewController.h; sourceTree = "<group>"; };
+		070F9920204BDF55001CFEFE /* TableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TableViewController.m; sourceTree = "<group>"; };
 		0711B1821F817B3600DCE131 /* KDIUIResponder.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = KDIUIResponder.m; path = iOS/KDIUIResponder.m; sourceTree = "<group>"; };
 		0711B1861F817CEF00DCE131 /* KSOFontAwesomeExtensions.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = KSOFontAwesomeExtensions.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0711B1881F817CFC00DCE131 /* KSOFontAwesomeExtensions.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = KSOFontAwesomeExtensions.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -751,6 +760,8 @@
 				074B477A1EB3D266009B7C6D /* KDIEmptyView.m */,
 				07AA83941FB260CA00F99400 /* KDINavigationBarTitleView.h */,
 				07AA83951FB260CA00F99400 /* KDINavigationBarTitleView.m */,
+				070F9918204BD834001CFEFE /* KDITableViewCell.h */,
+				070F9919204BD834001CFEFE /* KDITableViewCell.m */,
 				07B828521FB50D2400EA46AC /* Private */,
 			);
 			name = Classes;
@@ -998,6 +1009,8 @@
 				07143C751F5645AC007E3410 /* ButtonViewController.xib */,
 				077FE3FC1F4E1D190093CCBB /* UIBarButtonItem+DemoExtensions.h */,
 				077FE3FD1F4E1D190093CCBB /* UIBarButtonItem+DemoExtensions.m */,
+				070F991F204BDF55001CFEFE /* TableViewController.h */,
+				070F9920204BDF55001CFEFE /* TableViewController.m */,
 				0795E6551E704A56004A5CB2 /* Assets.xcassets */,
 				0795E6571E704A56004A5CB2 /* LaunchScreen.storyboard */,
 				0795E65A1E704A56004A5CB2 /* Info.plist */,
@@ -1130,6 +1143,7 @@
 				07DB3D7D1E7382660044FB50 /* KDITextField.h in Headers */,
 				07E8EB441E7341C2001639A2 /* UIBarButtonItem+KDIExtensions.h in Headers */,
 				0794A82F1E735E1200603C99 /* NSParagraphStyle+KDIExtensions.h in Headers */,
+				070F991B204BD834001CFEFE /* KDITableViewCell.h in Headers */,
 				0794A7FB1E73530400603C99 /* UIBezierPath+KDIExtensions.h in Headers */,
 				0794A81C1E73584900603C99 /* NSBundle+KDIPrivateExtensions.h in Headers */,
 				0794A8391E73776C00603C99 /* KDIBadgeView.h in Headers */,
@@ -1193,6 +1207,7 @@
 				072628111E70BCCF00511F80 /* KDIView.h in Headers */,
 				07E8EB431E7341C2001639A2 /* UIBarButtonItem+KDIExtensions.h in Headers */,
 				076730731E75C6C700030F0C /* KDIPickerViewButton.h in Headers */,
+				070F991A204BD834001CFEFE /* KDITableViewCell.h in Headers */,
 				071B62631E705D3500B7B85A /* KDIFunctions.h in Headers */,
 				0794C23D1F6EE68C0051C4C8 /* KDILocalizedStrings.h in Headers */,
 				07D3D1EF1F5B995E005C512E /* KDIUIResponder.h in Headers */,
@@ -1732,6 +1747,7 @@
 				0794A83C1E73776C00603C99 /* KDIBadgeView.m in Sources */,
 				0794A8091E7354EF00603C99 /* UIViewController+KDIExtensions.m in Sources */,
 				07E8EB461E7341C2001639A2 /* UIBarButtonItem+KDIExtensions.m in Sources */,
+				070F991D204BD834001CFEFE /* KDITableViewCell.m in Sources */,
 				07DB3D971E73BA470044FB50 /* KDIButton.m in Sources */,
 				07DB3D7F1E7382660044FB50 /* KDITextField.m in Sources */,
 				0794A8331E735E1200603C99 /* NSParagraphStyle+KDIExtensions.m in Sources */,
@@ -1816,6 +1832,7 @@
 				07AA83971FB260CA00F99400 /* KDINavigationBarTitleView.m in Sources */,
 				071B62651E705D3500B7B85A /* KDIFunctions.m in Sources */,
 				0795E6421E70491E004A5CB2 /* NSColor-UIColor+KDIExtensions.m in Sources */,
+				070F991C204BD834001CFEFE /* KDITableViewCell.m in Sources */,
 				0711B1831F817B3600DCE131 /* KDIUIResponder.m in Sources */,
 				07824F5A1FCF0E3A005FBF26 /* NSObject+KDIExtensions.m in Sources */,
 				072628141E70BCCF00511F80 /* KDIView.m in Sources */,
@@ -1844,6 +1861,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				070F9921204BDF55001CFEFE /* TableViewController.m in Sources */,
 				0795E6511E704A56004A5CB2 /* ViewController.m in Sources */,
 				0795E64E1E704A56004A5CB2 /* AppDelegate.m in Sources */,
 				077FE3FE1F4E1D190093CCBB /* UIBarButtonItem+DemoExtensions.m in Sources */,
