@@ -115,13 +115,13 @@ NS_ASSUME_NONNULL_BEGIN
  
  The default is CGSizeZero, which means no minimum.
  */
-@property (assign,nonatomic) CGSize minimumIconSize;
+@property (assign,nonatomic) CGSize minimumIconSize UI_APPEARANCE_SELECTOR;
 /**
  Set and get the maximum icon size.
  
  The default is CGSizeZero, which means no maximum.
  */
-@property (assign,nonatomic) CGSize maximumIconSize;
+@property (assign,nonatomic) CGSize maximumIconSize UI_APPEARANCE_SELECTOR;
 
 /**
  Set and get the icon accessibility label. If this is nil, the icon will be hidden from the accessibility client.
