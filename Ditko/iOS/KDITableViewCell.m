@@ -60,6 +60,7 @@
     _iconImageView = [[UIImageView alloc] initWithFrame:CGRectZero];
     _iconImageView.translatesAutoresizingMaskIntoConstraints = NO;
     _iconImageView.hidden = YES;
+    _iconImageView.contentMode = UIViewContentModeScaleAspectFit;
     [_iconImageView setContentCompressionResistancePriority:UILayoutPriorityRequired forAxis:UILayoutConstraintAxisHorizontal];
     [_iconImageView setContentHuggingPriority:UILayoutPriorityRequired forAxis:UILayoutConstraintAxisHorizontal];
     [_stackView addArrangedSubview:_iconImageView];
@@ -112,6 +113,20 @@
     
     [temp addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-left-[view]-right-|" options:0 metrics:@{@"left": @(self.layoutMargins.left), @"right": @(self.accessoryType == UITableViewCellAccessoryNone ? self.layoutMargins.right : 0.0)} views:@{@"view": self.stackView}]];
     [temp addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-top-[view]-bottom-|" options:0 metrics:@{@"top": @(self.layoutMargins.top), @"bottom": @(self.layoutMargins.bottom)} views:@{@"view": self.stackView}]];
+    
+    if (self.minimumIconSize.width > 0.0) {
+        [temp addObject:[NSLayoutConstraint constraintWithItem:self.iconImageView attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationGreaterThanOrEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:self.minimumIconSize.width]];
+    }
+    if (self.minimumIconSize.height > 0.0) {
+        [temp addObject:[NSLayoutConstraint constraintWithItem:self.iconImageView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationGreaterThanOrEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:self.minimumIconSize.height]];
+    }
+    
+    if (self.maximumIconSize.width > 0.0) {
+        [temp addObject:[NSLayoutConstraint constraintWithItem:self.iconImageView attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationLessThanOrEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:self.maximumIconSize.width]];
+    }
+    if (self.maximumIconSize.height > 0.0) {
+        [temp addObject:[NSLayoutConstraint constraintWithItem:self.iconImageView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationLessThanOrEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:self.maximumIconSize.height]];
+    }
     
     self.KDI_customConstraints = temp;
     
@@ -238,6 +253,16 @@
 }
 - (void)setVerticalMargin:(CGFloat)verticalMargin {
     self.titleSubtitleStackView.spacing = verticalMargin;
+}
+- (void)setMinimumIconSize:(CGSize)minimumIconSize {
+    _minimumIconSize = minimumIconSize;
+    
+    [self setNeedsUpdateConstraints];
+}
+- (void)setMaximumIconSize:(CGSize)maximumIconSize {
+    _maximumIconSize = maximumIconSize;
+    
+    [self setNeedsUpdateConstraints];
 }
 #pragma mark -
 @dynamic iconAccessibilityLabel;

@@ -110,6 +110,18 @@ NS_ASSUME_NONNULL_BEGIN
  The default is 4.0.
  */
 @property (assign,nonatomic) CGFloat verticalMargin UI_APPEARANCE_SELECTOR;
+/**
+ Set and get the minimum icon size.
+ 
+ The default is CGSizeZero, which means no minimum.
+ */
+@property (assign,nonatomic) CGSize minimumIconSize;
+/**
+ Set and get the maximum icon size.
+ 
+ The default is CGSizeZero, which means no maximum.
+ */
+@property (assign,nonatomic) CGSize maximumIconSize;
 
 /**
  Set and get the icon accessibility label. If this is nil, the icon will be hidden from the accessibility client.
