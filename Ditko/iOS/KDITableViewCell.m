@@ -42,29 +42,41 @@
     
     _iconImageView = [[UIImageView alloc] initWithFrame:CGRectZero];
     _iconImageView.translatesAutoresizingMaskIntoConstraints = NO;
+    _iconImageView.hidden = YES;
+    [_iconImageView setContentCompressionResistancePriority:UILayoutPriorityRequired forAxis:UILayoutConstraintAxisHorizontal];
+    [_iconImageView setContentHuggingPriority:UILayoutPriorityRequired forAxis:UILayoutConstraintAxisHorizontal];
     [_stackView addArrangedSubview:_iconImageView];
     
     _titleSubtitleStackView = [[UIStackView alloc] initWithFrame:CGRectZero];
     _titleSubtitleStackView.translatesAutoresizingMaskIntoConstraints = NO;
     _titleSubtitleStackView.axis = UILayoutConstraintAxisVertical;
     _titleSubtitleStackView.alignment = UIStackViewAlignmentLeading;
+    _titleSubtitleStackView.spacing = 8.0;
     [_stackView addArrangedSubview:_titleSubtitleStackView];
     
     _titleLabel = [[UILabel alloc] initWithFrame:CGRectZero];
     _titleLabel.translatesAutoresizingMaskIntoConstraints = NO;
     _titleLabel.numberOfLines = 0;
     _titleLabel.KDI_dynamicTypeTextStyle = UIFontTextStyleBody;
+    [_titleLabel setContentCompressionResistancePriority:UILayoutPriorityDefaultHigh forAxis:UILayoutConstraintAxisHorizontal];
+    [_titleLabel setContentHuggingPriority:UILayoutPriorityDefaultLow forAxis:UILayoutConstraintAxisHorizontal];
     [_titleSubtitleStackView addArrangedSubview:_titleLabel];
     
     _subtitleLabel = [[UILabel alloc] initWithFrame:CGRectZero];
     _subtitleLabel.translatesAutoresizingMaskIntoConstraints = NO;
+    _subtitleLabel.hidden = YES;
     _subtitleLabel.numberOfLines = 0;
     _subtitleLabel.KDI_dynamicTypeTextStyle = UIFontTextStyleFootnote;
+    [_subtitleLabel setContentCompressionResistancePriority:UILayoutPriorityDefaultHigh forAxis:UILayoutConstraintAxisHorizontal];
+    [_subtitleLabel setContentHuggingPriority:UILayoutPriorityDefaultLow forAxis:UILayoutConstraintAxisHorizontal];
     [_titleSubtitleStackView addArrangedSubview:_subtitleLabel];
     
     _infoLabel = [[UILabel alloc] initWithFrame:CGRectZero];
     _infoLabel.translatesAutoresizingMaskIntoConstraints = NO;
+    _infoLabel.hidden = YES;
     _infoLabel.KDI_dynamicTypeTextStyle = UIFontTextStyleFootnote;
+    [_infoLabel setContentCompressionResistancePriority:UILayoutPriorityRequired forAxis:UILayoutConstraintAxisHorizontal];
+    [_infoLabel setContentHuggingPriority:UILayoutPriorityRequired forAxis:UILayoutConstraintAxisHorizontal];
     [_stackView addArrangedSubview:_infoLabel];
     
     return self;
@@ -79,9 +91,25 @@
     [temp addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-left-[view]-right-|" options:0 metrics:@{@"left": @(self.layoutMargins.left), @"right": @(self.accessoryType == UITableViewCellAccessoryNone ? self.layoutMargins.right : 0.0)} views:@{@"view": self.stackView}]];
     [temp addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-top-[view]-bottom-|" options:0 metrics:@{@"top": @(self.layoutMargins.top), @"bottom": @(self.layoutMargins.bottom)} views:@{@"view": self.stackView}]];
     
+    [temp addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[view]|" options:0 metrics:nil views:@{@"view": self.titleLabel}]];
+    
+    [temp addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[view]|" options:0 metrics:nil views:@{@"view": self.subtitleLabel}]];
+    
     self.KDI_customConstraints = temp;
     
     [super updateConstraints];
+}
+
+- (void)layoutSubviews {
+    [super layoutSubviews];
+    
+    self.separatorInset = UIEdgeInsetsMake(0, self.iconImageView.isHidden ? self.layoutMargins.left : CGRectGetMinX([self convertRect:self.titleLabel.bounds fromView:self.titleLabel]), 0, 0);
+}
+
+- (void)layoutMarginsDidChange {
+    [super layoutMarginsDidChange];
+    
+    [self setNeedsUpdateConstraints];
 }
 
 @dynamic icon;
@@ -91,6 +119,11 @@
 - (void)setIcon:(UIImage *)icon {
     self.iconImageView.image = icon;
     self.iconImageView.hidden = self.iconImageView.image == nil;
+}
+- (void)setIconColor:(UIColor *)iconColor {
+    _iconColor = iconColor;
+    
+    self.iconImageView.tintColor = _iconColor;
 }
 @dynamic title;
 - (NSString *)title {

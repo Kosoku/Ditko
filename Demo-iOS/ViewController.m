@@ -37,6 +37,10 @@ static NSArray<NSArray<NSString *> *> *kPickerViewButtonComponentsAndRows;
     }
 }
 
+- (NSString *)title {
+    return @"Controls";
+}
+
 - (instancetype)init {
     if (!(self = [super init]))
         return nil;
