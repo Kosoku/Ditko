@@ -243,8 +243,8 @@ NSNotificationName const KDITextViewNotificationDidResignFirstResponder = @"KDIT
             retval.height = self.contentSize.height;
         }
         
-        CGFloat placeholderHeight = [self.placeholderLabel sizeThatFits:CGSizeMake(CGRectGetWidth(self.bounds) - self.textContainerInset.left - self.textContainerInset.right, CGFLOAT_MAX)].height;
-        CGFloat lineHeight = self.font.lineHeight;
+        CGFloat placeholderHeight = [self.placeholderLabel sizeThatFits:CGSizeMake(CGRectGetWidth(self.bounds) - self.textContainerInset.left - self.textContainerInset.right, CGFLOAT_MAX)].height + self.textContainerInset.top + self.textContainerInset.bottom;
+        CGFloat lineHeight = self.font.lineHeight + self.textContainerInset.top + self.textContainerInset.bottom;
         CGFloat height = MAX(MAX(retval.height, placeholderHeight), lineHeight);
         
         if (self.minimumHeight > 0) {
