@@ -50,8 +50,9 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     KDITableViewCell *retval = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass(KDITableViewCell.class) forIndexPath:indexPath];
     
-    retval.icon = [UIImage KSO_fontAwesomeImageWithIcon:arc4random_uniform((uint32_t)KSO_FONT_AWESOME_ICON_TOTAL_ICONS) size:CGSizeMake(25.0, 25.0)].KDI_templateImage;
     retval.iconColor = KDIColorRandomRGB();
+    
+    retval.icon = [UIImage KSO_fontAwesomeImageWithIcon:arc4random_uniform((uint32_t)KSO_FONT_AWESOME_ICON_TOTAL_ICONS) size:CGSizeMake(25.0, 25.0)].KDI_templateImage;
     retval.title = @"This is the title that will wrap to multiple lines if the screen width isn't enough";
     retval.subtitle = @"This is the subtitle that will wrap to multiple lines if the screen width isn't enough";
     retval.info = [NSNumberFormatter localizedStringFromNumber:@(indexPath.row) numberStyle:NSNumberFormatterDecimalStyle];

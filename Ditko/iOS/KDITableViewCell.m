@@ -25,6 +25,10 @@
 @property (strong,nonatomic) UILabel *titleLabel;
 @property (strong,nonatomic) UILabel *subtitleLabel;
 @property (strong,nonatomic) UILabel *infoLabel;
+
++ (UIColor *)_defaultTitleColor;
++ (UIColor *)_defaultSubtitleColor;
++ (UIColor *)_defaultInfoColor;
 @end
 
 @implementation KDITableViewCell
@@ -32,6 +36,10 @@
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     if (!(self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]))
         return nil;
+    
+    _titleColor = [self.class _defaultTitleColor];
+    _subtitleColor = [self.class _defaultSubtitleColor];
+    _infoColor = [self.class _defaultInfoColor];
     
     _stackView = [[UIStackView alloc] initWithFrame:CGRectZero];
     _stackView.translatesAutoresizingMaskIntoConstraints = NO;
@@ -51,12 +59,13 @@
     _titleSubtitleStackView.translatesAutoresizingMaskIntoConstraints = NO;
     _titleSubtitleStackView.axis = UILayoutConstraintAxisVertical;
     _titleSubtitleStackView.alignment = UIStackViewAlignmentLeading;
-    _titleSubtitleStackView.spacing = 8.0;
+    _titleSubtitleStackView.spacing = 4.0;
     [_stackView addArrangedSubview:_titleSubtitleStackView];
     
     _titleLabel = [[UILabel alloc] initWithFrame:CGRectZero];
     _titleLabel.translatesAutoresizingMaskIntoConstraints = NO;
     _titleLabel.numberOfLines = 0;
+    _titleLabel.textColor = _titleColor;
     _titleLabel.KDI_dynamicTypeTextStyle = UIFontTextStyleBody;
     [_titleLabel setContentCompressionResistancePriority:UILayoutPriorityDefaultHigh forAxis:UILayoutConstraintAxisHorizontal];
     [_titleLabel setContentHuggingPriority:UILayoutPriorityDefaultLow forAxis:UILayoutConstraintAxisHorizontal];
@@ -66,6 +75,7 @@
     _subtitleLabel.translatesAutoresizingMaskIntoConstraints = NO;
     _subtitleLabel.hidden = YES;
     _subtitleLabel.numberOfLines = 0;
+    _subtitleLabel.textColor = _subtitleColor;
     _subtitleLabel.KDI_dynamicTypeTextStyle = UIFontTextStyleFootnote;
     [_subtitleLabel setContentCompressionResistancePriority:UILayoutPriorityDefaultHigh forAxis:UILayoutConstraintAxisHorizontal];
     [_subtitleLabel setContentHuggingPriority:UILayoutPriorityDefaultLow forAxis:UILayoutConstraintAxisHorizontal];
@@ -74,6 +84,7 @@
     _infoLabel = [[UILabel alloc] initWithFrame:CGRectZero];
     _infoLabel.translatesAutoresizingMaskIntoConstraints = NO;
     _infoLabel.hidden = YES;
+    _infoLabel.textColor = _infoColor;
     _infoLabel.KDI_dynamicTypeTextStyle = UIFontTextStyleFootnote;
     [_infoLabel setContentCompressionResistancePriority:UILayoutPriorityRequired forAxis:UILayoutConstraintAxisHorizontal];
     [_infoLabel setContentHuggingPriority:UILayoutPriorityRequired forAxis:UILayoutConstraintAxisHorizontal];
@@ -120,11 +131,6 @@
     self.iconImageView.image = icon;
     self.iconImageView.hidden = self.iconImageView.image == nil;
 }
-- (void)setIconColor:(UIColor *)iconColor {
-    _iconColor = iconColor;
-    
-    self.iconImageView.tintColor = _iconColor;
-}
 @dynamic title;
 - (NSString *)title {
     return self.titleLabel.text;
@@ -148,6 +154,52 @@
 - (void)setInfo:(NSString *)info {
     self.infoLabel.text = info;
     self.infoLabel.hidden = self.infoLabel.text == 0;
+}
+
+- (void)setIconColor:(UIColor *)iconColor {
+    _iconColor = iconColor;
+    
+    self.iconImageView.tintColor = _iconColor;
+}
+- (void)setTitleColor:(UIColor *)titleColor {
+    _titleColor = titleColor ?: [self.class _defaultTitleColor];
+    
+    self.titleLabel.textColor = _titleColor;
+}
+- (void)setSubtitleColor:(UIColor *)subtitleColor {
+    _subtitleColor = subtitleColor ?: [self.class _defaultSubtitleColor];
+    
+    self.subtitleLabel.textColor = _subtitleColor;
+}
+- (void)setInfoColor:(UIColor *)infoColor {
+    _infoColor = infoColor ?: [self.class _defaultInfoColor];
+    
+    self.infoLabel.textColor = _infoColor;
+}
+
+@dynamic horizontalMargin;
+- (CGFloat)horizontalMargin {
+    return self.stackView.spacing;
+}
+- (void)setHorizontalMargin:(CGFloat)horizontalMargin {
+    self.stackView.spacing = horizontalMargin;
+}
+@dynamic verticalMargin;
+- (CGFloat)verticalMargin {
+    return self.titleSubtitleStackView.spacing;
+}
+- (void)setVerticalMargin:(CGFloat)verticalMargin {
+    self.titleSubtitleStackView.spacing = verticalMargin;
+}
+
++ (UIColor *)_defaultTitleColor; {
+    return UIColor.blackColor;
+}
++ (UIColor *)_defaultSubtitleColor; {
+    return UIColor.darkGrayColor;
+}
++ (UIColor *)_defaultInfoColor; {
+    return UIColor.lightGrayColor;
 }
 
 @end

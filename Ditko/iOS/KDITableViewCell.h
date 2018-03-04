@@ -20,10 +20,17 @@ NS_ASSUME_NONNULL_BEGIN
 @interface KDITableViewCell : UITableViewCell
 
 @property (strong,nonatomic,nullable) UIImage *icon;
-@property (strong,nonatomic,nullable) UIColor *iconColor;
 @property (copy,nonatomic,nullable) NSString *title;
 @property (copy,nonatomic,nullable) NSString *subtitle;
 @property (copy,nonatomic,nullable) NSString *info;
+
+@property (strong,nonatomic,nullable) UIColor *iconColor;
+@property (strong,nonatomic,null_resettable) UIColor *titleColor;
+@property (strong,nonatomic,null_resettable) UIColor *subtitleColor;
+@property (strong,nonatomic,null_resettable) UIColor *infoColor;
+
+@property (assign,nonatomic) CGFloat horizontalMargin;
+@property (assign,nonatomic) CGFloat verticalMargin;
 
 @end
 
