@@ -43,3 +43,23 @@ CGSize KDICGSizeAdjustedForScreenScale(CGSize size, NSScreen *screen) {
     return CGSizeMake(size.width * screen.backingScaleFactor, size.height * screen.backingScaleFactor);
 }
 #endif
+
+#if (TARGET_OS_IOS || TARGET_OS_TV)
+NSString* _Nullable KDITextFromTextInput(id<UITextInput> textInput) {
+    UITextRange *textRange = [textInput textRangeFromPosition:textInput.beginningOfDocument toPosition:textInput.endOfDocument];
+    
+    return [textInput textInRange:textRange];
+}
+NSRange KDISelectedRangeFromTextInput(id<UITextInput> textInput) {
+    UITextPosition *beginning = textInput.beginningOfDocument;
+    
+    UITextRange *selectedRange = textInput.selectedTextRange;
+    UITextPosition *selectionStart = selectedRange.start;
+    UITextPosition *selectionEnd = selectedRange.end;
+    
+    NSInteger location = [textInput offsetFromPosition:beginning toPosition:selectionStart];
+    NSInteger length = [textInput offsetFromPosition:selectionStart toPosition:selectionEnd];
+    
+    return NSMakeRange(location, length);
+}
+#endif

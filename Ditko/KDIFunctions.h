@@ -47,4 +47,21 @@ FOUNDATION_EXPORT CGSize KDICGSizeAdjustedForScreenScale(CGSize size, UIScreen *
 FOUNDATION_EXPORT CGSize KDICGSizeAdjustedForScreenScale(CGSize size, NSScreen * _Nullable screen);
 #endif
 
+#if (TARGET_OS_IOS || TARGET_OS_TV)
+/**
+ Returns the text from the text input.
+ 
+ @param textInput The text input object
+ @return The text
+ */
+FOUNDATION_EXTERN NSString* _Nullable KDITextFromTextInput(id<UITextInput> textInput);
+/**
+ Returns the selected range from the text input.
+ 
+ @param textInput The text input object
+ @return The selected range
+ */
+FOUNDATION_EXTERN NSRange KDISelectedRangeFromTextInput(id<UITextInput> textInput);
+#endif
+
 NS_ASSUME_NONNULL_END
