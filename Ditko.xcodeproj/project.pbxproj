@@ -297,6 +297,10 @@
 		07E8EB501E734AEC001639A2 /* KDIFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = 071B62621E705D3500B7B85A /* KDIFunctions.m */; };
 		07E8EB511E734AED001639A2 /* KDIFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = 071B62621E705D3500B7B85A /* KDIFunctions.m */; };
 		07E8EB521E734B0E001639A2 /* KDIFunctions.h in Headers */ = {isa = PBXBuildFile; fileRef = 071B62611E705D3500B7B85A /* KDIFunctions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		07EAB2CE204F4FAE00534AE1 /* UIScrollView+KDIExtensions.h in Headers */ = {isa = PBXBuildFile; fileRef = 07EAB2CC204F4FAE00534AE1 /* UIScrollView+KDIExtensions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		07EAB2CF204F4FAE00534AE1 /* UIScrollView+KDIExtensions.h in Headers */ = {isa = PBXBuildFile; fileRef = 07EAB2CC204F4FAE00534AE1 /* UIScrollView+KDIExtensions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		07EAB2D0204F4FAE00534AE1 /* UIScrollView+KDIExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 07EAB2CD204F4FAE00534AE1 /* UIScrollView+KDIExtensions.m */; };
+		07EAB2D1204F4FAE00534AE1 /* UIScrollView+KDIExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 07EAB2CD204F4FAE00534AE1 /* UIScrollView+KDIExtensions.m */; };
 		7427127D1EA7B02000A406EC /* Stanley.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7427127C1EA7B02000A406EC /* Stanley.framework */; };
 		7427127E1EA7B02000A406EC /* Stanley.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7427127C1EA7B02000A406EC /* Stanley.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
@@ -623,6 +627,8 @@
 		07E8EB421E7341C2001639A2 /* UIBarButtonItem+KDIExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIBarButtonItem+KDIExtensions.m"; path = "iOS/UIBarButtonItem+KDIExtensions.m"; sourceTree = "<group>"; };
 		07E8EB471E73454D001639A2 /* UIDevice+KDIExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIDevice+KDIExtensions.h"; path = "iOS/UIDevice+KDIExtensions.h"; sourceTree = "<group>"; };
 		07E8EB481E73454D001639A2 /* UIDevice+KDIExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIDevice+KDIExtensions.m"; path = "iOS/UIDevice+KDIExtensions.m"; sourceTree = "<group>"; };
+		07EAB2CC204F4FAE00534AE1 /* UIScrollView+KDIExtensions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "UIScrollView+KDIExtensions.h"; path = "iOS/UIScrollView+KDIExtensions.h"; sourceTree = "<group>"; };
+		07EAB2CD204F4FAE00534AE1 /* UIScrollView+KDIExtensions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "UIScrollView+KDIExtensions.m"; path = "iOS/UIScrollView+KDIExtensions.m"; sourceTree = "<group>"; };
 		7427127C1EA7B02000A406EC /* Stanley.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Stanley.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -899,6 +905,8 @@
 				075F40021F780EF9009709EB /* UIViewController+KDIUIImagePickerControllerExtensions.m */,
 				07824F551FCF0E3A005FBF26 /* NSObject+KDIExtensions.h */,
 				07824F561FCF0E3A005FBF26 /* NSObject+KDIExtensions.m */,
+				07EAB2CC204F4FAE00534AE1 /* UIScrollView+KDIExtensions.h */,
+				07EAB2CD204F4FAE00534AE1 /* UIScrollView+KDIExtensions.m */,
 				079C88901EA5F7B200F4C09D /* Private */,
 			);
 			name = Categories;
@@ -1141,6 +1149,7 @@
 				071B62DE1E70861F00B7B85A /* Ditko.h in Headers */,
 				071B62BE1E70845600B7B85A /* KDIColorMacros.h in Headers */,
 				07DB3D7D1E7382660044FB50 /* KDITextField.h in Headers */,
+				07EAB2CF204F4FAE00534AE1 /* UIScrollView+KDIExtensions.h in Headers */,
 				07E8EB441E7341C2001639A2 /* UIBarButtonItem+KDIExtensions.h in Headers */,
 				0794A82F1E735E1200603C99 /* NSParagraphStyle+KDIExtensions.h in Headers */,
 				070F991B204BD834001CFEFE /* KDITableViewCell.h in Headers */,
@@ -1228,6 +1237,7 @@
 				0794A82D1E735E1200603C99 /* NSParagraphStyle+KDIExtensions.h in Headers */,
 				0794A7FA1E73530400603C99 /* UIBezierPath+KDIExtensions.h in Headers */,
 				07824F571FCF0E3A005FBF26 /* NSObject+KDIExtensions.h in Headers */,
+				07EAB2CE204F4FAE00534AE1 /* UIScrollView+KDIExtensions.h in Headers */,
 				0794A81A1E73584900603C99 /* NSBundle+KDIPrivateExtensions.h in Headers */,
 				07DB3D881E73B6600044FB50 /* KDIProgressSlider.h in Headers */,
 				0794A8371E73776C00603C99 /* KDIBadgeView.h in Headers */,
@@ -1732,6 +1742,7 @@
 				072628161E70BCCF00511F80 /* KDIView.m in Sources */,
 				07DB3D911E73B7BD0044FB50 /* KDIProgressNavigationBar.m in Sources */,
 				0711B1841F817B3600DCE131 /* KDIUIResponder.m in Sources */,
+				07EAB2D1204F4FAE00534AE1 /* UIScrollView+KDIExtensions.m in Sources */,
 				07DB3D851E7383EC0044FB50 /* KDITextView.m in Sources */,
 				0794A7F31E73509100603C99 /* UIView+KDIExtensions.m in Sources */,
 				0794A8171E73574A00603C99 /* UIAlertController+KDIExtensions.m in Sources */,
@@ -1851,6 +1862,7 @@
 				07284F101FAA4F84001CCBF7 /* KDIWindow.m in Sources */,
 				07DB3D781E7381010044FB50 /* KDILabel.m in Sources */,
 				0794A81E1E73584900603C99 /* NSBundle+KDIPrivateExtensions.m in Sources */,
+				07EAB2D0204F4FAE00534AE1 /* UIScrollView+KDIExtensions.m in Sources */,
 				079CF60E1EC1125700CE1BE9 /* UIGestureRecognizer+KDIExtensions.m in Sources */,
 				07E8EB451E7341C2001639A2 /* UIBarButtonItem+KDIExtensions.m in Sources */,
 				076730741E75C6C700030F0C /* KDIPickerViewButton.m in Sources */,
