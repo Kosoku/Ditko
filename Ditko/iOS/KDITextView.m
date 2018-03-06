@@ -123,10 +123,14 @@ NSNotificationName const KDITextViewNotificationDidResignFirstResponder = @"KDIT
 - (void)setText:(NSString *)text {
     [super setText:text];
     
+    [self invalidateIntrinsicContentSize];
+    
     [self _updatePlaceholderLabelWithText:self.placeholder];
 }
 - (void)setAttributedText:(NSAttributedString *)attributedText {
     [super setAttributedText:attributedText];
+    
+    [self invalidateIntrinsicContentSize];
     
     [self _updatePlaceholderLabelWithText:self.placeholder];
 }
