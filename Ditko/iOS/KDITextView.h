@@ -24,6 +24,12 @@ NS_ASSUME_NONNULL_BEGIN
 @interface KDITextView : UITextView <KDIBorderedView,KDIUIResponder>
 
 /**
+ Set and get whether the placeholder is allowed to wrap to multiple lines.
+ 
+ The default is YES.
+ */
+@property (assign,nonatomic) BOOL allowsMultilinePlaceholder;
+/**
  Set and get text view's placeholder text.
  
  The default is nil.

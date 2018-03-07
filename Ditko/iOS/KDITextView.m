@@ -123,14 +123,14 @@ NSNotificationName const KDITextViewNotificationDidResignFirstResponder = @"KDIT
 - (void)setText:(NSString *)text {
     [super setText:text];
     
-    [self invalidateIntrinsicContentSize];
+//    [self invalidateIntrinsicContentSize];
     
     [self _updatePlaceholderLabelWithText:self.placeholder];
 }
 - (void)setAttributedText:(NSAttributedString *)attributedText {
     [super setAttributedText:attributedText];
     
-    [self invalidateIntrinsicContentSize];
+//    [self invalidateIntrinsicContentSize];
     
     [self _updatePlaceholderLabelWithText:self.placeholder];
 }
@@ -170,6 +170,13 @@ NSNotificationName const KDITextViewNotificationDidResignFirstResponder = @"KDIT
 }
 #pragma mark *** Public Methods ***
 #pragma mark Properties
+- (void)setAllowsMultilinePlaceholder:(BOOL)allowsMultilinePlaceholder {
+    _allowsMultilinePlaceholder = allowsMultilinePlaceholder;
+    
+    [self invalidateIntrinsicContentSize];
+    
+    self.placeholderLabel.numberOfLines = allowsMultilinePlaceholder ? 0 : 1;
+}
 @dynamic placeholder;
 - (NSString *)placeholder {
     return self.attributedPlaceholder.string;
@@ -221,6 +228,7 @@ NSNotificationName const KDITextViewNotificationDidResignFirstResponder = @"KDIT
 - (void)_KDITextViewInit {
     _borderedViewImpl = [[KDIBorderedViewImpl alloc] initWithView:self];
     _placeholderTextColor = [self.class _defaultPlaceholderTextColor];
+    _allowsMultilinePlaceholder = YES;
     
     [self setFont:[self.class _defaultFont]];
     [self setTextContainerInset:UIEdgeInsetsZero];
@@ -275,7 +283,7 @@ NSNotificationName const KDITextViewNotificationDidResignFirstResponder = @"KDIT
         
         CGFloat maxWidth = CGRectGetWidth(self.bounds) - self.textContainerInset.left - self.textContainerInset.right;
         
-        [self.placeholderLabel setFrame:CGRectMake(self.textContainerInset.left, self.textContainerInset.top, maxWidth, ceil([self.placeholderLabel sizeThatFits:CGSizeMake(maxWidth, CGFLOAT_MAX)].height))];
+        [self.placeholderLabel setFrame:CGRectMake(self.textContainerInset.left, self.textContainerInset.top, maxWidth, [self.placeholderLabel sizeThatFits:CGSizeMake(maxWidth, CGFLOAT_MAX)].height)];
     }
     
     if (!layout) {
