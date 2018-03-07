@@ -34,10 +34,10 @@
 }
 
 - (BOOL)KDI_isAtTop {
-    return CGRectGetMinY(self.KDI_visibleRect) <= CGRectGetMinY(self.bounds);
+    return self.contentOffset.y <= self.contentInset.top;
 }
 - (BOOL)KDI_isAtBottom {
-    return CGRectGetMaxY(self.KDI_visibleRect) >= CGRectGetMaxY([self _KDI_bottomRect]);
+    return self.contentOffset.y >= (self.contentSize.height - CGRectGetHeight(self.frame) + self.contentInset.bottom);
 }
 - (CGRect)KDI_visibleRect {
     return CGRectMake(self.contentOffset.x, self.contentOffset.y, CGRectGetWidth(self.frame), CGRectGetHeight(self.frame));
