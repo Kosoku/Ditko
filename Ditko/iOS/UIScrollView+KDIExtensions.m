@@ -29,7 +29,23 @@
 }
 - (void)KDI_scrollToBottomAnimated:(BOOL)animated; {
     if ([self _KDI_canScroll]) {
-        [self setContentOffset:[self _KDI_bottomRect].origin animated:animated];
+        if ([self isKindOfClass:UITableView.class]) {
+            UITableView *tableView = (UITableView *)self;
+            NSInteger section = [tableView numberOfSections] - 1;
+            NSInteger row = [tableView numberOfRowsInSection:section] - 1;
+            
+            [tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:row inSection:section] atScrollPosition:UITableViewScrollPositionBottom animated:animated];
+        }
+        else if ([self isKindOfClass:UICollectionView.class]) {
+            UICollectionView *collectionView = (UICollectionView *)self;
+            NSInteger section = [collectionView numberOfSections] - 1;
+            NSInteger item = [collectionView numberOfItemsInSection:section] - 1;
+            
+            [collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:item inSection:section] atScrollPosition:UICollectionViewScrollPositionBottom animated:animated];
+        }
+        else {
+            [self setContentOffset:[self _KDI_bottomRect].origin animated:animated];
+        }
     }
 }
 
