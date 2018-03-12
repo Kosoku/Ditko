@@ -20,6 +20,8 @@
 @property (strong,nonatomic) UILabel *titleLabel;
 @property (strong,nonatomic) UILabel *subtitleLabel;
 
+- (void)_updateAccessibilityLabel;
+
 + (UIFont *)_defaultTitleFont;
 + (UIFont *)_defaultSubtitleFont;
 + (UIColor *)_defaultTitleTextColor;
@@ -33,6 +35,8 @@
         return nil;
     
     self.translatesAutoresizingMaskIntoConstraints = NO;
+    self.isAccessibilityElement = YES;
+    self.accessibilityTraits = UIAccessibilityTraitStaticText|UIAccessibilityTraitHeader;
     
     _titleFont = [self.class _defaultTitleFont];
     _subtitleFont = [self.class _defaultSubtitleFont];
@@ -49,13 +53,13 @@
     _titleLabel.translatesAutoresizingMaskIntoConstraints = NO;
     _titleLabel.textColor = _titleTextColor;
     _titleLabel.font = _titleFont;
-    _titleLabel.accessibilityTraits = _titleLabel.accessibilityTraits|UIAccessibilityTraitHeader;
     [_stackView addArrangedSubview:_titleLabel];
     
     _subtitleLabel = [[UILabel alloc] initWithFrame:CGRectZero];
     _subtitleLabel.translatesAutoresizingMaskIntoConstraints = NO;
     _subtitleLabel.textColor = _subtitleTextColor;
     _subtitleLabel.font = _subtitleFont;
+    _subtitleLabel.hidden = YES;
     _subtitleLabel.isAccessibilityElement = NO;
     [_stackView addArrangedSubview:_subtitleLabel];
     
@@ -73,6 +77,8 @@
     [self.titleLabel setText:title];
     [self.titleLabel setHidden:title.length == 0];
     [self.titleLabel setIsAccessibilityElement:!self.titleLabel.isHidden];
+    
+    [self _updateAccessibilityLabel];
 }
 @dynamic subtitle;
 - (NSString *)subtitle {
@@ -82,6 +88,8 @@
     [self.subtitleLabel setText:subtitle];
     [self.subtitleLabel setHidden:subtitle.length == 0];
     [self.subtitleLabel setIsAccessibilityElement:!self.subtitleLabel.isHidden];
+    
+    [self _updateAccessibilityLabel];
 }
 
 - (void)setTitleFont:(UIFont *)titleFont {
@@ -103,6 +111,20 @@
     _subtitleTextColor = subtitleTextColor ?: [self.class _defaultSubtitleTextColor];
     
     [self.subtitleLabel setTextColor:_subtitleTextColor];
+}
+
+- (void)_updateAccessibilityLabel; {
+    NSMutableString *retval = [[NSMutableString alloc] init];
+    
+    if (self.title.length > 0) {
+        [retval appendString:self.title];
+    }
+    
+    if (self.subtitle.length > 0) {
+        [retval appendFormat:@"\n%@",self.subtitle];
+    }
+    
+    self.accessibilityLabel = retval;
 }
 
 + (UIFont *)_defaultTitleFont; {

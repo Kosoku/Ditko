@@ -37,6 +37,13 @@
     
     [self.view setBackgroundColor:KDIColorRandomRGB()];
     
+    KDINavigationBarTitleView *titleView = [[KDINavigationBarTitleView alloc] initWithFrame:CGRectZero];
+    
+    titleView.title = @"Push / Present";
+    titleView.subtitle = self.title;
+    
+    self.navigationItem.titleView = titleView;
+    
     KDIButton *pushButton = [KDIButton buttonWithType:UIButtonTypeSystem];
     
     [pushButton setTranslatesAutoresizingMaskIntoConstraints:NO];
