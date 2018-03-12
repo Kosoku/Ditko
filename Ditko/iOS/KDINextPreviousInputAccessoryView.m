@@ -116,10 +116,6 @@ static CGFloat kDefaultFrameHeight;
     
     if (self.itemOptions & KDINextPreviousInputAccessoryViewItemOptionsPrevious) {
         [items addObject:self.previousItem];
-        
-        if (self.itemOptions & KDINextPreviousInputAccessoryViewItemOptionsNext) {
-            [items addObject:[UIBarButtonItem KDI_fixedSpaceBarButtonItemWithWidth:8.0]];
-        }
     }
     if (self.itemOptions & KDINextPreviousInputAccessoryViewItemOptionsNext) {
         [items addObject:self.nextItem];
