@@ -301,6 +301,12 @@
 		07EAB2CF204F4FAE00534AE1 /* UIScrollView+KDIExtensions.h in Headers */ = {isa = PBXBuildFile; fileRef = 07EAB2CC204F4FAE00534AE1 /* UIScrollView+KDIExtensions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		07EAB2D0204F4FAE00534AE1 /* UIScrollView+KDIExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 07EAB2CD204F4FAE00534AE1 /* UIScrollView+KDIExtensions.m */; };
 		07EAB2D1204F4FAE00534AE1 /* UIScrollView+KDIExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 07EAB2CD204F4FAE00534AE1 /* UIScrollView+KDIExtensions.m */; };
+		07FEAD93205A7921005743FF /* UIFont+KDIExtensions.h in Headers */ = {isa = PBXBuildFile; fileRef = 07FEAD91205A7921005743FF /* UIFont+KDIExtensions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		07FEAD94205A7921005743FF /* UIFont+KDIExtensions.h in Headers */ = {isa = PBXBuildFile; fileRef = 07FEAD91205A7921005743FF /* UIFont+KDIExtensions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		07FEAD95205A7921005743FF /* UIFont-NSFont+KDIExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 07FEAD92205A7921005743FF /* UIFont-NSFont+KDIExtensions.m */; };
+		07FEAD96205A7921005743FF /* UIFont-NSFont+KDIExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 07FEAD92205A7921005743FF /* UIFont-NSFont+KDIExtensions.m */; };
+		07FEAD99205A7962005743FF /* NSFont+KDIExtensions.h in Headers */ = {isa = PBXBuildFile; fileRef = 07FEAD97205A7962005743FF /* NSFont+KDIExtensions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		07FEAD9B205A79E9005743FF /* UIFont-NSFont+KDIExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 07FEAD92205A7921005743FF /* UIFont-NSFont+KDIExtensions.m */; };
 		7427127D1EA7B02000A406EC /* Stanley.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7427127C1EA7B02000A406EC /* Stanley.framework */; };
 		7427127E1EA7B02000A406EC /* Stanley.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7427127C1EA7B02000A406EC /* Stanley.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
@@ -629,6 +635,9 @@
 		07E8EB481E73454D001639A2 /* UIDevice+KDIExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIDevice+KDIExtensions.m"; path = "iOS/UIDevice+KDIExtensions.m"; sourceTree = "<group>"; };
 		07EAB2CC204F4FAE00534AE1 /* UIScrollView+KDIExtensions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "UIScrollView+KDIExtensions.h"; path = "iOS/UIScrollView+KDIExtensions.h"; sourceTree = "<group>"; };
 		07EAB2CD204F4FAE00534AE1 /* UIScrollView+KDIExtensions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "UIScrollView+KDIExtensions.m"; path = "iOS/UIScrollView+KDIExtensions.m"; sourceTree = "<group>"; };
+		07FEAD91205A7921005743FF /* UIFont+KDIExtensions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "UIFont+KDIExtensions.h"; path = "iOS/UIFont+KDIExtensions.h"; sourceTree = "<group>"; };
+		07FEAD92205A7921005743FF /* UIFont-NSFont+KDIExtensions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIFont-NSFont+KDIExtensions.m"; sourceTree = "<group>"; };
+		07FEAD97205A7962005743FF /* NSFont+KDIExtensions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "NSFont+KDIExtensions.h"; path = "macOS/NSFont+KDIExtensions.h"; sourceTree = "<group>"; };
 		7427127C1EA7B02000A406EC /* Stanley.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Stanley.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -907,6 +916,9 @@
 				07824F561FCF0E3A005FBF26 /* NSObject+KDIExtensions.m */,
 				07EAB2CC204F4FAE00534AE1 /* UIScrollView+KDIExtensions.h */,
 				07EAB2CD204F4FAE00534AE1 /* UIScrollView+KDIExtensions.m */,
+				07FEAD97205A7962005743FF /* NSFont+KDIExtensions.h */,
+				07FEAD91205A7921005743FF /* UIFont+KDIExtensions.h */,
+				07FEAD92205A7921005743FF /* UIFont-NSFont+KDIExtensions.m */,
 				079C88901EA5F7B200F4C09D /* Private */,
 			);
 			name = Categories;
@@ -1120,6 +1132,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				07FEAD94205A7921005743FF /* UIFont+KDIExtensions.h in Headers */,
 				0794A8151E73574A00603C99 /* UIAlertController+KDIExtensions.h in Headers */,
 				079CF60D1EC1125700CE1BE9 /* UIGestureRecognizer+KDIExtensions.h in Headers */,
 				071E533F1F59004C00A36B59 /* KDIBorderedViewImpl.h in Headers */,
@@ -1165,6 +1178,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0794C23E1F6EE68C0051C4C8 /* KDILocalizedStrings.h in Headers */,
+				07FEAD99205A7962005743FF /* NSFont+KDIExtensions.h in Headers */,
 				0794A8021E73541200603C99 /* NSBezierPath+KDIExtensions.h in Headers */,
 				071E53391F58FEC400A36B59 /* KDIBorderedView.h in Headers */,
 				07E8EB3E1E733FE3001639A2 /* KDIDefines.h in Headers */,
@@ -1216,6 +1230,7 @@
 				072628111E70BCCF00511F80 /* KDIView.h in Headers */,
 				07E8EB431E7341C2001639A2 /* UIBarButtonItem+KDIExtensions.h in Headers */,
 				076730731E75C6C700030F0C /* KDIPickerViewButton.h in Headers */,
+				07FEAD93205A7921005743FF /* UIFont+KDIExtensions.h in Headers */,
 				070F991A204BD834001CFEFE /* KDITableViewCell.h in Headers */,
 				071B62631E705D3500B7B85A /* KDIFunctions.h in Headers */,
 				0794C23D1F6EE68C0051C4C8 /* KDILocalizedStrings.h in Headers */,
@@ -1762,6 +1777,7 @@
 				07DB3D971E73BA470044FB50 /* KDIButton.m in Sources */,
 				07DB3D7F1E7382660044FB50 /* KDITextField.m in Sources */,
 				0794A8331E735E1200603C99 /* NSParagraphStyle+KDIExtensions.m in Sources */,
+				07FEAD96205A7921005743FF /* UIFont-NSFont+KDIExtensions.m in Sources */,
 				0794A7ED1E734D5300603C99 /* UINavigationController+KDIExtensions.m in Sources */,
 				073B35191E82EF4B00C003A1 /* UIControl+KDIExtensions.m in Sources */,
 				079CF60F1EC1125700CE1BE9 /* UIGestureRecognizer+KDIExtensions.m in Sources */,
@@ -1801,6 +1817,7 @@
 				0794A81F1E73584900603C99 /* NSBundle+KDIPrivateExtensions.m in Sources */,
 				0794A80D1E7355B900603C99 /* NSViewController+KDIExtensions.m in Sources */,
 				071E53411F59004C00A36B59 /* KDIBorderedViewImpl.m in Sources */,
+				07FEAD9B205A79E9005743FF /* UIFont-NSFont+KDIExtensions.m in Sources */,
 				0794A82A1E735D1400603C99 /* NSAlert+KDIExtensions.m in Sources */,
 				07D166C41E96A08E0073F69A /* NSButton+KDIExtensions.m in Sources */,
 				0705AFE11ECE2A2D00BACC4E /* UIImage-NSImage+KDIExtensions.m in Sources */,
@@ -1828,6 +1845,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0738CE4C1EA014C9008FE9A0 /* UIFont+KDIDynamicTypeExtensions.m in Sources */,
+				07FEAD95205A7921005743FF /* UIFont-NSFont+KDIExtensions.m in Sources */,
 				073B35181E82EF4B00C003A1 /* UIControl+KDIExtensions.m in Sources */,
 				07DB3D8A1E73B6600044FB50 /* KDIProgressSlider.m in Sources */,
 				0794A7FD1E73530400603C99 /* UIBezierPath+KDIExtensions.m in Sources */,

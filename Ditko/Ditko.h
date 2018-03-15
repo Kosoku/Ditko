@@ -53,6 +53,7 @@ FOUNDATION_EXPORT const unsigned char DitkoVersionString[];
 #import <Ditko/UIGestureRecognizer+KDIExtensions.h>
 #import <Ditko/UIFont+KDIDynamicTypeExtensions.h>
 #import <Ditko/UIScrollView+KDIExtensions.h>
+#import <Ditko/UIFont+KDIExtensions.h>
 #endif
 #if (TARGET_OS_OSX)
 #import <Ditko/NSView+KDIExtensions.h>
@@ -67,6 +68,7 @@ FOUNDATION_EXPORT const unsigned char DitkoVersionString[];
 #import <Ditko/NSPopUpButton+KDIExtensions.h>
 #import <Ditko/NSGestureRecognizer+KDIExtensions.h>
 #import <Ditko/NSImage+KDIExtensions.h>
+#import <Ditko/NSFont+KDIExtensions.h>
 #endif
 #if (TARGET_OS_IOS)
 #import <Ditko/UIViewController+KDIUIImagePickerControllerExtensions.h>
