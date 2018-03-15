@@ -18,6 +18,11 @@
 @interface UIFont (KDIExtensions)
 
 /**
+ Returns a character set containing all characters in the receiver.
+ */
+@property (readonly,nonatomic) NSCharacterSet *KDI_characterSet;
+
+/**
  Attempts to register fonts from the specified URL, returning YES if successful, otherwise NO and an error by reference.
  
  @param URL The URL for which to register fonts

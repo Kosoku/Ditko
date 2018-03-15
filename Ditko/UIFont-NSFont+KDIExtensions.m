@@ -25,6 +25,12 @@
 
 @implementation KDIFont (KDIExtensions)
 
+- (NSCharacterSet *)KDI_characterSet {
+    NSCharacterSet *retval = (__bridge_transfer NSCharacterSet *)CTFontCopyCharacterSet((__bridge CTFontRef)self);
+    
+    return retval;
+}
+
 + (BOOL)KDI_registerFontsForURL:(NSURL *)URL error:(NSError **)error; {
     CFErrorRef outErrorRef;
     if (!CTFontManagerRegisterFontsForURL((__bridge CFURLRef)URL, kCTFontManagerScopeProcess, &outErrorRef)) {
