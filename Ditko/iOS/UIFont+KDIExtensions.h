@@ -20,7 +20,7 @@
 /**
  Returns a character set containing all characters in the receiver.
  */
-@property (readonly,nonatomic) NSCharacterSet *KDI_characterSet;
+@property (readonly,copy,nonatomic) NSCharacterSet *KDI_characterSet;
 
 /**
  Attempts to register fonts from the specified URL, returning YES if successful, otherwise NO and an error by reference.
