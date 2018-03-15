@@ -45,7 +45,7 @@ static NSArray<NSArray<NSString *> *> *kPickerViewButtonComponentsAndRows;
     if (!(self = [super init]))
         return nil;
     
-    [self setTabBarItem:[[UITabBarItem alloc] initWithTitle:self.title image:[[UIImage KSO_fontAwesomeImageWithIcon:(KSOFontAwesomeIcon)arc4random_uniform((uint32_t)KSO_FONT_AWESOME_ICON_TOTAL_ICONS) size:CGSizeMake(25, 25)] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] tag:0]];
+    [self setTabBarItem:[[UITabBarItem alloc] initWithTitle:self.title image:[[UIImage KSO_fontAwesomeSolidImageWithString:@"\uf2b9" size:CGSizeMake(25, 25)] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] tag:0]];
     
     return self;
 }
@@ -193,7 +193,7 @@ static NSArray<NSArray<NSString *> *> *kPickerViewButtonComponentsAndRows;
     
     KDIBadgeButton *badgeButton = [[KDIBadgeButton alloc] initWithFrame:CGRectZero];
     
-    [badgeButton.button setImage:[UIImage KSO_fontAwesomeImageWithIcon:(KSOFontAwesomeIcon)arc4random_uniform((uint32_t)KSO_FONT_AWESOME_ICON_TOTAL_ICONS) size:CGSizeMake(25, 25)] forState:UIControlStateNormal];
+    [badgeButton.button setImage:[UIImage KSO_fontAwesomeSolidImageWithString:@"\uf037" size:CGSizeMake(25, 25)] forState:UIControlStateNormal];
     [badgeButton.badgeView setBadge:@"1"];
     [badgeButton.badgeView setBadgeBackgroundColor:KDIColorRandomRGB()];
     [badgeButton.badgeView setBadgeForegroundColor:[badgeButton.badgeView.badgeBackgroundColor KDI_contrastingColor]];
@@ -202,7 +202,7 @@ static NSArray<NSArray<NSString *> *> *kPickerViewButtonComponentsAndRows;
     __block NSUInteger badgeButtonValue = 1;
     
     [badgeButton.button KDI_addBlock:^(__kindof UIControl * _Nonnull control, UIControlEvents controlEvents) {
-        [badgeButton.button setImage:[UIImage KSO_fontAwesomeImageWithIcon:(KSOFontAwesomeIcon)arc4random_uniform((uint32_t)KSO_FONT_AWESOME_ICON_TOTAL_ICONS) size:CGSizeMake(25, 25)] forState:UIControlStateNormal];
+        [badgeButton.button setImage:[UIImage KSO_fontAwesomeSolidImageWithString:@"\uf0f9" size:CGSizeMake(25, 25)] forState:UIControlStateNormal];
         [badgeButton.badgeView setBadge:[NSNumberFormatter localizedStringFromNumber:@(++badgeButtonValue) numberStyle:NSNumberFormatterDecimalStyle]];
         [badgeButton.badgeView setBadgeBackgroundColor:KDIColorRandomRGB()];
         [badgeButton.badgeView setBadgeForegroundColor:[badgeButton.badgeView.badgeBackgroundColor KDI_contrastingColor]];
@@ -266,7 +266,7 @@ static NSArray<NSArray<NSString *> *> *kPickerViewButtonComponentsAndRows;
     [centerBadgeButton.button setImageContentVerticalAlignment:KDIButtonContentVerticalAlignmentTop];
     [centerBadgeButton.button setImageContentHorizontalAlignment:KDIButtonContentHorizontalAlignmentCenter];
     [centerBadgeButton.button setTitle:@"Center Badge" forState:UIControlStateNormal];
-    [centerBadgeButton.button setImage:[[UIImage KSO_fontAwesomeImageWithString:@"\uf1d9" size:CGSizeMake(32, 32)] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] forState:UIControlStateNormal];
+    [centerBadgeButton.button setImage:[[UIImage KSO_fontAwesomeSolidImageWithString:@"\uf1d9" size:CGSizeMake(32, 32)] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] forState:UIControlStateNormal];
     [centerBadgeButton.badgeView setBadge:[NSNumberFormatter localizedStringFromNumber:@123 numberStyle:NSNumberFormatterDecimalStyle]];
     [centerBadgeButton.button KDI_addBlock:^(__kindof UIControl * _Nonnull control, UIControlEvents controlEvents) {
         [centerBadgeButton.badgeView setBadge:[NSNumberFormatter localizedStringFromNumber:@(arc4random_uniform(1001)) numberStyle:NSNumberFormatterDecimalStyle]];
@@ -291,7 +291,7 @@ static NSArray<NSArray<NSString *> *> *kPickerViewButtonComponentsAndRows;
     [cameraButton setTranslatesAutoresizingMaskIntoConstraints:NO];
     [cameraButton setBackgroundColor:backgroundColor];
     [cameraButton setRounded:YES];
-    [cameraButton setImage:[UIImage KSO_fontAwesomeImageWithString:@"\uf030" size:CGSizeMake(25, 25)].KDI_templateImage forState:UIControlStateNormal];
+    [cameraButton setImage:[UIImage KSO_fontAwesomeSolidImageWithString:@"\uf030" size:CGSizeMake(25, 25)].KDI_templateImage forState:UIControlStateNormal];
     [cameraButton setTitle:@"Camera" forState:UIControlStateNormal];
     [cameraButton setContentEdgeInsets:UIEdgeInsetsMake(8, 16, 8, 16)];
     [cameraButton setTitleEdgeInsets:UIEdgeInsetsMake(0, 8, 0, 0)];
@@ -318,7 +318,7 @@ static NSArray<NSArray<NSString *> *> *kPickerViewButtonComponentsAndRows;
     [photosButton setTranslatesAutoresizingMaskIntoConstraints:NO];
     [photosButton setBackgroundColor:backgroundColor];
     [photosButton setRounded:YES];
-    [photosButton setImage:[UIImage KSO_fontAwesomeImageWithString:@"\uf03e" size:CGSizeMake(25, 25)].KDI_templateImage forState:UIControlStateNormal];
+    [photosButton setImage:[UIImage KSO_fontAwesomeSolidImageWithString:@"\uf03e" size:CGSizeMake(25, 25)].KDI_templateImage forState:UIControlStateNormal];
     [photosButton setTitle:@"Photos" forState:UIControlStateNormal];
     [photosButton setContentEdgeInsets:UIEdgeInsetsMake(8, 16, 8, 16)];
     [photosButton setTitleEdgeInsets:UIEdgeInsetsMake(0, 8, 0, 0)];

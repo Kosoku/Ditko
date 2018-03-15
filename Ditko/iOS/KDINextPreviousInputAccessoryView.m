@@ -79,7 +79,7 @@ static CGFloat kDefaultFrameHeight;
 }
 
 - (UIBarButtonItem *)nextItem {
-    UIImage *image = [self.class nextItemImage] ?: [UIImage KSO_fontAwesomeImageWithString:@"\uf054" size:kImageSize].KDI_templateImage;
+    UIImage *image = [self.class nextItemImage] ?: [UIImage KSO_fontAwesomeSolidImageWithString:@"\uf054" size:kImageSize].KDI_templateImage;
     UIBarButtonItem *retval = [[UIBarButtonItem alloc] initWithImage:image style:UIBarButtonItemStylePlain target:self action:@selector(_nextItemAction:)];
     
     retval.accessibilityLabel = NSLocalizedStringWithDefaultValue(@"accessibility.label.next", nil, NSBundle.KDI_frameworkBundle, @"Next", @"accessibility label next");
@@ -87,7 +87,7 @@ static CGFloat kDefaultFrameHeight;
     return retval;
 }
 - (UIBarButtonItem *)previousItem {
-    UIImage *image = [self.class previousItemImage] ?: [UIImage KSO_fontAwesomeImageWithString:@"\uf053" size:kImageSize].KDI_templateImage;
+    UIImage *image = [self.class previousItemImage] ?: [UIImage KSO_fontAwesomeSolidImageWithString:@"\uf053" size:kImageSize].KDI_templateImage;
     UIBarButtonItem *retval = [[UIBarButtonItem alloc] initWithImage:image style:UIBarButtonItemStylePlain target:self action:@selector(_previousItemAction:)];
     
     retval.accessibilityLabel = NSLocalizedStringWithDefaultValue(@"accessibility.label.previous", nil, NSBundle.KDI_frameworkBundle, @"Previous", @"accessibility label previous");

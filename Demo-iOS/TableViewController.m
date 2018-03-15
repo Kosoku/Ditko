@@ -39,7 +39,7 @@
     if (!(self = [super initWithStyle:style]))
         return nil;
     
-    [self setTabBarItem:[[UITabBarItem alloc] initWithTitle:self.title image:[[UIImage KSO_fontAwesomeImageWithIcon:(KSOFontAwesomeIcon)arc4random_uniform((uint32_t)KSO_FONT_AWESOME_ICON_TOTAL_ICONS) size:CGSizeMake(25, 25)] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] tag:0]];
+    [self setTabBarItem:[[UITabBarItem alloc] initWithTitle:self.title image:[[UIImage KSO_fontAwesomeSolidImageWithString:@"\uf2bb" size:CGSizeMake(25, 25)] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] tag:0]];
     
     return self;
 }
@@ -60,7 +60,7 @@
     
     retval.showsSelectionUsingAccessoryType = YES;
     
-    retval.icon = [UIImage KSO_fontAwesomeImageWithIcon:arc4random_uniform((uint32_t)KSO_FONT_AWESOME_ICON_TOTAL_ICONS) size:CGSizeMake(25.0, 25.0)].KDI_templateImage;
+    retval.icon = [UIImage KSO_fontAwesomeSolidImageWithString:@"\uf042" size:CGSizeMake(25.0, 25.0)].KDI_templateImage;
     retval.title = @"This is the title";
     retval.subtitle = @"This is the subtitle";
     retval.info = [NSNumberFormatter localizedStringFromNumber:@(indexPath.row) numberStyle:NSNumberFormatterDecimalStyle];

@@ -96,7 +96,7 @@ NSString *kLastBadge = nil;
 }
 
 + (UIBarButtonItem *)iosd_toggleWindowAccessoryViewBarButtonItem; {
-    return [UIBarButtonItem KDI_barButtonItemWithImage:[UIImage KSO_fontAwesomeImageWithString:@"\uf095" size:CGSizeMake(25, 25)].KDI_templateImage style:UIBarButtonItemStylePlain block:^(__kindof UIBarButtonItem * _Nonnull barButtonItem) {
+    return [UIBarButtonItem KDI_barButtonItemWithImage:[UIImage KSO_fontAwesomeSolidImageWithString:@"\uf095" size:CGSizeMake(25, 25)].KDI_templateImage style:UIBarButtonItemStylePlain block:^(__kindof UIBarButtonItem * _Nonnull barButtonItem) {
         KDIWindow *window = (KDIWindow *)UIApplication.sharedApplication.delegate.window;
         
         if (window.accessoryView == nil) {

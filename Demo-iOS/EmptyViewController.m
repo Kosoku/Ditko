@@ -32,7 +32,7 @@
     if (!(self = [super init]))
         return nil;
     
-    [self setTabBarItem:[[UITabBarItem alloc] initWithTitle:self.title image:[[UIImage KSO_fontAwesomeImageWithIcon:(KSOFontAwesomeIcon)arc4random_uniform((uint32_t)KSO_FONT_AWESOME_ICON_TOTAL_ICONS) size:CGSizeMake(25, 25)] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] tag:0]];
+    [self setTabBarItem:[[UITabBarItem alloc] initWithTitle:self.title image:[[UIImage KSO_fontAwesomeSolidImageWithString:@"\uf436" size:CGSizeMake(25, 25)] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] tag:0]];
     
     return self;
 }
@@ -47,7 +47,7 @@
     [emptyView setTranslatesAutoresizingMaskIntoConstraints:NO];
     [emptyView setBackgroundColor:UIColor.whiteColor];
     [emptyView setTintColor:KDIColorRandomRGB()];
-    [emptyView setImage:[UIImage KSO_fontAwesomeImageWithString:@"\uf080" size:CGSizeMake(128, 128)].KDI_templateImage];
+    [emptyView setImage:[UIImage KSO_fontAwesomeSolidImageWithString:@"\uf080" size:CGSizeMake(128, 128)].KDI_templateImage];
     [emptyView setHeadline:@"Headline Text"];
     [emptyView setBody:@"Body text that should wrap to multiple lines and do something nifty"];
     [emptyView setAction:@"Action Button Text"];

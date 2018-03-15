@@ -39,7 +39,7 @@ typedef NS_ENUM(NSInteger, SubviewTag) {
     if (!(self = [super init]))
         return nil;
     
-    [self setTabBarItem:[[UITabBarItem alloc] initWithTitle:self.title image:[[UIImage KSO_fontAwesomeImageWithIcon:(KSOFontAwesomeIcon)arc4random_uniform((uint32_t)KSO_FONT_AWESOME_ICON_TOTAL_ICONS) size:CGSizeMake(25, 25)] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] tag:0]];
+    [self setTabBarItem:[[UITabBarItem alloc] initWithTitle:self.title image:[[UIImage KSO_fontAwesomeSolidImageWithString:@"\uf2cd" size:CGSizeMake(25, 25)] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] tag:0]];
     
     return self;
 }
@@ -121,7 +121,7 @@ typedef NS_ENUM(NSInteger, SubviewTag) {
     [self.button setContentEdgeInsets:UIEdgeInsetsMake(8, 8, 8, 8)];
     [self.button setTitleEdgeInsets:UIEdgeInsetsMake(8, 8, 8, 8)];
     [self.button setImageEdgeInsets:UIEdgeInsetsMake(8, 8, 8, 8)];
-    [self.button setImage:[[UIImage KSO_fontAwesomeImageWithIcon:KSOFontAwesomeIconBug size:CGSizeMake(32, 32)] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] forState:UIControlStateNormal];
+    [self.button setImage:[[UIImage KSO_fontAwesomeSolidImageWithString:@"\uf187" size:CGSizeMake(32, 32)] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] forState:UIControlStateNormal];
     [self.button setTitle:@"button title that is really long and will truncate if the screen is not wide enough" forState:UIControlStateNormal];
     
     void(^setBadgeBlock)(void) = ^{
@@ -135,7 +135,7 @@ typedef NS_ENUM(NSInteger, SubviewTag) {
     [self.badgeButton.button setContentEdgeInsets:UIEdgeInsetsMake(8, 8, 8, 8)];
     [self.badgeButton.button setTitleEdgeInsets:UIEdgeInsetsMake(8, 8, 8, 8)];
     [self.badgeButton.button setImageEdgeInsets:UIEdgeInsetsMake(8, 8, 8, 8)];
-    [self.badgeButton.button setImage:[[UIImage KSO_fontAwesomeImageWithIcon:KSOFontAwesomeIconBus size:CGSizeMake(48, 48)] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] forState:UIControlStateNormal];
+    [self.badgeButton.button setImage:[[UIImage KSO_fontAwesomeSolidImageWithString:@"\uf0fc" size:CGSizeMake(48, 48)] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] forState:UIControlStateNormal];
     [self.badgeButton.button setTitle:@"button title that is really long and will truncate if the screen is not wide enough" forState:UIControlStateNormal];
     [self.badgeButton.button KDI_addBlock:^(__kindof UIControl * _Nonnull control, UIControlEvents controlEvents) {
         setBadgeBlock();
@@ -146,7 +146,7 @@ typedef NS_ENUM(NSInteger, SubviewTag) {
     [self.systemButton setTitleEdgeInsets:UIEdgeInsetsMake(8, 8, 8, 8)];
     [self.systemButton setImageEdgeInsets:UIEdgeInsetsMake(8, 8, 8, 8)];
     [self.systemButton setRounded:YES];
-    [self.systemButton setImage:[[UIImage KSO_fontAwesomeImageWithIcon:KSOFontAwesomeIconBook size:CGSizeMake(25, 25)] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] forState:UIControlStateNormal];
+    [self.systemButton setImage:[[UIImage KSO_fontAwesomeSolidImageWithString:@"\uf1e5" size:CGSizeMake(25, 25)] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] forState:UIControlStateNormal];
     [self.systemButton KDI_addBlock:^(__kindof UIControl * _Nonnull control, UIControlEvents controlEvents) {
         [(KDIButton *)control setInverted:![(KDIButton *)control isInverted]];
     } forControlEvents:UIControlEventTouchUpInside];

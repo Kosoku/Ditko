@@ -63,7 +63,7 @@
     if (!(self = [super init]))
         return nil;
     
-    [self setTabBarItem:[[UITabBarItem alloc] initWithTitle:self.title image:[[UIImage KSO_fontAwesomeImageWithIcon:(KSOFontAwesomeIcon)arc4random_uniform((uint32_t)KSO_FONT_AWESOME_ICON_TOTAL_ICONS) size:CGSizeMake(25, 25)] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] tag:0]];
+    [self setTabBarItem:[[UITabBarItem alloc] initWithTitle:self.title image:[[UIImage KSO_fontAwesomeSolidImageWithString:@"\uf434" size:CGSizeMake(25, 25)] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] tag:0]];
     
     return self;
 }
@@ -120,7 +120,7 @@
     UIButton *rightButton = [UIButton buttonWithType:UIButtonTypeSystem];
     
     [rightButton setTintColor:UIColor.blackColor];
-    [rightButton setImage:[[UIImage KSO_fontAwesomeImageWithIcon:KSOFontAwesomeIconBeer size:CGSizeMake(48, 48)] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] forState:UIControlStateNormal];
+    [rightButton setImage:[[UIImage KSO_fontAwesomeSolidImageWithString:@"\uf13d" size:CGSizeMake(48, 48)] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] forState:UIControlStateNormal];
     [rightButton sizeToFit];
     [self.textField setRightView:rightButton];
     [self.textField setRightViewMode:UITextFieldViewModeAlways];
