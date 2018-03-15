@@ -7,7 +7,7 @@
 
 *Ditko* is an iOS/macOS/tvOS/watchOS framework that extends the `AppKit`, `UIKit`, and `WatchKit` frameworks. It provides a variety of classes, categories, functions and macros that simplify repetitive tasks on the various platforms.
 
-Demo icons by [Glyphish](http://www.glyphish.com/).
+Demo icons by [Font Awesome](https://fontawesome.com/) and [Glyphish](http://www.glyphish.com/).
 
 ![iOS](screenshots/iOS.gif)
 ![macOS](screenshots/macOS.gif)
@@ -17,7 +17,7 @@ Demo icons by [Glyphish](http://www.glyphish.com/).
 
 You can install *Ditko* using [cocoapods](https://cocoapods.org/), [Carthage](https://github.com/Carthage/Carthage), or as a framework. 
 
-When installing as a framework, ensure you also link to [Stanley](https://github.com/Kosoku/Stanley) and [Loki](https://github.com/Kosoku/Loki) as *Ditko* relies on them.
+When installing as a framework, ensure you also link to [Stanley](https://github.com/Kosoku/Stanley), [KSOFontAwesomeExtensions](https://github.com/Kosoku/KSOFontAwesomeExtensions), and [Loki](https://github.com/Kosoku/Loki) as *Ditko* relies on them.
 
 ### Dependencies
 
@@ -25,3 +25,4 @@ Third party:
 
 - [Stanley](https://github.com/Kosoku/Stanley)
 - [Loki](https://github.com/Kosoku/Loki)
+- [KSOFontAwesomeExtensions](https://github.com/Kosoku/KSOFontAwesomeExtensions)
