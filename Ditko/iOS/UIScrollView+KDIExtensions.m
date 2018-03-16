@@ -53,7 +53,7 @@
     return self.contentOffset.y <= self.contentInset.top;
 }
 - (BOOL)KDI_isAtBottom {
-    return self.contentOffset.y >= (self.contentSize.height - CGRectGetHeight(self.frame) + self.contentInset.bottom);
+    return self.contentOffset.y >= (floor(self.contentSize.height) - CGRectGetHeight(self.frame) + self.contentInset.bottom);
 }
 - (CGRect)KDI_visibleRect {
     return CGRectMake(self.contentOffset.x, self.contentOffset.y, CGRectGetWidth(self.frame), CGRectGetHeight(self.frame));
