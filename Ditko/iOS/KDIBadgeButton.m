@@ -32,6 +32,30 @@ static void *kKDIBadgeButtonObservingContext = &kKDIBadgeButtonObservingContext;
 
 @implementation KDIBadgeButton
 #pragma mark *** Subclass Overrides ***
++ (void)initialize {
+    if (self != KDIBadgeButton.class) {
+        return;
+    }
+    
+    if (KDIBadgeView.appearance.badgeFont == nil &&
+        [KDIBadgeView appearanceWhenContainedInInstancesOfClasses:@[KDIBadgeButton.class]].badgeFont == nil) {
+        
+        [KDIBadgeView appearanceWhenContainedInInstancesOfClasses:@[KDIBadgeButton.class]].badgeFont = [UIFont preferredFontForTextStyle:UIFontTextStyleCaption2];
+    }
+    if (KDIBadgeView.appearance.badgeForegroundColor == nil &&
+        [KDIBadgeView appearanceWhenContainedInInstancesOfClasses:@[KDIBadgeButton.class]].badgeForegroundColor == nil) {
+        
+        [[KDIBadgeView appearanceWhenContainedInInstancesOfClasses:@[KDIBadgeButton.class]] setBadgeForegroundColor:UIColor.whiteColor];
+        [[KDIBadgeView appearanceWhenContainedInInstancesOfClasses:@[KDIBadgeButton.class]] setBadgeHighlightedForegroundColor:[UIColor.whiteColor colorWithAlphaComponent:0.5]];
+    }
+    if (KDIBadgeView.appearance.badgeBackgroundColor == nil &&
+        [KDIBadgeView appearanceWhenContainedInInstancesOfClasses:@[KDIBadgeButton.class]].badgeBackgroundColor == nil) {
+        
+        [[KDIBadgeView appearanceWhenContainedInInstancesOfClasses:@[KDIBadgeButton.class]] setBadgeBackgroundColor:UIColor.redColor];
+        [[KDIBadgeView appearanceWhenContainedInInstancesOfClasses:@[KDIBadgeButton.class]] setBadgeHighlightedBackgroundColor:[UIColor.redColor colorWithAlphaComponent:0.5]];
+    }
+}
+
 - (void)dealloc {
     [_button removeObserver:self forKeyPath:@kstKeypath(_button,highlighted) context:kKDIBadgeButtonObservingContext];
     [_button removeObserver:self forKeyPath:@kstKeypath(_button,titleContentVerticalAlignment) context:kKDIBadgeButtonObservingContext];
@@ -160,11 +184,6 @@ static void *kKDIBadgeButtonObservingContext = &kKDIBadgeButtonObservingContext;
     
     _badgeView = [[KDIBadgeView alloc] initWithFrame:CGRectZero];
     [_badgeView setUserInteractionEnabled:NO];
-    [_badgeView setBadgeFont:[UIFont preferredFontForTextStyle:UIFontTextStyleCaption2]];
-    [_badgeView setBadgeForegroundColor:UIColor.whiteColor];
-    [_badgeView setBadgeBackgroundColor:UIColor.redColor];
-    [_badgeView setBadgeHighlightedForegroundColor:[_badgeView.badgeForegroundColor colorWithAlphaComponent:0.5]];
-    [_badgeView setBadgeHighlightedBackgroundColor:[_badgeView.badgeBackgroundColor colorWithAlphaComponent:0.5]];
     [_badgeView addObserver:self forKeyPath:@kstKeypath(_badgeView,badge) options:0 context:kKDIBadgeButtonObservingContext];
     [_badgeView addObserver:self forKeyPath:@kstKeypath(_badgeView,badgeFont) options:0 context:kKDIBadgeButtonObservingContext];
     [_badgeView addObserver:self forKeyPath:@kstKeypath(_badgeView,badgeEdgeInsets) options:0 context:kKDIBadgeButtonObservingContext];
