@@ -129,7 +129,7 @@ NS_ASSUME_NONNULL_BEGIN
  Returns a color by adjusting the saturation of the *color* by *delta*.
  
  @param color The color to adjust
- @param percent The amount to adjust by
+ @param delta The amount to adjust by
  @return The new color
  */
 + (nullable NSColor *)KDI_colorByAdjustingSaturationOfColor:(nullable NSColor *)color delta:(CGFloat)delta;
