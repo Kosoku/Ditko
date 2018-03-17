@@ -23,12 +23,14 @@
 @property (strong,nonatomic) UIImageView *imageView;
 @property (strong,nonatomic) UISegmentedControl *segmentedControl;
 @property (strong,nonatomic) KDIButton *button, *inverseButton;
+
+- (void)_reloadData;
 @end
 
 @implementation DominantTestViewController
 
 - (NSString *)title {
-    return @"Colors";
+    return @"Image";
 }
 
 - (instancetype)init {
@@ -51,14 +53,9 @@
     [self.imageView setClipsToBounds:YES];
     [self.view addSubview:self.imageView];
     
-    UIColor *textColor = [self.imageView.image KDI_dominantColor];
-    UIColor *backgroundColor = [textColor KDI_contrastingColor];
-    
     [self setButton:[[KDIButton alloc] initWithFrame:CGRectZero]];
     [self.button setTranslatesAutoresizingMaskIntoConstraints:NO];
     [self.button setTitle:@"Button Title" forState:UIControlStateNormal];
-    [self.button setTitleColor:textColor forState:UIControlStateNormal];
-    [self.button setBackgroundColor:backgroundColor];
     [self.button setContentEdgeInsets:UIEdgeInsetsMake(8, 8, 8, 8)];
     [self.button setRounded:YES];
     [self.view addSubview:self.button];
@@ -66,8 +63,6 @@
     [self setInverseButton:[[KDIButton alloc] initWithFrame:CGRectZero]];
     [self.inverseButton setTranslatesAutoresizingMaskIntoConstraints:NO];
     [self.inverseButton setTitle:@"Inverse Title" forState:UIControlStateNormal];
-    [self.inverseButton setTitleColor:backgroundColor forState:UIControlStateNormal];
-    [self.inverseButton setBackgroundColor:textColor];
     [self.inverseButton setContentEdgeInsets:UIEdgeInsetsMake(8, 8, 8, 8)];
     [self.inverseButton setRounded:YES];
     [self.view addSubview:self.inverseButton];
@@ -100,20 +95,25 @@
             }
             
             [self.imageView setImage:info.KDI_image];
-            [self.imageView startAnimating];
             
-            UIColor *textColor = [self.imageView.image KDI_dominantColor];
-            UIColor *backgroundColor = [textColor KDI_contrastingColor];
-            
-            [self.button setTitleColor:textColor forState:UIControlStateNormal];
-            [self.button setBackgroundColor:backgroundColor];
-            
-            [self.inverseButton setTitleColor:backgroundColor forState:UIControlStateNormal];
-            [self.inverseButton setBackgroundColor:textColor];
+            [self _reloadData];
         }];
     }];
     
     [self.navigationItem setRightBarButtonItems:@[photoItem]];
+    
+    [self _reloadData];
+}
+
+- (void)_reloadData; {
+    UIColor *color = [self.imageView.image KDI_dominantColor];
+    UIColor *bright = [[color KDI_colorByAdjustingBrightnessByPercent:0.5] KDI_colorByAdjustingHueByPercent:0.5];
+    
+    [self.button setTitleColor:bright forState:UIControlStateNormal];
+    [self.button setBackgroundColor:color];
+    
+    [self.inverseButton setTitleColor:[color KDI_contrastingColor] forState:UIControlStateNormal];
+    [self.inverseButton setBackgroundColor:color];
 }
 
 @end
