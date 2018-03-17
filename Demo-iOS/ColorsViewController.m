@@ -81,7 +81,7 @@ typedef NS_ENUM(NSInteger, ColorsViewControllerTag) {
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.textField.text = [[UIColor KDI_colorRandomHSB] KDI_hexadecimalString];
+    self.textField.text = [KDIColorRandomRGB() KDI_hexadecimalString];
     
     kstWeakify(self);
     [self.textField KDI_addBlock:^(__kindof UIControl * _Nonnull control, UIControlEvents controlEvents) {

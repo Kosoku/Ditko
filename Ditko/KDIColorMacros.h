@@ -68,6 +68,23 @@
 #endif
 
 /**
+ Alias for `+[UIColor KDI_colorRandomHSB]` or `+[NSColor KDI_colorRandomHSB]`.
+ */
+#if (TARGET_OS_IPHONE)
+#define KDIColorRandomHSB() [UIColor KDI_colorRandomHSB]
+#else
+#define KDIColorRandomHSB() [NSColor KDI_colorRandomHSB]
+#endif
+/**
+ Alias for `+[UIColor KDI_colorRandomHSBA]` or `+[NSColor KDI_colorRandomHSBA]`.
+ */
+#if (TARGET_OS_IPHONE)
+#define KDIColorRandomHSBA() [UIColor KDI_colorRandomHSBA]
+#else
+#define KDIColorRandomHSBA() [NSColor KDI_colorRandomHSBA]
+#endif
+
+/**
  Alias for KDIColorHSBA(), passing *h*, *s*, *b*, and 1.0 respectively.
  */
 #define KDIColorHSB(h,s,b) KDIColorHSBA((h),(s),(b),1.0)
