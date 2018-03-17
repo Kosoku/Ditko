@@ -19,6 +19,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface UIColor (KDIExtensions)
 
+#pragma mark Creation
 /**
  Creates and returns a color in the RGB color space with random values between 0 and 255 for R, G, and B respectively. Alpha is always 1.0.
  */
@@ -36,6 +37,7 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @property (class,readonly,nonatomic) UIColor *KDI_colorRandomHSBA;
 
+#pragma mark Hexadecimal
 /**
  Creates and returns a color by parsing *hexadecimalString*.
  
@@ -44,9 +46,19 @@ NS_ASSUME_NONNULL_BEGIN
  */
 + (nullable UIColor *)KDI_colorWithHexadecimalString:(nullable NSString *)hexadecimalString;
 
+/**
+ Returns the hexadecimal string from *color*.
+ 
+ @param color The color for which to return a hexadecimal string
+ @return The hexadecimal string
+ */
 + (nullable NSString *)KDI_hexadecimalStringFromColor:(UIColor *)color;
+/**
+ Returns [self.class KDI_hexadecimalStringFromColor:self].
+ */
 - (nullable NSString *)KDI_hexadecimalString;
 
+#pragma mark Visibility
 /**
  Tells where the the color has enough luminance compared to the backgroundColor at stated tolerance (luminance level to surpass).
  
@@ -56,6 +68,7 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (BOOL)KDI_colorVisibleOverBackgroundColor:(UIColor *)backgroundColor tolerance:(CGFloat)tolerance;
 
+#pragma mark Contrasting
 /**
  Creates and returns a contrasting color for the provided *color*, which will either be UIColor.blackColor or UIColor.whiteColor depending on the perceived brightness of *color*. The perceived brightness is calculated using https://www.w3.org/TR/AERT#color-contrast as a reference. If the contrasting color cannot be computed, *color* is returned.
  
@@ -70,6 +83,7 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (UIColor *)KDI_contrastingColor;
 
+#pragma mark Inverse
 /**
  Creates and returns the inverse of the provided color. The inverse of UIColor.blackColor is UIColor.whiteColor.
  
@@ -84,6 +98,7 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (UIColor *)KDI_inverseColor;
 
+#pragma mark Hue
 /**
  Returns a color by adjusting the hue of the *color* by *delta*.
  
@@ -109,6 +124,7 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (nullable UIColor *)KDI_colorByAdjustingHueByPercent:(CGFloat)percent;
 
+#pragma mark Saturation
 /**
  Returns a color by adjusting the saturation of the *color* by *delta*.
  
@@ -134,6 +150,7 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (nullable UIColor *)KDI_colorByAdjustingSaturationByPercent:(CGFloat)percent;
 
+#pragma mark Brightness
 /**
  Returns a color by adjusting the brightness of *color* by *delta*. Clamps the new brightness between 0.0 and 1.0.
  
