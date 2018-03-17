@@ -133,6 +133,8 @@
 		07824F5A1FCF0E3A005FBF26 /* NSObject+KDIExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 07824F561FCF0E3A005FBF26 /* NSObject+KDIExtensions.m */; };
 		07824F5B1FCF0E3A005FBF26 /* NSObject+KDIExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 07824F561FCF0E3A005FBF26 /* NSObject+KDIExtensions.m */; };
 		07824F5C1FCF0E3A005FBF26 /* NSObject+KDIExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 07824F561FCF0E3A005FBF26 /* NSObject+KDIExtensions.m */; };
+		078CE9A0205CB4CF001592BA /* ColorsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 078CE99F205CB4CF001592BA /* ColorsViewController.m */; };
+		078CE9A3205CB537001592BA /* ColorsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 078CE9A1205CB537001592BA /* ColorsViewController.xib */; };
 		0794A7EA1E734D5300603C99 /* UINavigationController+KDIExtensions.h in Headers */ = {isa = PBXBuildFile; fileRef = 0794A7E81E734D5300603C99 /* UINavigationController+KDIExtensions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0794A7EB1E734D5300603C99 /* UINavigationController+KDIExtensions.h in Headers */ = {isa = PBXBuildFile; fileRef = 0794A7E81E734D5300603C99 /* UINavigationController+KDIExtensions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0794A7EC1E734D5300603C99 /* UINavigationController+KDIExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0794A7E91E734D5300603C99 /* UINavigationController+KDIExtensions.m */; };
@@ -532,6 +534,9 @@
 		077FE3FD1F4E1D190093CCBB /* UIBarButtonItem+DemoExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIBarButtonItem+DemoExtensions.m"; sourceTree = "<group>"; };
 		07824F551FCF0E3A005FBF26 /* NSObject+KDIExtensions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+KDIExtensions.h"; sourceTree = "<group>"; };
 		07824F561FCF0E3A005FBF26 /* NSObject+KDIExtensions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSObject+KDIExtensions.m"; sourceTree = "<group>"; };
+		078CE99E205CB4CF001592BA /* ColorsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ColorsViewController.h; sourceTree = "<group>"; };
+		078CE99F205CB4CF001592BA /* ColorsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ColorsViewController.m; sourceTree = "<group>"; };
+		078CE9A2205CB537001592BA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/ColorsViewController.xib; sourceTree = "<group>"; };
 		0794A7E81E734D5300603C99 /* UINavigationController+KDIExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UINavigationController+KDIExtensions.h"; path = "iOS/UINavigationController+KDIExtensions.h"; sourceTree = "<group>"; };
 		0794A7E91E734D5300603C99 /* UINavigationController+KDIExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UINavigationController+KDIExtensions.m"; path = "iOS/UINavigationController+KDIExtensions.m"; sourceTree = "<group>"; };
 		0794A7EE1E73509100603C99 /* UIView+KDIExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIView+KDIExtensions.h"; path = "iOS/UIView+KDIExtensions.h"; sourceTree = "<group>"; };
@@ -1021,6 +1026,9 @@
 				074B47821EB3DF84009B7C6D /* EmptyViewController.m */,
 				07B71A581EDC914500139924 /* DominantTestViewController.h */,
 				07B71A591EDC914500139924 /* DominantTestViewController.m */,
+				078CE99E205CB4CF001592BA /* ColorsViewController.h */,
+				078CE99F205CB4CF001592BA /* ColorsViewController.m */,
+				078CE9A1205CB537001592BA /* ColorsViewController.xib */,
 				07A276011F533FD5001219C8 /* TextViewController.h */,
 				07A276021F533FD5001219C8 /* TextViewController.m */,
 				071E53351F58B9F800A36B59 /* TextViewController.xib */,
@@ -1602,6 +1610,7 @@
 				071E53361F58B9F800A36B59 /* TextViewController.xib in Resources */,
 				0795E6591E704A56004A5CB2 /* LaunchScreen.storyboard in Resources */,
 				0795E6561E704A56004A5CB2 /* Assets.xcassets in Resources */,
+				078CE9A3205CB537001592BA /* ColorsViewController.xib in Resources */,
 				074B47881EB3E431009B7C6D /* FontAwesome.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1897,6 +1906,7 @@
 				077FE3FE1F4E1D190093CCBB /* UIBarButtonItem+DemoExtensions.m in Sources */,
 				07A276031F533FD5001219C8 /* TextViewController.m in Sources */,
 				07143C711F563BCE007E3410 /* ButtonViewController.m in Sources */,
+				078CE9A0205CB4CF001592BA /* ColorsViewController.m in Sources */,
 				077FE3FB1F4E19420093CCBB /* PushViewController.m in Sources */,
 				07B71A5A1EDC914500139924 /* DominantTestViewController.m in Sources */,
 				074B47831EB3DF84009B7C6D /* EmptyViewController.m in Sources */,
@@ -1988,6 +1998,14 @@
 				072474991F82BAAF00327E65 /* nl */,
 			);
 			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+		078CE9A1205CB537001592BA /* ColorsViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				078CE9A2205CB537001592BA /* Base */,
+			);
+			name = ColorsViewController.xib;
 			sourceTree = "<group>";
 		};
 		0795E6571E704A56004A5CB2 /* LaunchScreen.storyboard */ = {

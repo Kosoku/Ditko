@@ -20,6 +20,7 @@
 #import "TextViewController.h"
 #import "ButtonViewController.h"
 #import "TableViewController.h"
+#import "ColorsViewController.h"
 
 #import <Ditko/Ditko.h>
 
@@ -45,14 +46,15 @@
     
     [navigationController setViewControllers:@[[[ViewController alloc] init]]];
     
-    [controller setViewControllers:@[navigationController,
+    [controller setViewControllers:@[[[UINavigationController alloc] initWithRootViewController:[[ColorsViewController alloc] initWithNibName:nil bundle:nil]],
+                                     navigationController,
                                      [[UINavigationController alloc] initWithRootViewController:[[TableViewController alloc] initWithStyle:UITableViewStylePlain]],
                                      [[UINavigationController alloc] initWithRootViewController:[[EmptyViewController alloc] init]],
                                      [[UINavigationController alloc] initWithRootViewController:[[DominantTestViewController alloc] init]],
                                      [[UINavigationController alloc] initWithRootViewController:[[TextViewController alloc] init]],
                                      [[UINavigationController alloc] initWithRootViewController:[[ButtonViewController alloc] init]]]];
     
-    [controller setSelectedIndex:1];
+//    [controller setSelectedIndex:1];
     
     [self.window setRootViewController:controller];
     [self.window makeKeyAndVisible];

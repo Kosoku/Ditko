@@ -32,6 +32,9 @@ NS_ASSUME_NONNULL_BEGIN
  */
 + (UIColor *)KDI_colorRandomRGBA;
 
++ (UIColor *)KDI_colorRandomHSB;
++ (UIColor *)KDI_colorRandomHSBA;
+
 /**
  Creates and returns a contrasting color for the provided *color*, which will either be UIColor.blackColor or UIColor.whiteColor depending on the perceived brightness of *color*. The perceived brightness is calculated using https://www.w3.org/TR/AERT#color-contrast as a reference. If the contrasting color cannot be computed, *color* is returned.
  
@@ -76,6 +79,9 @@ NS_ASSUME_NONNULL_BEGIN
  */
 + (nullable UIColor *)KDI_colorWithHexadecimalString:(nullable NSString *)hexadecimalString;
 
++ (nullable NSString *)KDI_hexadecimalStringFromColor:(UIColor *)color;
+- (nullable NSString *)KDI_hexadecimalString;
+
 /**
  Creates and returns a new color by adjusting the bright of color by *delta*. Clamps the new brightness between 0.0 and 1.0.
  
@@ -91,6 +97,21 @@ NS_ASSUME_NONNULL_BEGIN
  @return The new color
  */
 - (nullable UIColor *)KDI_colorByAdjustingBrightnessBy:(CGFloat)delta;
+
++ (nullable UIColor *)KDI_colorByAdjustingBrightnessOfColor:(nullable UIColor *)color percent:(CGFloat)percent;
+- (nullable UIColor *)KDI_colorByAdjustingBrightnessByPercent:(CGFloat)percent;
+
++ (nullable UIColor *)KDI_colorByAdjustingHueOfColor:(nullable UIColor *)color delta:(CGFloat)delta;
+- (nullable UIColor *)KDI_colorByAdjustingHueBy:(CGFloat)delta;
+
++ (nullable UIColor *)KDI_colorByAdjustingHueOfColor:(nullable UIColor *)color percent:(CGFloat)percent;
+- (nullable UIColor *)KDI_colorByAdjustingHueByPercent:(CGFloat)percent;
+
++ (nullable UIColor *)KDI_colorByAdjustingSaturationOfColor:(nullable UIColor *)color delta:(CGFloat)delta;
+- (nullable UIColor *)KDI_colorByAdjustingSaturationBy:(CGFloat)delta;
+
++ (nullable UIColor *)KDI_colorByAdjustingSaturationOfColor:(nullable UIColor *)color percent:(CGFloat)percent;
+- (nullable UIColor *)KDI_colorByAdjustingSaturationByPercent:(CGFloat)percent;
 
 @end
 

@@ -136,6 +136,7 @@
     } forControlEvents:UIControlEventValueChanged];
     [switchControl sizeToFit];
     
+    [self.navigationItem setLeftItemsSupplementBackButton:YES];
     [self.navigationItem setLeftBarButtonItems:@[[[UIBarButtonItem alloc] initWithCustomView:switchControl]]];
     
     [self.navigationItem setRightBarButtonItems:@[[UIBarButtonItem KDI_barButtonItemWithTitle:@"Color" style:UIBarButtonItemStylePlain block:^(__kindof UIBarButtonItem * _Nonnull barButtonItem) {
