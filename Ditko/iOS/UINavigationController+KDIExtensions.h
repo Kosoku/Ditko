@@ -69,7 +69,7 @@ NS_ASSUME_NONNULL_BEGIN
  @param completion The completion block to invoke when the animation is complete
  @return The popped view controller
  */
-- (nullable UIViewController *)KDI_popViewControllerAnimated:(BOOL)animated completion:(nullable dispatch_block_t)completion;
+- (nullable __kindof UIViewController *)KDI_popViewControllerAnimated:(BOOL)animated completion:(nullable dispatch_block_t)completion;
 
 @end
 
