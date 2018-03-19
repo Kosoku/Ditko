@@ -45,11 +45,6 @@ NS_ASSUME_NONNULL_BEGIN
 @property (assign,nonatomic) CGFloat KDI_frameHeight;
 
 /**
- Convenience property to set and get the custom constraints managed by the receiver. Setting this will deactivate the old custom constraints and active the new custom constraints.
- */
-@property (copy,nonatomic,nullable) NSArray<NSLayoutConstraint *> *KDI_customConstraints;
-
-/**
  Creates and returns an NSArray containing all the receiver's subviews recursively.
  
  For each subview of the receiver, the subview is adding to the returned array, followed by the array of the subview's recursive subviews.
