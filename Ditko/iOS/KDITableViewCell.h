@@ -99,6 +99,13 @@ NS_ASSUME_NONNULL_BEGIN
 @property (copy,nonatomic,null_resettable) UIFontTextStyle infoTextStyle UI_APPEARANCE_SELECTOR;
 
 /**
+ The name of the class that should be used for the selectedBackgroundView of the receiver. It must be a subclass of UIView.
+ 
+ The default is nil;
+ */
+@property (copy,nonatomic,nullable) NSString *selectedBackgroundViewClassName UI_APPEARANCE_SELECTOR;
+
+/**
  Set and get the horizontal margin between subviews.
  
  The default is 8.0.

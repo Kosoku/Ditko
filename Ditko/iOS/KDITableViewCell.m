@@ -240,6 +240,12 @@
     self.infoTextStyle.KDI_dynamicTypeTextStyle = _infoTextStyle;
 }
 #pragma mark -
+- (void)setSelectedBackgroundViewClassName:(NSString *)selectedBackgroundViewClassName {
+    _selectedBackgroundViewClassName = [selectedBackgroundViewClassName copy];
+    
+    self.selectedBackgroundView = _selectedBackgroundViewClassName ? [[NSClassFromString(_selectedBackgroundViewClassName) alloc] initWithFrame:CGRectZero] : nil;
+}
+#pragma mark -
 @dynamic horizontalMargin;
 - (CGFloat)horizontalMargin {
     return self.stackView.spacing;
