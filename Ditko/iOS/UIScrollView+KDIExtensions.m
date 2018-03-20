@@ -34,12 +34,20 @@
             NSInteger section = [tableView numberOfSections] - 1;
             NSInteger row = [tableView numberOfRowsInSection:section] - 1;
             
+            if (row == -1) {
+                return;
+            }
+            
             [tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:row inSection:section] atScrollPosition:UITableViewScrollPositionBottom animated:animated];
         }
         else if ([self isKindOfClass:UICollectionView.class]) {
             UICollectionView *collectionView = (UICollectionView *)self;
             NSInteger section = [collectionView numberOfSections] - 1;
             NSInteger item = [collectionView numberOfItemsInSection:section] - 1;
+            
+            if (item == -1) {
+                return;
+            }
             
             [collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:item inSection:section] atScrollPosition:UICollectionViewScrollPositionBottom animated:animated];
         }
