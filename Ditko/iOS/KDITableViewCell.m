@@ -43,6 +43,8 @@
     if (!(self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]))
         return nil;
     
+    self.isAccessibilityElement = YES;
+    
     _titleColor = [self.class _defaultTitleColor];
     _subtitleColor = [self.class _defaultSubtitleColor];
     _infoColor = [self.class _defaultInfoColor];
@@ -101,6 +103,22 @@
     [_stackView addArrangedSubview:_infoLabel];
     
     return self;
+}
+#pragma mark -
+- (NSString *)accessibilityLabel {
+    NSMutableArray *retval = [[NSMutableArray alloc] init];
+    
+    if (!self.titleLabel.isHidden) {
+        [retval addObject:self.titleLabel.text];
+    }
+    if (!self.subtitleLabel.isHidden) {
+        [retval addObject:self.subtitleLabel.text];
+    }
+    if (!self.infoLabel.isHidden) {
+        [retval addObject:self.infoLabel.text];
+    }
+    
+    return [retval componentsJoinedByString:@"\n"];
 }
 #pragma mark -
 + (BOOL)requiresConstraintBasedLayout {

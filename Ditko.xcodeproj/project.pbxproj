@@ -102,11 +102,9 @@
 		074B47831EB3DF84009B7C6D /* EmptyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 074B47821EB3DF84009B7C6D /* EmptyViewController.m */; };
 		074B47851EB3E3D1009B7C6D /* KSOFontAwesomeExtensions.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 074B47841EB3E3D1009B7C6D /* KSOFontAwesomeExtensions.framework */; };
 		074B47861EB3E3D1009B7C6D /* KSOFontAwesomeExtensions.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 074B47841EB3E3D1009B7C6D /* KSOFontAwesomeExtensions.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		074B47881EB3E431009B7C6D /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 074B47871EB3E431009B7C6D /* FontAwesome.ttf */; };
 		074B478B1EB3E86F009B7C6D /* EmptyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 074B478A1EB3E86F009B7C6D /* EmptyViewController.m */; };
 		074B478D1EB3E8CD009B7C6D /* KSOFontAwesomeExtensions.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 074B478C1EB3E8CD009B7C6D /* KSOFontAwesomeExtensions.framework */; };
 		074B478E1EB3E8CD009B7C6D /* KSOFontAwesomeExtensions.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 074B478C1EB3E8CD009B7C6D /* KSOFontAwesomeExtensions.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		074B478F1EB3E98C009B7C6D /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 074B47871EB3E431009B7C6D /* FontAwesome.ttf */; };
 		075F40031F780EF9009709EB /* UIViewController+KDIUIImagePickerControllerExtensions.h in Headers */ = {isa = PBXBuildFile; fileRef = 075F40011F780EF9009709EB /* UIViewController+KDIUIImagePickerControllerExtensions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		075F40041F780EF9009709EB /* UIViewController+KDIUIImagePickerControllerExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 075F40021F780EF9009709EB /* UIViewController+KDIUIImagePickerControllerExtensions.m */; };
 		0767306F1E75C2C100030F0C /* Loki.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0767306E1E75C2C100030F0C /* Loki.framework */; };
@@ -510,7 +508,6 @@
 		074B47811EB3DF84009B7C6D /* EmptyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmptyViewController.h; sourceTree = "<group>"; };
 		074B47821EB3DF84009B7C6D /* EmptyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmptyViewController.m; sourceTree = "<group>"; };
 		074B47841EB3E3D1009B7C6D /* KSOFontAwesomeExtensions.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = KSOFontAwesomeExtensions.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		074B47871EB3E431009B7C6D /* FontAwesome.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FontAwesome.ttf; sourceTree = "<group>"; };
 		074B47891EB3E86F009B7C6D /* EmptyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmptyViewController.h; sourceTree = "<group>"; };
 		074B478A1EB3E86F009B7C6D /* EmptyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmptyViewController.m; sourceTree = "<group>"; };
 		074B478C1EB3E8CD009B7C6D /* KSOFontAwesomeExtensions.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = KSOFontAwesomeExtensions.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1050,7 +1047,6 @@
 		0795E6491E704A56004A5CB2 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				074B47871EB3E431009B7C6D /* FontAwesome.ttf */,
 				0795E64A1E704A56004A5CB2 /* main.m */,
 			);
 			name = "Supporting Files";
@@ -1573,7 +1569,6 @@
 			files = (
 				071B62D41E70849500B7B85A /* Assets.xcassets in Resources */,
 				071B62D21E70849500B7B85A /* Main.storyboard in Resources */,
-				074B478F1EB3E98C009B7C6D /* FontAwesome.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1611,7 +1606,6 @@
 				0795E6591E704A56004A5CB2 /* LaunchScreen.storyboard in Resources */,
 				0795E6561E704A56004A5CB2 /* Assets.xcassets in Resources */,
 				078CE9A3205CB537001592BA /* ColorsViewController.xib in Resources */,
-				074B47881EB3E431009B7C6D /* FontAwesome.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
