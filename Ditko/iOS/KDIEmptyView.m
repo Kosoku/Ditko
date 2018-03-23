@@ -74,11 +74,17 @@
             [temp addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|->=margin-[view]->=margin-|" options:0 metrics:@{@"margin": margin} views:@{@"view": self.stackView}]];
             [temp addObject:[NSLayoutConstraint constraintWithItem:self.stackView attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeCenterY multiplier:1.0 constant:0]];
             break;
-        case KDIEmptyViewAlignmentVerticalSystemSpacing:
+        case KDIEmptyViewAlignmentVerticalSystemSpacingFromTop:
             [temp addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-[view]->=margin-|" options:0 metrics:@{@"margin": margin} views:@{@"view": self.stackView}]];
             break;
-        case KDIEmptyViewAlignmentVerticalCustomSpacing:
+        case KDIEmptyViewAlignmentVerticalCustomSpacingFromTop:
             [temp addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-spacing-[view]->=margin-|" options:0 metrics:@{@"margin": margin, @"spacing": @(self.alignmentVerticalCustomSpacing)} views:@{@"view": self.stackView}]];
+            break;
+        case KDIEmptyViewAlignmentVerticalSystemSpacingFromBottom:
+            [temp addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|->=margin-[view]-|" options:0 metrics:@{@"margin": margin} views:@{@"view": self.stackView}]];
+            break;
+        case KDIEmptyViewAlignmentVerticalCustomSpacingFromBottom:
+            [temp addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|->=margin-[view]-spacing-|" options:0 metrics:@{@"margin": margin, @"spacing": @(self.alignmentVerticalCustomSpacing)} views:@{@"view": self.stackView}]];
             break;
         default:
             break;

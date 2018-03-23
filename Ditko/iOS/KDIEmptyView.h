@@ -28,11 +28,19 @@ typedef NS_ENUM(NSInteger, KDIEmptyViewAlignmentVertical) {
     /**
      Spacing from the top edge, using the @"-" character in VFL.
      */
-    KDIEmptyViewAlignmentVerticalSystemSpacing,
+    KDIEmptyViewAlignmentVerticalSystemSpacingFromTop,
     /**
      Custom spacing from the top edge, you should set the desired value for alignmentVerticalCustomSpacing if this value is used.
      */
-    KDIEmptyViewAlignmentVerticalCustomSpacing
+    KDIEmptyViewAlignmentVerticalCustomSpacingFromTop,
+    /**
+     Spacing from the bottom edge, using the @"-" character in VFL.
+     */
+    KDIEmptyViewAlignmentVerticalSystemSpacingFromBottom,
+    /**
+     Custom spacing from the bottom edge, you should set the desired value for alignmentVerticalCustomSpacing if this value is used.
+     */
+    KDIEmptyViewAlignmentVerticalCustomSpacingFromBottom
 };
 
 @class KDIEmptyView;
