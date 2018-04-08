@@ -239,6 +239,7 @@
     _activityIndicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
     _activityIndicatorView.translatesAutoresizingMaskIntoConstraints = NO;
     _activityIndicatorView.hidesWhenStopped = YES;
+    _activityIndicatorView.color = _bodyColor;
     [_stackView addSubview:_activityIndicatorView];
     
     _bodyLabel = [[UILabel alloc] initWithFrame:CGRectZero];
