@@ -102,7 +102,7 @@
     [super tintColorDidChange];
     
     [self.imageView setTintColor:self.imageColor ?: self.tintColor];
-    [self.activityIndicatorView setColor:self.loadingColor ?: self.tintColor];
+    [self.activityIndicatorView setColor:self.loadingColor ?: self.bodyColor];
 }
 
 - (void)setAlignmentVertical:(KDIEmptyViewAlignmentVertical)alignmentVertical {
