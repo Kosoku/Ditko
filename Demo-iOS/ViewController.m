@@ -15,6 +15,7 @@
 
 #import "ViewController.h"
 #import "UIViewController+Extensions.h"
+#import "UISegmentedControl+Extensions.h"
 
 #import <Ditko/Ditko.h>
 #import <Stanley/Stanley.h>
@@ -64,29 +65,7 @@
         self.borderView.borderColor = KDIColorHexadecimal(self.borderColorTextField.text);
     } forControlEvents:UIControlEventEditingChanged];
     
-    [self.borderOptionsSegmentedControl KDI_addBlock:^(__kindof UIControl * _Nonnull control, UIControlEvents controlEvents) {
-        kstStrongify(self);
-        KDIBorderOptions options = self.borderView.borderOptions;
-        
-        switch (self.borderOptionsSegmentedControl.selectedSegmentIndex) {
-            case 0:
-                options ^= KDIBorderOptionsTop;
-                break;
-            case 1:
-                options ^= KDIBorderOptionsLeft;
-                break;
-            case 2:
-                options ^= KDIBorderOptionsBottom;
-                break;
-            case 3:
-                options ^= KDIBorderOptionsRight;
-                break;
-            default:
-                break;
-        }
-        
-        self.borderView.borderOptions = options;
-    } forControlEvents:UIControlEventValueChanged];
+    [self.borderOptionsSegmentedControl KSO_configureForBorderedViews:@[self.borderView]];
     
     [self.borderWidthStepper KDI_addBlock:^(__kindof UIControl * _Nonnull control, UIControlEvents controlEvents) {
         kstStrongify(self);
