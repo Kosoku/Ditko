@@ -215,6 +215,24 @@ static inline CGFloat KDIPerceivedBrightnessForRedGreenAndBlue(CGFloat red, CGFl
 - (KDIColor *)KDI_contrastingColor; {
     return [KDIColor KDI_contrastingColorOfColor:self];
 }
++ (UIStatusBarStyle)KDI_contrastingStatusBarStyleForColor:(nullable UIColor *)color; {
+    if (color == nil) {
+        return UIStatusBarStyleDefault;
+    }
+    else {
+        UIColor *contrastColor = [color KDI_contrastingColor];
+        
+        if ([contrastColor isEqual:UIColor.blackColor]) {
+            return UIStatusBarStyleDefault;
+        }
+        else {
+            return UIStatusBarStyleLightContent;
+        }
+    }
+}
+- (UIStatusBarStyle)KDI_contrastingStatusBarStyle; {
+    return [self.class KDI_contrastingStatusBarStyleForColor:self];
+}
 
 + (KDIColor *)KDI_inverseColorOfColor:(KDIColor *)color {
 #if (TARGET_OS_IPHONE)
