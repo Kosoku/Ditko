@@ -15,6 +15,7 @@
 
 #import "TableViewController.h"
 #import "Constants.h"
+#import "UIViewController+Extensions.h"
 
 #import <KSOFontAwesomeExtensions/KSOFontAwesomeExtensions.h>
 #import <Ditko/Ditko.h>
@@ -55,6 +56,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [self KSO_addNavigationBarTitleView];
+    
     self.tableRowModels = @[[[TableRowModel alloc] initWithTitle:@"Title" subtitle:nil info:nil image:nil],
                             [[TableRowModel alloc] initWithTitle:@"Title" subtitle:nil info:nil image:[UIImage KSO_fontAwesomeSolidImageWithString:@"\uf2b9" size:kBarButtonItemImageSize].KDI_templateImage],
                             [[TableRowModel alloc] initWithTitle:@"Title" subtitle:@"Subtitle" info:nil image:nil],
@@ -63,13 +66,6 @@
                             [[TableRowModel alloc] initWithTitle:@"Title" subtitle:nil info:@"Info" image:[UIImage KSO_fontAwesomeSolidImageWithString:@"\uf2b9" size:kBarButtonItemImageSize].KDI_templateImage],
                             [[TableRowModel alloc] initWithTitle:@"Title" subtitle:@"Subtitle" info:@"Info" image:nil],
                             [[TableRowModel alloc] initWithTitle:@"Title" subtitle:@"Subtitle" info:@"Info" image:[UIImage KSO_fontAwesomeSolidImageWithString:@"\uf2b9" size:kBarButtonItemImageSize].KDI_templateImage]];
-    
-    KDINavigationBarTitleView *titleView = [[KDINavigationBarTitleView alloc] initWithFrame:CGRectZero];
-    
-    titleView.title = self.title;
-    titleView.subtitle = [self.class detailViewSubtitle];
-    
-    self.navigationItem.titleView = titleView;
     
     self.tableView.estimatedRowHeight = 44.0;
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ViewController">
+            <connections>
+                <outlet property="borderColorTextField" destination="mkg-xI-5qr" id="4a6-Fz-wC1"/>
+                <outlet property="borderView" destination="iXG-LV-03L" id="mv9-wO-6yz"/>
+                <outlet property="view" destination="iN0-l3-epB" id="iYx-WT-vgu"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iXG-LV-03L" customClass="KDIView">
+                    <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                    <subviews>
+                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Border color as hex" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mkg-xI-5qr" customClass="KDITextField">
+                            <rect key="frame" x="8" y="8" width="169.5" height="30"/>
+                            <nil key="textColor"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <textInputTraits key="textInputTraits"/>
+                        </textField>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="mkg-xI-5qr" firstAttribute="leading" secondItem="iXG-LV-03L" secondAttribute="leading" constant="8" id="LnZ-ub-uyt"/>
+                        <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="mkg-xI-5qr" secondAttribute="trailing" constant="8" id="NkT-2G-BdS"/>
+                        <constraint firstItem="mkg-xI-5qr" firstAttribute="top" secondItem="iXG-LV-03L" secondAttribute="top" constant="8" id="jyh-MD-eVK"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="iXG-LV-03L" secondAttribute="bottom" id="46b-J0-6wj"/>
+                <constraint firstItem="iXG-LV-03L" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="4vL-Ig-6HJ"/>
+                <constraint firstItem="iXG-LV-03L" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="ATt-i3-v88"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="iXG-LV-03L" secondAttribute="trailing" id="EBF-hQ-J5G"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+        </view>
+    </objects>
+</document>

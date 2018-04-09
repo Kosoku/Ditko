@@ -16,6 +16,7 @@
 #import "RootTableViewController.h"
 #import "TableViewController.h"
 #import "AccessoryViewController.h"
+#import "ViewController.h"
 
 #import <Ditko/Ditko.h>
 
@@ -33,7 +34,8 @@
     [super viewDidLoad];
     
     self.detailViewClasses = @[TableViewController.class,
-                               AccessoryViewController.class];
+                               AccessoryViewController.class,
+                               ViewController.class];
     
     self.tableView.estimatedRowHeight = 44.0;
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
