@@ -41,6 +41,7 @@
             [self setTopBorderLayer:[CALayer layer]];
             [self _configureBorderLayer:self.topBorderLayer];
             [self.view.layer addSublayer:self.topBorderLayer];
+            [self.view setNeedsLayout];
         }
     }
     else {
@@ -53,6 +54,7 @@
             [self setLeftBorderLayer:[CALayer layer]];
             [self _configureBorderLayer:self.leftBorderLayer];
             [self.view.layer addSublayer:self.leftBorderLayer];
+            [self.view setNeedsLayout];
         }
     }
     else {
@@ -65,6 +67,7 @@
             [self setBottomBorderLayer:[CALayer layer]];
             [self _configureBorderLayer:self.bottomBorderLayer];
             [self.view.layer addSublayer:self.bottomBorderLayer];
+            [self.view setNeedsLayout];
         }
     }
     else {
@@ -77,6 +80,7 @@
             [self setRightBorderLayer:[CALayer layer]];
             [self _configureBorderLayer:self.rightBorderLayer];
             [self.view.layer addSublayer:self.rightBorderLayer];
+            [self.view setNeedsLayout];
         }
     }
     else {

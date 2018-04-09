@@ -13,6 +13,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ViewController">
             <connections>
                 <outlet property="borderColorTextField" destination="mkg-xI-5qr" id="4a6-Fz-wC1"/>
+                <outlet property="borderOptionsSegmentedControl" destination="UNF-eK-Qcm" id="GNn-hd-htf"/>
                 <outlet property="borderView" destination="iXG-LV-03L" id="mv9-wO-6yz"/>
                 <outlet property="view" destination="iN0-l3-epB" id="iYx-WT-vgu"/>
             </connections>
@@ -31,11 +32,23 @@
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <textInputTraits key="textInputTraits"/>
                         </textField>
+                        <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" momentary="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UNF-eK-Qcm">
+                            <rect key="frame" x="8" y="46" width="239" height="29"/>
+                            <segments>
+                                <segment title="Top"/>
+                                <segment title="Left"/>
+                                <segment title="Bottom"/>
+                                <segment title="Right"/>
+                            </segments>
+                        </segmentedControl>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
+                        <constraint firstItem="UNF-eK-Qcm" firstAttribute="top" secondItem="mkg-xI-5qr" secondAttribute="bottom" constant="8" id="I1g-SS-GbB"/>
                         <constraint firstItem="mkg-xI-5qr" firstAttribute="leading" secondItem="iXG-LV-03L" secondAttribute="leading" constant="8" id="LnZ-ub-uyt"/>
                         <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="mkg-xI-5qr" secondAttribute="trailing" constant="8" id="NkT-2G-BdS"/>
+                        <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="UNF-eK-Qcm" secondAttribute="trailing" constant="8" id="VL5-ov-5gb"/>
+                        <constraint firstItem="UNF-eK-Qcm" firstAttribute="leading" secondItem="iXG-LV-03L" secondAttribute="leading" constant="8" id="dvc-Ar-eWm"/>
                         <constraint firstItem="mkg-xI-5qr" firstAttribute="top" secondItem="iXG-LV-03L" secondAttribute="top" constant="8" id="jyh-MD-eVK"/>
                     </constraints>
                 </view>

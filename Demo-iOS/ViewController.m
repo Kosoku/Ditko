@@ -22,6 +22,7 @@
 @interface ViewController ()
 @property (weak,nonatomic) IBOutlet KDIView *borderView;
 @property (weak,nonatomic) IBOutlet KDITextField *borderColorTextField;
+@property (weak,nonatomic) IBOutlet UISegmentedControl *borderOptionsSegmentedControl;
 @end
 
 @implementation ViewController
@@ -46,6 +47,30 @@
         kstStrongify(self);
         self.borderView.borderColor = KDIColorHexadecimal(self.borderColorTextField.text);
     } forControlEvents:UIControlEventEditingChanged];
+    
+    [self.borderOptionsSegmentedControl KDI_addBlock:^(__kindof UIControl * _Nonnull control, UIControlEvents controlEvents) {
+        kstStrongify(self);
+        KDIBorderOptions options = self.borderView.borderOptions;
+        
+        switch (self.borderOptionsSegmentedControl.selectedSegmentIndex) {
+            case 0:
+                options ^= KDIBorderOptionsTop;
+                break;
+            case 1:
+                options ^= KDIBorderOptionsLeft;
+                break;
+            case 2:
+                options ^= KDIBorderOptionsBottom;
+                break;
+            case 3:
+                options ^= KDIBorderOptionsRight;
+                break;
+            default:
+                break;
+        }
+        
+        self.borderView.borderOptions = options;
+    } forControlEvents:UIControlEventValueChanged];
 }
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
