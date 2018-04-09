@@ -17,10 +17,6 @@
 #import "Constants.h"
 
 #import <Ditko/Ditko.h>
-#import <Stanley/Stanley.h>
-
-NSNotificationName const AccessoryViewNotificationDidAdd = @"AccessoryViewNotificationDidAdd";
-NSNotificationName const AccessoryViewNotificationWillRemove = @"AccessoryViewNotificationWillRemove";
 
 @interface AccessoryView ()
 @property (strong,nonatomic) KDIButton *button;
@@ -46,21 +42,6 @@ NSNotificationName const AccessoryViewNotificationWillRemove = @"AccessoryViewNo
     [self addSubview:self.button];
     
     return self;
-}
-
-- (void)willMoveToWindow:(UIWindow *)newWindow {
-    [super willMoveToWindow:newWindow];
-    
-    if (newWindow == nil) {
-        [NSNotificationCenter.defaultCenter postNotificationName:AccessoryViewNotificationWillRemove object:nil];
-    }
-}
-- (void)didMoveToWindow {
-    [super didMoveToWindow];
-    
-    if (self.window != nil) {
-        [NSNotificationCenter.defaultCenter postNotificationName:AccessoryViewNotificationDidAdd object:self];
-    }
 }
 
 - (CGSize)sizeThatFits:(CGSize)size {

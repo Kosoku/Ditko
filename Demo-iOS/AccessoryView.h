@@ -15,9 +15,6 @@
 
 #import <UIKit/UIKit.h>
 
-FOUNDATION_EXTERN NSNotificationName const AccessoryViewNotificationDidAdd;
-FOUNDATION_EXTERN NSNotificationName const AccessoryViewNotificationWillRemove;
-
 @interface AccessoryView : UIView
 
 @end

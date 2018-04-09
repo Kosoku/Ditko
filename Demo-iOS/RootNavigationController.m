@@ -14,7 +14,6 @@
 //  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #import "RootNavigationController.h"
-#import "AccessoryView.h"
 
 #import <Ditko/Ditko.h>
 
@@ -31,8 +30,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(_updateForAccessoryView:) name:AccessoryViewNotificationWillRemove object:nil];
-    [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(_updateForAccessoryView:) name:AccessoryViewNotificationDidAdd object:nil];
+    [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(_updateForAccessoryView:) name:KDIWindowNotificationDidChangeAccessoryView object:nil];
+    [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(_updateForAccessoryView:) name:KDIWindowNotificationDidChangeAccessoryViewPosition object:nil];
 }
 
 - (void)setAccessoryViewBackgroundColor:(UIColor *)accessoryViewBackgroundColor {
@@ -42,11 +41,13 @@
 }
 
 - (void)_updateForAccessoryView:(NSNotification *)note {
-    if ([note.name isEqualToString:AccessoryViewNotificationWillRemove]) {
-        self.accessoryViewBackgroundColor = nil;
+    KDIWindow *window = note.object;
+    
+    if ([note.name isEqualToString:KDIWindowNotificationDidChangeAccessoryView]) {
+        self.accessoryViewBackgroundColor = window.accessoryView.backgroundColor;
     }
-    else {
-        self.accessoryViewBackgroundColor = ((AccessoryView *)note.object).backgroundColor;
+    else if ([note.name isEqualToString:KDIWindowNotificationDidChangeAccessoryViewPosition]) {
+        self.accessoryViewBackgroundColor = window.accessoryViewPosition == KDIWindowAccessoryViewPositionTop ? window.accessoryView.backgroundColor : nil;
     }
 }
 
