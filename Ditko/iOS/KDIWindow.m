@@ -17,6 +17,9 @@
 
 #import <Stanley/Stanley.h>
 
+NSNotificationName const KDIWindowNotificationDidChangeAccessoryView = @"KDIWindowNotificationDidChangeAccessoryView";
+NSNotificationName const KDIWindowNotificationDidChangeAccessoryViewPosition = @"KDIWindowNotificationDidChangeAccessoryViewPosition";
+
 @implementation KDIWindow
 
 - (void)didAddSubview:(UIView *)subview {
@@ -91,11 +94,19 @@
     if (_accessoryView != nil) {
         [self addSubview:_accessoryView];
     }
+    
+    [NSNotificationCenter.defaultCenter postNotificationName:KDIWindowNotificationDidChangeAccessoryView object:self];
 }
 - (void)setAccessoryViewPosition:(KDIWindowAccessoryViewPosition)accessoryViewPosition {
+    if (_accessoryViewPosition == accessoryViewPosition) {
+        return;
+    }
+    
     _accessoryViewPosition = accessoryViewPosition;
     
     [self setNeedsLayout];
+    
+    [NSNotificationCenter.defaultCenter postNotificationName:KDIWindowNotificationDidChangeAccessoryViewPosition object:self];
 }
 
 @end

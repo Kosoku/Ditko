@@ -31,6 +31,18 @@ typedef NS_ENUM(NSInteger, KDIWindowAccessoryViewPosition) {
     KDIWindowAccessoryViewPositionBottom
 };
 
+/**
+ Posted when the accessory view of the receiver changes. The object of the notification is the KDIWindow instance.
+ */
+FOUNDATION_EXTERN NSNotificationName const KDIWindowNotificationDidChangeAccessoryView;
+/**
+ Posted when the accessory view position of the receiver changes. The object of the notification is the KDIWindow instance.
+ */
+FOUNDATION_EXTERN NSNotificationName const KDIWindowNotificationDidChangeAccessoryViewPosition;
+
+/**
+ KDIWindow is a UIWindow subclass that provides support for an accessory view to be displayed aligned against the top or bottom edge of the window.
+ */
 @interface KDIWindow : UIWindow
 
 /**
