@@ -67,6 +67,8 @@
 		071E53421F59004C00A36B59 /* KDIBorderedViewImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = 071E533C1F59004C00A36B59 /* KDIBorderedViewImpl.m */; };
 		0722DA75207BFBF2004F8C36 /* GradientViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0722DA74207BFBF2004F8C36 /* GradientViewController.m */; };
 		0722DA78207BFC4C004F8C36 /* GradientViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0722DA76207BFC4C004F8C36 /* GradientViewController.xib */; };
+		0722DA7B207BFDA5004F8C36 /* BadgeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0722DA7A207BFDA5004F8C36 /* BadgeViewController.m */; };
+		0722DA7E207BFDC0004F8C36 /* BadgeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0722DA7C207BFDC0004F8C36 /* BadgeViewController.xib */; };
 		072628111E70BCCF00511F80 /* KDIView.h in Headers */ = {isa = PBXBuildFile; fileRef = 0726280F1E70BCCF00511F80 /* KDIView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		072628121E70BCCF00511F80 /* KDIView.h in Headers */ = {isa = PBXBuildFile; fileRef = 0726280F1E70BCCF00511F80 /* KDIView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		072628131E70BCCF00511F80 /* KDIView.h in Headers */ = {isa = PBXBuildFile; fileRef = 0726280F1E70BCCF00511F80 /* KDIView.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -469,6 +471,9 @@
 		0722DA73207BFBF2004F8C36 /* GradientViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GradientViewController.h; sourceTree = "<group>"; };
 		0722DA74207BFBF2004F8C36 /* GradientViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GradientViewController.m; sourceTree = "<group>"; };
 		0722DA77207BFC4C004F8C36 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/GradientViewController.xib; sourceTree = "<group>"; };
+		0722DA79207BFDA5004F8C36 /* BadgeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BadgeViewController.h; sourceTree = "<group>"; };
+		0722DA7A207BFDA5004F8C36 /* BadgeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BadgeViewController.m; sourceTree = "<group>"; };
+		0722DA7D207BFDC0004F8C36 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/BadgeViewController.xib; sourceTree = "<group>"; };
 		072474941F82B94600327E65 /* de */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		072474951F82B99A00327E65 /* fr */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		072474961F82B9DF00327E65 /* it */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -1025,6 +1030,9 @@
 				07333940207B9F810080B390 /* RootTableViewController.h */,
 				07333941207B9F810080B390 /* RootTableViewController.m */,
 				07333943207B9FBC0080B390 /* DetailViewController.h */,
+				0722DA79207BFDA5004F8C36 /* BadgeViewController.h */,
+				0722DA7A207BFDA5004F8C36 /* BadgeViewController.m */,
+				0722DA7C207BFDC0004F8C36 /* BadgeViewController.xib */,
 				0722DA73207BFBF2004F8C36 /* GradientViewController.h */,
 				0722DA74207BFBF2004F8C36 /* GradientViewController.m */,
 				0722DA76207BFC4C004F8C36 /* GradientViewController.xib */,
@@ -1609,6 +1617,7 @@
 				07333950207BB41B0080B390 /* AccessoryViewController.xib in Resources */,
 				0795E6591E704A56004A5CB2 /* LaunchScreen.storyboard in Resources */,
 				07333959207BCA090080B390 /* ViewController.xib in Resources */,
+				0722DA7E207BFDC0004F8C36 /* BadgeViewController.xib in Resources */,
 				0795E6561E704A56004A5CB2 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1908,6 +1917,7 @@
 				07333953207BC2680080B390 /* RootNavigationController.m in Sources */,
 				0733394A207BB0E20080B390 /* AccessoryViewController.m in Sources */,
 				0733394D207BB0FE0080B390 /* AccessoryView.m in Sources */,
+				0722DA7B207BFDA5004F8C36 /* BadgeViewController.m in Sources */,
 				0795E64B1E704A56004A5CB2 /* main.m in Sources */,
 				07333946207BA04C0080B390 /* TableViewController.m in Sources */,
 			);
@@ -1971,6 +1981,14 @@
 				0722DA77207BFC4C004F8C36 /* Base */,
 			);
 			name = GradientViewController.xib;
+			sourceTree = "<group>";
+		};
+		0722DA7C207BFDC0004F8C36 /* BadgeViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0722DA7D207BFDC0004F8C36 /* Base */,
+			);
+			name = BadgeViewController.xib;
 			sourceTree = "<group>";
 		};
 		0733394E207BB41B0080B390 /* AccessoryViewController.xib */ = {
