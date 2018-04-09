@@ -75,6 +75,9 @@
 		07284F101FAA4F84001CCBF7 /* KDIWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 07284F0E1FAA4F84001CCBF7 /* KDIWindow.m */; };
 		07333942207B9F810080B390 /* RootTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 07333941207B9F810080B390 /* RootTableViewController.m */; };
 		07333946207BA04C0080B390 /* TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 07333945207BA04C0080B390 /* TableViewController.m */; };
+		0733394A207BB0E20080B390 /* AccessoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 07333949207BB0E20080B390 /* AccessoryViewController.m */; };
+		0733394D207BB0FE0080B390 /* AccessoryView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0733394C207BB0FE0080B390 /* AccessoryView.m */; };
+		07333950207BB41B0080B390 /* AccessoryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0733394E207BB41B0080B390 /* AccessoryViewController.xib */; };
 		073542861E70503C00177905 /* NSColor+KDIExtensions.h in Headers */ = {isa = PBXBuildFile; fileRef = 073542841E70503C00177905 /* NSColor+KDIExtensions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		073542901E70515400177905 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0735428F1E70515400177905 /* AppDelegate.m */; };
 		073542931E70515400177905 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 073542921E70515400177905 /* main.m */; };
@@ -474,6 +477,11 @@
 		07333944207BA04C0080B390 /* TableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TableViewController.h; sourceTree = "<group>"; };
 		07333945207BA04C0080B390 /* TableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TableViewController.m; sourceTree = "<group>"; };
 		07333947207BA8F30080B390 /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
+		07333948207BB0E20080B390 /* AccessoryViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AccessoryViewController.h; sourceTree = "<group>"; };
+		07333949207BB0E20080B390 /* AccessoryViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AccessoryViewController.m; sourceTree = "<group>"; };
+		0733394B207BB0FE0080B390 /* AccessoryView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AccessoryView.h; sourceTree = "<group>"; };
+		0733394C207BB0FE0080B390 /* AccessoryView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AccessoryView.m; sourceTree = "<group>"; };
+		0733394F207BB41B0080B390 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/AccessoryViewController.xib; sourceTree = "<group>"; };
 		0735427A1E704D8F00177905 /* Ditko.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Ditko.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		073542821E704DD600177905 /* Ditko-macOS-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Ditko-macOS-Info.plist"; sourceTree = "<group>"; };
 		073542831E704E0400177905 /* Ditko-Info.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Ditko-Info.h"; sourceTree = "<group>"; };
@@ -999,6 +1007,11 @@
 				07333943207B9FBC0080B390 /* DetailViewController.h */,
 				07333944207BA04C0080B390 /* TableViewController.h */,
 				07333945207BA04C0080B390 /* TableViewController.m */,
+				07333948207BB0E20080B390 /* AccessoryViewController.h */,
+				07333949207BB0E20080B390 /* AccessoryViewController.m */,
+				0733394E207BB41B0080B390 /* AccessoryViewController.xib */,
+				0733394B207BB0FE0080B390 /* AccessoryView.h */,
+				0733394C207BB0FE0080B390 /* AccessoryView.m */,
 				0795E6551E704A56004A5CB2 /* Assets.xcassets */,
 				0795E6571E704A56004A5CB2 /* LaunchScreen.storyboard */,
 				0795E65A1E704A56004A5CB2 /* Info.plist */,
@@ -1566,6 +1579,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				07333950207BB41B0080B390 /* AccessoryViewController.xib in Resources */,
 				0795E6591E704A56004A5CB2 /* LaunchScreen.storyboard in Resources */,
 				0795E6561E704A56004A5CB2 /* Assets.xcassets in Resources */,
 			);
@@ -1860,6 +1874,8 @@
 			files = (
 				07333942207B9F810080B390 /* RootTableViewController.m in Sources */,
 				0795E64E1E704A56004A5CB2 /* AppDelegate.m in Sources */,
+				0733394A207BB0E20080B390 /* AccessoryViewController.m in Sources */,
+				0733394D207BB0FE0080B390 /* AccessoryView.m in Sources */,
 				0795E64B1E704A56004A5CB2 /* main.m in Sources */,
 				07333946207BA04C0080B390 /* TableViewController.m in Sources */,
 			);
@@ -1915,6 +1931,14 @@
 				071B62D11E70849500B7B85A /* Base */,
 			);
 			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		0733394E207BB41B0080B390 /* AccessoryViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0733394F207BB41B0080B390 /* Base */,
+			);
+			name = AccessoryViewController.xib;
 			sourceTree = "<group>";
 		};
 		073542991E70515400177905 /* Main.storyboard */ = {
