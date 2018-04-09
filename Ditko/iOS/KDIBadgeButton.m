@@ -224,31 +224,6 @@ static void *kKDIBadgeButtonObservingContext = &kKDIBadgeButtonObservingContext;
     badgeViewFrame.origin.x += ceil(CGRectGetWidth(badgeViewFrame) * self.badgeSizeOffset.horizontal);
     badgeViewFrame.origin.y += ceil(CGRectGetHeight(badgeViewFrame) * self.badgeSizeOffset.vertical);
     
-//    if (CGRectGetMinX(buttonFrame) < 0.0) {
-//        CGFloat delta = ABS(CGRectGetMinX(buttonFrame));
-//
-//        buttonFrame.origin.x += delta;
-//        badgeViewFrame.origin.x += delta;
-//    }
-//    if (CGRectGetMinX(badgeViewFrame) < 0.0) {
-//        CGFloat delta = ABS(CGRectGetMinX(badgeViewFrame));
-//
-//        buttonFrame.origin.x += delta;
-//        badgeViewFrame.origin.x += delta;
-//    }
-//    if (CGRectGetMinY(buttonFrame) < 0.0) {
-//        CGFloat delta = ABS(CGRectGetMinY(buttonFrame));
-//
-//        buttonFrame.origin.y += delta;
-//        badgeViewFrame.origin.y += delta;
-//    }
-//    if (CGRectGetMinY(badgeViewFrame) < 0.0) {
-//        CGFloat delta = ABS(CGRectGetMinY(badgeViewFrame));
-//
-//        buttonFrame.origin.y += delta;
-//        badgeViewFrame.origin.y += delta;
-//    }
-    
     buttonFrame = CGRectStandardize(buttonFrame);
     badgeViewFrame = CGRectStandardize(badgeViewFrame);
     retval = CGRectUnion(buttonFrame, badgeViewFrame).size;
