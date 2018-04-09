@@ -82,6 +82,8 @@ NS_ASSUME_NONNULL_BEGIN
  @return The contrasting color
  */
 - (UIColor *)KDI_contrastingColor;
+
+#if (TARGET_OS_IOS)
 /**
  Returns a contrasting UIStatusBarStyle for the provided *color*.
  
@@ -95,6 +97,7 @@ NS_ASSUME_NONNULL_BEGIN
  @return The contrasting status bar style
  */
 - (UIStatusBarStyle)KDI_contrastingStatusBarStyle;
+#endif
 
 #pragma mark Inverse
 /**

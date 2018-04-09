@@ -1,5 +1,5 @@
 //
-//  AccessoryView.h
+//  RootNavigationController.m
 //  Demo-iOS
 //
 //  Created by William Towe on 4/9/18.
@@ -13,11 +13,41 @@
 //
 //  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-#import <UIKit/UIKit.h>
+#import "RootNavigationController.h"
+#import "AccessoryView.h"
 
-FOUNDATION_EXTERN NSNotificationName const AccessoryViewNotificationDidAdd;
-FOUNDATION_EXTERN NSNotificationName const AccessoryViewNotificationWillRemove;
+#import <Ditko/Ditko.h>
 
-@interface AccessoryView : UIView
+@interface RootNavigationController ()
+@property (strong,nonatomic) UIColor *accessoryViewBackgroundColor;
+@end
+
+@implementation RootNavigationController
+
+- (UIStatusBarStyle)preferredStatusBarStyle {
+    return self.accessoryViewBackgroundColor == nil ? [super preferredStatusBarStyle] : [self.accessoryViewBackgroundColor KDI_contrastingStatusBarStyle];
+}
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    
+    [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(_updateForAccessoryView:) name:AccessoryViewNotificationWillRemove object:nil];
+    [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(_updateForAccessoryView:) name:AccessoryViewNotificationDidAdd object:nil];
+}
+
+- (void)setAccessoryViewBackgroundColor:(UIColor *)accessoryViewBackgroundColor {
+    _accessoryViewBackgroundColor = accessoryViewBackgroundColor;
+    
+    [self setNeedsStatusBarAppearanceUpdate];
+}
+
+- (void)_updateForAccessoryView:(NSNotification *)note {
+    if ([note.name isEqualToString:AccessoryViewNotificationWillRemove]) {
+        self.accessoryViewBackgroundColor = nil;
+    }
+    else {
+        self.accessoryViewBackgroundColor = ((AccessoryView *)note.object).backgroundColor;
+    }
+}
 
 @end
