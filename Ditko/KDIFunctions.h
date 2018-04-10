@@ -62,6 +62,14 @@ FOUNDATION_EXTERN NSString* _Nullable KDITextFromTextInput(id<UITextInput> textI
  @return The selected range
  */
 FOUNDATION_EXTERN NSRange KDISelectedRangeFromTextInput(id<UITextInput> textInput);
+/**
+ Returns the text range from text input range.
+ 
+ @param textInput The text input object
+ @param range The range
+ @return The text range
+ */
+FOUNDATION_EXTERN UITextRange* KDITextRangeFromTextInputRange(id<UITextInput> textInput, NSRange range);
 #endif
 
 NS_ASSUME_NONNULL_END

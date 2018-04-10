@@ -62,4 +62,10 @@ NSRange KDISelectedRangeFromTextInput(id<UITextInput> textInput) {
     
     return NSMakeRange(location, length);
 }
+UITextRange* KDITextRangeFromTextInputRange(id<UITextInput> textInput, NSRange range) {
+    UITextPosition *start = [textInput positionFromPosition:textInput.beginningOfDocument offset:range.location];
+    UITextPosition *end = [textInput positionFromPosition:start offset:range.length];
+    
+    return [textInput textRangeFromPosition:start toPosition:end];
+}
 #endif
