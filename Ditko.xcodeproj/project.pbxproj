@@ -21,6 +21,8 @@
 		0708C05D207D600200849AAC /* TextViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0708C05B207D600200849AAC /* TextViewController.xib */; };
 		0708C060207D618800849AAC /* ProgressSliderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0708C05F207D618800849AAC /* ProgressSliderViewController.m */; };
 		0708C063207D625700849AAC /* ProgressSliderViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0708C061207D625700849AAC /* ProgressSliderViewController.xib */; };
+		0708C066207D6AF700849AAC /* ButtonViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0708C065207D6AF700849AAC /* ButtonViewController.m */; };
+		0708C069207D6B2300849AAC /* ButtonViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0708C067207D6B2300849AAC /* ButtonViewController.xib */; };
 		070F991A204BD834001CFEFE /* KDITableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 070F9918204BD834001CFEFE /* KDITableViewCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		070F991B204BD834001CFEFE /* KDITableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 070F9918204BD834001CFEFE /* KDITableViewCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		070F991C204BD834001CFEFE /* KDITableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 070F9919204BD834001CFEFE /* KDITableViewCell.m */; };
@@ -447,6 +449,9 @@
 		0708C05E207D618800849AAC /* ProgressSliderViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProgressSliderViewController.h; sourceTree = "<group>"; };
 		0708C05F207D618800849AAC /* ProgressSliderViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProgressSliderViewController.m; sourceTree = "<group>"; };
 		0708C062207D625700849AAC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/ProgressSliderViewController.xib; sourceTree = "<group>"; };
+		0708C064207D6AF700849AAC /* ButtonViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ButtonViewController.h; sourceTree = "<group>"; };
+		0708C065207D6AF700849AAC /* ButtonViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ButtonViewController.m; sourceTree = "<group>"; };
+		0708C068207D6B2300849AAC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/ButtonViewController.xib; sourceTree = "<group>"; };
 		070F9918204BD834001CFEFE /* KDITableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = KDITableViewCell.h; path = iOS/KDITableViewCell.h; sourceTree = "<group>"; };
 		070F9919204BD834001CFEFE /* KDITableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = KDITableViewCell.m; path = iOS/KDITableViewCell.m; sourceTree = "<group>"; };
 		0711B1821F817B3600DCE131 /* KDIUIResponder.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = KDIUIResponder.m; path = iOS/KDIUIResponder.m; sourceTree = "<group>"; };
@@ -1055,6 +1060,9 @@
 				07333940207B9F810080B390 /* RootTableViewController.h */,
 				07333941207B9F810080B390 /* RootTableViewController.m */,
 				07333943207B9FBC0080B390 /* DetailViewController.h */,
+				0708C064207D6AF700849AAC /* ButtonViewController.h */,
+				0708C065207D6AF700849AAC /* ButtonViewController.m */,
+				0708C067207D6B2300849AAC /* ButtonViewController.xib */,
 				0708C05E207D618800849AAC /* ProgressSliderViewController.h */,
 				0708C05F207D618800849AAC /* ProgressSliderViewController.m */,
 				0708C061207D625700849AAC /* ProgressSliderViewController.xib */,
@@ -1651,6 +1659,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0708C063207D625700849AAC /* ProgressSliderViewController.xib in Resources */,
+				0708C069207D6B2300849AAC /* ButtonViewController.xib in Resources */,
 				0708C05D207D600200849AAC /* TextViewController.xib in Resources */,
 				0722DA78207BFC4C004F8C36 /* GradientViewController.xib in Resources */,
 				07333950207BB41B0080B390 /* AccessoryViewController.xib in Resources */,
@@ -1957,6 +1966,7 @@
 				0795E64E1E704A56004A5CB2 /* AppDelegate.m in Sources */,
 				07333956207BC9690080B390 /* ViewController.m in Sources */,
 				0722DA75207BFBF2004F8C36 /* GradientViewController.m in Sources */,
+				0708C066207D6AF700849AAC /* ButtonViewController.m in Sources */,
 				0722DA87207C1EEE004F8C36 /* UISegmentedControl+Extensions.m in Sources */,
 				07333953207BC2680080B390 /* RootNavigationController.m in Sources */,
 				0733394A207BB0E20080B390 /* AccessoryViewController.m in Sources */,
@@ -2027,6 +2037,14 @@
 				0708C062207D625700849AAC /* Base */,
 			);
 			name = ProgressSliderViewController.xib;
+			sourceTree = "<group>";
+		};
+		0708C067207D6B2300849AAC /* ButtonViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0708C068207D6B2300849AAC /* Base */,
+			);
+			name = ButtonViewController.xib;
 			sourceTree = "<group>";
 		};
 		071B62881E707FCB00B7B85A /* Interface.storyboard */ = {
