@@ -22,6 +22,7 @@
 #import "LabelViewController.h"
 #import "BadgeButtonViewController.h"
 #import "TextViewController.h"
+#import "ProgressSliderViewController.h"
 
 #import <Ditko/Ditko.h>
 
@@ -45,7 +46,8 @@
                                BadgeViewController.class,
                                LabelViewController.class,
                                BadgeButtonViewController.class,
-                               TextViewController.class];
+                               TextViewController.class,
+                               ProgressSliderViewController.class];
     
     self.tableView.estimatedRowHeight = 44.0;
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
