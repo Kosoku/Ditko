@@ -31,7 +31,7 @@ NS_ASSUME_NONNULL_BEGIN
  @param size The size to adjust
  @return The new size
  */
-FOUNDATION_EXPORT CGSize KDICGSizeAdjustedForMainScreenScale(CGSize size);
+FOUNDATION_EXTERN CGSize KDICGSizeAdjustedForMainScreenScale(CGSize size);
 /**
  Returns a new size after multiplying the width and height by the screen scale.
  
@@ -40,11 +40,11 @@ FOUNDATION_EXPORT CGSize KDICGSizeAdjustedForMainScreenScale(CGSize size);
  @return The new size
  */
 #if (TARGET_OS_WATCH)
-FOUNDATION_EXPORT CGSize KDICGSizeAdjustedForScreenScale(CGSize size, WKInterfaceDevice * _Nullable screen);
+FOUNDATION_EXTERN CGSize KDICGSizeAdjustedForScreenScale(CGSize size, WKInterfaceDevice * _Nullable screen);
 #elif (TARGET_OS_IOS || TARGET_OS_TV)
-FOUNDATION_EXPORT CGSize KDICGSizeAdjustedForScreenScale(CGSize size, UIScreen * _Nullable screen);
+FOUNDATION_EXTERN CGSize KDICGSizeAdjustedForScreenScale(CGSize size, UIScreen * _Nullable screen);
 #else
-FOUNDATION_EXPORT CGSize KDICGSizeAdjustedForScreenScale(CGSize size, NSScreen * _Nullable screen);
+FOUNDATION_EXTERN CGSize KDICGSizeAdjustedForScreenScale(CGSize size, NSScreen * _Nullable screen);
 #endif
 
 #if (TARGET_OS_IOS || TARGET_OS_TV)
