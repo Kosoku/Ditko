@@ -15,6 +15,8 @@
 		0705AFDC1ECE28F200BACC4E /* UIImage-NSImage+KDIExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0705AFD61ECE28F200BACC4E /* UIImage-NSImage+KDIExtensions.m */; };
 		0705AFDF1ECE29A000BACC4E /* NSImage+KDIExtensions.h in Headers */ = {isa = PBXBuildFile; fileRef = 0705AFDD1ECE29A000BACC4E /* NSImage+KDIExtensions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0705AFE11ECE2A2D00BACC4E /* UIImage-NSImage+KDIExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0705AFD61ECE28F200BACC4E /* UIImage-NSImage+KDIExtensions.m */; };
+		0708C054207D572100849AAC /* BadgeButtonViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0708C053207D572100849AAC /* BadgeButtonViewController.m */; };
+		0708C057207D5A2C00849AAC /* BadgeButtonViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0708C055207D5A2C00849AAC /* BadgeButtonViewController.xib */; };
 		070F991A204BD834001CFEFE /* KDITableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 070F9918204BD834001CFEFE /* KDITableViewCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		070F991B204BD834001CFEFE /* KDITableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 070F9918204BD834001CFEFE /* KDITableViewCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		070F991C204BD834001CFEFE /* KDITableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 070F9919204BD834001CFEFE /* KDITableViewCell.m */; };
@@ -432,6 +434,9 @@
 		0705AFD51ECE28F200BACC4E /* UIImage+KDIExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImage+KDIExtensions.h"; path = "iOS/UIImage+KDIExtensions.h"; sourceTree = "<group>"; };
 		0705AFD61ECE28F200BACC4E /* UIImage-NSImage+KDIExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage-NSImage+KDIExtensions.m"; sourceTree = "<group>"; };
 		0705AFDD1ECE29A000BACC4E /* NSImage+KDIExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSImage+KDIExtensions.h"; path = "macOS/NSImage+KDIExtensions.h"; sourceTree = "<group>"; };
+		0708C052207D572100849AAC /* BadgeButtonViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BadgeButtonViewController.h; sourceTree = "<group>"; };
+		0708C053207D572100849AAC /* BadgeButtonViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BadgeButtonViewController.m; sourceTree = "<group>"; };
+		0708C056207D5A2C00849AAC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/BadgeButtonViewController.xib; sourceTree = "<group>"; };
 		070F9918204BD834001CFEFE /* KDITableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = KDITableViewCell.h; path = iOS/KDITableViewCell.h; sourceTree = "<group>"; };
 		070F9919204BD834001CFEFE /* KDITableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = KDITableViewCell.m; path = iOS/KDITableViewCell.m; sourceTree = "<group>"; };
 		0711B1821F817B3600DCE131 /* KDIUIResponder.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = KDIUIResponder.m; path = iOS/KDIUIResponder.m; sourceTree = "<group>"; };
@@ -1040,6 +1045,9 @@
 				07333940207B9F810080B390 /* RootTableViewController.h */,
 				07333941207B9F810080B390 /* RootTableViewController.m */,
 				07333943207B9FBC0080B390 /* DetailViewController.h */,
+				0708C052207D572100849AAC /* BadgeButtonViewController.h */,
+				0708C053207D572100849AAC /* BadgeButtonViewController.m */,
+				0708C055207D5A2C00849AAC /* BadgeButtonViewController.xib */,
 				0722DA7F207C1A1E004F8C36 /* LabelViewController.h */,
 				0722DA80207C1A1E004F8C36 /* LabelViewController.m */,
 				0722DA82207C1B93004F8C36 /* LabelViewController.xib */,
@@ -1630,6 +1638,7 @@
 				07333950207BB41B0080B390 /* AccessoryViewController.xib in Resources */,
 				0795E6591E704A56004A5CB2 /* LaunchScreen.storyboard in Resources */,
 				07333959207BCA090080B390 /* ViewController.xib in Resources */,
+				0708C057207D5A2C00849AAC /* BadgeButtonViewController.xib in Resources */,
 				0722DA84207C1B93004F8C36 /* LabelViewController.xib in Resources */,
 				0722DA7E207BFDC0004F8C36 /* BadgeViewController.xib in Resources */,
 				0795E6561E704A56004A5CB2 /* Assets.xcassets in Resources */,
@@ -1935,6 +1944,7 @@
 				0722DA7B207BFDA5004F8C36 /* BadgeViewController.m in Sources */,
 				0795E64B1E704A56004A5CB2 /* main.m in Sources */,
 				07333946207BA04C0080B390 /* TableViewController.m in Sources */,
+				0708C054207D572100849AAC /* BadgeButtonViewController.m in Sources */,
 				0722DA81207C1A1E004F8C36 /* LabelViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1975,6 +1985,14 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		0708C055207D5A2C00849AAC /* BadgeButtonViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0708C056207D5A2C00849AAC /* Base */,
+			);
+			name = BadgeButtonViewController.xib;
+			sourceTree = "<group>";
+		};
 		071B62881E707FCB00B7B85A /* Interface.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
