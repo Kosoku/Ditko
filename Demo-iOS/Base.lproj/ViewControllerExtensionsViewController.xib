@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ViewControllerExtensionsViewController">
+            <connections>
+                <outlet property="dismissAllButton" destination="Qa5-jw-699" id="m4I-RH-5cX"/>
+                <outlet property="dismissButton" destination="i9j-ob-gUJ" id="ULK-qx-heb"/>
+                <outlet property="popAllButton" destination="YVs-hY-QJF" id="b5g-oB-MVS"/>
+                <outlet property="popButton" destination="z8G-k9-HCb" id="Mb5-7E-9tj"/>
+                <outlet property="presentButton" destination="ITi-bz-g32" id="ZTI-wt-Fyq"/>
+                <outlet property="pushButton" destination="a3i-YC-IGF" id="BeA-mL-cnC"/>
+                <outlet property="view" destination="iN0-l3-epB" id="aga-mz-afV"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="QTV-2E-RDd">
+                    <rect key="frame" x="150" y="223.5" width="75" height="220"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a3i-YC-IGF">
+                            <rect key="frame" x="0.0" y="0.0" width="75" height="30"/>
+                            <state key="normal" title="Push"/>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z8G-k9-HCb">
+                            <rect key="frame" x="0.0" y="38" width="75" height="30"/>
+                            <state key="normal" title="Pop"/>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YVs-hY-QJF">
+                            <rect key="frame" x="0.0" y="76" width="75" height="30"/>
+                            <state key="normal" title="Pop All"/>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ITi-bz-g32">
+                            <rect key="frame" x="0.0" y="114" width="75" height="30"/>
+                            <state key="normal" title="Present"/>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i9j-ob-gUJ">
+                            <rect key="frame" x="0.0" y="152" width="75" height="30"/>
+                            <state key="normal" title="Dismiss"/>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qa5-jw-699">
+                            <rect key="frame" x="0.0" y="190" width="75" height="30"/>
+                            <state key="normal" title="Dismiss All"/>
+                        </button>
+                    </subviews>
+                </stackView>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="QTV-2E-RDd" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="93B-Nu-ThD"/>
+                <constraint firstItem="QTV-2E-RDd" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="wEE-7h-OYi"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+        </view>
+    </objects>
+</document>

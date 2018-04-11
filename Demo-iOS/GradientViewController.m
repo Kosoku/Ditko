@@ -33,9 +33,9 @@
     
     [self KSO_addNavigationBarTitleView];
     
-    self.gradientView.colors = @[KDIColorRandomHSB(),
-                                 KDIColorRandomHSB(),
-                                 KDIColorRandomHSB()];
+    self.gradientView.colors = @[KDIColorRandomRGB(),
+                                 KDIColorRandomRGB(),
+                                 KDIColorRandomRGB()];
 }
 
 + (NSString *)detailViewTitle {
