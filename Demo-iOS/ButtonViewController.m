@@ -15,6 +15,7 @@
 
 #import "ButtonViewController.h"
 #import "Constants.h"
+#import "UIViewController+Extensions.h"
 
 #import <Ditko/Ditko.h>
 #import <Stanley/Stanley.h>
@@ -37,6 +38,8 @@
     [super viewDidLoad];
     
     kstWeakify(self);
+    
+    [self KSO_addNavigationBarTitleView];
     
     void(^block)(void) = ^{
         kstStrongify(self);

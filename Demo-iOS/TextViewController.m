@@ -15,6 +15,7 @@
 
 #import "TextViewController.h"
 #import "Constants.h"
+#import "UIViewController+Extensions.h"
 
 #import <Ditko/Ditko.h>
 
@@ -30,6 +31,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    [self KSO_addNavigationBarTitleView];
     
     self.textView.textContainerInset = UIEdgeInsetsMake(kSubviewMargin, kSubviewMargin, 0, kSubviewMargin);
     self.textView.placeholder = @"This is a placeholder that will wrap to multiple lines because it is so long";

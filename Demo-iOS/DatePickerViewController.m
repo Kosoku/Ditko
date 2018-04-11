@@ -15,6 +15,7 @@
 
 #import "DatePickerViewController.h"
 #import "Constants.h"
+#import "UIViewController+Extensions.h"
 
 #import <Ditko/Ditko.h>
 #import <KSOFontAwesomeExtensions/KSOFontAwesomeExtensions.h>
@@ -31,6 +32,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    [self KSO_addNavigationBarTitleView];
     
     self.datePickerButton.titleEdgeInsets = UIEdgeInsetsMake(0, kSubviewMargin, 0, 0);
     [self.datePickerButton setImage:[UIImage KSO_fontAwesomeSolidImageWithString:@"\uf017" size:kBarButtonItemImageSize].KDI_templateImage forState:UIControlStateNormal];

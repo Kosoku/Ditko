@@ -16,6 +16,7 @@
 #import "BadgeButtonViewController.h"
 #import "UIBarButtonItem+KDIExtensions.h"
 #import "Constants.h"
+#import "UIViewController+Extensions.h"
 
 #import <Ditko/Ditko.h>
 #import <Stanley/Stanley.h>
@@ -36,6 +37,8 @@
     [super viewDidLoad];
     
     kstWeakify(self);
+    
+    [self KSO_addNavigationBarTitleView];
     
     void(^updateBadgesBlock)(void) = ^{
         kstStrongify(self);

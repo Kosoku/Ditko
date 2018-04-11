@@ -15,6 +15,7 @@
 
 #import "PickerViewController.h"
 #import "Constants.h"
+#import "UIViewController+Extensions.h"
 
 #import <Ditko/Ditko.h>
 #import <Stanley/Stanley.h>
@@ -37,6 +38,8 @@
     
     self.rowsAndComponents = @[@[@"Red",@"Green",@"Blue"],
                                @[@"One",@"Two",@"Three"]];
+    
+    [self KSO_addNavigationBarTitleView];
     
     self.pickerViewButton.titleEdgeInsets = UIEdgeInsetsMake(0, kSubviewMargin, 0, 0);
     [self.pickerViewButton setImage:[UIImage KSO_fontAwesomeSolidImageWithString:@"\uf08d" size:kBarButtonItemImageSize].KDI_templateImage forState:UIControlStateNormal];
