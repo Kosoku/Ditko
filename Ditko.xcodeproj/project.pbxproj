@@ -242,6 +242,8 @@
 		079CF61F1EC11C9400CE1BE9 /* Loki.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 079CF61E1EC11C9400CE1BE9 /* Loki.framework */; };
 		07A40753207E7A2200F8016A /* ImageExtensionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 07A40752207E7A2200F8016A /* ImageExtensionsViewController.m */; };
 		07A40756207E7BBF00F8016A /* ImageExtensionsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 07A40754207E7BBF00F8016A /* ImageExtensionsViewController.xib */; };
+		07A40759207E8DAD00F8016A /* FontDynamicTypeExtensionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 07A40758207E8DAD00F8016A /* FontDynamicTypeExtensionsViewController.m */; };
+		07A4075C207E8FC500F8016A /* FontDynamicTypeExtensionsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 07A4075A207E8FC500F8016A /* FontDynamicTypeExtensionsViewController.xib */; };
 		07A9208F1E95674C00B45199 /* NSControl+KDIExtensions.h in Headers */ = {isa = PBXBuildFile; fileRef = 07A9208D1E95674C00B45199 /* NSControl+KDIExtensions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		07A920901E95674C00B45199 /* NSControl+KDIExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 07A9208E1E95674C00B45199 /* NSControl+KDIExtensions.m */; };
 		07A920931E95767E00B45199 /* NSTextField+KDIExtensions.h in Headers */ = {isa = PBXBuildFile; fileRef = 07A920911E95767E00B45199 /* NSTextField+KDIExtensions.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -665,6 +667,9 @@
 		07A40751207E7A2200F8016A /* ImageExtensionsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ImageExtensionsViewController.h; sourceTree = "<group>"; };
 		07A40752207E7A2200F8016A /* ImageExtensionsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ImageExtensionsViewController.m; sourceTree = "<group>"; };
 		07A40755207E7BBF00F8016A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/ImageExtensionsViewController.xib; sourceTree = "<group>"; };
+		07A40757207E8DAD00F8016A /* FontDynamicTypeExtensionsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FontDynamicTypeExtensionsViewController.h; sourceTree = "<group>"; };
+		07A40758207E8DAD00F8016A /* FontDynamicTypeExtensionsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FontDynamicTypeExtensionsViewController.m; sourceTree = "<group>"; };
+		07A4075B207E8FC500F8016A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/FontDynamicTypeExtensionsViewController.xib; sourceTree = "<group>"; };
 		07A9208D1E95674C00B45199 /* NSControl+KDIExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSControl+KDIExtensions.h"; path = "macOS/NSControl+KDIExtensions.h"; sourceTree = "<group>"; };
 		07A9208E1E95674C00B45199 /* NSControl+KDIExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSControl+KDIExtensions.m"; path = "macOS/NSControl+KDIExtensions.m"; sourceTree = "<group>"; };
 		07A920911E95767E00B45199 /* NSTextField+KDIExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSTextField+KDIExtensions.h"; path = "macOS/NSTextField+KDIExtensions.h"; sourceTree = "<group>"; };
@@ -1100,6 +1105,9 @@
 				07333940207B9F810080B390 /* RootTableViewController.h */,
 				07333941207B9F810080B390 /* RootTableViewController.m */,
 				07333943207B9FBC0080B390 /* DetailViewController.h */,
+				07A40757207E8DAD00F8016A /* FontDynamicTypeExtensionsViewController.h */,
+				07A40758207E8DAD00F8016A /* FontDynamicTypeExtensionsViewController.m */,
+				07A4075A207E8FC500F8016A /* FontDynamicTypeExtensionsViewController.xib */,
 				07A40751207E7A2200F8016A /* ImageExtensionsViewController.h */,
 				07A40752207E7A2200F8016A /* ImageExtensionsViewController.m */,
 				07A40754207E7BBF00F8016A /* ImageExtensionsViewController.xib */,
@@ -1727,6 +1735,7 @@
 				0708C093207DD21500849AAC /* ColorExtensionsViewController.xib in Resources */,
 				07A40756207E7BBF00F8016A /* ImageExtensionsViewController.xib in Resources */,
 				0708C05D207D600200849AAC /* TextViewController.xib in Resources */,
+				07A4075C207E8FC500F8016A /* FontDynamicTypeExtensionsViewController.xib in Resources */,
 				0708C081207DADBE00849AAC /* EmptyViewController.xib in Resources */,
 				0722DA78207BFC4C004F8C36 /* GradientViewController.xib in Resources */,
 				07333950207BB41B0080B390 /* AccessoryViewController.xib in Resources */,
@@ -2054,6 +2063,7 @@
 				0795E64B1E704A56004A5CB2 /* main.m in Sources */,
 				07333946207BA04C0080B390 /* TableViewController.m in Sources */,
 				0708C078207DA49300849AAC /* ProgressNavigationBarViewController.m in Sources */,
+				07A40759207E8DAD00F8016A /* FontDynamicTypeExtensionsViewController.m in Sources */,
 				0708C054207D572100849AAC /* BadgeButtonViewController.m in Sources */,
 				0722DA81207C1A1E004F8C36 /* LabelViewController.m in Sources */,
 			);
@@ -2278,6 +2288,14 @@
 				07A40755207E7BBF00F8016A /* Base */,
 			);
 			name = ImageExtensionsViewController.xib;
+			sourceTree = "<group>";
+		};
+		07A4075A207E8FC500F8016A /* FontDynamicTypeExtensionsViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				07A4075B207E8FC500F8016A /* Base */,
+			);
+			name = FontDynamicTypeExtensionsViewController.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
