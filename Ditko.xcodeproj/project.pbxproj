@@ -29,6 +29,8 @@
 		0708C075207D994900849AAC /* DatePickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0708C073207D994900849AAC /* DatePickerViewController.xib */; };
 		0708C078207DA49300849AAC /* ProgressNavigationBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0708C077207DA49300849AAC /* ProgressNavigationBarViewController.m */; };
 		0708C07B207DA99C00849AAC /* ProgressNavigationBarViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0708C079207DA99C00849AAC /* ProgressNavigationBarViewController.xib */; };
+		0708C07E207DAD0F00849AAC /* EmptyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0708C07D207DAD0F00849AAC /* EmptyViewController.m */; };
+		0708C081207DADBE00849AAC /* EmptyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0708C07F207DADBE00849AAC /* EmptyViewController.xib */; };
 		070F991A204BD834001CFEFE /* KDITableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 070F9918204BD834001CFEFE /* KDITableViewCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		070F991B204BD834001CFEFE /* KDITableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 070F9918204BD834001CFEFE /* KDITableViewCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		070F991C204BD834001CFEFE /* KDITableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 070F9919204BD834001CFEFE /* KDITableViewCell.m */; };
@@ -467,6 +469,9 @@
 		0708C076207DA49300849AAC /* ProgressNavigationBarViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProgressNavigationBarViewController.h; sourceTree = "<group>"; };
 		0708C077207DA49300849AAC /* ProgressNavigationBarViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProgressNavigationBarViewController.m; sourceTree = "<group>"; };
 		0708C07A207DA99C00849AAC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/ProgressNavigationBarViewController.xib; sourceTree = "<group>"; };
+		0708C07C207DAD0F00849AAC /* EmptyViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EmptyViewController.h; sourceTree = "<group>"; };
+		0708C07D207DAD0F00849AAC /* EmptyViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EmptyViewController.m; sourceTree = "<group>"; };
+		0708C080207DADBE00849AAC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/EmptyViewController.xib; sourceTree = "<group>"; };
 		070F9918204BD834001CFEFE /* KDITableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = KDITableViewCell.h; path = iOS/KDITableViewCell.h; sourceTree = "<group>"; };
 		070F9919204BD834001CFEFE /* KDITableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = KDITableViewCell.m; path = iOS/KDITableViewCell.m; sourceTree = "<group>"; };
 		0711B1821F817B3600DCE131 /* KDIUIResponder.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = KDIUIResponder.m; path = iOS/KDIUIResponder.m; sourceTree = "<group>"; };
@@ -1075,6 +1080,9 @@
 				07333940207B9F810080B390 /* RootTableViewController.h */,
 				07333941207B9F810080B390 /* RootTableViewController.m */,
 				07333943207B9FBC0080B390 /* DetailViewController.h */,
+				0708C07C207DAD0F00849AAC /* EmptyViewController.h */,
+				0708C07D207DAD0F00849AAC /* EmptyViewController.m */,
+				0708C07F207DADBE00849AAC /* EmptyViewController.xib */,
 				0708C076207DA49300849AAC /* ProgressNavigationBarViewController.h */,
 				0708C077207DA49300849AAC /* ProgressNavigationBarViewController.m */,
 				0708C079207DA99C00849AAC /* ProgressNavigationBarViewController.xib */,
@@ -1685,6 +1693,7 @@
 				0708C063207D625700849AAC /* ProgressSliderViewController.xib in Resources */,
 				0708C069207D6B2300849AAC /* ButtonViewController.xib in Resources */,
 				0708C05D207D600200849AAC /* TextViewController.xib in Resources */,
+				0708C081207DADBE00849AAC /* EmptyViewController.xib in Resources */,
 				0722DA78207BFC4C004F8C36 /* GradientViewController.xib in Resources */,
 				07333950207BB41B0080B390 /* AccessoryViewController.xib in Resources */,
 				0795E6591E704A56004A5CB2 /* LaunchScreen.storyboard in Resources */,
@@ -1990,6 +1999,7 @@
 				0708C05A207D5D1100849AAC /* TextViewController.m in Sources */,
 				0733395F207BD3890080B390 /* UIViewController+Extensions.m in Sources */,
 				07333942207B9F810080B390 /* RootTableViewController.m in Sources */,
+				0708C07E207DAD0F00849AAC /* EmptyViewController.m in Sources */,
 				0708C06C207D8C2000849AAC /* PickerViewController.m in Sources */,
 				0795E64E1E704A56004A5CB2 /* AppDelegate.m in Sources */,
 				07333956207BC9690080B390 /* ViewController.m in Sources */,
@@ -2099,6 +2109,14 @@
 				0708C07A207DA99C00849AAC /* Base */,
 			);
 			name = ProgressNavigationBarViewController.xib;
+			sourceTree = "<group>";
+		};
+		0708C07F207DADBE00849AAC /* EmptyViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0708C080207DADBE00849AAC /* Base */,
+			);
+			name = EmptyViewController.xib;
 			sourceTree = "<group>";
 		};
 		071B62881E707FCB00B7B85A /* Interface.storyboard */ = {
