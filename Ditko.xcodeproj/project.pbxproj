@@ -35,6 +35,8 @@
 		0708C087207DB2B000849AAC /* ViewControllerExtensionsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0708C085207DB2B000849AAC /* ViewControllerExtensionsViewController.xib */; };
 		0708C08A207DBE1400849AAC /* TextFieldViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0708C089207DBE1400849AAC /* TextFieldViewController.m */; };
 		0708C08D207DBF7100849AAC /* TextFieldViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0708C08B207DBF7100849AAC /* TextFieldViewController.xib */; };
+		0708C090207DCFF100849AAC /* ColorExtensionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0708C08F207DCFF100849AAC /* ColorExtensionsViewController.m */; };
+		0708C093207DD21500849AAC /* ColorExtensionsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0708C091207DD21500849AAC /* ColorExtensionsViewController.xib */; };
 		070F991A204BD834001CFEFE /* KDITableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 070F9918204BD834001CFEFE /* KDITableViewCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		070F991B204BD834001CFEFE /* KDITableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 070F9918204BD834001CFEFE /* KDITableViewCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		070F991C204BD834001CFEFE /* KDITableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 070F9919204BD834001CFEFE /* KDITableViewCell.m */; };
@@ -482,6 +484,9 @@
 		0708C088207DBE1400849AAC /* TextFieldViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TextFieldViewController.h; sourceTree = "<group>"; };
 		0708C089207DBE1400849AAC /* TextFieldViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TextFieldViewController.m; sourceTree = "<group>"; };
 		0708C08C207DBF7100849AAC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/TextFieldViewController.xib; sourceTree = "<group>"; };
+		0708C08E207DCFF100849AAC /* ColorExtensionsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ColorExtensionsViewController.h; sourceTree = "<group>"; };
+		0708C08F207DCFF100849AAC /* ColorExtensionsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ColorExtensionsViewController.m; sourceTree = "<group>"; };
+		0708C092207DD21500849AAC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/ColorExtensionsViewController.xib; sourceTree = "<group>"; };
 		070F9918204BD834001CFEFE /* KDITableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = KDITableViewCell.h; path = iOS/KDITableViewCell.h; sourceTree = "<group>"; };
 		070F9919204BD834001CFEFE /* KDITableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = KDITableViewCell.m; path = iOS/KDITableViewCell.m; sourceTree = "<group>"; };
 		0711B1821F817B3600DCE131 /* KDIUIResponder.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = KDIUIResponder.m; path = iOS/KDIUIResponder.m; sourceTree = "<group>"; };
@@ -1090,6 +1095,9 @@
 				07333940207B9F810080B390 /* RootTableViewController.h */,
 				07333941207B9F810080B390 /* RootTableViewController.m */,
 				07333943207B9FBC0080B390 /* DetailViewController.h */,
+				0708C08E207DCFF100849AAC /* ColorExtensionsViewController.h */,
+				0708C08F207DCFF100849AAC /* ColorExtensionsViewController.m */,
+				0708C091207DD21500849AAC /* ColorExtensionsViewController.xib */,
 				0708C088207DBE1400849AAC /* TextFieldViewController.h */,
 				0708C089207DBE1400849AAC /* TextFieldViewController.m */,
 				0708C08B207DBF7100849AAC /* TextFieldViewController.xib */,
@@ -1708,6 +1716,7 @@
 			files = (
 				0708C063207D625700849AAC /* ProgressSliderViewController.xib in Resources */,
 				0708C069207D6B2300849AAC /* ButtonViewController.xib in Resources */,
+				0708C093207DD21500849AAC /* ColorExtensionsViewController.xib in Resources */,
 				0708C05D207D600200849AAC /* TextViewController.xib in Resources */,
 				0708C081207DADBE00849AAC /* EmptyViewController.xib in Resources */,
 				0722DA78207BFC4C004F8C36 /* GradientViewController.xib in Resources */,
@@ -2013,6 +2022,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0708C090207DCFF100849AAC /* ColorExtensionsViewController.m in Sources */,
 				0708C060207D618800849AAC /* ProgressSliderViewController.m in Sources */,
 				0708C084207DB24200849AAC /* ViewControllerExtensionsViewController.m in Sources */,
 				0708C05A207D5D1100849AAC /* TextViewController.m in Sources */,
@@ -2153,6 +2163,14 @@
 				0708C08C207DBF7100849AAC /* Base */,
 			);
 			name = TextFieldViewController.xib;
+			sourceTree = "<group>";
+		};
+		0708C091207DD21500849AAC /* ColorExtensionsViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0708C092207DD21500849AAC /* Base */,
+			);
+			name = ColorExtensionsViewController.xib;
 			sourceTree = "<group>";
 		};
 		071B62881E707FCB00B7B85A /* Interface.storyboard */ = {
