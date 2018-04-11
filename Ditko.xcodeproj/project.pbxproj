@@ -25,6 +25,8 @@
 		0708C069207D6B2300849AAC /* ButtonViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0708C067207D6B2300849AAC /* ButtonViewController.xib */; };
 		0708C06C207D8C2000849AAC /* PickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0708C06B207D8C2000849AAC /* PickerViewController.m */; };
 		0708C06F207D93A000849AAC /* PickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0708C06D207D93A000849AAC /* PickerViewController.xib */; };
+		0708C072207D954800849AAC /* DatePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0708C071207D954800849AAC /* DatePickerViewController.m */; };
+		0708C075207D994900849AAC /* DatePickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0708C073207D994900849AAC /* DatePickerViewController.xib */; };
 		070F991A204BD834001CFEFE /* KDITableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 070F9918204BD834001CFEFE /* KDITableViewCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		070F991B204BD834001CFEFE /* KDITableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 070F9918204BD834001CFEFE /* KDITableViewCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		070F991C204BD834001CFEFE /* KDITableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 070F9919204BD834001CFEFE /* KDITableViewCell.m */; };
@@ -457,6 +459,9 @@
 		0708C06A207D8C2000849AAC /* PickerViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PickerViewController.h; sourceTree = "<group>"; };
 		0708C06B207D8C2000849AAC /* PickerViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PickerViewController.m; sourceTree = "<group>"; };
 		0708C06E207D93A000849AAC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/PickerViewController.xib; sourceTree = "<group>"; };
+		0708C070207D954800849AAC /* DatePickerViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DatePickerViewController.h; sourceTree = "<group>"; };
+		0708C071207D954800849AAC /* DatePickerViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DatePickerViewController.m; sourceTree = "<group>"; };
+		0708C074207D994900849AAC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/DatePickerViewController.xib; sourceTree = "<group>"; };
 		070F9918204BD834001CFEFE /* KDITableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = KDITableViewCell.h; path = iOS/KDITableViewCell.h; sourceTree = "<group>"; };
 		070F9919204BD834001CFEFE /* KDITableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = KDITableViewCell.m; path = iOS/KDITableViewCell.m; sourceTree = "<group>"; };
 		0711B1821F817B3600DCE131 /* KDIUIResponder.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = KDIUIResponder.m; path = iOS/KDIUIResponder.m; sourceTree = "<group>"; };
@@ -1065,6 +1070,9 @@
 				07333940207B9F810080B390 /* RootTableViewController.h */,
 				07333941207B9F810080B390 /* RootTableViewController.m */,
 				07333943207B9FBC0080B390 /* DetailViewController.h */,
+				0708C070207D954800849AAC /* DatePickerViewController.h */,
+				0708C071207D954800849AAC /* DatePickerViewController.m */,
+				0708C073207D994900849AAC /* DatePickerViewController.xib */,
 				0708C06A207D8C2000849AAC /* PickerViewController.h */,
 				0708C06B207D8C2000849AAC /* PickerViewController.m */,
 				0708C06D207D93A000849AAC /* PickerViewController.xib */,
@@ -1676,6 +1684,7 @@
 				0708C057207D5A2C00849AAC /* BadgeButtonViewController.xib in Resources */,
 				0722DA84207C1B93004F8C36 /* LabelViewController.xib in Resources */,
 				0722DA7E207BFDC0004F8C36 /* BadgeViewController.xib in Resources */,
+				0708C075207D994900849AAC /* DatePickerViewController.xib in Resources */,
 				0708C06F207D93A000849AAC /* PickerViewController.xib in Resources */,
 				0795E6561E704A56004A5CB2 /* Assets.xcassets in Resources */,
 			);
@@ -1979,6 +1988,7 @@
 				0708C066207D6AF700849AAC /* ButtonViewController.m in Sources */,
 				0722DA87207C1EEE004F8C36 /* UISegmentedControl+Extensions.m in Sources */,
 				07333953207BC2680080B390 /* RootNavigationController.m in Sources */,
+				0708C072207D954800849AAC /* DatePickerViewController.m in Sources */,
 				0733394A207BB0E20080B390 /* AccessoryViewController.m in Sources */,
 				0733394D207BB0FE0080B390 /* AccessoryView.m in Sources */,
 				0722DA7B207BFDA5004F8C36 /* BadgeViewController.m in Sources */,
@@ -2063,6 +2073,14 @@
 				0708C06E207D93A000849AAC /* Base */,
 			);
 			name = PickerViewController.xib;
+			sourceTree = "<group>";
+		};
+		0708C073207D994900849AAC /* DatePickerViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0708C074207D994900849AAC /* Base */,
+			);
+			name = DatePickerViewController.xib;
 			sourceTree = "<group>";
 		};
 		071B62881E707FCB00B7B85A /* Interface.storyboard */ = {
