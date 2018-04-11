@@ -24,6 +24,7 @@
 #import "TextViewController.h"
 #import "ProgressSliderViewController.h"
 #import "ButtonViewController.h"
+#import "PickerViewController.h"
 
 #import <Ditko/Ditko.h>
 
@@ -40,7 +41,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.detailViewClasses = @[TableViewController.class,
+    self.detailViewClasses = @[PickerViewController.class,
+                               TableViewController.class,
                                AccessoryViewController.class,
                                ViewController.class,
                                GradientViewController.class,
