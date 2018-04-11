@@ -29,6 +29,7 @@
 #import "ProgressNavigationBarViewController.h"
 #import "EmptyViewController.h"
 #import "ViewControllerExtensionsViewController.h"
+#import "TextFieldViewController.h"
 
 #import <Ditko/Ditko.h>
 
@@ -45,7 +46,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.detailViewClasses = @[ViewControllerExtensionsViewController.class,
+    self.detailViewClasses = @[TextFieldViewController.class,
+                               ViewControllerExtensionsViewController.class,
                                EmptyViewController.class,
                                ProgressNavigationBarViewController.class,
                                DatePickerViewController.class,
