@@ -31,6 +31,7 @@
 #import "ViewControllerExtensionsViewController.h"
 #import "TextFieldViewController.h"
 #import "ColorExtensionsViewController.h"
+#import "ImageExtensionsViewController.h"
 
 #import <Ditko/Ditko.h>
 
@@ -47,7 +48,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.detailViewClasses = @[ColorExtensionsViewController.class,
+    self.detailViewClasses = @[ImageExtensionsViewController.class,
+                               ColorExtensionsViewController.class,
                                TextFieldViewController.class,
                                ViewControllerExtensionsViewController.class,
                                EmptyViewController.class,
