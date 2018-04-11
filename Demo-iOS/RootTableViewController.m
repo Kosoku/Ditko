@@ -26,6 +26,7 @@
 #import "ButtonViewController.h"
 #import "PickerViewController.h"
 #import "DatePickerViewController.h"
+#import "ProgressNavigationBarViewController.h"
 
 #import <Ditko/Ditko.h>
 
@@ -42,7 +43,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.detailViewClasses = @[DatePickerViewController.class,
+    self.detailViewClasses = @[ProgressNavigationBarViewController.class,
+                               DatePickerViewController.class,
                                PickerViewController.class,
                                TableViewController.class,
                                AccessoryViewController.class,
