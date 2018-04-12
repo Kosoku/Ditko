@@ -27,6 +27,10 @@
 
 @implementation AccessoryViewController
 
+- (NSString *)title {
+    return [self.class detailViewTitle];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
