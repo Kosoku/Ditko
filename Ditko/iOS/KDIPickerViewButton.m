@@ -273,7 +273,14 @@ NSNotificationName const KDIPickerViewButtonNotificationDidResignFirstResponder 
     }
 }
 - (void)_reloadTitleForSelectedRowsInPickerView; {
-    [self setAttributedTitle:[self _attributedTitleForSelectedRowsInPickerView] forState:UIControlStateNormal];
+    NSAttributedString *attrString = [self _attributedTitleForSelectedRowsInPickerView];
+    
+    if (self.buttonType == UIButtonTypeSystem) {
+        [self setTitle:attrString.string forState:UIControlStateNormal];
+    }
+    else {
+        [self setAttributedTitle:attrString forState:UIControlStateNormal];
+    }
 }
 
 + (NSString *)_defaultSelectedComponentsJoinString; {
