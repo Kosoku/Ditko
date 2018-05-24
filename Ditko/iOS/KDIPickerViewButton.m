@@ -70,6 +70,8 @@ NSNotificationName const KDIPickerViewButtonNotificationDidResignFirstResponder 
     
     [NSNotificationCenter.defaultCenter postNotificationName:KDIUIResponderNotificationDidBecomeFirstResponder object:self];
     
+    UIAccessibilityPostNotification(UIAccessibilityLayoutChangedNotification, self.inputView);
+    
     return retval;
 }
 - (BOOL)resignFirstResponder {
@@ -82,6 +84,8 @@ NSNotificationName const KDIPickerViewButtonNotificationDidResignFirstResponder 
     [self firstResponderDidChange];
     
     [NSNotificationCenter.defaultCenter postNotificationName:KDIUIResponderNotificationDidResignFirstResponder object:self];
+    
+    UIAccessibilityPostNotification(UIAccessibilityLayoutChangedNotification, nil);
     
     return retval;
 }
