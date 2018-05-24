@@ -22,7 +22,7 @@
 #endif
 #import "KDIDefines.h"
 
-#import <Stanley/KSTValueMacros.h>
+#import <Stanley/Stanley.h>
 
 // https://www.w3.org/TR/AERT#color-contrast
 static inline CGFloat KDIPerceivedBrightnessForRedGreenAndBlue(CGFloat red, CGFloat green, CGFloat blue) {
