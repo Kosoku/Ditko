@@ -65,6 +65,10 @@ NSNotificationName const KDITextViewNotificationDidResignFirstResponder = @"KDIT
     return [super forwardingTargetForSelector:aSelector];
 }
 #pragma mark -
+- (NSString *)accessibilityLabel {
+    return KSTIsEmptyObject(self.text) ? self.placeholder : self.text;
+}
+#pragma mark -
 - (BOOL)becomeFirstResponder {
     [self willChangeValueForKey:@kstKeypath(self,isFirstResponder)];
     
@@ -123,14 +127,10 @@ NSNotificationName const KDITextViewNotificationDidResignFirstResponder = @"KDIT
 - (void)setText:(NSString *)text {
     [super setText:text];
     
-//    [self invalidateIntrinsicContentSize];
-    
     [self _updatePlaceholderLabelWithText:self.placeholder];
 }
 - (void)setAttributedText:(NSAttributedString *)attributedText {
     [super setAttributedText:attributedText];
-    
-//    [self invalidateIntrinsicContentSize];
     
     [self _updatePlaceholderLabelWithText:self.placeholder];
 }
@@ -238,6 +238,7 @@ NSNotificationName const KDITextViewNotificationDidResignFirstResponder = @"KDIT
     [self.placeholderLabel setNumberOfLines:0];
     // if the super sets text before label is created
     [self.placeholderLabel setHidden:self.text.length > 0];
+    [self.placeholderLabel setIsAccessibilityElement:NO];
     [self addSubview:self.placeholderLabel];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(_textDidChangeNotification:) name:UITextViewTextDidChangeNotification object:self];
