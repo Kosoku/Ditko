@@ -127,7 +127,11 @@
 - (void)updateConstraints {
     NSMutableArray *temp = [[NSMutableArray alloc] init];
     
-    [temp addObject:[NSLayoutConstraint constraintWithItem:self.contentView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationGreaterThanOrEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:44.0]];
+    NSLayoutConstraint *minHeight = [NSLayoutConstraint constraintWithItem:self.contentView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationGreaterThanOrEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:44.0];
+    
+    minHeight.priority = UILayoutPriorityDefaultHigh;
+    
+    [temp addObject:minHeight];
     
     [temp addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-left-[view]-right-|" options:0 metrics:@{@"left": @(self.layoutMargins.left), @"right": @(self.accessoryType == UITableViewCellAccessoryNone ? self.layoutMargins.right : 0.0)} views:@{@"view": self.stackView}]];
     [temp addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-top-[view]-bottom-|" options:0 metrics:@{@"top": @(self.layoutMargins.top), @"bottom": @(self.layoutMargins.bottom)} views:@{@"view": self.stackView}]];
