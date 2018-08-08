@@ -35,6 +35,7 @@
 #import "FontDynamicTypeExtensionsViewController.h"
 
 #import <Ditko/Ditko.h>
+#import <KSOFontAwesomeExtensions/KSOFontAwesomeExtensions.h>
 
 @interface RootTableViewController ()
 @property (copy,nonatomic) NSArray<Class<DetailViewController>> *detailViewClasses;
@@ -44,6 +45,15 @@
 
 - (NSString *)title {
     return @"Ditko";
+}
+
+- (instancetype)initWithStyle:(UITableViewStyle)style {
+    if (!(self = [super initWithStyle:style]))
+        return nil;
+    
+    self.tabBarItem = [[UITabBarItem alloc] initWithTitle:self.title image:[UIImage KSO_fontAwesomeSolidImageWithString:@"\uf0fc" size:CGSizeMake(25, 25)].KDI_templateImage selectedImage:nil];
+    
+    return self;
 }
 
 - (void)viewDidLoad {

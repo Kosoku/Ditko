@@ -32,7 +32,11 @@
     
     navigationController.viewControllers = @[[[RootTableViewController alloc] initWithStyle:UITableViewStylePlain]];
     
-    [self.window setRootViewController:navigationController];
+    UITabBarController *tabBarController = [[UITabBarController alloc] initWithNibName:nil bundle:nil];
+    
+    tabBarController.viewControllers = @[navigationController];
+    
+    [self.window setRootViewController:tabBarController];
     [self.window makeKeyAndVisible];
     
     return YES;
