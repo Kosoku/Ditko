@@ -102,8 +102,8 @@
 		072628161E70BCCF00511F80 /* KDIView.m in Sources */ = {isa = PBXBuildFile; fileRef = 072628101E70BCCF00511F80 /* KDIView.m */; };
 		07284F0F1FAA4F84001CCBF7 /* KDIWindow.h in Headers */ = {isa = PBXBuildFile; fileRef = 07284F0D1FAA4F84001CCBF7 /* KDIWindow.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		07284F101FAA4F84001CCBF7 /* KDIWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 07284F0E1FAA4F84001CCBF7 /* KDIWindow.m */; };
-		072A420F21274BB000FCADCD /* KDIRoundedImageView.h in Headers */ = {isa = PBXBuildFile; fileRef = 072A420D21274BB000FCADCD /* KDIRoundedImageView.h */; };
-		072A421021274BB000FCADCD /* KDIRoundedImageView.h in Headers */ = {isa = PBXBuildFile; fileRef = 072A420D21274BB000FCADCD /* KDIRoundedImageView.h */; };
+		072A420F21274BB000FCADCD /* KDIRoundedImageView.h in Headers */ = {isa = PBXBuildFile; fileRef = 072A420D21274BB000FCADCD /* KDIRoundedImageView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		072A421021274BB000FCADCD /* KDIRoundedImageView.h in Headers */ = {isa = PBXBuildFile; fileRef = 072A420D21274BB000FCADCD /* KDIRoundedImageView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		072A421121274BB000FCADCD /* KDIRoundedImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 072A420E21274BB000FCADCD /* KDIRoundedImageView.m */; };
 		072A421221274BB000FCADCD /* KDIRoundedImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 072A420E21274BB000FCADCD /* KDIRoundedImageView.m */; };
 		07333942207B9F810080B390 /* RootTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 07333941207B9F810080B390 /* RootTableViewController.m */; };
