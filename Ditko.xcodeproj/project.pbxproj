@@ -102,6 +102,10 @@
 		072628161E70BCCF00511F80 /* KDIView.m in Sources */ = {isa = PBXBuildFile; fileRef = 072628101E70BCCF00511F80 /* KDIView.m */; };
 		07284F0F1FAA4F84001CCBF7 /* KDIWindow.h in Headers */ = {isa = PBXBuildFile; fileRef = 07284F0D1FAA4F84001CCBF7 /* KDIWindow.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		07284F101FAA4F84001CCBF7 /* KDIWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 07284F0E1FAA4F84001CCBF7 /* KDIWindow.m */; };
+		072A420F21274BB000FCADCD /* KDIRoundedImageView.h in Headers */ = {isa = PBXBuildFile; fileRef = 072A420D21274BB000FCADCD /* KDIRoundedImageView.h */; };
+		072A421021274BB000FCADCD /* KDIRoundedImageView.h in Headers */ = {isa = PBXBuildFile; fileRef = 072A420D21274BB000FCADCD /* KDIRoundedImageView.h */; };
+		072A421121274BB000FCADCD /* KDIRoundedImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 072A420E21274BB000FCADCD /* KDIRoundedImageView.m */; };
+		072A421221274BB000FCADCD /* KDIRoundedImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 072A420E21274BB000FCADCD /* KDIRoundedImageView.m */; };
 		07333942207B9F810080B390 /* RootTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 07333941207B9F810080B390 /* RootTableViewController.m */; };
 		07333946207BA04C0080B390 /* TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 07333945207BA04C0080B390 /* TableViewController.m */; };
 		0733394A207BB0E20080B390 /* AccessoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 07333949207BB0E20080B390 /* AccessoryViewController.m */; };
@@ -551,6 +555,8 @@
 		072628101E70BCCF00511F80 /* KDIView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KDIView.m; sourceTree = "<group>"; };
 		07284F0D1FAA4F84001CCBF7 /* KDIWindow.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = KDIWindow.h; path = iOS/KDIWindow.h; sourceTree = "<group>"; };
 		07284F0E1FAA4F84001CCBF7 /* KDIWindow.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = KDIWindow.m; path = iOS/KDIWindow.m; sourceTree = "<group>"; };
+		072A420D21274BB000FCADCD /* KDIRoundedImageView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = KDIRoundedImageView.h; path = iOS/KDIRoundedImageView.h; sourceTree = "<group>"; };
+		072A420E21274BB000FCADCD /* KDIRoundedImageView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = KDIRoundedImageView.m; path = iOS/KDIRoundedImageView.m; sourceTree = "<group>"; };
 		072FDE161F6ED4A400E73661 /* ro */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = ro; path = ro.lproj/Localizable.strings; sourceTree = "<group>"; };
 		07333940207B9F810080B390 /* RootTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RootTableViewController.h; sourceTree = "<group>"; };
 		07333941207B9F810080B390 /* RootTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RootTableViewController.m; sourceTree = "<group>"; };
@@ -859,6 +865,8 @@
 				07AA83951FB260CA00F99400 /* KDINavigationBarTitleView.m */,
 				070F9918204BD834001CFEFE /* KDITableViewCell.h */,
 				070F9919204BD834001CFEFE /* KDITableViewCell.m */,
+				072A420D21274BB000FCADCD /* KDIRoundedImageView.h */,
+				072A420E21274BB000FCADCD /* KDIRoundedImageView.m */,
 				07B828521FB50D2400EA46AC /* Private */,
 			);
 			name = Classes;
@@ -1289,6 +1297,7 @@
 				0794A8071E7354EF00603C99 /* UIViewController+KDIExtensions.h in Headers */,
 				07AA83981FB26AD900F99400 /* KDINavigationBarTitleView.h in Headers */,
 				0794A7EB1E734D5300603C99 /* UINavigationController+KDIExtensions.h in Headers */,
+				072A421021274BB000FCADCD /* KDIRoundedImageView.h in Headers */,
 				074B477D1EB3D266009B7C6D /* KDIEmptyView.h in Headers */,
 				07E8EB4F1E734729001639A2 /* KDIFunctions.h in Headers */,
 				071B62DE1E70861F00B7B85A /* Ditko.h in Headers */,
@@ -1386,6 +1395,7 @@
 				0794A7FA1E73530400603C99 /* UIBezierPath+KDIExtensions.h in Headers */,
 				07824F571FCF0E3A005FBF26 /* NSObject+KDIExtensions.h in Headers */,
 				07EAB2CE204F4FAE00534AE1 /* UIScrollView+KDIExtensions.h in Headers */,
+				072A420F21274BB000FCADCD /* KDIRoundedImageView.h in Headers */,
 				0794A81A1E73584900603C99 /* NSBundle+KDIPrivateExtensions.h in Headers */,
 				07DB3D881E73B6600044FB50 /* KDIProgressSlider.h in Headers */,
 				0794A8371E73776C00603C99 /* KDIBadgeView.h in Headers */,
@@ -1908,6 +1918,7 @@
 				07DB3D851E7383EC0044FB50 /* KDITextView.m in Sources */,
 				0794A7F31E73509100603C99 /* UIView+KDIExtensions.m in Sources */,
 				0794A8171E73574A00603C99 /* UIAlertController+KDIExtensions.m in Sources */,
+				072A421221274BB000FCADCD /* KDIRoundedImageView.m in Sources */,
 				071E53421F59004C00A36B59 /* KDIBorderedViewImpl.m in Sources */,
 				0705AFDB1ECE28F200BACC4E /* UIImage-NSImage+KDIExtensions.m in Sources */,
 				07E8EB3A1E733F34001639A2 /* NSURL+KDIExtensions.m in Sources */,
@@ -2025,6 +2036,7 @@
 				0794A8311E735E1200603C99 /* NSParagraphStyle+KDIExtensions.m in Sources */,
 				075F40041F780EF9009709EB /* UIViewController+KDIUIImagePickerControllerExtensions.m in Sources */,
 				077EB9FF1E9F703E0087321E /* KDIBadgeButton.m in Sources */,
+				072A421121274BB000FCADCD /* KDIRoundedImageView.m in Sources */,
 				0794A7EC1E734D5300603C99 /* UINavigationController+KDIExtensions.m in Sources */,
 				07284F101FAA4F84001CCBF7 /* KDIWindow.m in Sources */,
 				07DB3D781E7381010044FB50 /* KDILabel.m in Sources */,
