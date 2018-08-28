@@ -33,6 +33,7 @@
 #import "ColorExtensionsViewController.h"
 #import "ImageExtensionsViewController.h"
 #import "FontDynamicTypeExtensionsViewController.h"
+#import "RoundedImageViewController.h"
 
 #import <Ditko/Ditko.h>
 #import <KSOFontAwesomeExtensions/KSOFontAwesomeExtensions.h>
@@ -77,7 +78,8 @@
                                BadgeButtonViewController.class,
                                TextViewController.class,
                                ProgressSliderViewController.class,
-                               ButtonViewController.class];
+                               ButtonViewController.class,
+                               RoundedImageViewController.class];
     
     self.tableView.estimatedRowHeight = 44.0;
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];

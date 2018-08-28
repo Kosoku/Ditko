@@ -265,6 +265,7 @@
 		07B9B90E20758465007D5080 /* UITableView+KDIExtensions.h in Headers */ = {isa = PBXBuildFile; fileRef = 07B9B90B20758465007D5080 /* UITableView+KDIExtensions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		07B9B90F20758465007D5080 /* UITableView+KDIExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 07B9B90C20758465007D5080 /* UITableView+KDIExtensions.m */; };
 		07B9B91020758465007D5080 /* UITableView+KDIExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 07B9B90C20758465007D5080 /* UITableView+KDIExtensions.m */; };
+		07BE81CB2135D01600D9A148 /* RoundedImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 07BE81CA2135D01600D9A148 /* RoundedImageViewController.m */; };
 		07C49DD01EA7EADD00C9F4D5 /* NSSavePanel+KDIExtensions.h in Headers */ = {isa = PBXBuildFile; fileRef = 07C49DCE1EA7EADD00C9F4D5 /* NSSavePanel+KDIExtensions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		07C49DD11EA7EADD00C9F4D5 /* NSSavePanel+KDIExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 07C49DCF1EA7EADD00C9F4D5 /* NSSavePanel+KDIExtensions.m */; };
 		07D166C31E96A08E0073F69A /* NSButton+KDIExtensions.h in Headers */ = {isa = PBXBuildFile; fileRef = 07D166C11E96A08E0073F69A /* NSButton+KDIExtensions.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -689,6 +690,8 @@
 		07B828541FB50DEF00EA46AC /* KDIScrollView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = KDIScrollView.m; path = iOS/KDIScrollView.m; sourceTree = "<group>"; };
 		07B9B90B20758465007D5080 /* UITableView+KDIExtensions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "UITableView+KDIExtensions.h"; path = "iOS/UITableView+KDIExtensions.h"; sourceTree = "<group>"; };
 		07B9B90C20758465007D5080 /* UITableView+KDIExtensions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "UITableView+KDIExtensions.m"; path = "iOS/UITableView+KDIExtensions.m"; sourceTree = "<group>"; };
+		07BE81C92135D01600D9A148 /* RoundedImageViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RoundedImageViewController.h; sourceTree = "<group>"; };
+		07BE81CA2135D01600D9A148 /* RoundedImageViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RoundedImageViewController.m; sourceTree = "<group>"; };
 		07C49DCE1EA7EADD00C9F4D5 /* NSSavePanel+KDIExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSSavePanel+KDIExtensions.h"; path = "macOS/NSSavePanel+KDIExtensions.h"; sourceTree = "<group>"; };
 		07C49DCF1EA7EADD00C9F4D5 /* NSSavePanel+KDIExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSSavePanel+KDIExtensions.m"; path = "macOS/NSSavePanel+KDIExtensions.m"; sourceTree = "<group>"; };
 		07D166C11E96A08E0073F69A /* NSButton+KDIExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSButton+KDIExtensions.h"; path = "macOS/NSButton+KDIExtensions.h"; sourceTree = "<group>"; };
@@ -1171,6 +1174,8 @@
 				0733394E207BB41B0080B390 /* AccessoryViewController.xib */,
 				0733394B207BB0FE0080B390 /* AccessoryView.h */,
 				0733394C207BB0FE0080B390 /* AccessoryView.m */,
+				07BE81C92135D01600D9A148 /* RoundedImageViewController.h */,
+				07BE81CA2135D01600D9A148 /* RoundedImageViewController.m */,
 				0795E6551E704A56004A5CB2 /* Assets.xcassets */,
 				0795E6571E704A56004A5CB2 /* LaunchScreen.storyboard */,
 				0795E65A1E704A56004A5CB2 /* Info.plist */,
@@ -2056,6 +2061,7 @@
 				0708C060207D618800849AAC /* ProgressSliderViewController.m in Sources */,
 				0708C084207DB24200849AAC /* ViewControllerExtensionsViewController.m in Sources */,
 				0708C05A207D5D1100849AAC /* TextViewController.m in Sources */,
+				07BE81CB2135D01600D9A148 /* RoundedImageViewController.m in Sources */,
 				0708C08A207DBE1400849AAC /* TextFieldViewController.m in Sources */,
 				0733395F207BD3890080B390 /* UIViewController+Extensions.m in Sources */,
 				07333942207B9F810080B390 /* RootTableViewController.m in Sources */,
