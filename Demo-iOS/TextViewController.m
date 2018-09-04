@@ -35,7 +35,7 @@
     [self KSO_addNavigationBarTitleView];
     
     self.textView.textContainerInset = UIEdgeInsetsMake(kSubviewMargin, kSubviewMargin, 0, kSubviewMargin);
-    self.textView.placeholder = @"This is a placeholder that will wrap to multiple lines because it is so long";
+    self.textView.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"This is a placeholder that will wrap to multiple lines because it is so long" attributes:@{NSFontAttributeName: [UIFont boldSystemFontOfSize:17.0], NSForegroundColorAttributeName: KDIColorRandomRGB()}];
 }
 
 + (NSString *)detailViewTitle {

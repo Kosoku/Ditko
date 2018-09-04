@@ -26,9 +26,11 @@ NSNotificationName const KDITextViewNotificationDidResignFirstResponder = @"KDIT
 
 @property (strong,nonatomic) KDIBorderedViewImpl *borderedViewImpl;
 @property (strong,nonatomic) UIFont *internalFont;
+@property (assign,nonatomic) BOOL hasSetAttributedPlaceholder;
 
 - (void)_KDITextViewInit;
 - (void)_updatePlaceholderLabelWithText:(NSString *)text;
+- (void)_updatePlaceholderLabelWithAttributedText:(NSAttributedString *)attributedText;
 - (CGSize)_sizeThatFits:(CGSize)size layout:(BOOL)layout;
 
 + (UIFont *)_defaultFont;
@@ -189,6 +191,8 @@ NSNotificationName const KDITextViewNotificationDidResignFirstResponder = @"KDIT
     return self.placeholderLabel.attributedText;
 }
 - (void)setAttributedPlaceholder:(NSAttributedString *)attributedPlaceholder {
+    self.hasSetAttributedPlaceholder = !KSTIsEmptyObject(attributedPlaceholder);
+    
     [self.placeholderLabel setAttributedText:attributedPlaceholder];
     
     [self setNeedsLayout];
@@ -245,8 +249,18 @@ NSNotificationName const KDITextViewNotificationDidResignFirstResponder = @"KDIT
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(_textStorageDidProcessEditingNotification:) name:NSTextStorageDidProcessEditingNotification object:nil];
 }
 - (void)_updatePlaceholderLabelWithText:(NSString *)text; {
-    [self.placeholderLabel setHidden:self.text.length > 0];
-    [self setAttributedPlaceholder:[[NSAttributedString alloc] initWithString:text ?: @"" attributes:@{NSFontAttributeName: self.font, NSForegroundColorAttributeName: self.placeholderTextColor}]];
+    [self _updatePlaceholderLabelWithAttributedText:[[NSAttributedString alloc] initWithString:text ?: @"" attributes:@{NSFontAttributeName: self.font, NSForegroundColorAttributeName: self.placeholderTextColor}]];
+}
+- (void)_updatePlaceholderLabelWithAttributedText:(NSAttributedString *)attributedText; {
+    self.placeholderLabel.hidden = !KSTIsEmptyObject(self.text);
+    
+    if (self.hasSetAttributedPlaceholder) {
+        return;
+    }
+
+    self.attributedPlaceholder = attributedText;
+    
+    self.hasSetAttributedPlaceholder = NO;
 }
 - (CGSize)_sizeThatFits:(CGSize)size layout:(BOOL)layout; {
     CGSize retval = size;
