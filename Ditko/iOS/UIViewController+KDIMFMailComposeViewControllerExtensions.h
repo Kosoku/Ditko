@@ -38,7 +38,7 @@ typedef void(^KDIMFMailComposeViewControllerCompletionBlock)(MFMailComposeResult
  @param completion The completion block to invoke when the user interaction is finished
  @return YES if the MFMailComposeViewController was presented, otherwise NO
  */
-- (BOOL)KDI_presentMailComposeViewController:(MFMailComposeViewController *)mailComposeViewController animated:(BOOL)animated completion:(nullable KDIMFMailComposeViewControllerCompletionBlock)completion;
+- (BOOL)KDI_presentMailComposeViewController:(MFMailComposeViewController *)mailComposeViewController animated:(BOOL)animated completion:(KDIMFMailComposeViewControllerCompletionBlock)completion;
 
 @end
 
