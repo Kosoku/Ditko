@@ -92,6 +92,7 @@ static void const *kKDI_QLPreviewControllerDelegateKey = &kKDI_QLPreviewControll
     _completion = [completion copy];
     
     _previewController = [[QLPreviewController alloc] initWithNibName:nil bundle:nil];
+    _previewController.hidesBottomBarWhenPushed = YES;
     _previewController.dataSource = self;
     _previewController.delegate = self;
     
