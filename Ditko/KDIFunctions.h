@@ -26,6 +26,26 @@
 NS_ASSUME_NONNULL_BEGIN
 
 /**
+ Returns the scale of the main screen for the current platform. This calls through to KDIScreenScale(), passing nil.
+ 
+ @return The scale of the main screen
+ */
+FOUNDATION_EXTERN CGFloat KDIMainScreenScale(void);
+/**
+ Returns the scale of the provided *screen*, defaults to the main screen if nil is passed.
+ 
+ @param screen The screen for which to return the scale
+ @return The screen scale
+ */
+#if (TARGET_OS_WATCH)
+FOUNDATION_EXTERN CGFloat KDIScreenScale(WKInterfaceDevice * _Nullable screen);
+#elif (TARGET_OS_IOS || TARGET_OS_TV)
+FOUNDATION_EXTERN CGFloat KDIScreenScale(UIScreen * _Nullable screen);
+#elses
+FOUNDATION_EXTERN CGFloat KDIScreenScale(NSScreen * _Nullable screen);
+#endif
+
+/**
  Returns a new size after multiplying the width and height by the main screen scale.
  
  @param size The size to adjust

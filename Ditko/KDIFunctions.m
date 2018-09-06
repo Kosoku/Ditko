@@ -15,32 +15,55 @@
 
 #import "KDIFunctions.h"
 
+CGFloat KDIMainScreenScale(void) {
+    return KDIScreenScale(nil);
+}
+#if (TARGET_OS_WATCH)
+CGFloat KDIScreenScale(WKInterfaceDevice * _Nullable screen) {
+    if (screen == nil) {
+        screen = [WKInterfaceDevice currentDevice];
+    }
+    
+    return screen.screenScale;
+}
+#elif (TARGET_OS_IOS || TARGET_OS_TV)
+CGFloat KDIScreenScale(UIScreen * _Nullable screen) {
+    if (screen == nil) {
+        screen = [UIScreen mainScreen];
+    }
+    
+    return screen.scale;
+}
+#else
+CGFloat KDIScreenScale(NSScreen * _Nullable screen) {
+    if (screen == nil) {
+        screen = [NSScreen mainScreen];
+    }
+    
+    return screen.backingScaleFactor;
+}
+#endif
+
 CGSize KDICGSizeAdjustedForMainScreenScale(CGSize size) {
     return KDICGSizeAdjustedForScreenScale(size, nil);
 }
 #if (TARGET_OS_WATCH)
 CGSize KDICGSizeAdjustedForScreenScale(CGSize size, WKInterfaceDevice *screen) {
-    if (screen == nil) {
-        screen = [WKInterfaceDevice currentDevice];
-    }
+    CGFloat scale = KDIScreenScale(screen);
     
-    return CGSizeMake(size.width * screen.screenScale, size.height * screen.screenScale);
+    return CGSizeMake(size.width * scale, size.height * scale);
 }
 #elif (TARGET_OS_IOS || TARGET_OS_TV)
 CGSize KDICGSizeAdjustedForScreenScale(CGSize size, UIScreen *screen) {
-    if (screen == nil) {
-        screen = [UIScreen mainScreen];
-    }
+    CGFloat scale = KDIScreenScale(screen);
     
-    return CGSizeMake(size.width * screen.scale, size.height * screen.scale);
+    return CGSizeMake(size.width * scale, size.height * scale);
 }
 #else
 CGSize KDICGSizeAdjustedForScreenScale(CGSize size, NSScreen *screen) {
-    if (screen == nil) {
-        screen = [NSScreen mainScreen];
-    }
+    CGFloat scale = KDIScreenScale(screen);
     
-    return CGSizeMake(size.width * screen.backingScaleFactor, size.height * screen.backingScaleFactor);
+    return CGSizeMake(size.width * scale, size.height * scale);
 }
 #endif
 
