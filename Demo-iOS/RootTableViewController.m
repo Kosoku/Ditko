@@ -38,6 +38,7 @@
 
 #import <Ditko/Ditko.h>
 #import <KSOFontAwesomeExtensions/KSOFontAwesomeExtensions.h>
+#import <Loki/Loki.h>
 
 @interface RootTableViewController ()
 @property (copy,nonatomic) NSArray<Class<DetailViewController>> *detailViewClasses;
