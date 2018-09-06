@@ -20,7 +20,27 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface UIViewController (KDIQLPreviewControllerExtensions)
 
+/**
+ Creates and presents a QLPreviewController instance on behalf of the caller with the provided *previewItems*, optionally *animated* and invokes the *completion* block when the present animation completes.
+ 
+ The *initialPreviewItem* can be used to indicate which preview item should be initially displayed by the preview controller.
+ 
+ @param previewItems The preview items to display
+ @param initialPreviewItem The initial preview item to display, if nil, defaults to the first item
+ @param animated Whether to animate the present animation
+ @param completion The block that is invoked when the present animation finishes
+ */
 - (void)KDI_presentPreviewControllerWithPreviewItems:(NSArray<id<QLPreviewItem>> *)previewItems initialPreviewItem:(nullable id<QLPreviewItem>)initialPreviewItem animated:(BOOL)animated completion:(nullable dispatch_block_t)completion;
+/**
+ Creates and pushes a QLPreviewController instance on behalf of the caller with the provided *previewItems*, optionally *animated* and invokes the *completion* block when the push animation completes.
+ 
+ The *initialPreviewItem* can be used to indicate which preview item should be initially displayed by the preview controller.
+ 
+ @param previewItems The preview items to display
+ @param initialPreviewItem The initial preview item to display, if nil, defaults to the first item
+ @param animated Whether to animate the push animation
+ @param completion The block that is invoked when the push animation finishes
+ */
 - (void)KDI_pushPreviewControllerWithPreviewItems:(NSArray<id<QLPreviewItem>> *)previewItems initialPreviewItem:(nullable id<QLPreviewItem>)initialPreviewItem animated:(BOOL)animated completion:(nullable dispatch_block_t)completion;
 
 @end
