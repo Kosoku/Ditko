@@ -55,6 +55,7 @@ FOUNDATION_EXPORT const unsigned char DitkoVersionString[];
 #import <Ditko/UIScrollView+KDIExtensions.h>
 #import <Ditko/UIFont+KDIExtensions.h>
 #import <Ditko/UITableView+KDIExtensions.h>
+#import <Ditko/UITextField+KDIExtensions.h>
 #endif
 #if (TARGET_OS_OSX)
 #import <Ditko/NSView+KDIExtensions.h>

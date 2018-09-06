@@ -255,6 +255,8 @@
 		07A40756207E7BBF00F8016A /* ImageExtensionsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 07A40754207E7BBF00F8016A /* ImageExtensionsViewController.xib */; };
 		07A40759207E8DAD00F8016A /* FontDynamicTypeExtensionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 07A40758207E8DAD00F8016A /* FontDynamicTypeExtensionsViewController.m */; };
 		07A4075C207E8FC500F8016A /* FontDynamicTypeExtensionsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 07A4075A207E8FC500F8016A /* FontDynamicTypeExtensionsViewController.xib */; };
+		07A43CFA2141A2080015F9ED /* UITextField+KDIExtensions.h in Headers */ = {isa = PBXBuildFile; fileRef = 07A43CF82141A2080015F9ED /* UITextField+KDIExtensions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		07A43CFB2141A2080015F9ED /* UITextField+KDIExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 07A43CF92141A2080015F9ED /* UITextField+KDIExtensions.m */; };
 		07A9208F1E95674C00B45199 /* NSControl+KDIExtensions.h in Headers */ = {isa = PBXBuildFile; fileRef = 07A9208D1E95674C00B45199 /* NSControl+KDIExtensions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		07A920901E95674C00B45199 /* NSControl+KDIExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 07A9208E1E95674C00B45199 /* NSControl+KDIExtensions.m */; };
 		07A920931E95767E00B45199 /* NSTextField+KDIExtensions.h in Headers */ = {isa = PBXBuildFile; fileRef = 07A920911E95767E00B45199 /* NSTextField+KDIExtensions.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -692,6 +694,8 @@
 		07A40757207E8DAD00F8016A /* FontDynamicTypeExtensionsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FontDynamicTypeExtensionsViewController.h; sourceTree = "<group>"; };
 		07A40758207E8DAD00F8016A /* FontDynamicTypeExtensionsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FontDynamicTypeExtensionsViewController.m; sourceTree = "<group>"; };
 		07A4075B207E8FC500F8016A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/FontDynamicTypeExtensionsViewController.xib; sourceTree = "<group>"; };
+		07A43CF82141A2080015F9ED /* UITextField+KDIExtensions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "UITextField+KDIExtensions.h"; path = "iOS/UITextField+KDIExtensions.h"; sourceTree = "<group>"; };
+		07A43CF92141A2080015F9ED /* UITextField+KDIExtensions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "UITextField+KDIExtensions.m"; path = "iOS/UITextField+KDIExtensions.m"; sourceTree = "<group>"; };
 		07A9208D1E95674C00B45199 /* NSControl+KDIExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSControl+KDIExtensions.h"; path = "macOS/NSControl+KDIExtensions.h"; sourceTree = "<group>"; };
 		07A9208E1E95674C00B45199 /* NSControl+KDIExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSControl+KDIExtensions.m"; path = "macOS/NSControl+KDIExtensions.m"; sourceTree = "<group>"; };
 		07A920911E95767E00B45199 /* NSTextField+KDIExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSTextField+KDIExtensions.h"; path = "macOS/NSTextField+KDIExtensions.h"; sourceTree = "<group>"; };
@@ -1033,6 +1037,8 @@
 				0741C1822140CE0C00B80451 /* UIViewController+KDIMFMailComposeViewControllerExtensions.m */,
 				0741C1852140E0D900B80451 /* UIViewController+KDIQLPreviewControllerExtensions.h */,
 				0741C1862140E0D900B80451 /* UIViewController+KDIQLPreviewControllerExtensions.m */,
+				07A43CF82141A2080015F9ED /* UITextField+KDIExtensions.h */,
+				07A43CF92141A2080015F9ED /* UITextField+KDIExtensions.m */,
 				079C88901EA5F7B200F4C09D /* Private */,
 			);
 			name = Categories;
@@ -1410,6 +1416,7 @@
 				071B626E1E70635D00B7B85A /* KDIGradientView.h in Headers */,
 				071E533D1F59004C00A36B59 /* KDIBorderedViewImpl.h in Headers */,
 				07DB3D821E7383EC0044FB50 /* KDITextView.h in Headers */,
+				07A43CFA2141A2080015F9ED /* UITextField+KDIExtensions.h in Headers */,
 				0794A8061E7354EF00603C99 /* UIViewController+KDIExtensions.h in Headers */,
 				071E53381F58FEC400A36B59 /* KDIBorderedView.h in Headers */,
 				075F40031F780EF9009709EB /* UIViewController+KDIUIImagePickerControllerExtensions.h in Headers */,
@@ -2067,6 +2074,7 @@
 				0741C1882140E0D900B80451 /* UIViewController+KDIQLPreviewControllerExtensions.m in Sources */,
 				07B828561FB50DEF00EA46AC /* KDIScrollView.m in Sources */,
 				07DB3D7E1E7382660044FB50 /* KDITextField.m in Sources */,
+				07A43CFB2141A2080015F9ED /* UITextField+KDIExtensions.m in Sources */,
 				0794A8311E735E1200603C99 /* NSParagraphStyle+KDIExtensions.m in Sources */,
 				075F40041F780EF9009709EB /* UIViewController+KDIUIImagePickerControllerExtensions.m in Sources */,
 				077EB9FF1E9F703E0087321E /* KDIBadgeButton.m in Sources */,
