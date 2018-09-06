@@ -41,7 +41,7 @@ FOUNDATION_EXTERN CGFloat KDIMainScreenScale(void);
 FOUNDATION_EXTERN CGFloat KDIScreenScale(WKInterfaceDevice * _Nullable screen);
 #elif (TARGET_OS_IOS || TARGET_OS_TV)
 FOUNDATION_EXTERN CGFloat KDIScreenScale(UIScreen * _Nullable screen);
-#elses
+#else
 FOUNDATION_EXTERN CGFloat KDIScreenScale(NSScreen * _Nullable screen);
 #endif
 

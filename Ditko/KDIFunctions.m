@@ -21,7 +21,7 @@ CGFloat KDIMainScreenScale(void) {
 #if (TARGET_OS_WATCH)
 CGFloat KDIScreenScale(WKInterfaceDevice * _Nullable screen) {
     if (screen == nil) {
-        screen = [WKInterfaceDevice currentDevice];
+        screen = WKInterfaceDevice.currentDevice;
     }
     
     return screen.screenScale;
@@ -29,7 +29,7 @@ CGFloat KDIScreenScale(WKInterfaceDevice * _Nullable screen) {
 #elif (TARGET_OS_IOS || TARGET_OS_TV)
 CGFloat KDIScreenScale(UIScreen * _Nullable screen) {
     if (screen == nil) {
-        screen = [UIScreen mainScreen];
+        screen = UIScreen.mainScreen;
     }
     
     return screen.scale;
@@ -37,7 +37,7 @@ CGFloat KDIScreenScale(UIScreen * _Nullable screen) {
 #else
 CGFloat KDIScreenScale(NSScreen * _Nullable screen) {
     if (screen == nil) {
-        screen = [NSScreen mainScreen];
+        screen = NSScreen.mainScreen;
     }
     
     return screen.backingScaleFactor;
