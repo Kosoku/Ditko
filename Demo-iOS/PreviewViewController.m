@@ -22,6 +22,7 @@
 @interface PreviewViewController ()
 @property (weak,nonatomic) IBOutlet UIButton *presentButton;
 @property (weak,nonatomic) IBOutlet UIButton *pushButton;
+@property (weak,nonatomic) IBOutlet UISwitch *switchControl;
 
 @property (readonly,nonatomic) NSArray<id<QLPreviewItem>> *previewItems;
 @end
@@ -41,12 +42,16 @@
     
     [self.presentButton KDI_addBlock:^(__kindof UIControl * _Nonnull control, UIControlEvents controlEvents) {
         kstStrongify(self);
-        [self KDI_presentPreviewControllerWithPreviewItems:self.previewItems initialPreviewItem:nil animated:YES completion:nil];
+        NSArray *previewItems = self.previewItems;
+        
+        [self KDI_presentPreviewControllerWithPreviewItems:previewItems initialPreviewItem:self.switchControl.isOn ? [previewItems KST_objectAtRandomIndex] : nil animated:YES completion:nil];
     } forControlEvents:UIControlEventTouchUpInside];
     
     [self.pushButton KDI_addBlock:^(__kindof UIControl * _Nonnull control, UIControlEvents controlEvents) {
         kstStrongify(self);
-        [self KDI_pushPreviewControllerWithPreviewItems:self.previewItems initialPreviewItem:nil animated:YES completion:nil];
+        NSArray *previewItems = self.previewItems;
+        
+        [self KDI_pushPreviewControllerWithPreviewItems:previewItems initialPreviewItem:self.switchControl.isOn ? [previewItems KST_objectAtRandomIndex] : nil animated:YES completion:nil];
     } forControlEvents:UIControlEventTouchUpInside];
 }
 

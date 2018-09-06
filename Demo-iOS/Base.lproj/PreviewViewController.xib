@@ -7,6 +7,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -14,6 +15,7 @@
             <connections>
                 <outlet property="presentButton" destination="BLo-Hu-5o2" id="3Kl-cC-eSW"/>
                 <outlet property="pushButton" destination="tLS-q0-2qe" id="Gg4-JS-rwc"/>
+                <outlet property="switchControl" destination="WlA-ES-iGC" id="QPY-aL-n2L"/>
                 <outlet property="view" destination="iN0-l3-epB" id="LaS-M9-bFP"/>
             </connections>
         </placeholder>
@@ -30,11 +32,27 @@
                     <rect key="frame" x="170" y="82" width="35" height="30"/>
                     <state key="normal" title="Push"/>
                 </button>
+                <stackView opaque="NO" contentMode="scaleToFill" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="9Ln-DM-CJZ">
+                    <rect key="frame" x="86" y="120" width="203" height="31"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Random Initial Item" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uN3-Ws-gIw">
+                            <rect key="frame" x="0.0" y="0.0" width="146" height="31"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="WlA-ES-iGC">
+                            <rect key="frame" x="154" y="0.0" width="51" height="31"/>
+                        </switch>
+                    </subviews>
+                </stackView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="BLo-Hu-5o2" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="24" id="4w2-Co-6v4"/>
                 <constraint firstItem="BLo-Hu-5o2" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="Upp-ou-sBX"/>
+                <constraint firstItem="9Ln-DM-CJZ" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="aQN-mJ-A23"/>
+                <constraint firstItem="9Ln-DM-CJZ" firstAttribute="top" secondItem="tLS-q0-2qe" secondAttribute="bottom" constant="8" id="hhx-ta-yKT"/>
                 <constraint firstItem="tLS-q0-2qe" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="nnH-J0-E6r"/>
                 <constraint firstItem="tLS-q0-2qe" firstAttribute="top" secondItem="BLo-Hu-5o2" secondAttribute="bottom" constant="8" id="pDP-In-p2p"/>
             </constraints>
