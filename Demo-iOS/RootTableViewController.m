@@ -61,8 +61,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.detailViewClasses = @[PreviewViewController.class,
-                               FontDynamicTypeExtensionsViewController.class,
+    self.detailViewClasses = @[FontDynamicTypeExtensionsViewController.class,
                                ImageExtensionsViewController.class,
                                ColorExtensionsViewController.class,
                                TextFieldViewController.class,
@@ -81,7 +80,8 @@
                                TextViewController.class,
                                ProgressSliderViewController.class,
                                ButtonViewController.class,
-                               RoundedImageViewController.class];
+                               RoundedImageViewController.class,
+                               PreviewViewController.class];
     
     self.tableView.estimatedRowHeight = 44.0;
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
