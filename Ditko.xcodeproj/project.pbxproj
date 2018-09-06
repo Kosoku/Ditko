@@ -133,6 +133,11 @@
 		073B35191E82EF4B00C003A1 /* UIControl+KDIExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 073B35151E82EF4B00C003A1 /* UIControl+KDIExtensions.m */; };
 		0741C1832140CE0C00B80451 /* UIViewController+KDIMFMailComposeViewControllerExtensions.h in Headers */ = {isa = PBXBuildFile; fileRef = 0741C1812140CE0C00B80451 /* UIViewController+KDIMFMailComposeViewControllerExtensions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0741C1842140CE0C00B80451 /* UIViewController+KDIMFMailComposeViewControllerExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0741C1822140CE0C00B80451 /* UIViewController+KDIMFMailComposeViewControllerExtensions.m */; };
+		0741C1872140E0D900B80451 /* UIViewController+KDIQLPreviewControllerExtensions.h in Headers */ = {isa = PBXBuildFile; fileRef = 0741C1852140E0D900B80451 /* UIViewController+KDIQLPreviewControllerExtensions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0741C1882140E0D900B80451 /* UIViewController+KDIQLPreviewControllerExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0741C1862140E0D900B80451 /* UIViewController+KDIQLPreviewControllerExtensions.m */; };
+		0741C18B2140EECF00B80451 /* PreviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0741C18A2140EECF00B80451 /* PreviewViewController.m */; };
+		0741C18D2140F0AA00B80451 /* Media in Resources */ = {isa = PBXBuildFile; fileRef = 0741C18C2140F0AA00B80451 /* Media */; };
+		0741C1902140F0C500B80451 /* PreviewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0741C18E2140F0C500B80451 /* PreviewViewController.xib */; };
 		0745316E1E9EB0F200CEF9E0 /* Stanley.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0745316D1E9EB0F200CEF9E0 /* Stanley.framework */; };
 		074B477B1EB3D266009B7C6D /* KDIEmptyView.h in Headers */ = {isa = PBXBuildFile; fileRef = 074B47791EB3D266009B7C6D /* KDIEmptyView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		074B477D1EB3D266009B7C6D /* KDIEmptyView.h in Headers */ = {isa = PBXBuildFile; fileRef = 074B47791EB3D266009B7C6D /* KDIEmptyView.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -600,6 +605,12 @@
 		073B35151E82EF4B00C003A1 /* UIControl+KDIExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIControl+KDIExtensions.m"; path = "iOS/UIControl+KDIExtensions.m"; sourceTree = "<group>"; };
 		0741C1812140CE0C00B80451 /* UIViewController+KDIMFMailComposeViewControllerExtensions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "UIViewController+KDIMFMailComposeViewControllerExtensions.h"; path = "iOS/UIViewController+KDIMFMailComposeViewControllerExtensions.h"; sourceTree = "<group>"; };
 		0741C1822140CE0C00B80451 /* UIViewController+KDIMFMailComposeViewControllerExtensions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "UIViewController+KDIMFMailComposeViewControllerExtensions.m"; path = "iOS/UIViewController+KDIMFMailComposeViewControllerExtensions.m"; sourceTree = "<group>"; };
+		0741C1852140E0D900B80451 /* UIViewController+KDIQLPreviewControllerExtensions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "UIViewController+KDIQLPreviewControllerExtensions.h"; path = "iOS/UIViewController+KDIQLPreviewControllerExtensions.h"; sourceTree = "<group>"; };
+		0741C1862140E0D900B80451 /* UIViewController+KDIQLPreviewControllerExtensions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "UIViewController+KDIQLPreviewControllerExtensions.m"; path = "iOS/UIViewController+KDIQLPreviewControllerExtensions.m"; sourceTree = "<group>"; };
+		0741C1892140EECF00B80451 /* PreviewViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PreviewViewController.h; sourceTree = "<group>"; };
+		0741C18A2140EECF00B80451 /* PreviewViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PreviewViewController.m; sourceTree = "<group>"; };
+		0741C18C2140F0AA00B80451 /* Media */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Media; sourceTree = "<group>"; };
+		0741C18F2140F0C500B80451 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/PreviewViewController.xib; sourceTree = "<group>"; };
 		0745316D1E9EB0F200CEF9E0 /* Stanley.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Stanley.framework; path = "../../Library/Developer/Xcode/DerivedData/Ditko-bqbmowdlvnipfjchljeblievobjg/Build/Products/Debug-watchsimulator/Stanley.framework"; sourceTree = "<group>"; };
 		074B47791EB3D266009B7C6D /* KDIEmptyView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KDIEmptyView.h; path = iOS/KDIEmptyView.h; sourceTree = "<group>"; };
 		074B477A1EB3D266009B7C6D /* KDIEmptyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KDIEmptyView.m; path = iOS/KDIEmptyView.m; sourceTree = "<group>"; };
@@ -1020,6 +1031,8 @@
 				07B9B90C20758465007D5080 /* UITableView+KDIExtensions.m */,
 				0741C1812140CE0C00B80451 /* UIViewController+KDIMFMailComposeViewControllerExtensions.h */,
 				0741C1822140CE0C00B80451 /* UIViewController+KDIMFMailComposeViewControllerExtensions.m */,
+				0741C1852140E0D900B80451 /* UIViewController+KDIQLPreviewControllerExtensions.h */,
+				0741C1862140E0D900B80451 /* UIViewController+KDIQLPreviewControllerExtensions.m */,
 				079C88901EA5F7B200F4C09D /* Private */,
 			);
 			name = Categories;
@@ -1167,6 +1180,9 @@
 				0722DA79207BFDA5004F8C36 /* BadgeViewController.h */,
 				0722DA7A207BFDA5004F8C36 /* BadgeViewController.m */,
 				0722DA7C207BFDC0004F8C36 /* BadgeViewController.xib */,
+				0741C1892140EECF00B80451 /* PreviewViewController.h */,
+				0741C18A2140EECF00B80451 /* PreviewViewController.m */,
+				0741C18E2140F0C500B80451 /* PreviewViewController.xib */,
 				0722DA73207BFBF2004F8C36 /* GradientViewController.h */,
 				0722DA74207BFBF2004F8C36 /* GradientViewController.m */,
 				0722DA76207BFC4C004F8C36 /* GradientViewController.xib */,
@@ -1185,6 +1201,7 @@
 				0795E6551E704A56004A5CB2 /* Assets.xcassets */,
 				0795E6571E704A56004A5CB2 /* LaunchScreen.storyboard */,
 				0795E65A1E704A56004A5CB2 /* Info.plist */,
+				0741C18C2140F0AA00B80451 /* Media */,
 				0795E6491E704A56004A5CB2 /* Supporting Files */,
 			);
 			path = "Demo-iOS";
@@ -1388,6 +1405,7 @@
 				070F991A204BD834001CFEFE /* KDITableViewCell.h in Headers */,
 				071B62631E705D3500B7B85A /* KDIFunctions.h in Headers */,
 				0794C23D1F6EE68C0051C4C8 /* KDILocalizedStrings.h in Headers */,
+				0741C1872140E0D900B80451 /* UIViewController+KDIQLPreviewControllerExtensions.h in Headers */,
 				07D3D1EF1F5B995E005C512E /* KDIUIResponder.h in Headers */,
 				071B626E1E70635D00B7B85A /* KDIGradientView.h in Headers */,
 				071E533D1F59004C00A36B59 /* KDIBorderedViewImpl.h in Headers */,
@@ -1757,6 +1775,7 @@
 				0708C093207DD21500849AAC /* ColorExtensionsViewController.xib in Resources */,
 				07A40756207E7BBF00F8016A /* ImageExtensionsViewController.xib in Resources */,
 				0708C05D207D600200849AAC /* TextViewController.xib in Resources */,
+				0741C1902140F0C500B80451 /* PreviewViewController.xib in Resources */,
 				07A4075C207E8FC500F8016A /* FontDynamicTypeExtensionsViewController.xib in Resources */,
 				0708C081207DADBE00849AAC /* EmptyViewController.xib in Resources */,
 				0722DA78207BFC4C004F8C36 /* GradientViewController.xib in Resources */,
@@ -1767,6 +1786,7 @@
 				0708C087207DB2B000849AAC /* ViewControllerExtensionsViewController.xib in Resources */,
 				0708C057207D5A2C00849AAC /* BadgeButtonViewController.xib in Resources */,
 				0722DA84207C1B93004F8C36 /* LabelViewController.xib in Resources */,
+				0741C18D2140F0AA00B80451 /* Media in Resources */,
 				0708C08D207DBF7100849AAC /* TextFieldViewController.xib in Resources */,
 				0722DA7E207BFDC0004F8C36 /* BadgeViewController.xib in Resources */,
 				0708C075207D994900849AAC /* DatePickerViewController.xib in Resources */,
@@ -2044,6 +2064,7 @@
 				0794A8081E7354EF00603C99 /* UIViewController+KDIExtensions.m in Sources */,
 				07E8EB4C1E73454D001639A2 /* UIDevice+KDIExtensions.m in Sources */,
 				07DB3D961E73BA470044FB50 /* KDIButton.m in Sources */,
+				0741C1882140E0D900B80451 /* UIViewController+KDIQLPreviewControllerExtensions.m in Sources */,
 				07B828561FB50DEF00EA46AC /* KDIScrollView.m in Sources */,
 				07DB3D7E1E7382660044FB50 /* KDITextField.m in Sources */,
 				0794A8311E735E1200603C99 /* NSParagraphStyle+KDIExtensions.m in Sources */,
@@ -2076,6 +2097,7 @@
 				07A40753207E7A2200F8016A /* ImageExtensionsViewController.m in Sources */,
 				0708C07E207DAD0F00849AAC /* EmptyViewController.m in Sources */,
 				0708C06C207D8C2000849AAC /* PickerViewController.m in Sources */,
+				0741C18B2140EECF00B80451 /* PreviewViewController.m in Sources */,
 				0795E64E1E704A56004A5CB2 /* AppDelegate.m in Sources */,
 				07333956207BC9690080B390 /* ViewController.m in Sources */,
 				0722DA75207BFBF2004F8C36 /* GradientViewController.m in Sources */,
@@ -2281,6 +2303,14 @@
 				0735429A1E70515400177905 /* Base */,
 			);
 			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		0741C18E2140F0C500B80451 /* PreviewViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0741C18F2140F0C500B80451 /* Base */,
+			);
+			name = PreviewViewController.xib;
 			sourceTree = "<group>";
 		};
 		076730791E75DF4900030F0C /* Localizable.strings */ = {
