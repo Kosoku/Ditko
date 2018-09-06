@@ -131,6 +131,8 @@
 		073B35171E82EF4B00C003A1 /* UIControl+KDIExtensions.h in Headers */ = {isa = PBXBuildFile; fileRef = 073B35141E82EF4B00C003A1 /* UIControl+KDIExtensions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		073B35181E82EF4B00C003A1 /* UIControl+KDIExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 073B35151E82EF4B00C003A1 /* UIControl+KDIExtensions.m */; };
 		073B35191E82EF4B00C003A1 /* UIControl+KDIExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 073B35151E82EF4B00C003A1 /* UIControl+KDIExtensions.m */; };
+		0741C1832140CE0C00B80451 /* UIViewController+KDIMFMailComposeViewControllerExtensions.h in Headers */ = {isa = PBXBuildFile; fileRef = 0741C1812140CE0C00B80451 /* UIViewController+KDIMFMailComposeViewControllerExtensions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0741C1842140CE0C00B80451 /* UIViewController+KDIMFMailComposeViewControllerExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0741C1822140CE0C00B80451 /* UIViewController+KDIMFMailComposeViewControllerExtensions.m */; };
 		0745316E1E9EB0F200CEF9E0 /* Stanley.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0745316D1E9EB0F200CEF9E0 /* Stanley.framework */; };
 		074B477B1EB3D266009B7C6D /* KDIEmptyView.h in Headers */ = {isa = PBXBuildFile; fileRef = 074B47791EB3D266009B7C6D /* KDIEmptyView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		074B477D1EB3D266009B7C6D /* KDIEmptyView.h in Headers */ = {isa = PBXBuildFile; fileRef = 074B47791EB3D266009B7C6D /* KDIEmptyView.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -596,6 +598,8 @@
 		0738CE491EA014C9008FE9A0 /* UIFont+KDIDynamicTypeExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIFont+KDIDynamicTypeExtensions.m"; path = "iOS/UIFont+KDIDynamicTypeExtensions.m"; sourceTree = "<group>"; };
 		073B35141E82EF4B00C003A1 /* UIControl+KDIExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIControl+KDIExtensions.h"; path = "iOS/UIControl+KDIExtensions.h"; sourceTree = "<group>"; };
 		073B35151E82EF4B00C003A1 /* UIControl+KDIExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIControl+KDIExtensions.m"; path = "iOS/UIControl+KDIExtensions.m"; sourceTree = "<group>"; };
+		0741C1812140CE0C00B80451 /* UIViewController+KDIMFMailComposeViewControllerExtensions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "UIViewController+KDIMFMailComposeViewControllerExtensions.h"; path = "iOS/UIViewController+KDIMFMailComposeViewControllerExtensions.h"; sourceTree = "<group>"; };
+		0741C1822140CE0C00B80451 /* UIViewController+KDIMFMailComposeViewControllerExtensions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "UIViewController+KDIMFMailComposeViewControllerExtensions.m"; path = "iOS/UIViewController+KDIMFMailComposeViewControllerExtensions.m"; sourceTree = "<group>"; };
 		0745316D1E9EB0F200CEF9E0 /* Stanley.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Stanley.framework; path = "../../Library/Developer/Xcode/DerivedData/Ditko-bqbmowdlvnipfjchljeblievobjg/Build/Products/Debug-watchsimulator/Stanley.framework"; sourceTree = "<group>"; };
 		074B47791EB3D266009B7C6D /* KDIEmptyView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KDIEmptyView.h; path = iOS/KDIEmptyView.h; sourceTree = "<group>"; };
 		074B477A1EB3D266009B7C6D /* KDIEmptyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KDIEmptyView.m; path = iOS/KDIEmptyView.m; sourceTree = "<group>"; };
@@ -1014,6 +1018,8 @@
 				07FEAD92205A7921005743FF /* UIFont-NSFont+KDIExtensions.m */,
 				07B9B90B20758465007D5080 /* UITableView+KDIExtensions.h */,
 				07B9B90C20758465007D5080 /* UITableView+KDIExtensions.m */,
+				0741C1812140CE0C00B80451 /* UIViewController+KDIMFMailComposeViewControllerExtensions.h */,
+				0741C1822140CE0C00B80451 /* UIViewController+KDIMFMailComposeViewControllerExtensions.m */,
 				079C88901EA5F7B200F4C09D /* Private */,
 			);
 			name = Categories;
@@ -1372,6 +1378,7 @@
 				07DB3D761E7381010044FB50 /* KDILabel.h in Headers */,
 				07DB3D941E73BA470044FB50 /* KDIButton.h in Headers */,
 				07B9B90D20758465007D5080 /* UITableView+KDIExtensions.h in Headers */,
+				0741C1832140CE0C00B80451 /* UIViewController+KDIMFMailComposeViewControllerExtensions.h in Headers */,
 				07284F0F1FAA4F84001CCBF7 /* KDIWindow.h in Headers */,
 				079CF60C1EC1125700CE1BE9 /* UIGestureRecognizer+KDIExtensions.h in Headers */,
 				072628111E70BCCF00511F80 /* KDIView.h in Headers */,
@@ -2011,6 +2018,7 @@
 				0738CE4C1EA014C9008FE9A0 /* UIFont+KDIDynamicTypeExtensions.m in Sources */,
 				07FEAD95205A7921005743FF /* UIFont-NSFont+KDIExtensions.m in Sources */,
 				073B35181E82EF4B00C003A1 /* UIControl+KDIExtensions.m in Sources */,
+				0741C1842140CE0C00B80451 /* UIViewController+KDIMFMailComposeViewControllerExtensions.m in Sources */,
 				07DB3D8A1E73B6600044FB50 /* KDIProgressSlider.m in Sources */,
 				0794A7FD1E73530400603C99 /* UIBezierPath+KDIExtensions.m in Sources */,
 				076730841E75F6FE00030F0C /* KDIDatePickerButton.m in Sources */,
