@@ -31,7 +31,7 @@ Ditko is an iOS/macOS/tvOS/watchOS framework that extends the `AppKit`, `UIKit`,
     'Ditko' => ['Ditko/**/*.{lproj}']
   }
 
-  s.ios.frameworks = 'UIKit', 'MessageUI'
+  s.ios.frameworks = 'UIKit', 'MessageUI', 'QuickLook'
   s.osx.frameworks = 'AppKit'
   s.tvos.frameworks = 'UIKit'
   s.watchos.frameworks = 'UIKit', 'WatchKit'
