@@ -54,7 +54,7 @@
     if (!(self = [super initWithStyle:style]))
         return nil;
     
-    self.tabBarItem = [[UITabBarItem alloc] initWithTitle:self.title image:[UIImage KSO_fontAwesomeSolidImageWithString:@"\uf0fc" size:CGSizeMake(25, 25)].KDI_templateImage selectedImage:nil];
+    self.tabBarItem = [[UITabBarItem alloc] initWithTitle:self.title image:[UIImage KLO_imageWithPDFAtURL:[NSBundle.mainBundle URLForResource:@"kosoku-logo" withExtension:@"pdf" subdirectory:@"Media"] size:CGSizeMake(25, 25)].KDI_templateImage selectedImage:nil];
     
     return self;
 }
