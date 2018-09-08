@@ -118,7 +118,7 @@
         [retval addObject:self.infoLabel.text];
     }
     
-    return [retval componentsJoinedByString:@"\n"];
+    return [retval componentsJoinedByString:@", "];
 }
 #pragma mark -
 + (BOOL)requiresConstraintBasedLayout {
