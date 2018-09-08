@@ -17,6 +17,8 @@
 #import "NSObject+KDIExtensions.h"
 #import "UIFont+KDIDynamicTypeExtensions.h"
 
+#import <Stanley/Stanley.h>
+
 @interface KDITableViewCell ()
 @property (strong,nonatomic) UIStackView *stackView;
 @property (strong,nonatomic) UIStackView *titleSubtitleStackView;
@@ -27,7 +29,6 @@
 @property (strong,nonatomic) UILabel *infoLabel;
 
 - (void)_updateAccessoryTypeForSelection;
-- (void)_updateIconImageViewAccessibility;
 
 + (UIColor *)_defaultTitleColor;
 + (UIColor *)_defaultSubtitleColor;
@@ -108,6 +109,11 @@
 - (NSString *)accessibilityLabel {
     NSMutableArray *retval = [[NSMutableArray alloc] init];
     
+    if (!self.iconImageView.isHidden &&
+        !KSTIsEmptyObject(self.iconAccessibilityLabel)) {
+        
+        [retval addObject:self.iconAccessibilityLabel];
+    }
     if (!self.titleLabel.isHidden) {
         [retval addObject:self.titleLabel.text];
     }
@@ -194,8 +200,6 @@
 - (void)setIcon:(UIImage *)icon {
     self.iconImageView.image = icon;
     self.iconImageView.hidden = self.iconImageView.image == nil;
-    
-    [self _updateIconImageViewAccessibility];
 }
 @dynamic title;
 - (NSString *)title {
@@ -295,12 +299,10 @@
 #pragma mark -
 @dynamic iconAccessibilityLabel;
 - (NSString *)iconAccessibilityLabel {
-    return self.imageView.accessibilityLabel;
+    return self.iconImageView.accessibilityLabel;
 }
 - (void)setIconAccessibilityLabel:(NSString *)iconAccessibilityLabel {
-    self.imageView.accessibilityLabel = iconAccessibilityLabel;
-    
-    [self _updateIconImageViewAccessibility];
+    self.iconImageView.accessibilityLabel = iconAccessibilityLabel;
 }
 #pragma mark *** Private Methods ***
 - (void)_updateAccessoryTypeForSelection; {
@@ -308,9 +310,6 @@
         self.selectionStyle = UITableViewCellSelectionStyleNone;
         self.accessoryType = self.isSelected ? UITableViewCellAccessoryCheckmark : UITableViewCellAccessoryNone;
     }
-}
-- (void)_updateIconImageViewAccessibility; {
-    self.iconImageView.isAccessibilityElement = self.iconImageView.image != nil && self.iconAccessibilityLabel != nil;
 }
 #pragma mark -
 + (UIColor *)_defaultTitleColor; {
