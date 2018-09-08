@@ -129,8 +129,12 @@ KDIUIAlertControllerOptionsActionKey const KDIUIAlertControllerOptionsActionKeyA
     UIAlertControllerStyle style = options[KDIUIAlertControllerOptionsKeyStyle] == nil ? UIAlertControllerStyleAlert : [options[KDIUIAlertControllerOptionsKeyStyle] integerValue];
     UIAlertController *retval = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:style];
     
+    kstWeakify(retval);
+    
     if (options[KDIUIAlertControllerOptionsKeyActions] == nil) {
         UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:cancelButtonTitle style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+            kstStrongify(retval);
+            
             if (completion != nil) {
                 completion(retval,KDIUIAlertControllerCancelButtonIndex);
             }
@@ -140,6 +144,8 @@ KDIUIAlertControllerOptionsActionKey const KDIUIAlertControllerOptionsActionKeyA
         
         [otherButtonTitles enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
             UIAlertAction *action = [UIAlertAction actionWithTitle:obj style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                kstStrongify(retval);
+                
                 if (completion != nil) {
                     completion(retval,idx);
                 }
@@ -167,6 +173,8 @@ KDIUIAlertControllerOptionsActionKey const KDIUIAlertControllerOptionsActionKeyA
             NSDictionary<KDIUIAlertControllerOptionsActionKey, id> *cancelActionDict = actionDicts[cancelActionDictIndex];
             NSString *cancelActionTitle = cancelActionDict[KDIUIAlertControllerOptionsActionKeyTitle];
             UIAlertAction *action = [UIAlertAction actionWithTitle:cancelActionTitle style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+                kstStrongify(retval);
+                
                 if (completion != nil) {
                     completion(retval,KDIUIAlertControllerCancelButtonIndex);
                 }
@@ -188,6 +196,8 @@ KDIUIAlertControllerOptionsActionKey const KDIUIAlertControllerOptionsActionKeyA
         [actionDicts enumerateObjectsUsingBlock:^(NSDictionary<KDIUIAlertControllerOptionsActionKey,id> * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
             NSString *actionTitle = obj[KDIUIAlertControllerOptionsActionKeyTitle];
             UIAlertAction *action = [UIAlertAction actionWithTitle:actionTitle style:[obj[KDIUIAlertControllerOptionsActionKeyStyle] integerValue] handler:^(UIAlertAction * _Nonnull action) {
+                kstStrongify(retval);
+                
                 if (completion != nil) {
                     completion(retval,idx);
                 }
