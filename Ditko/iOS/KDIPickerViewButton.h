@@ -133,7 +133,7 @@ NS_ASSUME_NONNULL_BEGIN
  @param selectedRows The selected rows for which to return the string title
  @return The string title
  */
-- (NSString *)pickerViewButton:(KDIPickerViewButton *)pickerViewButton titleForSelectedRows:(NSArray<NSNumber *> *)selectedRows;
+- (nullable NSString *)pickerViewButton:(KDIPickerViewButton *)pickerViewButton titleForSelectedRows:(NSArray<NSNumber *> *)selectedRows;
 /**
  Returns the attributed string title that will be used as the picker view button's title given the selected rows. The provided array contains one NSNumber representing the selected row in each component. If this method is implemented, it is preferred over pickerViewButton:titleForSelectedRows:.
  
@@ -141,7 +141,7 @@ NS_ASSUME_NONNULL_BEGIN
  @param selectedRows The selected rows for which to return the attributed string title
  @return The attributed string title
  */
-- (NSAttributedString *)pickerViewButton:(KDIPickerViewButton *)pickerViewButton attributedTitleForSelectedRows:(NSArray<NSNumber *> *)selectedRows;
+- (nullable NSAttributedString *)pickerViewButton:(KDIPickerViewButton *)pickerViewButton attributedTitleForSelectedRows:(NSArray<NSNumber *> *)selectedRows;
 /**
  Called when the picker view button selection changes.
  

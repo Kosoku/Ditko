@@ -17,7 +17,7 @@
 #import "KDINextPreviousInputAccessoryView.h"
 #import "UIViewController+KDIExtensions.h"
 
-#import <Stanley/KSTScopeMacros.h>
+#import <Stanley/Stanley.h>
 
 NSNotificationName const KDIPickerViewButtonNotificationDidBecomeFirstResponder = @"KDIPickerViewButtonNotificationDidBecomeFirstResponder";
 NSNotificationName const KDIPickerViewButtonNotificationDidResignFirstResponder = @"KDIPickerViewButtonNotificationDidResignFirstResponder";
@@ -213,25 +213,7 @@ NSNotificationName const KDIPickerViewButtonNotificationDidResignFirstResponder 
     }
 }
 - (NSAttributedString *)_attributedTitleForSelectedRowsInPickerView; {
-    if ([self.delegate respondsToSelector:@selector(pickerViewButton:attributedTitleForSelectedRows:)] ||
-        [self.delegate respondsToSelector:@selector(pickerViewButton:titleForSelectedRows:)]) {
-        
-        NSMutableArray *selectedRowIndexes = [[NSMutableArray alloc] init];
-        
-        for (NSInteger i=0; i<[self _numberOfComponentsInPickerView]; i++) {
-            NSInteger row = [self selectedRowInComponent:i];
-            
-            [selectedRowIndexes addObject:@(row)];
-        }
-        
-        if ([self.delegate respondsToSelector:@selector(pickerViewButton:attributedTitleForSelectedRows:)]) {
-            return [self.delegate pickerViewButton:self attributedTitleForSelectedRows:selectedRowIndexes];
-        }
-        else {
-            return [[NSAttributedString alloc] initWithString:[self.delegate pickerViewButton:self titleForSelectedRows:selectedRowIndexes]];
-        }
-    }
-    else {
+    NSAttributedString*(^defaultRetvalBlock)(void) = ^NSAttributedString*(void){
         NSMutableAttributedString *retval = [[NSMutableAttributedString alloc] initWithString:@""];
         
         for (NSInteger i=0; i<[self _numberOfComponentsInPickerView]; i++) {
@@ -245,6 +227,32 @@ NSNotificationName const KDIPickerViewButtonNotificationDidResignFirstResponder 
         }
         
         return retval;
+    };
+    
+    if ([self.delegate respondsToSelector:@selector(pickerViewButton:attributedTitleForSelectedRows:)] ||
+        [self.delegate respondsToSelector:@selector(pickerViewButton:titleForSelectedRows:)]) {
+        
+        NSMutableArray *selectedRowIndexes = [[NSMutableArray alloc] init];
+        
+        for (NSInteger i=0; i<[self _numberOfComponentsInPickerView]; i++) {
+            NSInteger row = [self selectedRowInComponent:i];
+            
+            [selectedRowIndexes addObject:@(row)];
+        }
+        
+        if ([self.delegate respondsToSelector:@selector(pickerViewButton:attributedTitleForSelectedRows:)]) {
+            NSAttributedString *retval = [self.delegate pickerViewButton:self attributedTitleForSelectedRows:selectedRowIndexes];
+            
+            return KSTIsEmptyObject(retval) ? defaultRetvalBlock() : retval;
+        }
+        else {
+            NSString *retval = [self.delegate pickerViewButton:self titleForSelectedRows:selectedRowIndexes];
+            
+            return KSTIsEmptyObject(retval) ? defaultRetvalBlock() : [[NSAttributedString alloc] initWithString:retval];
+        }
+    }
+    else {
+        return defaultRetvalBlock();
     }
 }
 - (void)_reloadTitleForSelectedRowsInPickerView; {

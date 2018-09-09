@@ -73,6 +73,7 @@ FOUNDATION_EXPORT const unsigned char DitkoVersionString[];
 #import <Ditko/NSFont+KDIExtensions.h>
 #endif
 #if (TARGET_OS_IOS)
+#import <Ditko/KDIPickerViewButton+KDIExtensions.h>
 #import <Ditko/UIViewController+KDIUIImagePickerControllerExtensions.h>
 #import <Ditko/UIViewController+KDIMFMailComposeViewControllerExtensions.h>
 #import <Ditko/UIViewController+KDIQLPreviewControllerExtensions.h>
