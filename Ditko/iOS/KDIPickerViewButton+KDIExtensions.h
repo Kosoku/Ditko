@@ -27,6 +27,9 @@ typedef void(^KDIPickerViewButtonDelegateDidSelectRowsBlock)(NSArray<id<KDIPicke
 
 @interface KDIPickerViewButton (KDIExtensions)
 
+@property (readonly,copy,nonatomic,nullable) NSArray<id<KDIPickerViewButtonRow>> *KDI_pickerViewButtonRows;
+@property (readonly,copy,nonatomic,nullable) NSArray<NSArray<id<KDIPickerViewButtonRow>> *> *KDI_pickerViewButtonRowsAndColumns;
+
 - (void)KDI_setPickerViewButtonRows:(NSArray<id<KDIPickerViewButtonRow>> *)rows didSelectRowBlock:(KDIPickerViewButtonDelegateDidSelectRowBlock)didSelectRowBlock;
 - (void)KDI_setPickerViewButtonRows:(NSArray<id<KDIPickerViewButtonRow>> *)rows titleForSelectedRowBlock:(nullable KDIPickerViewButtonDelegateTitleForSelectedRowBlock)titleForSelectedRowBlock didSelectRowBlock:(KDIPickerViewButtonDelegateDidSelectRowBlock)didSelectRowBlock;
 

@@ -36,6 +36,13 @@
 
 @implementation KDIPickerViewButton (KDIExtensions)
 
+- (NSArray<id<KDIPickerViewButtonRow>> *)KDI_pickerViewButtonRows {
+    return self.KDI_pickerViewButtonRowsAndColumns.firstObject;
+}
+- (NSArray<NSArray<id<KDIPickerViewButtonRow>> *> *)KDI_pickerViewButtonRowsAndColumns {
+    return self.KDI_pickerViewButtonDataSourceDelegateWrapper.rowsAndColumns;
+}
+
 - (void)KDI_setPickerViewButtonRows:(NSArray<id<KDIPickerViewButtonRow>> *)rows didSelectRowBlock:(KDIPickerViewButtonDelegateDidSelectRowBlock)didSelectRowBlock; {
     [self KDI_setPickerViewButtonRows:rows titleForSelectedRowBlock:nil didSelectRowBlock:didSelectRowBlock];
 }
