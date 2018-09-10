@@ -127,19 +127,19 @@ NS_ASSUME_NONNULL_BEGIN
 @protocol KDIPickerViewButtonDelegate <NSObject>
 @optional
 /**
- Returns the string title that will be used as the picker view button's title given the selected rows. The provided array contains one NSNumber representing the selected row in each component.
+ Returns the string title that will be used as the picker view button's title given the selected rows. The provided array contains one NSNumber representing the selected row in each component. If you return nil, the default title is used.
  
  @param pickerViewButton The sender of the message
  @param selectedRows The selected rows for which to return the string title
- @return The string title
+ @return The string title or nil
  */
 - (nullable NSString *)pickerViewButton:(KDIPickerViewButton *)pickerViewButton titleForSelectedRows:(NSArray<NSNumber *> *)selectedRows;
 /**
- Returns the attributed string title that will be used as the picker view button's title given the selected rows. The provided array contains one NSNumber representing the selected row in each component. If this method is implemented, it is preferred over pickerViewButton:titleForSelectedRows:.
+ Returns the attributed string title that will be used as the picker view button's title given the selected rows. The provided array contains one NSNumber representing the selected row in each component. If this method is implemented, it is preferred over pickerViewButton:titleForSelectedRows:. If you return nil, the default title is used.
  
  @param pickerViewButton The sender of the message
  @param selectedRows The selected rows for which to return the attributed string title
- @return The attributed string title
+ @return The attributed string title or nil
  */
 - (nullable NSAttributedString *)pickerViewButton:(KDIPickerViewButton *)pickerViewButton attributedTitleForSelectedRows:(NSArray<NSNumber *> *)selectedRows;
 /**

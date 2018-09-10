@@ -50,10 +50,10 @@
     self.KDI_pickerViewButtonDataSourceDelegateWrapper = [[KDIPickerViewButtonDataSourceDelegateWrapper alloc] initWithPickerViewButton:self rowsAndColumns:@[rows] titleForSelectedRowBlock:titleForSelectedRowBlock titleForSelectedRowsBlock:nil didSelectRowBlock:didSelectRowBlock didSelectRowsBlock:nil];
 }
 
-- (void)KDI_setPickerViewButtonRowsAndColumns:(NSArray<NSArray<id<KDIPickerViewButtonRow>> *> *)rowsAndColumns didSelectRowBlock:(KDIPickerViewButtonDelegateDidSelectRowsBlock)didSelectRowsBlock; {
-    [self KDI_setPickerViewButtonRowsAndColumns:rowsAndColumns titleForSelectedRowsBlock:nil didSelectRowBlock:didSelectRowsBlock];
+- (void)KDI_setPickerViewButtonRowsAndColumns:(NSArray<NSArray<id<KDIPickerViewButtonRow>> *> *)rowsAndColumns didSelectRowsBlock:(KDIPickerViewButtonDelegateDidSelectRowsBlock)didSelectRowsBlock; {
+    [self KDI_setPickerViewButtonRowsAndColumns:rowsAndColumns titleForSelectedRowsBlock:nil didSelectRowsBlock:didSelectRowsBlock];
 }
-- (void)KDI_setPickerViewButtonRowsAndColumns:(NSArray<NSArray<id<KDIPickerViewButtonRow>> *> *)rowsAndColumns titleForSelectedRowsBlock:(KDIPickerViewButtonDelegateTitleForSelectedRowsBlock)titleForSelectedRowsBlock didSelectRowBlock:(KDIPickerViewButtonDelegateDidSelectRowsBlock)didSelectRowsBlock {
+- (void)KDI_setPickerViewButtonRowsAndColumns:(NSArray<NSArray<id<KDIPickerViewButtonRow>> *> *)rowsAndColumns titleForSelectedRowsBlock:(KDIPickerViewButtonDelegateTitleForSelectedRowsBlock)titleForSelectedRowsBlock didSelectRowsBlock:(KDIPickerViewButtonDelegateDidSelectRowsBlock)didSelectRowsBlock {
     self.KDI_pickerViewButtonDataSourceDelegateWrapper = [[KDIPickerViewButtonDataSourceDelegateWrapper alloc] initWithPickerViewButton:self rowsAndColumns:rowsAndColumns titleForSelectedRowBlock:nil titleForSelectedRowsBlock:titleForSelectedRowsBlock didSelectRowBlock:nil didSelectRowsBlock:didSelectRowsBlock];
 }
 
