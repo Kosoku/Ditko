@@ -178,11 +178,22 @@ NSNotificationName const KDIPickerViewButtonNotificationDidResignFirstResponder 
     [self addTarget:self action:@selector(_toggleFirstResponderAction:) forControlEvents:UIControlEventTouchUpInside];
     
     _pickerView = [[UIPickerView alloc] initWithFrame:CGRectZero];
+    [_pickerView setTranslatesAutoresizingMaskIntoConstraints:NO];
     [_pickerView setShowsSelectionIndicator:YES];
     [_pickerView setDataSource:self];
     [_pickerView setDelegate:self];
-    [_pickerView sizeToFit];
-    [self setInputView:_pickerView];
+    
+    UIInputView *inputView = [[UIInputView alloc] initWithFrame:CGRectZero inputViewStyle:UIInputViewStyleKeyboard];
+    
+    inputView.translatesAutoresizingMaskIntoConstraints = NO;
+    inputView.allowsSelfSizing = YES;
+    
+    [inputView addSubview:_pickerView];
+    
+    [NSLayoutConstraint activateConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[view]|" options:0 metrics:nil views:@{@"view": _pickerView}]];
+    [NSLayoutConstraint activateConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[view]|" options:0 metrics:nil views:@{@"view": _pickerView}]];
+    
+    self.inputView = inputView;
     
     [self setInputAccessoryView:[[KDINextPreviousInputAccessoryView alloc] initWithFrame:CGRectZero responder:self]];
 }
