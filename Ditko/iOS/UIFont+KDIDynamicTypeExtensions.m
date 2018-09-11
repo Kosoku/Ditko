@@ -20,11 +20,33 @@
 
 #import <objc/runtime.h>
 
+@interface KDIDynamicTypeFontAndTextStyle ()
+@property (readwrite,strong,nonatomic,nullable) UIFont *font;
+@property (readwrite,copy,nonatomic) UIFontTextStyle textStyle;
+@end
+
+@implementation KDIDynamicTypeFontAndTextStyle
+- (instancetype)initWithFont:(UIFont *)font textStyle:(UIFontTextStyle)textStyle {
+    if (!(self = [super init]))
+        return nil;
+    
+    _font = font;
+    _textStyle = [textStyle copy];
+    
+    return self;
+}
+
++ (instancetype)dynamicTypeFontAndTextStyleWithFont:(UIFont *)font textStyle:(UIFontTextStyle)textStyle {
+    return [[self alloc] initWithFont:font textStyle:textStyle];
+}
+@end
+
 @interface KDIDynamicTypeHelper : NSObject
 @property (weak,nonatomic) id<KDIDynamicTypeObject> dynamicTypeObject;
 @property (copy,nonatomic) UIFontTextStyle textStyle;
+@property (strong,nonatomic) UIFont *font;
 
-- (instancetype)initWithDynamicTypeObject:(id<KDIDynamicTypeObject>)dynamicTypeObject textStyle:(UIFontTextStyle)textStyle;
+- (instancetype)initWithDynamicTypeObject:(id<KDIDynamicTypeObject>)dynamicTypeObject textStyle:(UIFontTextStyle)textStyle font:(UIFont *)font;
 - (void)updateDynamicTypeObject;
 @end
 
@@ -34,12 +56,13 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
-- (instancetype)initWithDynamicTypeObject:(id<KDIDynamicTypeObject>)dynamicTypeObject textStyle:(UIFontTextStyle)textStyle {
+- (instancetype)initWithDynamicTypeObject:(id<KDIDynamicTypeObject>)dynamicTypeObject textStyle:(UIFontTextStyle)textStyle font:(UIFont *)font {
     if (!(self = [super init]))
         return nil;
     
     _dynamicTypeObject = dynamicTypeObject;
     _textStyle = [textStyle copy];
+    _font = font;
     
     [self updateDynamicTypeObject];
     
@@ -58,7 +81,25 @@
     SEL getFontSelector = [UIFont KDI_dynamicTypeFontForTextStyleSelector];
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Warc-performSelector-leaks"
-    UIFont *font = [UIFont.class performSelector:getFontSelector withObject:self.textStyle];
+    UIFont *font;
+    
+    UIFont*(^defaultFontBlock)(void) = ^UIFont*(void){
+        return [UIFont.class performSelector:getFontSelector withObject:self.textStyle];
+    };
+    
+    if (self.font == nil) {
+        font = defaultFontBlock();
+    }
+    else {
+        if (@available(iOS 11.0, tvOS 11.0, watchOS 4.0, *)) {
+            UIFontMetrics *fontMetrics = [[UIFontMetrics alloc] initForTextStyle:self.textStyle];
+            
+            font = [fontMetrics scaledFontForFont:self.font];
+        }
+        else {
+            font = defaultFontBlock();
+        }
+    }
 
     [self.dynamicTypeObject performSelector:setFontSelector withObject:font];
 #pragma clang diagnostic pop
@@ -77,10 +118,18 @@
 @implementation NSObject (KDIDynamicTypeExtensions)
 
 + (void)KDI_registerDynamicTypeObject:(id<KDIDynamicTypeObject>)dynamicTypeObject forTextStyle:(UIFontTextStyle)textStyle {
-    [(id)dynamicTypeObject setKDI_dynamicTypeHelper:[[KDIDynamicTypeHelper alloc] initWithDynamicTypeObject:dynamicTypeObject textStyle:textStyle]];
+    [(id)dynamicTypeObject setKDI_dynamicTypeHelper:[[KDIDynamicTypeHelper alloc] initWithDynamicTypeObject:dynamicTypeObject textStyle:textStyle font:nil]];
+}
++ (void)KDI_registerDynamicTypeObject:(id<KDIDynamicTypeObject>)dynamicTypeObject forTextStyle:(UIFontTextStyle)textStyle withFont:(UIFont *)font; {
+    [(id)dynamicTypeObject setKDI_dynamicTypeHelper:[[KDIDynamicTypeHelper alloc] initWithDynamicTypeObject:dynamicTypeObject textStyle:textStyle font:font]];
 }
 + (void)KDI_registerDynamicTypeObjects:(NSArray<id<KDIDynamicTypeObject>> *)dynamicTypeObjects forTextStyle:(UIFontTextStyle)textStyle {
     [self KDI_registerDynamicTypeObjectsForTextStyles:@{textStyle: dynamicTypeObjects}];
+}
++ (void)KDI_registerDynamicTypeObjects:(NSArray<id<KDIDynamicTypeObject>> *)dynamicTypeObjects forTextStyle:(UIFontTextStyle)textStyle withFont:(UIFont *)font; {
+    for (id<KDIDynamicTypeObject> dto in dynamicTypeObjects) {
+        [self KDI_registerDynamicTypeObject:dto forTextStyle:textStyle withFont:font];
+    }
 }
 + (void)KDI_registerDynamicTypeObjectsForTextStyles:(NSDictionary<UIFontTextStyle,NSArray<id<KDIDynamicTypeObject>> *> *)textStylesToDynamicTypeObjects {
     [textStylesToDynamicTypeObjects enumerateKeysAndObjectsUsingBlock:^(UIFontTextStyle  _Nonnull key, NSArray<id<KDIDynamicTypeObject>> * _Nonnull obj, BOOL * _Nonnull stop) {
@@ -99,15 +148,33 @@
     return self.KDI_dynamicTypeHelper.textStyle;
 }
 - (void)setKDI_dynamicTypeTextStyle:(UIFontTextStyle)KDI_dynamicTypeTextStyle {
+    if (KDI_dynamicTypeTextStyle == nil) {
+        self.KDI_dynamicTypeFontAndTextStyle = nil;
+    }
+    else {
+        self.KDI_dynamicTypeFontAndTextStyle = KDIDynamicTypeFontAndTextStyleCreate(nil, KDI_dynamicTypeTextStyle);
+    }
+}
+@dynamic KDI_dynamicTypeFontAndTextStyle;
+- (KDIDynamicTypeFontAndTextStyle *)KDI_dynamicTypeFontAndTextStyle {
+    KDIDynamicTypeHelper *helper = self.KDI_dynamicTypeHelper;
+    
+    if (helper == nil) {
+        return nil;
+    }
+    
+    return KDIDynamicTypeFontAndTextStyleCreate(helper.font, helper.textStyle);
+}
+- (void)setKDI_dynamicTypeFontAndTextStyle:(KDIDynamicTypeFontAndTextStyle *)KDI_dynamicTypeFontAndTextStyle {
     if (![self conformsToProtocol:@protocol(KDIDynamicTypeObject)]) {
         return;
     }
     
-    if (KDI_dynamicTypeTextStyle == nil) {
+    if (KDI_dynamicTypeFontAndTextStyle == nil) {
         [NSObject KDI_unregisterDynamicTypeObject:(id<KDIDynamicTypeObject>)self];
     }
     else {
-        [NSObject KDI_registerDynamicTypeObject:(id<KDIDynamicTypeObject>)self forTextStyle:KDI_dynamicTypeTextStyle];
+        [NSObject KDI_registerDynamicTypeObject:(id<KDIDynamicTypeObject>)self forTextStyle:KDI_dynamicTypeFontAndTextStyle.textStyle withFont:KDI_dynamicTypeFontAndTextStyle.font];
     }
 }
 
@@ -146,6 +213,18 @@ static void const *kDynamicTypeFontForTextStyleSelectorKey = &kDynamicTypeFontFo
 
 - (SEL)dynamicTypeSetFontSelector {
     return @selector(setFont:);
+}
+
+@end
+
+@implementation UIButton (KDIDynamicTypeExtensions)
+
+- (SEL)dynamicTypeSetFontSelector {
+    return @selector(KDI_setFont:);
+}
+
+- (void)KDI_setFont:(UIFont *)font {
+    self.titleLabel.font = font;
 }
 
 @end

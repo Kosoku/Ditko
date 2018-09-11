@@ -17,6 +17,44 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+/**
+ KDIDynamicTypeFontAndTextStyle is a model class that represents a font text style and a base font to be used with UIFontMetrics if the class is available. Otherwise, the below methods will funnel through the class method specified by the KDI_dynamicTypeFontForTextStyleSelector property.
+ */
+@interface KDIDynamicTypeFontAndTextStyle : NSObject
+
+/**
+ Get the base font that the receiver was initizlied with.
+ */
+@property (readonly,strong,nonatomic,nullable) UIFont *font;
+/**
+ Get the font text style that the receiver was initialized with.
+ */
+@property (readonly,copy,nonatomic) UIFontTextStyle textStyle;
+
+/**
+ Create and return an instance with the provided base *font* and *textStyle*.
+ 
+ @param font The base font
+ @param textStyle The font text style
+ @return The initialized instance
+ */
+- (instancetype)initWithFont:(nullable UIFont *)font textStyle:(UIFontTextStyle)textStyle NS_DESIGNATED_INITIALIZER;
+
+- (instancetype)init NS_UNAVAILABLE;
++ (instancetype)new NS_UNAVAILABLE;
+
+/**
+ Calls initWithFont:textStyle:, passing *font* and *textStyle* respectively.
+ 
+ @param font The base font
+ @param textStyle The font text style
+ @return The initialized instance
+ */
++ (instancetype)dynamicTypeFontAndTextStyleWithFont:(nullable UIFont *)font textStyle:(UIFontTextStyle)textStyle;
+@end
+
+#define KDIDynamicTypeFontAndTextStyleCreate(theFont, theTextStyle) ([KDIDynamicTypeFontAndTextStyle dynamicTypeFontAndTextStyleWithFont:(theFont) textStyle:(theTextStyle)])
+
 @protocol KDIDynamicTypeObject;
 
 @interface NSObject (KDIDynamicTypeExtensions)
@@ -27,6 +65,12 @@ NS_ASSUME_NONNULL_BEGIN
  The default is nil.
  */
 @property (copy,nonatomic,nullable) UIFontTextStyle KDI_dynamicTypeTextStyle;
+/**
+ Set and get the dynamic type font and text style object associated with the receiver. These methods only have an effect if the receiver conforms to KDIDynamicTypeObject.
+ 
+ The default is nil.
+ */
+@property (strong,nonatomic,nullable) KDIDynamicTypeFontAndTextStyle *KDI_dynamicTypeFontAndTextStyle;
 
 /**
  Register the object for dynamic type updates with the provided *textStyle*.
@@ -36,12 +80,30 @@ NS_ASSUME_NONNULL_BEGIN
  */
 + (void)KDI_registerDynamicTypeObject:(id<KDIDynamicTypeObject>)dynamicTypeObject forTextStyle:(UIFontTextStyle)textStyle;
 /**
+ Register the object for dynamic type updates with the provided *textStyle* and *font*.
+ 
+ @param dynamicTypeObject The object to register for dynamic type updates
+ @param textStyle The text style to use when applying updates
+ @param font The base font that should be used when calculating font changes, uses UIFontMetrics if available, otherwise falls back to default behavior
+ */
++ (void)KDI_registerDynamicTypeObject:(id<KDIDynamicTypeObject>)dynamicTypeObject forTextStyle:(UIFontTextStyle)textStyle withFont:(nullable UIFont *)font;
+
+/**
  Register a collection of objects for dynamic type updates with the provided *textStyle*.
  
  @param dynamicTypeObjects An array of objects to register for dynamic type updates
  @param textStyle The text style to use when applying updates
  */
 + (void)KDI_registerDynamicTypeObjects:(NSArray<id<KDIDynamicTypeObject>> *)dynamicTypeObjects forTextStyle:(UIFontTextStyle)textStyle;
+/**
+ Register a collection of objects for dynamic type updates with the provided *textStyle*.
+ 
+ @param dynamicTypeObjects An array of objects to register for dynamic type updates
+ @param textStyle The text style to use when applying updates
+ @param font The base font that should be used when calculating font changes, uses UIFontMetrics if available, otherwise falls back to default behavior
+ */
++ (void)KDI_registerDynamicTypeObjects:(NSArray<id<KDIDynamicTypeObject>> *)dynamicTypeObjects forTextStyle:(UIFontTextStyle)textStyle withFont:(nullable UIFont *)font;
+
 /**
  Register collections of objects for dynamic type updates using the keys in *textStylesToDynamicTypeObjects* as the text styles and the objects as arrays of dynamic type objects. The keys of *textStylesToDynamicTypeObjects* should be UIFontTextStyle constants and the objects should be NSArray containing objects conforming to KDIDynamicTypeObject.
  
@@ -96,6 +158,12 @@ NS_ASSUME_NONNULL_BEGIN
  Category allowing UITextView instances to be used with KDIDynamicTypeObject methods.
  */
 @interface UITextView (KDIDynamicTypeExtensions) <KDIDynamicTypeObject>
+@end
+
+/**
+ Category allowing UIButton instances to be used with KDIDynamicTypeObject methods.
+ */
+@interface UIButton (KDIDynamicTypeExtensions) <KDIDynamicTypeObject>
 @end
 
 /**

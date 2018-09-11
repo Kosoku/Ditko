@@ -17,14 +17,18 @@
 #import "UIViewController+Extensions.h"
 
 #import <Ditko/Ditko.h>
+#import <Stanley/Stanley.h>
 
 @interface FontDynamicTypeExtensionsViewController ()
+@property (weak,nonatomic) IBOutlet KDIPickerViewButton *fontPickerViewButton;
 @property (weak,nonatomic) IBOutlet UILabel *label;
 @property (weak,nonatomic) IBOutlet UIButton *button;
 @property (weak,nonatomic) IBOutlet UISegmentedControl *segmentedControl;
 @property (weak,nonatomic) IBOutlet UITextField *textField;
 @property (weak,nonatomic) IBOutlet KDITextView *textView;
 @property (weak,nonatomic) IBOutlet KDIBadgeView *badgeView;
+
+- (void)_updateDynamicTypeObjectsWithFontName:(NSString *)fontName;
 @end
 
 @implementation FontDynamicTypeExtensionsViewController
@@ -36,17 +40,26 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    kstWeakify(self);
+    
     [self KSO_addNavigationBarTitleView];
     
     self.textView.placeholder = @"Text View";
     
     self.badgeView.badge = @"Badge View";
     
-    [NSObject KDI_registerDynamicTypeObjectsForTextStyles:@{UIFontTextStyleBody: @[self.textField,self.textView],
-                                                            UIFontTextStyleCallout: @[self.button.titleLabel,self.segmentedControl],
-                                                            UIFontTextStyleHeadline: @[self.label],
-                                                            UIFontTextStyleCaption1: @[self.badgeView]
-                                                            }];
+    NSMutableArray *fontNames = [[NSMutableArray alloc] init];
+    
+    for (NSString *familyName in UIFont.familyNames) {
+        [fontNames addObjectsFromArray:[UIFont fontNamesForFamilyName:familyName]];
+    }
+    
+    [self _updateDynamicTypeObjectsWithFontName:fontNames.firstObject];
+    
+    [self.fontPickerViewButton KDI_setPickerViewButtonRows:fontNames didSelectRowBlock:^(NSString * _Nonnull row) {
+        kstStrongify(self);
+        [self _updateDynamicTypeObjectsWithFontName:row];
+    }];
 }
 
 + (NSString *)detailViewTitle {
@@ -54,6 +67,10 @@
 }
 + (NSString *)detailViewSubtitle {
     return @"Dynamic type support for custom objects";
+}
+
+- (void)_updateDynamicTypeObjectsWithFontName:(NSString *)fontName; {
+    [NSObject KDI_registerDynamicTypeObjects:@[self.textField, self.textView, self.button, self.segmentedControl, self.label, self.badgeView, self.fontPickerViewButton] forTextStyle:UIFontTextStyleBody withFont:[UIFont fontWithName:fontName size:17.0]];
 }
 
 @end

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -14,6 +14,7 @@
             <connections>
                 <outlet property="badgeView" destination="AMa-VS-h8Z" id="CaN-1V-uie"/>
                 <outlet property="button" destination="Uxt-56-PvO" id="lz0-Rt-nAj"/>
+                <outlet property="fontPickerViewButton" destination="p0r-uq-53u" id="755-rb-9B7"/>
                 <outlet property="label" destination="EwC-SE-dMu" id="Wb5-9L-i4t"/>
                 <outlet property="segmentedControl" destination="0mx-dQ-oap" id="zfh-bs-Q5y"/>
                 <outlet property="textField" destination="05u-W3-3FS" id="eHJ-Uk-9tX"/>
@@ -27,61 +28,68 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EwC-SE-dMu">
-                    <rect key="frame" x="16" y="28" width="343" height="21"/>
+                    <rect key="frame" x="16" y="68" width="343" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uxt-56-PvO">
-                    <rect key="frame" x="16" y="57" width="343" height="30"/>
+                    <rect key="frame" x="16" y="97" width="343" height="30"/>
                     <state key="normal" title="Button"/>
                 </button>
                 <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="0mx-dQ-oap">
-                    <rect key="frame" x="16" y="95" width="343" height="29"/>
+                    <rect key="frame" x="16" y="135" width="343" height="29"/>
                     <segments>
                         <segment title="Segmented"/>
                         <segment title="Control"/>
                     </segments>
                 </segmentedControl>
                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Text Field" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="05u-W3-3FS">
-                    <rect key="frame" x="16" y="167" width="343" height="30"/>
+                    <rect key="frame" x="16" y="207" width="343" height="30"/>
                     <nil key="textColor"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>
                 </textField>
                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalHuggingPriority="249" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="fhG-QJ-jOb" customClass="KDITextView">
-                    <rect key="frame" x="16" y="205" width="343" height="442"/>
+                    <rect key="frame" x="16" y="245" width="343" height="402"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                 </textView>
                 <view contentMode="scaleToFill" placeholderIntrinsicWidth="343" placeholderIntrinsicHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="AMa-VS-h8Z" customClass="KDIBadgeView">
-                    <rect key="frame" x="16" y="131" width="343" height="28"/>
+                    <rect key="frame" x="16" y="171" width="343" height="28"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p0r-uq-53u" customClass="KDIPickerViewButton">
+                    <rect key="frame" x="16" y="30" width="343" height="30"/>
+                    <state key="normal" title="Button"/>
+                </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="AMa-VS-h8Z" secondAttribute="trailing" constant="16" id="6hs-dW-Pf3"/>
-                <constraint firstItem="EwC-SE-dMu" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="8" id="Ddd-a5-1hd"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="fhG-QJ-jOb" secondAttribute="trailing" constant="16" id="EJ3-g6-rjl"/>
-                <constraint firstItem="0mx-dQ-oap" firstAttribute="top" secondItem="Uxt-56-PvO" secondAttribute="bottom" constant="8" id="G0e-YH-hge"/>
-                <constraint firstItem="AMa-VS-h8Z" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="L21-dX-YJH"/>
-                <constraint firstItem="fhG-QJ-jOb" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="Mnb-aU-tQJ"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="Uxt-56-PvO" secondAttribute="trailing" constant="16" id="Pez-SP-bYk"/>
-                <constraint firstItem="05u-W3-3FS" firstAttribute="top" secondItem="AMa-VS-h8Z" secondAttribute="bottom" constant="8" id="R70-TI-Cxy"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="05u-W3-3FS" secondAttribute="trailing" constant="16" id="RRS-n8-ZrF"/>
-                <constraint firstItem="Uxt-56-PvO" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="Sud-oc-3Ef"/>
-                <constraint firstItem="AMa-VS-h8Z" firstAttribute="top" secondItem="0mx-dQ-oap" secondAttribute="bottom" constant="8" id="UD0-f0-3z9"/>
-                <constraint firstItem="EwC-SE-dMu" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="UIg-gS-P34"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="0mx-dQ-oap" secondAttribute="trailing" constant="16" id="Zfx-BW-o1X"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="fhG-QJ-jOb" secondAttribute="bottom" constant="20" id="d8N-Q4-Zre"/>
-                <constraint firstItem="Uxt-56-PvO" firstAttribute="top" secondItem="EwC-SE-dMu" secondAttribute="bottom" constant="8" id="gGm-UI-aCn"/>
-                <constraint firstItem="05u-W3-3FS" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="mG8-5J-tSc"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="EwC-SE-dMu" secondAttribute="trailing" constant="16" id="p0L-PZ-nhQ"/>
-                <constraint firstItem="fhG-QJ-jOb" firstAttribute="top" secondItem="05u-W3-3FS" secondAttribute="bottom" constant="8" id="qR7-Ko-gmh"/>
-                <constraint firstItem="0mx-dQ-oap" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="z1d-ZC-8tX"/>
+                <constraint firstItem="p0r-uq-53u" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="10" id="1eI-xE-1vK"/>
+                <constraint firstItem="fhG-QJ-jOb" firstAttribute="top" secondItem="05u-W3-3FS" secondAttribute="bottom" constant="8" id="2xY-sz-PLG"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="fhG-QJ-jOb" secondAttribute="bottom" constant="20" id="HVu-st-aQv"/>
+                <constraint firstItem="fhG-QJ-jOb" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="L2l-vX-tBN"/>
+                <constraint firstItem="EwC-SE-dMu" firstAttribute="top" secondItem="p0r-uq-53u" secondAttribute="bottom" constant="8" id="PFb-1S-GPy"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="05u-W3-3FS" secondAttribute="trailing" constant="16" id="Qq7-lP-wAM"/>
+                <constraint firstItem="AMa-VS-h8Z" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="VRU-E1-XYq"/>
+                <constraint firstItem="EwC-SE-dMu" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="XMm-34-tWl"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="EwC-SE-dMu" secondAttribute="trailing" constant="16" id="bMi-im-1oh"/>
+                <constraint firstItem="05u-W3-3FS" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="cT3-l5-B2S"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="p0r-uq-53u" secondAttribute="trailing" constant="16" id="deY-Wo-029"/>
+                <constraint firstItem="AMa-VS-h8Z" firstAttribute="top" secondItem="0mx-dQ-oap" secondAttribute="bottom" constant="8" id="eGc-DR-aFm"/>
+                <constraint firstItem="0mx-dQ-oap" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="ebj-VF-5v6"/>
+                <constraint firstItem="Uxt-56-PvO" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="jam-Oh-vHt"/>
+                <constraint firstItem="05u-W3-3FS" firstAttribute="top" secondItem="AMa-VS-h8Z" secondAttribute="bottom" constant="8" id="nJG-z7-hVp"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="AMa-VS-h8Z" secondAttribute="trailing" constant="16" id="oge-Nc-tpV"/>
+                <constraint firstItem="Uxt-56-PvO" firstAttribute="top" secondItem="EwC-SE-dMu" secondAttribute="bottom" constant="8" id="poq-J5-qlj"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="Uxt-56-PvO" secondAttribute="trailing" constant="16" id="quO-fU-2uU"/>
+                <constraint firstItem="0mx-dQ-oap" firstAttribute="top" secondItem="Uxt-56-PvO" secondAttribute="bottom" constant="8" id="uEu-Hf-Xjw"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="0mx-dQ-oap" secondAttribute="trailing" constant="16" id="vSP-wL-WCu"/>
+                <constraint firstItem="p0r-uq-53u" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="wS6-D9-cXE"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="fhG-QJ-jOb" secondAttribute="trailing" constant="16" id="ytg-Zf-zGl"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <point key="canvasLocation" x="24.5" y="51.5"/>
