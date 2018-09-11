@@ -22,7 +22,7 @@
 NSNotificationName const KDIPickerViewButtonNotificationDidBecomeFirstResponder = @"KDIPickerViewButtonNotificationDidBecomeFirstResponder";
 NSNotificationName const KDIPickerViewButtonNotificationDidResignFirstResponder = @"KDIPickerViewButtonNotificationDidResignFirstResponder";
 
-@interface KDIPickerViewButton () <UIPickerViewDataSource,UIPickerViewDelegate,UIPopoverPresentationControllerDelegate>
+@interface KDIPickerViewButton () <UIPickerViewDataSource, UIPickerViewDelegate>
 @property (readwrite,nonatomic) UIView *inputView;
 @property (readwrite,nonatomic) UIView *inputAccessoryView;
 
@@ -115,10 +115,6 @@ NSNotificationName const KDIPickerViewButtonNotificationDidResignFirstResponder 
     if ([self.delegate respondsToSelector:@selector(pickerViewButton:didSelectRow:inComponent:)]) {
         [self.delegate pickerViewButton:self didSelectRow:row inComponent:component];
     }
-}
-#pragma mark UIPopoverPresentationControllerDelegate
-- (void)popoverPresentationControllerDidDismissPopover:(UIPopoverPresentationController *)popoverPresentationController {
-    [NSNotificationCenter.defaultCenter postNotificationName:KDIUIResponderNotificationDidResignFirstResponder object:self];
 }
 #pragma mark *** Public Methods ***
 - (void)reloadData {
