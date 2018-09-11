@@ -19,7 +19,7 @@
 
 #import <Stanley/KSTScopeMacros.h>
 
-@interface KDIDatePickerButton () <UIPopoverPresentationControllerDelegate>
+@interface KDIDatePickerButton ()
 @property (readwrite,nonatomic) UIView *inputView;
 @property (readwrite,nonatomic) UIView *inputAccessoryView;
 
@@ -89,10 +89,6 @@
     
 }
 
-- (void)popoverPresentationControllerDidDismissPopover:(UIPopoverPresentationController *)popoverPresentationController {
-    [NSNotificationCenter.defaultCenter postNotificationName:KDIUIResponderNotificationDidResignFirstResponder object:self];
-}
-
 - (void)reloadTitleFromDate; {
     [self _reloadTitleFromDatePickerDate];
 }
@@ -155,11 +151,21 @@
     [self addTarget:self action:@selector(_toggleFirstResponderAction:) forControlEvents:UIControlEventTouchUpInside];
     
     _datePicker = [[UIDatePicker alloc] init];
+    [_datePicker setTranslatesAutoresizingMaskIntoConstraints:NO];
     [_datePicker setDatePickerMode:UIDatePickerModeDateAndTime];
     [_datePicker addTarget:self action:@selector(_datePickerAction:) forControlEvents:UIControlEventValueChanged];
-    [_datePicker sizeToFit];
     
-    [self setInputView:_datePicker];
+    UIInputView *inputView = [[UIInputView alloc] initWithFrame:CGRectZero inputViewStyle:UIInputViewStyleKeyboard];
+    
+    inputView.translatesAutoresizingMaskIntoConstraints = NO;
+    inputView.allowsSelfSizing = YES;
+    
+    [inputView addSubview:_datePicker];
+    
+    [NSLayoutConstraint activateConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[view]|" options:0 metrics:nil views:@{@"view": _datePicker}]];
+    [NSLayoutConstraint activateConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[view]|" options:0 metrics:nil views:@{@"view": _datePicker}]];
+    
+    self.inputView = inputView;
     
     [self setInputAccessoryView:[[KDINextPreviousInputAccessoryView alloc] initWithFrame:CGRectZero responder:self]];
     
