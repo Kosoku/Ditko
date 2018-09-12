@@ -100,6 +100,8 @@
 		072628141E70BCCF00511F80 /* KDIView.m in Sources */ = {isa = PBXBuildFile; fileRef = 072628101E70BCCF00511F80 /* KDIView.m */; };
 		072628151E70BCCF00511F80 /* KDIView.m in Sources */ = {isa = PBXBuildFile; fileRef = 072628101E70BCCF00511F80 /* KDIView.m */; };
 		072628161E70BCCF00511F80 /* KDIView.m in Sources */ = {isa = PBXBuildFile; fileRef = 072628101E70BCCF00511F80 /* KDIView.m */; };
+		0727FBA62148F8860053C2D6 /* UITextField+KDIExtensions.h in Headers */ = {isa = PBXBuildFile; fileRef = 07A43CF82141A2080015F9ED /* UITextField+KDIExtensions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0727FBA72148F88F0053C2D6 /* UITextField+KDIExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 07A43CF92141A2080015F9ED /* UITextField+KDIExtensions.m */; };
 		07284F0F1FAA4F84001CCBF7 /* KDIWindow.h in Headers */ = {isa = PBXBuildFile; fileRef = 07284F0D1FAA4F84001CCBF7 /* KDIWindow.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		07284F101FAA4F84001CCBF7 /* KDIWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 07284F0E1FAA4F84001CCBF7 /* KDIWindow.m */; };
 		072A420F21274BB000FCADCD /* KDIRoundedImageView.h in Headers */ = {isa = PBXBuildFile; fileRef = 072A420D21274BB000FCADCD /* KDIRoundedImageView.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -1320,6 +1322,7 @@
 				073B35171E82EF4B00C003A1 /* UIControl+KDIExtensions.h in Headers */,
 				07B9B90E20758465007D5080 /* UITableView+KDIExtensions.h in Headers */,
 				07E8EB361E733F34001639A2 /* NSURL+KDIExtensions.h in Headers */,
+				0727FBA62148F8860053C2D6 /* UITextField+KDIExtensions.h in Headers */,
 				07DB3D8F1E73B7BD0044FB50 /* KDIProgressNavigationBar.h in Headers */,
 				07DB3D771E7381010044FB50 /* KDILabel.h in Headers */,
 				07DB3D951E73BA470044FB50 /* KDIButton.h in Headers */,
@@ -1977,6 +1980,7 @@
 				0738CE4D1EA014C9008FE9A0 /* UIFont+KDIDynamicTypeExtensions.m in Sources */,
 				0794A83C1E73776C00603C99 /* KDIBadgeView.m in Sources */,
 				0794A8091E7354EF00603C99 /* UIViewController+KDIExtensions.m in Sources */,
+				0727FBA72148F88F0053C2D6 /* UITextField+KDIExtensions.m in Sources */,
 				07E8EB461E7341C2001639A2 /* UIBarButtonItem+KDIExtensions.m in Sources */,
 				070F991D204BD834001CFEFE /* KDITableViewCell.m in Sources */,
 				07DB3D971E73BA470044FB50 /* KDIButton.m in Sources */,
