@@ -89,7 +89,7 @@ typedef void(^KDIEmptyViewActionBlock)(__kindof KDIEmptyView *emptyView);
 /**
  Set and get the image tint color, if nil defaults to self.tintColor.
  
- The default is nil.
+ The default is UIColor.blackColor.
  */
 @property (strong,nonatomic,nullable) UIColor *imageColor UI_APPEARANCE_SELECTOR;
 /**

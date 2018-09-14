@@ -228,6 +228,7 @@
     
     _imageView = [[UIImageView alloc] initWithFrame:CGRectZero];
     _imageView.translatesAutoresizingMaskIntoConstraints = NO;
+    _imageView.tintColor = _headlineColor;
     [_stackView addArrangedSubview:_imageView];
     
     _headlineLabel = [[UILabel alloc] initWithFrame:CGRectZero];
