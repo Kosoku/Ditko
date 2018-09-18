@@ -25,12 +25,17 @@
 @property (copy,nonatomic) NSString *subtitle;
 @property (copy,nonatomic) NSString *info;
 @property (strong,nonatomic) UIImage *image;
+@property (strong,nonatomic) KDIBadgeView *infoView;
 
 - (instancetype)initWithTitle:(NSString *)title subtitle:(NSString *)subtitle info:(NSString *)info image:(UIImage *)image;
+- (instancetype)initWithTitle:(NSString *)title subtitle:(NSString *)subtitle info:(NSString *)info image:(UIImage *)image useInfoView:(BOOL)useInfoView;
 @end
 
 @implementation TableRowModel
 - (instancetype)initWithTitle:(NSString *)title subtitle:(NSString *)subtitle info:(NSString *)info image:(UIImage *)image; {
+    return [self initWithTitle:title subtitle:subtitle info:info image:image useInfoView:NO];
+}
+- (instancetype)initWithTitle:(NSString *)title subtitle:(NSString *)subtitle info:(NSString *)info image:(UIImage *)image useInfoView:(BOOL)useInfoView; {
     if (!(self = [super init]))
         return nil;
     
@@ -38,6 +43,15 @@
     self.subtitle = subtitle;
     self.info = info;
     self.image = image;
+    self.infoView = useInfoView ? ({
+        KDIBadgeView *retval = [[KDIBadgeView alloc] initWithFrame:CGRectZero];
+        
+        retval.translatesAutoresizingMaskIntoConstraints = NO;
+        retval.badge = info;
+        retval.KDI_dynamicTypeTextStyle = UIFontTextStyleFootnote;
+        
+        retval;
+    }) : nil;
     
     return self;
 }
@@ -64,6 +78,7 @@
                             [[TableRowModel alloc] initWithTitle:@"Title" subtitle:@"Subtitle" info:nil image:[UIImage KSO_fontAwesomeSolidImageWithString:@"\uf2b9" size:kBarButtonItemImageSize].KDI_templateImage],
                             [[TableRowModel alloc] initWithTitle:@"Title" subtitle:nil info:@"Info" image:nil],
                             [[TableRowModel alloc] initWithTitle:@"Title" subtitle:nil info:@"Info" image:[UIImage KSO_fontAwesomeSolidImageWithString:@"\uf2b9" size:kBarButtonItemImageSize].KDI_templateImage],
+                            [[TableRowModel alloc] initWithTitle:@"Title" subtitle:nil info:@"Info" image:nil useInfoView:YES],
                             [[TableRowModel alloc] initWithTitle:@"Title" subtitle:@"Subtitle" info:@"Info" image:nil],
                             [[TableRowModel alloc] initWithTitle:@"Title" subtitle:@"Subtitle" info:@"Info" image:[UIImage KSO_fontAwesomeSolidImageWithString:@"\uf2b9" size:kBarButtonItemImageSize].KDI_templateImage]];
     
@@ -90,6 +105,7 @@
     retval.subtitle = model.subtitle;
     retval.info = model.info;
     retval.icon = model.image;
+    retval.infoView = model.infoView;
     
     return retval;
 }

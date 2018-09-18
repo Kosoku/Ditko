@@ -55,6 +55,13 @@ NS_ASSUME_NONNULL_BEGIN
 @property (copy,nonatomic,nullable) NSString *info;
 
 /**
+ Set and get the custom info view for the receiver. It is laid out in the same way as the info label is and replaces it.
+ 
+ The default is nil.
+ */
+@property (strong,nonatomic,nullable) __kindof UIView *infoView;
+
+/**
  The tintColor to apply to the icon. Ensure your images are template images for them to render correctly. The defaults to the system returned value for tintColor.
  
  The default is nil.

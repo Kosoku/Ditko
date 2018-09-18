@@ -120,8 +120,16 @@
     if (!self.subtitleLabel.isHidden) {
         [retval addObject:self.subtitleLabel.text];
     }
-    if (!self.infoLabel.isHidden) {
+    if (self.infoLabel.superview != nil &&
+        !self.infoLabel.isHidden) {
+        
         [retval addObject:self.infoLabel.text];
+    }
+    if (self.infoView != nil &&
+        !self.infoView.isHidden &&
+        !KSTIsEmptyObject(self.infoView.accessibilityLabel)) {
+        
+        [retval addObject:self.infoView.accessibilityLabel];
     }
     
     return [retval componentsJoinedByString:@", "];
@@ -228,6 +236,30 @@
     self.infoLabel.hidden = self.infoLabel.text == 0;
     self.infoLabel.isAccessibilityElement = !self.infoLabel.isHidden;
 }
+
+- (void)setInfoView:(__kindof UIView *)infoView {
+    if (_infoView == infoView) {
+        return;
+    }
+    
+    [_infoView removeFromSuperview];
+    
+    _infoView = infoView;
+    
+    if (_infoView == nil) {
+        if (self.infoLabel.superview == nil) {
+            [self.stackView addArrangedSubview:self.infoLabel];
+        }
+    }
+    else {
+        [self.infoLabel removeFromSuperview];
+        
+        [self.stackView addArrangedSubview:_infoView];
+    }
+    
+    [self setNeedsUpdateConstraints];
+}
+
 #pragma mark -
 - (void)setIconColor:(UIColor *)iconColor {
     _iconColor = iconColor;
@@ -268,6 +300,10 @@
 #pragma mark -
 - (void)setSelectedBackgroundViewClassName:(NSString *)selectedBackgroundViewClassName {
     _selectedBackgroundViewClassName = [selectedBackgroundViewClassName copy];
+    
+    if (_selectedBackgroundViewClassName) {
+        NSAssert([NSClassFromString(_selectedBackgroundViewClassName) isSubclassOfClass:UIView.class], @"%@ must be a subclass of %@", NSStringFromClass(_selectedBackgroundViewClassName), NSStringFromClass(UIView.class));
+    }
     
     self.selectedBackgroundView = _selectedBackgroundViewClassName ? [[NSClassFromString(_selectedBackgroundViewClassName) alloc] initWithFrame:CGRectZero] : nil;
 }
