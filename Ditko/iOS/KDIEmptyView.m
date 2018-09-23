@@ -101,7 +101,7 @@
 - (void)tintColorDidChange {
     [super tintColorDidChange];
     
-    [self.imageView setTintColor:self.imageColor ?: self.tintColor];
+//    [self.imageView setTintColor:self.imageColor ?: self.tintColor];
     [self.activityIndicatorView setColor:self.loadingColor ?: self.bodyColor];
 }
 
@@ -212,6 +212,7 @@
 - (void)_KDIEmptyViewInit; {
     kstWeakify(self);
     
+    _imageColor = [self.class _defaultHeadlineColor];
     _headlineColor = [self.class _defaultHeadlineColor];
     _headlineTextStyle = [self.class _defaultHeadlineTextStyle];
     _bodyColor = [self.class _defaultBodyColor];
@@ -228,7 +229,7 @@
     
     _imageView = [[UIImageView alloc] initWithFrame:CGRectZero];
     _imageView.translatesAutoresizingMaskIntoConstraints = NO;
-    _imageView.tintColor = _headlineColor;
+    _imageView.tintColor = _imageColor;
     [_stackView addArrangedSubview:_imageView];
     
     _headlineLabel = [[UILabel alloc] initWithFrame:CGRectZero];
