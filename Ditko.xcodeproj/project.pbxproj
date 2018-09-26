@@ -2441,7 +2441,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.kosoku.ditko;
 				PRODUCT_NAME = Ditko;
 				SDKROOT = watchos;
-				SKIP_INSTALL = YES;
+				SKIP_INSTALL = NO;
 				TARGETED_DEVICE_FAMILY = 4;
 				WATCHOS_DEPLOYMENT_TARGET = 3.0;
 			};
@@ -2569,7 +2569,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.kosoku.ditko;
 				PRODUCT_NAME = Ditko;
 				SDKROOT = appletvos;
-				SKIP_INSTALL = YES;
+				SKIP_INSTALL = NO;
 				TARGETED_DEVICE_FAMILY = 3;
 				TVOS_DEPLOYMENT_TARGET = 10.0;
 			};
@@ -2659,7 +2659,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.kosoku.ditko;
 				PRODUCT_NAME = Ditko;
 				SDKROOT = macosx;
-				SKIP_INSTALL = YES;
+				SKIP_INSTALL = NO;
 			};
 			name = Release;
 		};
@@ -2837,7 +2837,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.kosoku.ditko;
 				PRODUCT_NAME = Ditko;
-				SKIP_INSTALL = YES;
+				SKIP_INSTALL = NO;
 			};
 			name = Release;
 		};
