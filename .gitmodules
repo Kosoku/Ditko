@@ -7,3 +7,6 @@
 [submodule "Vendor/KSOFontAwesomeExtensions"]
 	path = Vendor/KSOFontAwesomeExtensions
 	url = https://github.com/Kosoku/KSOFontAwesomeExtensions.git
+[submodule "Vendor/KSOColorPicker"]
+	path = Vendor/KSOColorPicker
+	url = https://github.com/Kosoku/KSOColorPicker.git

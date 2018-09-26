@@ -140,6 +140,8 @@
 		0741C18B2140EECF00B80451 /* PreviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0741C18A2140EECF00B80451 /* PreviewViewController.m */; };
 		0741C18D2140F0AA00B80451 /* Media in Resources */ = {isa = PBXBuildFile; fileRef = 0741C18C2140F0AA00B80451 /* Media */; };
 		0741C1902140F0C500B80451 /* PreviewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0741C18E2140F0C500B80451 /* PreviewViewController.xib */; };
+		07447A8E215B663A0087A72F /* KSOColorPicker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07447A8D215B663A0087A72F /* KSOColorPicker.framework */; };
+		07447A8F215B663A0087A72F /* KSOColorPicker.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 07447A8D215B663A0087A72F /* KSOColorPicker.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		0745316E1E9EB0F200CEF9E0 /* Stanley.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0745316D1E9EB0F200CEF9E0 /* Stanley.framework */; };
 		074B477B1EB3D266009B7C6D /* KDIEmptyView.h in Headers */ = {isa = PBXBuildFile; fileRef = 074B47791EB3D266009B7C6D /* KDIEmptyView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		074B477D1EB3D266009B7C6D /* KDIEmptyView.h in Headers */ = {isa = PBXBuildFile; fileRef = 074B47791EB3D266009B7C6D /* KDIEmptyView.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -455,6 +457,7 @@
 				076730701E75C2C100030F0C /* Loki.framework in Embed Frameworks */,
 				07DB3D6A1E737E800044FB50 /* Ditko.framework in Embed Frameworks */,
 				074B47861EB3E3D1009B7C6D /* KSOFontAwesomeExtensions.framework in Embed Frameworks */,
+				07447A8F215B663A0087A72F /* KSOColorPicker.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -619,6 +622,7 @@
 		0741C18A2140EECF00B80451 /* PreviewViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PreviewViewController.m; sourceTree = "<group>"; };
 		0741C18C2140F0AA00B80451 /* Media */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Media; sourceTree = "<group>"; };
 		0741C18F2140F0C500B80451 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/PreviewViewController.xib; sourceTree = "<group>"; };
+		07447A8D215B663A0087A72F /* KSOColorPicker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = KSOColorPicker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0745316D1E9EB0F200CEF9E0 /* Stanley.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Stanley.framework; path = "../../Library/Developer/Xcode/DerivedData/Ditko-bqbmowdlvnipfjchljeblievobjg/Build/Products/Debug-watchsimulator/Stanley.framework"; sourceTree = "<group>"; };
 		074B47791EB3D266009B7C6D /* KDIEmptyView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KDIEmptyView.h; path = iOS/KDIEmptyView.h; sourceTree = "<group>"; };
 		074B477A1EB3D266009B7C6D /* KDIEmptyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KDIEmptyView.m; path = iOS/KDIEmptyView.m; sourceTree = "<group>"; };
@@ -838,6 +842,7 @@
 				0767306F1E75C2C100030F0C /* Loki.framework in Frameworks */,
 				07DB3D691E737E800044FB50 /* Ditko.framework in Frameworks */,
 				074B47851EB3E3D1009B7C6D /* KSOFontAwesomeExtensions.framework in Frameworks */,
+				07447A8E215B663A0087A72F /* KSOColorPicker.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1238,6 +1243,7 @@
 		0795E65F1E704AE3004A5CB2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				07447A8D215B663A0087A72F /* KSOColorPicker.framework */,
 				0711B1881F817CFC00DCE131 /* KSOFontAwesomeExtensions.framework */,
 				0711B1861F817CEF00DCE131 /* KSOFontAwesomeExtensions.framework */,
 				079CF61E1EC11C9400CE1BE9 /* Loki.framework */,
@@ -1834,7 +1840,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = scripts/./increment_build_number.sh;
+			shellScript = "scripts/./increment_build_number.sh\n";
 		};
 		073117681FCF90BE004A3E17 /* increment build number */ = {
 			isa = PBXShellScriptBuildPhase;

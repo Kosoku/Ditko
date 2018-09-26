@@ -18,11 +18,12 @@
 
 #import <Ditko/Ditko.h>
 #import <Stanley/Stanley.h>
+#import <KSOColorPicker/KSOColorPicker.h>
 
 @interface BadgeViewController ()
 @property (weak,nonatomic) IBOutlet KDIBadgeView *badgeView;
-@property (weak,nonatomic) IBOutlet KDITextField *foregroundColorTextField;
-@property (weak,nonatomic) IBOutlet KDITextField *backgroundColorTextField;
+@property (weak,nonatomic) IBOutlet KSOColorPickerButton *foregroundColorButton;
+@property (weak,nonatomic) IBOutlet KSOColorPickerButton *backgroundColorButton;
 @property (weak,nonatomic) IBOutlet KDITextField *badgeTextField;
 @property (weak,nonatomic) IBOutlet KDITextField *cornerRadiusTextField;
 @property (weak,nonatomic) IBOutlet KDITextField *topTextField;
@@ -50,19 +51,19 @@
     
     self.badgeTextField.text = self.badgeView.badge;
     
-    self.foregroundColorTextField.text = [self.badgeView.badgeForegroundColor KDI_hexadecimalString];
+    self.foregroundColorButton.color = self.badgeView.badgeForegroundColor;
     
-    self.backgroundColorTextField.text = [self.badgeView.badgeBackgroundColor KDI_hexadecimalString];
+    self.backgroundColorButton.color = self.badgeView.badgeBackgroundColor;
     
-    [self.foregroundColorTextField KDI_addBlock:^(__kindof UIControl * _Nonnull control, UIControlEvents controlEvents) {
+    [self.foregroundColorButton KDI_addBlock:^(__kindof UIControl * _Nonnull control, UIControlEvents controlEvents) {
         kstStrongify(self);
-        self.badgeView.badgeForegroundColor = KDIColorHexadecimal(self.foregroundColorTextField.text);
-    } forControlEvents:UIControlEventEditingChanged];
+        self.badgeView.badgeForegroundColor = self.foregroundColorButton.color;
+    } forControlEvents:UIControlEventValueChanged];
     
-    [self.backgroundColorTextField KDI_addBlock:^(__kindof UIControl * _Nonnull control, UIControlEvents controlEvents) {
+    [self.backgroundColorButton KDI_addBlock:^(__kindof UIControl * _Nonnull control, UIControlEvents controlEvents) {
         kstStrongify(self);
-        self.badgeView.badgeBackgroundColor = KDIColorHexadecimal(self.backgroundColorTextField.text);
-    } forControlEvents:UIControlEventEditingChanged];
+        self.badgeView.badgeBackgroundColor = self.backgroundColorButton.color;
+    } forControlEvents:UIControlEventValueChanged];
     
     [self.badgeTextField KDI_addBlock:^(__kindof UIControl * _Nonnull control, UIControlEvents controlEvents) {
         kstStrongify(self);

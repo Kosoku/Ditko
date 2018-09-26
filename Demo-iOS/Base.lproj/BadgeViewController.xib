@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BadgeViewController">
             <connections>
-                <outlet property="backgroundColorTextField" destination="LMy-lF-Zzx" id="O7K-Kq-y3Q"/>
+                <outlet property="backgroundColorButton" destination="tSf-h5-RIA" id="0jW-p7-3QH"/>
                 <outlet property="badgeTextField" destination="SeE-9g-hjK" id="Ykp-HA-cTf"/>
                 <outlet property="badgeView" destination="TCg-nT-BpI" id="k82-NW-ZH6"/>
                 <outlet property="bottomTextField" destination="eST-OT-HiM" id="7Mb-vA-pEf"/>
                 <outlet property="cornerRadiusTextField" destination="tk7-f9-Y8s" id="XXJ-Ut-lfN"/>
-                <outlet property="foregroundColorTextField" destination="SPJ-Fw-9y9" id="pmX-1N-iQp"/>
+                <outlet property="foregroundColorButton" destination="IN4-SE-Ppx" id="HZ9-MN-Qaw"/>
                 <outlet property="leftTextField" destination="AoR-f8-YsF" id="eVg-sX-nqr"/>
                 <outlet property="rightTextField" destination="51T-DC-I0C" id="5JR-Lu-ApN"/>
                 <outlet property="topTextField" destination="tTY-wk-tVL" id="PSZ-dt-qC7"/>
@@ -30,21 +30,9 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" placeholderIntrinsicWidth="240" placeholderIntrinsicHeight="128" translatesAutoresizingMaskIntoConstraints="NO" id="TCg-nT-BpI" customClass="KDIBadgeView">
-                    <rect key="frame" x="67" y="269" width="240" height="128"/>
+                    <rect key="frame" x="67.5" y="269.5" width="240" height="128"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </view>
-                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Foreground color" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="SPJ-Fw-9y9" customClass="KDITextField">
-                    <rect key="frame" x="16" y="28" width="132.5" height="30"/>
-                    <nil key="textColor"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
-                </textField>
-                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Background color" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LMy-lF-Zzx" customClass="KDITextField">
-                    <rect key="frame" x="16" y="66" width="135" height="30"/>
-                    <nil key="textColor"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
-                </textField>
                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Badge" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="SeE-9g-hjK" customClass="KDITextField">
                     <rect key="frame" x="16" y="104" width="343" height="30"/>
                     <nil key="textColor"/>
@@ -64,7 +52,7 @@
                     <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="numberPad" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
                 </textField>
                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Bottom" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eST-OT-HiM" customClass="KDITextField">
-                    <rect key="frame" x="123" y="180" width="68.5" height="30"/>
+                    <rect key="frame" x="123.5" y="180" width="68.5" height="30"/>
                     <nil key="textColor"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="numberPad" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
@@ -76,39 +64,50 @@
                     <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="numberPad" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
                 </textField>
                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Right" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="51T-DC-I0C" customClass="KDITextField">
-                    <rect key="frame" x="199" y="180" width="55" height="30"/>
+                    <rect key="frame" x="200" y="180" width="55" height="30"/>
                     <nil key="textColor"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="numberPad" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
                 </textField>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tSf-h5-RIA" customClass="KSOColorPickerButton">
+                    <rect key="frame" x="16" y="66" width="343" height="30"/>
+                    <inset key="titleEdgeInsets" minX="8" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    <state key="normal" title="Background Color"/>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IN4-SE-Ppx" customClass="KSOColorPickerButton">
+                    <rect key="frame" x="16" y="28" width="343" height="30"/>
+                    <inset key="titleEdgeInsets" minX="8" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    <state key="normal" title="Foreground Color"/>
+                </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="TCg-nT-BpI" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="1fz-dB-qRj"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="SPJ-Fw-9y9" secondAttribute="trailing" constant="16" id="2Zy-8A-GiJ"/>
-                <constraint firstItem="SPJ-Fw-9y9" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="8" id="9OL-cp-Jib"/>
+                <constraint firstItem="IN4-SE-Ppx" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="5Fv-uN-ANU"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="SeE-9g-hjK" secondAttribute="trailing" constant="16" id="GzS-iH-Nbq"/>
+                <constraint firstItem="IN4-SE-Ppx" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="8" id="HSF-PZ-dnK"/>
                 <constraint firstItem="51T-DC-I0C" firstAttribute="top" secondItem="tk7-f9-Y8s" secondAttribute="bottom" constant="8" id="Hbr-NO-g2s"/>
-                <constraint firstItem="LMy-lF-Zzx" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="Hcd-OE-4YS"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="IN4-SE-Ppx" secondAttribute="trailing" constant="16" id="J5v-G3-xeX"/>
                 <constraint firstItem="eST-OT-HiM" firstAttribute="leading" secondItem="AoR-f8-YsF" secondAttribute="trailing" constant="8" id="JyN-vz-3YK"/>
-                <constraint firstItem="SeE-9g-hjK" firstAttribute="top" secondItem="LMy-lF-Zzx" secondAttribute="bottom" constant="8" id="Nw0-8p-WyA"/>
                 <constraint firstItem="tTY-wk-tVL" firstAttribute="top" secondItem="tk7-f9-Y8s" secondAttribute="bottom" constant="8" id="VRw-0e-vIO"/>
+                <constraint firstItem="tSf-h5-RIA" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="YCw-y2-cY0"/>
                 <constraint firstItem="AoR-f8-YsF" firstAttribute="top" secondItem="tk7-f9-Y8s" secondAttribute="bottom" constant="8" id="aKb-k1-9uB"/>
                 <constraint firstItem="tTY-wk-tVL" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="bRb-FT-8gX"/>
+                <constraint firstItem="tSf-h5-RIA" firstAttribute="top" secondItem="IN4-SE-Ppx" secondAttribute="bottom" constant="8" id="bv3-cM-LRK"/>
                 <constraint firstItem="AoR-f8-YsF" firstAttribute="leading" secondItem="tTY-wk-tVL" secondAttribute="trailing" constant="8" id="cK6-Ne-g94"/>
                 <constraint firstItem="tk7-f9-Y8s" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="fSe-jJ-mqT"/>
                 <constraint firstItem="TCg-nT-BpI" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="mHR-qz-UdX"/>
                 <constraint firstItem="tk7-f9-Y8s" firstAttribute="top" secondItem="SeE-9g-hjK" secondAttribute="bottom" constant="8" id="nqr-hp-hog"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="LMy-lF-Zzx" secondAttribute="trailing" constant="16" id="odj-p4-s29"/>
                 <constraint firstItem="eST-OT-HiM" firstAttribute="top" secondItem="tk7-f9-Y8s" secondAttribute="bottom" constant="8" id="pOt-vT-Qg8"/>
                 <constraint firstItem="51T-DC-I0C" firstAttribute="leading" secondItem="eST-OT-HiM" secondAttribute="trailing" constant="8" id="q1R-pp-KHB"/>
                 <constraint firstItem="SeE-9g-hjK" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="sce-I0-9Xd"/>
-                <constraint firstItem="LMy-lF-Zzx" firstAttribute="top" secondItem="SPJ-Fw-9y9" secondAttribute="bottom" constant="8" id="shH-Jh-V0P"/>
-                <constraint firstItem="SPJ-Fw-9y9" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="usa-1F-elg"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="tSf-h5-RIA" secondAttribute="trailing" constant="16" id="w2E-7C-4p6"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="51T-DC-I0C" secondAttribute="trailing" constant="16" id="wtQ-zz-fw2"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="tk7-f9-Y8s" secondAttribute="trailing" constant="16" id="xcR-Ch-DO4"/>
+                <constraint firstItem="SeE-9g-hjK" firstAttribute="top" secondItem="tSf-h5-RIA" secondAttribute="bottom" constant="8" id="zHd-SE-Pym"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <point key="canvasLocation" x="130.40000000000001" y="152.47376311844079"/>
         </view>
     </objects>
 </document>
