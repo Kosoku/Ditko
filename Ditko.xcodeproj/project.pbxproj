@@ -757,8 +757,8 @@
 		07FEAD92205A7921005743FF /* UIFont-NSFont+KDIExtensions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIFont-NSFont+KDIExtensions.m"; sourceTree = "<group>"; };
 		07FEAD97205A7962005743FF /* NSFont+KDIExtensions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "NSFont+KDIExtensions.h"; path = "macOS/NSFont+KDIExtensions.h"; sourceTree = "<group>"; };
 		7427127C1EA7B02000A406EC /* Stanley.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Stanley.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		74800EA1215B0EA500487D00 /* UIImageView+KDIExtensions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImageView+KDIExtensions.h"; sourceTree = "<group>"; };
-		74800EA2215B0EA500487D00 /* UIImageView+KDIExtensions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+KDIExtensions.m"; sourceTree = "<group>"; };
+		74800EA1215B0EA500487D00 /* UIImageView+KDIExtensions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "UIImageView+KDIExtensions.h"; path = "iOS/UIImageView+KDIExtensions.h"; sourceTree = "<group>"; };
+		74800EA2215B0EA500487D00 /* UIImageView+KDIExtensions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "UIImageView+KDIExtensions.m"; path = "iOS/UIImageView+KDIExtensions.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
