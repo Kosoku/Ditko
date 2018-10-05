@@ -78,8 +78,6 @@ NS_ASSUME_NONNULL_BEGIN
 - (BOOL)becomeFirstResponder NS_REQUIRES_SUPER;
 - (BOOL)resignFirstResponder NS_REQUIRES_SUPER;
 - (void)tintColorDidChange NS_REQUIRES_SUPER;
-- (CGSize)intrinsicContentSize NS_REQUIRES_SUPER;
-- (CGSize)sizeThatFits:(CGSize)size NS_REQUIRES_SUPER;
 - (void)didAddSubview:(UIView *)subview NS_REQUIRES_SUPER;
 - (void)layoutSubviews NS_REQUIRES_SUPER;
 
