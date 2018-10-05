@@ -30,6 +30,14 @@ NS_ASSUME_NONNULL_BEGIN
  @param block The block to execute between the height change method calls
  */
 - (void)KDI_reloadHeightAnimated:(BOOL)animated block:(nullable dispatch_block_t)block;
+/**
+ Reloads the height of the table view, not its cells, using beingUpdates and endUpdates. Optionally executes *block* in between the beginUpdates and endUpdates calls.
+ 
+ @param animated Whether to animate the height changes
+ @param block The block to execute between the height change method calls
+ @param completion The block to execute after the height as been reloaded
+ */
+- (void)KDI_reloadHeightAnimated:(BOOL)animated block:(nullable dispatch_block_t)block completion:(nullable dispatch_block_t)completion;
 
 @end
 
