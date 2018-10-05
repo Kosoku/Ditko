@@ -133,6 +133,10 @@
 		073B35171E82EF4B00C003A1 /* UIControl+KDIExtensions.h in Headers */ = {isa = PBXBuildFile; fileRef = 073B35141E82EF4B00C003A1 /* UIControl+KDIExtensions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		073B35181E82EF4B00C003A1 /* UIControl+KDIExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 073B35151E82EF4B00C003A1 /* UIControl+KDIExtensions.m */; };
 		073B35191E82EF4B00C003A1 /* UIControl+KDIExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 073B35151E82EF4B00C003A1 /* UIControl+KDIExtensions.m */; };
+		073F960E2167F1F0001D40B6 /* LoremIpsum.m in Sources */ = {isa = PBXBuildFile; fileRef = 073F960D2167F1EF001D40B6 /* LoremIpsum.m */; };
+		073F960F2167F1F0001D40B6 /* LoremIpsum.m in Sources */ = {isa = PBXBuildFile; fileRef = 073F960D2167F1EF001D40B6 /* LoremIpsum.m */; };
+		073F96102167F1F0001D40B6 /* LoremIpsum.m in Sources */ = {isa = PBXBuildFile; fileRef = 073F960D2167F1EF001D40B6 /* LoremIpsum.m */; };
+		073F96112167F200001D40B6 /* LoremIpsum.m in Sources */ = {isa = PBXBuildFile; fileRef = 073F960D2167F1EF001D40B6 /* LoremIpsum.m */; };
 		0741C1832140CE0C00B80451 /* UIViewController+KDIMFMailComposeViewControllerExtensions.h in Headers */ = {isa = PBXBuildFile; fileRef = 0741C1812140CE0C00B80451 /* UIViewController+KDIMFMailComposeViewControllerExtensions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0741C1842140CE0C00B80451 /* UIViewController+KDIMFMailComposeViewControllerExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0741C1822140CE0C00B80451 /* UIViewController+KDIMFMailComposeViewControllerExtensions.m */; };
 		0741C1872140E0D900B80451 /* UIViewController+KDIQLPreviewControllerExtensions.h in Headers */ = {isa = PBXBuildFile; fileRef = 0741C1852140E0D900B80451 /* UIViewController+KDIQLPreviewControllerExtensions.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -614,6 +618,8 @@
 		0738CE491EA014C9008FE9A0 /* UIFont+KDIDynamicTypeExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIFont+KDIDynamicTypeExtensions.m"; path = "iOS/UIFont+KDIDynamicTypeExtensions.m"; sourceTree = "<group>"; };
 		073B35141E82EF4B00C003A1 /* UIControl+KDIExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIControl+KDIExtensions.h"; path = "iOS/UIControl+KDIExtensions.h"; sourceTree = "<group>"; };
 		073B35151E82EF4B00C003A1 /* UIControl+KDIExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIControl+KDIExtensions.m"; path = "iOS/UIControl+KDIExtensions.m"; sourceTree = "<group>"; };
+		073F960C2167F1EF001D40B6 /* LoremIpsum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoremIpsum.h; path = Vendor/LoremIpsum/LoremIpsum/LoremIpsum.h; sourceTree = SOURCE_ROOT; };
+		073F960D2167F1EF001D40B6 /* LoremIpsum.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LoremIpsum.m; path = Vendor/LoremIpsum/LoremIpsum/LoremIpsum.m; sourceTree = SOURCE_ROOT; };
 		0741C1812140CE0C00B80451 /* UIViewController+KDIMFMailComposeViewControllerExtensions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "UIViewController+KDIMFMailComposeViewControllerExtensions.h"; path = "iOS/UIViewController+KDIMFMailComposeViewControllerExtensions.h"; sourceTree = "<group>"; };
 		0741C1822140CE0C00B80451 /* UIViewController+KDIMFMailComposeViewControllerExtensions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "UIViewController+KDIMFMailComposeViewControllerExtensions.m"; path = "iOS/UIViewController+KDIMFMailComposeViewControllerExtensions.m"; sourceTree = "<group>"; };
 		0741C1852140E0D900B80451 /* UIViewController+KDIQLPreviewControllerExtensions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "UIViewController+KDIQLPreviewControllerExtensions.h"; path = "iOS/UIViewController+KDIQLPreviewControllerExtensions.h"; sourceTree = "<group>"; };
@@ -1223,6 +1229,8 @@
 				0733394C207BB0FE0080B390 /* AccessoryView.m */,
 				07BE81C92135D01600D9A148 /* RoundedImageViewController.h */,
 				07BE81CA2135D01600D9A148 /* RoundedImageViewController.m */,
+				073F960C2167F1EF001D40B6 /* LoremIpsum.h */,
+				073F960D2167F1EF001D40B6 /* LoremIpsum.m */,
 				0795E6551E704A56004A5CB2 /* Assets.xcassets */,
 				0795E6571E704A56004A5CB2 /* LaunchScreen.storyboard */,
 				0795E65A1E704A56004A5CB2 /* Info.plist */,
@@ -1963,6 +1971,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				071B629C1E707FCB00B7B85A /* ExtensionDelegate.m in Sources */,
+				073F96112167F200001D40B6 /* LoremIpsum.m in Sources */,
 				071B62991E707FCB00B7B85A /* InterfaceController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2014,6 +2023,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				071B62CF1E70849500B7B85A /* ViewController.m in Sources */,
+				073F96102167F1F0001D40B6 /* LoremIpsum.m in Sources */,
 				071B62CC1E70849500B7B85A /* AppDelegate.m in Sources */,
 				074B478B1EB3E86F009B7C6D /* EmptyViewController.m in Sources */,
 				071B62C91E70849500B7B85A /* main.m in Sources */,
@@ -2056,6 +2066,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				073F960F2167F1F0001D40B6 /* LoremIpsum.m in Sources */,
 				073542961E70515400177905 /* ViewController.m in Sources */,
 				073542931E70515400177905 /* main.m in Sources */,
 				073542901E70515400177905 /* AppDelegate.m in Sources */,
@@ -2145,6 +2156,7 @@
 				0795E64B1E704A56004A5CB2 /* main.m in Sources */,
 				07333946207BA04C0080B390 /* TableViewController.m in Sources */,
 				0708C078207DA49300849AAC /* ProgressNavigationBarViewController.m in Sources */,
+				073F960E2167F1F0001D40B6 /* LoremIpsum.m in Sources */,
 				07A40759207E8DAD00F8016A /* FontDynamicTypeExtensionsViewController.m in Sources */,
 				0708C054207D572100849AAC /* BadgeButtonViewController.m in Sources */,
 				0722DA81207C1A1E004F8C36 /* LabelViewController.m in Sources */,

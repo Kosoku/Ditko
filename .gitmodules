@@ -10,3 +10,6 @@
 [submodule "Vendor/KSOColorPicker"]
 	path = Vendor/KSOColorPicker
 	url = https://github.com/Kosoku/KSOColorPicker.git
+[submodule "Vendor/LoremIpsum"]
+	path = Vendor/LoremIpsum
+	url = https://github.com/lukaskubanek/LoremIpsum.git
