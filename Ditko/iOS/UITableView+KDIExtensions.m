@@ -21,7 +21,13 @@
     [self KDI_reloadHeightAnimated:animated block:nil];
 }
 - (void)KDI_reloadHeightAnimated:(BOOL)animated block:(dispatch_block_t)block; {
+    [self KDI_reloadHeightAnimated:animated block:block completion:nil];
+}
+- (void)KDI_reloadHeightAnimated:(BOOL)animated block:(dispatch_block_t)block completion:(dispatch_block_t)completion {
     void(^reload)(void) = ^{
+        [CATransaction begin];
+        [CATransaction setCompletionBlock:completion];
+        
         [self beginUpdates];
         
         if (block != nil) {
@@ -29,6 +35,8 @@
         }
         
         [self endUpdates];
+        
+        [CATransaction commit];
     };
     
     if (animated) {
