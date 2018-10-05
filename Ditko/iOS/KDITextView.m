@@ -126,7 +126,7 @@ NSNotificationName const KDITextViewNotificationDidResignFirstResponder = @"KDIT
     }
     
     if (minimumHeight > 0.0) {
-        [temp addObject:[self.heightAnchor constraintGreaterThanOrEqualToConstant:minimumHeight]];
+        [temp addObject:[self.heightAnchor constraintGreaterThanOrEqualToConstant:minimumHeight + self.textContainerInset.top + self.textContainerInset.bottom]];
     }
     
     CGFloat maximumHeight = self.maximumHeight;
@@ -136,7 +136,7 @@ NSNotificationName const KDITextViewNotificationDidResignFirstResponder = @"KDIT
     }
     
     if (maximumHeight > 0.0) {
-        [temp addObject:[self.heightAnchor constraintLessThanOrEqualToConstant:maximumHeight]];
+        [temp addObject:[self.heightAnchor constraintLessThanOrEqualToConstant:maximumHeight + self.textContainerInset.top + self.textContainerInset.bottom]];
     }
     
     self.KDI_customConstraints = temp;
