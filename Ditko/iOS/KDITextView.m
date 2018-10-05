@@ -15,6 +15,7 @@
 
 #import "KDITextView.h"
 #import "KDIBorderedViewImpl.h"
+#import "NSObject+KDIExtensions.h"
 
 #import <Stanley/Stanley.h>
 
@@ -31,7 +32,6 @@ NSNotificationName const KDITextViewNotificationDidResignFirstResponder = @"KDIT
 - (void)_KDITextViewInit;
 - (void)_updatePlaceholderLabelWithText:(NSString *)text;
 - (void)_updatePlaceholderLabelWithAttributedText:(NSAttributedString *)attributedText;
-- (CGSize)_sizeThatFits:(CGSize)size layout:(BOOL)layout;
 
 + (UIFont *)_defaultFont;
 + (UIColor *)_defaultPlaceholderTextColor;
@@ -108,11 +108,40 @@ NSNotificationName const KDITextViewNotificationDidResignFirstResponder = @"KDIT
     }
 }
 #pragma mark -
-- (CGSize)intrinsicContentSize {
-    return [self _sizeThatFits:[super intrinsicContentSize] layout:NO];
++ (BOOL)requiresConstraintBasedLayout {
+    return YES;
 }
-- (CGSize)sizeThatFits:(CGSize)size {
-    return [self _sizeThatFits:size layout:NO];
+- (void)updateConstraints {
+    NSMutableArray *temp = [[NSMutableArray alloc] init];
+    
+    [temp addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-left-[view]-right-|" options:0 metrics:@{@"left": @(self.textContainerInset.left), @"right": @(self.textContainerInset.right)} views:@{@"view": self.placeholderLabel}]];
+    [temp addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-top-[view]->=bottom-|" options:0 metrics:@{@"top": @(self.textContainerInset.top), @"bottom": @(self.textContainerInset.bottom)} views:@{@"view": self.placeholderLabel}]];
+    [temp addObject:[self.placeholderLabel.widthAnchor constraintEqualToAnchor:self.widthAnchor constant:-(self.textContainerInset.left + self.textContainerInset.right)]];
+    
+    CGFloat minimumHeight = self.minimumHeight;
+    CGFloat lineHeight = ceil(self.font.lineHeight);
+    
+    if (self.minimumNumberOfLines > 0) {
+        minimumHeight = MAX(minimumHeight, lineHeight * (CGFloat)self.minimumNumberOfLines);
+    }
+    
+    if (minimumHeight > 0.0) {
+        [temp addObject:[self.heightAnchor constraintGreaterThanOrEqualToConstant:minimumHeight]];
+    }
+    
+    CGFloat maximumHeight = self.maximumHeight;
+    
+    if (self.maximumNumberOfLines > 0) {
+        maximumHeight = MAX(maximumHeight, lineHeight * (CGFloat)self.maximumNumberOfLines);
+    }
+    
+    if (maximumHeight > 0.0) {
+        [temp addObject:[self.heightAnchor constraintLessThanOrEqualToConstant:maximumHeight]];
+    }
+    
+    self.KDI_customConstraints = temp;
+    
+    [super updateConstraints];
 }
 #pragma mark -
 - (void)didAddSubview:(UIView *)subview {
@@ -123,7 +152,7 @@ NSNotificationName const KDITextViewNotificationDidResignFirstResponder = @"KDIT
 - (void)layoutSubviews {
     [super layoutSubviews];
     
-    [self _sizeThatFits:self.bounds.size layout:YES];
+    [self.borderedViewImpl layoutSubviews];
 }
 #pragma mark -
 - (void)setText:(NSString *)text {
@@ -157,6 +186,12 @@ NSNotificationName const KDITextViewNotificationDidResignFirstResponder = @"KDIT
     
     [self.placeholderLabel setTextAlignment:textAlignment];
 }
+- (void)setTextContainerInset:(UIEdgeInsets)textContainerInset {
+    [super setTextContainerInset:textContainerInset];
+    
+    [self invalidateIntrinsicContentSize];
+    [self setNeedsUpdateConstraints];
+}
 #pragma mark KDIBorderedView
 @dynamic borderOptions;
 @dynamic borderWidth;
@@ -175,9 +210,9 @@ NSNotificationName const KDITextViewNotificationDidResignFirstResponder = @"KDIT
 - (void)setAllowsMultilinePlaceholder:(BOOL)allowsMultilinePlaceholder {
     _allowsMultilinePlaceholder = allowsMultilinePlaceholder;
     
-    [self invalidateIntrinsicContentSize];
-    
     self.placeholderLabel.numberOfLines = allowsMultilinePlaceholder ? 0 : 1;
+    
+    [self invalidateIntrinsicContentSize];
 }
 @dynamic placeholder;
 - (NSString *)placeholder {
@@ -195,7 +230,6 @@ NSNotificationName const KDITextViewNotificationDidResignFirstResponder = @"KDIT
     
     [self.placeholderLabel setAttributedText:attributedPlaceholder];
     
-    [self setNeedsLayout];
     [self invalidateIntrinsicContentSize];
 }
 @synthesize placeholderTextColor=_placeholderTextColor;
@@ -212,21 +246,25 @@ NSNotificationName const KDITextViewNotificationDidResignFirstResponder = @"KDIT
     _minimumHeight = minimumHeight;
     
     [self invalidateIntrinsicContentSize];
+    [self setNeedsUpdateConstraints];
 }
 - (void)setMaximumHeight:(CGFloat)maximumHeight {
     _maximumHeight = maximumHeight;
     
     [self invalidateIntrinsicContentSize];
+    [self setNeedsUpdateConstraints];
 }
 - (void)setMinimumNumberOfLines:(NSUInteger)minimumNumberOfLines {
     _minimumNumberOfLines = minimumNumberOfLines;
     
     [self invalidateIntrinsicContentSize];
+    [self setNeedsUpdateConstraints];
 }
 - (void)setMaximumNumberOfLines:(NSUInteger)maximumNumberOfLines {
     _maximumNumberOfLines = maximumNumberOfLines;
     
     [self invalidateIntrinsicContentSize];
+    [self setNeedsUpdateConstraints];
 }
 #pragma mark *** Private Methods ***
 - (void)_KDITextViewInit {
@@ -239,6 +277,7 @@ NSNotificationName const KDITextViewNotificationDidResignFirstResponder = @"KDIT
     [self.textContainer setLineFragmentPadding:0];
     
     [self setPlaceholderLabel:[[UILabel alloc] initWithFrame:CGRectZero]];
+    [self.placeholderLabel setTranslatesAutoresizingMaskIntoConstraints:NO];
     [self.placeholderLabel setNumberOfLines:0];
     // if the super sets text before label is created
     [self.placeholderLabel setHidden:self.text.length > 0];
@@ -261,65 +300,6 @@ NSNotificationName const KDITextViewNotificationDidResignFirstResponder = @"KDIT
     self.attributedPlaceholder = attributedText;
     
     self.hasSetAttributedPlaceholder = NO;
-}
-- (CGSize)_sizeThatFits:(CGSize)size layout:(BOOL)layout; {
-    CGSize retval = size;
-    
-    if (!layout) {
-        if (retval.height <= 0) {
-            retval.height = self.contentSize.height;
-        }
-        
-        CGFloat placeholderHeight = [self.placeholderLabel sizeThatFits:CGSizeMake(CGRectGetWidth(self.bounds) - self.textContainerInset.left - self.textContainerInset.right, CGFLOAT_MAX)].height + self.textContainerInset.top + self.textContainerInset.bottom;
-        CGFloat lineHeight = self.font.lineHeight + self.textContainerInset.top + self.textContainerInset.bottom;
-        CGFloat height = MAX(MAX(retval.height, placeholderHeight), lineHeight);
-        
-        if (self.minimumHeight > 0) {
-            height = MAX(height, self.minimumHeight);
-        }
-        
-        if (self.minimumNumberOfLines > 0) {
-            height = MAX(height, (lineHeight * self.minimumNumberOfLines) + self.textContainerInset.top + self.textContainerInset.bottom);
-        }
-        
-        if (self.maximumHeight > 0) {
-            height = MIN(height, self.maximumHeight);
-        }
-        
-        if (self.maximumNumberOfLines > 0) {
-            height = MIN(height, (lineHeight * self.maximumNumberOfLines) + self.textContainerInset.top + self.textContainerInset.bottom);
-        }
-        
-        retval.height = ceil(height);
-    }
-    
-    if (layout) {
-        [self.borderedViewImpl layoutSubviews];
-        
-        CGFloat maxWidth = CGRectGetWidth(self.bounds) - self.textContainerInset.left - self.textContainerInset.right;
-        
-        [self.placeholderLabel setFrame:CGRectMake(self.textContainerInset.left, self.textContainerInset.top, maxWidth, [self.placeholderLabel sizeThatFits:CGSizeMake(maxWidth, CGFLOAT_MAX)].height)];
-    }
-    
-    if (!layout) {
-        KSTDispatchMainAsync(^{
-            if (self.selectedRange.location == self.text.length) {
-                CGRect rect = [self caretRectForPosition:self.selectedTextRange.end];
-                rect.size.height += self.textContainerInset.bottom;
-                
-                [UIView performWithoutAnimation:^{
-                    [self scrollRectToVisible:rect animated:NO];
-                }];
-            }
-            else {
-                [UIView performWithoutAnimation:^{
-                    [self scrollRangeToVisible:self.selectedRange];
-                }];
-            }
-        });
-    }
-    
-    return retval;
 }
 #pragma mark -
 + (UIFont *)_defaultFont {
