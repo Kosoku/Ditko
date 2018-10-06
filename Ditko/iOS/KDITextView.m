@@ -19,9 +19,6 @@
 
 #import <Stanley/Stanley.h>
 
-NSNotificationName const KDITextViewNotificationDidBecomeFirstResponder = @"KDITextViewNotificationDidBecomeFirstResponder";
-NSNotificationName const KDITextViewNotificationDidResignFirstResponder = @"KDITextViewNotificationDidResignFirstResponder";
-
 @interface KDITextView ()
 @property (strong,nonatomic) UILabel *placeholderLabel;
 
