@@ -50,26 +50,26 @@ NS_ASSUME_NONNULL_BEGIN
 @property (strong,nonatomic,null_resettable) UIColor *placeholderTextColor UI_APPEARANCE_SELECTOR;
 
 /**
- Set and get the minimum height of the receiver. This will factor into the sizes returned by intrinsicContentSize and sizeThatFits:.
+ Set and get the minimum height of the receiver.
  
- The default is 0.
+ The default is 0.0.
  */
 @property (assign,nonatomic) CGFloat minimumHeight;
 /**
- Set and get the maximum height of the receiver. This will factor into the sizes returned by intrinsicContentSize and sizeThatFits:.
+ Set and get the maximum height of the receiver.
  
- The default is 0.
+ The default is 0.0.
  */
 @property (assign,nonatomic) CGFloat maximumHeight;
 
 /**
- Set and get the minimum number of lines that should be displayed in the receiver. This will factor into the sizes returned by intrinsicContentSize and sizeThatFits:.
+ Set and get the minimum number of lines that should be displayed in the receiver.
  
  The default is 0.
  */
 @property (assign,nonatomic) NSUInteger minimumNumberOfLines;
 /**
- Set and get the maximum number of lines that should be displayed in the receiver. This will factor into the sizes returned by intrinsicContentSize and sizeThatFits:.
+ Set and get the maximum number of lines that should be displayed in the receiver.
  
  The default is 0.
  */
