@@ -16,6 +16,7 @@
 #import "KDITextView.h"
 #import "KDIBorderedViewImpl.h"
 #import "NSObject+KDIExtensions.h"
+#import "UIColor+KDIExtensions.h"
 
 #import <Stanley/Stanley.h>
 
@@ -303,7 +304,7 @@
     return [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
 }
 + (UIColor *)_defaultPlaceholderTextColor {
-    return [UIColor colorWithWhite:0.7 alpha:1.0];
+    return [UIColor KDI_colorWithHexadecimalString:@"c7c7cc"];
 }
 #pragma mark Properties
 - (void)setInternalFont:(UIFont *)internalFont {
