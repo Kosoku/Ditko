@@ -147,6 +147,8 @@
 		07447A8E215B663A0087A72F /* KSOColorPicker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07447A8D215B663A0087A72F /* KSOColorPicker.framework */; };
 		07447A8F215B663A0087A72F /* KSOColorPicker.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 07447A8D215B663A0087A72F /* KSOColorPicker.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		0745316E1E9EB0F200CEF9E0 /* Stanley.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0745316D1E9EB0F200CEF9E0 /* Stanley.framework */; };
+		0747FD9C2170A69C00476581 /* UIImageView+KDIExtensions.h in Headers */ = {isa = PBXBuildFile; fileRef = 74800EA1215B0EA500487D00 /* UIImageView+KDIExtensions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0747FD9D2170A6A400476581 /* UIImageView+KDIExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 74800EA2215B0EA500487D00 /* UIImageView+KDIExtensions.m */; };
 		074B477B1EB3D266009B7C6D /* KDIEmptyView.h in Headers */ = {isa = PBXBuildFile; fileRef = 074B47791EB3D266009B7C6D /* KDIEmptyView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		074B477D1EB3D266009B7C6D /* KDIEmptyView.h in Headers */ = {isa = PBXBuildFile; fileRef = 074B47791EB3D266009B7C6D /* KDIEmptyView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		074B477E1EB3D266009B7C6D /* KDIEmptyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 074B477A1EB3D266009B7C6D /* KDIEmptyView.m */; };
@@ -1359,6 +1361,7 @@
 				0738CE4B1EA014C9008FE9A0 /* UIFont+KDIDynamicTypeExtensions.h in Headers */,
 				0794A8071E7354EF00603C99 /* UIViewController+KDIExtensions.h in Headers */,
 				07AA83981FB26AD900F99400 /* KDINavigationBarTitleView.h in Headers */,
+				0747FD9C2170A69C00476581 /* UIImageView+KDIExtensions.h in Headers */,
 				0794A7EB1E734D5300603C99 /* UINavigationController+KDIExtensions.h in Headers */,
 				072A421021274BB000FCADCD /* KDIRoundedImageView.h in Headers */,
 				074B477D1EB3D266009B7C6D /* KDIEmptyView.h in Headers */,
@@ -1997,6 +2000,7 @@
 				07E8EB501E734AEC001639A2 /* KDIFunctions.m in Sources */,
 				071B62C01E70846200B7B85A /* NSColor-UIColor+KDIExtensions.m in Sources */,
 				077EBA001E9F703E0087321E /* KDIBadgeButton.m in Sources */,
+				0747FD9D2170A6A400476581 /* UIImageView+KDIExtensions.m in Sources */,
 				07B9B91020758465007D5080 /* UITableView+KDIExtensions.m in Sources */,
 				074B47801EB3D266009B7C6D /* KDIEmptyView.m in Sources */,
 				0738CE4D1EA014C9008FE9A0 /* UIFont+KDIDynamicTypeExtensions.m in Sources */,
