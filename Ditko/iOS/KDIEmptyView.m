@@ -71,7 +71,6 @@
     
     switch (self.alignmentVertical) {
         case KDIEmptyViewAlignmentVerticalCenter:
-            [temp addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|->=margin-[view]->=margin-|" options:0 metrics:@{@"margin": margin} views:@{@"view": self.stackView}]];
             [temp addObject:[NSLayoutConstraint constraintWithItem:self.stackView attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeCenterY multiplier:1.0 constant:0]];
             break;
         case KDIEmptyViewAlignmentVerticalSystemSpacingFromTop:
