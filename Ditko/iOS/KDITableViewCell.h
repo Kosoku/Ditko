@@ -30,6 +30,13 @@ NS_ASSUME_NONNULL_BEGIN
 @property (assign,nonatomic) BOOL showsSelectionUsingAccessoryType;
 
 /**
+ Set and get the arbitrary context data associated with the receiver. Useful for a subclass to pass additional data if needed to update its properties.
+ 
+ The default is nil.
+ */
+@property (strong,nonatomic,nullable) id context;
+
+/**
  Set and get the icon of the receiver. Aligned against the leading edge of the receiver.
  
  The default is nil.
