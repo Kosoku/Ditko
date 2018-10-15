@@ -100,7 +100,6 @@
 - (void)tintColorDidChange {
     [super tintColorDidChange];
     
-//    [self.imageView setTintColor:self.imageColor ?: self.tintColor];
     [self.activityIndicatorView setColor:self.loadingColor ?: self.bodyColor];
 }
 

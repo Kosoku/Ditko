@@ -70,6 +70,13 @@ typedef void(^KDIEmptyViewActionBlock)(__kindof KDIEmptyView *emptyView);
 @interface KDIEmptyView : KDIView
 
 /**
+ Set and get the arbitrary context data associated with the receiver. Useful for a subclass to pass additional data if needed to update its properties.
+ 
+ The default is nil.
+ */
+@property (strong,nonatomic,nullable) id context;
+
+/**
  Get and set the vertical alignment of the receiver.
  
  The default is KDIEmptyViewAlignmentVerticalCenter.
