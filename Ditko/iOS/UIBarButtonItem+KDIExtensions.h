@@ -46,6 +46,31 @@ typedef void(^KDIUIBarButtonItemBlock)(__kindof UIBarButtonItem *barButtonItem);
 + (UIBarButtonItem *)KDI_fixedSpaceBarButtonItemWithWidth:(CGFloat)width;
 
 /**
+ Returns KDI_labelBarButtonItemWithText:color:, passing *text* and nil respectively.
+ 
+ @param text The label text
+ @return The initialized instance
+ */
++ (UIBarButtonItem *)KDI_labelBarButtonItemWithText:(NSString *)text;
+/**
+ Returns KDI_labelBarButtonItemWithText:color:font:, passing *text*, nil, and nil respectively.
+ 
+ @param text The label text
+ @param color The label text color
+ @return The initialized instance
+ */
++ (UIBarButtonItem *)KDI_labelBarButtonItemWithText:(NSString *)text color:(nullable UIColor *)color;
+/**
+ Returns KDI_labelBarButtonItemWithText:color:, passing *text* and nil respectively.
+ 
+ @param text The label text
+ @param color The label text color, the default is UIColor.blackColor
+ @param font The label font, the default is [UIFont systemFontOfSize:17.0]
+ @return The initialized instance
+ */
++ (UIBarButtonItem *)KDI_labelBarButtonItemWithText:(NSString *)text color:(nullable UIColor *)color font:(nullable UIFont *)font;
+
+/**
  Creates and returns a UIBarButtonItem with *image* and *block*.
  
  @param image The bar button item image

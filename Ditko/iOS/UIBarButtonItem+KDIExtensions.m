@@ -54,6 +54,32 @@ static void const *kKDIBlockKey = &kKDIBlockKey;
     
     return retval;
 }
+
++ (UIBarButtonItem *)KDI_labelBarButtonItemWithText:(NSString *)text; {
+    return [self KDI_labelBarButtonItemWithText:text color:nil font:nil];
+}
++ (UIBarButtonItem *)KDI_labelBarButtonItemWithText:(NSString *)text color:(UIColor *)color; {
+    return [self KDI_labelBarButtonItemWithText:text color:color font:nil];
+}
++ (UIBarButtonItem *)KDI_labelBarButtonItemWithText:(NSString *)text color:(UIColor *)color font:(UIFont *)font; {
+    NSParameterAssert(text != nil);
+    
+    if (color == nil) {
+        color = UIColor.blackColor;
+    }
+    if (font == nil) {
+        font = [UIFont systemFontOfSize:17.0];
+    }
+    
+    UILabel *view = [[UILabel alloc] initWithFrame:CGRectZero];
+    
+    view.text = text;
+    view.textColor = color;
+    view.font = font;
+    
+    return [[UIBarButtonItem alloc] initWithCustomView:view];
+}
+
 + (UIBarButtonItem *)KDI_barButtonItemWithImage:(UIImage *)image style:(UIBarButtonItemStyle)style block:(KDIUIBarButtonItemBlock)block {
     UIBarButtonItem *retval = [[UIBarButtonItem alloc] initWithImage:image style:style target:nil action:NULL];
     
