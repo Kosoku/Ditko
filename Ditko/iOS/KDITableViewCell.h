@@ -49,11 +49,23 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @property (copy,nonatomic,nullable) NSString *title;
 /**
+ Set and get the maximum number of lines for the title text. This controls whether the title text wraps.
+ 
+ The default is 0.
+ */
+@property (assign,nonatomic) NSInteger titleNumberOfLines;
+/**
  Set and get the subtitle of the receiver. Aligned against the trailing edge of the icon and bottom edge of the title. This supports multiline text.
  
  The default is nil.
  */
 @property (copy,nonatomic,nullable) NSString *subtitle;
+/**
+ Set and get the maximum number of lines for the subtitle text. This controls whether the subtitle text wraps.
+ 
+ The default is 0.
+ */
+@property (assign,nonatomic) NSInteger subtitleNumberOfLines;
 /**
  Set and get the info of the receiver. Aligned against the trailing edge of the receiver.
  

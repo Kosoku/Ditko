@@ -218,6 +218,13 @@
     self.titleLabel.hidden = self.titleLabel.text.length == 0;
     self.titleLabel.isAccessibilityElement = !self.titleLabel.isHidden;
 }
+@dynamic titleNumberOfLines;
+- (NSInteger)titleNumberOfLines {
+    return self.titleLabel.numberOfLines;
+}
+- (void)setTitleNumberOfLines:(NSInteger)titleNumberOfLines {
+    self.titleLabel.numberOfLines = titleNumberOfLines;
+}
 @dynamic subtitle;
 - (NSString *)subtitle {
     return self.subtitleLabel.text;
@@ -226,6 +233,13 @@
     self.subtitleLabel.text = subtitle;
     self.subtitleLabel.hidden = self.subtitleLabel.text.length == 0;
     self.subtitleLabel.isAccessibilityElement = !self.subtitleLabel.isHidden;
+}
+@dynamic subtitleNumberOfLines;
+- (NSInteger)subtitleNumberOfLines {
+    return self.subtitleLabel.numberOfLines;
+}
+- (void)setSubtitleNumberOfLines:(NSInteger)subtitleNumberOfLines {
+    self.subtitleLabel.numberOfLines = subtitleNumberOfLines;
 }
 @dynamic info;
 - (NSString *)info {
