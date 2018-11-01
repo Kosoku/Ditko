@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ButtonViewController">
             <connections>
+                <outlet property="activityIndicatorSwitch" destination="Gf4-hu-Ko9" id="Dxc-nV-wVo"/>
                 <outlet property="button" destination="jcZ-xe-xo0" id="rYk-ZQ-gkr"/>
                 <outlet property="invertedSwitch" destination="Fc9-k6-rLo" id="nOs-jh-lx3"/>
                 <outlet property="roundedSwitch" destination="aez-yR-rhz" id="6VZ-jv-ghw"/>
@@ -25,7 +26,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jcZ-xe-xo0" customClass="KDIButton">
-                    <rect key="frame" x="164" y="318.5" width="46" height="30"/>
+                    <rect key="frame" x="164.5" y="318.5" width="46" height="30"/>
                     <state key="normal" title="Button"/>
                 </button>
                 <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="tM6-qH-l9B">
@@ -55,10 +56,21 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Gf4-hu-Ko9">
+                    <rect key="frame" x="16" y="142" width="51" height="31"/>
+                </switch>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Activity Indicator" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JBH-TK-9iF">
+                    <rect key="frame" x="73" y="147" width="286" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="jcZ-xe-xo0" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="6s4-bM-jcu"/>
+                <constraint firstItem="JBH-TK-9iF" firstAttribute="leading" secondItem="Gf4-hu-Ko9" secondAttribute="trailing" constant="8" id="A5R-r1-KP8"/>
+                <constraint firstItem="JBH-TK-9iF" firstAttribute="centerY" secondItem="Gf4-hu-Ko9" secondAttribute="centerY" id="BxH-dE-pEh"/>
                 <constraint firstItem="aez-yR-rhz" firstAttribute="top" secondItem="Fc9-k6-rLo" secondAttribute="bottom" constant="8" id="F6c-99-kVq"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="n3G-I2-msM" secondAttribute="trailing" constant="16" id="HdD-vC-zVh"/>
                 <constraint firstItem="Fc9-k6-rLo" firstAttribute="top" secondItem="tM6-qH-l9B" secondAttribute="bottom" constant="8" id="Hmc-dB-o5F"/>
@@ -68,14 +80,17 @@
                 <constraint firstItem="lx9-Rt-eOj" firstAttribute="centerY" secondItem="Fc9-k6-rLo" secondAttribute="centerY" id="VD2-U6-qYf"/>
                 <constraint firstItem="jcZ-xe-xo0" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="XYK-yR-Cm7"/>
                 <constraint firstItem="tM6-qH-l9B" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="8" id="aV2-O4-uzJ"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="JBH-TK-9iF" secondAttribute="trailing" constant="16" id="aXT-Qb-aof"/>
                 <constraint firstItem="Fc9-k6-rLo" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="d2q-2g-DqU"/>
                 <constraint firstItem="n3G-I2-msM" firstAttribute="centerY" secondItem="aez-yR-rhz" secondAttribute="centerY" id="gl1-S3-K7l"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="tM6-qH-l9B" secondAttribute="trailing" constant="16" id="izA-OF-VFO"/>
+                <constraint firstItem="Gf4-hu-Ko9" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="qtW-6H-kyH"/>
                 <constraint firstItem="lx9-Rt-eOj" firstAttribute="leading" secondItem="Fc9-k6-rLo" secondAttribute="trailing" constant="8" id="udq-Hj-7Um"/>
                 <constraint firstItem="n3G-I2-msM" firstAttribute="leading" secondItem="aez-yR-rhz" secondAttribute="trailing" constant="8" id="usd-gD-CxY"/>
+                <constraint firstItem="Gf4-hu-Ko9" firstAttribute="top" secondItem="aez-yR-rhz" secondAttribute="bottom" constant="8" id="vTS-db-BL8"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
-            <point key="canvasLocation" x="-25.5" y="-39.5"/>
+            <point key="canvasLocation" x="-26.399999999999999" y="-40.029985007496258"/>
         </view>
     </objects>
 </document>
