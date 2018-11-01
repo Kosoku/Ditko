@@ -176,11 +176,11 @@
 		077EB9FE1E9F703E0087321E /* KDIBadgeButton.h in Headers */ = {isa = PBXBuildFile; fileRef = 077EB9FB1E9F703E0087321E /* KDIBadgeButton.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		077EB9FF1E9F703E0087321E /* KDIBadgeButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 077EB9FC1E9F703E0087321E /* KDIBadgeButton.m */; };
 		077EBA001E9F703E0087321E /* KDIBadgeButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 077EB9FC1E9F703E0087321E /* KDIBadgeButton.m */; };
-		07802C97218BA65000514BF4 /* DitkoClass.h in Headers */ = {isa = PBXBuildFile; fileRef = 07802C95218BA65000514BF4 /* DitkoClass.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		07802C97218BA65000514BF4 /* DitkoClass.h in Headers */ = {isa = PBXBuildFile; fileRef = 07802C95218BA65000514BF4 /* DitkoClass.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		07802C98218BA65000514BF4 /* DitkoClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 07802C96218BA65000514BF4 /* DitkoClass.m */; };
-		07802C99218BA65400514BF4 /* DitkoClass.h in Headers */ = {isa = PBXBuildFile; fileRef = 07802C95218BA65000514BF4 /* DitkoClass.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		07802C9A218BA65400514BF4 /* DitkoClass.h in Headers */ = {isa = PBXBuildFile; fileRef = 07802C95218BA65000514BF4 /* DitkoClass.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		07802C9B218BA65500514BF4 /* DitkoClass.h in Headers */ = {isa = PBXBuildFile; fileRef = 07802C95218BA65000514BF4 /* DitkoClass.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		07802C99218BA65400514BF4 /* DitkoClass.h in Headers */ = {isa = PBXBuildFile; fileRef = 07802C95218BA65000514BF4 /* DitkoClass.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		07802C9A218BA65400514BF4 /* DitkoClass.h in Headers */ = {isa = PBXBuildFile; fileRef = 07802C95218BA65000514BF4 /* DitkoClass.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		07802C9B218BA65500514BF4 /* DitkoClass.h in Headers */ = {isa = PBXBuildFile; fileRef = 07802C95218BA65000514BF4 /* DitkoClass.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		07802C9C218BA65F00514BF4 /* DitkoClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 07802C96218BA65000514BF4 /* DitkoClass.m */; };
 		07802C9D218BA65F00514BF4 /* DitkoClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 07802C96218BA65000514BF4 /* DitkoClass.m */; };
 		07802C9E218BA66000514BF4 /* DitkoClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 07802C96218BA65000514BF4 /* DitkoClass.m */; };
@@ -660,8 +660,8 @@
 		076730861E77544700030F0C /* KDINextPreviousInputAccessoryView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KDINextPreviousInputAccessoryView.m; path = iOS/KDINextPreviousInputAccessoryView.m; sourceTree = "<group>"; };
 		077EB9FB1E9F703E0087321E /* KDIBadgeButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KDIBadgeButton.h; path = iOS/KDIBadgeButton.h; sourceTree = "<group>"; };
 		077EB9FC1E9F703E0087321E /* KDIBadgeButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KDIBadgeButton.m; path = iOS/KDIBadgeButton.m; sourceTree = "<group>"; };
-		07802C95218BA65000514BF4 /* DitkoClass.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DitkoClass.h; sourceTree = "<group>"; };
-		07802C96218BA65000514BF4 /* DitkoClass.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DitkoClass.m; sourceTree = "<group>"; };
+		07802C95218BA65000514BF4 /* DitkoClass.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DitkoClass.h; path = Private/DitkoClass.h; sourceTree = "<group>"; };
+		07802C96218BA65000514BF4 /* DitkoClass.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = DitkoClass.m; path = Private/DitkoClass.m; sourceTree = "<group>"; };
 		07824F551FCF0E3A005FBF26 /* NSObject+KDIExtensions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+KDIExtensions.h"; sourceTree = "<group>"; };
 		07824F561FCF0E3A005FBF26 /* NSObject+KDIExtensions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSObject+KDIExtensions.m"; sourceTree = "<group>"; };
 		0794A7E81E734D5300603C99 /* UINavigationController+KDIExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UINavigationController+KDIExtensions.h"; path = "iOS/UINavigationController+KDIExtensions.h"; sourceTree = "<group>"; };
