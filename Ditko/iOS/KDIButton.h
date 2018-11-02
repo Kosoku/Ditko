@@ -129,32 +129,6 @@ typedef NS_ENUM(NSInteger, KDIButtonContentHorizontalAlignment) {
  */
 @property (assign,nonatomic) KDIButtonContentHorizontalAlignment imageContentHorizontalAlignment;
 
-/**
- Calls setActivityIndicatorAnimating:animated:, passing activityIndicatorAnimating and NO respectively.
- */
-@property (assign,nonatomic,getter=isActivityIndicatorAnimating) BOOL activityIndicatorAnimating;
-/**
- Show/hide the activity indicator view managed by the receiver with optional animation.
- 
- This will fade in/out the titleLabel and imageView of the receiver, while fading in/out the activity indicator view using the activityIndicatorAnimationDuration.
- 
- @param activityIndicatorAnimating Whether to show/hide the activity indicator view
- @param animated Whether to animate the show/hide
- */
-- (void)setActivityIndicatorAnimating:(BOOL)activityIndicatorAnimating animated:(BOOL)animated;
-/**
- The animation duration to use when show/hide the activity indicator view.
- 
- The default is 0.2.
- */
-@property (assign,nonatomic) NSTimeInterval activityIndicatorAnimationDuration;
-/**
- Calls through to the color property of the activity indicator view managed by the receiver.
- 
- The default is an appropriate color for the platform.
- */
-@property (strong,nonatomic,null_resettable) UIColor *activityIndicatorColor;
-
 - (void)layoutSubviews NS_REQUIRES_SUPER;
 - (CGSize)intrinsicContentSize NS_REQUIRES_SUPER;
 - (CGSize)sizeThatFits:(CGSize)size NS_REQUIRES_SUPER;

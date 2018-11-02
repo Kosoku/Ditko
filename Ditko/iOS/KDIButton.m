@@ -217,54 +217,8 @@ static CGFloat const kTitleColorAlphaAdjustment = 0.5;
     [self setNeedsLayout];
     [self invalidateIntrinsicContentSize];
 }
-#pragma mark -
-@dynamic activityIndicatorAnimating;
-- (BOOL)isActivityIndicatorAnimating {
-    return self.activityIndicatorView.isAnimating;
-}
-- (void)setActivityIndicatorAnimating:(BOOL)activityIndicatorAnimating {
-    [self setActivityIndicatorAnimating:activityIndicatorAnimating animated:NO];
-}
-- (void)setActivityIndicatorAnimating:(BOOL)activityIndicatorAnimating animated:(BOOL)animated; {
-    if (activityIndicatorAnimating) {
-        [self.activityIndicatorView startAnimating];
-    }
-    else {
-        [self.activityIndicatorView stopAnimating];
-    }
-    
-    void(^block)(void) = ^{
-        self.titleLabel.alpha = activityIndicatorAnimating ? 0.0 : 1.0;
-        self.imageView.alpha = activityIndicatorAnimating ? 0.0 : 1.0;
-        self.activityIndicatorView.alpha = activityIndicatorAnimating ? 1.0 : 0.0;
-    };
-    
-    if (animated) {
-        [UIView animateWithDuration:self.activityIndicatorAnimationDuration delay:0 options:UIViewAnimationOptionBeginFromCurrentState animations:block completion:nil];
-    }
-    else {
-        block();
-    }
-}
-@dynamic activityIndicatorColor;
-- (UIColor *)activityIndicatorColor {
-    return self.activityIndicatorView.color;
-}
-- (void)setActivityIndicatorColor:(UIColor *)activityIndicatorColor {
-    self.activityIndicatorView.color = activityIndicatorColor;
-}
 #pragma mark *** Private Methods ***
 - (void)_KDIButtonInit; {
-#if (TARGET_OS_TV)
-    _activityIndicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
-#else
-    _activityIndicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-#endif
-    _activityIndicatorView.alpha = 0.0;
-    [self addSubview:_activityIndicatorView];
-    
-    _activityIndicatorAnimationDuration = 0.2;
-    
     _borderedViewImpl = [[KDIBorderedViewImpl alloc] initWithView:self];
     
     _roundedRelativeToImageAndTitle = YES;
@@ -349,8 +303,6 @@ static CGFloat const kTitleColorAlphaAdjustment = 0.5;
     
     if (layout) {
         [self.borderedViewImpl layoutSubviews];
-        
-        self.activityIndicatorView.frame = self.bounds;
         
         if (!superDoesLayout) {
             CGSize titleSize = [self.titleLabel sizeThatFits:CGSizeZero];

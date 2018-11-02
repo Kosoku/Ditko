@@ -100,11 +100,6 @@
         self.button.rounded = self.roundedSwitch.isOn;
     } forControlEvents:UIControlEventValueChanged];
     
-    [self.activityIndicatorSwitch KDI_addBlock:^(UISwitch * _Nonnull control, UIControlEvents controlEvents) {
-        kstStrongify(self);
-        [self.button setActivityIndicatorAnimating:control.isOn animated:YES];
-    } forControlEvents:UIControlEventValueChanged];
-    
     self.button.contentEdgeInsets = UIEdgeInsetsMake(kSubviewPadding, kSubviewPadding, kSubviewPadding, kSubviewPadding);
     [self.button setImage:[UIImage KSO_fontAwesomeSolidImageWithString:@"\uf433" size:kButtonImageSize].KDI_templateImage forState:UIControlStateNormal];
     
@@ -117,10 +112,6 @@
         kstStrongify(self);
         self.button.tintColor = nil;
     }]];
-    
-    [self.button KDI_addBlock:^(__kindof UIControl * _Nonnull control, UIControlEvents controlEvents) {
-        KSTLog(@"%@ %@",control,@(controlEvents));
-    } forControlEvents:UIControlEventTouchUpInside];
 }
 
 + (NSString *)detailViewTitle {
