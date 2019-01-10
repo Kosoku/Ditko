@@ -3,7 +3,7 @@
 //  Ditko
 //
 //  Created by William Towe on 3/8/17.
-//  Copyright © 2018 Kosoku Interactive, LLC. All rights reserved.
+//  Copyright © 2019 Kosoku Interactive, LLC. All rights reserved.
 //
 //  Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
 //
@@ -16,6 +16,6 @@
 #ifndef __DITKO_INFO__
 #define __DITKO_INFO__
 
-#define KDI_BUNDLE_SHORT_VERSION_STRING 3.49.0
+#define KDI_BUNDLE_SHORT_VERSION_STRING 3.49.1
 
 #endif

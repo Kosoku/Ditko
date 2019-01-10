@@ -3,7 +3,7 @@
 //  Ditko
 //
 //  Created by William Towe on 4/13/17.
-//  Copyright © 2018 Kosoku Interactive, LLC. All rights reserved.
+//  Copyright © 2019 Kosoku Interactive, LLC. All rights reserved.
 //
 //  Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
 //
