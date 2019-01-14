@@ -320,7 +320,7 @@
     _selectedBackgroundViewClassName = [selectedBackgroundViewClassName copy];
     
     if (_selectedBackgroundViewClassName) {
-        NSAssert([NSClassFromString(_selectedBackgroundViewClassName) isSubclassOfClass:UIView.class], @"%@ must be a subclass of %@", NSStringFromClass(_selectedBackgroundViewClassName), NSStringFromClass(UIView.class));
+        NSAssert([NSClassFromString(_selectedBackgroundViewClassName) isSubclassOfClass:UIView.class], @"%@ must be a subclass of %@", _selectedBackgroundViewClassName, NSStringFromClass(UIView.class));
     }
     
     self.selectedBackgroundView = _selectedBackgroundViewClassName ? [[NSClassFromString(_selectedBackgroundViewClassName) alloc] initWithFrame:CGRectZero] : nil;
