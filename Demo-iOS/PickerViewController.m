@@ -29,7 +29,7 @@
 @property (weak,nonatomic) IBOutlet KDIPickerViewButton *pickerViewButton;
 
 @property (copy,nonatomic) NSArray<NSArray<NSString *> *> *rowsAndComponents;
-@property (copy,nonatomic) NSArray<NSString *> *imageStrings;
+@property (copy,nonatomic) NSArray<NSArray<NSString *> *> *imageStrings;
 @end
 
 @implementation PickerViewController
@@ -43,9 +43,8 @@
     
     self.rowsAndComponents = @[@[@"Red",@"Green",@"Blue"],
                                @[@"One",@"Two",@"Three"]];
-    self.imageStrings = @[@"\uf2b9",
-                          @"\uf058",
-                          @"\uf0f3"];
+    self.imageStrings = @[@[@"\uf2b9",@"\uf058",@"\uf0f3"],
+                          @[NSNull.null,NSNull.null,NSNull.null]];
     
     [self KSO_addNavigationBarTitleView];
     
@@ -65,9 +64,18 @@
 - (NSString *)pickerViewButton:(KDIPickerViewButton *)pickerViewButton titleForRow:(NSInteger)row forComponent:(NSInteger)component {
     return self.rowsAndComponents[component][row];
 }
+- (UIImage *)pickerViewButton:(KDIPickerViewButton *)pickerViewButton imageForRow:(NSInteger)row forComponent:(NSInteger)component {
+    id string = self.imageStrings[component][row];
+    
+    if (KSTIsEmptyObject(string)) {
+        return nil;
+    }
+    
+    return [UIImage KSO_fontAwesomeRegularImageWithString:string size:kBarButtonItemImageSize].KDI_templateImage;
+}
 
 - (UIImage *)pickerViewButton:(KDIPickerViewButton *)pickerViewButton imageForSelectedRows:(NSArray<NSNumber *> *)selectedRows {
-    return [UIImage KSO_fontAwesomeRegularImageWithString:self.imageStrings[selectedRows.firstObject.integerValue] size:kBarButtonItemImageSize].KDI_templateImage;
+    return [UIImage KSO_fontAwesomeRegularImageWithString:self.imageStrings.firstObject[selectedRows.firstObject.integerValue] size:kBarButtonItemImageSize].KDI_templateImage;
 }
 - (void)pickerViewButton:(KDIPickerViewButton *)pickerViewButton didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
     KSTLog(@"row %@ component %@",@(row),@(component));

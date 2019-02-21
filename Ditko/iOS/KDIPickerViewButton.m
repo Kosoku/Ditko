@@ -26,6 +26,63 @@
 NSNotificationName const KDIPickerViewButtonNotificationDidBecomeFirstResponder = @"KDIPickerViewButtonNotificationDidBecomeFirstResponder";
 NSNotificationName const KDIPickerViewButtonNotificationDidResignFirstResponder = @"KDIPickerViewButtonNotificationDidResignFirstResponder";
 
+@interface KDIPickerViewButtonRowView : UIView
+@property (strong,nonatomic) UIImage *image;
+@property (copy,nonatomic) NSAttributedString *attributedTitle;
+
+@property (strong,nonatomic) UIStackView *stackView;
+@property (strong,nonatomic) UIImageView *imageView;
+@property (strong,nonatomic) UILabel *label;
+@end
+
+@implementation KDIPickerViewButtonRowView
+
+- (instancetype)initWithFrame:(CGRect)frame {
+    if (!(self = [super initWithFrame:frame]))
+        return nil;
+    
+    _stackView = [[UIStackView alloc] initWithFrame:CGRectZero];
+    _stackView.translatesAutoresizingMaskIntoConstraints = NO;
+    _stackView.axis = UILayoutConstraintAxisHorizontal;
+    _stackView.spacing = 8.0;
+    [self addSubview:_stackView];
+    
+    _imageView = [[UIImageView alloc] initWithFrame:CGRectZero];
+    _imageView.translatesAutoresizingMaskIntoConstraints = NO;
+    _imageView.contentMode = UIViewContentModeCenter;
+    [_stackView addArrangedSubview:_imageView];
+    
+    _label = [[UILabel alloc] initWithFrame:CGRectZero];
+    _label.translatesAutoresizingMaskIntoConstraints = NO;
+    _label.font = [UIFont systemFontOfSize:21.0 weight:UIFontWeightRegular];
+    [_stackView addArrangedSubview:_label];
+    
+    [NSLayoutConstraint activateConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|->=0-[view]->=0-|" options:0 metrics:nil views:@{@"view": _stackView}]];
+    [NSLayoutConstraint activateConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[view]|" options:0 metrics:nil views:@{@"view": _stackView}]];
+    [NSLayoutConstraint activateConstraints:@[[_stackView.centerXAnchor constraintEqualToAnchor:self.centerXAnchor]]];
+    
+    return self;
+}
+
+@dynamic image;
+- (UIImage *)image {
+    return self.imageView.image;
+}
+- (void)setImage:(UIImage *)image {
+    self.imageView.image = image;
+    self.imageView.hidden = image == nil;
+    self.imageView.isAccessibilityElement = image == nil;
+}
+@dynamic attributedTitle;
+- (NSAttributedString *)attributedTitle {
+    return self.label.attributedText;
+}
+- (void)setAttributedTitle:(NSAttributedString *)attributedTitle {
+    self.label.attributedText = attributedTitle;
+}
+
+@end
+
 @interface KDIPickerViewButton () <UIPickerViewDataSource, UIPickerViewDelegate>
 @property (readwrite,nonatomic) UIView *inputView;
 @property (readwrite,nonatomic) UIView *inputAccessoryView;
@@ -105,15 +162,22 @@ NSNotificationName const KDIPickerViewButtonNotificationDidResignFirstResponder 
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
     return [self.dataSource pickerViewButton:self numberOfRowsInComponent:component];
 }
-- (NSAttributedString *)pickerView:(UIPickerView *)pickerView attributedTitleForRow:(NSInteger)row forComponent:(NSInteger)component {
-    if ([self.dataSource respondsToSelector:@selector(pickerViewButton:attributedTitleForRow:forComponent:)]) {
-        return [self.dataSource pickerViewButton:self attributedTitleForRow:row forComponent:component];
-    }
-    else {
-        return [[NSAttributedString alloc] initWithString:[self.dataSource pickerViewButton:self titleForRow:row forComponent:component]];
-    }
-}
 #pragma mark UIPickerViewDelegate
+- (UIView *)pickerView:(UIPickerView *)pickerView viewForRow:(NSInteger)row forComponent:(NSInteger)component reusingView:(UIView *)view {
+    KDIPickerViewButtonRowView *retval = (KDIPickerViewButtonRowView *)view;
+    
+    if (retval == nil) {
+        retval = [[KDIPickerViewButtonRowView alloc] initWithFrame:CGRectZero];
+    }
+    
+    if ([self.dataSource respondsToSelector:@selector(pickerViewButton:imageForRow:forComponent:)]) {
+        retval.image = [self.dataSource pickerViewButton:self imageForRow:row forComponent:component];
+    }
+    
+    retval.attributedTitle = [self _attributedTitleForRow:row inComponent:component];
+    
+    return retval;
+}
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
     [self _reloadTitleForSelectedRowsInPickerView];
     
@@ -293,6 +357,7 @@ NSNotificationName const KDIPickerViewButtonNotificationDidResignFirstResponder 
     
     id image = [self _imageForSelectedRowsInPickerView];
     
+    // if our internal method returns NSNull, do not change the image
     if ([image isEqual:NSNull.null]) {
         return;
     }

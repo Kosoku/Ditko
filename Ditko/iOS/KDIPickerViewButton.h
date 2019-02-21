@@ -73,7 +73,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)selectRow:(NSInteger)row inComponent:(NSInteger)component;
 
 /**
- Present the UIPickerView using the appropriate method. On iPad, present using a popover, otherwise become the first responder and present as the inputView.
+ Present the UIPickerView using the appropriate method.
  */
 - (void)presentPickerView;
 /**
@@ -123,6 +123,15 @@ NS_ASSUME_NONNULL_BEGIN
  @return The attributed string title
  */
 - (nullable NSAttributedString *)pickerViewButton:(KDIPickerViewButton *)pickerViewButton attributedTitleForRow:(NSInteger)row forComponent:(NSInteger)component;
+/**
+ Returns the image for the provided row and component of the picker view button.
+ 
+ @param pickerViewButton The sender of the message
+ @param row The row for which to return the image
+ @param component The component for which to return the image
+ @return The image or nil
+ */
+- (nullable UIImage *)pickerViewButton:(KDIPickerViewButton *)pickerViewButton imageForRow:(NSInteger)row forComponent:(NSInteger)component;
 @end
 
 /**
@@ -138,7 +147,13 @@ NS_ASSUME_NONNULL_BEGIN
  @return The string title or nil
  */
 - (nullable NSString *)pickerViewButton:(KDIPickerViewButton *)pickerViewButton titleForSelectedRows:(NSArray<NSNumber *> *)selectedRows;
-
+/**
+ Returns the image that will be used as the picker view button's image given the selected rows. The provided array contains one NSNumber representing the selected row in each component.
+ 
+ @param pickerViewButton The sender of the message
+ @param selectedRows The selected rows for which to return the image
+ @return The image or nil
+ */
 - (nullable UIImage *)pickerViewButton:(KDIPickerViewButton *)pickerViewButton imageForSelectedRows:(NSArray<NSNumber *> *)selectedRows;
 /**
  Returns the attributed string title that will be used as the picker view button's title given the selected rows. The provided array contains one NSNumber representing the selected row in each component. If this method is implemented, it is preferred over pickerViewButton:titleForSelectedRows:. If you return nil, the default title is used.
