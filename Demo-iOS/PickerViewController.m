@@ -29,6 +29,7 @@
 @property (weak,nonatomic) IBOutlet KDIPickerViewButton *pickerViewButton;
 
 @property (copy,nonatomic) NSArray<NSArray<NSString *> *> *rowsAndComponents;
+@property (copy,nonatomic) NSArray<NSString *> *imageStrings;
 @end
 
 @implementation PickerViewController
@@ -42,6 +43,9 @@
     
     self.rowsAndComponents = @[@[@"Red",@"Green",@"Blue"],
                                @[@"One",@"Two",@"Three"]];
+    self.imageStrings = @[@"\uf2b9",
+                          @"\uf058",
+                          @"\uf0f3"];
     
     [self KSO_addNavigationBarTitleView];
     
@@ -62,6 +66,9 @@
     return self.rowsAndComponents[component][row];
 }
 
+- (UIImage *)pickerViewButton:(KDIPickerViewButton *)pickerViewButton imageForSelectedRows:(NSArray<NSNumber *> *)selectedRows {
+    return [UIImage KSO_fontAwesomeRegularImageWithString:self.imageStrings[selectedRows.firstObject.integerValue] size:kBarButtonItemImageSize].KDI_templateImage;
+}
 - (void)pickerViewButton:(KDIPickerViewButton *)pickerViewButton didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
     KSTLog(@"row %@ component %@",@(row),@(component));
 }

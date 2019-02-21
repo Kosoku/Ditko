@@ -36,6 +36,7 @@ NSNotificationName const KDIPickerViewButtonNotificationDidResignFirstResponder 
 - (NSInteger)_numberOfComponentsInPickerView;
 - (NSAttributedString *)_attributedTitleForRow:(NSInteger)row inComponent:(NSInteger)component;
 - (NSAttributedString *)_attributedTitleForSelectedRowsInPickerView;
+- (id)_imageForSelectedRowsInPickerView;
 - (void)_reloadTitleForSelectedRowsInPickerView;
 
 + (NSString *)_defaultSelectedComponentsJoinString;
@@ -266,6 +267,20 @@ NSNotificationName const KDIPickerViewButtonNotificationDidResignFirstResponder 
         return defaultRetvalBlock();
     }
 }
+- (id)_imageForSelectedRowsInPickerView {
+    if ([self.delegate respondsToSelector:@selector(pickerViewButton:imageForSelectedRows:)]) {
+        NSMutableArray *selectedRowIndexes = [[NSMutableArray alloc] init];
+        
+        for (NSInteger i=0; i<[self _numberOfComponentsInPickerView]; i++) {
+            NSInteger row = [self selectedRowInComponent:i];
+            
+            [selectedRowIndexes addObject:@(row)];
+        }
+        
+        return [self.delegate pickerViewButton:self imageForSelectedRows:selectedRowIndexes];
+    }
+    return NSNull.null;
+}
 - (void)_reloadTitleForSelectedRowsInPickerView; {
     NSAttributedString *attrString = [self _attributedTitleForSelectedRowsInPickerView];
     
@@ -275,6 +290,14 @@ NSNotificationName const KDIPickerViewButtonNotificationDidResignFirstResponder 
     else {
         [self setAttributedTitle:attrString forState:UIControlStateNormal];
     }
+    
+    id image = [self _imageForSelectedRowsInPickerView];
+    
+    if ([image isEqual:NSNull.null]) {
+        return;
+    }
+    
+    [self setImage:image forState:UIControlStateNormal];
 }
 
 + (NSString *)_defaultSelectedComponentsJoinString; {

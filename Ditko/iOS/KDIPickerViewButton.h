@@ -138,6 +138,8 @@ NS_ASSUME_NONNULL_BEGIN
  @return The string title or nil
  */
 - (nullable NSString *)pickerViewButton:(KDIPickerViewButton *)pickerViewButton titleForSelectedRows:(NSArray<NSNumber *> *)selectedRows;
+
+- (nullable UIImage *)pickerViewButton:(KDIPickerViewButton *)pickerViewButton imageForSelectedRows:(NSArray<NSNumber *> *)selectedRows;
 /**
  Returns the attributed string title that will be used as the picker view button's title given the selected rows. The provided array contains one NSNumber representing the selected row in each component. If this method is implemented, it is preferred over pickerViewButton:titleForSelectedRows:. If you return nil, the default title is used.
  
