@@ -104,6 +104,11 @@
         self.button.rounded = self.roundedSwitch.isOn;
     } forControlEvents:UIControlEventValueChanged];
     
+    [self.activityIndicatorSwitch KDI_addBlock:^(__kindof UIControl * _Nonnull control, UIControlEvents controlEvents) {
+        kstStrongify(self);
+        self.button.loading = self.activityIndicatorSwitch.isOn;
+    } forControlEvents:UIControlEventValueChanged];
+    
     self.button.contentEdgeInsets = UIEdgeInsetsMake(kSubviewPadding, kSubviewPadding, kSubviewPadding, kSubviewPadding);
     [self.button setImage:[UIImage KSO_fontAwesomeSolidImageWithString:@"\uf433" size:kButtonImageSize].KDI_templateImage forState:UIControlStateNormal];
     

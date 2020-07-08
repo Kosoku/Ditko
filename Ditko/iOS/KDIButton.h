@@ -103,6 +103,13 @@ typedef NS_ENUM(NSInteger, KDIButtonContentHorizontalAlignment) {
 @property (assign,nonatomic) BOOL roundedRelativeToImageAndTitle;
 
 /**
+ If YES, a UIActivityIndicatorView will be faded in and started animating, centerd in the bounds of the receiver, while the titleLabel and imageView will be faded out. If NO, the UIActivityIndicatorView will be faded out and stopped animating, while the titleLabel and imageView will be faded in.
+ 
+ The default is NO.
+ */
+@property (assign,nonatomic,getter=isLoading) BOOL loading;
+
+/**
  Set whether the receiver adjusts its title color when highlighted. If set to YES, the title color set for UIControlStateNormal will be inspected and the computed color will be set for the highlighted state. The title color is drawn lighter if the normal title color was dark and darker if the normal title color was light.
  */
 @property (assign,nonatomic) BOOL adjustsTitleColorWhenHighlighted;

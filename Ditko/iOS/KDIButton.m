@@ -83,6 +83,8 @@ static CGFloat const kTitleColorAlphaAdjustment = 0.5;
 - (void)tintColorDidChange {
     [super tintColorDidChange];
     
+    self.activityIndicatorView.color = self.tintColor;
+    
     if (self.borderColorMatchesTintColor) {
         [self setKDI_borderColor:self.tintColor];
     }
@@ -196,6 +198,24 @@ static CGFloat const kTitleColorAlphaAdjustment = 0.5;
     
     [self setNeedsLayout];
 }
+@dynamic loading;
+- (BOOL)isLoading {
+    return self.activityIndicatorView.isAnimating;
+}
+- (void)setLoading:(BOOL)loading {
+    [UIView animateWithDuration:0.2 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState animations:^{
+        self.titleLabel.alpha = loading ? 0.0 : 1.0;
+        self.imageView.alpha = loading ? 0.0 : 1.0;
+        self.activityIndicatorView.alpha = loading ? 1.0 : 0.0;
+    } completion:nil];
+    
+    if (loading) {
+        [self.activityIndicatorView startAnimating];
+    }
+    else {
+        [self.activityIndicatorView stopAnimating];
+    }
+}
 #pragma mark -
 - (void)setTitleContentVerticalAlignment:(KDIButtonContentVerticalAlignment)titleContentVerticalAlignment {
     _titleContentVerticalAlignment = titleContentVerticalAlignment;
@@ -223,6 +243,13 @@ static CGFloat const kTitleColorAlphaAdjustment = 0.5;
 }
 #pragma mark *** Private Methods ***
 - (void)_KDIButtonInit; {
+    _activityIndicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
+    _activityIndicatorView.hidesWhenStopped = NO;
+    _activityIndicatorView.alpha = 0.0;
+    _activityIndicatorView.color = self.tintColor;
+    
+    [self addSubview:_activityIndicatorView];
+    
     _borderedViewImpl = [[KDIBorderedViewImpl alloc] initWithView:self];
     
     _roundedRelativeToImageAndTitle = YES;
@@ -250,6 +277,7 @@ static CGFloat const kTitleColorAlphaAdjustment = 0.5;
         
         UIColor *contrastingColor = [self.tintColor KDI_contrastingColor];
         
+        self.activityIndicatorView.color = contrastingColor;
         [self setTitleColor:contrastingColor forState:UIControlStateNormal];
         [self setImage:[self.originalNormalImage KLO_imageByTintingWithColor:contrastingColor] forState:UIControlStateNormal];
     }
@@ -307,6 +335,10 @@ static CGFloat const kTitleColorAlphaAdjustment = 0.5;
     
     if (layout) {
         [self.borderedViewImpl layoutSubviews];
+        
+        CGSize activityIndicatorSize = [self.activityIndicatorView sizeThatFits:CGSizeZero];
+        
+        self.activityIndicatorView.frame = KSTCGRectCenterInRect(CGRectMake(0, 0, activityIndicatorSize.width, activityIndicatorSize.height), self.bounds);
         
         if (!superDoesLayout) {
             CGSize titleSize = [self.titleLabel sizeThatFits:CGSizeZero];
