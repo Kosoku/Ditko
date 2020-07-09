@@ -108,6 +108,12 @@ typedef NS_ENUM(NSInteger, KDIButtonContentHorizontalAlignment) {
  The default is NO.
  */
 @property (assign,nonatomic,getter=isLoading) BOOL loading;
+/**
+ If YES, loading will be automatically set to YES when the receiver is disabled and set to NO when the receiver is enabled.
+ 
+ The default is NO.
+ */
+@property (assign,nonatomic) BOOL automaticallyTogglesLoadingWhenDisabled;
 
 /**
  Set whether the receiver adjusts its title color when highlighted. If set to YES, the title color set for UIControlStateNormal will be inspected and the computed color will be set for the highlighted state. The title color is drawn lighter if the normal title color was dark and darker if the normal title color was light.

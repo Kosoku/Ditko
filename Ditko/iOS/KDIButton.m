@@ -38,6 +38,7 @@ static CGFloat const kTitleColorAlphaAdjustment = 0.5;
 
 - (void)_KDIButtonInit;
 - (void)_updateAfterInvertedChange;
+- (void)_updateAfterAutomaticallyTogglesLoadingWhenDisabledChange;
 - (CGSize)_sizeThatFits:(CGSize)size layout:(BOOL)layout;
 @end
 
@@ -94,6 +95,11 @@ static CGFloat const kTitleColorAlphaAdjustment = 0.5;
     }
 }
 #pragma mark -
+- (void)setEnabled:(BOOL)enabled {
+    [super setEnabled:enabled];
+    
+    [self _updateAfterAutomaticallyTogglesLoadingWhenDisabledChange];
+}
 - (void)setTitleColor:(UIColor *)color forState:(UIControlState)state {
     [super setTitleColor:color forState:state];
     
@@ -203,11 +209,22 @@ static CGFloat const kTitleColorAlphaAdjustment = 0.5;
     return self.activityIndicatorView.isAnimating;
 }
 - (void)setLoading:(BOOL)loading {
+    if (self.isLoading == loading) {
+        return;
+    }
+    
     [UIView animateWithDuration:0.2 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState animations:^{
         self.titleLabel.alpha = loading ? 0.0 : 1.0;
         self.imageView.alpha = loading ? 0.0 : 1.0;
         self.activityIndicatorView.alpha = loading ? 1.0 : 0.0;
-    } completion:nil];
+    } completion:^(BOOL finished) {
+        if (!finished) {
+            return;
+        }
+        
+        self.titleLabel.hidden = loading;
+        self.imageView.hidden = loading;
+    }];
     
     if (loading) {
         [self.activityIndicatorView startAnimating];
@@ -215,6 +232,11 @@ static CGFloat const kTitleColorAlphaAdjustment = 0.5;
     else {
         [self.activityIndicatorView stopAnimating];
     }
+}
+- (void)setAutomaticallyTogglesLoadingWhenDisabled:(BOOL)automaticallyTogglesLoadingWhenDisabled {
+    _automaticallyTogglesLoadingWhenDisabled = automaticallyTogglesLoadingWhenDisabled;
+    
+    [self _updateAfterAutomaticallyTogglesLoadingWhenDisabledChange];
 }
 #pragma mark -
 - (void)setTitleContentVerticalAlignment:(KDIButtonContentVerticalAlignment)titleContentVerticalAlignment {
@@ -282,12 +304,20 @@ static CGFloat const kTitleColorAlphaAdjustment = 0.5;
         [self setImage:[self.originalNormalImage KLO_imageByTintingWithColor:contrastingColor] forState:UIControlStateNormal];
     }
     else {
+        self.activityIndicatorView.color = self.tintColor;
         [self setBackgroundColor:self.originalBackgroundColor];
         [self setTitleColor:nil forState:UIControlStateNormal];
         [self setImage:self.originalNormalImage forState:UIControlStateNormal];
         [self setOriginalNormalImage:nil];
         [self setOriginalBackgroundColor:nil];
     }
+}
+- (void)_updateAfterAutomaticallyTogglesLoadingWhenDisabledChange; {
+    if (!self.automaticallyTogglesLoadingWhenDisabled) {
+        return;
+    }
+    
+    self.loading = !self.isEnabled;
 }
 - (CGSize)_sizeThatFits:(CGSize)size layout:(BOOL)layout; {
     CGSize retval = size;

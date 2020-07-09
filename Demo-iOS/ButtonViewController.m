@@ -31,6 +31,9 @@
 @property (weak,nonatomic) IBOutlet UISwitch *invertedSwitch;
 @property (weak,nonatomic) IBOutlet UISwitch *roundedSwitch;
 @property (weak,nonatomic) IBOutlet UISwitch *activityIndicatorSwitch;
+@property (weak,nonatomic) IBOutlet UISwitch *loadingWhenDisabledSwitch;
+@property (weak,nonatomic) IBOutlet UISwitch *enabledSwitch;
+@property (weak,nonatomic) IBOutlet UISwitch *borderedSwitch;
 @end
 
 @implementation ButtonViewController
@@ -45,6 +48,8 @@
     kstWeakify(self);
     
     [self KSO_addNavigationBarTitleView];
+    
+    self.button.borderColorMatchesTintColor = YES;
     
     void(^block)(void) = ^{
         kstStrongify(self);
@@ -107,6 +112,22 @@
     [self.activityIndicatorSwitch KDI_addBlock:^(__kindof UIControl * _Nonnull control, UIControlEvents controlEvents) {
         kstStrongify(self);
         self.button.loading = self.activityIndicatorSwitch.isOn;
+    } forControlEvents:UIControlEventValueChanged];
+    
+    [self.loadingWhenDisabledSwitch KDI_addBlock:^(__kindof UIControl * _Nonnull control, UIControlEvents controlEvents) {
+        kstStrongify(self);
+        self.button.automaticallyTogglesLoadingWhenDisabled = self.loadingWhenDisabledSwitch.isOn;
+    } forControlEvents:UIControlEventValueChanged];
+    
+    [self.enabledSwitch KDI_addBlock:^(__kindof UIControl * _Nonnull control, UIControlEvents controlEvents) {
+        kstStrongify(self);
+        self.button.enabled = self.enabledSwitch.isOn;
+    } forControlEvents:UIControlEventValueChanged];
+    
+    [self.borderedSwitch KDI_addBlock:^(__kindof UIControl * _Nonnull control, UIControlEvents controlEvents) {
+        kstStrongify(self);
+        self.button.KDI_borderWidth = self.borderedSwitch.isOn ? 1.0 : 0.0;
+        self.button.KDI_cornerRadius = 4.0;
     } forControlEvents:UIControlEventValueChanged];
     
     self.button.contentEdgeInsets = UIEdgeInsetsMake(kSubviewPadding, kSubviewPadding, kSubviewPadding, kSubviewPadding);
