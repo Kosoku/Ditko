@@ -19,14 +19,26 @@
 
 #import <UIKit/UIKit.h>
 
+/**
+ KDIScrollViewFadeAxis is an enum that represents the axis for which to apply a gradient fade.
+ */
 typedef NS_ENUM(NSInteger, KDIScrollViewFadeAxis) {
+    /**
+     No gradient fade will be applied.
+     */
     KDIScrollViewFadeAxisNone = -1,
+    /**
+     A gradient fade will be applied to the horizontal axis, meaning the left and right edges.
+     */
     KDIScrollViewFadeAxisHorizontal = UILayoutConstraintAxisHorizontal,
+    /**
+     A gradient fade will be applied to the vertical axis, meaning the top and bottom edges.
+     */
     KDIScrollViewFadeAxisVertical = UILayoutConstraintAxisVertical
 };
 
 /**
- KDIScrollView is a UIScrollView subclass that adds simple keyboard adjustment behavior. It will adjust its contentInset appropriately if adjustsContentInsetForKeyboard is YES.
+ KDIScrollView is a UIScrollView subclass that adds a few convenient capabilities. It can automatically adjust its contentInsets in response to the keyboard. It can also apply a gradient fade to the leading and trailing edges of its primary scrolling axis.
  */
 @interface KDIScrollView : UIScrollView
 
@@ -37,8 +49,23 @@ typedef NS_ENUM(NSInteger, KDIScrollViewFadeAxis) {
  */
 @property (assign,nonatomic) BOOL adjustsContentInsetForKeyboard;
 
+/**
+ Get and set the axis on which to apply a gradient fade.
+ 
+ The default is KDIScrollViewFadeAxisNone.
+ */
 @property (assign,nonatomic) KDIScrollViewFadeAxis fadeAxis;
+/**
+ Get and set the leading edge fade percentage, which is the amount of content on the leading edge that the fade will cover.
+ 
+ For example, if the value is 0.1, the fade will start at the leading edge and end 10 percent away from the leading edge towards the center of the receiver. The default is 0.0.
+ */
 @property (assign,nonatomic) float leadingEdgeFadePercentage;
+/**
+ Get and set the trailing edge fade percentage, which is the amount of content on the trailing edge that the fade will cover.
+ 
+ For example, if the value if 0.1, the fade will start at the trailing edge and end 10 percent away from the trailing edge towards the center of the receiver. The default is 0.0.
+ */
 @property (assign,nonatomic) float trailingEdgeFadePercentage;
 
 @end
