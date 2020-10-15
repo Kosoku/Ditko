@@ -40,6 +40,8 @@
 #import "RoundedImageViewController.h"
 #import "PreviewViewController.h"
 
+#import "Demo_iOS-Swift.h"
+
 #import <Ditko/Ditko.h>
 #import <KSOFontAwesomeExtensions/KSOFontAwesomeExtensions.h>
 #import <Loki/Loki.h>
@@ -66,7 +68,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.detailViewClasses = @[FontDynamicTypeExtensionsViewController.class,
+    self.detailViewClasses = @[ScrollViewController.class,
+                               FontDynamicTypeExtensionsViewController.class,
                                ImageExtensionsViewController.class,
                                ColorExtensionsViewController.class,
                                TextFieldViewController.class,

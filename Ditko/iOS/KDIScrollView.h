@@ -19,6 +19,12 @@
 
 #import <UIKit/UIKit.h>
 
+typedef NS_ENUM(NSInteger, KDIScrollViewFadeAxis) {
+    KDIScrollViewFadeAxisNone = -1,
+    KDIScrollViewFadeAxisHorizontal = UILayoutConstraintAxisHorizontal,
+    KDIScrollViewFadeAxisVertical = UILayoutConstraintAxisVertical
+};
+
 /**
  KDIScrollView is a UIScrollView subclass that adds simple keyboard adjustment behavior. It will adjust its contentInset appropriately if adjustsContentInsetForKeyboard is YES.
  */
@@ -30,5 +36,9 @@
  The default is NO.
  */
 @property (assign,nonatomic) BOOL adjustsContentInsetForKeyboard;
+
+@property (assign,nonatomic) KDIScrollViewFadeAxis fadeAxis;
+@property (assign,nonatomic) float leadingEdgeFadePercentage;
+@property (assign,nonatomic) float trailingEdgeFadePercentage;
 
 @end
