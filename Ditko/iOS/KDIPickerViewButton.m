@@ -84,6 +84,7 @@ NSNotificationName const KDIPickerViewButtonNotificationDidResignFirstResponder 
 @end
 
 @interface KDIPickerViewButton () <UIPickerViewDataSource, UIPickerViewDelegate>
+@property (readwrite,assign,nonatomic) BOOL hasSelectedRow;
 @property (readwrite,nonatomic) UIView *inputView;
 @property (readwrite,nonatomic) UIView *inputAccessoryView;
 
@@ -179,6 +180,8 @@ NSNotificationName const KDIPickerViewButtonNotificationDidResignFirstResponder 
     return retval;
 }
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
+    self.hasSelectedRow = YES;
+    
     [self _reloadTitleForSelectedRowsInPickerView];
     
     if ([self.delegate respondsToSelector:@selector(pickerViewButton:didSelectRow:inComponent:)]) {
@@ -202,6 +205,8 @@ NSNotificationName const KDIPickerViewButtonNotificationDidResignFirstResponder 
 }
 - (void)selectRow:(NSInteger)row inComponent:(NSInteger)component {
     [self.pickerView selectRow:row inComponent:component animated:NO];
+    
+    self.hasSelectedRow = YES;
     
     [self _reloadTitleForSelectedRowsInPickerView];
 }

@@ -48,6 +48,11 @@ NS_ASSUME_NONNULL_BEGIN
 @property (copy,nonatomic,null_resettable) NSString *selectedComponentsJoinString;
 
 /**
+ Get whether a row in the picker has been selected, either by calling selectRow:inComponent: or by user interaction. The default is NO.
+*/
+@property (readonly,assign,nonatomic) BOOL hasSelectedRow;
+
+/**
  Get whether the receiver is presenting the picker view. This is updated whenever the user taps on the receiver or presentPickerView or dismissPickerView methods are called.
  */
 @property (readonly,nonatomic,getter=isPresentingPickerView) BOOL presentingPickerView;
