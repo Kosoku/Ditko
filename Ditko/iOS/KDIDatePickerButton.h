@@ -46,6 +46,11 @@ typedef NSString* _Nullable (^KDIDatePickerButtonDateTitleBlock)(__kindof KDIDat
 @property (copy,nonatomic,null_resettable) NSDate *date;
 
 /**
+ Get whether the date has been set, either by the date property or by user interaction.
+ */
+@property (readonly,assign,nonatomic) BOOL hasSelectedDate;
+
+/**
  Set and get the mode used by the managed date picker view.
  
  The default is UIDatePickerModeDateAndTime.

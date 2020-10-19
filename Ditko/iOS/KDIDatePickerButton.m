@@ -24,6 +24,7 @@
 #import <Stanley/KSTScopeMacros.h>
 
 @interface KDIDatePickerButton ()
+@property (readwrite,assign,nonatomic) BOOL hasSelectedDate;
 @property (readwrite,nonatomic) UIView *inputView;
 @property (readwrite,nonatomic) UIView *inputAccessoryView;
 
@@ -110,6 +111,8 @@
 }
 - (void)setDate:(NSDate *)date {
     [self.datePicker setDate:date ?: [self.class _defaultDate]];
+    
+    self.hasSelectedDate = YES;
     
     [self _reloadTitleFromDatePickerDate];
 }
@@ -203,6 +206,8 @@
     [self sendActionsForControlEvents:UIControlEventValueChanged];
     
     [self didChangeValueForKey:@kstKeypath(self,date)];
+    
+    self.hasSelectedDate = YES;
     
     [self _reloadTitleFromDatePickerDate];
 }
