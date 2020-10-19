@@ -4,6 +4,7 @@
 
 ## bundler
 .gems/
+.bundle/
 
 ## Build generated
 build/
