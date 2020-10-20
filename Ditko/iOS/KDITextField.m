@@ -106,24 +106,72 @@
 }
 #pragma mark -
 - (CGRect)textRectForBounds:(CGRect)bounds {
-    BOOL leftViewVisible = self.leftViewMode == UITextFieldViewModeAlways || (self.isEditing && self.leftViewMode == UITextFieldViewModeWhileEditing) || (!self.isEditing && self.leftViewMode == UITextFieldViewModeUnlessEditing);
-    BOOL rightViewVisible = self.rightViewMode == UITextFieldViewModeAlways || (self.isEditing && self.rightViewMode == UITextFieldViewModeWhileEditing) || (!self.isEditing && self.rightViewMode == UITextFieldViewModeUnlessEditing);
+    BOOL leftViewVisible = self.leftViewMode == UITextFieldViewModeAlways ||
+    (self.isEditing && self.leftViewMode == UITextFieldViewModeWhileEditing) ||
+    (!self.isEditing && self.leftViewMode == UITextFieldViewModeUnlessEditing);
+    BOOL rightViewVisible = self.rightViewMode == UITextFieldViewModeAlways ||
+    (self.isEditing && self.rightViewMode == UITextFieldViewModeWhileEditing) ||
+    (!self.isEditing && self.rightViewMode == UITextFieldViewModeUnlessEditing);
     CGFloat leftViewWidth = CGRectGetWidth([self leftViewRectForBounds:bounds]);
     CGFloat rightViewWidth = CGRectGetWidth([self rightViewRectForBounds:bounds]);
     CGFloat x = self.textEdgeInsets.left;
+    CGFloat leftViewDelta = self.leftViewEdgeInsets.left + leftViewWidth + self.leftViewEdgeInsets.right;
+    CGFloat rightViewDelta = self.rightViewEdgeInsets.left + rightViewWidth + self.rightViewEdgeInsets.right;
     
-    if (leftViewVisible) {
-        x += self.leftViewEdgeInsets.left + leftViewWidth + self.leftViewEdgeInsets.right;
+    // if the left view is visible and text alignment is center, inset by the MAX of left/right view delta
+    if (leftViewVisible &&
+        self.textAlignment == NSTextAlignmentCenter) {
+        
+        x += MAX(leftViewDelta, rightViewDelta);
+    }
+    // if the left view is visible, inset by left view delta
+    else if (leftViewVisible) {
+        x += leftViewDelta;
+    }
+    // if the right view is visible and text alignment is center, inset by right view delta
+    else if (rightViewVisible &&
+             self.textAlignment == NSTextAlignmentCenter) {
+        
+        x += rightViewDelta;
     }
     
     CGFloat y = self.textEdgeInsets.top;
     CGFloat width = CGRectGetWidth(bounds) - self.textEdgeInsets.left - self.textEdgeInsets.right;
     
-    if (leftViewVisible) {
-        width -= self.leftViewEdgeInsets.left + leftViewWidth + self.leftViewEdgeInsets.right;
+    // if the left and right views are visible
+    if (leftViewVisible &&
+        rightViewVisible) {
+        
+        // if the text alignment is center, adjust width by the MAX of left/right view delta and double it
+        if (self.textAlignment == NSTextAlignmentCenter) {
+            width -= MAX(leftViewDelta, rightViewDelta) * 2.0;
+        }
+        // otherwise adjust width by the sum of left/right view delta
+        else {
+            width -= leftViewDelta + rightViewDelta;
+        }
     }
-    if (rightViewVisible) {
-        width -= self.rightViewEdgeInsets.left + rightViewWidth + self.rightViewEdgeInsets.right;
+    // if the left view is visible, but the right view is not and the text alignment is center, adjust the width by left view delta and double it
+    else if (leftViewVisible &&
+             !rightViewVisible &&
+             self.textAlignment == NSTextAlignmentCenter) {
+        
+        width -= leftViewDelta * 2.0;
+    }
+    // if the right view is visible, but the left view is not and the text alignment is center, adjust the width by right view delta and double it
+    else if (rightViewVisible &&
+             !leftViewVisible &&
+             self.textAlignment == NSTextAlignmentCenter) {
+        
+        width -= rightViewDelta * 2.0;
+    }
+    // if the left view is visible, adjust width by left view delta
+    else if (leftViewVisible) {
+        width -= leftViewDelta;
+    }
+    // if the right view is visible, adjust width by right view delta
+    else if (rightViewVisible) {
+        width -= rightViewDelta;
     }
     
     CGFloat height = CGRectGetHeight(bounds) - self.textEdgeInsets.top - self.textEdgeInsets.bottom;
