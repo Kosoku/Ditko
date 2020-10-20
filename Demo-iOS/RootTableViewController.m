@@ -33,7 +33,6 @@
 #import "ProgressNavigationBarViewController.h"
 #import "EmptyViewController.h"
 #import "ViewControllerExtensionsViewController.h"
-#import "TextFieldViewController.h"
 #import "ColorExtensionsViewController.h"
 #import "ImageExtensionsViewController.h"
 #import "FontDynamicTypeExtensionsViewController.h"
@@ -68,11 +67,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.detailViewClasses = @[ScrollViewController.class,
+    self.detailViewClasses = @[TextFieldViewController.class,
+                               ScrollViewController.class,
                                FontDynamicTypeExtensionsViewController.class,
                                ImageExtensionsViewController.class,
                                ColorExtensionsViewController.class,
-                               TextFieldViewController.class,
                                ViewControllerExtensionsViewController.class,
                                EmptyViewController.class,
                                ProgressNavigationBarViewController.class,

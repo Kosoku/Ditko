@@ -33,8 +33,6 @@
 		0708C081207DADBE00849AAC /* EmptyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0708C07F207DADBE00849AAC /* EmptyViewController.xib */; };
 		0708C084207DB24200849AAC /* ViewControllerExtensionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0708C083207DB24200849AAC /* ViewControllerExtensionsViewController.m */; };
 		0708C087207DB2B000849AAC /* ViewControllerExtensionsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0708C085207DB2B000849AAC /* ViewControllerExtensionsViewController.xib */; };
-		0708C08A207DBE1400849AAC /* TextFieldViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0708C089207DBE1400849AAC /* TextFieldViewController.m */; };
-		0708C08D207DBF7100849AAC /* TextFieldViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0708C08B207DBF7100849AAC /* TextFieldViewController.xib */; };
 		0708C090207DCFF100849AAC /* ColorExtensionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0708C08F207DCFF100849AAC /* ColorExtensionsViewController.m */; };
 		0708C093207DD21500849AAC /* ColorExtensionsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0708C091207DD21500849AAC /* ColorExtensionsViewController.xib */; };
 		070F991A204BD834001CFEFE /* KDITableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 070F9918204BD834001CFEFE /* KDITableViewCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -379,6 +377,7 @@
 		74800EA3215B0EA500487D00 /* UIImageView+KDIExtensions.h in Headers */ = {isa = PBXBuildFile; fileRef = 74800EA1215B0EA500487D00 /* UIImageView+KDIExtensions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		74800EA4215B0EA500487D00 /* UIImageView+KDIExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 74800EA2215B0EA500487D00 /* UIImageView+KDIExtensions.m */; };
 		7991ACDF2538CA47006F7C68 /* ScrollViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7991ACDE2538CA47006F7C68 /* ScrollViewController.swift */; };
+		79F1C1F1253F29FA00998739 /* TextFieldViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F1C1F0253F29FA00998739 /* TextFieldViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -523,9 +522,6 @@
 		0708C082207DB24200849AAC /* ViewControllerExtensionsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewControllerExtensionsViewController.h; sourceTree = "<group>"; };
 		0708C083207DB24200849AAC /* ViewControllerExtensionsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewControllerExtensionsViewController.m; sourceTree = "<group>"; };
 		0708C086207DB2B000849AAC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/ViewControllerExtensionsViewController.xib; sourceTree = "<group>"; };
-		0708C088207DBE1400849AAC /* TextFieldViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TextFieldViewController.h; sourceTree = "<group>"; };
-		0708C089207DBE1400849AAC /* TextFieldViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TextFieldViewController.m; sourceTree = "<group>"; };
-		0708C08C207DBF7100849AAC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/TextFieldViewController.xib; sourceTree = "<group>"; };
 		0708C08E207DCFF100849AAC /* ColorExtensionsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ColorExtensionsViewController.h; sourceTree = "<group>"; };
 		0708C08F207DCFF100849AAC /* ColorExtensionsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ColorExtensionsViewController.m; sourceTree = "<group>"; };
 		0708C092207DD21500849AAC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/ColorExtensionsViewController.xib; sourceTree = "<group>"; };
@@ -784,6 +780,7 @@
 		74800EA2215B0EA500487D00 /* UIImageView+KDIExtensions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "UIImageView+KDIExtensions.m"; path = "iOS/UIImageView+KDIExtensions.m"; sourceTree = "<group>"; };
 		7991ACDD2538CA47006F7C68 /* Demo-iOS-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Demo-iOS-Bridging-Header.h"; sourceTree = "<group>"; };
 		7991ACDE2538CA47006F7C68 /* ScrollViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollViewController.swift; sourceTree = "<group>"; };
+		79F1C1F0253F29FA00998739 /* TextFieldViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1191,9 +1188,7 @@
 				0708C08E207DCFF100849AAC /* ColorExtensionsViewController.h */,
 				0708C08F207DCFF100849AAC /* ColorExtensionsViewController.m */,
 				0708C091207DD21500849AAC /* ColorExtensionsViewController.xib */,
-				0708C088207DBE1400849AAC /* TextFieldViewController.h */,
-				0708C089207DBE1400849AAC /* TextFieldViewController.m */,
-				0708C08B207DBF7100849AAC /* TextFieldViewController.xib */,
+				79F1C1F0253F29FA00998739 /* TextFieldViewController.swift */,
 				0708C082207DB24200849AAC /* ViewControllerExtensionsViewController.h */,
 				0708C083207DB24200849AAC /* ViewControllerExtensionsViewController.m */,
 				0708C085207DB2B000849AAC /* ViewControllerExtensionsViewController.xib */,
@@ -1851,7 +1846,6 @@
 				0708C057207D5A2C00849AAC /* BadgeButtonViewController.xib in Resources */,
 				0722DA84207C1B93004F8C36 /* LabelViewController.xib in Resources */,
 				0741C18D2140F0AA00B80451 /* Media in Resources */,
-				0708C08D207DBF7100849AAC /* TextFieldViewController.xib in Resources */,
 				0722DA7E207BFDC0004F8C36 /* BadgeViewController.xib in Resources */,
 				0708C075207D994900849AAC /* DatePickerViewController.xib in Resources */,
 				0708C06F207D93A000849AAC /* PickerViewController.xib in Resources */,
@@ -2167,7 +2161,6 @@
 				0708C084207DB24200849AAC /* ViewControllerExtensionsViewController.m in Sources */,
 				0708C05A207D5D1100849AAC /* TextViewController.m in Sources */,
 				07BE81CB2135D01600D9A148 /* RoundedImageViewController.m in Sources */,
-				0708C08A207DBE1400849AAC /* TextFieldViewController.m in Sources */,
 				0733395F207BD3890080B390 /* UIViewController+Extensions.m in Sources */,
 				7991ACDF2538CA47006F7C68 /* ScrollViewController.swift in Sources */,
 				07333942207B9F810080B390 /* RootTableViewController.m in Sources */,
@@ -2183,6 +2176,7 @@
 				07333953207BC2680080B390 /* RootNavigationController.m in Sources */,
 				0708C072207D954800849AAC /* DatePickerViewController.m in Sources */,
 				0733394A207BB0E20080B390 /* AccessoryViewController.m in Sources */,
+				79F1C1F1253F29FA00998739 /* TextFieldViewController.swift in Sources */,
 				0733394D207BB0FE0080B390 /* AccessoryView.m in Sources */,
 				0722DA7B207BFDA5004F8C36 /* BadgeViewController.m in Sources */,
 				0795E64B1E704A56004A5CB2 /* main.m in Sources */,
@@ -2301,14 +2295,6 @@
 				0708C086207DB2B000849AAC /* Base */,
 			);
 			name = ViewControllerExtensionsViewController.xib;
-			sourceTree = "<group>";
-		};
-		0708C08B207DBF7100849AAC /* TextFieldViewController.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				0708C08C207DBF7100849AAC /* Base */,
-			);
-			name = TextFieldViewController.xib;
 			sourceTree = "<group>";
 		};
 		0708C091207DD21500849AAC /* ColorExtensionsViewController.xib */ = {

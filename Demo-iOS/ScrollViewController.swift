@@ -58,6 +58,8 @@ final class ScrollViewController: UIViewController, DetailViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.kso_addNavigationBarTitleView()
+        
         self.stackView.translatesAutoresizingMaskIntoConstraints = false
         self.stackView.axis = .vertical
         self.stackView.spacing = 8.0
