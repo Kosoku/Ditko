@@ -34,15 +34,15 @@ final class TextFieldViewController: UIViewController, DetailViewController {
     private let stackView = UIStackView()
     
     private let options: [TextFieldOptions] = [
-        [.alignmentLeft],
-        [.alignmentLeft, .leftView],
-        [.alignmentLeft, .rightView],
-        [.alignmentLeft, .leftView, .rightView],
-        
         [.alignmentCenter],
         [.alignmentCenter, .leftView],
         [.alignmentCenter, .rightView],
         [.alignmentCenter, .leftView, .rightView],
+        
+        [.alignmentLeft],
+        [.alignmentLeft, .leftView],
+        [.alignmentLeft, .rightView],
+        [.alignmentLeft, .leftView, .rightView],
         
         [.alignmentRight],
         [.alignmentRight, .leftView],
@@ -60,6 +60,7 @@ final class TextFieldViewController: UIViewController, DetailViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.title = Self.detailViewTitle()
         self.kso_addNavigationBarTitleView()
         
         self.view.backgroundColor = .white

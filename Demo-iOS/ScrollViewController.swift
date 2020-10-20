@@ -58,6 +58,7 @@ final class ScrollViewController: UIViewController, DetailViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.title = Self.detailViewTitle()
         self.kso_addNavigationBarTitleView()
         
         self.stackView.translatesAutoresizingMaskIntoConstraints = false
