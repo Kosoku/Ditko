@@ -20,7 +20,7 @@
 #import <TargetConditionals.h>
 #if (TARGET_OS_IPHONE)
 #import <UIKit/UIKit.h>
-#import "UIFont+KDIDynamicTypeExtensions.h"
+#import <Ditko/UIFont+KDIDynamicTypeExtensions.h>
 #else
 #import <AppKit/AppKit.h>
 #endif

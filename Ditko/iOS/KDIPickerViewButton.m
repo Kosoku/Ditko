@@ -253,7 +253,6 @@ NSNotificationName const KDIPickerViewButtonNotificationDidResignFirstResponder 
     
     _pickerView = [[UIPickerView alloc] initWithFrame:CGRectZero];
     [_pickerView setTranslatesAutoresizingMaskIntoConstraints:NO];
-    [_pickerView setShowsSelectionIndicator:YES];
     [_pickerView setDataSource:self];
     [_pickerView setDelegate:self];
     

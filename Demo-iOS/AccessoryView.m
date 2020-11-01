@@ -41,7 +41,7 @@
     [self.button setTitle:@"Tap to dismiss accessory view" forState:UIControlStateNormal];
     [self.button setTitleColor:[self.backgroundColor KDI_contrastingColor] forState:UIControlStateNormal];
     [self.button KDI_addBlock:^(__kindof UIControl * _Nonnull control, UIControlEvents controlEvents) {
-        ((KDIWindow *)UIApplication.sharedApplication.keyWindow).accessoryView = nil;
+        ((KDIWindow *)self.window).accessoryView = nil;
     } forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:self.button];
     

@@ -23,9 +23,9 @@
 #import <TargetConditionals.h>
 
 #if (TARGET_OS_IPHONE)
-#import "UIColor+KDIExtensions.h"
+#import <Ditko/UIColor+KDIExtensions.h>
 #else
-#import "NSColor+KDIExtensions.h"
+#import <Ditko/NSColor+KDIExtensions.h>
 #endif
 
 /**

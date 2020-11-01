@@ -72,7 +72,7 @@
     [self.savePanel beginWithCompletionHandler:^(NSInteger result) {
         kstStrongify(self);
         
-        self.completion(self.savePanel, result == NSFileHandlingPanelOKButton ? self.savePanel.URL : nil);
+        self.completion(self.savePanel, result == NSModalResponseOK ? self.savePanel.URL : nil);
     }];
 }
 - (void)presentSavePanelAsSheet {
@@ -81,7 +81,7 @@
         kstStrongify(self);
         [self.savePanel orderOut:nil];
         
-        self.completion(self.savePanel, result == NSFileHandlingPanelOKButton ? self.savePanel.URL : nil);
+        self.completion(self.savePanel, result == NSModalResponseOK ? self.savePanel.URL : nil);
     }];
 }
 

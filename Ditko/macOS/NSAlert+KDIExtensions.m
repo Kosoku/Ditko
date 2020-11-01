@@ -40,13 +40,13 @@ KDINSAlertOptionsKey const KDINSAlertOptionsKeyAccessoryView = @"KDINSAlertOptio
     NSModalResponse returnCode = [self runModal];
     
     if (completion != nil) {
-        completion(returnCode,self.suppressionButton.state == NSOnState,self.accessoryView);
+        completion(returnCode,self.suppressionButton.state == NSControlStateValueOn,self.accessoryView);
     }
 }
 - (void)KDI_presentAlertAsSheetWithCompletion:(nullable KDINSAlertCompletionBlock)completion; {
     [self beginSheetModalForWindow:[NSWindow KDI_windowForPresenting] completionHandler:^(NSModalResponse returnCode) {
         if (completion != nil) {
-            completion(returnCode,self.suppressionButton.state == NSOnState,self.accessoryView);
+            completion(returnCode,self.suppressionButton.state == NSControlStateValueOn,self.accessoryView);
         }
     }];
 }

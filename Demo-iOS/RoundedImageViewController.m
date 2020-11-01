@@ -44,7 +44,7 @@
     self.roundedImageView.rounded = YES;
     [self.view addSubview:self.roundedImageView];
     
-    [NSLayoutConstraint activateConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[top]-[view]" options:0 metrics:nil views:@{@"top": self.topLayoutGuide, @"view": self.roundedImageView}]];
+    [NSLayoutConstraint activateConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[top]-[view]" options:0 metrics:nil views:@{@"top": self.view.safeAreaLayoutGuide, @"view": self.roundedImageView}]];
     [NSLayoutConstraint activateConstraints:@[[self.roundedImageView.centerXAnchor constraintEqualToAnchor:self.view.centerXAnchor]]];
     
     NSURLSessionTask *task = [NSURLSession.sharedSession dataTaskWithURL:[NSURL URLWithString:@"https://picsum.photos/200"] completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {

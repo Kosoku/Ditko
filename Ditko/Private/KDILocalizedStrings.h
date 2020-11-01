@@ -21,7 +21,7 @@
 #define __KDI_LOCALIZED_STRINGS__
 
 #import <Foundation/Foundation.h>
-#import "NSBundle+KDIPrivateExtensions.h"
+#import <Ditko/NSBundle+KDIPrivateExtensions.h>
 
 #define KDILocalizedStringErrorAlertDefaultSingleCancelButtonTitle() NSLocalizedStringWithDefaultValue(@"error.alert.cancel-button-title.single", nil, [NSBundle KDI_frameworkBundle], @"Ok", @"default error alert single cancel button title")
 #define KDILocalizedStringErrorAlertDefaultMultipleCancelButtonTitle() NSLocalizedStringWithDefaultValue(@"error.alert.cancel-button-title.multiple", nil, [NSBundle KDI_frameworkBundle], @"Cancel", @"default error alert multiple cancel button title")

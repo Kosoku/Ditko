@@ -240,7 +240,7 @@
     _headlineLabel.KDI_dynamicTypeTextStyle = _headlineTextStyle;
     [_stackView addArrangedSubview:_headlineLabel];
     
-    _activityIndicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
+    _activityIndicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleMedium];
     _activityIndicatorView.translatesAutoresizingMaskIntoConstraints = NO;
     _activityIndicatorView.hidesWhenStopped = YES;
     _activityIndicatorView.color = _bodyColor;

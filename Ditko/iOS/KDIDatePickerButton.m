@@ -158,6 +158,9 @@
     [self addTarget:self action:@selector(_toggleFirstResponderAction:) forControlEvents:UIControlEventTouchUpInside];
     
     _datePicker = [[UIDatePicker alloc] init];
+    if (@available(iOS 13.4, *)) {
+        _datePicker.preferredDatePickerStyle = UIDatePickerStyleWheels;
+    }
     [_datePicker setTranslatesAutoresizingMaskIntoConstraints:NO];
     [_datePicker setDatePickerMode:UIDatePickerModeDateAndTime];
     [_datePicker addTarget:self action:@selector(_datePickerAction:) forControlEvents:UIControlEventValueChanged];

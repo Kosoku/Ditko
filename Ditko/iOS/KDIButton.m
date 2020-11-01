@@ -265,7 +265,7 @@ static CGFloat const kTitleColorAlphaAdjustment = 0.5;
 }
 #pragma mark *** Private Methods ***
 - (void)_KDIButtonInit; {
-    _activityIndicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
+    _activityIndicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleMedium];
     _activityIndicatorView.hidesWhenStopped = NO;
     _activityIndicatorView.alpha = 0.0;
     _activityIndicatorView.color = self.tintColor;

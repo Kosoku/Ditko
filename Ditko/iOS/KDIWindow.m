@@ -61,7 +61,7 @@ NSNotificationName const KDIWindowNotificationDidChangeAccessoryViewPosition = @
         
         switch (self.accessoryViewPosition) {
             case KDIWindowAccessoryViewPositionTop:
-                height += CGRectGetHeight(UIApplication.sharedApplication.statusBarFrame);
+                height += CGRectGetHeight(self.windowScene.statusBarManager.statusBarFrame);
                 
                 [self.accessoryView setFrame:CGRectMake(0, 0, CGRectGetWidth(self.bounds), height)];
                 

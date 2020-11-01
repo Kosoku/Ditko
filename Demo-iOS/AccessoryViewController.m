@@ -49,11 +49,11 @@
         if (self.segmentedControl.selectedSegmentIndex == 1) {
             position = KDIWindowAccessoryViewPositionBottom;
         }
-        ((KDIWindow *)UIApplication.sharedApplication.keyWindow).accessoryViewPosition = position;
+        ((KDIWindow *)self.view.window).accessoryViewPosition = position;
     } forControlEvents:UIControlEventValueChanged];
     
     [self.button KDI_addBlock:^(__kindof UIControl * _Nonnull control, UIControlEvents controlEvents) {
-        ((KDIWindow *)UIApplication.sharedApplication.keyWindow).accessoryView = [[AccessoryView alloc] initWithFrame:CGRectZero];
+        ((KDIWindow *)self.view.window).accessoryView = [[AccessoryView alloc] initWithFrame:CGRectZero];
     } forControlEvents:UIControlEventTouchUpInside];
 }
 

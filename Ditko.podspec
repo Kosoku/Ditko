@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'Ditko'
-  s.version          = '3.54.1'
+  s.version          = '4.0.0'
   s.summary          = 'Ditko is an iOS/macOS/tvOS/watchOS framework that extends the AppKit, UIKit, and WatchKit frameworks.'
   s.description      = <<-DESC
 Ditko is an iOS/macOS/tvOS/watchOS framework that extends the `AppKit`, `UIKit`, and `WatchKit` frameworks. It includes macros, functions, categories and classes that accelerate common development tasks. For example, a category on `UIColor` and `NSColor` to quickly create instances given RBBA or HSBA components.
@@ -12,10 +12,10 @@ Ditko is an iOS/macOS/tvOS/watchOS framework that extends the `AppKit`, `UIKit`,
   s.author           = { 'William Towe' => 'willbur1984@gmail.com' }
   s.source           = { :git => 'https://github.com/Kosoku/Ditko.git', :tag => s.version.to_s }
 
-  s.ios.deployment_target = '10.0'
-  s.osx.deployment_target = '10.12'
-  s.tvos.deployment_target = '10.0'
-  s.watchos.deployment_target = '3.0'
+  s.ios.deployment_target = '13.0'
+  s.osx.deployment_target = '10.15'
+  s.tvos.deployment_target = '13.0'
+  s.watchos.deployment_target = '5.0'
   
   s.requires_arc = true
 

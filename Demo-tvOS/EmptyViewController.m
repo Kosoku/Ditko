@@ -41,7 +41,7 @@
     
     [emptyView setTranslatesAutoresizingMaskIntoConstraints:NO];
     [emptyView setBackgroundColor:UIColor.whiteColor];
-    [emptyView setImage:[UIImage KSO_fontAwesomeImageWithString:@"\uf080" size:CGSizeMake(128, 128)]];
+    [emptyView setImage:[UIImage KSO_fontAwesomeRegularImageWithString:@"\uf080" size:CGSizeMake(128, 128)]];
     [emptyView setHeadline:@"Headline Text"];
     [emptyView setBody:@"Body text that should wrap to multiple lines and do something nifty"];
     [emptyView setAction:@"Action Button Text"];
@@ -52,7 +52,7 @@
     [self.view addSubview:emptyView];
     
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[view]|" options:0 metrics:nil views:@{@"view": emptyView}]];
-    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[top][view][bottom]" options:0 metrics:nil views:@{@"view": emptyView, @"top": self.topLayoutGuide, @"bottom": self.bottomLayoutGuide}]];
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[top][view][bottom]" options:0 metrics:nil views:@{@"view": emptyView, @"top": self.view.safeAreaLayoutGuide, @"bottom": self.view.safeAreaLayoutGuide}]];
 }
 
 @end

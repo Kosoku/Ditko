@@ -151,8 +151,7 @@
     if (!UIMenuController.sharedMenuController.isMenuVisible) {
         [self becomeFirstResponder];
         
-        [UIMenuController.sharedMenuController setTargetRect:self.bounds inView:self];
-        [UIMenuController.sharedMenuController setMenuVisible:YES animated:YES];
+        [UIMenuController.sharedMenuController showMenuFromView:self rect:self.bounds];
     }
 }
 #endif

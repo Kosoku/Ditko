@@ -73,8 +73,8 @@ final class TextFieldViewController: UIViewController, DetailViewController {
         
         NSLayoutConstraint.activate(NSLayoutConstraint.constraints(withVisualFormat: "H:|-[view]-|", options: [], metrics: nil, views: ["view": self.scrollView]))
         NSLayoutConstraint.activate([
-            self.scrollView.topAnchor.constraint(equalTo: self.topLayoutGuide.bottomAnchor),
-            self.scrollView.bottomAnchor.constraint(equalTo: self.bottomLayoutGuide.bottomAnchor)
+            self.scrollView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor),
+            self.scrollView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor)
         ])
         
         self.stackView.translatesAutoresizingMaskIntoConstraints = false

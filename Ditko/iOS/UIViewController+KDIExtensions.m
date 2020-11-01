@@ -33,7 +33,21 @@
 }
 
 + (UIViewController *)KDI_viewControllerForPresenting; {
-    return [[UIApplication sharedApplication].keyWindow.rootViewController KDI_viewControllerForPresenting];
+    for (UIScene *scene in UIApplication.sharedApplication.connectedScenes) {
+        if (![scene isKindOfClass:UIWindowScene.class]) {
+            continue;
+        }
+        
+        for (UIWindow *window in [(UIWindowScene *)scene windows]) {
+            if (!window.isKeyWindow) {
+                continue;
+            }
+            
+            return window.rootViewController.KDI_viewControllerForPresenting;
+        }
+    }
+    
+    return nil;
 }
 - (UIViewController *)KDI_viewControllerForPresenting {
     UIViewController *retval = self;

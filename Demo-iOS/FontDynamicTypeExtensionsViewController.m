@@ -60,9 +60,9 @@
     
     [self _updateDynamicTypeObjectsWithFontName:fontNames.firstObject];
     
-    [self.fontPickerViewButton KDI_setPickerViewButtonRows:fontNames didSelectRowBlock:^(NSString * _Nonnull row) {
+    [self.fontPickerViewButton KDI_setPickerViewButtonRows:fontNames didSelectRowBlock:^(id<KDIPickerViewButtonRow>  _Nonnull row) {
         kstStrongify(self);
-        [self _updateDynamicTypeObjectsWithFontName:row];
+        [self _updateDynamicTypeObjectsWithFontName:(NSString *)row];
     }];
 }
 

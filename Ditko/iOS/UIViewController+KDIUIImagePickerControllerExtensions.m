@@ -53,7 +53,7 @@
     self.completion = nil;
 }
 
-- (void)popoverPresentationControllerDidDismissPopover:(UIPopoverPresentationController *)popoverPresentationController {
+- (void)presentationControllerDidDismiss:(UIPresentationController *)presentationController {
     self.completion(nil);
     self.completion = nil;
 }

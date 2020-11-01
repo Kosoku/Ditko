@@ -192,9 +192,7 @@
     UIViewAnimationCurve curve = [notification.userInfo[UIKeyboardAnimationCurveUserInfoKey] integerValue];
     
     if ([notification.name isEqualToString:UIKeyboardWillShowNotification]) {
-        [UIView animateWithDuration:duration delay:0 options:UIViewAnimationOptionBeginFromCurrentState animations:^{
-            [UIView setAnimationCurve:curve];
-            
+        [UIView animateWithDuration:duration delay:0 options:UIViewAnimationOptionBeginFromCurrentState|curve animations:^{
             self.contentInset = UIEdgeInsetsMake(0, 0, CGRectGetHeight(CGRectIntersection(keyboardFrame, self.bounds)), 0);
         } completion:^(BOOL finished) {
             if (finished) {
@@ -203,9 +201,7 @@
         }];
     }
     else {
-        [UIView animateWithDuration:duration delay:0 options:UIViewAnimationOptionBeginFromCurrentState animations:^{
-            [UIView setAnimationCurve:curve];
-            
+        [UIView animateWithDuration:duration delay:0 options:UIViewAnimationOptionBeginFromCurrentState|curve animations:^{
             self.contentInset = UIEdgeInsetsZero;
         } completion:^(BOOL finished) {
             if (finished) {

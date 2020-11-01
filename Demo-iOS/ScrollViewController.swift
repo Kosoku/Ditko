@@ -67,7 +67,7 @@ final class ScrollViewController: UIViewController, DetailViewController {
         self.view.addSubview(self.stackView)
         
         NSLayoutConstraint.activate(NSLayoutConstraint.constraints(withVisualFormat: "H:|-[view]-|", options: [], metrics: nil, views: ["view": self.stackView]))
-        NSLayoutConstraint.activate([self.stackView.topAnchor.constraint(equalTo: self.topLayoutGuide.bottomAnchor, constant: 8.0)])
+        NSLayoutConstraint.activate([self.stackView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 8.0)])
         
         self.axisSegmentedControl.translatesAutoresizingMaskIntoConstraints = false
         self.axisSegmentedControl.removeAllSegments()
