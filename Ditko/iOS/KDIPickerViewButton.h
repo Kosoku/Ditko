@@ -30,6 +30,13 @@ NS_ASSUME_NONNULL_BEGIN
 @interface KDIPickerViewButton : KDIButton <KDIUIResponder>
 
 /**
+ Get/set the input accessory view of the receiver.
+ 
+ The default is an instance of KDINextPreviousInputAccessoryView.
+ */
+@property (strong,nonatomic,nullable) UIView *inputAccessoryView;
+
+/**
  Get and set the data source of the picker view button.
  
  @see KDIPickerViewButtonDataSource

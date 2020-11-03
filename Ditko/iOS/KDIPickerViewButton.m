@@ -86,7 +86,6 @@ NSNotificationName const KDIPickerViewButtonNotificationDidResignFirstResponder 
 @interface KDIPickerViewButton () <UIPickerViewDataSource, UIPickerViewDelegate>
 @property (readwrite,assign,nonatomic) BOOL hasSelectedRow;
 @property (readwrite,nonatomic) UIView *inputView;
-@property (readwrite,nonatomic) UIView *inputAccessoryView;
 
 @property (strong,nonatomic) UIPickerView *pickerView;
 

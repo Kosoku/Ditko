@@ -26,7 +26,6 @@
 @interface KDIDatePickerButton ()
 @property (readwrite,assign,nonatomic) BOOL hasSelectedDate;
 @property (readwrite,nonatomic) UIView *inputView;
-@property (readwrite,nonatomic) UIView *inputAccessoryView;
 
 @property (strong,nonatomic) UIDatePicker *datePicker;
 

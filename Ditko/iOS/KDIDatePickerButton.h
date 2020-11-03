@@ -39,6 +39,13 @@ typedef NSString* _Nullable (^KDIDatePickerButtonDateTitleBlock)(__kindof KDIDat
 @interface KDIDatePickerButton : KDIButton <KDIUIResponder>
 
 /**
+ Get/set the input accessory view of the receiver.
+ 
+ The default is an instance of KDINextPreviousInputAccessoryView.
+ */
+@property (strong,nonatomic,nullable) UIView *inputAccessoryView;
+
+/**
  Set and get the date of the receiver.
  
  The default is [NSDate date].
