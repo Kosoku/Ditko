@@ -84,7 +84,7 @@ static CGFloat const kTitleColorAlphaAdjustment = 0.5;
 - (void)tintColorDidChange {
     [super tintColorDidChange];
     
-    self.activityIndicatorView.color = self.tintColor;
+    self.activityIndicatorView.color = self.loadingColor ?: self.tintColor;
     
     if (self.borderColorMatchesTintColor) {
         [self setKDI_borderColor:self.tintColor];
@@ -237,6 +237,11 @@ static CGFloat const kTitleColorAlphaAdjustment = 0.5;
     _automaticallyTogglesLoadingWhenDisabled = automaticallyTogglesLoadingWhenDisabled;
     
     [self _updateAfterAutomaticallyTogglesLoadingWhenDisabledChange];
+}
+- (void)setLoadingColor:(UIColor *)loadingColor {
+    _loadingColor = loadingColor;
+    
+    self.activityIndicatorView.color = _loadingColor ?: self.tintColor;
 }
 #pragma mark -
 - (void)setTitleContentVerticalAlignment:(KDIButtonContentVerticalAlignment)titleContentVerticalAlignment {

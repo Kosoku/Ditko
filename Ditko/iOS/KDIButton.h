@@ -114,6 +114,12 @@ typedef NS_ENUM(NSInteger, KDIButtonContentHorizontalAlignment) {
  The default is NO.
  */
 @property (assign,nonatomic) BOOL automaticallyTogglesLoadingWhenDisabled;
+/**
+ If non-nil, will be set as the loading activity indicator view's color property, otherwise the activity indicator view color will match the receiver's tint color.
+ 
+ The default is nil.
+ */
+@property (strong,nonatomic,nullable) UIColor *loadingColor;
 
 /**
  Set whether the receiver adjusts its title color when highlighted. If set to YES, the title color set for UIControlStateNormal will be inspected and the computed color will be set for the highlighted state. The title color is drawn lighter if the normal title color was dark and darker if the normal title color was light.
