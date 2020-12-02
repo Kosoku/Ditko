@@ -105,6 +105,16 @@
     [self _sizeThatFits:self.bounds.size layout:YES];
 }
 #pragma mark -
+- (void)setLeftView:(UIView *)leftView {
+    [super setLeftView:leftView];
+    
+    [self invalidateIntrinsicContentSize];
+}
+- (void)setRightView:(UIView *)rightView {
+    [super setRightView:rightView];
+    
+    [self invalidateIntrinsicContentSize];
+}
 - (CGRect)textRectForBounds:(CGRect)bounds {
     BOOL leftViewVisible = self.leftViewMode == UITextFieldViewModeAlways ||
     (self.isEditing && self.leftViewMode == UITextFieldViewModeWhileEditing) ||
@@ -210,16 +220,19 @@
     _textEdgeInsets = textEdgeInsets;
     
     [self setNeedsLayout];
+    [self invalidateIntrinsicContentSize];
 }
 - (void)setLeftViewEdgeInsets:(UIEdgeInsets)leftViewEdgeInsets {
     _leftViewEdgeInsets = leftViewEdgeInsets;
     
     [self setNeedsLayout];
+    [self invalidateIntrinsicContentSize];
 }
 - (void)setRightViewEdgeInsets:(UIEdgeInsets)rightViewEdgeInsets {
     _rightViewEdgeInsets = rightViewEdgeInsets;
     
     [self setNeedsLayout];
+    [self invalidateIntrinsicContentSize];
 }
 #pragma mark *** Private Methods ***
 - (void)_KDITextFieldInit; {
