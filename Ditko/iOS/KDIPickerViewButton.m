@@ -203,7 +203,10 @@ NSNotificationName const KDIPickerViewButtonNotificationDidResignFirstResponder 
     }
 }
 - (void)selectRow:(NSInteger)row inComponent:(NSInteger)component {
-    [self.pickerView selectRow:row inComponent:component animated:NO];
+    [self selectRow:row inComponent:component animated:NO];
+}
+- (void)selectRow:(NSInteger)row inComponent:(NSInteger)component animated:(BOOL)animated; {
+    [self.pickerView selectRow:row inComponent:component animated:animated];
     
     self.hasSelectedRow = YES;
     

@@ -83,6 +83,14 @@ NS_ASSUME_NONNULL_BEGIN
  @param component The component to select
  */
 - (void)selectRow:(NSInteger)row inComponent:(NSInteger)component;
+/**
+ Select the provided row in the component.
+ 
+ @param row The row to select
+ @param component The component to select
+ @param animated Whether to animate the selection
+ */
+- (void)selectRow:(NSInteger)row inComponent:(NSInteger)component animated:(BOOL)animated;
 
 /**
  Present the UIPickerView using the appropriate method.
