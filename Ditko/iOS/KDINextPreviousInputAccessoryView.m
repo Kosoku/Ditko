@@ -60,14 +60,13 @@ static CGFloat kDefaultFrameHeight;
     _responder = responder;
     _itemOptions = KDINextPreviousInputAccessoryViewItemOptionsAll;
     
-    _toolbar = [[UIToolbar alloc] initWithFrame:CGRectZero];
+    _toolbar = [[UIToolbar alloc] initWithFrame:self.bounds];
     [_toolbar setTranslatesAutoresizingMaskIntoConstraints:NO];
     [self _updateToolbarItems];
-    [_toolbar sizeToFit];
     [self addSubview:_toolbar];
     
-    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[view]|" options:0 metrics:nil views:@{@"view": _toolbar}]];
-    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[view(==height)]|" options:0 metrics:@{@"height": @(kDefaultFrameHeight)} views:@{@"view": _toolbar}]];
+    [NSLayoutConstraint activateConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[view]|" options:0 metrics:nil views:@{@"view": _toolbar}]];
+    [NSLayoutConstraint activateConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[view]|" options:0 metrics:nil views:@{@"view": _toolbar}]];
     
     return self;
 }
