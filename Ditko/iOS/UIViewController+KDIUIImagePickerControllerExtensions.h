@@ -27,7 +27,7 @@ NS_ASSUME_NONNULL_BEGIN
  
  @param info The info dictionary populated with keys from UIImagePickerController.h
  */
-typedef void(^KDIUIImagePickerControllerCompletion)(NSDictionary<NSString *,id> * _Nullable info);
+typedef void(^KDIUIImagePickerControllerCompletion)(NSDictionary<UIImagePickerControllerInfoKey, id> * _Nullable info);
 
 @interface UIViewController (KDIUIImagePickerControllerExtensions)
 
@@ -42,7 +42,7 @@ typedef void(^KDIUIImagePickerControllerCompletion)(NSDictionary<NSString *,id> 
  @param animated Whether to animate the presentation
  @param completion The block to invoke when a selection is made or cancelled
  */
-- (void)KDI_presentImagePickerController:(UIImagePickerController *)imagePickerController barButtonItem:(nullable UIBarButtonItem *)barButtonItem sourceView:(nullable UIView *)sourceView sourceRect:(CGRect)sourceRect permittedArrowDirections:(UIPopoverArrowDirection)permittedArrowDirections animated:(BOOL)animated completion:(KDIUIImagePickerControllerCompletion)completion;
+- (void)KDI_presentImagePickerController:(UIImagePickerController *)imagePickerController barButtonItem:(nullable UIBarButtonItem *)barButtonItem sourceView:(nullable UIView *)sourceView sourceRect:(CGRect)sourceRect permittedArrowDirections:(UIPopoverArrowDirection)permittedArrowDirections animated:(BOOL)animated completion:(KDIUIImagePickerControllerCompletion)completion NS_REFINED_FOR_SWIFT;
 
 @end
 

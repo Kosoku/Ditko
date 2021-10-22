@@ -376,6 +376,7 @@
 		7427127E1EA7B02000A406EC /* Stanley.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7427127C1EA7B02000A406EC /* Stanley.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		74800EA3215B0EA500487D00 /* UIImageView+KDIExtensions.h in Headers */ = {isa = PBXBuildFile; fileRef = 74800EA1215B0EA500487D00 /* UIImageView+KDIExtensions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		74800EA4215B0EA500487D00 /* UIImageView+KDIExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 74800EA2215B0EA500487D00 /* UIImageView+KDIExtensions.m */; };
+		7934C5BB2723383D005C5B29 /* UIViewController+UIImagePickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7934C5BA2723383D005C5B29 /* UIViewController+UIImagePickerController.swift */; };
 		7991ACDF2538CA47006F7C68 /* ScrollViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7991ACDE2538CA47006F7C68 /* ScrollViewController.swift */; };
 		79F1C1F1253F29FA00998739 /* TextFieldViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F1C1F0253F29FA00998739 /* TextFieldViewController.swift */; };
 /* End PBXBuildFile section */
@@ -778,6 +779,7 @@
 		7427127C1EA7B02000A406EC /* Stanley.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Stanley.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		74800EA1215B0EA500487D00 /* UIImageView+KDIExtensions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "UIImageView+KDIExtensions.h"; path = "iOS/UIImageView+KDIExtensions.h"; sourceTree = "<group>"; };
 		74800EA2215B0EA500487D00 /* UIImageView+KDIExtensions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "UIImageView+KDIExtensions.m"; path = "iOS/UIImageView+KDIExtensions.m"; sourceTree = "<group>"; };
+		7934C5BA2723383D005C5B29 /* UIViewController+UIImagePickerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIViewController+UIImagePickerController.swift"; path = "iOS/UIViewController+UIImagePickerController.swift"; sourceTree = "<group>"; };
 		7991ACDD2538CA47006F7C68 /* Demo-iOS-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Demo-iOS-Bridging-Header.h"; sourceTree = "<group>"; };
 		7991ACDE2538CA47006F7C68 /* ScrollViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollViewController.swift; sourceTree = "<group>"; };
 		79F1C1F0253F29FA00998739 /* TextFieldViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldViewController.swift; sourceTree = "<group>"; };
@@ -1075,6 +1077,7 @@
 				0741C1862140E0D900B80451 /* UIViewController+KDIQLPreviewControllerExtensions.m */,
 				075F40011F780EF9009709EB /* UIViewController+KDIUIImagePickerControllerExtensions.h */,
 				075F40021F780EF9009709EB /* UIViewController+KDIUIImagePickerControllerExtensions.m */,
+				7934C5BA2723383D005C5B29 /* UIViewController+UIImagePickerController.swift */,
 				0794C2371F6EDDEE0051C4C8 /* WKInterfaceController+KDIExtensions.h */,
 				0794C2381F6EDDEE0051C4C8 /* WKInterfaceController+KDIExtensions.m */,
 			);
@@ -1711,6 +1714,7 @@
 					};
 					0795E6311E704785004A5CB2 = {
 						CreatedOnToolsVersion = 8.2.1;
+						LastSwiftMigration = 1300;
 						ProvisioningStyle = Automatic;
 					};
 					0795E6461E704A56004A5CB2 = {
@@ -2110,6 +2114,7 @@
 				071B62701E70635D00B7B85A /* KDIGradientView.m in Sources */,
 				07DB3D901E73B7BD0044FB50 /* KDIProgressNavigationBar.m in Sources */,
 				07DB3D841E7383EC0044FB50 /* KDITextView.m in Sources */,
+				7934C5BB2723383D005C5B29 /* UIViewController+UIImagePickerController.swift in Sources */,
 				07B9B90F20758465007D5080 /* UITableView+KDIExtensions.m in Sources */,
 				0705AFDA1ECE28F200BACC4E /* UIImage-NSImage+KDIExtensions.m in Sources */,
 				0794A7F21E73509100603C99 /* UIView+KDIExtensions.m in Sources */,
@@ -2850,6 +2855,7 @@
 		0795E63B1E704785004A5CB2 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -2865,12 +2871,15 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.kosoku.ditko;
 				PRODUCT_NAME = Ditko;
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
 		0795E63C1E704785004A5CB2 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -2886,12 +2895,14 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.kosoku.ditko;
 				PRODUCT_NAME = Ditko;
 				SKIP_INSTALL = NO;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
 		0795E65C1E704A56004A5CB2 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = 74KPPW2K35;
@@ -2909,6 +2920,7 @@
 		0795E65D1E704A56004A5CB2 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = 74KPPW2K35;
