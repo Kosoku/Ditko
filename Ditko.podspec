@@ -11,6 +11,7 @@ Ditko is an iOS/macOS/tvOS/watchOS framework that extends the `AppKit`, `UIKit`,
   s.license          = { :type => 'Apache 2.0', :file => 'LICENSE.txt' }
   s.author           = { 'William Towe' => 'willbur1984@gmail.com' }
   s.source           = { :git => 'https://github.com/Kosoku/Ditko.git', :tag => s.version.to_s }
+  s.swift_version = '5.0'
 
   s.ios.deployment_target = '13.0'
   s.osx.deployment_target = '10.15'
