@@ -48,7 +48,7 @@
 }
 
 - (void)didAddSubview:(UIView *)subview {
-    [subview didAddSubview:subview];
+    [super didAddSubview:subview];
     
     [self bringSubviewToFront:self.progressView];
 }
