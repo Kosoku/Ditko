@@ -300,7 +300,7 @@ static CGFloat const kTitleColorAlphaAdjustment = 0.5;
     
     retval.hidesWhenStopped = NO;
     
-    return retval;
+    return (__kindof UIView<KDIButtonLoadingView> *)retval;
 }
 #pragma mark -
 - (void)_updateAfterLoadingViewChange; {
