@@ -71,7 +71,31 @@ typedef NS_ENUM(NSInteger, KDIButtonContentHorizontalAlignment) {
 };
 
 /**
- KDIButton is a subclass of UIButton that provides custom style and alignment options. Notably, you can set the alignment for title and image independantly of one another. This allows for unique layout combinations. For example, you can tell the button to layout the image at the top, title at the bottom, and center them both horizontally. 
+ Describes an object that can be used as the `loadingView` of a `KDIButton`.
+ */
+@protocol KDIButtonLoadingView <NSObject>
+/**
+ Returns whether the receiver is animating.
+ */
+@property (nonatomic,readonly,getter=isAnimating) BOOL animating;
+/**
+ Set/get the color used to tint the receiver. The default is the `tintColor` of the `KDIButton`.
+ */
+@property (strong,nonatomic,null_resettable) UIColor *color;
+
+/**
+ Start animating the receiver.
+ */
+- (void)startAnimating;
+/**
+ Stop animating the receiver.
+ */
+- (void)stopAnimating;
+
+@end
+
+/**
+ KDIButton is a subclass of UIButton that provides custom style and alignment options. Notably, you can set the alignment for title and image independantly of one another. This allows for unique layout combinations. For example, you can tell the button to layout the image at the top, title at the bottom, and center them both horizontally.
  
  It also conforms to KDIBorderedView, allowing it to display borders.
  */
@@ -103,7 +127,7 @@ typedef NS_ENUM(NSInteger, KDIButtonContentHorizontalAlignment) {
 @property (assign,nonatomic) BOOL roundedRelativeToImageAndTitle;
 
 /**
- If YES, a UIActivityIndicatorView will be faded in and started animating, centerd in the bounds of the receiver, while the titleLabel and imageView will be faded out. If NO, the UIActivityIndicatorView will be faded out and stopped animating, while the titleLabel and imageView will be faded in.
+ If YES, the loading view will be faded in and started animating, centerd in the bounds of the receiver, while the titleLabel and imageView will be faded out. If NO, the loading view will be faded out and stopped animating, while the titleLabel and imageView will be faded in.
  
  The default is NO.
  */
@@ -115,11 +139,17 @@ typedef NS_ENUM(NSInteger, KDIButtonContentHorizontalAlignment) {
  */
 @property (assign,nonatomic) BOOL automaticallyTogglesLoadingWhenDisabled;
 /**
- If non-nil, will be set as the loading activity indicator view's color property, otherwise the activity indicator view color will match the receiver's tint color.
+ If non-nil, will be set as the loading view's color property, otherwise the activity indicator view color will match the receiver's tint color.
  
  The default is nil.
  */
 @property (strong,nonatomic,nullable) UIColor *loadingColor;
+/**
+ The provided view will be displayed according to the value of `loading`.
+ 
+ The default is an instance of `UIActivityIndicatorView`.
+ */
+@property (strong,nonatomic,null_resettable) __kindof UIView<KDIButtonLoadingView> *loadingView;
 
 /**
  Set whether the receiver adjusts its title color when highlighted. If set to YES, the title color set for UIControlStateNormal will be inspected and the computed color will be set for the highlighted state. The title color is drawn lighter if the normal title color was dark and darker if the normal title color was light.

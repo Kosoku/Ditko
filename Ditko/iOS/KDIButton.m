@@ -29,8 +29,6 @@ static CGFloat const kTitleColorBrightnessAdjustment = 0.5;
 static CGFloat const kTitleColorAlphaAdjustment = 0.5;
 
 @interface KDIButton ()
-@property (strong,nonatomic) UIActivityIndicatorView *activityIndicatorView;
-
 @property (strong,nonatomic) KDIBorderedViewImpl *borderedViewImpl;
 
 @property (strong,nonatomic) UIColor *originalBackgroundColor;
@@ -84,7 +82,7 @@ static CGFloat const kTitleColorAlphaAdjustment = 0.5;
 - (void)tintColorDidChange {
     [super tintColorDidChange];
     
-    self.activityIndicatorView.color = self.loadingColor ?: self.tintColor;
+    self.loadingView.color = self.loadingColor ?: self.tintColor;
     
     if (self.borderColorMatchesTintColor) {
         [self setKDI_borderColor:self.tintColor];
@@ -206,7 +204,7 @@ static CGFloat const kTitleColorAlphaAdjustment = 0.5;
 }
 @dynamic loading;
 - (BOOL)isLoading {
-    return self.activityIndicatorView.isAnimating;
+    return self.loadingView.isAnimating;
 }
 - (void)setLoading:(BOOL)loading {
     if (self.isLoading == loading) {
@@ -216,7 +214,7 @@ static CGFloat const kTitleColorAlphaAdjustment = 0.5;
     [UIView animateWithDuration:0.2 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState animations:^{
         self.titleLabel.alpha = loading ? 0.0 : 1.0;
         self.imageView.alpha = loading ? 0.0 : 1.0;
-        self.activityIndicatorView.alpha = loading ? 1.0 : 0.0;
+        self.loadingView.alpha = loading ? 1.0 : 0.0;
     } completion:^(BOOL finished) {
         if (!finished) {
             return;
@@ -227,10 +225,10 @@ static CGFloat const kTitleColorAlphaAdjustment = 0.5;
     }];
     
     if (loading) {
-        [self.activityIndicatorView startAnimating];
+        [self.loadingView startAnimating];
     }
     else {
-        [self.activityIndicatorView stopAnimating];
+        [self.loadingView stopAnimating];
     }
 }
 - (void)setAutomaticallyTogglesLoadingWhenDisabled:(BOOL)automaticallyTogglesLoadingWhenDisabled {
@@ -241,7 +239,16 @@ static CGFloat const kTitleColorAlphaAdjustment = 0.5;
 - (void)setLoadingColor:(UIColor *)loadingColor {
     _loadingColor = loadingColor;
     
-    self.activityIndicatorView.color = _loadingColor ?: self.tintColor;
+    self.loadingView.color = _loadingColor ?: self.tintColor;
+}
+- (void)setLoadingView:(__kindof UIView<KDIButtonLoadingView> *)loadingView {
+    if (_loadingView != loadingView) {
+        [_loadingView removeFromSuperview];
+    }
+    
+    _loadingView = loadingView ?: [self.class _defaultLoadingView];
+    
+    [self _updateAfterLoadingViewChange];
 }
 #pragma mark -
 - (void)setTitleContentVerticalAlignment:(KDIButtonContentVerticalAlignment)titleContentVerticalAlignment {
@@ -270,12 +277,9 @@ static CGFloat const kTitleColorAlphaAdjustment = 0.5;
 }
 #pragma mark *** Private Methods ***
 - (void)_KDIButtonInit; {
-    _activityIndicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleMedium];
-    _activityIndicatorView.hidesWhenStopped = NO;
-    _activityIndicatorView.alpha = 0.0;
-    _activityIndicatorView.color = self.tintColor;
+    _loadingView = [self.class _defaultLoadingView];
     
-    [self addSubview:_activityIndicatorView];
+    [self _updateAfterLoadingViewChange];
     
     _borderedViewImpl = [[KDIBorderedViewImpl alloc] initWithView:self];
     
@@ -290,7 +294,21 @@ static CGFloat const kTitleColorAlphaAdjustment = 0.5;
         _adjustsTitleColorWhenHighlighted = YES;
     }
 }
+
++ (__kindof UIView<KDIButtonLoadingView> *)_defaultLoadingView; {
+    UIActivityIndicatorView *retval = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleMedium];
+    
+    retval.hidesWhenStopped = NO;
+    
+    return retval;
+}
 #pragma mark -
+- (void)_updateAfterLoadingViewChange; {
+    self.loadingView.alpha = 0.0;
+    self.loadingView.color = _loadingColor ?: self.tintColor;
+    
+    [self addSubview:self.loadingView];
+}
 - (void)_updateAfterInvertedChange; {
     if (self.isInverted) {
         if (self.originalNormalImage == nil ||
@@ -304,12 +322,12 @@ static CGFloat const kTitleColorAlphaAdjustment = 0.5;
         
         UIColor *contrastingColor = [self.tintColor KDI_contrastingColor];
         
-        self.activityIndicatorView.color = contrastingColor;
+        self.loadingView.color = contrastingColor;
         [self setTitleColor:contrastingColor forState:UIControlStateNormal];
         [self setImage:[self.originalNormalImage KLO_imageByTintingWithColor:contrastingColor] forState:UIControlStateNormal];
     }
     else {
-        self.activityIndicatorView.color = self.tintColor;
+        self.loadingView.color = self.tintColor;
         [self setBackgroundColor:self.originalBackgroundColor];
         [self setTitleColor:nil forState:UIControlStateNormal];
         [self setImage:self.originalNormalImage forState:UIControlStateNormal];
@@ -371,9 +389,9 @@ static CGFloat const kTitleColorAlphaAdjustment = 0.5;
     if (layout) {
         [self.borderedViewImpl layoutSubviews];
         
-        CGSize activityIndicatorSize = [self.activityIndicatorView sizeThatFits:CGSizeZero];
+        CGSize activityIndicatorSize = [self.loadingView sizeThatFits:CGSizeZero];
         
-        self.activityIndicatorView.frame = KSTCGRectCenterInRect(CGRectMake(0, 0, activityIndicatorSize.width, activityIndicatorSize.height), self.bounds);
+        self.loadingView.frame = KSTCGRectCenterInRect(CGRectMake(0, 0, activityIndicatorSize.width, activityIndicatorSize.height), self.bounds);
         
         if (!superDoesLayout) {
             CGSize titleSize = [self.titleLabel sizeThatFits:CGSizeZero];
