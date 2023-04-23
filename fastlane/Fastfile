@@ -18,6 +18,6 @@ default_platform(:ios)
 platform :ios do
   desc "Update docset"
   lane :update_docset do
-    sh('bundle exec jazzy --objc --umbrella-header Ditko/Ditko.h --framework-root . --sdk iphonesimulator --theme fullwidth --output docs/docset --clean --hide-declarations swift --author Kosoku --author_url https://github.com/Kosoku --module Ditko --source-directory Ditko')
+    sh('bundle exec jazzy --objc --umbrella-header Ditko/Ditko.h --framework-root . --sdk iphonesimulator --theme fullwidth --output docs --clean --hide-declarations swift --author Kosoku --author_url https://github.com/Kosoku --module Ditko --source-directory Ditko')
   end
 end
