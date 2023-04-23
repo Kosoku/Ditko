@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>KDIBadgeView Class Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset="utf-8">
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+    
+    <script src="../js/lunr.min.js" defer></script>
+    <script src="../js/typeahead.jquery.js" defer></script>
+    <script src="../js/jazzy.search.js" defer></script>
+  </head>
+  <body>
+
+    <a name="//apple_ref/objc/Class/KDIBadgeView" class="dashAnchor"></a>
+
+    <a title="KDIBadgeView Class Reference"></a>
+
+    <header class="header">
+      <p class="header-col header-col--primary">
+        <a class="header-link" href="../index.html">
+          Ditko 6.0.0 Docs
+        </a>
+         (58% documented)
+      </p>
+    
+      <div class="header-col--secondary">
+        <form role="search" action="../search.json">
+          <input type="text" placeholder="Search documentation" data-typeahead>
+        </form>
+      </div>
+    
+    
+    </header>
+
+    <p class="breadcrumbs">
+      <a class="breadcrumb" href="../index.html">Ditko Reference</a>
+      <img class="carat" src="../img/carat.png" alt=""/>
+      KDIBadgeView Class Reference
+    </p>
+
+    <div class="content-wrapper">
+      <nav class="navigation">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Categories.html">Categories</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Categories/NSObject%28KDIExtensions%29.html">NSObject(KDIExtensions)</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Categories/NSParagraphStyle%28KDIExtensions%29.html">NSParagraphStyle(KDIExtensions)</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Categories/NSURL%28KDIExtensions%29.html">NSURL(KDIExtensions)</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/KDIBadgeView.html">KDIBadgeView</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/KDIGradientView.html">KDIGradientView</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/KDIView.html">KDIView</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Constants.html">Constants</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Constants.html#/c:@DitkoVersionNumber">DitkoVersionNumber</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Constants.html#/c:@DitkoVersionString">DitkoVersionString</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Enums.html">Enumerations</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums/KDIBorderOptions.html">KDIBorderOptions</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Protocols.html">Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/KDIBorderedView.html">KDIBorderedView</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Functions.html">Functions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Functions.html#/c:@F@KDICGSizeAdjustedForMainScreenScale">KDICGSizeAdjustedForMainScreenScale</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Functions.html#/c:@F@KDICGSizeAdjustedForScreenScale">KDICGSizeAdjustedForScreenScale</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Functions.html#/c:@F@KDIMainScreenScale">KDIMainScreenScale</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Functions.html#/c:@F@KDIScreenScale">KDIScreenScale</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Functions.html#/c:@F@KDISelectedRangeFromTextInput">KDISelectedRangeFromTextInput</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Functions.html#/c:@F@KDITextFromTextInput">KDITextFromTextInput</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Functions.html#/c:@F@KDITextRangeFromTextInputRange">KDITextRangeFromTextInputRange</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+
+        <section class="section">
+          <div class="section-content top-matter">
+            <h1>KDIBadgeView</h1>
+              <div class="declaration">
+                <div class="language">
+                  
+                  <pre class="highlight objective_c"><code><span class="k">@interface</span> <span class="nc">KDIBadgeView</span> <span class="p">:</span> <span class="nc">UIView</span> <span class="o">&lt;</span><span class="n">KDIDynamicTypeObject</span><span class="o">&gt;</span>
+<span class="cp">#else
+</span><span class="k">@interface</span> <span class="nc">KDIBadgeView</span> <span class="p">:</span> <span class="nc">NSView</span>
+<span class="cp">#endif
+</span>
+<span class="cm">/**
+ Set and get the highlighted state of the view.
+ 
+ If `highlighted` is NO, `badgeForegroundColor` and `badgeBackgroundColor` are used to display the `badge` value. Otherwise, if `highlighted` is YES, `badgeHighlightedForegroundColor` and `badgeHighlightedBackgroundColor` are used to display the `badge` value.
+ 
+ @warning *NOTE:* This property will get set automatically if the receiver is used within a `UITableViewCell`
+ */</span>
+<span class="k">@property</span> <span class="p">(</span><span class="n">assign</span><span class="p">,</span><span class="n">nonatomic</span><span class="p">,</span><span class="n">getter</span><span class="o">=</span><span class="n">isHighlighted</span><span class="p">)</span> <span class="n">BOOL</span> <span class="n">highlighted</span><span class="p">;</span>
+
+<span class="cm">/**
+ Set and get the badge value of the receiver.
+ 
+ This value is displayed using `badgeForegroundColor` or `badgeHighlightedForegroundColor`, depending on the value of `highlighted`.
+ */</span>
+<span class="k">@property</span> <span class="p">(</span><span class="n">copy</span><span class="p">,</span><span class="n">nonatomic</span><span class="p">,</span><span class="n">nullable</span><span class="p">)</span> <span class="n">NSString</span> <span class="o">*</span><span class="n">badge</span><span class="p">;</span>
+
+<span class="cm">/**
+ Set and get the text color used to display `badge` value when `highlighted` is NO.
+ 
+ The default is `[UIColor whiteColor]` or `[NSColor whiteColor]`.
+ */</span>
+<span class="cp">#if (TARGET_OS_IPHONE)
+</span><span class="k">@property</span> <span class="p">(</span><span class="n">strong</span><span class="p">,</span><span class="n">nonatomic</span><span class="p">,</span><span class="n">null_resettable</span><span class="p">)</span> <span class="n">UIColor</span> <span class="o">*</span><span class="n">badgeForegroundColor</span> <span class="n">UI_APPEARANCE_SELECTOR</span><span class="p">;</span>
+<span class="cp">#else
+</span><span class="k">@property</span> <span class="p">(</span><span class="n">strong</span><span class="p">,</span><span class="n">nonatomic</span><span class="p">,</span><span class="n">null_resettable</span><span class="p">)</span> <span class="n">NSColor</span> <span class="o">*</span><span class="n">badgeForegroundColor</span><span class="p">;</span>
+<span class="cp">#endif
+</span><span class="cm">/**
+ Set and get the background color used to display `badge` value when `highlighted` is NO.
+ 
+ The default is `[UIColor blackColor]` or `[NSColor blackColor]`.
+ */</span>
+<span class="cp">#if (TARGET_OS_IPHONE)
+</span><span class="k">@property</span> <span class="p">(</span><span class="n">strong</span><span class="p">,</span><span class="n">nonatomic</span><span class="p">,</span><span class="n">null_resettable</span><span class="p">)</span> <span class="n">UIColor</span> <span class="o">*</span><span class="n">badgeBackgroundColor</span> <span class="n">UI_APPEARANCE_SELECTOR</span><span class="p">;</span>
+<span class="cp">#else
+</span><span class="k">@property</span> <span class="p">(</span><span class="n">strong</span><span class="p">,</span><span class="n">nonatomic</span><span class="p">,</span><span class="n">null_resettable</span><span class="p">)</span> <span class="n">NSColor</span> <span class="o">*</span><span class="n">badgeBackgroundColor</span><span class="p">;</span>
+<span class="cp">#endif
+</span>
+<span class="cm">/**
+ Set and get the text color used to display `badge` value when `highlighted` is YES.
+ 
+ The default is `[UIColor lightGrayColor]` or `[NSColor lightGrayColor]`.
+ */</span>
+<span class="cp">#if (TARGET_OS_IPHONE)
+</span><span class="k">@property</span> <span class="p">(</span><span class="n">strong</span><span class="p">,</span><span class="n">nonatomic</span><span class="p">,</span><span class="n">null_resettable</span><span class="p">)</span> <span class="n">UIColor</span> <span class="o">*</span><span class="n">badgeHighlightedForegroundColor</span> <span class="n">UI_APPEARANCE_SELECTOR</span><span class="p">;</span>
+<span class="cp">#else
+</span><span class="k">@property</span> <span class="p">(</span><span class="n">strong</span><span class="p">,</span><span class="n">nonatomic</span><span class="p">,</span><span class="n">null_resettable</span><span class="p">)</span> <span class="n">NSColor</span> <span class="o">*</span><span class="n">badgeHighlightedForegroundColor</span><span class="p">;</span>
+<span class="cp">#endif
+</span><span class="cm">/**
+ Set and get the background color used to display `badge` value when `highlighted` is YES.
+ 
+ The default is `[UIColor whiteColor]` or `[NSColor whiteColor]`.
+ */</span>
+<span class="cp">#if (TARGET_OS_IPHONE)
+</span><span class="k">@property</span> <span class="p">(</span><span class="n">strong</span><span class="p">,</span><span class="n">nonatomic</span><span class="p">,</span><span class="n">null_resettable</span><span class="p">)</span> <span class="n">UIColor</span> <span class="o">*</span><span class="n">badgeHighlightedBackgroundColor</span> <span class="n">UI_APPEARANCE_SELECTOR</span><span class="p">;</span>
+<span class="cp">#else
+</span><span class="k">@property</span> <span class="p">(</span><span class="n">strong</span><span class="p">,</span><span class="n">nonatomic</span><span class="p">,</span><span class="n">null_resettable</span><span class="p">)</span> <span class="n">NSColor</span> <span class="o">*</span><span class="n">badgeHighlightedBackgroundColor</span><span class="p">;</span>
+<span class="cp">#endif
+</span>
+<span class="cm">/**
+ Set and get the font used to display `badge` value.
+ 
+ The default is `[UIFont boldSystemFontOfSize:17.0]` or `[NSFont boldSystemFontOfSize:17.0]`.
+ */</span>
+<span class="cp">#if (TARGET_OS_IPHONE)
+</span><span class="k">@property</span> <span class="p">(</span><span class="n">strong</span><span class="p">,</span><span class="n">nonatomic</span><span class="p">,</span><span class="n">null_resettable</span><span class="p">)</span> <span class="n">UIFont</span> <span class="o">*</span><span class="n">badgeFont</span> <span class="n">UI_APPEARANCE_SELECTOR</span><span class="p">;</span>
+<span class="cp">#else
+</span><span class="k">@property</span> <span class="p">(</span><span class="n">strong</span><span class="p">,</span><span class="n">nonatomic</span><span class="p">,</span><span class="n">null_resettable</span><span class="p">)</span> <span class="n">NSFont</span> <span class="o">*</span><span class="n">badgeFont</span><span class="p">;</span>
+<span class="cp">#endif
+</span><span class="cm">/**
+ Set and get the badge corner radius used to draw the rounded corners of the receiver.
+ 
+ The default is 8.0.
+ */</span>
+<span class="cp">#if (TARGET_OS_IPHONE)
+</span><span class="k">@property</span> <span class="p">(</span><span class="n">assign</span><span class="p">,</span><span class="n">nonatomic</span><span class="p">)</span> <span class="n">CGFloat</span> <span class="n">badgeCornerRadius</span> <span class="n">UI_APPEARANCE_SELECTOR</span><span class="p">;</span>
+<span class="cp">#else
+</span><span class="k">@property</span> <span class="p">(</span><span class="n">assign</span><span class="p">,</span><span class="n">nonatomic</span><span class="p">)</span> <span class="n">CGFloat</span> <span class="n">badgeCornerRadius</span><span class="p">;</span>
+<span class="cp">#endif
+</span><span class="cm">/**
+ Set and get the edge insets used to layout the `badge` value text.
+ 
+ The default is `UIEdgeInsetsMake(4.0, 8.0, 4.0, 8.0)` or `NSEdgeInsetsMake(4.0, 8.0, 4.0, 8.0)`.
+ */</span>
+<span class="cp">#if (TARGET_OS_IPHONE)
+</span><span class="k">@property</span> <span class="p">(</span><span class="n">assign</span><span class="p">,</span><span class="n">nonatomic</span><span class="p">)</span> <span class="n">UIEdgeInsets</span> <span class="n">badgeEdgeInsets</span> <span class="n">UI_APPEARANCE_SELECTOR</span><span class="p">;</span>
+<span class="cp">#else
+</span><span class="k">@property</span> <span class="p">(</span><span class="n">assign</span><span class="p">,</span><span class="n">nonatomic</span><span class="p">)</span> <span class="n">NSEdgeInsets</span> <span class="n">badgeEdgeInsets</span><span class="p">;</span>
+<span class="cp">#endif
+</span>
+<span class="cp">#if (!TARGET_OS_IPHONE)
+</span><span class="cm">/**
+ Equivalent to `-[UIView sizeThatFits:]` for cross platform reasons.
+ 
+ @param size The preferred size of the receiver
+ @return A new size that fits the receiver's subviews
+ */</span>
+<span class="k">-</span> <span class="p">(</span><span class="n">NSSize</span><span class="p">)</span><span class="nf">sizeThatFits</span><span class="p">:(</span><span class="n">NSSize</span><span class="p">)</span><span class="nv">size</span><span class="p">;</span>
+<span class="cp">#endif
+</span>
+<span class="k">@end</span></code></pre>
+
+                </div>
+              </div>
+            <p>Undocumented</p>
+
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="section-content">
+            <div class="task-group">
+              <ul class="item-container">
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)KDIBadgeView(py)highlighted"></a>
+                    <a name="//apple_ref/objc/Property/highlighted" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)KDIBadgeView(py)highlighted">highlighted</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Set and get the highlighted state of the view.</p>
+
+<p>If <code>highlighted</code> is NO, <code><a href="../Classes/KDIBadgeView.html#/c:objc(cs)KDIBadgeView(py)badgeForegroundColor">badgeForegroundColor</a></code> and <code><a href="../Classes/KDIBadgeView.html#/c:objc(cs)KDIBadgeView(py)badgeBackgroundColor">badgeBackgroundColor</a></code> are used to display the <code><a href="../Classes/KDIBadgeView.html#/c:objc(cs)KDIBadgeView(py)badge">badge</a></code> value. Otherwise, if <code>highlighted</code> is YES, <code><a href="../Classes/KDIBadgeView.html#/c:objc(cs)KDIBadgeView(py)badgeHighlightedForegroundColor">badgeHighlightedForegroundColor</a></code> and <code><a href="../Classes/KDIBadgeView.html#/c:objc(cs)KDIBadgeView(py)badgeHighlightedBackgroundColor">badgeHighlightedBackgroundColor</a></code> are used to display the <code><a href="../Classes/KDIBadgeView.html#/c:objc(cs)KDIBadgeView(py)badge">badge</a></code> value.</p>
+<div class="aside aside-warning">
+    <p class="aside-title">Warning</p>
+    <em>NOTE:</em> This property will get set automatically if the receiver is used within a <code>UITableViewCell</code>
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight objective_c"><code><span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">,</span> <span class="n">getter</span><span class="o">=</span><span class="n">isHighlighted</span><span class="p">)</span> <span class="n">BOOL</span> <span class="n">highlighted</span><span class="p">;</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)KDIBadgeView(py)badge"></a>
+                    <a name="//apple_ref/objc/Property/badge" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)KDIBadgeView(py)badge">badge</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Set and get the badge value of the receiver.</p>
+
+<p>This value is displayed using <code><a href="../Classes/KDIBadgeView.html#/c:objc(cs)KDIBadgeView(py)badgeForegroundColor">badgeForegroundColor</a></code> or <code><a href="../Classes/KDIBadgeView.html#/c:objc(cs)KDIBadgeView(py)badgeHighlightedForegroundColor">badgeHighlightedForegroundColor</a></code>, depending on the value of <code><a href="../Classes/KDIBadgeView.html#/c:objc(cs)KDIBadgeView(py)highlighted">highlighted</a></code>.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight objective_c"><code><span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">,</span> <span class="n">copy</span><span class="p">,</span> <span class="n">nullable</span><span class="p">)</span> <span class="n">NSString</span> <span class="o">*</span><span class="n">badge</span><span class="p">;</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)KDIBadgeView(py)badgeForegroundColor"></a>
+                    <a name="//apple_ref/objc/Property/badgeForegroundColor" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)KDIBadgeView(py)badgeForegroundColor">badgeForegroundColor</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight objective_c"><code><span class="k">@property</span> <span class="p">(</span><span class="n">strong</span><span class="p">,</span> <span class="n">nonatomic</span><span class="p">,</span> <span class="n">null_resettable</span><span class="p">)</span> <span class="n">UIColor</span> <span class="o">*</span><span class="n">badgeForegroundColor</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)KDIBadgeView(py)badgeBackgroundColor"></a>
+                    <a name="//apple_ref/objc/Property/badgeBackgroundColor" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)KDIBadgeView(py)badgeBackgroundColor">badgeBackgroundColor</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight objective_c"><code><span class="k">@property</span> <span class="p">(</span><span class="n">strong</span><span class="p">,</span> <span class="n">nonatomic</span><span class="p">,</span> <span class="n">null_resettable</span><span class="p">)</span> <span class="n">UIColor</span> <span class="o">*</span><span class="n">badgeBackgroundColor</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)KDIBadgeView(py)badgeHighlightedForegroundColor"></a>
+                    <a name="//apple_ref/objc/Property/badgeHighlightedForegroundColor" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)KDIBadgeView(py)badgeHighlightedForegroundColor">badgeHighlightedForegroundColor</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight objective_c"><code><span class="k">@property</span> <span class="p">(</span><span class="n">strong</span><span class="p">,</span> <span class="n">nonatomic</span><span class="p">,</span> <span class="n">null_resettable</span><span class="p">)</span> <span class="n">UIColor</span> <span class="o">*</span><span class="n">badgeHighlightedForegroundColor</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)KDIBadgeView(py)badgeHighlightedBackgroundColor"></a>
+                    <a name="//apple_ref/objc/Property/badgeHighlightedBackgroundColor" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)KDIBadgeView(py)badgeHighlightedBackgroundColor">badgeHighlightedBackgroundColor</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight objective_c"><code><span class="k">@property</span> <span class="p">(</span><span class="n">strong</span><span class="p">,</span> <span class="n">nonatomic</span><span class="p">,</span> <span class="n">null_resettable</span><span class="p">)</span> <span class="n">UIColor</span> <span class="o">*</span><span class="n">badgeHighlightedBackgroundColor</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)KDIBadgeView(py)badgeFont"></a>
+                    <a name="//apple_ref/objc/Property/badgeFont" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)KDIBadgeView(py)badgeFont">badgeFont</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight objective_c"><code><span class="k">@property</span> <span class="p">(</span><span class="n">strong</span><span class="p">,</span> <span class="n">nonatomic</span><span class="p">,</span> <span class="n">null_resettable</span><span class="p">)</span> <span class="n">UIFont</span> <span class="o">*</span><span class="n">badgeFont</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)KDIBadgeView(py)badgeCornerRadius"></a>
+                    <a name="//apple_ref/objc/Property/badgeCornerRadius" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)KDIBadgeView(py)badgeCornerRadius">badgeCornerRadius</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight objective_c"><code><span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">)</span> <span class="n">CGFloat</span> <span class="n">badgeCornerRadius</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)KDIBadgeView(py)badgeEdgeInsets"></a>
+                    <a name="//apple_ref/objc/Property/badgeEdgeInsets" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)KDIBadgeView(py)badgeEdgeInsets">badgeEdgeInsets</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight objective_c"><code><span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">)</span> <span class="n">UIEdgeInsets</span> <span class="n">badgeEdgeInsets</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+      </article>
+    </div>
+    <section class="footer">
+      <p>&copy; 2023 <a class="link" href="https://github.com/Kosoku" target="_blank" rel="external noopener">Kosoku</a>. All rights reserved. (Last updated: 2023-04-23)</p>
+      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external noopener">jazzy ♪♫ v0.14.3</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external noopener">Realm</a> project.</p>
+    </section>
+  </body>
+</html>

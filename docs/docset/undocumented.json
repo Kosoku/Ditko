@@ -1,0 +1,152 @@
+{
+  "warnings": [
+    {
+      "file": "/Users/williamtowe/Projects/Ditko/Ditko/Ditko.h",
+      "line": 29,
+      "symbol": "DitkoVersionNumber",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.constant",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/williamtowe/Projects/Ditko/Ditko/Ditko.h",
+      "line": 32,
+      "symbol": "DitkoVersionString",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.constant",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/williamtowe/Projects/Ditko/Ditko/KDIBadgeView.h",
+      "line": 34,
+      "symbol": "KDIBadgeView",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/williamtowe/Projects/Ditko/Ditko/KDIBadgeView.h",
+      "line": 61,
+      "symbol": "KDIBadgeView.badgeForegroundColor",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.property",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/williamtowe/Projects/Ditko/Ditko/KDIBadgeView.h",
+      "line": 71,
+      "symbol": "KDIBadgeView.badgeBackgroundColor",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.property",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/williamtowe/Projects/Ditko/Ditko/KDIBadgeView.h",
+      "line": 82,
+      "symbol": "KDIBadgeView.badgeHighlightedForegroundColor",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.property",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/williamtowe/Projects/Ditko/Ditko/KDIBadgeView.h",
+      "line": 92,
+      "symbol": "KDIBadgeView.badgeHighlightedBackgroundColor",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.property",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/williamtowe/Projects/Ditko/Ditko/KDIBadgeView.h",
+      "line": 103,
+      "symbol": "KDIBadgeView.badgeFont",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.property",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/williamtowe/Projects/Ditko/Ditko/KDIBadgeView.h",
+      "line": 113,
+      "symbol": "KDIBadgeView.badgeCornerRadius",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.property",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/williamtowe/Projects/Ditko/Ditko/KDIBadgeView.h",
+      "line": 123,
+      "symbol": "KDIBadgeView.badgeEdgeInsets",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.property",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/williamtowe/Projects/Ditko/Ditko/KDIBorderedView.h",
+      "line": 84,
+      "symbol": "KDIBorderedView.borderWidth",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.property",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/williamtowe/Projects/Ditko/Ditko/KDIBorderedView.h",
+      "line": 104,
+      "symbol": "KDIBorderedView.borderEdgeInsets",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.property",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/williamtowe/Projects/Ditko/Ditko/KDIBorderedView.h",
+      "line": 114,
+      "symbol": "KDIBorderedView.borderColor",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.property",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/williamtowe/Projects/Ditko/Ditko/KDIBorderedView.h",
+      "line": 127,
+      "symbol": "KDIBorderedView.-setBorderColor:animated:",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/williamtowe/Projects/Ditko/Ditko/KDIFunctions.h",
+      "line": 47,
+      "symbol": "KDIScreenScale",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.function",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/williamtowe/Projects/Ditko/Ditko/KDIFunctions.h",
+      "line": 69,
+      "symbol": "KDICGSizeAdjustedForScreenScale",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.function",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/williamtowe/Projects/Ditko/Ditko/KDIGradientView.h",
+      "line": 28,
+      "symbol": "KDIGradientView",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/williamtowe/Projects/Ditko/Ditko/KDIView.h",
+      "line": 74,
+      "symbol": "KDIView.-layoutSubviews",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/williamtowe/Projects/Ditko/Ditko/NSObject+KDIExtensions.h",
+      "line": 27,
+      "symbol": "NSObject(KDIExtensions)",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.category",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/williamtowe/Projects/Ditko/Ditko/NSParagraphStyle+KDIExtensions.h",
+      "line": 30,
+      "symbol": "NSParagraphStyle(KDIExtensions)",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.category",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/williamtowe/Projects/Ditko/Ditko/NSURL+KDIExtensions.h",
+      "line": 24,
+      "symbol": "NSURL(KDIExtensions)",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.category",
+      "warning": "undocumented"
+    }
+  ],
+  "source_directory": "/Users/williamtowe/Projects/Ditko/Ditko"
+}
